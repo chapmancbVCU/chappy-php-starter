@@ -28,8 +28,14 @@
       }
     },
     "scripts": {
-      "post-create-project-cmd": [
+      "setup": [
         "@php vendor/chadchapman/chappy-php-framework/src/scripts/setup.php"
+      ],
+      "post-install-cmd": [
+        "@setup"
+      ],
+      "post-create-project-cmd": [
+        "@setup"
       ]
     }
   }
