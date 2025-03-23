@@ -3,24 +3,36 @@
 /*
  * Console application execution begins here.
  */
+
 use Symfony\Component\Console\Application;
 
-// Define path related constants.
+// Define path-related constants
 define('DS', DIRECTORY_SEPARATOR);
-define('ROOT', dirname(__FILE__));
+define('ROOT', __DIR__);
 
-// Load configuration and helper functions.
-require_once ROOT.DS.'src'.DS.'scripts'.DS.'bootstrap.php';
+// Load Composer autoloader
+require_once ROOT . DS . 'vendor' . DS . 'autoload.php';
+
+// Load framework bootstrap
+require_once ROOT . DS . 'vendor' . DS . 'chadchapman' . DS . 'chappy-php-framework' . DS . 'src' . DS . 'scripts' . DS . 'bootstrap.php';
 
 // Initialize Symfony Console application
 $app = new Application();
 
-// Dynamically load and add command classes
+// Define where to load commands from
 $commandNamespace = 'Console\\Commands';
-$commandDir = ROOT . DS . 'src' . DS . 'Console' . DS . 'Commands';
+$commandDir = ROOT . DS . 'vendor' . DS . 'chadchapman' . DS . 'chappy-php-framework' . DS . 'src' . DS . 'Console' . DS . 'Commands';
 
+// Dynamically load command classes
 foreach (glob($commandDir . DS . '*.php') as $commandFile) {
-    $commandClass = $commandNamespace . '\\' . pathinfo($commandFile, PATHINFO_FILENAME);
+    $className = pathinfo($commandFile, PATHINFO_FILENAME);
+    $commandClass = $commandNamespace . '\\' . $className;
+
+    // Optional: require the command file if not autoloaded
+    if (!class_exists($commandClass)) {
+        require_once $commandFile;
+    }
+
     if (class_exists($commandClass)) {
         $app->add(new $commandClass());
     }
