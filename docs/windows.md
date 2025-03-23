@@ -86,29 +86,14 @@ choco install 7zip -y
 * B. Select download location and run installer using default options.
 * D. If you get a dialog box asking "Do you want to allow public and private networks to access this app?" for Apache select **Allow**
 * E. Install **Composer** using the instructions described above.  We recommend using Chocolatey.
-* F. cd to `C:\xampp\htdocs` using the terminal.
-* G. Cone the project:
+* F. `cd` to `C:\xampp\htdocs` using the terminal.
+* G. Run the command:
 ```powershell
-git clone git@github.com:chapmancbVCU/chappy-php.git
+composer create-project chappy-php/chappy-php my-app
 ```
 
-If permission issues arise, running CMD as Administrator might be needed.
-
-* H. cd into project and run the command:
-```powershell
-composer run install-project
-```
-
-* I. Open the project with your preferred IDE.  We use VScode.
-* J. In the terminal run the command:
-```sh
-php console serve
-```
-* K. In a new terminal tab run the command:
-```sh
-npm run dev
-```
-* L. Navigate to `localhost:8000` in your preferred web browser.
+* If permission issues arise, running CMD as Administrator might be needed.
+<br>
 
 #### 2. Using with XAMPP
 * A. Open XAMPP Control Panel.
@@ -175,23 +160,18 @@ php -v
 
 #### 2. Setup The Project
 * A. Install **Composer** using the instructions described above.
-* B. Cone the project:
+* B. Install project:
 ```powershell
-git clone git@github.com:chapmancbVCU/chappy-php.git
+composer create-project chappy-php/chappy-php my-app
 ```
 
-* C. cd into project and run the command:
-```powershell
-composer run install-project
-```
-
-* D. Open the project with your preferred IDE.  We use VScode.
-* E. In the terminal run the command:
+* C. Open the project with your preferred IDE.  We use VScode.
+* D. In the terminal run the command:
 ```sh
 php console serve
 ```
-* F. In a new terminal tab run the command:
+* E. In a new terminal tab run the command:
 ```sh
 npm run dev
 ```
-* G. Navigate to `localhost:8000` in your preferred web browser.
+* F. Navigate to `localhost:8000` in your preferred web browser.
