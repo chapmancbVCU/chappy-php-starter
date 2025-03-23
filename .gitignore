@@ -1,0 +1,14 @@
+/.vscode
+/vendor/
+/cache/
+/public/images/uploads/profile_images/
+/node_modules
+.env
+template.txt
+Thumbs.db*
+.DS_Store
+
+database/database.sqlite
+docs/Gemfile.lock
+
+src/cache/

@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+
+.form-errors {
+  border-radius: 8px;
+  margin: 10px 25px 45px 25px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+
+.form-errors ul.has-errors {
+  padding: 10px 15px;
+  border: 1px solid #a94442;
+  border-radius: 8px;
+}
+
+.form-errors li {
+  list-style: none;
+  font-size: 16px;
+}
+
+/* Main content */
+.main {
+  margin-left: 250px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+.navbar-dark .dropdown-item.active, .navbar-dark .dropdown-item:active {
+  background-color: #343a40;
+}
+
+.profile-img {
+  height: 35px;
+  width: auto;
+}

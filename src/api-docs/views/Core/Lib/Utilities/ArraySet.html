@@ -1,0 +1,3764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Core\Lib\Utilities\ArraySet | Chappy.php API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="/api-docs/opensearch.xml"
+          title="Chappy.php API (main)" />
+    </head>
+
+    <body id="class" data-name="class:Core_Lib_Utilities_ArraySet" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Chappy.php API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../../Core/Lib.html">Lib</a></li><li class="backslash">\</li><li><a href="../../../Core/Lib/Utilities.html">Utilities</a></li><li class="backslash">\</li><li>ArraySet</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ArraySet    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ArraySet</strong>
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Array utility class with functions for both chainable operations.</p></p>                    </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(array $items = [])
+        
+                                            <p><p>Constructor to initialize the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_add">add</a>(string $key, mixed $value)
+        
+                                            <p><p>Add a value to the array if the key does not exist.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_all">all</a>()
+        
+                                            <p><p>Get all items in the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_asort">asort</a>()
+        
+                                            <p><p>Sort the array while maintaining index association.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_arsort">arsort</a>()
+        
+                                            <p><p>Sort the array in descending order while maintaining index association.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_chunk">chunk</a>(int $size)
+        
+                                            <p><p>Split an array into chunks.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_clear">clear</a>()
+        
+                                            <p><p>Clear all items in the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collapse">collapse</a>()
+        
+                                            <p><p>Collapse a multi-dimensional array into a single level.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_column">column</a>(<abbr title="Core\Lib\Utilities\string|int">string|int</abbr> $columnKey)
+        
+                                            <p><p>Extract a single column from a multi-dimensional array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_combine">combine</a>(array $keys, array $values)
+        
+                                            <p><p>Combine two arrays, one as keys and one as values.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_contains">contains</a>(mixed $value, bool $strict = false)
+        
+                                            <p><p>Check if an array contains a specific value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_crossJoin">crossJoin</a>(array ...$arrays)
+        
+                                            <p><p>Compute the Cartesian product of multiple arrays.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_count">count</a>()
+        
+                                            <p><p>Get the count of elements in the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_diff">diff</a>(array $array)
+        
+                                            <p><p>Get the difference between the current array and another array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dot">dot</a>(string $prepend = &#039;&#039;)
+        
+                                            <p><p>Convert an array into dot notation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_each">each</a>(callable $callback)
+        
+                                            <p><p>Iterate over each item and apply a callback.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_except">except</a>(<abbr title="Core\Lib\Utilities\array|string">array|string</abbr> $keys)
+        
+                                            <p><p>Remove specified keys from the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_exists">exists</a>(string $key)
+        
+                                            <p><p>Determine if a key exists in an array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fill">fill</a>(int $start, int $count, mixed $value)
+        
+                                            <p><p>Fill an array with a specified value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_filter">filter</a>(callable $callback)
+        
+                                            <p><p>Filters the array using a callback function.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_first">first</a>(callable|null $callback = null)
+        
+                                            <p><p>Get the first element that matches a condition.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_firstKey">firstKey</a>()
+        
+                                            <p><p>Get the first key of the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flatten">flatten</a>()
+        
+                                            <p><p>Flatten a multi-dimensional array into a single level.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flip">flip</a>()
+        
+                                            <p><p>Swap keys with values in the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forget">forget</a>(string $key)
+        
+                                            <p><p>Remove a specific key from the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_get">get</a>(string $key, mixed $default = null)
+        
+                                            <p><p>Get a value from the array using dot notation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_has">has</a>(string $key)
+        
+                                            <p><p>Check if a key exists in the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasAny">hasAny</a>(<abbr title="Core\Lib\Utilities\array|string">array|string</abbr> $keys)
+        
+                                            <p><p>Determine if at least one of the given keys exists in the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_intersect">intersect</a>(array $array)
+        
+                                            <p><p>Get the intersection of the current array and another array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_intersectKeys">intersectKeys</a>(array $array)
+        
+                                            <p><p>Get elements whose keys exist in another array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_implode">implode</a>(string $separator)
+        
+                                            <p><p>Join array elements with a string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isArray">isArray</a>(mixed $value)
+        
+                                            <p><p>Check if the given value is an array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isEmpty">isEmpty</a>()
+        
+                                            <p><p>Check if the array is empty.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_keys">keys</a>()
+        
+                                            <p><p>Get all keys of the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_keyBy">keyBy</a>(string $key)
+        
+                                            <p><p>Key an array by a specific field.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_krsort">krsort</a>()
+        
+                                            <p><p>Sort the array by keys in descending order.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_ksort">ksort</a>()
+        
+                                            <p><p>Sort the array by keys in ascending order.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_last">last</a>(callable|null $callback = null)
+        
+                                            <p><p>Get the last element that matches a condition.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_lastKey">lastKey</a>()
+        
+                                            <p><p>Get the last key of the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_make">make</a>(mixed $items = [])
+        
+                                            <p><p>Create a new <code>Arr</code> instance from an array or a single value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_map">map</a>(callable $callback)
+        
+                                            <p><p>Apply a callback function to each item in the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mapRecursive">mapRecursive</a>(callable $callback)
+        
+                                            <p><p>Apply a recursive callback function to each element in the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mapWithKeys">mapWithKeys</a>(callable $callback)
+        
+                                            <p><p>Map an array using a callback that defines both keys and values.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_merge">merge</a>(array $array)
+        
+                                            <p><p>Merge the current array with another array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_multisort">multisort</a>(int $sortFlags = SORT_REGULAR)
+        
+                                            <p><p>Sort multiple arrays or multi-dimensional arrays.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_only">only</a>(<abbr title="Core\Lib\Utilities\array|string">array|string</abbr> $keys)
+        
+                                            <p><p>Return only the specified keys from the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_pad">pad</a>(int $size, mixed $value)
+        
+                                            <p><p>Pad an array to the specified length with a value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_pluck">pluck</a>(string $key)
+        
+                                            <p><p>Extract a specific key's values.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_prepend">prepend</a>(mixed $value)
+        
+                                            <p><p>Prepend a value to the beginning of the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_pull">pull</a>(string $key, mixed $default = null)
+        
+                                            <p><p>Remove and return a value from the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_push">push</a>(mixed ...$values)
+        
+                                            <p><p>Add one or more values to the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_random">random</a>(int|null $number = null)
+        
+                                            <p><p>Get a random value or multiple values from the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_reduce">reduce</a>(callable $callback, mixed $initial = null)
+        
+                                            <p><p>Reduce the array to a single value using a callback.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_replace">replace</a>(array $array)
+        
+                                            <p><p>Replace values in the array with values from another array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_result">result</a>()
+        
+                                            <p><p>Retrieve the result of the last operation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_reverse">reverse</a>()
+        
+                                            <p><p>Reverse the order of the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_rsort">rsort</a>()
+        
+                                            <p><p>Sort the array in descending order.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_search">search</a>(mixed $value)
+        
+                                            <p><p>Search for a value in the array and return its key.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_set">set</a>(string $key, mixed $value)
+        
+                                            <p><p>Set a value in the array using dot notation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shift">shift</a>()
+        
+                                            <p><p>Remove and return the first item from the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shuffle">shuffle</a>()
+        
+                                            <p><p>Shuffle the elements of the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shuffleAssociative">shuffleAssociative</a>()
+        
+                                            <p><p>Shuffle an array while preserving keys.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_slice">slice</a>(int $offset, int|null $length = null)
+        
+                                            <p><p>Extract a slice of the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_sort">sort</a>(int $sortFlags = SORT_REGULAR)
+        
+                                            <p><p>Sort the array in ascending order.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_splice">splice</a>(int $offset, int|null $length = null, array $replacement = [])
+        
+                                            <p><p>Remove and replace a portion of the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_udiff">udiff</a>(array $array, callable $callback)
+        
+                                            <p><p>Compute the difference between arrays using a custom comparison function.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_unique">unique</a>()
+        
+                                            <p><p>Remove duplicate values from the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_usort">usort</a>(callable $callback)
+        
+                                            <p><p>Sort the array using a user-defined comparison function.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_values">values</a>()
+        
+                                            <p><p>Get all values of the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_walk">walk</a>(callable $callback)
+        
+                                            <p><p>Apply a user function to every item in the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_walkRecursive">walkRecursive</a>(callable $callback)
+        
+                                            <p><p>Recursively apply a user function to every item in the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_wrap">wrap</a>(mixed $value)
+        
+                                            <p><p>Wrap a value in an array if it is not already an array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_where">where</a>(callable $callback)
+        
+                                            <p><p>Filter the array using a callback function.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line 20</div>
+        <code>                    
+    <strong>__construct</strong>(array $items = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructor to initialize the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$items</td>
+                <td><p>The initial array.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_add">
+        <div class="location">at line 33</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>add</strong>(string $key, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add a value to the array if the key does not exist.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>The key to check.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value to add.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_all">
+        <div class="location">at line 46</div>
+        <code>                    array
+    <strong>all</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get all items in the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The stored array.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_asort">
+        <div class="location">at line 59</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>asort</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sort the array while maintaining index association.</p></p>                <p><p>This method sorts the array in ascending order while preserving
+the original keys.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td><p>The modified Arr instance.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_arsort">
+        <div class="location">at line 73</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>arsort</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sort the array in descending order while maintaining index association.</p></p>                <p><p>This method sorts the array in descending order while preserving
+the original keys.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td><p>The modified Arr instance.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_chunk">
+        <div class="location">at line 85</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>chunk</strong>(int $size)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Split an array into chunks.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$size</td>
+                <td><p>The size of each chunk.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_clear">
+        <div class="location">at line 96</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>clear</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Clear all items in the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collapse">
+        <div class="location">at line 107</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>collapse</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Collapse a multi-dimensional array into a single level.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_column">
+        <div class="location">at line 123</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>column</strong>(<abbr title="Core\Lib\Utilities\string|int">string|int</abbr> $columnKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extract a single column from a multi-dimensional array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Core\Lib\Utilities\string|int">string|int</abbr></td>
+                <td>$columnKey</td>
+                <td><p>The column key.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_combine">
+        <div class="location">at line 136</div>
+        <code>        static            <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>combine</strong>(array $keys, array $values)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Combine two arrays, one as keys and one as values.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$keys</td>
+                <td><p>The keys.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$values</td>
+                <td><p>The values.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_contains">
+        <div class="location">at line 151</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>contains</strong>(mixed $value, bool $strict = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check if an array contains a specific value.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value to search for.</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$strict</td>
+                <td><p>Whether to perform strict comparison.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_crossJoin">
+        <div class="location">at line 163</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>crossJoin</strong>(array ...$arrays)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Compute the Cartesian product of multiple arrays.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>...$arrays</td>
+                <td><p>Arrays to join.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_count">
+        <div class="location">at line 184</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>count</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the count of elements in the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_diff">
+        <div class="location">at line 196</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>diff</strong>(array $array)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the difference between the current array and another array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$array</td>
+                <td><p>The array to compare.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dot">
+        <div class="location">at line 208</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>dot</strong>(string $prepend = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Convert an array into dot notation.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$prepend</td>
+                <td><p>A string to prepend before keys.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_each">
+        <div class="location">at line 234</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>each</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Iterate over each item and apply a callback.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The function to apply.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_except">
+        <div class="location">at line 248</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>except</strong>(<abbr title="Core\Lib\Utilities\array|string">array|string</abbr> $keys)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove specified keys from the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Core\Lib\Utilities\array|string">array|string</abbr></td>
+                <td>$keys</td>
+                <td><p>The keys to remove.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_exists">
+        <div class="location">at line 262</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>exists</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if a key exists in an array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>The key to check.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fill">
+        <div class="location">at line 276</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>fill</strong>(int $start, int $count, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Fill an array with a specified value.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$start</td>
+                <td><p>Index to start filling.</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$count</td>
+                <td><p>Number of elements to insert.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value to insert.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_filter">
+        <div class="location">at line 288</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>filter</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Filters the array using a callback function.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The function to apply for filtering.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_first">
+        <div class="location">at line 300</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>first</strong>(callable|null $callback = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the first element that matches a condition.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable|null</td>
+                <td>$callback</td>
+                <td><p>A callback function to test elements.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_firstKey">
+        <div class="location">at line 320</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>firstKey</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the first key of the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flatten">
+        <div class="location">at line 331</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>flatten</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flatten a multi-dimensional array into a single level.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flip">
+        <div class="location">at line 346</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>flip</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Swap keys with values in the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forget">
+        <div class="location">at line 358</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>forget</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove a specific key from the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>The key to remove.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_get">
+        <div class="location">at line 371</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>get</strong>(string $key, mixed $default = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a value from the array using dot notation.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>The key in dot notation.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$default</td>
+                <td><p>The default value if the key is not found.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_has">
+        <div class="location">at line 394</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>has</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check if a key exists in the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>The key to check.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasAny">
+        <div class="location">at line 406</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>hasAny</strong>(<abbr title="Core\Lib\Utilities\array|string">array|string</abbr> $keys)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if at least one of the given keys exists in the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Core\Lib\Utilities\array|string">array|string</abbr></td>
+                <td>$keys</td>
+                <td><p>The keys to check.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_intersect">
+        <div class="location">at line 419</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>intersect</strong>(array $array)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the intersection of the current array and another array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$array</td>
+                <td><p>The array to compare.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_intersectKeys">
+        <div class="location">at line 431</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>intersectKeys</strong>(array $array)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get elements whose keys exist in another array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$array</td>
+                <td><p>The array to compare.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_implode">
+        <div class="location">at line 443</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>implode</strong>(string $separator)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Join array elements with a string.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$separator</td>
+                <td><p>The separator string.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isArray">
+        <div class="location">at line 455</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>isArray</strong>(mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check if the given value is an array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value to check.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isEmpty">
+        <div class="location">at line 466</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>isEmpty</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check if the array is empty.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_keys">
+        <div class="location">at line 477</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>keys</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get all keys of the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_keyBy">
+        <div class="location">at line 489</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>keyBy</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Key an array by a specific field.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>The field to use as keys.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_krsort">
+        <div class="location">at line 500</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>krsort</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sort the array by keys in descending order.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ksort">
+        <div class="location">at line 511</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>ksort</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sort the array by keys in ascending order.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_last">
+        <div class="location">at line 523</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>last</strong>(callable|null $callback = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the last element that matches a condition.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable|null</td>
+                <td>$callback</td>
+                <td><p>A callback function to test elements.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_lastKey">
+        <div class="location">at line 544</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>lastKey</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the last key of the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_make">
+        <div class="location">at line 560</div>
+        <code>        static            <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>make</strong>(mixed $items = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new <code>Arr</code> instance from an array or a single value.</p></p>                <p><p>This function ensures that the provided input is always treated as an array.
+If a non-array value (e.g., <code>null</code>, <code>string</code>, <code>int</code>) is passed, it wraps
+it into an array automatically.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$items</td>
+                <td><p>The array or single value to wrap.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td><p>A new <code>Arr</code> instance.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_map">
+        <div class="location">at line 575</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>map</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Apply a callback function to each item in the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The function to apply.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mapRecursive">
+        <div class="location">at line 587</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>mapRecursive</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Apply a recursive callback function to each element in the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The function to apply.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mapWithKeys">
+        <div class="location">at line 606</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>mapWithKeys</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Map an array using a callback that defines both keys and values.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The function to apply.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_merge">
+        <div class="location">at line 627</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>merge</strong>(array $array)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Merge the current array with another array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$array</td>
+                <td><p>The array to merge with.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_multisort">
+        <div class="location">at line 639</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>multisort</strong>(int $sortFlags = SORT_REGULAR)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sort multiple arrays or multi-dimensional arrays.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$sortFlags</td>
+                <td><p>The sorting flags.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_only">
+        <div class="location">at line 651</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>only</strong>(<abbr title="Core\Lib\Utilities\array|string">array|string</abbr> $keys)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return only the specified keys from the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Core\Lib\Utilities\array|string">array|string</abbr></td>
+                <td>$keys</td>
+                <td><p>The keys to include.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pad">
+        <div class="location">at line 664</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>pad</strong>(int $size, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Pad an array to the specified length with a value.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$size</td>
+                <td><p>The required size of the array.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value to pad with.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pluck">
+        <div class="location">at line 676</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>pluck</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extract a specific key's values.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>The key to pluck.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prepend">
+        <div class="location">at line 688</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>prepend</strong>(mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Prepend a value to the beginning of the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value to prepend.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pull">
+        <div class="location">at line 701</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>pull</strong>(string $key, mixed $default = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove and return a value from the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>The key to retrieve and remove.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$default</td>
+                <td><p>The default value if the key is not found.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_push">
+        <div class="location">at line 714</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>push</strong>(mixed ...$values)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add one or more values to the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>...$values</td>
+                <td><p>The values to add.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_random">
+        <div class="location">at line 726</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>random</strong>(int|null $number = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a random value or multiple values from the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|null</td>
+                <td>$number</td>
+                <td><p>Number of elements to retrieve.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reduce">
+        <div class="location">at line 741</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>reduce</strong>(callable $callback, mixed $initial = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Reduce the array to a single value using a callback.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The callback function.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$initial</td>
+                <td><p>The initial value.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_replace">
+        <div class="location">at line 753</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>replace</strong>(array $array)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Replace values in the array with values from another array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$array</td>
+                <td><p>The array with replacement values.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_result">
+        <div class="location">at line 764</div>
+        <code>                    mixed
+    <strong>result</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieve the result of the last operation.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reverse">
+        <div class="location">at line 774</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>reverse</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Reverse the order of the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rsort">
+        <div class="location">at line 785</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>rsort</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sort the array in descending order.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_search">
+        <div class="location">at line 797</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>search</strong>(mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Search for a value in the array and return its key.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value to search for.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_set">
+        <div class="location">at line 810</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>set</strong>(string $key, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set a value in the array using dot notation.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>The key in dot notation.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value to set.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shift">
+        <div class="location">at line 831</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>shift</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove and return the first item from the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shuffle">
+        <div class="location">at line 842</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>shuffle</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shuffle the elements of the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shuffleAssociative">
+        <div class="location">at line 853</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>shuffleAssociative</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shuffle an array while preserving keys.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_slice">
+        <div class="location">at line 868</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>slice</strong>(int $offset, int|null $length = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extract a slice of the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td><p>The index to start the slice.</p></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$length</td>
+                <td><p>The number of elements to extract.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sort">
+        <div class="location">at line 880</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>sort</strong>(int $sortFlags = SORT_REGULAR)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sort the array in ascending order.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$sortFlags</td>
+                <td><p>Flags for sorting (default: SORT_REGULAR).</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_splice">
+        <div class="location">at line 894</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>splice</strong>(int $offset, int|null $length = null, array $replacement = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove and replace a portion of the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td><p>The index to start the splice.</p></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$length</td>
+                <td><p>The number of elements to remove.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$replacement</td>
+                <td><p>The replacement values.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_udiff">
+        <div class="location">at line 907</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>udiff</strong>(array $array, callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Compute the difference between arrays using a custom comparison function.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$array</td>
+                <td><p>The array to compare.</p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The comparison function.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unique">
+        <div class="location">at line 918</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>unique</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove duplicate values from the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_usort">
+        <div class="location">at line 930</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>usort</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sort the array using a user-defined comparison function.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The comparison function.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_values">
+        <div class="location">at line 941</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>values</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get all values of the array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_walk">
+        <div class="location">at line 953</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>walk</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Apply a user function to every item in the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The function to apply.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_walkRecursive">
+        <div class="location">at line 965</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>walkRecursive</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Recursively apply a user function to every item in the array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The function to apply.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_wrap">
+        <div class="location">at line 977</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>wrap</strong>(mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Wrap a value in an array if it is not already an array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value to wrap.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_where">
+        <div class="location">at line 993</div>
+        <code>                    <a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a>
+    <strong>where</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Filter the array using a callback function.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>The function to apply.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/Utilities/ArraySet.html"><abbr title="Core\Lib\Utilities\ArraySet">ArraySet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>

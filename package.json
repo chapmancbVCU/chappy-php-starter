@@ -1,0 +1,29 @@
+{
+  "name": "custom-php-mvc-framework",
+  "version": "1.0.0",
+  "description": "chappy.php is a whole new Model View Controller framework tailored to all of the fellows of the internet. Our goal is to provide a light weight and easily expandable framework for any PHP developer.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.7.1",
+    "jquery-ui": "^1.14.1",
+    "vite": "^6.0.3"
+  },
+  "devDependencies": {
+    "vite-plugin-full-reload": "^1.2.0"
+  }
+}

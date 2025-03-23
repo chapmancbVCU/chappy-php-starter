@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Core\Lib\FileSystem\Uploads | Chappy.php API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="/api-docs/opensearch.xml"
+          title="Chappy.php API (main)" />
+    </head>
+
+    <body id="class" data-name="class:Core_Lib_FileSystem_Uploads" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Chappy.php API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../../Core/Lib.html">Lib</a></li><li class="backslash">\</li><li><a href="../../../Core/Lib/FileSystem.html">FileSystem</a></li><li class="backslash">\</li><li>Uploads</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Uploads    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Uploads</strong>
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Provides support for file uploads.</p></p>                    </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<abbr title="Core\Lib\FileSystem\array|string">array|string</abbr> $files, array $fileTypes, int $maxAllowedSize, string $bucket, string $sizeMsg, bool $multiple)
+        
+                                            <p><p>Creates instance of Uploads class.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_errorReporting">errorReporting</a>(<abbr title="Core\Lib\FileSystem\bool|array">bool|array</abbr> $errors, <a href="../../../Core/Model.html"><abbr title="Core\Model">Model</abbr></a> $model, string $name)
+        
+                                            <p><p>Processes list of errors associated with uploads and makes them
+presentable to user during validation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getFiles">getFiles</a>()
+        
+                                            <p><p>Getter function for the $_files array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Core/Lib/FileSystem/Uploads.html"><abbr title="Core\Lib\FileSystem\Uploads">Uploads</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_handleUpload">handleUpload</a>(array $file, string $uploadModel, string $bucket, string $sizeMsg, <a href="../../../Core/Model.html"><abbr title="Core\Model">Model</abbr></a> $model, string $name, bool $multiple = false)
+        
+                                            <p><p>Handles file uploads and returns an Uploads instance if valid.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_restructureFiles">restructureFiles</a>(array $files, bool $multiple)
+        
+                                            <p><p>Restructures files input from post into an array that can be processed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_runValidation">runValidation</a>()
+        
+                                            <p><p>Performs validation tasks.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_upload">upload</a>(string $path, string $uploadName, string $fileName)
+        
+                                            <p><p>Performs file upload.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool|array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validates">validates</a>()
+        
+                                            <p><p>Reports on success of validation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line 32</div>
+        <code>                    
+    <strong>__construct</strong>(<abbr title="Core\Lib\FileSystem\array|string">array|string</abbr> $files, array $fileTypes, int $maxAllowedSize, string $bucket, string $sizeMsg, bool $multiple)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates instance of Uploads class.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Core\Lib\FileSystem\array|string">array|string</abbr></td>
+                <td>$files</td>
+                <td><p>Array of files to be uploaded.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$fileTypes</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$maxAllowedSize</td>
+                <td><p>Maximum allowable size for a particular
+file.  This can vary depending on requirements.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$bucket</td>
+                <td><p>The location where the files will be stored.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$sizeMsg</td>
+                <td><p>The message describing the maximum allowable
+size usually described as <size_as_an_int>&lt;bytes|mb|gb&gt; (e.g.: 5mb).</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$multiple</td>
+                <td><p>A boolean flag to set whether or not we are
+working with a single file upload or an array regarding form setup.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_errorReporting">
+        <div class="location">at line 72</div>
+        <code>                    void
+    <strong>errorReporting</strong>(<abbr title="Core\Lib\FileSystem\bool|array">bool|array</abbr> $errors, <a href="../../../Core/Model.html"><abbr title="Core\Model">Model</abbr></a> $model, string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Processes list of errors associated with uploads and makes them
+presentable to user during validation.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Core\Lib\FileSystem\bool|array">bool|array</abbr></td>
+                <td>$errors</td>
+                <td><p>The errors, if any are detected will be an array.</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Core/Model.html"><abbr title="Core\Model">Model</abbr></a></td>
+                <td>$model</td>
+                <td><p>The model associated with the errors.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>The name of the field in the model for the errors.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFiles">
+        <div class="location">at line 87</div>
+        <code>                    array
+    <strong>getFiles</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Getter function for the $_files array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The $_files array.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handleUpload">
+        <div class="location">at line 105</div>
+        <code>        static            <a href="../../../Core/Lib/FileSystem/Uploads.html"><abbr title="Core\Lib\FileSystem\Uploads">Uploads</abbr></a>|null
+    <strong>handleUpload</strong>(array $file, string $uploadModel, string $bucket, string $sizeMsg, <a href="../../../Core/Model.html"><abbr title="Core\Model">Model</abbr></a> $model, string $name, bool $multiple = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Handles file uploads and returns an Uploads instance if valid.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$file</td>
+                <td><p>The file input from $_FILES.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$uploadModel</td>
+                <td><p>The name of the model class responsible for uploads.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$bucket</td>
+                <td><p>Upload destination.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$sizeMsg</td>
+                <td><p>Size description for error messages.</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Core/Model.html"><abbr title="Core\Model">Model</abbr></a></td>
+                <td>$model</td>
+                <td><p>The associated with the view you are working with.
+May or may not be same as $uploadModel if $uploadModel has index
+id field associated with another model.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>The name attribute associated with the file(s).</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$multiple</td>
+                <td><p>Whether the upload is multiple files.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Core/Lib/FileSystem/Uploads.html"><abbr title="Core\Lib\FileSystem\Uploads">Uploads</abbr></a>|null</td>
+            <td><p>Returns Uploads instance if valid, otherwise null.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_restructureFiles">
+        <div class="location">at line 150</div>
+        <code>        static            array
+    <strong>restructureFiles</strong>(array $files, bool $multiple)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Restructures files input from post into an array that can be processed.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$files</td>
+                <td><p>A single or an array of elements in the
+$_FILES variable whose information will be restructured so we can
+process.</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$multiple</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>$structured the restructured array.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_runValidation">
+        <div class="location">at line 173</div>
+        <code>                    void
+    <strong>runValidation</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Performs validation tasks.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_upload">
+        <div class="location">at line 186</div>
+        <code>                    void
+    <strong>upload</strong>(string $path, string $uploadName, string $fileName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Performs file upload.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>Directory where file will exist when uploaded.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$uploadName</td>
+                <td><p>The actual name for the file when uploaded.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fileName</td>
+                <td><p>The temporary file name.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validates">
+        <div class="location">at line 206</div>
+        <code>                    bool|array
+    <strong>validates</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Reports on success of validation.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool|array</td>
+            <td><p>True if validation is successful.  Otherwise,
+we return the $_errors array.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>

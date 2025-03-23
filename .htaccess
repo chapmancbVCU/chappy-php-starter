@@ -1,0 +1,17 @@
+RewriteEngine On
+
+# Ensure Apache serves static files (CSS, JS, images, fonts) directly
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule \.(css|js|png|jpg|jpeg|gif|svg|ico|woff2|woff|ttf|eot)$ - [L]
+
+# Serve Doctum API documentation from resources/views/api-docs/
+RewriteRule ^api-docs/(.*)$ resources/views/api-docs/$1 [L]
+
+# Ensure /docs/ automatically serves index.html
+RewriteRule ^docs/?$ resources/views/docs/content/index.html [L]
+
+# Handle all other requests using Router.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $1 !^(config|public|vendor|core|src|database|resources|storage|tests|node_modules|robots\.txt)
+RewriteRule ^(.+)$ index.php/$1 [L]

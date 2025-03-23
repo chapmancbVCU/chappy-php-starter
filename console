@@ -1,0 +1,29 @@
+#!/usr/bin/env php
+<?php
+/*
+ * Console application execution begins here.
+ */
+use Symfony\Component\Console\Application;
+
+// Define path related constants.
+define('DS', DIRECTORY_SEPARATOR);
+define('ROOT', dirname(__FILE__));
+
+// Load configuration and helper functions.
+require_once ROOT.DS.'src'.DS.'scripts'.DS.'bootstrap.php';
+
+// Initialize Symfony Console application
+$app = new Application();
+
+// Dynamically load and add command classes
+$commandNamespace = 'Console\\Commands';
+$commandDir = ROOT . DS . 'src' . DS . 'Console' . DS . 'Commands';
+
+foreach (glob($commandDir . DS . '*.php') as $commandFile) {
+    $commandClass = $commandNamespace . '\\' . pathinfo($commandFile, PATHINFO_FILENAME);
+    if (class_exists($commandClass)) {
+        $app->add(new $commandClass());
+    }
+}
+
+$app->run();

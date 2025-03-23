@@ -1,0 +1,8 @@
+{
+    "Home" : "home",
+    "Contacts" : {
+        "My Contacts" : "contacts",
+        "Add Contact" : "contacts/add"
+    },
+    "Admin" : "admindashboard/index"
+}

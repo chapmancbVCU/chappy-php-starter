@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Core\Lib\Utilities\DateTime | Chappy.php API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="/api-docs/opensearch.xml"
+          title="Chappy.php API (main)" />
+    </head>
+
+    <body id="class" data-name="class:Core_Lib_Utilities_DateTime" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Chappy.php API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../../Core/Lib.html">Lib</a></li><li class="backslash">\</li><li><a href="../../../Core/Lib/Utilities.html">Utilities</a></li><li class="backslash">\</li><li>DateTime</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>DateTime    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>DateTime</strong>
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Supports ability to manipulate how time is displayed.  Most functions are
+wrappers for those found in the Carbon class.</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_12_HOUR
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_24_HOUR
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_HUMAN_READABLE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_DATE_ONLY
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_TIME_ONLY_12H
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_TIME_ONLY_24H
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_FRIENDLY_DATE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_DAY_DATE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_ISO_8601
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_RFC_2822
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_SQL_DATETIME
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_formatTime">formatTime</a>(string $time, string $format = self::FORMAT_12_HOUR, string $locale = &#039;en&#039;, string $timezone = &#039;UTC&#039;)
+        
+                                            <p><p>Returns string that describes time.  The results can be set using
+constants, locale, and timezone.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_timeAgo">timeAgo</a>(string $time, string $locale = &#039;en&#039;, string $timezone = &#039;UTC&#039;, bool $short = false)
+        
+                                            <p><p>Accepts UTC time in format Y-m-d H:i:s and returns a string describing
+how much time has elapsed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_timeDifference">timeDifference</a>(string $startTime, string $endTime, string $timezone = &#039;UTC&#039;)
+        
+                                            <p><p>Shows the difference between two times.  An example is shown below:
+DateTimeHelper::timeDifference('2025-03-09 08:00:00', '2025-03-09 15:30:45');
+Output: &quot;7 hours before&quot;</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_timeStamps">timeStamps</a>()
+        
+                                            <p><p>Generates a timestamp.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_toISO8601">toISO8601</a>(string $time, string $timezone = &#039;UTC&#039;)
+        
+                                            <p><p>Converts to ISO 8610 format.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_formatTime">
+        <div class="location">at line 33</div>
+        <code>        static            string
+    <strong>formatTime</strong>(string $time, string $format = self::FORMAT_12_HOUR, string $locale = &#039;en&#039;, string $timezone = &#039;UTC&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns string that describes time.  The results can be set using
+constants, locale, and timezone.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$time</td>
+                <td><p>String in format Y-m-d H:i:s A using UTC.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$format</td>
+                <td><p>Set format with a default of FORMAT_12_HOUR.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$locale</td>
+                <td><p>Set locale with 'en' as the default value.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$timezone</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The formatted time.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_timeAgo">
+        <div class="location">at line 55</div>
+        <code>        static            string
+    <strong>timeAgo</strong>(string $time, string $locale = &#039;en&#039;, string $timezone = &#039;UTC&#039;, bool $short = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Accepts UTC time in format Y-m-d H:i:s and returns a string describing
+how much time has elapsed.</p></p>                <p><p>This function supports a short form with the following example:
+DateTime::timeAgo($user-&gt;updated_at, 'en', 'UTC', true);</p>
+<p>This will show something like 21m.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$time</td>
+                <td><p>String in format Y-m-d H:i:s using UTC.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$locale</td>
+                <td><p>Set locale with 'en' as the default value.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$timezone</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$short</td>
+                <td><p>Set to true to show short form time.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The time represented using language describing time since last change.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_timeDifference">
+        <div class="location">at line 75</div>
+        <code>        static            string
+    <strong>timeDifference</strong>(string $startTime, string $endTime, string $timezone = &#039;UTC&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shows the difference between two times.  An example is shown below:
+DateTimeHelper::timeDifference('2025-03-09 08:00:00', '2025-03-09 15:30:45');
+Output: &quot;7 hours before&quot;</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$startTime</td>
+                <td><p>String in format Y-m-d H:i:s using UTC.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$endTime</td>
+                <td><p>String in format Y-m-d H:i:s using UTC.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$timezone</td>
+                <td><p>Override default timezone with 'UTC' as default value.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>Show exact difference between two times.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_timeStamps">
+        <div class="location">at line 86</div>
+        <code>        static            string
+    <strong>timeStamps</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Generates a timestamp.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>A timestamp in the format Y-m-d H:i:s UTC time.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toISO8601">
+        <div class="location">at line 98</div>
+        <code>        static            string
+    <strong>toISO8601</strong>(string $time, string $timezone = &#039;UTC&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Converts to ISO 8610 format.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$time</td>
+                <td><p>String in format Y-m-d H:i:s using UTC.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$timezone</td>
+                <td><p>Override default timezone with 'UTC' as default value.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The time in ISO 8610 format.  Example output: 2025-03-09T15:30:45-05:00</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>
