@@ -3,9 +3,6 @@ use Core\FormHelper;
 use Core\Lib\Utilities\Env;
 ?>
 <?php $this->setSiteTitle("Register Here!"); ?>
-<?php $this->start('head') ?>
-  
-<?php $this->end() ?>
 
 <?php $this->start('body'); ?>
 <div class="row align-items-center justify-content-center">
