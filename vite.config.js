@@ -19,6 +19,14 @@ export default defineConfig({
             ignored: ['!**/resources/views/**'],
         },
         cors: true,
+        fs: {
+            allow: ['..', 'node_modules']
+        }
+    },
+    resolve: {
+        alias: {
+          tinymce: path.resolve(__dirname, 'node_modules/tinymce')
+        }
     },
     plugins: [
         FullReload(['resources/views/**/*.php']), // Watch PHP view files
