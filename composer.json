@@ -1,5 +1,5 @@
 {
-    "name": "chadchapman/chappy-php-starter",
+    "name": "chappy-php/chappy-php",
     "description": "Starter project for Chappy PHP Framework.",
     "type": "project",
     "license": "MIT",
@@ -11,7 +11,7 @@
     ],
     "require": {
       "php": ">=8.3",
-        "chadchapman/chappy-php-framework": "1.0.0"
+        "chappy-php/chappy-php-framework": "1.0.0"
     },
     "autoload": {
       "psr-4": {
@@ -23,7 +23,7 @@
     },
     "scripts": {
       "setup": [
-        "@php vendor/chadchapman/chappy-php-framework/src/scripts/setup.php"
+        "@php vendor/chappy-php/chappy-php-framework/src/scripts/setup.php"
       ],
       "post-install-cmd": [
         "@setup"
