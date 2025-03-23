@@ -11,7 +11,7 @@
     ],
     "require": {
       "php": ">=8.3",
-        "chadchapman/chappy-php-framework": "1.1"
+        "chadchapman/chappy-php-framework": "1.0.0"
     },
     "autoload": {
       "psr-4": {
