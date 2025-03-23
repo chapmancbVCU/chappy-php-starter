@@ -15,11 +15,8 @@
     },
     "repositories": [
       {
-        "type": "path",
-        "url": "../chappy-php-framework",
-        "options": {
-          "symlink": true
-        }
+        "type": "vcs",
+        "url": "https://github.com/chapmancbVCU/chappy-php-framework"
       }
     ],
     "autoload": {
