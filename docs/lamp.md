@@ -510,6 +510,7 @@ npm -v
 
 ## 10. Project Setup <a id="project-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 ### A. Navigate to your user's root directory, install dependencies, then move to final location:
+Create your project and replace my-app with the name of your project.
 ```sh
 composer create-project chappy-php/chappy-php my-app
 sudo mv my-app /var/www/html
@@ -589,12 +590,12 @@ For `.htaccess` files to work correctly on Rocky Linux, Apache needs `AllowOverr
 sudo vi /etc/httpd/conf.d/my-app.conf
 ```
 
-Paste the following content into the file (adjust ServerName to your actual IP or domain):
+Paste the following content into the file (replace myapp.local and my_ip_address with information relevant for your case)):
 
 ```rust
 <VirtualHost *:80>
     ServerName localhost
-    ServerAlias your_ip_address yourdomain.com
+    ServerAlias your_ip_address my-app.local
     DocumentRoot /var/www/html/my-app
 
     <Directory /var/www/html/my-app>

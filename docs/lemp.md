@@ -403,7 +403,7 @@ php -v
 
 ## 6. Configure Nginx and PHP-FPM <a id="configure-nginx-php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 ### A. Configure Nginx Server Block
-Clone and move the project:
+Create your project and replace my-app with the name of your project.  Then move to location described below:
 ```sh
 cd ~/
 composer create-project chappy-php/chappy-php my-app
@@ -432,11 +432,11 @@ sudo chmod -R 755 /var/www/my-app
 sudo vi /etc/nginx/sites-available/my-app
 ```
 
-Paste the following content while making sure correct php version is set (replace server_domain_or_IP with your IP address or domain name):
+Paste the following content while making sure correct php version is set (replace myapp.local and my_ip_address with information relevant for your case):
 ```rust
 server {
     listen 80;
-    server_name server_domain_or_IP;
+    server_name myapp.local my_ip_address;
     root /var/www/my-app;
 
     add_header X-Frame-Options "SAMEORIGIN";
@@ -481,11 +481,11 @@ sudo unlink /etc/nginx/sites-enabled/default
 sudo vi /etc/nginx/conf.d/my-app.conf
 ```
 
-Paste the following content while making sure correct php version is set (replace server_domain_or_IP with your IP address or domain name):
+Paste the following content while making sure correct php version is set (replace myapp.local and my_ip_address with information relevant for your case):
 ```rust
 server {
     listen 80;
-    server_name server_domain_or_IP;
+    server_name myapp.local my_ip_address;
     root /var/www/my-app;
 
     add_header X-Frame-Options "SAMEORIGIN";
