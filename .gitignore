@@ -22,3 +22,6 @@ database/database.sqlite
 
 # Ruby docs (optional cleanup)
 docs/Gemfile.lock
+
+# Vite Assets
+public/build
