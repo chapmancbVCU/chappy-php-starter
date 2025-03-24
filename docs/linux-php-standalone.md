@@ -145,20 +145,20 @@ Navigate to your preferred development directory and clone the project:
 ```sh
 mkdir repos
 cd repos/
-git clone git@github.com:chapmancbVCU/chappy-php.git
-cd chappy-php/
+composer create-project chappy-php/chappy-php my-app
 ```
 <br>
 
-#### 2. Install
+#### 2. Open Project
+Open project with your favorite IDE (We use VSCode)
+
+#### 3. Vite
 Run:
 ```sh
-composer run install-project
+npm run dev
 ```
-<br>
-
-#### 3. Run Project
-* A. Run:
+#### 4. Run Project
+Open new terminal tab and run:
 ```sh
 php console serve
 ```
