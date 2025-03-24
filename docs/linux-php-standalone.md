@@ -142,6 +142,8 @@ npm -v
 ## 6. Project Setup <a id="project-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Navigate to your preferred development directory and clone the project:
 #### 1. Cloning The Project
+Run the following commands (replace my-app with the name of your project):
+
 ```sh
 mkdir repos
 cd repos/

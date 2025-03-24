@@ -87,7 +87,8 @@ choco install 7zip -y
 * D. If you get a dialog box asking "Do you want to allow public and private networks to access this app?" for Apache select **Allow**
 * E. Install **Composer** using the instructions described above.  We recommend using Chocolatey.
 * F. `cd` to `C:\xampp\htdocs` using the terminal.
-* G. Run the command:
+* G. Run the command (replace my-app with the name of your project):
+
 ```powershell
 composer create-project chappy-php/chappy-php my-app
 ```
@@ -160,7 +161,7 @@ php -v
 
 #### 2. Setup The Project
 * A. Install **Composer** using the instructions described above.
-* B. Install project:
+* B. Run the command (replace my-app with the name of your project):
 ```powershell
 composer create-project chappy-php/chappy-php my-app
 ```

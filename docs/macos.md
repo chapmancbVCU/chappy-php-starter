@@ -100,7 +100,7 @@ composer -v
 ```
 
 #### 3: Setup and Run Project
-* A. Run:
+* A. Run the command (replace my-app with the name of your project):
 ```sh
 composer create-project chappy-php/chappy-php my-app
 ```
@@ -143,7 +143,7 @@ composer -v
 
 #### 3: Project Setup
 * A. Navigate to `Applications/XAMPP/htdocs` or your alternate location for `htdocs` using the Terminal.
-* B. Run:
+* B. Run the command (replace my-app with the name of your project):
 ```sh
 composer create-project chappy-php/chappy-php my-app
 ```
