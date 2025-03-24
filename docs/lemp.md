@@ -406,23 +406,22 @@ php -v
 Clone and move the project:
 ```sh
 cd ~/
-git clone git@github.com:chapmancbVCU/chappy-php.git
-sudo mv chappy-php/ /var/www/
-cd /var/www/chappy-php
-```
+composer create-project chappy-php/chappy-php my-app
+sudo mv my-app/ /var/www/
+cd /var/www/my-app
 <br>
 
 ### B. Set proper permissions:
 **Ubuntu**
 ```sh
-sudo chown -R your-username:www-data /var/www/chappy-php
-sudo chmod -R 755 /var/www/chappy-php
+sudo chown -R your-username:www-data /var/www/my-app
+sudo chmod -R 755 /var/www/my-app
 ```
 
 **Rocky Linux (RHEL-based)**
 ```sh
-sudo chown -R your-username:nginx /var/www/chappy-php 
-sudo chmod -R 755 /var/www/chappy-php
+sudo chown -R your-username:nginx /var/www/my-app
+sudo chmod -R 755 /var/www/my-app
 ```
 <br>
 
@@ -430,7 +429,7 @@ sudo chmod -R 755 /var/www/chappy-php
 
 **Ubuntu & Debian**
 ```sh
-sudo vi /etc/nginx/sites-available/chappy-php
+sudo vi /etc/nginx/sites-available/my-app
 ```
 
 Paste the following content while making sure correct php version is set (replace server_domain_or_IP with your IP address or domain name):
@@ -438,7 +437,7 @@ Paste the following content while making sure correct php version is set (replac
 server {
     listen 80;
     server_name server_domain_or_IP;
-    root /var/www/chappy-php;
+    root /var/www/my-app;
 
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-XSS-Protection "1; mode=block";
@@ -472,14 +471,14 @@ server {
 
 Enable the new site and disable default on Ubuntu/Debian:
 ```sh
-sudo ln -s /etc/nginx/sites-available/chappy-php /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/my-app /etc/nginx/sites-enabled/
 sudo unlink /etc/nginx/sites-enabled/default
 ```
 <br>
 
 **Rocky Linux (RHEL-based)**
 ```sh
-sudo vi /etc/nginx/conf.d/chappy-php.conf
+sudo vi /etc/nginx/conf.d/my-app.conf
 ```
 
 Paste the following content while making sure correct php version is set (replace server_domain_or_IP with your IP address or domain name):
@@ -487,7 +486,7 @@ Paste the following content while making sure correct php version is set (replac
 server {
     listen 80;
     server_name server_domain_or_IP;
-    root /var/www/chappy-php;
+    root /var/www/my-app;
 
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-XSS-Protection "1; mode=block";
@@ -537,7 +536,7 @@ sudo systemctl reload nginx
 
 Create a test file:
 ```sh
-echo "<?php phpinfo(); ?>" | sudo tee /var/www/chappy-php/info.php
+echo "<?php phpinfo(); ?>" | sudo tee /var/www/my-app/info.php
 ```
 
 Open in a browser:
@@ -547,7 +546,7 @@ http://localhost/info.php
 
 Remove the file after testing:
 ```sh
-sudo rm /var/www/chappy-php/info.php
+sudo rm /var/www/my-app/info.php
 ```
 <br>
 
@@ -616,7 +615,7 @@ sudo ln -s /usr/share/phpmyadmin /var/www/phpmyadmin
 
 Then edit your Nginx config:
 ```sh
-sudo vi /etc/nginx/sites-enabled/chappy-php
+sudo vi /etc/nginx/sites-enabled/my-app
 ```
 
 Add the following inside the `server {}` block:
@@ -640,7 +639,7 @@ location /phpmyadmin {
 }
 ```
 - **Note:** If you get a 202 Bad Gateway error check the version of PHP in your file.
-If you're using a custom root path like /var/www/chappy-php, adjust root accordingly.
+If you're using a custom root path like /var/www/my-app, adjust root accordingly.
 
 <br>
 
@@ -652,7 +651,7 @@ sudo ln -s /usr/share/phpMyAdmin /var/www/phpmyadmin
 
 Then edit your Nginx config:
 ```sh
-sudo vi /etc/nginx/conf.d/chappy-php.conf
+sudo vi /etc/nginx/conf.d/my-app.conf
 ```
 
 Add the following inside the `server {}` block:
@@ -759,7 +758,7 @@ npm -v
 ## 10. Project Setup <a id="project-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 ### A. Navigate to your user's root directory and install dependencies:
 ```sh
-cd /var/www/chappy-php/
+cd /var/www/my-app/
 composer run install-project
 ```
 <br>
@@ -784,19 +783,19 @@ DB_PASSWORD=your_password
 <br>
 
 ### C. Update /etc/hosts (For Custom Domain)
-If you want to access your site using http://chappyphp.local, you can edit your /etc/hosts file:
+If you want to access your site using http://my-app.local, you can edit your /etc/hosts file:
 ```sh
 sudo vi /etc/hosts
 ```
 
 Example configuration:
 ```rust
-127.0.0.1       localhost chappyphp.local
+127.0.0.1       localhost my-app.local
 127.0.1.1       ubuntu-vm
-your_ip_addr    chappyphp.local
+your_ip_addr    my-app.local
 ```
 
-Now, http://chappyphp.local will work as expected.
+Now, http://my-app.local will work as expected.
 
 <br>
 
@@ -814,24 +813,24 @@ sudo systemctl restart nginx
 #### 1. Fix SELinux Contexts for Nginx
 Allow Nginx to read and serve content from your project directory:
 ```sh
-sudo chcon -Rt httpd_sys_content_t /var/www/chappy-php
+sudo chcon -Rt httpd_sys_content_t /var/www/my-app
 ```
 
 Also apply recursively to any .htaccess, uploads, or views:
 ```sh
-sudo restorecon -Rv /var/www/chappy-php
+sudo restorecon -Rv /var/www/my-app
 ```
 
 #### 2. Set the Correct SELinux Context for Writable Log Files and to Storage:
 Step 1: Apply the Right Context:
 ```sh
-sudo chcon -R -t httpd_sys_rw_content_t /var/www/chappy-php/storage
+sudo chcon -R -t httpd_sys_rw_content_t /var/www/my-app/storage
 ```
 
 Step 2: Make it Persistent (Survives Reboots):
 ```sh
-sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/chappy-php/storage(/.*)?"
-sudo restorecon -Rv /var/www/chappy-php/storage
+sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/my-app/storage(/.*)?"
+sudo restorecon -Rv /var/www/my-app/storage
 ```
 📁 If you’re using other writable paths, repeat these steps for those as well.
 

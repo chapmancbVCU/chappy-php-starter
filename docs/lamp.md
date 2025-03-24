@@ -511,27 +511,24 @@ npm -v
 ## 10. Project Setup <a id="project-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 ### A. Navigate to your user's root directory, install dependencies, then move to final location:
 ```sh
-git clone git@github.com:chapmancbVCU/chappy-php.git
-cd chappy-php/
-composer run install-project
-cd ..
-sudo mv chappy-php /var/www/html
-cd /var/www/html/chappy-php
+composer create-project chappy-php/chappy-php my-app
+sudo mv my-app /var/www/html
+cd /var/www/html/my-app
 ```
 <br>
 
 ### B. Set proper permissions:
 **Ubuntu**
 ```sh
-sudo chown -R your-username:www-data /var/www/html/chappy-php
-sudo chmod -R 755 /var/www/html/chappy-php
+sudo chown -R your-username:www-data /var/www/html/my-app
+sudo chmod -R 755 /var/www/html/my-app
 ```
 <br>
 
 **Rocky Linux (RHEL-based)**
 ```sh
-sudo chown -R your-username:apache /var/www/html/chappy-php 
-sudo chmod -R 755 /var/www/html/chappy-php
+sudo chown -R your-username:apache /var/www/html/my-app
+sudo chmod -R 755 /var/www/html/my-app
 ```
 <br>
 
@@ -559,7 +556,7 @@ Run the following command to create a new Apache configuration file:
 
 **Ubuntu and Debian**
 ```sh
-sudo vi /etc/apache2/sites-available/chappy-php.conf
+sudo vi /etc/apache2/sites-available/my-app.conf
 ```
 Paste the following content into the file (adjust ServerName to your actual IP or domain):
 
@@ -567,9 +564,9 @@ Paste the following content into the file (adjust ServerName to your actual IP o
 <VirtualHost *:80>
     ServerName localhost
     ServerAlias your_ip_address yourdomain.com
-    DocumentRoot /var/www/html/chappy-php
+    DocumentRoot /var/www/html/my-app
 
-    <Directory /var/www/html/chappy-php>
+    <Directory /var/www/html/my-app>
         AllowOverride All
         Require all granted
     </Directory>
@@ -589,7 +586,7 @@ sudo systemctl restart apache2
 
 For `.htaccess` files to work correctly on Rocky Linux, Apache needs `AllowOverride All`.  `Options Indexes FollowSymLinks` helps avoid permission issues if `.htaccess` rewrites fail.
 ```sh
-sudo vi /etc/httpd/conf.d/chappy-php.conf
+sudo vi /etc/httpd/conf.d/my-app.conf
 ```
 
 Paste the following content into the file (adjust ServerName to your actual IP or domain):
@@ -598,9 +595,9 @@ Paste the following content into the file (adjust ServerName to your actual IP o
 <VirtualHost *:80>
     ServerName localhost
     ServerAlias your_ip_address yourdomain.com
-    DocumentRoot /var/www/html/chappy-php
+    DocumentRoot /var/www/html/my-app
 
-    <Directory /var/www/html/chappy-php>
+    <Directory /var/www/html/my-app>
         AllowOverride All
         Require all granted
         Options Indexes FollowSymLinks
@@ -619,16 +616,16 @@ sudo systemctl restart httpd
 
 **Update /etc/hosts (For Custom Domain)**
 
-If you want to access your site using http://chappyphp.local, you can edit your /etc/hosts file:
+If you want to access your site using http://my-app.local, you can edit your /etc/hosts file:
 ```sh
 sudo vi /etc/hosts
 ```
 
 Example configuration:
 ```rust
-127.0.0.1       localhost chappyphp.local
+127.0.0.1       localhost my-app.local
 127.0.1.1       ubuntu-vm
-your_ip_addr    chappyphp.local
+your_ip_addr    my-app.local
 ```
 
 Restart Apache After Changing Virtual Host
@@ -638,7 +635,7 @@ sudo systemctl restart apache2   # Ubuntu & Debian
 sudo systemctl restart httpd     # Rocky Linux
 ```
 
-Now, http://chappyphp.local will work as expected.
+Now, http://my-app.local will work as expected.
 
 <br>
 
@@ -649,7 +646,7 @@ Now, http://chappyphp.local will work as expected.
 sudo a2enmod rewrite
 
 # Then enable the VirtualHost
-sudo a2ensite chappy-php.conf
+sudo a2ensite my-app.conf
 sudo systemctl restart apache2
 ```
 
@@ -661,12 +658,12 @@ sudo systemctl restart apache2
 #### 1. Fix SELinux Contexts for Apache
 Allow Apache to read and serve content from your project directory:
 ```sh
-sudo chcon -Rt httpd_sys_content_t /var/www/html/chappy-php
+sudo chcon -Rt httpd_sys_content_t /var/www/html/my-app
 ```
 
 Also apply recursively to any .htaccess, uploads, or views:
 ```sh
-sudo restorecon -Rv /var/www/html/chappy-php
+sudo restorecon -Rv /var/www/html/my-app
 ```
 
 #### 2. Allow Apache to Read `.htaccess` Files
@@ -686,13 +683,13 @@ sudo setsebool -P httpd_can_network_connect 1
 #### 3. Set the Correct SELinux Context for Writable Log Files and to Storage:
 Step 1: Apply the Right Context:
 ```sh
-sudo chcon -R -t httpd_sys_rw_content_t /var/www/html/chappy-php/storage
+sudo chcon -R -t httpd_sys_rw_content_t /var/www/html/my-app/storage
 ```
 
 Step 2: Make it Persistent (Survives Reboots):
 ```sh
-sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/chappy-php/storage(/.*)?"
-sudo restorecon -Rv /var/www/html/chappy-php/storage
+sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/my-app/storage(/.*)?"
+sudo restorecon -Rv /var/www/html/my-app/storage
 ```
 📁 If you’re using other writable paths, repeat these steps for those as well.
 
