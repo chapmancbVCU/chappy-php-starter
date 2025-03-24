@@ -58,7 +58,7 @@ Complete documentation including the "Getting Started" guild describe below can 
 8. Node Package Manager (npm)
 
 ## Contact
-I can be reached regarding this framework at chad.chapman2010@gmail.com.  You are also welcome to open up an issue at https://github.com/chapmancbVCU/chappy-php/issues
+I can be reached regarding this framework at chad.chapman2010@gmail.com.  You are also welcome to open up an issue at https://github.com/chapmancbVCU/chappy-php-starter/issues
 
 ## Social Media
 Youtube: https://www.youtube.com/@chappy-php
