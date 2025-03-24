@@ -100,26 +100,21 @@ composer -v
 ```
 
 #### 3: Setup and Run Project
-* A. Cone the project:
+* A. Run:
 ```sh
-git clone git@github.com:chapmancbVCU/chappy-php.git
+composer create-project chappy-php/chappy-php my-app
 ```
 
-* B. cd into project and run the command:
-```sh
-composer run install-project
-```
-
-* C. Open the project with your preferred IDE.  We use VScode.
-* D. In the terminal run the command:
+* B. Open the project with your preferred IDE.  We use VScode.
+* C. In the terminal run the command:
 ```sh
 php console serve
 ```
-* E. In a new terminal tab run the command:
+* D. In a new terminal tab run the command:
 ```sh
 npm run dev
 ```
-* F. Navigate to `localhost:8000` in your preferred web browser.
+* E. Navigate to `localhost:8000` in your preferred web browser.
 <br>
 
 ## 5. XAMPP <a id="xampp"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -148,21 +143,17 @@ composer -v
 
 #### 3: Project Setup
 * A. Navigate to `Applications/XAMPP/htdocs` or your alternate location for `htdocs` using the Terminal.
-* B. Cone the project inside the `htdocs` directory:
+* B. Run:
 ```sh
-git clone git@github.com:chapmancbVCU/chappy-php.git
-```
-* C. cd into project directory and run:
-```sh
-composer run install-project
+composer create-project chappy-php/chappy-php my-app
 ```
 
-* D. Open manager-osx.
-* E. Within the manager-osx start all services.
-* F. Open project in your preferred editor.  We use VSCode.
-* G. Open the .env file.
-* H. Set `APP_DOMAIN` TO `http://localhost/chappy-php/`.  If you renamed your project directory then the second portion of the URL must match.  The URL must have the last forward slash.  Otherwise, the page and routing will not work correctly.
-* I. Update the database section:
+* C. Open manager-osx.
+* D. Within the manager-osx start all services.
+* E. Open project in your preferred editor.  We use VSCode.
+* F. Open the .env file.
+* G. Set `APP_DOMAIN` TO `http://localhost/chappy-php/`.  If you renamed your project directory then the second portion of the URL must match.  The URL must have the last forward slash.  Otherwise, the page and routing will not work correctly.
+* H. Update the database section:
 ```php
 # Set to mysql or mariadb for production
 DB_CONNECTION=mysql
@@ -173,11 +164,13 @@ DB_DATABASE=chappy
 DB_USER=root
 DB_PASSWORD=    # Sometimes uses root as password
 ```
-* J. Run the command:
+
+* I. Run the command:
 ```sh
 npm run dev
+
 ```
-* K. Open browser and navigate to `http://localhost/chappy-php/home`.
+* J. Open browser and navigate to `http://localhost/chappy-php/home`.
 <br>
 
 #### 4: Ensure XAMPP Starts on Boot
