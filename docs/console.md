@@ -29,7 +29,7 @@ php console test:run-test Test
 
 Where Test is the name of the file containing the test. Typing php console in the command line at project root will display all of the available commands. Each of the supported commands will be covered in their respective sections in this user guide.
 
-If there is a command you would like for us to support you can submit an issue [here](https://github.com/chapmancbVCU/chappy-php-starter/issues).
+If there is a command you would like for us to support you can submit an issue [here](https://github.com/chapmancbVCU/chappy-php-framework/issues).
 <br>
 
 ## 2. Summary of Available Commands <a id="summary-of-available-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
