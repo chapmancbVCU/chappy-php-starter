@@ -2,68 +2,83 @@
   <img src="public/logo.png" alt="Chappy.php logo">
 </div>
 
+# Chappy.php Starter Application
 
 [Visit our Wiki](https://chapmancbvcu.github.io/chappy-php-starter/)
 
+**Chappy.php** is a lightweight, extensible MVC PHP framework designed for developers who want clarity, power, and flexibility in their projects.
 
-chappy.php is a whole new Model View Controller framework tailored to all of the fellows of the internet. Our goal is to provide a light weight and easily expandable framework for any PHP developer. 
-<br>
-<br>
-Originally a fork of the Ruah PHP MVC framework based on the MVC PHP Framework tutorial series on the Freeskills YouTube channel, we have worked hard to add additional support and features.  
+Originally a fork of the Ruah PHP MVC framework inspired by Freeskills’ YouTube series, we've expanded it with modern tools, cleaner structure, and new features.
 
-## Quick start guide
-1. Install PHP 8.3 or greater, composer, and npm
-2. Run: `composer create-project chappy-php/chappy-php my-app`
-3. cd into project
-4. Run `php console serve`
-5. Open new terminal and run `npm run dev`
+---  
 
+## 🚀 Quick Start
+1. **Install system dependencies**:
+  - PHP 8.3+
+  - Composer
+  - npm
+2. **Create a new project**:
+  ```bash
+  composer create-project chappy-php/chappy-php my-app
+  cd my-app
+  ```
+3. **Run the development server:**
+  ```bash
+  php console serve
+  ```
+4. **Start Vite dev server:**
+  ```bash
+  npm run dev
+  ```
 
-## This framework includes the following features:
-1. Custom form handling
-2. Dynamic routing
-3. Custom request handling
-4. Session and flash messages
-5. Symfony based Command Line Interface (CLI)
-6. Server-side validation
-7. User accounts
-8. Administrator user role
-9. Database migrations
-10. Layouts and components
-11. Access Control Levels (ACLs)
-12. Unit test support
-13. Debugging tools
-14. Strong Security practices (CSRF protection, sanitization, and blacklist/whitelist filtering)
-15. Single and multiple file upload support
-16. API documentation
-17. User guide
-18. Logging
-19. Vite asset bundling
-20. Pagination support
-21. Database seeders
-22. Contact Management System app for testbed purposes
+---
 
-If you have a feature that you would like to be supported please create a request under the Issues tab.
+🧰 Features
+- ✍️ Custom form handling & validation
+- 🧭 Dynamic routing
+- 🧪 Unit test support
+- 🧑‍💻 User authentication & ACL
+- 🔥 Vite-based asset bundling
+- 🧱 Layouts, components, and views
+- 📊 API docs via Doctum
+- 📖 Built-in documentation using Jekyll
+- 🎛 Command-line support via Symfony Console
+- 📥 Secure file uploads
+- 📦 Seeders, migrations, and database helpers
 
-Complete documentation including the "Getting Started" guild describe below can be found within the framework after setup.
+---
 
 ## System Requirements
-1. Apache Server, development environment such as XAMPP, or Nginx
-2. PHP 8.3
-3. SQL/MariaDB
-4. OS: MacOS, Linux, Windows 10+
-5. SQL Management software
-6. Composer
-7. git
-8. Node Package Manager (npm)
+- Apache or Nginx (or XAMPP)
+- PHP 8.3
+- MySQL or MariaDB
+- Composer, Node.js, npm
+- SQL Management software
+- Composer
+- git
+- OS: macOS / Linux / Windows 10+
 
-## Contact
-I can be reached regarding this framework at chad.chapman2010@gmail.com.  You are also welcome to open up an issue at https://github.com/chapmancbVCU/chappy-php-framework/issues
+---
 
-## Social Media
+📄 Documentation
+Full documentation is included with the project. After setup, access:
+- 📘 User Guide
+- 🔧 API Reference
+
+---
+
+📬 Contact
+Questions or suggestions? 📧 chad.chapman2010@gmail.com.
+🐛 [Open an issue](https://github.com/chapmancbVCU/chappy-php-framework/issues)
+
+---
+
+🌐 Social
 Youtube: https://www.youtube.com/@chappy-php
 
-## Credits
+---
+
+🏆 Credits
 1. “mvc” icon by iconixar, from thenounproject.com.
-2. Freeskills on YT (https://www.youtube.com/playlist?list=PLFPkAJFH7I0keB1qpWk5qVVUYdNLTEUs3)
+2. Freeskills on YouTube (https://www.youtube.com/playlist?list=PLFPkAJFH7I0keB1qpWk5qVVUYdNLTEUs3)
 
