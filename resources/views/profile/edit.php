@@ -5,6 +5,10 @@ use Core\Lib\Utilities\Env;
 <?php $this->setSiteTitle("Edit Details for ".$this->user->username); ?>
 <?php $this->start('head') ?>
     <link rel="stylesheet" href="<?=Env::get('APP_DOMAIN', '/')?>resources/css/profileImage.css?v=<?=Env::get('VERSION')?>" media="screen" title="no title" charset="utf-8">
+    <?php $this->start('head') ?>
+    <script src="<?=Env::get('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js"></script>
+    <script src="<?=Env::get('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=Env::get('VERSION')?>"></script>
+<?php $this->end() ?>
     <script type="text/javascript" src="<?=Env::get('APP_DOMAIN', '/')?>node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
 <?php $this->end() ?>
 
