@@ -75,6 +75,9 @@
   <p class="text-center text-muted mt-5">
     To customize this page, edit <code>resources/views/home/index.php</code> and <code>app/Controllers/HomeController.php</code>.
   </p>
+  <p class="text-center text-muted mb-5">
+    Chappy.php Framework v<?=Env::get('VERSION')?>
+  <p>
 </div>
 
 <?php $this->end(); ?>
