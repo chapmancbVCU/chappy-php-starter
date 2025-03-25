@@ -40,7 +40,6 @@ Below is a list of available commands. Most items in this list contains a link t
 | init:mk-profile-images-dir | Builds Profile Image Dir |
 | log:clear | Deletes existing log file |
 | make:acl | Generates a new menu_acl json file |
-| make:api | Generates or updates api-docs |
 | make:command | Generates a new command class |
 | make:command-helper | Generates helper class that supports console commands |
 | make:component | Generates component based on flags that are set |
