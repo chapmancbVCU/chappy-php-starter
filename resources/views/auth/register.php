@@ -4,8 +4,8 @@ use Core\Lib\Utilities\Env;
 ?>
 <?php $this->setSiteTitle("Register Here!"); ?>
 <?php $this->start('head') ?>
-  <script src="<?=Env::get('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js"></script>
-  <script src="<?=Env::get('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=Env::get('VERSION')?>"></script>
+    <script src="<?=Env::get('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=Env::get('VERSION')?>"></script>
+    <script src='<?=Env::get('APP_DOMAIN', '/')?>resources/js/profileDescriptionTinyMCE.js'></script>
 <?php $this->end() ?>
 <?php $this->start('body'); ?>
 <div class="row align-items-center justify-content-center">

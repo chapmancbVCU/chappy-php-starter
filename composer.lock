@@ -137,16 +137,16 @@
         },
         {
             "name": "chappy-php/chappy-php-framework",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chapmancbVCU/chappy-php-framework.git",
-                "reference": "1d7edc0172c70e2f836908f327699102731669ae"
+                "reference": "9d108ff68127956ed1ae3ffeb51151bee65a9d79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/1d7edc0172c70e2f836908f327699102731669ae",
-                "reference": "1d7edc0172c70e2f836908f327699102731669ae",
+                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/9d108ff68127956ed1ae3ffeb51151bee65a9d79",
+                "reference": "9d108ff68127956ed1ae3ffeb51151bee65a9d79",
                 "shasum": ""
             },
             "require": {
@@ -160,6 +160,7 @@
                 "symfony/console": "^7.1",
                 "symfony/filesystem": "^7.1",
                 "symfony/var-dumper": "^7.2",
+                "tinymce/tinymce": "^7.7",
                 "vlucas/phpdotenv": "^5.6"
             },
             "require-dev": {
@@ -191,9 +192,9 @@
             "description": "A lightweight and extensible PHP MVC framework.",
             "support": {
                 "issues": "https://github.com/chapmancbVCU/chappy-php-framework/issues",
-                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.0.5"
+                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.0.6"
             },
-            "time": "2025-03-25T00:38:20+00:00"
+            "time": "2025-03-25T02:03:15+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -2245,6 +2246,65 @@
                 }
             ],
             "time": "2025-01-17T11:39:41+00:00"
+        },
+        {
+            "name": "tinymce/tinymce",
+            "version": "7.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tinymce/tinymce-dist.git",
+                "reference": "841a2f73ed89df874d5abca7286c344353098f14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/841a2f73ed89df874d5abca7286c344353098f14",
+                "reference": "841a2f73ed89df874d5abca7286c344353098f14",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "files": [
+                        "tinymce.min.js",
+                        "plugins/*/plugin.min.js",
+                        "themes/*/theme.min.js",
+                        "models/*/model.min.js",
+                        "skins/**",
+                        "icons/*/icons.min.js"
+                    ],
+                    "scripts": [
+                        "tinymce.js",
+                        "plugins/*/plugin.js",
+                        "themes/*/theme.js",
+                        "models/*/model.js",
+                        "icons/*/icons.js"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Web based JavaScript HTML WYSIWYG editor control.",
+            "homepage": "https://www.tiny.cloud/",
+            "keywords": [
+                "contenteditable",
+                "editing",
+                "html",
+                "javascript",
+                "rich editor",
+                "rich text",
+                "rich text editor",
+                "richtext",
+                "rte",
+                "text",
+                "tinymce",
+                "wysiwyg"
+            ],
+            "support": {
+                "source": "https://github.com/tinymce/tinymce-dist/tree/7.7.2"
+            },
+            "time": "2025-03-19T03:36:58+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
