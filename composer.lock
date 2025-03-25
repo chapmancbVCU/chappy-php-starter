@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "adf79a0ac8f40b10ecf3014ffd8bca03",
+    "content-hash": "62a4ced8859ee466c42e927a5280810d",
     "packages": [
         {
             "name": "brick/math",
@@ -137,17 +137,11 @@
         },
         {
             "name": "chappy-php/chappy-php-framework",
-            "version": "v1.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/chapmancbVCU/chappy-php-framework.git",
-                "reference": "9d108ff68127956ed1ae3ffeb51151bee65a9d79"
-            },
+            "version": "dev-main",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/9d108ff68127956ed1ae3ffeb51151bee65a9d79",
-                "reference": "9d108ff68127956ed1ae3ffeb51151bee65a9d79",
-                "shasum": ""
+                "type": "path",
+                "url": "../chappy-php-framework",
+                "reference": "9d108ff68127956ed1ae3ffeb51151bee65a9d79"
             },
             "require": {
                 "doctrine/inflector": "^2.0",
@@ -169,17 +163,24 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Core\\": "src/core/",
                     "Chappy\\": "src/",
+                    "Core\\": "src/core/",
                     "Console\\": "src/console/",
-                    "Console\\Helpers\\": "src/console/helpers/",
-                    "Console\\Commands\\": "src/console/commands/"
+                    "Console\\Commands\\": "src/console/commands/",
+                    "Console\\Helpers\\": "src/console/helpers/"
                 },
                 "classmap": [
                     "src"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "build-docs": [
+                    "@php src/api-docs/doctum.phar update src/api-docs/doctum.php"
+                ],
+                "post-install-cmd": [
+                    "@php src/scripts/setup.php"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -190,11 +191,10 @@
                 }
             ],
             "description": "A lightweight and extensible PHP MVC framework.",
-            "support": {
-                "issues": "https://github.com/chapmancbVCU/chappy-php-framework/issues",
-                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.0.6"
-            },
-            "time": "2025-03-25T02:03:15+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "doctrine/inflector",
@@ -2394,7 +2394,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "chappy-php/chappy-php-framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
