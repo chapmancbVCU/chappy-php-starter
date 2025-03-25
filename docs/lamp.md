@@ -564,7 +564,7 @@ Paste the following content into the file (adjust ServerName to your actual IP o
 ```rust
 <VirtualHost *:80>
     ServerName localhost
-    ServerAlias your_ip_address yourdomain.com
+    ServerAlias your_ip_address my-app.local
     DocumentRoot /var/www/html/my-app
 
     <Directory /var/www/html/my-app>
