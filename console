@@ -19,23 +19,37 @@ require_once ROOT . DS . 'vendor' . DS . 'chappy-php' . DS . 'chappy-php-framewo
 // Initialize Symfony Console application
 $app = new Application();
 
-// Define where to load commands from
-$commandNamespace = 'Console\\Commands';
-$commandDir = ROOT . DS . 'vendor' . DS . 'chappy-php' . DS . 'chappy-php-framework' . DS . 'src' . DS . 'Console' . DS . 'Commands';
+// Define all command sources
+$commandSources = [
+    [
+        'namespace' => 'Console\\Commands',
+        'path'      => ROOT . DS . 'vendor' . DS . 'chappy-php' . DS . 'chappy-php-framework' . DS . 'src' . DS . 'Console' . DS . 'Commands',
+    ],
+    [
+        'namespace' => 'App\\Lib\\Console\\Commands',
+        'path'      => ROOT . DS . 'app' . DS . 'Lib' . DS . 'Console' . DS . 'Commands',
+    ],
+];
 
-// Dynamically load command classes
-foreach (glob($commandDir . DS . '*.php') as $commandFile) {
-    $className = pathinfo($commandFile, PATHINFO_FILENAME);
-    $commandClass = $commandNamespace . '\\' . $className;
-
-    // Optional: require the command file if not autoloaded
-    if (!class_exists($commandClass)) {
-        require_once $commandFile;
+// Load command classes from each source
+foreach ($commandSources as $source) {
+    if (!is_dir($source['path'])) {
+        continue;
     }
 
-    if (class_exists($commandClass)) {
-        $app->add(new $commandClass());
+    foreach (glob($source['path'] . DS . '*.php') as $commandFile) {
+        $className = pathinfo($commandFile, PATHINFO_FILENAME);
+        $commandClass = $source['namespace'] . '\\' . $className;
+
+        if (!class_exists($commandClass)) {
+            require_once $commandFile;
+        }
+
+        if (class_exists($commandClass)) {
+            $app->add(new $commandClass());
+        }
     }
 }
+
 
 $app->run();

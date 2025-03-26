@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=8.3",
-      "chappy-php/chappy-php-framework": "^1.0"
+      "chappy-php/chappy-php-framework": "dev-main"
   },
   "autoload": {
     "psr-4": {
@@ -31,5 +31,14 @@
     "post-create-project-cmd": [
       "@setup"
     ]
-  }
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../chappy-php-framework",
+      "options": {
+        "symlink": true
+      }
+    }
+  ]
 }
