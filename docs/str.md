@@ -38,6 +38,7 @@
 35. [position](#position)
 36. [random](#random)
 37. [repeat](#repeat)
+38. [replace](#replace)
 38. [replaceArray](#replacearray)
 39. [replaceFirst](#replacefirst)
 40. [replaceLast](#replacelast)
@@ -58,6 +59,7 @@
 55. [title](#title)
 56. [toArray](#toarray)
 57. [ucfirst](#ucfirst)
+59. [ucwords](#ucwords)
 58. [upper](#upper)
 59. [uuid](#uuid)
 60. [wordCount](#wordcount)
@@ -588,6 +590,15 @@ Str::toArray('Hello'); // ['H', 'e', 'l', 'l', 'o']
 Capitalizes the first character of a string.
 ```php
 Str::ucfirst('hello'); // 'Hello'
+```
+<br>
+
+## 57. ucwords <a id="ucwords"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+`ucwords(string $value): string`
+Capitalizes the first letter of each word in the string, preserving the original casing of other characters.
+```php
+Str::ucwords('hello world');         // 'Hello World'
+Str::ucwords('hELLO tHeRE frIEnd');  // 'HELLO THeRE FrIEnd'
 ```
 <br>
 
