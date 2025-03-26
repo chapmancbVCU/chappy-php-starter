@@ -1,22 +1,22 @@
 <?php
-
+use Core\Lib\Utilities\Env;
 return [
-    'default' => $_ENV['DB_CONNECTION'] ?? 'mysql', // Default to MySQL if not specified
+    'default' => Env::get('DB_CONNECTION') ?? 'mysql', // Default to MySQL if not specified
 
     'connections' => [
         'sqlite' => [
             'driver' => 'sqlite',
-            'database' => $_ENV['DB_DATABASE'] ?? __DIR__ . '/../../database/database.sqlite',
+            'database' => Env::get('DB_DATABASE') ?? __DIR__ . '/../../database/database.sqlite',
             'prefix' => '',
         ],
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => $_ENV['DB_HOST'] ?? '127.0.0.1',
-            'port' => $_ENV['DB_PORT'] ?? '3306',
-            'database' => $_ENV['DB_DATABASE'] ?? 'chappy-php',
-            'username' => $_ENV['DB_USERNAME'] ?? 'root',
-            'password' => $_ENV['DB_PASSWORD'] ?? '',  // Corrected to use $_ENV
+            'host' => Env::get('DB_HOST') ?? '127.0.0.1',
+            'port' => Env::get('DB_PORT') ?? '3306',
+            'database' => Env::get('DB_DATABASE') ?? 'chappy-php',
+            'username' => Env::get('DB_USERNAME') ?? 'root',
+            'password' => Env::get('DB_PASSWORD') ?? '',  // Corrected to use $_ENV
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
@@ -25,11 +25,11 @@ return [
 
         'mariadb' => [
             'driver' => 'mysql', // MariaDB is compatible with MySQL driver
-            'host' => $_ENV['DB_HOST'] ?? '127.0.0.1',
-            'port' => $_ENV['DB_PORT'] ?? '3306',
-            'database' => $_ENV['DB_DATABASE'] ?? 'chappy-php',
-            'username' => $_ENV['DB_USERNAME'] ?? 'root',
-            'password' => $_ENV['DB_PASSWORD'] ?? '',  // Corrected to use $_ENV
+            'host' => Env::get('DB_HOST') ?? '127.0.0.1',
+            'port' => Env::get('DB_PORT') ?? '3306',
+            'database' => Env::get('DB_DATABASE') ?? 'chappy-php',
+            'username' => Env::get('DB_USERNAME') ?? 'root',
+            'password' => Env::get('DB_PASSWORD') ?? '',  // Corrected to use $_ENV
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
