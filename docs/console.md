@@ -49,6 +49,7 @@ Below is a list of available commands. Most items in this list contains a link t
 | make:model | Generates a new model file |
 | make:seeder | Creates a new database seeder class |
 | make:test | Generates a new test class |
+| make:validator | Generates a new custom form validator class |
 | make:view | Create a new view |
 | migrate | Runs a Database Migration |
 | migrate:drop-all | Drops all database tables |
