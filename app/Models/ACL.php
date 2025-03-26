@@ -1,8 +1,6 @@
 <?php
 namespace App\Models;
-use PDO;
 use Core\Model;
-use Core\Helper;
 use Core\Validators\{RequiredValidator, UniqueValidator};
 
 /**

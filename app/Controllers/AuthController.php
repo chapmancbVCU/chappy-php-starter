@@ -3,9 +3,8 @@ namespace App\Controllers;
 use Core\Lib\Utilities\Env;
 use Core\Lib\Logging\Logger;
 use Core\Lib\FileSystem\Uploads;
-use Core\Lib\FileSystem\UploadProfileImage;
 use App\Models\{Login, ProfileImages, Users};
-use Core\{Controller, Helper, Router, Session};
+use Core\{Controller, Router, Session};
 /**
  * Implements support for our Auth controller.  Functions found in this 
  * class will support tasks related to the user registration and 
