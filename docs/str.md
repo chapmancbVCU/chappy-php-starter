@@ -398,6 +398,19 @@ Str::repeat('abc', 3); // 'abcabcabc'
 ```
 <br>
 
+## 38. replace <a id="replace"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+`replace(string|array $search, string|array $replace, string $subject): string`
+
+Replaces all occurrences of the search string(s) with the given replacement(s) in the subject string.
+```php
+Str::replace('apple', 'orange', 'apple pie'); 
+// 'orange pie'
+
+Str::replace(['a', 'e'], ['A', 'E'], 'banana'); 
+// 'bAnAnA'
+```
+<br>
+
 ## 38. replaceArray <a id="replacearray"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `replaceArray(string $search, array $replace, string $subject): string`
 
