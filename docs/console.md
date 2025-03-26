@@ -68,10 +68,10 @@ Generating your own command is easy.  We will make a fake command called Foo as 
 php console make:command Foo
 ```
 
-The output of this command will be a file called `FooCommand.php` and will be located under `src/console/commands`.  The resulting file is shown below:
+The output of this command will be a file called `FooCommand.php` and will be located under `app/Lib/Console/Commands`.  The console application will throw an error until you set the name of the command.  The resulting file is shown below:
 
 ```php
-namespace Console\Commands;
+namespace App\Lib\Console\Commands;
  
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -111,7 +111,7 @@ Everything you need to build your own command is included in this file.  All rel
 <br>
 
 ## 4. Command Helpers <a id="command-helpers"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Since this framework is fully Object-Oriented you can generate helper files to modularize tasks that need to be used across multiple commands.  Helpers can be found at `src\console\helpers`.
+Since this framework is fully Object-Oriented you can generate helper files to modularize tasks that need to be used across multiple commands.  Helpers can be found at `app\Lib\Console\Helpers`.
 
 You can build your own command helper class by running the `make:command-helper` command.  Let's create a FooHelper class by running the following:
 
@@ -122,7 +122,7 @@ php console make:helper Foo Helper
 Once your run this command the file generated will look as follows:
 
 ```php
-namespace Console\Helpers;
+namespace App\Lib\Console\Helpers;
 
 use Symfony\Component\Console\Command\Command;
 
