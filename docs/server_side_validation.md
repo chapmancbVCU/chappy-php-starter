@@ -4,6 +4,7 @@
 1. [Overview](#overview)
 2. [Setup](#setup)
 3. [Validation Rules](#validation-rules)
+4. [Custom Validators](#custom-validators)
 <br>
 <br>
 
@@ -49,6 +50,8 @@ The result of submitting a form without entering required input is shown below. 
 </div>
 <br>
 
+<br>
+
 ## 3. Validation Rules <a id="validation-rules"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 First step is to create a validator function in your model class. The structure looks as follows:
 
@@ -83,3 +86,34 @@ foreach($requiredFields as $field => $display) {
 ```
 
 This method requires a second associative array that contains the instance variables for your model mapped to a string that matches the label on your form. Then you iterate this array through a foreach loop where you create a new instance for the validator object you want to use.
+<br>
+
+## 4. Custom Validators <a id="custom-validators"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+You can create your own custom form validators with the following command:
+
+```sh
+php console make:validator ${validator_name}
+```
+
+An example output after running the command is shown below:
+```php
+<?php
+namespace App\CustomValidators;
+use Core\Validators\CustomValidator;
+/**
+ * Describe your validator class.
+ */
+class TestValidator extends CustomValidator {
+
+    /**
+     * Describe your function.
+     * 
+     * @return bool
+     */ 
+    public function runValidation(): bool {
+        // Implement your custom validator.
+    }
+}
+```
+
+The validator files are simple and always implement the abstract function runValidation from the CustomValidator class.  It is a requirement that this function returns a bool value.
