@@ -25,8 +25,4 @@
     's3_bucket' => $_ENV['S3_BUCKET'] ?? null,
 
     'time_zone' => $_ENV['TIME_ZONE'] ?? 'UTC',
-
-    /*
-     * ADD ADDITIONAL CONFIGURATION HERE.
-     */
  ];
