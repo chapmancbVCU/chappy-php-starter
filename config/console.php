@@ -1,8 +1,9 @@
 <?php
+use Core\Lib\Utilities\Env;
 /**
  * Configuration for console.
  */
 return [
-    'background_color' => $_ENV['BACKGROUND_COLOR'] ?? 'black',
-    'text_color' => $_ENV['TEXT_COLOR'] ?? 'white',
+    'background_color' => Env::get('BACKGROUND_COLOR') ?? 'black',
+    'text_color' => Env::get('TEXT_COLOR') ?? 'white',
 ];

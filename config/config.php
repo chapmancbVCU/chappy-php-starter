@@ -5,15 +5,15 @@ use Core\Lib\Utilities\Env;
  */
 
  return [
-    'debug' => $_ENV['DEBUG'] ?? false,
-    'app_env' => $_ENV['APP_ENV'] ?? 'production',
+    'debug' => Env::get('DEBUG') ?? false,
+    'app_env' => Env::get('APP_ENV') ?? 'production',
 
     // This should be set to false for security reasons.
     // If you need to run migrations from the browser, you can set this to true temporarily.
-    'run_migrations_from_browser' => $_ENV['RUN_MIGRATIONS_FROM_BROWSER'] ?? false,
+    'run_migrations_from_browser' => Env::get('RUN_MIGRATIONS_FROM_BROWSER') ?? false,
 
-    'default_controller' => $_ENV['DEFAULT_CONTROLLER'] ?? 'Home', // Default controller if not set in .env
-    'default_layout' => $_ENV['DEFAULT_LAYOUT'] ?? 'main', // Default layout if not set in controller
+    'default_controller' => Env::get('DEFAULT_CONTROLLER') ?? 'Home', // Default controller if not set in .env
+    'default_layout' => Env::get('DEFAULT_LAYOUT') ?? 'main', // Default layout if not set in controller
 
     'app_domain' => Env::get('APP_DOMAIN') ?? '/', // Set this to '/' for a live server
     'version' => '1.0.9',
@@ -22,9 +22,9 @@ use Core\Lib\Utilities\Env;
 
     'access_restricted' => 'Restricted', // Controller for restricted redirects
 
-    'max_login_attempts' => is_numeric($_ENV['MAX_LOGIN_ATTEMPTS'] ?? null) ? (int) $_ENV['MAX_LOGIN_ATTEMPTS'] : 5,
+    'max_login_attempts' => is_numeric(Env::get('MAX_LOGIN_ATTEMPTS') ?? null) ? (int) Env::get('MAX_LOGIN_ATTEMPTS') : 5,
 
-    'time_zone' => $_ENV['TIME_ZONE'] ?? 'UTC',
+    'time_zone' => Env::get('TIME_ZONE') ?? 'UTC',
     
-    's3_bucket' => $_ENV['S3_BUCKET'] ?? null,
+    's3_bucket' => Env::get('S3_BUCKET') ?? null,
  ];
