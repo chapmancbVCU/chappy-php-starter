@@ -11,7 +11,7 @@
     'pw_special_char' => filter_var($_ENV['PW_SPECIAL_CHAR'] ?? true, FILTER_VALIDATE_BOOLEAN),
     'pw_min_length' => is_numeric($_ENV['PW_MIN_LENGTH'] ?? null) ? (int) $_ENV['PW_MIN_LENGTH'] : 8,
     'pw_max_length' => is_numeric($_ENV['PW_MAX_LENGTH'] ?? null) ? (int) $_ENV['PW_MAX_LENGTH'] : 32,
-    'set_pw_min_length' => filter_var($_ENV['SET_PW_MIN_LENGTH'] ?? true, FILTER_VALIDATE_BOOLEAN), // Now correctly a boolean
-    'set_pw_max_length' => filter_var($_ENV['SET_PW_MAX_LENGTH'] ?? true, FILTER_VALIDATE_BOOLEAN), // Now correctly a boolean
+    'set_pw_min_length' => filter_var($_ENV['SET_PW_MIN_LENGTH'] ?? true, FILTER_VALIDATE_BOOLEAN),
+    'set_pw_max_length' => filter_var($_ENV['SET_PW_MAX_LENGTH'] ?? true, FILTER_VALIDATE_BOOLEAN),
 ];
 
