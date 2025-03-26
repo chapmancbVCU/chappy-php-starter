@@ -6,6 +6,14 @@ Thumbs.db*
 # Environment
 .env
 
+# Config
+/config/*.php
+!/config/config.php
+!/config/console.php
+!/config/database.php
+!/config/password.php
+!/config/session.php
+
 # Vendor / dependencies
 /vendor
 /node_modules
