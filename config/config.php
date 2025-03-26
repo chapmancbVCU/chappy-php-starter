@@ -15,7 +15,7 @@
     'default_layout' => $_ENV['DEFAULT_LAYOUT'] ?? 'main', // Default layout if not set in controller
 
     'app_domain' => $_ENV['APP_DOMAIN'] ?? '/', // Set this to '/' for a live server
-    'version' => $_ENV['VERSION'] ?? '1.0.0',
+    'version' => '1.0.9',
     'site_title' => $_ENV['SITE_TITLE'] ?? 'My App', // Default site title if not set
     'menu_brand' => $_ENV['MENU_BRAND'] ?? 'My Brand', // Branding for menu
 
