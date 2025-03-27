@@ -66,7 +66,7 @@ class Migration1741215401 extends Migration {
      *
      * @return void
      */
-    public function up() {
+    public function up(): void {
         Schema::create('foo', function (Blueprint $table) {
           $table->id();
 
@@ -78,7 +78,7 @@ class Migration1741215401 extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down(): void {
         Schema::dropIfExists('foo');
     }
 }
@@ -101,7 +101,7 @@ class Migration1741215401 extends Migration {
      *
      * @return void
      */
-    public function up() {
+    public function up(): void {
         Schema::create('foo', function (Blueprint $table) {
             $table->id();
             $table->string('bar', 150)->nullable();
@@ -117,7 +117,7 @@ class Migration1741215401 extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down(): void {
         Schema::dropIfExists('foo');
     }
 }
