@@ -12,7 +12,7 @@ class Migration1723159214 extends Migration {
    *
    * @return void
    */
-  public function up() {
+  public function up(): void {
     Schema::create('acl', function (Blueprint $table) {
       $table->id();                      // Auto-incrementing primary key
       $table->string('acl', 25);         // VARCHAR(25)
@@ -28,7 +28,7 @@ class Migration1723159214 extends Migration {
    *
    * @return void
    */
-  public function down() {
+  public function down(): void {
     Schema::dropIfExists('acl');
   }
 }

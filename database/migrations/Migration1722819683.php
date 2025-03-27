@@ -13,7 +13,7 @@ class Migration1722819683 extends Migration {
      *
      * @return void
      */
-    public function up() {
+    public function up(): void {
         Schema::create('migrations', function (Blueprint $table) {
           $table->id();
           $table->string('migration', 35);
@@ -26,7 +26,7 @@ class Migration1722819683 extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down(): void {
       Schema::dropIfExists('migrations');
     }
 }

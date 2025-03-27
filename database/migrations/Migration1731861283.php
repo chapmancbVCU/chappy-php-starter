@@ -13,7 +13,7 @@ class Migration1731861283 extends Migration {
      *
      * @return void
      */
-    public function up() {
+    public function up(): void {
         Schema::create('user_sessions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
@@ -30,7 +30,7 @@ class Migration1731861283 extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down(): void {
         Schema::dropIfExists('user_sessions');
     }
 }

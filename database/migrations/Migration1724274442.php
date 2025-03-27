@@ -13,7 +13,7 @@ class Migration1724274442 extends Migration {
    *
    * @return void
    */
-  public function up() {
+  public function up(): void {
     Schema::create('profile_images', function (Blueprint $table) {
       $table->id();
       $table->string('url', 255);
@@ -31,7 +31,7 @@ class Migration1724274442 extends Migration {
    *
    * @return void
    */
-  public function down() {
+  public function down(): void {
     Schema::dropIfExists('profile_images');
   }
 }
