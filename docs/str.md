@@ -413,7 +413,7 @@ Str::replace(['a', 'e'], ['A', 'E'], 'banana');
 ```
 <br>
 
-## 38. replaceArray <a id="replacearray"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 39. replaceArray <a id="replacearray"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `replaceArray(string $search, array $replace, string $subject): string`
 
 Sequentially replaces placeholders with values from an array.
@@ -422,7 +422,7 @@ Str::replaceArray('?', ['one', 'two'], '? ?'); // 'one two'
 ```
 <br>
 
-## 39. replaceFirst <a id="replacefirst"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 40. replaceFirst <a id="replacefirst"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `replaceFirst(string $search, string $replace, string $subject): string`
 
 Replaces the first occurrence of a substring.
@@ -431,7 +431,7 @@ Str::replaceFirst('cat', 'dog', 'cat cat'); // 'cat dog'
 ```
 <br>
 
-## 40. replaceLast <a id="replacelast"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 41. replaceLast <a id="replacelast"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `replaceLast(string $search, string $replace, string $subject): string`
 
 Replaces the last occurrence of a substring.
@@ -440,7 +440,7 @@ Str::replaceLast('apple', 'orange', 'apple pie, apple pie'); // 'apple pie, oran
 ```
 <br>
 
-## 41. replaceMultiple <a id="replacemultiple"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 42. replaceMultiple <a id="replacemultiple"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `replaceMultiple(array $replacements, string $subject): string`
 
 Replaces multiple substrings simultaneously.
@@ -449,7 +449,7 @@ Str::replaceMultiple(['cat' => 'dog', 'blue' => 'red'], 'cat and dog'); // 'cat 
 ```
 <br>
 
-## 42. reverse <a id="reverse"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 43. reverse <a id="reverse"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `reverse(string $value): string`
 
 Reverses the given string.
@@ -458,7 +458,7 @@ Str::reverse('hello'); // 'olleh'
 ```
 <br>
 
-## 43. sha1 <a id="sha1"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 44. sha1 <a id="sha1"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `sha1(string $value): string`
 
 Returns the SHA1 hash of a string.
@@ -467,7 +467,7 @@ Str::sha1('hello'); // 'f7ff9e8b7bb2e09b70935d20b8a76a62cbd30d2f'
 ```
 <br>
 
-## 44. shuffle <a id="shuffle"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 45. shuffle <a id="shuffle"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `shuffle(string $value): string`
 
 Randomly shuffles the characters in a string.
@@ -476,7 +476,7 @@ Str::shuffle('hello'); // e.g., 'eholl'
 ```
 <br>
 
-## 45. similarity <a id="similarity"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 46. similarity <a id="similarity"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `similarity(string $string1, string $string2): int`
 
 Calculates similarity percentage between two strings.
@@ -485,7 +485,7 @@ Str::similarity('hello', 'hallo'); // e.g., 80
 ```
 <br>
 
-## 46. snake <a id="snake"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 47. snake <a id="snake"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `snake(string $value, string $delimiter = '_'): string`
 
 Converts a string to snake_case.
@@ -494,7 +494,7 @@ Str::snake('Hello World'); // 'hello_world'
 ```
 <br>
 
-## 47. slug <a id="slug"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 48. slug <a id="slug"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `slug(string $title, string $separator = '-'): string`
 
 Creates a URL-friendly slug from a given string.
@@ -503,7 +503,7 @@ Str::slug('Hello World!'); // 'hello-world'
 ```
 <br>
 
-## 48. squish <a id="squish"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 49. squish <a id="squish"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `squish(string $value): string`
 
 Removes excessive whitespace from a string.
@@ -512,7 +512,7 @@ Str::squish('  Hello    World  '); // 'Hello World'
 ```
 <br>
 
-## 49. startsWith <a id="startswith"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 50. startsWith <a id="startswith"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `startsWith(string $haystack, string $needle): bool`
 
 Determines if a string starts with a given substring.
@@ -521,7 +521,7 @@ Str::startsWith('Hello World', 'Hello'); // true
 ```
 <br>
 
-## 50. stripWhitespace <a id="stripwhitespace"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 51. stripWhitespace <a id="stripwhitespace"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `stripWhitespace(string $value): string`
 
 Removes all whitespace from a given string.
@@ -530,7 +530,7 @@ Str::stripWhitespace('Hello World'); // 'HelloWorld'
 ```
 <br>
 
-## 51. studly <a id="studly"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 52. studly <a id="studly"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `studly(string $value): string`
 
 Converts a string to StudlyCase (PascalCase).
@@ -539,7 +539,7 @@ Str::studly('hello_world'); // 'HelloWorld'
 ```
 <br>
 
-## 52. substr <a id="substr"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 53. substr <a id="substr"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `substr(string $value, int $start, ?int $length = null): string`
 
 Extracts a substring from a given string.
@@ -548,7 +548,7 @@ Str::substr('Hello World', 0, 5); // 'Hello'
 ```
 <br>
 
-## 53. substrCount <a id="substrcount"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 54. substrCount <a id="substrcount"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `substrCount(string $haystack, string $needle): int`
 
 Counts the number of occurrences of a substring within a string.
@@ -557,7 +557,7 @@ Str::substrCount('apple pie apple', 'apple'); // 2
 ```
 <br>
 
-## 54. swapKeyValue <a id="swapkeyvalue"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 55. swapKeyValue <a id="swapkeyvalue"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `swapKeyValue(array $array): string`
 
 Swaps keys with values in an array and returns a formatted string.
@@ -566,7 +566,7 @@ Str::swapKeyValue(['a' => 1, 'b' => 2]); // '1 => a, 2 => b'
 ```
 <br>
 
-## 55. title <a id="title"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 56. title <a id="title"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `title(string $value): string`
 
 Converts a string to title case.
@@ -575,7 +575,7 @@ Str::title('hello world'); // 'Hello World'
 ```
 <br>
 
-## 56. toArray <a id="toarray"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 57. toArray <a id="toarray"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `toArray(string $value): array`
 
 Splits a string into an array of characters.
@@ -584,7 +584,7 @@ Str::toArray('Hello'); // ['H', 'e', 'l', 'l', 'o']
 ```
 <br>
 
-## 57. ucfirst <a id="ucfirst"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 58. ucfirst <a id="ucfirst"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `ucfirst(string $value): string`
 
 Capitalizes the first character of a string.
@@ -593,7 +593,7 @@ Str::ucfirst('hello'); // 'Hello'
 ```
 <br>
 
-## 57. ucwords <a id="ucwords"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 59. ucwords <a id="ucwords"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `ucwords(string $value): string`
 Capitalizes the first letter of each word in the string, preserving the original casing of other characters.
 ```php
@@ -602,7 +602,7 @@ Str::ucwords('hELLO tHeRE frIEnd');  // 'HELLO THeRE FrIEnd'
 ```
 <br>
 
-## 58. upper <a id="upper"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 60. upper <a id="upper"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `upper(string $value): string`
 
 Converts a string to uppercase.
@@ -611,7 +611,7 @@ Str::upper('hello'); // 'HELLO'
 ```
 <br>
 
-## 59. uuid <a id="uuid"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 61. uuid <a id="uuid"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `uuid(): string`
 
 Generates a UUID (Universally Unique Identifier).
@@ -620,7 +620,7 @@ Str::uuid(); // '550e8400-e29b-41d4-a716-446655440000'
 ```
 <br>
 
-## 60. wordCount <a id="wordcount"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 62. wordCount <a id="wordcount"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `wordCount(string $value): int`
 
 Counts the number of words in a string.
@@ -629,7 +629,7 @@ Str::wordCount('Hello world'); // 2
 ```
 <br>
 
-## 61. words <a id="words"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 63. words <a id="words"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `words(string $value, int $words = 10, string $end = '...'): string`
 
 Limits a string to a certain number of words.
@@ -638,7 +638,7 @@ Str::words('Hello world of PHP', 2); // 'Hello world...'
 ```
 <br>
 
-## 62. wrap <a id="wrap"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 64. wrap <a id="wrap"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `wrap(string $value, string $wrapWith): string`
 
 Wraps a string with a given value.
