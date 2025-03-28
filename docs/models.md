@@ -86,7 +86,7 @@ Models also support functions for tasks you want to perform before and after del
 <br>
 
 ## 3. Description of Functions <a id="descriptions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The following are descriptions for functions no directly related to database operations.  Database related functions can be found [here](database_queries#models)
+The following are descriptions for functions not directly related to database operations.  Database related functions can be found [here](database_queries#models)
 <br>
 
 #### A. addErrorMessage <a id="add-error-message">
