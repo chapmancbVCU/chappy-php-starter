@@ -40,5 +40,7 @@ Get to any resource within the Chappy.php Wiki from here.
     * E. [Pagination](pagination)
     * F. [Views](views)
 
+<br>
+[Visit us on GitHub!](https://github.com/chapmancbVCU/chappy-php-framework)
 
-[Visit us on GitHub!](https://github.com/chapmancbVCU/chappy-php)
+[Starter App on Github](https://github.com/chapmancbVCU/chappy-php-starter)
