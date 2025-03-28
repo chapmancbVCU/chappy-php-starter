@@ -30,7 +30,7 @@ namespace App\Models;
 use Core\Model;
 
 /**
- * 
+ * Implements features of the Foo class.
  */
 class Foo extends Model {
 
