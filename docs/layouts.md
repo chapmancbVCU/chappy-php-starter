@@ -19,9 +19,9 @@ Layouts are supported by layout files that are located at `resources/views/layou
 Let's look at the default layout.
 
 ```php
-<?php 
-use Core\Session;
-use Core\FormHelper;
+<?php use Core\Session;
+use Core\Lib\Utilities\Env;
+use Core\Lib\Utilities\Config;
 ?>
 <!DOCTYPE html>
 <html lang="en">
