@@ -112,7 +112,7 @@ $profileImage = Helper::getProfileImage();
 $menu = Router::getMenu('foo_menu_acl');
 $userMenu = Router::getMenu('user_menu');
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top mb-5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient sticky-top mb-5">
   <!-- Brand and toggle get grouped for better mobile display -->
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_menu" aria-controls="main_menu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
