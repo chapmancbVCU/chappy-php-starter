@@ -107,6 +107,7 @@ No matter what method you use the same menu will be created as shown below:
 ```php
 use Core\Router;
 use Core\Helper;
+use Core\Lib\Utilities\Env;
 $profileImage = Helper::getProfileImage();
 $menu = Router::getMenu('foo_menu_acl');
 $userMenu = Router::getMenu('user_menu');
