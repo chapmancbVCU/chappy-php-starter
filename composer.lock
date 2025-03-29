@@ -137,16 +137,16 @@
         },
         {
             "name": "chappy-php/chappy-php-framework",
-            "version": "v1.0.17",
+            "version": "v1.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chapmancbVCU/chappy-php-framework.git",
-                "reference": "6ad185ea93f3dc6437946acecb3083d5395c4ee0"
+                "reference": "d3510182ff67236db993d07fd51d46982cd91395"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/6ad185ea93f3dc6437946acecb3083d5395c4ee0",
-                "reference": "6ad185ea93f3dc6437946acecb3083d5395c4ee0",
+                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/d3510182ff67236db993d07fd51d46982cd91395",
+                "reference": "d3510182ff67236db993d07fd51d46982cd91395",
                 "shasum": ""
             },
             "require": {
@@ -190,9 +190,9 @@
             "description": "A lightweight and extensible PHP MVC framework.",
             "support": {
                 "issues": "https://github.com/chapmancbVCU/chappy-php-framework/issues",
-                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.0.17"
+                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.0.18"
             },
-            "time": "2025-03-29T20:55:06+00:00"
+            "time": "2025-03-29T21:00:31+00:00"
         },
         {
             "name": "doctrine/inflector",
