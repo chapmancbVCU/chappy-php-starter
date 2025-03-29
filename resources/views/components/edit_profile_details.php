@@ -10,6 +10,6 @@
 <?= FormHelper::textAreaBlock("Description", 
     'description', 
     $this->user->description, 
-    ['class' => 'form-control input-sm', 'placeholder' => 'User description', 'rows' => '4'], 
+    ['class' => 'form-control input-sm', 'placeholder' => 'User description'], 
     ['class' => 'form-group mb-3']); 
 ?>

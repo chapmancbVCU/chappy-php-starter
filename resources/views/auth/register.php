@@ -24,7 +24,7 @@ use Core\Lib\Utilities\Config;
             <?= FormHelper::textAreaBlock("About Me", 
                 'description', 
                 $this->newUser->description, 
-                ['class' => 'form-control input-sm', 'placeholder' => 'Describe yourself here...', 'rows' => '4'], 
+                ['class' => 'form-control input-sm', 'placeholder' => 'Describe yourself here...'], 
                 ['class' => 'form-group mb-3']); 
             ?>
             <?= FormHelper::inputBlock('file', "Upload Profile Image (Optional)", 'profileImage', '', ['class' => 'form-control', 'accept' => 'image/png image/jpeg image/png'], ['class' => 'form-group mb-3']) ?>
