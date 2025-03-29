@@ -180,7 +180,7 @@ $uploads = Uploads::handleUpload(
 );
 ```
 
-The boolean value `false` is for the instance variable of the Upload class called $uploads.  When this value is set to false multiple file uploads is disabled.  ROOT.DS is the bucket variable.  Since we are using localhost for profile images it's set to the project root followed by a directory separator variable.  It can also be set as the path to a host containing an S3 bucket on a cloud base service such as Amazon Web Services (AWS).  The last variable, `5mb`, is used for messaging purposes for file size validation.
+The string `$mode` assumes a default value of `Uploads::SINGLE` for the instance variable of the Upload class called $uploads.  When this value is set like this then multiple file uploads is disabled.  ROOT.DS is the bucket variable.  Since we are using localhost for profile images it's set to the project root followed by a directory separator variable.  It can also be set as the path to a host containing an S3 bucket on a cloud base service such as Amazon Web Services (AWS).  The last variable, `5mb`, is used for messaging purposes for file size validation.
 
 When setting up the view we use a call to the inputBlock function.  In the example below we retrieve files from POST using the value `profileImage` as shown below:
 
@@ -200,11 +200,11 @@ $uploads = Uploads::handleUpload(
     "5mb",
     $user,
     'profileImage',
-    true
+    Uploads::MULTIPLE
 );
 ```
 
-This time the value for the $multiple parameter is set to true.  That is the only change needed in your model file to switch from single file to multiple file upload mode.  The view file needs two additional changes as shown below:
+This time the value for the `$mode` parameter is set to `Uploads::MULTIPLE`.  That is the only change needed in your model file to switch from single file to multiple file upload mode.  The view file needs two additional changes as shown below:
 
 ```php
 <?= FormHelper::inputBlock('file', "Upload Profile Image (Optional)", 'profileImage[]', '', ['multiple' => 'multiple', 'class' => 'form-control', 'accept' => 'image/gif image/jpeg image/png'], ['class' => 'form-group mb-3'], $this->displayErrors) ?>
