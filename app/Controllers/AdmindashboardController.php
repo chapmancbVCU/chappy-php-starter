@@ -129,7 +129,7 @@ class AdmindashboardController extends Controller {
     
         if ($this->request->isPost()) {
             $this->request->csrfCheck();
-            $acl->assign($this->request->get());
+            $acl->assign($this->request->get(), ACL::blackList);
     
             if ($acl->save()) {
                 Session::addMessage('info', "ACL Name updated.");
