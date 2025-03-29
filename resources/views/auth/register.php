@@ -16,6 +16,7 @@ use Core\Lib\Utilities\Config;
         <hr>
         <form class="form" action="" method="post" enctype="multipart/form-data">
             <?= FormHelper::csrfInput() ?>
+            <?= FormHelper::displayErrors($this->displayErrors) ?>
             <?= FormHelper::inputBlock('text', "First Name", 'fname', $this->newUser->fname, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3'], $this->displayErrors) ?>
             <?= FormHelper::inputBlock('text', "Last Name", 'lname', $this->newUser->lname, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3'], $this->displayErrors) ?>
             <?= FormHelper::inputBlock('text', "Email", 'email', $this->newUser->email, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3'], $this->displayErrors) ?>
