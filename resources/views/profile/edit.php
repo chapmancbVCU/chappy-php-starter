@@ -21,7 +21,7 @@ use Core\Lib\Utilities\Config;
             <?= $this->component('edit_profile_details'); ?>
             
             <!-- Manage profile images section -->
-            <?= FormHelper::inputBlock('file', "Upload Profile Image (Optional)", 'profileImage', '', ['class' => 'form-control', 'accept' => 'image/gif image/jpeg image/png'], ['class' => 'form-group mb-3'], $this->displayErrors) ?>
+            <?= FormHelper::inputBlock('file', "Upload Profile Image (Optional)", 'profileImage', '', ['class' => 'form-control', 'accept' => 'image/gif image/jpeg image/png'], ['class' => 'form-group mb-3']) ?>
             <?= $this->component('manage_profile_images') ?>
 
             <div class="col-md-12 text-end">
