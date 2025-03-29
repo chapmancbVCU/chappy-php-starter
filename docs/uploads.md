@@ -139,10 +139,11 @@ public function editAction(): void {
         // Handle file upload using the static method in Uploads
         $uploads = Uploads::handleUpload(
             $_FILES['profileImage'],
-            ProfileImages::getAllowedFileTypes(),
-            ProfileImages::getMaxAllowedFileSize(),
+            ProfileImages::class,
             ROOT . DS,
-            "5mb"
+            "5mb",
+            $user,
+            'profileImage'
         );
 
         $user->assign($this->request->get(), Users::blackListedFormKeys);
