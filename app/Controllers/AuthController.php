@@ -63,9 +63,16 @@ class AuthController extends Controller {
      * @return void
      */
     public function logoutAction(): void {
+        if(!$this->request->isPost()) {
+            Router::redirect('auth/login');
+        }
+
+        $this->request->csrfCheck();
+
         if(Users::currentUser()) {
             Users::currentUser()->logout();
         }
+        
         Router::redirect(('auth/login'));
     }
 
