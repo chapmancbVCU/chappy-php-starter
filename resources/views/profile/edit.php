@@ -12,7 +12,7 @@ use Core\Lib\Utilities\Config;
 <?php $this->end() ?>
 
 <?php $this->start('body'); ?>
-<div class="row align-items-center justify-content-center">
+<div class="row align-items-center justify-content-center mb-5">
     <div class="col-md-6 bg-light p-3">
         <h1 class="text-center">Edit Details for <?=$this->user->username?></h1>
         <hr>
