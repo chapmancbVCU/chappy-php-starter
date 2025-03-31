@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 use Core\Model;
+use Core\Lib\Utilities\Arr;
 
 /**
  * Supports CRUD operations on profile image records.
@@ -114,7 +115,7 @@ class ProfileImages extends Model {
         $i = 0;
         foreach($images as $image) {
             $val = 'image_'.$image->id;
-            $sort = (in_array($val,$sortOrder)) ? array_search($val, $sortOrder) : $i;
+            $sort = (Arr::contains($sortOrder, $val)) ? Arr::search($sortOrder, $val) : $i;
             $image->sort = $sort;
             $image->save();
             $i++;
