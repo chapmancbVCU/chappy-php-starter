@@ -1,5 +1,6 @@
 <?php use Core\Lib\Utilities\DateTime; ?>
 <?php use Core\Lib\Utilities\Env; ?>
+<?php use Core\FormHelper; ?>
 <?php $this->setSiteTitle("Manage ACLs"); ?>
 <?php $this->start('body'); ?>
 <h1 class="text-center">Manage ACLs
@@ -25,9 +26,16 @@
                         <a href="<?=Env::get('APP_DOMAIN', '/')?>admindashboard/editAcl/<?=$acl->id?>" class="btn btn-info btn-sm">
                             <i class="fa fa-edit"></i> Edit ACL
                         </a>
-                        <a href="<?=Env::get('APP_DOMAIN', '/')?>admindashboard/deleteAcl/<?=$acl->id?>" class="btn btn-danger btn-sm" onclick="if(!confirm('Are you sure?')){return false;}">
-                            <i class="fa fa-trash"></i> Delete
-                        </a>
+                        <form method="POST" 
+                            action="<?=Env::get('APP_DOMAIN')?>admindashboard/deleteAcl/<?=$acl->id?>" 
+                            class="d-inline-block" 
+                            onsubmit="if(!confirm('Are you sure?')){return false;}">
+                            <?= FormHelper::hidden('id', $acl->id) ?>
+                            <?= $csrfToken = FormHelper::csrfInput() ?>
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </form>
                     </td>
                 <?php endif; ?>
             </tr>
