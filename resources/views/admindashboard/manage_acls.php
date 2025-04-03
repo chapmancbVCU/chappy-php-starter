@@ -27,7 +27,7 @@
                             <i class="fa fa-edit"></i> Edit ACL
                         </a>
                         <form method="POST" 
-                            action="<?=Env::get('APP_DOMAIN')?>admindashboard/deleteAcl/<?=$acl->id?>" 
+                            action="<?=Env::get('APP_DOMAIN')?>admindashboard/deleteAcl/" 
                             class="d-inline-block" 
                             onsubmit="if(!confirm('Are you sure?')){return false;}">
                             <?= FormHelper::hidden('id', $acl->id) ?>

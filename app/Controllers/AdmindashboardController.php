@@ -57,19 +57,22 @@ class AdmindashboardController extends Controller {
      * @param int $id The id for the ACL we want to delete.
      * @return void
      */
-    function deleteAclAction($id): void {
-        $acl = ACL::findById((int)$id);
-
-        // Get users so we can get number using acl and update later.
-        $users = $acl->isAssignedToUsers();
-        if(is_countable($users) > 0) {
-            Session::addMessage('info', "Cannot delete ". $acl->acl. ", assigned to one or more users.");
-        }
-        if($acl) {
-            $acl->delete();
-            Session::addMessage('success', 'ACL has been deleted');
-        } else {
-            Session::addMessage('danger', 'You do not have permission to perform this action.');
+    function deleteAclAction(): void {
+        if($this->request->isPost()) {
+            $this->request->csrfCheck();
+            $acl = ACL::findById((int)$this->request->get('id'));
+    
+            // Get users so we can get number using acl and update later.
+            $users = $acl->isAssignedToUsers();
+            if(is_countable($users) > 0) {
+                Session::addMessage('info', "Cannot delete ". $acl->acl. ", assigned to one or more users.");
+            }
+            if($acl) {
+                $acl->delete();
+                Session::addMessage('success', 'ACL has been deleted');
+            } else {
+                Session::addMessage('danger', 'You do not have permission to perform this action.');
+            }
         }
         Router::redirect('admindashboard/manageAcls');
     }
