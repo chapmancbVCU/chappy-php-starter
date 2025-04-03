@@ -24,5 +24,5 @@ class HomeController extends Controller {
     public function testAjaxAction(): void {
         $resp = ['success'=>true,'data'=>['id'=>23,'name'=>'Hello World','favorite_food'=>'bread']];
         $this->jsonResponse($resp);
-      }
+    }
 }

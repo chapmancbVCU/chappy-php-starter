@@ -137,16 +137,16 @@
         },
         {
             "name": "chappy-php/chappy-php-framework",
-            "version": "v1.0.26",
+            "version": "v1.0.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chapmancbVCU/chappy-php-framework.git",
-                "reference": "2261613232a353b69c60cfc0014aef780086e4c9"
+                "reference": "470b2fabcaf141e647a6ce5460f33b46d73b4ae8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/2261613232a353b69c60cfc0014aef780086e4c9",
-                "reference": "2261613232a353b69c60cfc0014aef780086e4c9",
+                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/470b2fabcaf141e647a6ce5460f33b46d73b4ae8",
+                "reference": "470b2fabcaf141e647a6ce5460f33b46d73b4ae8",
                 "shasum": ""
             },
             "require": {
@@ -190,9 +190,9 @@
             "description": "A lightweight and extensible PHP MVC framework.",
             "support": {
                 "issues": "https://github.com/chapmancbVCU/chappy-php-framework/issues",
-                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.0.26"
+                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.0.27"
             },
-            "time": "2025-03-30T23:00:53+00:00"
+            "time": "2025-03-31T01:29:20+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -543,16 +543,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.8.6",
+            "version": "3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
-                "reference": "ff2f20cf83bd4d503720632ce8a426dc747bf7fd"
+                "reference": "6d16a8a015166fe54e22c042e0805c5363aef50d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/ff2f20cf83bd4d503720632ce8a426dc747bf7fd",
-                "reference": "ff2f20cf83bd4d503720632ce8a426dc747bf7fd",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/6d16a8a015166fe54e22c042e0805c5363aef50d",
+                "reference": "6d16a8a015166fe54e22c042e0805c5363aef50d",
                 "shasum": ""
             },
             "require": {
@@ -645,7 +645,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-02-20T17:33:38+00:00"
+            "time": "2025-03-27T12:57:33+00:00"
         },
         {
             "name": "nikic/php-parser",
