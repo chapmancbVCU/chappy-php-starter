@@ -59,7 +59,7 @@ class FooController extends Controller {
 }
 ```
 
-The first function you see is the onConstruct. Any default settings you need for the controller is set here. It called by the Controller parent class' constructor. The value for the --layout option is used to set the layout in this function.
+The first function you see is the onConstruct. Any default settings you need for the controller is set here.  It called by the Controller parent class' constructor every time a Controller class is instantiated.  The value for the --layout option is used to set the layout in this function.   In the example above the admin layout is set by default.
 
 All of the other functions supports the default index action and the Create, Read, Update, and Delete (CRUD) operations. With this framework we require that functions that represent actions end with the word Action. Otherwise, the route function is unable to work correctly.
 <br>

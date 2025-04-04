@@ -118,7 +118,7 @@ Implement procedures in your model class to perform tasks before saving a record
 <br>
 
 #### F. onConstruct <a id="on-construct">
-Runs when the object is constructed.
+Runs when the object is constructed.  Place statements here that you want every time a particular model in instantiated.  A frequent use case is to set the value for the current logged in user to a variable.
 <br>
 
 #### G. runValidation <a id="run-validation">
