@@ -15,7 +15,7 @@
 <br>
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents]
+## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This framework supports single and multiple file uploads.  Switching between both modes is relatively easy and is achieved by changing one line of code in your view file and the action function that renders the view.  In this guide we will use the ProfileController and it's associated view located at "resources/views/profile/edit.php" as examples.
 
 To enable uploads in your Controllers add the following import:
@@ -24,7 +24,7 @@ use Core\Lib\FileSystem\Uploads;
 ```
 <br>
 
-## 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents]
+## 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The upload feature is supported by the Uploads class.  To use the Uploads class you will need to perform the following steps:
 <br>
 
@@ -125,7 +125,7 @@ The upload function accepts 3 parameters:
 - string $fileName - The temporary file name.
 <br>
 
-## 3. Single File Upload <a id="single-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents]
+## 3. Single File Upload <a id="single-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Setting up single file uploads requires the correct configuration of your action inside of the appropriate controller and the associated view file.  Let's look at the editAction function for the ProfileController.
 
 ```php
@@ -193,7 +193,7 @@ When setting up the view we use a call to the inputBlock function.  In the examp
 ```
 <br>
 
-## 4. Multiple File Upload <a id="multiple-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents]
+## 4. Multiple File Upload <a id="multiple-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 There are two main differences when it comes to setting up uploads with multiple files.  Let's look at the call for the Uploads constructor again.
 
 ```php
@@ -215,8 +215,9 @@ This time the value for the `$mode` parameter is set to `Uploads::MULTIPLE`.  Th
 ```
 
 The profileImage, the name attribute's value, needs brackets so that we know we are using an array of files as the value for the inputBlock function call.  You also need to add 'multiple' => 'multiple' as an element for the $inputAttrs array.  Otherwise, the window that allows users to select a file will only allow you to select one file.
+<br>
 
-## 5. Configuring File Types <a id="file-types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents]
+## 5. Configuring File Types <a id="file-types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The following is a sample list of file types you can place in the `$allowedFileTypes` array:
 
 ```php
@@ -309,7 +310,7 @@ protected static $allowedFileTypes = [
 
 <br>
 
-## 6. Validation <a id="validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents]
+## 6. Validation <a id="validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Uploads comes built in with two types of validation:
 * Allowed file types
 * Max allowed file size
