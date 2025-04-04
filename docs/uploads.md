@@ -8,6 +8,10 @@
 3. [Single File Upload](#single-file)
 4. [Multiple File Upload](#multiple-file)
 5. [Configuring File Types](#file-types)
+6. [Validation](#validation)
+    * A. [allowedFileTypes](#allowedFileTypes)
+    * B. [maxAllowedFileSize](#maxAllowedFileSize)
+    * C. [Missing Required Upload](#required)
 <br>
 <br>
 
@@ -301,4 +305,91 @@ protected static $allowedFileTypes = [
     'application/x-shockwave-flash',        // SWF (Adobe Flash)
     'application/vnd.android.package-archive', // APK (Android Package)
 ];
+```
+
+<br>
+
+## 6. Validation <a id="validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents]
+Uploads comes built in with two types of validation:
+* Allowed file types
+* Max allowed file size
+<br>
+
+#### A. allowedFileTypes <a id="allowedFileTypes">
+Any files that the user uploads is checked gainst the `$allowedFileTypes` array in the model for your upload.  In order for the Uploads class to be able to validate file types you need to create a function in your model as shown below:
+
+```php
+/**
+ * Getter function for $allowedFileTypes array
+ *
+ * @return array $allowedFileTypes The array of allowed file types.
+ */
+public static function getAllowedFileTypes() {
+    return self::$allowedFileTypes;
+}
+```
+
+You should guide the user by including the allowed file type in your upload input.  An example using a `FormHelper` class function call is shown below:
+```php
+<?= FormHelper::inputBlock(
+    'file', 
+    "Upload Profile Image (Optional)", 
+    'profileImage', 
+    '', 
+    ['class' => 'form-control', 'required' => 'required', 'accept' => 'image/gif image/jpeg image/png'], 
+    ['class' => 'form-group mb-3'])
+?>
+```
+
+By adding the `accept` element to the function's `$inputAttr` array parameter with the accepted file types as values the user can easily select a file without having to sort through all other files in a given directory.
+<br>
+
+#### B. maxAllowedFileSize <a id="maxAllowedFileSize">
+The second check is for upload file size.  The model uses a variable called `$maxAllowedFileSize` for this purpose.  You will need to add the following function to your model to allow this check to function:
+
+```php
+/**
+ * Getter function for $maxAllowedFileSize.
+ *
+ * @return int $maxAllowedFileSize The max file size for an individual 
+ * file.
+ */
+public static function getMaxAllowedFileSize() {
+    return self::$maxAllowedFileSize;
+}
+```
+
+<br>
+
+#### C. Missing Required Upload <a id="required">
+The third type of validation is the enforcement of required file upload.  There is a check for single and multiple file uploads that is placed in your controller's action function right after the `csrf` check. 
+
+Single file upload:
+```php
+if (empty($_FILES['myImage']['tmp_name'])) {
+    $this->myModel->addErrorMessage('myImage', 'You must choose an image.');
+}
+```
+<br>
+
+Multiple file upload:
+```php
+if(Str::isEmpty($_FILES['myImages']['tmp_name'][0])) {
+    $myModel->addErrorMessage('myImages', 'You must choose an image');
+}
+```
+
+The multiple file upload checks if at least one file is selected.  Both statements require you to set the error message using the `addErrorMessage` function.  The first parameter is the name of the field for the upload and the second parameter is your message.
+
+It is also wise to set validation on the front end.  Simply add `'required' => 'required'` to the `FormHelper` function's `inputAttr` array parameter as shown below.
+
+```php
+<?= FormHelper::inputBlock(
+    'file', 
+    "Upload Profile Image (Optional)", 
+    'profileImage', 
+    '', 
+    ['class' => 'form-control', 'required' => 'required', 'accept' => 'image/gif image/jpeg image/png'], 
+    ['class' => 'form-group mb-3'])
+?>
 ```
