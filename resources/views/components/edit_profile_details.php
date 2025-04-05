@@ -1,7 +1,7 @@
 <?php use Core\FormHelper; ?>
 
 <?= FormHelper::csrfInput() ?>
-<input type="hidden" id="images_sorted" name="images_sorted" value="" />
+<?= FormHelper::hidden('images_sorted', '') ?>
 <?= FormHelper::displayErrors($this->displayErrors) ?>
 <?= FormHelper::inputBlock('text', "First Name", 'fname', $this->user->fname, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
 <?= FormHelper::inputBlock('text', "Last Name", 'lname', $this->user->lname, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
