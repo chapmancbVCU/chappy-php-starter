@@ -95,7 +95,7 @@ Contains your core application logic:
 Framework-managed frontend resources:
 - `css/` – App-specific stylesheets.
 - `js/` – JavaScript files and frontend utilities.
-- `views/` – Blade-style PHP views organized by section (e.g., layouts/, components/).
+- `views/` – PHP views organized by section (e.g., layouts/, components/).
 
 <br>
 
