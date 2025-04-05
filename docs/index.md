@@ -13,6 +13,7 @@ Get to any resource within the Chappy.php Wiki from here.
 8. Forms
     * A. [FormHelper Class](forms)
     * B. [CSRF Protection](csrf)
+    * C. [Input and Request Handling](input_and_request_handling)
 9. Getting Started
     * A. [Linux Standalone PHP](linux-php-standalone)
     * B. [LAMP Stack](lamp)
