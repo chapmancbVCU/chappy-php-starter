@@ -9,7 +9,9 @@ Get to any resource within the Chappy.php Wiki from here.
     * A. [Database Queries](database_queries)
     * B. [Database Seeders](database_seeders)
 6. [Debugging and Logs](debugging_and_logs)
-7. [Forms](forms)
+7. [Forms]
+    * A. [FormHelper Class](forms)
+    * B. [CSRF Protection](csrf)
 8. Getting Started
     * A. [Linux Standalone PHP](linux-php-standalone)
     * B. [LAMP Stack](lamp)
