@@ -12,6 +12,7 @@
     * A. [allowedFileTypes](#allowedFileTypes)
     * B. [maxAllowedFileSize](#maxAllowedFileSize)
     * C. [Missing Required Upload](#required)
+7. [Buckets](#buckets)
 <br>
 <br>
 
@@ -394,3 +395,10 @@ It is also wise to set validation on the front end.  Simply add `'required' => '
     ['class' => 'form-group mb-3'])
 ?>
 ```
+
+<br>
+
+## 7. Buckets <a id="buckets"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This framework, by default, uses the local host for storing images.  If you are going to deploy this framework to a production environment we recommend using a separate host for file uploads.  The industry convention is to use S3 Buckets through Amazon Web Services (AWS).
+
+The `.env` file has a blank `S3_BUCKET` field ready to for you to use.  Set the hostname for your S3 Bucket to this environmental variable and add it as part of the `$_uploadPath` variable in the model for your file upload. 
