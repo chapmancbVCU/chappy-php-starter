@@ -13,6 +13,7 @@
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 📘 Routing System (Dynamic Routing)
 Unlike many modern PHP frameworks that use a route definition file (e.g., routes/web.php), Chappy.php uses dynamic routing. This means routes are automatically resolved based on the URL structure and available controllers/methods—no manual route registration required.
+
 <br>
 
 ## 2. 🧠 How It Works <a id="how-it-works"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -50,6 +51,7 @@ HomeController::index()
 
 ## 4. 🛡 Fallbacks <a id="fallbacks"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 If a controller does not exist the user is redirected to a view indicating the issue.  When an action does not exist then whoops displays an error indicating the function does not exist in the controller.
+
 <br>
 
 ## 5. 🚫 No Route File? Why? <a id="no-route"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
