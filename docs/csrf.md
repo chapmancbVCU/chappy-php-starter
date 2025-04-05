@@ -4,9 +4,7 @@
 1. [Overview](#overview)
 2. [Standard Form](#standard-form)
 3. [Toggle Form](#toggle-form)
-
-
-3. [References](#references)
+4. [References](#references)
 <br>
 <br>
 
@@ -87,7 +85,9 @@ We also use `Session:addMessage` instead of the sending messages back to the fro
 
 We also use Forms with CSRF protection for deleting ACLs within this starter application.
 
-## 3. References <a id="references"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents]
+<br>
+
+## 4. References <a id="references"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents]
 * A. [Original toggle featured source code](https://bitbucket.org/parhamcurtis/live-ecommerce-youtube-course/src/master/app/views/adminproducts/index.php)
 * B. [Original toggleFeaturedAction](https://bitbucket.org/parhamcurtis/live-ecommerce-youtube-course/src/master/app/controllers/AdminproductsController.php)
 * B. [E-commerce Tutorial at FreeSkills](https://www.youtube.com/playlist?list=PLFPkAJFH7I0lVlYzLN-d26fscWAk30-2n)
