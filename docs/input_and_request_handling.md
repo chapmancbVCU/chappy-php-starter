@@ -73,6 +73,7 @@ If the token is invalid or missing, the user is redirected to the restricted tok
 <br>
 
 ## 5. Full Method Reference <a id="reference"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
 | Method | Description |
 |:------:|-------------|
 | `get($key = null)` | Returns a single sanitized input value or all request inputs as an array |
