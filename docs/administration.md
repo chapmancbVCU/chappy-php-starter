@@ -22,6 +22,7 @@ Administration features can be accessed by any user who belongs to the admin gro
 5. Activate or deactivate users
 6. Delete users
 7. Manage Access Control Levels (ACLs)
+
 <br>
 
 ## 2. Administration Dashboard <a id="admin-dashboard"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -31,6 +32,7 @@ The administration dashboard is easily accessible by any user in the admin group
   <img src="assets/admin-dashboard-index.png" alt="Administration dashboard index view">
   <p style="font-style: italic;">Figure 1 - Administration dashboard index view</p>
 </div>
+
 <br>
 
 ## 3. Administration Menu <a id="admin-menu"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -40,6 +42,7 @@ When using the administration features the user has access to the Administration
   <img src="assets/admin-menu.png" alt="Administration navbar menu">
   <p style="font-style: italic;">Figure 2 - Administration navbar menu</p>
 </div>
+
 <br>
 
 ## 4. Profile Details <a id="profile-details"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -49,6 +52,7 @@ When you click in the details button for a user you are sent to the administrato
   <img src="assets/admin-profile-details.png" alt="Administration view of profile">
   <p style="font-style: italic;">Figure 3 - Administration view of profile</p>
 </div>
+
 <br>
 
 ## 5. Edit Details <a id="edit-details"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -59,19 +63,23 @@ The edit details view is also similar to the equivalent view for the user profil
   <p style="font-style: italic;">Figure 4 - Administration edit profile view</p>
 </div>
 
-Take note of the Manage ACLs section in the figure above.  It is represented as a checkbox group to allow multiple access control levels for individual users.  Learn more about ACLs [here](access_control_levels)
+Take note of the Manage ACLs section in the figure above.  It is represented as a checkbox group to allow multiple access control levels for individual users.  Learn more about ACLs [here](access_control_levels).
+
 <br>
 
 ## 6. Reset Password <a id="reset-password"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)
 This view has a form with a checkbox that enables administrators to set or unset the reset_password field for a particular user.
+
 <br>
 
 ## 7. Account Status <a id="account-status"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)
 This view has a form with a checkbox that enables administrators to activate or deactivate an account.  Accounts get deactivated after a user exceeds a number of allowed login attempts that the administrator is able to set in the project's configuration file.  The administrator can also deactivate an account at anytime using the form found in this view.
+
 <br>
 
 ## 8. Delete Account <a id="delete-account"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)
 Administrators have permission to delete an account.  The database uses a soft delete feature that removes the delete account for all listings without actually removing the record.
+
 <br>
 
 ## 9. Manage Access Control Levels (ACLs) <a id="manage-acls"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)
