@@ -14,6 +14,7 @@
 The layouts feature supports the ability to present a consistent user experience across views in the framework.  We natively support Bootstrap 5 for the styling.
 
 Layouts are supported by layout files that are located at `resources/views/layouts`, menus that can be found at `resources/views/components`, and menu_acl json files within the `app` directory.
+
 <br>
 
 ## 2. Layouts <a id="layouts"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -72,6 +73,7 @@ The last function call, `$this->content('head)`  is where additional information
 The `body` element contains a call to the `component` function for rendering menus.  For the admin layout we use the `admin_menu` instead and the framework is smart enough to display this menu for pages that uses the admin layout.
 
 The next function call displays session or sometimes called flash messages depending on the framework.  Finally, we have a call to the content function for displaying `body` content.
+
 <br>
 
 ## 3. Building Your Own Layout <a id="build-layout"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -82,6 +84,7 @@ php console make:layout Foo
 ```
 
 This tells the framework to create a new layout using the default main_menu  The `make:layout` also accepts `--menu` and `-menu-acl` as arguments for generating the menu file and the menu_acl json file.  Using these arguments will create new menu and menu_acl files.  More about this in the next two sections.
+
 <br>
 
 ## 4. Setting Layout <a id="setting-layout"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -156,6 +159,7 @@ $userMenu = Router::getMenu('user_menu');
 ```
 
 Notice that the parameter near the top for the `getMenu` function call is set to `foo_menu_acl`.  That is the name of the menu_acl file that is used to configure your menu.  You can also edit other parts of the menu.  If you inspect the admin_menu you will notice there are slight differences from the main_menu file.
+
 <br>
 
 ## 6. Menu ACLs <a id="menu-acls"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
