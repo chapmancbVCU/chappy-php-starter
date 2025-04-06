@@ -4,8 +4,9 @@
 1. [Overview](#overview)
 2. [Layouts](#layouts)
 3. [Building Your Own Layout](#build-layout)
-4. [Menus](#menus)
-5. [Menu ACLs](#menu-acls)
+4. [Setting Layout](#setting-layout)
+5. [Menus](#menus)
+6. [Menu ACLs](#menu-acls)
 <br>
 <br>
 
@@ -83,7 +84,20 @@ php console make:layout Foo
 This tells the framework to create a new layout using the default main_menu  The `make:layout` also accepts `--menu` and `-menu-acl` as arguments for generating the menu file and the menu_acl json file.  Using these arguments will create new menu and menu_acl files.  More about this in the next two sections.
 <br>
 
-## 4. Menus <a id="menu"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Setting Layout <a id="setting-layout"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Once you have created your layout you must set it in your action function or the onConstruct function in your controller class.  An example is shown below:
+
+```php
+public function onConstruct(): void {
+    $this->view->setLayout('admin');
+}
+```
+
+The setLayout function accepts the name of your layout as a string argument.  Once the layout is set it will be available in your views.
+
+<br>
+
+## 5. Menus <a id="menu"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 You can create custom menus to be used with your layouts.  There are two ways to accomplish this task.  You can create a menu using the following command:
 
 ```sh
@@ -144,7 +158,7 @@ $userMenu = Router::getMenu('user_menu');
 Notice that the parameter near the top for the `getMenu` function call is set to `foo_menu_acl`.  That is the name of the menu_acl file that is used to configure your menu.  You can also edit other parts of the menu.  If you inspect the admin_menu you will notice there are slight differences from the main_menu file.
 <br>
 
-## 5. Menu ACLs <a id="menu-acls"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Menu ACLs <a id="menu-acls"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The menu_acl json file is tied to the menu file created above.  The menu_acl json file is used to configure the contents of the navigation bar.  With this file you can define links and menus.  Let's take a look at the `admin_menu_acl.json` file.
 
 ```json
@@ -157,7 +171,7 @@ The menu_acl json file is tied to the menu file created above.  The menu_acl jso
 }
 ```
 
-Anything on the left side of a colon is the label for your link or menu.  Home is simple.  The right side text, `home`, is the name of the controller.  The admin section is a little more complicated.  `Admin` is the name of the menu and anything inside this json object are link labels, just like Home, along with the name of the view directory and the name of the action after the forward slash.  If you write `home/index` the same result will occur when clicking on the link since index actions are always the default action.  To summarize, the right side looks the text in the call to the render function inside your controller.c
+Anything on the left side of a colon is the label for your link or menu.  Home is simple.  The right side text, `home`, is the name of the controller.  The admin section is a little more complicated.  `Admin` is the name of the menu and anything inside this json object are link labels, just like Home, along with the name of the view directory and the name of the action after the forward slash.  If you write `home/index` the same result will occur when clicking on the link since index actions are always the default action.  To summarize, the right side looks the text in the call to the render function inside your controller.
 
 You have two options for creating menu_acl json files.  The first is by using the following command:
 
