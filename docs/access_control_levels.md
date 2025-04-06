@@ -2,22 +2,40 @@
 
 ## Table of contents
 1. [Overview](#overview)
-2. [acl.json File](#acl-file)
-3. [Controllers and Views](#controllers-and-views)
+2. [How ACLs Work](#how-it-works) 
+3. [acl.json File](#acl-file)
+4. [Controllers and Views](#controllers-and-views)
+5. [Developer Checklist: Adding a New ACL Role](#checklist)
+6. [See Also](#see-also)
 <br>
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This framework supports Access Control Levels (ACLs) to manage permissions.  A solid permissions structure is a fundamental part of what we call in the IT industry Confidentiality, Integrity, and Availability (CIA) triad of information security.  CIA is defined as follows:
-1. Confidentiality - Only those who are allowed access shall be able to access certain data.
-2. Integrity - The data shall be protected.  This includes anything from accidental deletion to protecting the data from events such as fire and severe weather events.  Many systems have data duplicated in multiple locations in order to provide sufficient protection.
-3. Availability - Those who have permission to access the data shall be able to access it without impedient.  Once the user no longer needs access to the data permissions shall be removed.
+Chappy.php supports **Access Control Levels (ACLs)** to manage which users can access specific controllers and actions. ACLs are part of a secure application architecture, aligning with the **CIA Triad** of information security:
 
-We handle access control using a combination of a acl.json file and a acl field in the users table which is represented as an array.
+- **Confidentiality** – Only authorized users can access specific data or routes.  
+- **Integrity** – Data is protected from unauthorized modification or deletion.  
+- **Availability** – Authorized users can access data and features without unnecessary restriction.
+
+ACLs in this framework are configured using the `acl.json` file in the `app/` directory and the `acl` field in the users table (stored as a JSON-encoded array).
+
 <br>
 
-## 2. acl.json File <a id="acl-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The acl.json file located under `app/` allows users to grant or deny access to based on controllers and actions.  The acl.json file for the base project is shown below:
+## 2. How ACLs Work <a id="how-it-works"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+When a user is assigned a session, their default access level is `"Guest"`. If they log in or their role is elevated (e.g., admin), their ACL changes to `"LoggedIn"` or `"Admin"`.
+
+The system resolves access by checking:
+
+1. **If the access level exists in `acl.json`**
+2. **If the controller is allowed or denied for that role**
+3. **If the action is specifically permitted or denied**
+
+If the access check fails, the user is redirected to a restricted access view.
+
+<br>
+
+## 3. acl.json File <a id="acl-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The `acl.json` file maps ACL roles (e.g., Guest, LoggedIn, Admin) to controllers and actions. Example:
 
 ```json
 {
@@ -60,7 +78,26 @@ The LoggedIn object is a different such that it contains a denied object that ha
 ```
 <br>
 
-## 3. Controllers and Views <a id="controllers-and-views"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+💡 Key Concepts:
+- "*" means all actions in that controller are allowed.
+- "denied" can override permissions for specific actions.
+
+🛠 Example: Adding a changePassword Action
+To allow "LoggedIn" users to change their password, update the ACL:
+```json
+"LoggedIn": {
+  "denied": {
+    "Auth": ["login", "register", "resetPassword"]
+  },
+  "Auth": ["logout", "changePassword"],
+  "Contacts": ["*"],
+  "Profile": ["*"]
+}
+```
+
+<br>
+
+## 4. Controllers and Views <a id="controllers-and-views"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 After adding the name of the action they wish to create, in this case `changePassword`, the user will need to create the view and add a function to the AuthController called `changePasswordAction`.  An example is shown below:
 
 ```php
@@ -80,3 +117,26 @@ public function changePasswordAction(int $id): void {
 In the configure the view section it is best practice to set postAction to the same name as changePassword.  The last line contains a call to the render function of the View class.  It follows the syntax of `directory_name/view_name.`  You do not need to add .php to the end of the view name.  More information about views, layouts, and components can be found [here](views).
 
 Finally, we have the `Auth` object.  For the base project, it is the only other ACL that is set in the acl table.  Every time you add a new ACL you will need to configure it in the acl.json file.
+
+🔧 Best Practice:
+Use the same name for:
+- the view file: resources/views/auth/change_password.php
+- the controller method: changePasswordAction
+- the form action URL
+- This makes routing and debugging easier.
+
+<br>
+
+## 5. ✅ Developer Checklist: Adding a New ACL Role <a id="checklist"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+1. Add the new role to the acl.json file
+2. Add matching permissions (controllers/actions)
+3. Set the role name in the user table (acl column)
+4. Create any new views or controllers needed
+5. Test access control flow
+
+<br>
+
+## 6. 🔗 See Also <a id="see-also"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+- [User Registration and Authentication](user_registration_and_authentication)
+- [Views](views)
+- [Session and Flash Messages](session_and_flash_messages)
