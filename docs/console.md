@@ -13,7 +13,7 @@
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The console command is used to manage and perform tasks related to this framework. Just like Laravel's Artisan command, this frameworks Command Line Interface (CLI) is based off of the Symfony Console component.  Check out Symfony's Console component [page](https://symfony.com/doc/current/console.html) for documentation on how to set up your command.  
+The console command is used to manage and perform tasks related to this framework.  This frameworks Command Line Interface (CLI) is based off of the Symfony Console component.  Check out Symfony's Console component [page](https://symfony.com/doc/current/console.html) for additional documentation.  
 
 You can run a console command following the following syntax:
 
@@ -146,11 +146,11 @@ use Console\Helpers\Tools;
 ```
 <br>
 
-#### A. border Function <a id="border">
+### A. border Function <a id="border">
 The border prints a dashed line.
 <br>
 
-#### B. info Function <a id="info">
+### B. info Function <a id="info">
 The info function is used to present to the user logging information.  The following is an example of how to call this function:
 
 ```php
@@ -201,7 +201,7 @@ The following text colors are supported:
 16. light-magenta
 <br>
 
-#### C. writeFile Function <a id="write-file">
+### C. writeFile Function <a id="write-file">
 The writeFile function is what we used when we need to dump contents of a command to a file.  We use this for commands such as making controllers, models, and migrations.  
 
 Here is an example call to this function for generating a new menu_acl json file.
