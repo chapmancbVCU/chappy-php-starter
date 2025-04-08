@@ -344,11 +344,11 @@ This framework allows complex SQL queries to be expressed as a structured $condi
 
 
 <br>
-z
+
 🧱 $conditions Array
 ```php
 $conditions = [
-    'columns' => 'products.id, products.name, products.price, 
+    'columns' => 'products.*, 
                   ANY_VALUE(pi.url) AS url, 
                   ANY_VALUE(brands.name) AS brand',
     'joins' => [
@@ -360,15 +360,14 @@ $conditions = [
 ];
 return self::find($conditions);
 ```
+
  <br>
 
 🧾 Equivalent Raw SQL
 ```php
 $sql = "
     SELECT 
-        products.id, 
-        products.name, 
-        products.price, 
+        products.*, 
         ANY_VALUE(pi.url) AS url, 
         ANY_VALUE(brands.name) AS brand
     FROM products
@@ -392,6 +391,8 @@ return $this->query($sql)->results();
 | `'joins'` | `INNER JOIN product_images pi ... INNER JOIN brands ...` |
 | `'conditions'` | `WHERE products.featured = 1 AND ...` |
 | `'group'` | `GROUP BY products.id` |
+
+<br>
 
 ✅ Why Use `$conditions`?
 - Cleaner code: Easier to read and modify than raw SQL.
