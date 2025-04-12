@@ -7,15 +7,17 @@
 4. [Setting Up the DatabaseSeeder Class](#database-seeder)
 5. [Running a Database Seeder](#running-seeder)
 6. [Image Seeding](#image-seeding)
+7. [Seeder Tips and Best Practices](#seeder-tips)
 <br>
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This framework supports the ability to seed a database with fake data utilizing a package called FakerPHP.  Consult their documentation [here](https://fakerphp.org/) for more information about what they support.  Using this package, along with the native support for Seeder classes you are able to populate tables in your database with test seeder data.  The list of third-party libraries can be found [here](https://fakerphp.org/third-party/).
+
 <br>
 
 ## 2. Creating a Seeder Class <a id="seeder-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-You can easily create a new database seeder by running the the make:seeder console command.  This command has the following format:
+You can easily create a new database seeder by running the make:seeder console command.  This command has the following format:
 
 ```sh
 php console make:seeder ${seederName}
@@ -70,6 +72,7 @@ class ContactsTableSeeder extends Seeder {
 ```
 
 This file contains the run function that does the actual work and all of the imports needed to get started.
+
 <br>
 
 ## 3. Setting up The Seeder Class <a id="seeder-class-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -104,6 +107,9 @@ public function run(): void {
 The call to create a new Faker Factory uses a static function called create.  In our case we include 'en_us' as a locality since we are making contacts for "people" who are United States residents.  This will ensure information such as state and zip follow US Postal Service standards.
 
 The variable `$numberOfRecords` is set to 10 by default.  You can change this to any positive integer within reason for your case.  The while loop contains statements for creating a contact and setting fake data to database fields.  The if statement at the end is really important because the incrementor statement will be executed only when there is a successful save operation.  This ensures the number of records you need are indeed created.
+
+The incrementor is only triggered when the record saves successfully, ensuring all records are created.
+
 <br>
 
 ## 4. Setting Up the DatabaseSeeder Class <a id="database-seeder"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -131,6 +137,7 @@ class DatabaseSeeder extends Seeder {
 ```
 
 Notice that we need to include a use statements for each seeder we want to use.  Within the run function is a call to the `call` function of the Seeder class.  This is where the mechanics of database seeding operations occurs.
+
 <br>
 
 ## 5. Running a Database Seeder <a id="running-seeder"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -169,9 +176,12 @@ But viewing the Contacts' index view is just one phase of our testing.  We need 
 </div>
 
 As shown above in Figure 4, we can see that Carmel's information looks like we would expect.  It contains a valid street address along with a city, state, and zip code that matches USPS standards.  The first name and last name makes sense despite it being completely made up.  Finally, the email and phone number matches a valid format.
+
+⚠️ Note: This command is safe for development/staging only. Avoid using in production unless you're seeding static reference data.
+
 <br>
 
-## 5. Image Seeding <a id="image-seeding"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Image Seeding <a id="image-seeding"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Seeding records for images and uploading them requires a few extra steps.  You will need to use a third-party library called `Smknstd\FakerPicsumImages`.  Let's go over this example for profile images.
 
 ```php
@@ -224,3 +234,16 @@ public function run(): void {
 You will need to import the third-party library, `use Smknstd\FakerPicsumImages\FakerPicsumImagesProvider;`, and manage where the file will be uploaded.  If the files do get saved but you are having trouble accessing them make sure the upload path is correct.  
 
 When uploading the image using the `$faker->image` function call we set the path, hight, width, and file type.  Next we setup information for the record.  Finally se save the file and produce the appropriate output messages.
+
+Ensure permissions are correct. This is suitable for test environments only.
+
+<br>
+
+## 7. Seeder Tips and Best Practices <a id="seeder-tips"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+- ✅ Use seeders only in development or staging.
+- 🔗 Use foreign key-safe references (`user_id = 1`) that exist.
+- 🧠 Use `Faker::unique()` sparingly to avoid memory overuse.
+- 🧪 Chain multiple seeders in `DatabaseSeeder` to mirror real-world data order.
+- ❌ Avoid using seeders in production unless seeding static or required data (e.g., ACLs, roles).
+- 🔄 If using soft deletes, manually set `deleted = 0` where needed.
+- 🧰 Keep each table’s seeder separate for modularity and easier maintenance.
