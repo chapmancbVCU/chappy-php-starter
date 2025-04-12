@@ -10,24 +10,31 @@
     * E. [Checking If Value Exists In Column](#value-exists)
     * F. [DB Summary](#db-summary)
 3. [Using Models](#models)
-    * A. [delete](#model-delete)
-    * B. [find](#find)
-    * C. [findById](#find-by-id)
-    * D. [findFirst](#find-first)
-    * E. [findAllByUserId](#find-all-by-user-id)
-    * F. [findTotal](#find-total)
-    * G. [save](#save)
+    * A. [assign](#assign)
+    * B. [delete](#model-delete)
+    * C. [find](#find)
+    * D. [findAllByUserId](#find-all-by-user-id)
+    * E. [findById](#find-by-id)
+    * F. [findByTable](#find-by-table)
+    * G. [findFirst](#find-first)
+    * H. [findTotal](#find-total)
+    * I. [Lifecycle Hooks](#lifecycle-hooks)
+    * J. [save](#save)
+    * K. [timeStamps](#timestamps)
+    * L. [Validation](#validation)
+    * M. [Model Summary](#model-summary)
 <br>
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 There are two ways to perform database queries in this framework.  You can use queries or the functions that comes with your models or base model classes.
+
 <br>
 
 ## 2. DB Class <a id="db"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 You can perform a query within this framework by using the `query` function from the `DB` class.  The query function has 3 parameters:
 1. $sql - The database query we will submit to the database.
-2. $params - The values for the query.  They are the fiends of the table in our database.  The default value is an empty array.
+2. $params - The values for the query.  They are the fields of the table in our database.  The default value is an empty array.
 3. $class - A default value of false, it contains the name of the class we will build based on the name of a model.
 
 An example can be found in the findUserByAcl function from the Users model.  An example is shown below:
@@ -46,6 +53,7 @@ public static function findUserByAcl($acl) {
 ```
 
 All the user has to do is create a classic SQL query as the first parameter.  Since we want to find a list of ACLs we use `aclName` as the parameter that we will bind using the PDO class.  By using the built in `query` function the user does not have to be concerned with the actual binding of values or calling the execute function of the PDO class.
+
 <br>
 
 Here is another example shown below:
@@ -69,9 +77,10 @@ Below is the result using the `dd` function:
 As shown in Figure 1 all the information returned from the database is represented as an object.  The `PDOStatement` value has been expanded to show the actual query.  The `_result` section shows all of your contacts.
 
 You can learn more about SQL through this [link](https://www.theodinproject.com/paths/full-stack-javascript/courses/databases) to The Odin Project's Database Course.
+
 <br>
 
-#### A. Create <a id="create">
+### A. Create <a id="create">
 The **insert** function performs our create operation on our database.  An example is shown below:
 
 ```php
@@ -91,9 +100,10 @@ Helper::dd($contacts);
 This function accepts two arguments:
 1. $table - The name of the table we want to perform the insert operation.
 2. $fields - An associative array of key value pairs.  The key is the name of the database field and the value is the value we will set to a particular field.  The default value is an empty array.
+
 <br>
 
-#### B. Read <a id="read">
+### B. Read <a id="read">
 Users can perform find operations using the DB class with the `find` function using parameters such as conditions, bind, order, limit, and sort.  An example is shown below:
 
 ```php
@@ -123,7 +133,7 @@ This function accepts the following parameters:
 2. $params - An associative array that contains key value pair parameters for our query such as conditions, bind, limit, offset, join, order, and sort.  The default value is an empty array.
 3. $class A default value of false, it contains the name of the class we will build based on the name of a model.
 
-#### C. Update <a id="update">
+### C. Update <a id="update">
 You can used the DB class' `update` function to update a record as shown below:
 
 ```php
@@ -142,9 +152,10 @@ This function accepts 3 parameters:
 1. $table - The name of the table that contains the record we want to update.
 2. $id - The primary key for the record we want to remove from the database table.
 3. $fields - An associative array containing key value pairs containing information we want to update.
+
 <br>
 
-#### D. Delete <a id="delete">
+### D. Delete <a id="delete">
 The delete function performs delete operations.  This is the simples of all our functions to use as shown below:
 
 ```php
@@ -154,9 +165,10 @@ $contacts = $db->delete('contacts', 3);
 It accepts the following arguments:
 1. $table - The name of the table that contains the record we want to delete.
 2. $id The primary key for the record we want to remove from a database table.
+
 <br>
 
-#### E. Checking If Value Exists In Column <a id="value-exists">
+### E. Checking If Value Exists In Column <a id="value-exists">
 Sometimes you need to check if a value exists in a column in the form of an element in an array.  The `valueExistsInColumn` makes this possible.  Let's check out the manageACLsAction below where we separate ACLs into used and unused.  
 
 ```php
@@ -179,9 +191,10 @@ public function manageACLsAction(): void {
 ```
 
 Here, we want to create two separate arrays.  One for used ACLs and another for unused.  That way we can list them separately.  We do this to prevent administrators from editing used ACLs.  This doesn't prevent administrators from generating queries from making any necessary changes from the MySQL command line or adding such feature through this framework.  Just make sure you test appropriately in development before making you changes in production.
+
 <br>
 
-#### F. Summary  <a id="db-summary">
+### F. Summary  <a id="db-summary">
 Many of these functions have their equivalent wrapper functions that will be described in the **Using Models** section.  Here are the descriptions for additional functions:
 1. count - Getter function for the private _count variable.
 2. findFirst - Returns the first result performed by an SQL query.
@@ -192,13 +205,24 @@ Many of these functions have their equivalent wrapper functions that will be des
     ```php
     $users = Users::findUserByAcl($acl->acl)->results();
     ```
+
 <br>
 
 ## 2. Using Models <a id="models"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 We will go over using the model class for updating the database.  Each function will be discussed in the following sections.
+
 <br>
 
-#### A. delete  <a id="model-delete">
+### A. assign  <a id="assign">
+```php
+$user->assign($_POST, ['csrf_token'], true); // blacklist example
+```
+
+This method allows mass assignment using an array. You can also pass a blacklist or whitelist to control which fields get updated.
+
+<br>
+
+### B. delete  <a id="model-delete">
 The delete function is the easiest to use.  Simply call this function with your object as shown below:
 
 ```php
@@ -208,7 +232,7 @@ $contact->delete()
 When you implement the **afterDelete** and **beforeDelete** functions in your models they get called when you perform a delete operation.
 <br>
 
-#### B. find  <a id="find">
+### C. find  <a id="find">
 The **find** function is the most commonly used function.  It is a wrapper function for the **DB** class' **find** function.  Throughout this framework this function is used in several of our model classes to perform various tasks.  It accepts one argument called `$params`.  It is an associative array and contains the parameters for your query.
 
 Within the **Users** model this function is used to find all users except the current logged in user.  It's usage is shown below:
@@ -244,19 +268,10 @@ public static function findByUserId($user_id) {
 ```
 
 Besides the conditions we are already familiar with, this one accepts an order parameter whose value is the sort value in the **profile_images** table.
+
 <br>
 
-#### C. findById  <a id="find-by-id">
-Use this function if you want to retrieve a record from a database using a record's id field.  An example is shown below:
-
-```php
-$user = Users::findById((int)$id);
-```
-
-We cast the value is a type int for safety reasons.
-<br>
-
-#### D. findAllByUserId  <a id="find-all-by-user-id">
+### D. findAllByUserId  <a id="find-all-by-user-id">
 Searches a table where **user_id** is an index value.  An example for using this function is as follows:
 
 ```php
@@ -266,10 +281,37 @@ $contacts = Contacts::findAllByUserId((int)$this->currentUser->id, ['order'=>'ln
 It accepts two arguments:
 1. $user_id - The user ID.
 2. $params - Used to build conditions for database query.  The default value is an empty array.  In the example above we want to order by last name and first name.
+
 <br>
 
+### E. findById  <a id="find-by-id">
+Use this function if you want to retrieve a record from a database using a record's id field.  An example is shown below:
 
-#### E. findFirst  <a id="find-first">
+```php
+$user = Users::findById((int)$id);
+```
+
+We cast the value is a type int for safety reasons.
+
+<br>
+
+### F. findByTable  <a id="find-by-table">
+```php
+$items = CartItem::findByTable('cart_items AS items', [...]);
+```
+
+Used for querying other tables or aliases.  Example:
+```php
+$items = Orders::findByTable('orders AS o', [
+    'conditions' => 'o.user_id = ?',
+    'bind' => [$user_id],
+    'order' => 'o.created_at DESC'
+]);
+```
+
+<br>
+
+### G. findFirst  <a id="find-first">
 This is a wrapper for the **findFirst** function found in the DB class.  It accepts one argument called `$params`.  It is an associative array and contains the parameters for your query.  An example of is usage is shown below:
 
 ```php
@@ -300,9 +342,10 @@ We use this function to populate the contact details view by retrieving one cont
 3. $params - Used to set additional conditions.  The default value is an empty array.
 
 With this function we use `$contact_id` and `$user_id` to set out binding values.  Next we merge the `$conditions` and `$params` arrays and uses this updated `$conditions` array as the `$parameters` for the **findFirst** function.
+
 <br>
 
-#### F. findTotal  <a id="find-total">
+### H. findTotal  <a id="find-total">
 Use this function to find the total number of records based on parameters provided.  Let's look at this example from the the indexAction for the ContactsController.
 
 ```php
@@ -313,9 +356,19 @@ $pagination = new Pagination($page, 10, Contacts::findTotal([
 ```
 
 When setting up the Pagination object we use this function to set the value for total items.  In this case, we want to know how many contacts are associated with a particular users.  **user_id** is the index and the current user's id is the value we want to bind.
+
 <br>
 
-#### G. save  <a id="save">
+### I. Lifecycle Hooks  <a id="lifecycle-hooks">
+- onConstruct()
+- beforeSave() / afterSave()
+- beforeDelete() / afterDelete()
+
+These can be optionally implemented in child models.
+
+<br>
+
+### J. save  <a id="save">
 This function is most commonly used in the controllers.  It is a function that performs **insert** and **update** operations.  When you implement the **afterSave** and **beforeSave** functions in your model classes any tasks within those functions are performed when using this function.
 
 There are two ways to use this function.  You can call it standalone as follows:
@@ -333,3 +386,44 @@ if($user->save()) {
 ```
 
 In the code block above we want to test if the user is saved before we perform a redirect within our controller's action function.
+
+Finally, this function checks if the record has an ID. If it does, it performs an update; otherwise, it inserts a new record.
+
+<br>
+
+### K. timeStamps  <a id="timestamps">
+```php
+public function beforeSave(): void {
+    $this->timeStamps();
+}
+```
+
+Automatically sets `created_at` and `updated_at`.
+
+<br>
+
+### L. Validation  <a id="validation">
+```php
+public function validator(): void {
+    $this->runValidation(new UniqueValidator($this, ['field' => 'acl', 'message' => 'That acl already exists.  Please chose a new one.']));
+    $this->runValidation(new RequiredValidator($this, ['field' => 'acl', 'message' => 'ACL name is required.'])); 
+}
+```
+
+Validation must be defined in the `validator()` method. `save()` will not proceed if `_validates` is false.
+
+<br>
+
+### M. Model Summary  <a id="model-summary">
+
+| Method | Description |
+|:------:|-------------|
+| `save()` | Inserts or updates record |
+| `delete()` | Deletes or soft-deletes record |
+| `find()` | Finds multiple records |
+| `findFirst()` | Finds first match |
+| `findById()` | Find by primary key |
+| `assign()` | Mass-assigns properties |
+| `timeStamps()` | Sets created/updated timestamps |
+| `validator()` | Runs before save to validate form data |
+| `getColumnsForSave()` | Returns associative array of DB fields |
