@@ -2,23 +2,39 @@
 
 ## Table of contents
 1. [Overview](#overview)
-2. [Controller File](#controller-file)
-3. [Example](#example)
+2. [Creating a Controller](#creating-a-controller)
+3. [Controller Structure and Lifecycle](#controller-structure)
+4. [Crud Operations](#crud-operations)
+    * A. [Create - addAction](#create)  
+    * B. [Read - indexAction and detailsAction](#read)  
+    * C. [Update - editAction](#update)  
+    * D. [Delete - deleteAction](#delete)
+5. [Routing & View Rendering](#routing-and-views)
 <br>
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This framework supports controllers to manage the interactions between views and models.
+Controllers in Chappy.php act as the glue between **models** and **views**. They handle incoming requests, process data, and delegate rendering to the view layer.
+
+Every controller method that maps to a route must end in `Action`. For example, `indexAction()` maps to the `/controller/index` route.
+
 <br>
 
-## 2. Controller File <a id="controller-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Creating a Controller <a id="creating-a-controller"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Let's begin by creating a new controller using all available options and arguments:
 
 ```sh
 php console make:controller Foo --layout=admin --resource
 ```
 
-The first argument is the name and the first letter should always be upper case. It is used to create the name of the controller class. The --layout option is optional. If you do not use this option the layout is set to default. Finally, the --resource option creates boilerplate functions that you can use. The file created by running this command is shown below:
+* Foo → Name of the controller (creates FooController)
+* --layout → Optional layout (default: default)
+* --resource → Includes CRUD boilerplate
+
+<br>
+
+## 3. Controller Structure and Lifecycle <a id="controller-structure"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Here’s the generated output:
 
 ```php
 namespace App\Controllers;
@@ -59,12 +75,15 @@ class FooController extends Controller {
 }
 ```
 
-The first function you see is the onConstruct. Any default settings you need for the controller is set here.  It called by the Controller parent class' constructor every time a Controller class is instantiated.  The value for the --layout option is used to set the layout in this function.   In the example above the admin layout is set by default.
+Key Concepts:
+- `onConstruct()` is called automatically when the controller is initialized.
+- Action methods must end with `Action` (e.g., `addAction()`).
+- View rendering and user input handling are performed inside action methods.
 
-All of the other functions supports the default index action and the Create, Read, Update, and Delete (CRUD) operations. With this framework we require that functions that represent actions end with the word Action. Otherwise, the route function is unable to work correctly.
 <br>
 
-## 3. Example <a id="example"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Crud Operations <a id="crud-operations"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+### A. Create - addAction <a id="create"></a>
 ```php
 public function addAction(): void {
     $contact = new Contacts();
@@ -99,6 +118,9 @@ $this->view->render('model_name/action_name');
 
 The URL path equivalent you will see in the address bar is as follows: ```http://hostname/model_name/action_name```
 
+<br>
+
+### B. Read - indexAction and detailsAction <a id="read"></a>
 This controller has a couple of ways to perform the Read operation from the CRUD paradigm. We perform reads in the indexAction and detailsAction. Let's go over the detailsAction function first.
 
 ```php
@@ -131,6 +153,9 @@ public function indexAction(): void {
 
 Nothing too complicated here but line 2 is noteworthy. Notice the second parameter in the findAllByUserId. We cover this more details in the model section but note we are using an associative array with a key of order and values `'lname, fname'`. This, framework supports setting parameters to configure query operations. In this example, we want to older our results by last name and then by first name.
 
+<br>
+
+### C. Update - editAction <a id="update"></a>
 Update operations is similar to the Create operation. There are some noteworthy differences to discuss so we have the code for the ContactsController's editAction shown below.
 
 ```php
@@ -153,8 +178,13 @@ public function editAction($id) {
 }
 ```
 
-The first step is to get the contact record and make sure it's associated with the current user. The other difference is in the assign function on line 8. Notice the second parameter Contacts::blackList. This is an array that is found in the Contact's model and is used to protect certain database fields from being inadvertently updated.
+The first step is to get the contact record and make sure it's associated with the current user. The other difference is in the assign function on line 8. 
 
+🛡️ Note: Contacts::blackList is used to prevent mass assignment of protected fields like id, deleted, etc.
+
+<br>
+
+### D. Delete - deleteAction <a id="delete"></a>
 The Delete operation is also very simple. In the example below you will find the findByIdAndUserId function again along with the setup of the confirmation Session Message.  More about Session Messages can be found [here](session_and_flash_messages).
 
 ```php
@@ -167,3 +197,47 @@ public function deleteAction(int $id): void {
     Router::redirect('contacts');
 }
 ```
+
+<br>
+
+## 5. Routing & View Rendering <a id="routing-and-views"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+**URL to Method Mapping**
+URL:
+```php
+http://hostname/contacts/details/1
+```
+
+Resolves to:
+```php
+ContactsController::detailsAction(1);
+```
+
+<br>
+
+**Rendering Views**
+Use:
+```php
+$this->view->render('model_name/action_name');
+```
+
+For example:
+```php
+$this->view->render('contacts/details');
+```
+
+This assumes your view file is at `resources/views/contacts/details.php`.
+
+<br>
+
+**Passing Data to Views**
+Controller:
+```php
+$this->view->contact = $contact;
+```
+
+View:
+```php
+<?= $this->$contact->email ?>
+```
+
+Think of it as similar to Laravel’s `compact()` or passing props, but simpler and without directives.
