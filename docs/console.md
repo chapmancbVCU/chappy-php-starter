@@ -2,10 +2,16 @@
 
 ## Table of contents
 1. [Overview](#overview)
-2. [Summary of Available Commands](#summary-of-available-commands)
-3. [Building Your Own Command](#build-command)
-4. [Command Helpers](#command-helpers)
-5. [Tools](#tools)
+2. [When to Use the Console](#when-to-use)
+3. [Summary of Available Commands](#summary-of-available-commands)
+    * A. [Generators](#generators)  
+    * B. [Migrations & Seeders](#migrations)  
+    * C. [Local Servers](#local-servers)  
+    * D. [Testing](#testing)  
+    * E. [Tools](#tools) 
+4. [Building Your Own Command](#build-command)
+5. [Command Helpers](#command-helpers)
+6. [Tools](#tools)
     * A. [border Function](#border)
     * B. [info Function](#info)
     * C. [writeFile Function](#write-file)
@@ -13,7 +19,7 @@
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The console command is used to manage and perform tasks related to this framework.  This frameworks Command Line Interface (CLI) is based off of the Symfony Console component.  Check out Symfony's Console component [page](https://symfony.com/doc/current/console.html) for additional documentation.  
+The Chappy.php framework includes a built-in **command-line interface (CLI)** for managing routine development tasks such as generating files, running tests, seeding the database, and launching local servers.  Check out Symfony's Console component [page](https://symfony.com/doc/current/console.html) for additional documentation.  
 
 You can run a console command following the following syntax:
 
@@ -30,14 +36,32 @@ php console test:run-test Test
 Where Test is the name of the file containing the test. Typing php console in the command line at project root will display all of the available commands. Each of the supported commands will be covered in their respective sections in this user guide.
 
 If there is a command you would like for us to support you can submit an issue [here](https://github.com/chapmancbVCU/chappy-php-framework/issues).
+
 <br>
 
-## 2. Summary of Available Commands <a id="summary-of-available-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Below is a list of available commands. Most items in this list contains a link to the page that describes an individual command.  This list can be viewed in the terminal by typing ```php console``` under project root.
+## 2. When to Use the Console <a id="when-to-use"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The console is ideal for:
+- Generating boilerplate (models, controllers, views, etc.)
+- Running migrations and seeders
+- Executing unit tests
+- Serving the app locally (via PHP)
+- Creating custom tools for automation
+
+<br>
+
+## 3. Summary of Available Commands <a id="summary-of-available-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+You can list all available commands at any time by running:
+
+```sh
+php console
+```
+
+<br>
+
+### A. Generators <a id="generators"></a>
 
 | Command | Description |
 |:-------:|-------------|
-| log:clear | Deletes existing log file |
 | make:acl | Generates a new menu_acl json file |
 | make:command | Generates a new command class |
 | make:command-helper | Generates helper class that supports console commands |
@@ -51,18 +75,49 @@ Below is a list of available commands. Most items in this list contains a link t
 | make:test | Generates a new test class |
 | make:validator | Generates a new custom form validator class |
 | make:view | Create a new view |
+
+<br>
+
+### B. Migrations & Seeders <a id="migrations"></a>
+
+| Command | Description |
+|:-------:|-------------|
 | migrate | Runs a Database Migration |
 | migrate:drop-all | Drops all database tables |
 | migrate:refresh | Drops all tables and runs a Database Migration |
 | seed:run | Runs database seeders |
+
+<br>
+
+### C. Local Servers <a id="local-servers"></a>
+
+| Command | Description |
+|:-------:|-------------|
 | serve | Runs local PHP server without having to use Apache2 or Nginx |
 | serve:api | Locally serves API using built in PHP server |
 | serve:docs | Locally serves jekyll based user guide |
+
+<br>
+
+### D. Testing <a id="testing"></a>
+
+| Command | Description |
+|:-------:|-------------|
 | test | Performs a phpunit test |
+
+<br>
+
+### E. Tools <a id="tools"></a>
+
+| Command | Description |
+|:-------:|-------------|
+| log:clear | Deletes existing log file |
 | tools:mk-env | Creates the .env file |
 | tools:rm-profile-images | Removes all profile images |
 
-## 3. Building Your Own Command <a id="build-command"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+<br>
+
+## 4. Building Your Own Command <a id="build-command"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generating your own command is easy.  We will make a fake command called Foo as an example.  Simply run the following in your terminal under project root:
 
 ```sh
@@ -109,15 +164,16 @@ class FooCommand extends Command {
 ```
 
 Everything you need to build your own command is included in this file.  All relevant imports are listed at the top.  Each command you create contains two functions.  The configure function is where everything gets setup and the execute function performs actions associated with the command.
+
 <br>
 
-## 4. Command Helpers <a id="command-helpers"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Command Helpers <a id="command-helpers"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Since this framework is fully Object-Oriented you can generate helper files to modularize tasks that need to be used across multiple commands.  Helpers can be found at `app\Lib\Console\Helpers`.
 
 You can build your own command helper class by running the `make:command-helper` command.  Let's create a FooHelper class by running the following:
 
 ```sh
-php console make:helper Foo Helper
+php console make:helper FooHelper
 ```
 
 Once your run this command the file generated will look as follows:
@@ -136,9 +192,10 @@ class FooHelper {
 ```
 
 When adding function we usually create those that are static.  We rarely need to create a new instance of a helper class so a constructor is not included in the output.
+
 <br>
 
-## 5. Tools <a id="tools"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Tools <a id="tools"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Tools is a command helper class that contains functions that are commonly used with other commands.  To use the tools class simply used the following use statement:
 
 ```php
@@ -148,6 +205,7 @@ use Console\Helpers\Tools;
 
 ### A. border Function <a id="border">
 The border prints a dashed line.
+
 <br>
 
 ### B. info Function <a id="info">
@@ -199,6 +257,7 @@ The following text colors are supported:
 14. light-green
 15. light-blue
 16. light-magenta
+
 <br>
 
 ### C. writeFile Function <a id="write-file">
@@ -221,6 +280,8 @@ Since we need to name this file we grab the argument provided when running the c
 1. $path - Where the file will be written
 2. $content - The contents of the file to be created
 3. $name The name of the file, class, or other relevant information.
+
+Use `DS` instead of `/` or `\` for cross-platform compatibility.
 
 We return an integer to indicate success, invalid, or failure.
 
