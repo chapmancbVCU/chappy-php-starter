@@ -49,7 +49,7 @@ class FooController extends Controller {
      *
      * @return void
      */
-    public function onConstruct(): void{
+    public function onConstruct(): void {
         $this->view->setLayout('admin');
     }
 
