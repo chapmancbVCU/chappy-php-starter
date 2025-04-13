@@ -69,7 +69,7 @@ This function accepts 6 arguments as described below:
 4. $checked is used to set a value of checked for a checkbox. This value can be set upon reading information from a database or upon 5. failed form validation.
 5. $inputAttrs is an array and can be found in most function calls. We use this parameter to set values for attributes such as classes for styling, front-side validation, and event handlers. The default value is an empty array.
 6. $divAttrs is an array whose primary purpose is to add classes for styling the div that surrounds the input element. The default value is an empty array.
-7. $errors The errors array. Default value is an empty array.
+7. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
 
 <br>
 
@@ -87,7 +87,7 @@ This function accepts 6 arguments as described below:
 4. $checked is used to set a value of checked for a checkbox. This value can be set upon reading information from a database or upon 5. failed form validation.
 5. $inputAttrs is an array and can be found in most function calls. We use this parameter to set values for attributes such as classes for styling, front-side validation, and event handlers. The default value is an empty array.
 6. $divAttrs is an array whose primary purpose is to add classes for styling the div that surrounds the input element. The default value is an empty array.
-7. $errors The errors array. Default value is an empty array.
+7. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
 
 <br>
 
@@ -120,7 +120,7 @@ This function accepts 6 arguments as described below:
 The value we want to set. We can use this to set the value of the value attribute during form validation. Default value is the empty 3. string. It can be set with values during form validation and forms used for editing records.
 4. $inputAttrs The values used to set the class and other attributes of the input string. The default value is an empty array.
 5. $divAttrs The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
-6. $errors The errors array. Default value is an empty array.
+6. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
 
 <br>
 
@@ -169,7 +169,7 @@ This function accepts 7 arguments as described below:
 4. $value The value we want to set. We can use this to set the value of the value attribute during form validation. Default value is the empty string. It can be set with values during form validation and forms used for editing records.
 5. $inputAttrs The values used to set the class and other attributes of the input string. The default value is an empty array.
 6. $divAttrs The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
-7. $errors The errors array. Default value is an empty array.
+7. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
 
 <br>
 
@@ -222,7 +222,7 @@ This function accepts 7 arguments as described below:
 4. $inputAttrs The values used to set the class and other attributes of the input string.  The default value is an empty array.
 5. $options The list of options we will use to populate the select option dropdown.  The default value is an empty array.
 6. $divAttrs The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
-7. $errors The errors array.  Default value is an empty array.
+7. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
 
 <br>
 
@@ -271,7 +271,7 @@ This function accepts 8 arguments as described below:
 5. $inputAttrs	The values used to set the class and other attributes of the input string. The default value is an empty array.
 6. $divAttrs	The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
 7. $args	Arguments that influence which options are turned on.
-8. $errors	The errors array. Default value is an empty array.
+8. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
 
 <br>
 
@@ -288,4 +288,4 @@ This function accepts 6 arguments as described below:
 3. $value The value we want to set. We can use this to set the value of the value attribute during form validation. Default value is the empty string. It can be set with values during form validation and forms used for editing records.
 4. $inputAttrs	The values used to set the class and other attributes of the input string. The default value is an empty array.
 5. $divAttrs	The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
-6. $errors	The errors array. Default value is an empty array.
+6. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
