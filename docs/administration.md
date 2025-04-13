@@ -11,7 +11,7 @@
 8. [Account Status](#account-status)
 9. [Delete Account](#delete-account)
 10. [Manage Access Control Levels (ACLs)](#manage-acls)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

@@ -10,7 +10,7 @@
     * E. [Configure The View](#configure-view)
     * F. [Adding Pagination To View](#view)
 3. [Final View](#final-view)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

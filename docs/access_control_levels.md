@@ -7,7 +7,7 @@
 4. [Controllers and Views](#controllers-and-views)
 5. [Developer Checklist: Adding a New ACL Role](#checklist)
 6. [See Also](#see-also)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

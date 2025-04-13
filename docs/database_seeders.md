@@ -8,7 +8,7 @@
 5. [Running a Database Seeder](#running-seeder)
 6. [Image Seeding](#image-seeding)
 7. [Seeder Tips and Best Practices](#seeder-tips)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

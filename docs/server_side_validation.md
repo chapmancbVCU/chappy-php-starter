@@ -5,7 +5,7 @@
 2. [Setup](#setup)
 3. [Validation Rules](#validation-rules)
 4. [Custom Validators](#custom-validators)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

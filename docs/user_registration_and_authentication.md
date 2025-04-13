@@ -4,7 +4,7 @@
 1. [Overview](#overview)
 2. [Registration](#registration)
 3. [Login](#login)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

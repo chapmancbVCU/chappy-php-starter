@@ -4,7 +4,7 @@
 1. [Overview](#overview)
 2. [Getting Data From Controller](#controller)
 3. [Creating Views](#make-views)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

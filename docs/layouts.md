@@ -7,7 +7,7 @@
 4. [Setting Layout](#setting-layout)
 5. [Menus](#menus)
 6. [Menu ACLs](#menu-acls)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

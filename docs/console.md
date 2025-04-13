@@ -15,7 +15,7 @@
     * A. [border Function](#border)
     * B. [info Function](#info)
     * C. [writeFile Function](#write-file)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

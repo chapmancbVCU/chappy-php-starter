@@ -5,7 +5,6 @@
 2. [Directory Descriptions](#descriptions)
 
 <br>
-<br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This is the standard structure of a Chappy.php project. It follows a clean and modular layout to support MVC architecture, console commands, configuration, views, and static assets.

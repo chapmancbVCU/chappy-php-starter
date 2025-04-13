@@ -10,7 +10,7 @@
     * C. [Update - editAction](#update)  
     * D. [Delete - deleteAction](#delete)
 5. [Routing & View Rendering](#routing-and-views)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

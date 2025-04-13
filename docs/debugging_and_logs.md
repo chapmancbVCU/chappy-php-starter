@@ -5,7 +5,7 @@
 2. [filp/whoops](#whoops)
 3. [Log Files](#logs)
 4. [Helper Functions](#helpers)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

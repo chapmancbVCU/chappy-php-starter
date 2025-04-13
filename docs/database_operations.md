@@ -13,7 +13,7 @@
   * C. [Notes on Compatibility](#compatibility)
   * D. [Example Using Many Field Types](#example)
 5. [Tips and Common Pitfalls](#tips)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
