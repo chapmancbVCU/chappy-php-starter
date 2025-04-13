@@ -18,11 +18,12 @@
 15. [submitTag](#submittag)
 16. [telBlock](#telblock)
 17. [textAreaBlock](#textareablock)
-<br>
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The Rapid Forms feature of this Model View Controller (MVC) Framework allows the user to quickly create and style forms. This guide thoroughly describes the ability to create these HTML form elements along with a description and examples. All form inputs will automatically be sanitized and validation checks will be performed.  If you would like support for additional features please create an issue [here](https://github.com/chapmancbVCU/chappy-php-framework/issues).
+
 <br>
 
 ## 2. button <a id="button"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -36,6 +37,7 @@ This function creates a button with no surrounding HTML div element. It supports
 This function accepts 2 arguments as described below:
 1. $buttonText is used to set the text of the button.
 2. $inputAttrs is an array and can be found in most function calls. We use this parameter to set values for attributes such as classes for styling, front-side validation, and event handlers. Make sure when performing an event handler function call that contains strings as arguments to escape any quotes. The default value is an empty array.
+
 <br>
 
 ## 3. buttonBlock <a id="buttonBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -68,6 +70,7 @@ This function accepts 6 arguments as described below:
 5. $inputAttrs is an array and can be found in most function calls. We use this parameter to set values for attributes such as classes for styling, front-side validation, and event handlers. The default value is an empty array.
 6. $divAttrs is an array whose primary purpose is to add classes for styling the div that surrounds the input element. The default value is an empty array.
 7. $errors The errors array. Default value is an empty array.
+
 <br>
 
 ## 5. checkboxBlockLabelRight <a id="checkboxBlockLabelRight"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -85,10 +88,12 @@ This function accepts 6 arguments as described below:
 5. $inputAttrs is an array and can be found in most function calls. We use this parameter to set values for attributes such as classes for styling, front-side validation, and event handlers. The default value is an empty array.
 6. $divAttrs is an array whose primary purpose is to add classes for styling the div that surrounds the input element. The default value is an empty array.
 7. $errors The errors array. Default value is an empty array.
+
 <br>
 
 ## 6. csrfInput <a id="csrfInput"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a CRSF token as the value for an input of type hidden. The token is randomly generated and is used to verify if any tampering of any form has been performed. Use this function to assist in preventing CSRF attacks. The CRSF token is unique for every user session and is a sufficiently large string of random values.
+
 <br>
 
 ## 7. displayErrors <a id="displayErrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -98,6 +103,7 @@ The purpose of this function is to display errors related to validation. An exam
   <img src="assets/display-errors.png" alt="Display errors example">
   <p style="font-style: italic;">Figure 5 - Display errors example</p>
 </div>
+
 <br>
 
 ## 8. emailBlock <a id="emailBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -115,6 +121,7 @@ The value we want to set. We can use this to set the value of the value attribut
 4. $inputAttrs The values used to set the class and other attributes of the input string. The default value is an empty array.
 5. $divAttrs The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
 6. $errors The errors array. Default value is an empty array.
+
 <br>
 
 ## 9. hidden <a id="hidden"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -128,6 +135,7 @@ Generates a hidden element. An example function call is shown below in figure 7:
 This function accepts 2 arguments as described below:
 1. $name sets the value for the name, for, and id attributes.
 2. $value The value for the value attribute.
+
 <br>
 
 ## 10. inputBlock <a id="inputBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -162,6 +170,7 @@ This function accepts 7 arguments as described below:
 5. $inputAttrs The values used to set the class and other attributes of the input string. The default value is an empty array.
 6. $divAttrs The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
 7. $errors The errors array. Default value is an empty array.
+
 <br>
 
 ## 11. output <a id="output"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -196,6 +205,7 @@ The example code below demonstrates how a radio button groups is used.
 FormHelper::radioInput('HTML', 'html', 'fav_language', "HTML", $check1, ['class' => 'form-group mr-1']); 
 FormHelper::radioInput('CSS', 'css', 'fav_language', "CSS", $check2, ['class' => 'form-group mr-1']);
 ```
+
 <br>
 
 ## 13. selectBlock <a id="selectBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -212,15 +222,18 @@ This function accepts 7 arguments as described below:
 4. $inputAttrs The values used to set the class and other attributes of the input string.  The default value is an empty array.
 5. $options The list of options we will use to populate the select option dropdown.  The default value is an empty array.
 6. $divAttrs The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
-6. $errors The errors array.  Default value is an empty array.
+7. $errors The errors array.  Default value is an empty array.
+
 <br>
 
 ## 14. submitBlock <a id="submitBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a div containing an input of type submit.
+
 <br>
 
 ## 15. submitTag <a id="submitTag"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Create a input element of type submit.
+
 <br>
 
 ## 16. telBlock <a id="telBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -259,6 +272,7 @@ This function accepts 8 arguments as described below:
 6. $divAttrs	The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
 7. $args	Arguments that influence which options are turned on.
 8. $errors	The errors array. Default value is an empty array.
+
 <br>
 
 ## 17. textAreaBlock <a id="textAreaBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
