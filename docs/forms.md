@@ -96,7 +96,7 @@ Generates a CRSF token as the value for an input of type hidden. The token is ra
 
 <br>
 
-## 7. displayErrors <a id="displayErrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. displayErrors <a id="displayerrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The purpose of this function is to display errors related to validation. An example can be found in Figure 5.
 
 <div style="text-align: center;">
