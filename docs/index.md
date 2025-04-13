@@ -11,7 +11,7 @@ Get to any resource within the Chappy.php Wiki from here.
 6. [Debugging and Logs](debugging_and_logs)
 7. [Directory Structure](directory_structure)
 8. Forms
-    * A. [FormHelper Class](forms)
+    * A. [Form Helper Functions](forms)
     * B. [CSRF Protection](csrf)
     * C. [Input and Request Handling](input_and_request_handling)
 9. Getting Started
