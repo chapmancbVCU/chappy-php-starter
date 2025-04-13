@@ -23,7 +23,7 @@
     * K. [timeStamps](#timestamps)
     * L. [Validation](#validation)
     * M. [Model Summary](#model-summary)
-
+4. [Joins](#joins)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -427,3 +427,75 @@ Validation must be defined in the `validator()` method. `save()` will not procee
 | `timeStamps()` | Sets created/updated timestamps |
 | `validator()` | Runs before save to validate form data |
 | `getColumnsForSave()` | Returns associative array of DB fields |
+
+<br>
+
+## 4. Joins <a id="joins"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+🔍 Understanding $conditions vs. Raw SQL
+
+This framework allows complex SQL queries to be expressed as a structured $conditions array, which is internally parsed and converted into raw SQL by the DB class. Here's how each part of the $conditions array translates into SQL:
+
+
+<br>
+
+🧱 $conditions Array
+```php
+$conditions = [
+    'columns' => 'products.*, 
+                  ANY_VALUE(pi.url) AS url, 
+                  ANY_VALUE(brands.name) AS brand',
+    'joins' => [
+        ['product_images', 'products.id = pi.product_id', 'pi'],
+        ['brands', 'products.brand_id = brands.id']
+    ],
+    'conditions' => 'products.featured = 1 AND products.deleted = 0 AND pi.sort = 0',
+    'group' => 'products.id'
+];
+return self::find($conditions);
+```
+
+ <br>
+
+🧾 Equivalent Raw SQL
+```php
+$sql = "
+    SELECT 
+        products.*, 
+        ANY_VALUE(pi.url) AS url, 
+        ANY_VALUE(brands.name) AS brand
+    FROM products
+    INNER JOIN product_images pi ON products.id = pi.product_id
+    INNER JOIN brands ON products.brand_id = brands.id
+    WHERE products.featured = 1 
+      AND products.deleted = 0 
+      AND pi.sort = 0
+    GROUP BY products.id
+";
+return $this->query($sql)->results();
+```
+
+<br>
+
+🧩 Mapping Breakdown
+
+| `$conditions`key | SQL Component |
+|:-------:|-------------|
+| `'columns'` | `SELECT products.id, products.name, ...` |
+| `'joins'` | `INNER JOIN product_images pi ... INNER JOIN brands ...` |
+| `'conditions'` | `WHERE products.featured = 1 AND ...` |
+| `'group'` | `GROUP BY products.id` |
+
+<br>
+
+✅ Why Use `$conditions`?
+- Cleaner code: Easier to read and modify than raw SQL.
+- Safer queries: Auto-handles quoting and condition logic.
+- Dynamic behavior: Can be reused in models and passed around as arrays.
+
+<br>
+
+🧠 Notes for Developers
+The `'joins'` array uses the format:
+- `['table_name', 'join_condition', 'alias', 'join_type (optional)']` If `join_type` is omitted, it defaults to `INNER JOIN`.
+- The `columns`, `conditions`, and `group` fields are used directly in the generated SQL string.
+- The framework's `DB::_read()` method builds the final SQL using these parameters — including the `GROUP BY` clause (now that you've added it).
