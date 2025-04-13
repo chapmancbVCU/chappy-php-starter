@@ -92,7 +92,7 @@ This function accepts 6 arguments as described below:
 <br>
 
 ## 6. csrfInput <a id="csrfInput"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Generates a CRSF token as the value for an input of type hidden. The token is randomly generated and is used to verify if any tampering of any form has been performed. Use this function to assist in preventing CSRF attacks. The CRSF token is unique for every user session and is a sufficiently large string of random values.
+Generates a CRSF token as the value for an input of type hidden. The token is randomly generated and is used to verify if any tampering of any form has been performed. Use this function to assist in preventing CSRF attacks. The CSRF token is unique for every user session and is a sufficiently large string of random values.
 
 <br>
 
