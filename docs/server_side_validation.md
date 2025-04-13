@@ -6,6 +6,8 @@
 3. [Validation Rules](#validation-rules)
 4. [Custom Validators](#custom-validators)
 5. [Composite Field Validation](#composite-field-validation)
+6. [Why Front-End Validation Matters](#front-end)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -198,3 +200,41 @@ SELECT * FROM brands
 - If a record matches all fields, validation fails and the error message is shown.
 
 This feature enables unique validation within scope, like unique brand names per user, while respecting soft-deletion.
+
+<br>
+
+## 6. Why Front-End Validation Matters <a id="front-end"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+While server-side validation is essential for application security and enforcing business rules, front-end validation enhances the user experience by providing instant feedback. Common examples include:
+- Realtime password match checks
+- Enforcing required fields before submission
+- Format validation (e.g., email, phone numbers)
+
+This framework includes JavaScript tools (see the [JavaScript and Vite section](javascript)) that support these features. For production-ready apps, always use both front-end and server-side validation together.
+
+To include attributes for HTML5-based validation, use the `$inputAttrs` array in the form helper functions:
+```php
+FormHelper::inputBlock('text', 'State', 'state', $this->contact->state, [
+    'class' => 'form-control',
+    'pattern' => '[A-Z]*',
+    'placeholder' => 'ex: VA'
+], ['class' => 'form-group col-md-3'], $this->displayErrors);
+```
+
+In this case:
+- `pattern` enforces all-uppercase state abbreviations
+- `placeholder` gives users an example
+
+Another example for ZIP code:
+```php
+FormHelper::inputBlock('text', 'Zip', 'zip', $this->contact->zip, [
+    'class' => 'form-control',
+    'pattern' => '[0-9]*',
+    'placeholder' => 'ex: 90210'
+], ['class' => 'form-group col-md-4'], $this->displayErrors);
+```
+
+JavaScript enhancements like phone formatting are injected automatically using:
+
+```php
+<script src="<?=Env::get('APP_DOMAIN', '/')?>resources/js/frontEndPhoneNumberValidate.js"></script>
+```
