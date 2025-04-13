@@ -7,7 +7,7 @@
 4. [checkboxBlockLabelLeft](#checkboxBlockLabelLeft)
 5. [checkboxBlockLabelRight](#checkboxblocklabelright)
 6. [csrfInput](#csrfinput)
-7. [displayError](#displayerrors)
+7. [displayErrors](#displayerrors)
 8. [emailBlock](#emailblock)
 9. [hidden](#hidden)
 10. [inputBlock](#inputblock)
