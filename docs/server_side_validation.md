@@ -5,26 +5,29 @@
 2. [Setup](#setup)
 3. [Validation Rules](#validation-rules)
 4. [Custom Validators](#custom-validators)
-
+5. [Composite Field Validation](#composite-field-validation)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Server side validation supports the frameworks ability to check if values for an input field on a form meet specific requirements. The most commonly used check is required. A list of supported checks is shown below:
-1. Email - checks if string is in valid email format.
-2. Lower Character - Checks if a string contains at least 1 lower case character.
-3. Matches - Used to check if two separate values match. Used when setting up password.
-4. Max - Ensures value does not exceed maximum input size. (Requires rule - integer)
-5. Min - Ensures value exceeds minimum input size. (Requires rule - integer)
-6. Number - Checks if a string contains at least 1 numeric character
-7. Numeric - Ensures value is a numeric character
-8. Required - Ensures required value is entered into form
-9. Special - Checks if a string contains at least 1 special character that is not a space
-10. Unique - Checks database on form submit and verifies a value is unique (ex: user name)
-11. Upper Character - Checks if a string contains at least 1 upper case character.
+
+| Validator | Description |
+|:---------:|-------------|
+| `Email` | Validates that input is in a valid email format |
+| `LowerCharacter` | Requires at least one lowercase letter |
+| `Matches` | Confirms two fields match (e.g., password + confirm password) |
+| `Max` | Enforces maximum length/value (`rule` is required) | 
+| `Min` | Enforces minimum length/value (`rule` is required) |
+| `Number` | Requires at least one digit |
+| `Numeric` | Ensures input contains only numeric characters |
+| `Required` | Field must not be empty |
+| `Special` | Requires at least one special (non-space) character |
+| `Unique` | Ensures value is unique in the database |
+| `UpperCharacter` | Requires at least one uppercase letter |
+
 <br>
 
 ## 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Let's use the addAction function from an example ContactsController class. As shown below on line 32, we have a displayErrors property for the View class. We generally set this value to a function call called getErrorMessages on the model. In this case, we are using the $contacts model because we want to add a new contact.
+Use the `validator()` method in your model and call it automatically when save() is invoked.  Let's use the addAction function from an example ContactsController class. As shown below on line 32, we have a displayErrors property for the View class. We generally set this value to a function call called getErrorMessages on the model. In this case, we are using the $contacts model because we want to add a new contact.
 
 <div style="text-align: center;">
   <img src="assets/add-action.png" alt="Controller side setup">
@@ -32,8 +35,8 @@ Let's use the addAction function from an example ContactsController class. As sh
 </div>
 
 In the form you have two ways display errors:
-1. At the very top after the opening form tag.
-2. As an optional parameter in a function call to the FormHelper class for an input.
+1. At the top of the form (general errors).  Laravel calls this the error bag.
+2. Inline with input elements (specific field errors).
 
 The form setup is shown below in figure 2.
 
@@ -53,7 +56,8 @@ The result of submitting a form without entering required input is shown below. 
 <br>
 
 ## 3. Validation Rules <a id="validation-rules"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-First step is to create a validator function in your model class. The structure looks as follows:
+**Validator Method**
+Each model defines its own validator() method:
 
 ```php
 public function validator(): void {
@@ -63,31 +67,66 @@ public function validator(): void {
 
 You can easily create a model with this function already created from the console by running the following command:
 
-```php console make:model ${Modelname}```
+```sh
+php console make:model ${Modelname}
+```
 
+<br>
+
+**Individual Rule Example**
 Let's use the MaxValidator for the First Name field in the Contacts model as an example:
 
 ```php
-$this->runValidation(new MaxValidator($this, ['field' => 'fname', 'rule' => 150, 'message' => 'First name must be less than 150 characters.']));
+$this->runValidation(new MaxValidator( $this, [
+  'field' => 'fname', 
+  'rule' => 150, 'message' => 'First name must be less than 150 characters.'
+]));
 ```
 
-The function call requires two parameters. The $this keyword and an associative array. Within the associative array you need to define the field, sometimes rule, and a message. Let's look at the field. Notice that it is a key value pair whose value is the database field or model class' instance variable called fname. The rule is similar and you can adjust the rule based on how you define this field in the database. Finally, the message key value pair is used to set the the language displayed to the user when validation fails. Within reason, industry standards always recommend utilizing both front end and server side validation.
+Parameters:
+- `field`: model property (must exist in the class)
+- `rule`: validator-specific value (e.g., max length)
+- `message`: error shown to the user
 
+<br>
+
+**Looping Through Fields**
 You can also group several fields together and iterate through them with a foreach loop:
 
 ```php
-$requiredFields = ['fname' => 'First Name', 'lname' => 'Last Name', 
-    'address' => 'Address', 'city' => 'City', 'state' => 'State', 
-    'zip' => 'Zip', 'email' => 'Email'];
+$requiredFields = [
+  'fname' => 'First Name', 
+  'lname' => 'Last Name', 
+  'address' => 'Address', 
+  'city' => 'City', 
+  'state' => 'State', 
+  'zip' => 'Zip', 
+  'email' => 'Email'
+];
 
 foreach($requiredFields as $field => $display) {
-    $this->runValidation(new RequiredValidator($this,['field'=>$field,'message'=>$display." is required."]));
+    $this->runValidation(new RequiredValidator($this,[
+      'field'=>$field,
+      'message'=>$display." is required."
+    ]));
 }
 ```
 
 This method requires a second associative array that contains the instance variables for your model mapped to a string that matches the label on your form. Then you iterate this array through a foreach loop where you create a new instance for the validator object you want to use.
 
 <br>
+
+**Include Soft-Deleted Records**
+Some validators like `UniqueValidator` accept an optional `includeDeleted` flag:
+```php
+$this->runValidation(new UniqueValidator($this, [
+    'field' => 'username',
+    'message' => 'This username already exists.',
+    'includeDeleted' => true
+]));
+```
+
+
 
 ## 4. Custom Validators <a id="custom-validators"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 You can create your own custom form validators with the following command:
@@ -117,4 +156,45 @@ class TestValidator extends CustomValidator {
 }
 ```
 
-The validator files are simple and always implement the abstract function runValidation from the CustomValidator class.  It is a requirement that this function returns a bool value.
+- Must implement runValidation()
+- Must return true or false
+- Will be automatically executed by your model’s save() method
+
+**CustomValidator Base Class Highlights**
+- Ensures `field` and `message` are provided
+- Supports `rule` and `includeDeleted` as optional parameters
+- Automatically populates `$success` based on result of `runValidation()`
+- Throws descriptive errors if setup is incorrect
+
+<br>
+
+## 5. Composite Field Validation <a id="composite-field-validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The Chappy.php framework supports composite validation rules — where more than one field is used to determine uniqueness. This is useful for soft-deleted records or user-specific data.
+
+**Example:**
+```php
+public function validator(): void {
+    $this->runValidation(new Required($this, [
+      'field' => 'name', 
+      'message' => 'Brand name is required.'
+    ]));
+    
+    // Ensure brand name is unique per user where the brand is not soft-deleted (deleted = 0).
+    $this->runValidation(new Unique($this, [
+      'field' => ['name', 'user_id', 'deleted'], 
+      'message' => 'That brand already exists.'
+    ]));
+}
+```
+
+**How it works:**
+- The Unique validator detects when field is an array.
+- Internally, the first field becomes the primary field (name) and the others are used as additional constraints (user_id, deleted).
+- This produces a query like:
+```sql
+SELECT * FROM brands 
+  WHERE name = :name AND user_id = :user_id AND deleted = :deleted
+```
+- If a record matches all fields, validation fails and the error message is shown.
+
+This feature enables unique validation within scope, like unique brand names per user, while respecting soft-deletion.
