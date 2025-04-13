@@ -13,11 +13,13 @@
 10. [inputBlock](#inputblock)
 11. [output](#output)
 12. [radioInput](#radioinput)
-13. [selectBlock](#selectblock)
-14. [submitBlock](#submitblock)
-15. [submitTag](#submittag)
-16. [telBlock](#telblock)
-17. [textAreaBlock](#textareablock)
+13. [posted_values()](#posted-values)
+14. [selectBlock](#selectblock)
+15. [stringifyAttrs()](#stringify-attrs)
+16. [submitBlock](#submitblock)
+17. [submitTag](#submittag)
+18. [telBlock](#telblock)
+19. [textAreaBlock](#textareablock)
 
 <br>
 
@@ -208,7 +210,15 @@ FormHelper::radioInput('CSS', 'css', 'fav_language', "CSS", $check2, ['class' =>
 
 <br>
 
-## 13. selectBlock <a id="selectBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 13. posted_values() <a id="posted-values"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Sanitizes values from $_POST input arrays to prevent malicious script injection.
+```php
+$post = FormHelper::posted_values($_POST);
+```
+
+<br>
+
+## 14. selectBlock <a id="selectBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Renders a select element with a list of options.  An example function call is shown below in figure 11: 
 <div style="text-align: center;">
   <img src="assets/select-block.png" alt="Select block function call">
@@ -226,17 +236,47 @@ This function accepts 7 arguments as described below:
 
 <br>
 
-## 14. submitBlock <a id="submitBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 15. stringifyAttrs() <a id="stringify-attrs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The `stringifyAttrs` function is a utility method used internally by other `FormHelper` functions. Its purpose is to convert an associative array of HTML attributes into a properly formatted string that can be directly inserted into an HTML tag. This makes it easier to dynamically construct form fields with customizable attributes such as `class`, `id`, `placeholder`, and event listeners.
+
+While this function is typically used by the framework internally, understanding it can help when extending or customizing form rendering.
+
+**Example Usage**
+```php
+$attrs = [
+  'class' => 'form-control',
+  'placeholder' => 'Enter your name',
+  'onfocus' => "this.select()"
+];
+
+echo FormHelper::stringifyAttrs($attrs);
+```
+
+**Output**
+```php
+ class="form-control" placeholder="Enter your name" onfocus="this.select()"
+```
+
+As shown, the function iterates over the array and produces a valid string of HTML attributes with proper spacing. This string is then injected into tag constructors like `<input>`, `<select>`, `<textarea`>, or `<button>` elements.
+
+**When You Might Use This**
+-Creating your own custom form rendering methods.
+- Passing additional attributes dynamically through controller logic.
+- Building reusable components that take optional HTML attributes
+
+<br>
+
+## 16. submitBlock <a id="submitBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a div containing an input of type submit.
 
 <br>
 
-## 15. submitTag <a id="submitTag"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 17. submitTag <a id="submitTag"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Create a input element of type submit.
 
 <br>
 
-## 16. telBlock <a id="telblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 18. telBlock <a id="telblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Renders an HTML div element that surrounds an input of type tel. The user is able to enter cell, home, and work as phone types. Certain options can be set using the args parameter.
 
 Option parameters that are supported:
@@ -275,7 +315,7 @@ This function accepts 8 arguments as described below:
 
 <br>
 
-## 17. textAreaBlock <a id="textAreaBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 19. textAreaBlock <a id="textAreaBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Assists in the development of textarea in forms. It accepts parameters for setting attribute tags in the form section.  An example function call is shown below in figure 12:
 <div style="text-align: center;">
   <img src="assets/text-area-block.png" alt="TextArea block function call">
