@@ -55,7 +55,7 @@ This function accepts 3 arguments as described below:
 <br>
 
 ## 4. checkboxBlockLabelLeft <a id="checkboxBlockLabelLeft"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Generates a checkbox where the label is on the left side. It generates a div element that surrounds a label and input of type checkbox. This is idea for situations where labels can be of varying lengths. An example function call is shown below in Figure 3.
+Generates a checkbox where the label is on the left side. It generates a div element that surrounds a label and input of type checkbox. This is ideal for situations where labels can be of varying lengths. An example function call is shown below in Figure 3.
 
 <div style="text-align: center;">
   <img src="assets/checkbox-left-label-function-call.png" alt="Example checkboxBlockLabelLeft function call">
@@ -74,7 +74,7 @@ This function accepts 6 arguments as described below:
 <br>
 
 ## 5. checkboxBlockLabelRight <a id="checkboxBlockLabelRight"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Generates a checkbox where the label is on the left side. It generates a div element that surrounds a label and input of type checkbox. An example function call from the login view is shown below in Figure 4.
+Generates a checkbox where the label is on the right side. It generates a div element that surrounds a label and input of type checkbox. An example function call from the login view is shown below in Figure 4.
 <div style="text-align: center;">
   <img src="assets/checkbox-right-label-function-call.png" alt="Example checkboxBlockLabelRight function call">
   <p style="font-style: italic;">Figure 4 - Example checkboxBlockLabelRight function call</p>
@@ -236,7 +236,7 @@ Create a input element of type submit.
 
 <br>
 
-## 16. telBlock <a id="telBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 16. telBlock <a id="telblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Renders an HTML div element that surrounds an input of type tel. The user is able to enter cell, home, and work as phone types. Certain options can be set using the args parameter.
 
 Option parameters that are supported:
