@@ -31,7 +31,6 @@ For example:
 | `/user/profile/42`     | `UserController::profile(42)`            |
 | `/auth/login`          | `AuthController::login()`                |
 
-If no URL is provided (e.g., `/`), the framework defaults to:
 ```
 
 If the URL is `/`, it defaults to:

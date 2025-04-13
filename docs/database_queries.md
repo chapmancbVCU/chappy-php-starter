@@ -208,7 +208,7 @@ Many of these functions have their equivalent wrapper functions that will be des
 
 <br>
 
-## 2. Using Models <a id="models"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Using Models <a id="models"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 We will go over using the model class for updating the database.  Each function will be discussed in the following sections.
 
 <br>
