@@ -1,4 +1,4 @@
-<h1 style="font-size: 50px; text-align: center;">Java Script and Vite</h1>
+<h1 style="font-size: 50px; text-align: center;">JavaScript and Vite</h1>
 
 ## Table of contents
 1. [Overview](#overview)
@@ -8,17 +8,46 @@
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This framework comes with some built in JavaScrip files to support basic tasks as described below:
-1. Front end password match validation
-2. Phone number format validation
-3. TinyMCE support.
+This framework includes first-class JavaScript support using [Vite](https://vitejs.dev/), enabling you to write modular, modern JavaScript while enjoying fast development builds and efficient production asset bundling.
 
-These scripts can be imported into any view that needs these features.  They can be found at resources/js.
+The `resources/js` directory includes helpful built-in utilities and serves as your starting point for writing and organizing all JavaScript logic.
+
+Common use cases already supported include:
+- ✅ Front-end password confirmation validation  
+- ✅ Phone number formatting helpers  
+- ✅ TinyMCE rich text editor configuration
+
+These can be imported directly in `app.js` or included via your views.
 
 <br>
 
 ## 2. app.js <a id="app_js"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Additional JavaScript features can also be included in this framework.  The entry point for additional JavaScript can be found at resources/js/app.js
+The entry point for your custom JavaScript is located at:
+- resources/js/app.js
+
+Use this file to:
+- Import utility functions or packages
+- Initialize form validation
+- Configure TinyMCE
+- Write view-specific scripts (e.g., document ready)
+
+### ✳️ Example
+```js
+import './phoneFormat.js';
+import './passwordMatch.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('App.js loaded');
+
+  // Example: Hook into a custom button
+  const button = document.querySelector('#myButton');
+  if (button) {
+    button.addEventListener('click', () => alert('Clicked!'));
+  }
+});
+```
+
+You can split your code into modules and import them here. Vite will compile it all into a single optimized bundle.
 
 <br>
 
