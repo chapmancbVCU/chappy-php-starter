@@ -16,7 +16,7 @@ use Core\Lib\Utilities\Env;
     'default_layout' => Env::get('DEFAULT_LAYOUT') ?? 'main', // Default layout if not set in controller
 
     'app_domain' => Env::get('APP_DOMAIN') ?? '/', // Set this to '/' for a live server
-    'version' => '1.0.31',
+    'version' => '1.0.32',
     'site_title' => Env::get('SITE_TITLE') ?? 'My App', // Default site title if not set
     'menu_brand' => Env::get('MENU_BRAND') ?? 'My Brand', // Branding for menu
 
