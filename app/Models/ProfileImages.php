@@ -38,17 +38,16 @@ class ProfileImages extends Model {
      */
     public static function deleteById($id) {
         $image = self::findById($id);
-        $sort = $image->sort;
-        $afterImages = self::find([
-            'conditions' => 'user_id = ? and sort > ?',
-            'bind' => [$image->user_id, $sort]
-        ]);
-        foreach($afterImages as $af) {
-            $af->sort = $af->sort - 1;
-            $af->save();
+        $deleted = false;
+        if($image) {
+            $user_id = $image->user_id;
+            unlink(ROOT.DS.self::$_uploadPath.$image->user_id.DS.$image->name);
+            $deleted = $image->delete();
+            if($deleted) {
+                self::updateSortByUserId($user_id);
+            }
         }
-        unlink(ROOT.DS.self::$_uploadPath.$image->user_id.DS.$image->name);
-        return $image->delete();
+        return $deleted;
     }
     
     /**
