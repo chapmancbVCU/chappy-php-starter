@@ -141,7 +141,7 @@
             "dist": {
                 "type": "path",
                 "url": "../chappy-php-framework",
-                "reference": "aa8d37c80385262cc99f95c0810f9a05d0bc25c4"
+                "reference": "fed636e88650df73a35b8e7ff10c97b761ad9c5f"
             },
             "require": {
                 "doctrine/inflector": "^2.0",
