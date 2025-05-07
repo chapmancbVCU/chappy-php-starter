@@ -62,10 +62,16 @@ Once the migration has been complete the new table will now be accessible in you
 First we create a new model file.
 
 ```sh
-php console make:model ProfileImages
+php console make:model ProfileImages --upload
 ```
 
-The new model file will be created at `app/models/`.  You will need to add instance variables for any database fields and set them to public.  We also need to add protected static instance variables for allowed file types, maximum file size, and upload path.  Finally, set the $_table variable to match the name of the table you just created.  Since profile images are associated with a user we also added a $user_id instance variable to this class to match what we have in the migration file.  The final list of instance variables is shown below:
+The new model file will be created at `app/Models/`.  You will need to add instance variables for any database fields and set them to public.  The template file will contain these variables:
+- `$allowedFileType` - An array you will set with allowable file types
+- `$maxAllowedFileSize` - The max file size with default set to 5 MB.
+
+This class contains getter functions for both variables that should **not** be removed.  A template uploadFile function is supplied for upload implementation.
+
+Finally, set the $_table variable to match the name of the table you just created.  Since profile images are associated with a user we also added a $user_id instance variable to this class to match what we have in the migration file.  The final list of instance variables is shown below:
 
 ```php
 protected static $allowedFileTypes = [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG];
@@ -81,7 +87,7 @@ public $url;
 public $user_id;
 ```
 
-Finally, create a function to perform the upload.  An example is shown below:
+Finally, implement the function to perform the upload.  An example is shown below:
 
 ```php
 /**
@@ -93,7 +99,7 @@ Finally, create a function to perform the upload.  An example is shown below:
  * upload.
  * @return void
  */
-public static function uploadProfileImage($user_id, $uploads) {
+public static function uploadFile($user_id, $uploads) {
     $lastImage = self::findFirst([
         'conditions' => "user_id = ?",
         'bind' => [$user_id],
