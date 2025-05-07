@@ -27,6 +27,8 @@ This framework supports models for interacting with a database. Whenever you cre
 php console make:model Foo
 ```
 
+For models responsible for uploads add the `--upload` flag.  More about this feature in the [Uploads](#uploads) section.
+
 Remember, models are classes and the first letter in the model's name needs to be upper case. After you run the command a new model file will be generated under `app/models`. The make:model command will guess what the name of your table is so be sure to double check the $table variable's value is correct. The output file for the command with modifications tailored to the foo table described above is shown below:
 
 ```php
