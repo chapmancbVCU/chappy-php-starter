@@ -13,6 +13,15 @@
   * C. [Notes on Compatibility](#compatibility)
   * D. [Example Using Many Field Types](#example)
 5. [Tips and Common Pitfalls](#tips)
+6. [DB Class REference](#db-class)
+  * A. [getInstance](#get-instance)
+  * B. [getPDO](#get-pdo)
+  * C. [query](#query-method)
+  * D. [groupByColumn](#groupby-column)
+  * E. [results and first](#results-first)
+  * F. [count and lastID](#count-lastid)
+  * G. [find, findFirst, and findTotal](#find-methods)
+  * H. [valueExistsInColumn](#value-exists)
 
 <br>
 
@@ -274,3 +283,81 @@ Schema::create('products', function(Blueprint $table) {
 🐘 **SQLite** ignores unsupported column modifiers silently.
 🧪 Always verify your migrations using a database viewer like phpMyAdmin or SQLiteBrowser.
 📄 Log messages in the CLI will show `SUCCESS: Adding Column..`. or `SUCCESS: Creating Table....`
+
+<br>
+
+## 6. DB Class Reference <a id="db-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">Table of Contents</span>
+The `DB` class in Chappy.php is a singleton-based database utility that wraps PDO functionality and adds query building, logging, and utility helpers.
+
+### A. 🔁 `getInstance()` <a id="get-instance"></a>
+```php
+DB::getInstance(): DB
+```
+
+Returns a singleton instance of the DB class. Used to initiate or access the shared database connection.
+
+**Example:**
+```php
+$db = DB::getInstance();
+```
+
+<br>
+
+### B. 🔗 `getPDO()` <a id="get-pdo"></a>
+```php
+getPDO(): PDO
+```
+
+Returns the raw PDO instance. Useful for advanced operations or custom queries not handled by the built-in query method.
+
+**Example**
+```php
+$dbDriver = DB::getInstance()->getPDO()->getAttribute(\PDO::ATTR_DRIVER_NAME);
+```
+Here we chain the getPDO function to getInstance.  Then we chain the getAttribute function to getPDO to retrieve the name of the current DB driver.
+
+<br>
+
+### C. 🧱 `query($sql, $params = [], $class = false)` <a id="query-method"></a>
+Prepares, binds, and executes a SQL query.
+
+Parameters:
+- `$sql` - Raw SQL string
+- `$params` - Array of bound values
+- `$class` - Optional class name to map results
+
+Returns: `DB` instance with result data loaded
+
+<br>
+
+### D. 🔄 `groupByColumn($column)` <a id="groupby-column"></a>
+Formats a column name for use in a `GROUP BY` clause. On MySQL or MariaDB, wraps the column in `ANY_VALUE()` to prevent `ONLY_FULL_GROUP_BY` errors.
+
+Example:
+```php
+$col = DB::groupByColumn('users.name');
+```
+
+<br>
+
+### E. 📋 `results()` and `first()` <a id="results-first"></a>
+- `results()` — Returns all rows from the last query
+- `first()` — Returns only the first row of the last query
+
+<br>
+
+### F. 🔢 `count()` and `lastID()` <a id="count-lastid"></a>
+- `count()` — Number of rows affected or returned by the last query
+- `lastID()` — Returns the ID from the last INSERT operation
+
+<br>
+
+### G. 🔍 `find()`, `findFirst()`, and `findTotal()` <a id="find-methods"></a>
+- `find()` — Runs a flexible SELECT query
+- `findFirst()` — Same as `find()`, but returns only the first result
+- `findTotal()` — Returns a count for the specified table and conditions
+
+<br>
+
+### H. 🧪 `valueExistsInColumn()` <a id="value-exists"></a>
+Checks if a value exists inside a JSON or string column. Compatible with both MySQL (uses `JSON_CONTAINS`) and SQLite (uses `LIKE`).
