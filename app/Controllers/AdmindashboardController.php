@@ -42,11 +42,15 @@ class AdmindashboardController extends Controller {
      */
     public function deleteAction(int $id): void {
         $user = Users::findById((int)$id);
-        if($user && $user->acl != '["Admin"]') {
-            $user->delete();
-            Session::addMessage('success', 'User has been deleted.');
-        } else {
-            Session::addMessage('danger', 'Cannot delete Admin user!');
+
+        if($this->request->isPost()) {
+            $this->request->csrfCheck();
+            if($user && $user->acl != '["Admin"]') {
+                $user->delete();
+                Session::addMessage('success', 'User has been deleted.');
+            } else {
+                Session::addMessage('danger', 'Cannot delete Admin user!');
+            }
         }
         Router::redirect('admindashboard');
     }

@@ -1,4 +1,7 @@
-<?php use Core\Lib\Utilities\DateTime; ?>
+<?php
+
+use Core\FormHelper;
+use Core\Lib\Utilities\DateTime; ?>
 <?php use Core\Lib\Utilities\Env; ?>
 <?php $this->setSiteTitle($this->user->username . " Details"); ?>
 <?php $this->start('body'); ?>
@@ -78,9 +81,14 @@
         <a href="<?=Env::get('APP_DOMAIN', '/')?>admindashboard/setStatus/<?=$this->user->id?>" class="btn btn-primary btn-sm mb-5 mt-2 w-100 text-left">
             <i class="fa fa-unlock"></i> Set Account Status
         </a>
-        <a href="<?=Env::get('APP_DOMAIN', '/')?>admindashboard/delete/<?=$this->user->id?>" class="btn btn-danger btn-sm mt-5 w-100 text-left" onclick="if(!confirm('Are you sure?')){return false;}">
-            <i class="fa fa-trash"></i> Delete
-        </a>
+        <form method="POST"
+            action="<?=Env::get('APP_DOMAIN')?>admindashboard/delete/<?=$this->user->id?>"
+            onsubmit="return confirm('Are you sure you want to delete the following user? <?=$this->user->username?>')">
+            <?= FormHelper::csrfInput() ?>
+            <button type="submit" class="btn btn-danger btn-sm mt-5 w-100 text-left">
+                <i class="fa fa-trash"></i> Delete
+            </button>
+        </form>
     </div>
 </div>
 
