@@ -8,7 +8,7 @@
   * B. [Updating an Existing Table](#updating-an-existing-table)  
   * C. [Dropping a Table](#dropping-a-table)  
   * D. [Migrations With Raw SQL Queries](#sql)
-4. [Supported Field Types & Modifiers](#field-types)
+4. [Supported Field Types & Modifiers for Migrations](#field-types)
   * A. [Field Types](#types)
   * B. [Column Modifiers](#modifiers)
   * C. [Notes on Compatibility](#compatibility)
@@ -225,7 +225,7 @@ As shown above, create your SQL statement and then chain the `query` function to
 
 <br>
 
-## 4. Supported Field Types & Modifiers <a id="field-types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Supported Field Types & Modifiers for Migrations <a id="field-types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Chappy.php’s migration system includes a flexible schema builder via the Blueprint class. It supports most standard SQL column types, modifiers, and constraints across both MySQL and SQLite databases. The table below outlines supported fields and how to define them.
 
 <br>
