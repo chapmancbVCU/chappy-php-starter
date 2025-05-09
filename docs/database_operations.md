@@ -1,4 +1,4 @@
-<h1 style="font-size: 50px; text-align: center;">Database Operations</h1>
+<h1 style="font-size: 50px; text-align: center;">Database Migrations and Operations</h1>
 
 ## Table of contents
 1. [Overview](#overview)
