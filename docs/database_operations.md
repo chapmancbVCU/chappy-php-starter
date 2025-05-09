@@ -7,13 +7,14 @@
   * A. [Creating a New Table](#creating-a-new-table)  
   * B. [Updating an Existing Table](#updating-an-existing-table)  
   * C. [Dropping a Table](#dropping-a-table)  
+  * D. [Migrations With Raw SQL Queries](#sql)
 4. [Supported Field Types & Modifiers](#field-types)
   * A. [Field Types](#types)
   * B. [Column Modifiers](#modifiers)
   * C. [Notes on Compatibility](#compatibility)
   * D. [Example Using Many Field Types](#example)
 5. [Tips and Common Pitfalls](#tips)
-6. [DB Class REference](#db-class)
+6. [DB Class Reference](#db-class)
   * A. [getInstance](#get-instance)
   * B. [getPDO](#get-pdo)
   * C. [query](#query-method)
@@ -206,6 +207,21 @@ Schema::dropIfExists('foo');
 ```
 
 This is automatically included in your migrations class.
+
+<br>
+
+### D. Migrations With Raw SQL Queries <a id="sql"></a>
+You are able to perform raw SQL queries within a migration.  You can create or update a table and then use SQL queries to add values.  This is useful if your database table already has data.
+
+**Example:**
+```php
+public function up(): void {
+    $sql = "UPDATE products SET `has_options` = 0, `inventory` = 0";
+    DB::getInstance()->query($sql);
+}
+```
+
+As shown above, create your SQL statement and then chain the `query` function to a static call to the `getInstance` variable.  You can also do this after a call to the `Schema::create` or `Schema::table` static function calls.
 
 <br>
 
