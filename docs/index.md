@@ -20,7 +20,7 @@ Get to any resource within the Chappy.php Wiki from here.
     * C. [LEMP Stack](lemp)
     * D. [MacOS](macos)
     * E. [Windows](windows)
-10. [Core Helper Class](helpers)
+10. [Helper Class](helpers)
 11. [JavaScript and Vite](javascript)
 12. [Models](models)
 13. [Routing](routing)
