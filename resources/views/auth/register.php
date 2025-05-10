@@ -17,20 +17,17 @@ use Core\Lib\Utilities\Config;
         <form class="form" action="" method="post" enctype="multipart/form-data">
             <?= FormHelper::csrfInput() ?>
             <?= FormHelper::displayErrors($this->displayErrors) ?>
-            <?= FormHelper::inputBlock('text', "First Name", 'fname', $this->newUser->fname, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
-            <?= FormHelper::inputBlock('text', "Last Name", 'lname', $this->newUser->lname, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
-            <?= FormHelper::inputBlock('text', "Email", 'email', $this->newUser->email, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
-            <?= FormHelper::inputBlock('text', "User name", 'username', $this->newUser->username, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
-            <?= FormHelper::textAreaBlock("About Me", 
-                'description', 
-                $this->newUser->description, 
-                ['class' => 'form-control input-sm', 'placeholder' => 'Describe yourself here...'], 
-                ['class' => 'form-group mb-3']); 
-            ?>
+            <?= FormHelper::inputBlock('text', "User name", 'username', $this->user->username, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
+            
+            <!-- Primary profile details -->
+            <?= $this->component('edit_profile_details') ?>
+            
             <?= FormHelper::inputBlock('file', "Upload Profile Image (Optional)", 'profileImage', '', ['class' => 'form-control', 'accept' => 'image/png image/jpeg image/png'], ['class' => 'form-group mb-3']) ?>
-            <?php $this->component('password_complexity_requirements'); ?>
-            <?= FormHelper::inputBlock('password', "Password", 'password', $this->newUser->password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
-            <?= FormHelper::inputBlock('password', "Confirm Password", 'confirm', $this->newUser->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
+            
+            <?= $this->component('password_complexity_requirements'); ?>
+
+            <?= FormHelper::inputBlock('password', "Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
+            <?= FormHelper::inputBlock('password', "Confirm Password", 'confirm', $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             <?= FormHelper::submitBlock('Register', ['class' => 'btn btn-large btn-primary'], ['class' => 'text-end'])  ?>
         </form>
     </div>

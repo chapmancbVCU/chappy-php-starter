@@ -91,7 +91,7 @@ class AuthController extends Controller {
      * @return void
      */
     public function registerAction(): void {
-        $newUser = new Users();
+        $user = new Users();
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             
@@ -101,24 +101,24 @@ class AuthController extends Controller {
                 ProfileImages::class,
                 ROOT . DS,
                 "5mb",
-                $newUser,
+                $user,
                 'profileImage'
             );
 
-            $newUser->assign($this->request->get());
-            $newUser->confirm = $this->request->get('confirm');
-            $newUser->acl = Users::setAclAtRegistration();
-            $newUser->save();
-            if($newUser->validationPassed()) {
+            $user->assign($this->request->get());
+            $user->confirm = $this->request->get('confirm');
+            $user->acl = Users::setAclAtRegistration();
+            $user->save();
+            if($user->validationPassed()) {
                 if($uploads) {
-                    ProfileImages::uploadProfileImage($newUser->id, $uploads);
+                    ProfileImages::uploadProfileImage($user->id, $uploads);
                 }
                 Router::redirect('auth/login');
             }
         }
 
-        $this->view->newUser = $newUser;
-        $this->view->displayErrors = $newUser->getErrorMessages();
+        $this->view->user = $user;
+        $this->view->displayErrors = $user->getErrorMessages();
         $this->view->render('auth/register');
     }
 
