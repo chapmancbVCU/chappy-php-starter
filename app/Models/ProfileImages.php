@@ -50,6 +50,22 @@ class ProfileImages extends Model {
         return $deleted;
     }
     
+    public static function deleteImages($user_id, $unlink = false) {
+        $images = self::find([
+            'conditions' => 'user_id = ?',
+            'bind' => [$user_id]
+        ]);
+        foreach($images as $image) {
+            $image->delete();
+        }
+        if($unlink) {
+            $dirName = ROOT.DS.self::$_uploadPath.$image->user_id;
+            array_map('unlink', glob("$dirName/*.*"));
+            rmdir($dirName);
+            unlink($dirName.DS);
+        }
+    }
+
     /**
      * Returns currently set profile image for a user.
      *
