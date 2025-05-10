@@ -396,12 +396,16 @@ sudo vi /etc/php.ini
 ```
 <br>
 
-Then modify the setting
-```rust
-upload_max_filesize = 2M
-```
+Then modify the following settings:
 
-to a value appropriate for your needs.  We set it to `10M`.
+| Setting | What it controls | Safe recommended value |
+|:-------:|-------------|-------------|
+| `upload_max_filesize` | Max size of a single uploaded file | `5M` (or `10M` if high-res image uploads) |
+| `post_max_size` | Max size of total POST body (form fields + files) | `8M` (or 1`5M` if `upload_max_filesize` is `10M`) |
+| `max_execution_time` | Max script run time (seconds) | `30` to `60` |
+| `memory_limit` | Max memory a script can use | `128M` (or `256M` for image-heavy apps) | 
+
+These value should be set depending on what type of files being uploaded.  Files such as videos should be much higher.   `post_max_size` should be greater than `upload_max_filesize`.  Otherwise, you will get a corrupted token error instead.
 
 <br>
 
