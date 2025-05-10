@@ -46,6 +46,7 @@ class AdmindashboardController extends Controller {
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             if($user && $user->acl != '["Admin"]') {
+                ProfileImages::deleteImages($id, false);
                 $user->delete();
                 Session::addMessage('success', 'User has been deleted.');
             } else {
