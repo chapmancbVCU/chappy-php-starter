@@ -4,7 +4,8 @@
 1. [Overview](#overview)
 2. [Common](#common)
 3. [XAMPP](#xampp)
-4. [Standalone PHP](#php)
+4. [PHP Configuration](#php-configuration)
+5. [Standalone PHP](#php)
 
 <br>
 
@@ -12,6 +13,7 @@
 This guide shows you how to setup this framework on Windows.  There are two ways to achieve this as described below.
 1. XAMPP
 2. Install only dependencies needed with standalone PHP.
+
 <br>
 
 ## 2. Common <a id="common"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -35,6 +37,7 @@ Install with Chocolatey
 ```powershell
 choco install composer -y
 ```
+
 <br>
 
 #### 2: Install Node.js and npm
@@ -78,6 +81,7 @@ Install with Chocolatey:
 ```powershell
 choco install 7zip -y
 ```
+
 <br>
 
 ## 3. XAMPP <a id="xampp"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -94,6 +98,7 @@ composer create-project chappy-php/chappy-php my-app
 ```
 
 * If permission issues arise, running CMD as Administrator might be needed.
+
 <br>
 
 #### 2. Using with XAMPP
@@ -122,9 +127,36 @@ DB_USER=root
 npm run dev
 ```
 * K. Open browser and navigate to `http://localhost/chappy-php/home`.
+
 <br>
 
-## 2. Standalone PHP <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. PHP Configuration <a id="php-configuration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Edit your PHP configuration file:
+
+**PHP with Composer**
+```sh
+C:\php\php.ini
+```
+
+**PHP with XAMPP**
+```sh
+C:\xampp\php\php.ini
+```
+
+Then modify the following settings:
+
+| Setting | What it controls | Safe recommended value |
+|:-------:|-------------|-------------|
+| `upload_max_filesize` | Max size of a single uploaded file | `5M` (or `10M` if high-res image uploads) |
+| `post_max_size` | Max size of total POST body (form fields + files) | `8M` (or 1`5M` if `upload_max_filesize` is `10M`) |
+| `max_execution_time` | Max script run time (seconds) | `30` to `60` |
+| `memory_limit` | Max memory a script can use | `128M` (or `256M` for image-heavy apps) | 
+
+These value should be set depending on what type of files being uploaded.  Files such as videos should be much higher.   `post_max_size` should be greater than `upload_max_filesize`.  Otherwise, you will get a corrupted token error instead.
+
+<br>
+
+## 5. Standalone PHP <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 #### 1: Install PHP 8.3+
 * A **Install with Composer**
     - Install Composer using Chocolately as described above.  PHP, which is a dependency will automatically be installed.  When setting up as standalone without XAMPP you can skip to **Setup the Project**.  If you change your mind later on, you will need to remove both Composer and PHP along with any values set in the SYSTEM path.  Installing PHP with this method will install PHP 8.4 at `C:\tools\php<ver_number>`.
@@ -158,6 +190,8 @@ php -v
     - If PHP 8.3+ is displayed, it's correctly installed.
 * E. **Install Composer**
     - Refer to instruction in the **Common** section for installing from Composer.
+
+<br>
 
 #### 2. Setup The Project
 * A. Install **Composer** using the instructions described above.
