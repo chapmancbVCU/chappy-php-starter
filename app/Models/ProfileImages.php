@@ -50,6 +50,16 @@ class ProfileImages extends Model {
         return $deleted;
     }
     
+    /**
+     * Sets delete field in profile_images table to 1 when user is deleted 
+     * from users table.  Accepts parameter for toggling on or off unlink 
+     * to permanently image file. 
+     *
+     * @param int $user_id The user id for user whose image we want to delete.
+     * @param boolean $unlink Set to true if you want to unlink or false to 
+     * preserve image in storage.
+     * @return void
+     */
     public static function deleteImages($user_id, $unlink = false) {
         $images = self::find([
             'conditions' => 'user_id = ?',
