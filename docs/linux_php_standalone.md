@@ -61,6 +61,31 @@ echo "deb https://packages.sury.org/php/ bookworm main" | sudo tee /etc/apt/sour
 ```
 <br>
 
+Configure upload size For profile image upload support.  Edit the file:
+
+**Ubuntu & Debian**
+```sh
+sudo vi /etc/php/8.4/cli/php.ini
+```
+
+**Rocky Linux (RHEL-based)**
+```sh
+sudo vi /etc/php.ini
+```
+
+Then modify the following settings:
+
+| Setting | What it controls | Safe recommended value |
+|:-------:|-------------|-------------|
+| `upload_max_filesize` | Max size of a single uploaded file | `5M` (or `10M` if high-res image uploads) |
+| `post_max_size` | Max size of total POST body (form fields + files) | `8M` (or 1`5M` if `upload_max_filesize` is `10M`) |
+| `max_execution_time` | Max script run time (seconds) | `30` to `60` |
+| `memory_limit` | Max memory a script can use | `128M` (or `256M` for image-heavy apps) | 
+
+These value should be set depending on what type of files being uploaded.  Files such as videos should be much higher.   `post_max_size` should be greater than `upload_max_filesize`.  Otherwise, you will get a corrupted token error instead.
+
+<br>
+
 #### 2. Update and install PHP 8.4
 ```sh
 sudo apt update && sudo apt upgrade -y

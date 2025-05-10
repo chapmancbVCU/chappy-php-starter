@@ -394,7 +394,6 @@ sudo vi /etc/php/8.4/apache2/php.ini
 ```sh
 sudo vi /etc/php.ini
 ```
-<br>
 
 Then modify the following settings:
 
