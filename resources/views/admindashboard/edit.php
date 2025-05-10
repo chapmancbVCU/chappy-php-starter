@@ -18,6 +18,10 @@ use Core\Lib\Utilities\Env;
         <h1 class="text-center">Edit Details for <?=$this->user->username?></h1>
         <hr>
         <form class="form" action=<?=$this->postAction?> method="post">
+            <?= FormHelper::csrfInput() ?>
+            <?= FormHelper::hidden('images_sorted', '') ?>
+            <?= FormHelper::displayErrors($this->displayErrors) ?>
+            
             <!-- Primary profile details -->
             <?= $this->component('edit_profile_details'); ?>
 
