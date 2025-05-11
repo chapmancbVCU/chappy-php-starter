@@ -45,37 +45,13 @@ function formatPhoneNumber(value) {
 }
 
 /**
- * Uses getElementbyId('cell_phone') to get phone number input from webpage.  
- * The way this function works is we grab the value of what the user is typing 
- * into the input.  Next we format the value and set the value of the input 
- * field in the html document.
+ * Formats the value of a phone number input field by ID.
+ * @param {string} fieldId - The ID of the input field to format.
  */
-function cellPhoneNumberFormatter() {
-    const inputField = document.getElementById('cell_phone');
-    const formattedInputValue = formatPhoneNumber(inputField.value);
-    inputField.value = formattedInputValue;
-}
-
-/**
- * Uses getElementbyId('home_phone') to get phone number input from webpage.  
- * The way this function works is we grab the value of what the user is typing 
- * into the input.  Next we format the value and set the value of the input 
- * field in the html document.
- */
-function homePhoneNumberFormatter() {
-    const inputField = document.getElementById('home_phone');
-    const formattedInputValue = formatPhoneNumber(inputField.value);
-    inputField.value = formattedInputValue;
-}
-
-/**
- * Uses getElementbyId('home_phone') to get phone number input from webpage.  
- * The way this function works is we grab the value of what the user is typing 
- * into the input.  Next we format the value and set the value of the input 
- * field in the html document.
- */
-function workPhoneNumberFormatter() {
-    const inputField = document.getElementById('work_phone');
-    const formattedInputValue = formatPhoneNumber(inputField.value);
-    inputField.value = formattedInputValue;
+function phoneNumberFormatter(fieldId) {
+    const inputField = document.getElementById(fieldId);
+    if (inputField) {
+        const formattedInputValue = formatPhoneNumber(inputField.value);
+        inputField.value = formattedInputValue;
+    }
 }
