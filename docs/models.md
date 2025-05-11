@@ -104,7 +104,7 @@ public const blackList = ['id', 'deleted', 'csrf_token'];
 Then in your controller:
 
 ```php
-$user->assign($this->request->get(), Users::blackList);
+$user->assign($this->request->get(), Users::blackList, Users::BLACKLIST);
 ```
 
 The framework will automatically ignore any fields listed in the blacklist when assigning values to the model.
@@ -119,7 +119,7 @@ public const whiteList = ['first_name', 'last_name', 'email'];
 ```
 
 ```php
-$user->assign($this->request->get(), Users::whiteList);
+$user->assign($this->request->get(), Users::whiteList, Users::WHITELIST);
 ```
 
 This approach is often safer, as it prevents new/accidental fields from being assigned unless explicitly allowed.
