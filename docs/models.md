@@ -130,10 +130,10 @@ This approach is often safer, as it prevents new/accidental fields from being as
 The assign method accepts the request data and a list of keys to skip or include depending on how your model is configured:
 
 ```php
-public function assign(array $params, array $list = [], bool $blackList = true): self
+public function assign(array $params, array $list = [], string $assignmentFilter = self::BLACKLIST): self
 ```
 
-You can toggle the behavior by passing the third parameter as `false` if you're using a whitelist.
+You can toggle the behavior by passing the third parameter using the `WHITELIST` constant if you're using a whitelist.
 
 <br>
 
