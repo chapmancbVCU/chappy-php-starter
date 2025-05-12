@@ -69,7 +69,7 @@ After running the command the npm based Vite server is started just like any Lar
 
 <br>
 
-## 4. Included JavaScript Files <a id="javascript></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Included JavaScript Files <a id="javascript"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This framework comes with two JavaScript files that can be found at `resources\js`:
 - TinyMCE.js - Initializes TinyMCE editor
 - frontEndPasswordMatchValidate.js - Ensures passwords match
