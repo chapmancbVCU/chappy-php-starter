@@ -21,6 +21,7 @@
 | `Min` | Enforces minimum length/value (`rule` is required) |
 | `Number` | Requires at least one digit |
 | `Numeric` | Ensures input contains only numeric characters |
+| `PhoneNumber` | Ensures phone numbers are properly formatted based on locality (`rule` is required to set locale) |
 | `Required` | Field must not be empty |
 | `Special` | Requires at least one special (non-space) character |
 | `Unique` | Ensures value is unique in the database |
@@ -233,8 +234,8 @@ FormHelper::inputBlock('text', 'Zip', 'zip', $this->contact->zip, [
 ], ['class' => 'form-group col-md-4'], $this->displayErrors);
 ```
 
-JavaScript enhancements like phone formatting are injected automatically using:
+JavaScript enhancements like password match validation can be injected into HTML automatically:
 
 ```php
-<script src="<?=Env::get('APP_DOMAIN', '/')?>resources/js/frontEndPhoneNumberValidate.js"></script>
+<script src="<?=Env::get('APP_DOMAIN', '/')?>resources/js/frontEndPasswordMatchValidate.js"></script>
 ```
