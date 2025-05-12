@@ -36,6 +36,7 @@ use Core\Lib\Utilities\Config;
     </div>
 </div>
 
+<!-- Wait until content is loaded before we initialize script -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         initializeTinyMCE('description');

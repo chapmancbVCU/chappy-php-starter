@@ -6,7 +6,7 @@ use Core\Lib\Utilities\Config;
 <?php $this->setSiteTitle("Register Here!"); ?>
 <?php $this->start('head') ?>
 <script src="<?=Env::get('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=Config::get('config.version')?>"></script>
-<script src='<?=Env::get('APP_DOMAIN', '/')?>resources/js/descriptionTinyMCE.js'></script>
+<script src='<?=Env::get('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
 <?php $this->end() ?>
 
 <?php $this->start('body'); ?>
@@ -32,4 +32,12 @@ use Core\Lib\Utilities\Config;
         </form>
     </div>
 </div>
+
+<!-- Wait until content is loaded before we initialize script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        initializeTinyMCE('description');
+    });
+</script>
+
 <?php $this->end(); ?>
