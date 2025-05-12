@@ -7,7 +7,7 @@ use Core\Lib\Utilities\Config;
 <?php $this->start('head') ?>
 <link rel="stylesheet" href="<?=Env::get('APP_DOMAIN', '/')?>resources/css/profileImage.css?v=<?=Config::get('config.version')?>" media="screen" title="no title" charset="utf-8">
 <script src="<?=Env::get('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=Config::get('config.version')?>"></script>
-<script src='<?=Env::get('APP_DOMAIN', '/')?>resources/js/descriptionTinyMCE.js'></script>
+<script src='<?=Env::get('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
 <script type="text/javascript" src="<?=Env::get('APP_DOMAIN', '/')?>node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
 <?php $this->end() ?>
 
@@ -36,5 +36,9 @@ use Core\Lib\Utilities\Config;
     </div>
 </div>
 
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        initializeTinyMCE('description');
+    });
+</script>
 <?php $this->end(); ?>
