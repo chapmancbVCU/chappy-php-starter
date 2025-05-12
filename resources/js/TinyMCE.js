@@ -9,6 +9,3 @@ function initializeTinyMCE(id) {
         license_key: 'gpl'
     });
 }
-
-// Example usage
-initializeTinyMCE('description');
