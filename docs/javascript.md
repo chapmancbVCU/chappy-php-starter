@@ -4,6 +4,7 @@
 1. [Overview](#overview)
 2. [app.js](#app_js)
 3. [Vite Asset Bundling](#vite-asset-bundling)
+4. [Included JavaScript Files](#javascript)
 
 <br>
 
@@ -65,3 +66,26 @@ npm run dev
 ```
 
 After running the command the npm based Vite server is started just like any Laravel or React.js based project.
+
+<br>
+
+## 4. Included JavaScript Files <a id="javascript></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This framework comes with two JavaScript files that can be found at `resources\js`:
+- TinyMCE.js - Initializes TinyMCE editor
+- frontEndPasswordMatchValidate.js - Ensures passwords match
+
+
+**TinyMCE**
+You will need to add the following to your view's head:
+```php
+<script src='<?=Env::get('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
+```
+
+Then add the following script to the bottom of the body:
+```html
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        initializeTinyMCE('description');
+    });
+</script>
+```
