@@ -76,6 +76,7 @@ This framework comes with two JavaScript files that can be found at `resources\j
 
 
 **TinyMCE**
+
 You will need to add the following to your view's head:
 ```php
 <script src='<?=Env::get('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
