@@ -104,6 +104,7 @@ php console
 | Command | Description |
 |:-------:|-------------|
 | test | Performs a phpunit test |
+| tinker | Launches tinker shell |
 
 <br>
 
