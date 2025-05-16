@@ -26,6 +26,7 @@ Get to any resource within the Chappy.php Wiki from here.
 13. [Routing](routing)
 14. [Server Side Validation](server_side_validation)
 15. [Session and Flash Messages](session_and_flash_messages)
+16. [Tinker Command](tinker)
 16. [Unit Tests](unit_tests)
 17. [User Guide](user_guide)
     * A. [Setup With Jekyll](jekyll_setup)
