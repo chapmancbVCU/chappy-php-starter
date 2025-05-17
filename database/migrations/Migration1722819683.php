@@ -18,6 +18,7 @@ class Migration1722819683 extends Migration {
           $table->id();
           $table->string('migration', 35);
           $table->index('migration');
+          $table->integer('batch');
       });
     }
 
