@@ -84,7 +84,7 @@ php console
 |:-------:|-------------|
 | migrate | Runs a Database Migration |
 | migrate:drop-all | Drops all database tables |
-| migrate:fresh | Drops all tables and runs Database Migrations |
+| migrate:refresh | Drops all tables and runs a Database Migration |
 | seed:run | Runs database seeders |
 
 <br>
