@@ -8,6 +8,7 @@
   * B. [Updating an Existing Table](#updating-an-existing-table)  
   * C. [Dropping a Table](#dropping-a-table)  
   * D. [Migrations With Raw SQL Queries](#sql)
+  * E. [Migration CLI Commands](#cli)
 4. [Supported Field Types & Modifiers for Migrations](#field-types)
   * A. [Field Types](#types)
   * B. [Column Modifiers](#modifiers)
@@ -222,6 +223,10 @@ public function up(): void {
 ```
 
 As shown above, create your SQL statement and then chain the `query` function to a static call to the `getInstance` variable.  You can also do this after a call to the `Schema::create` or `Schema::table` static function calls.
+
+<br>
+
+### D. Migration CLI Commands <a id="cli"></a>
 
 <br>
 
