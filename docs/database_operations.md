@@ -227,6 +227,29 @@ As shown above, create your SQL statement and then chain the `query` function to
 <br>
 
 ### D. Migration CLI Commands <a id="cli"></a>
+#### 1. `migrate`
+Performs all pending migrations.
+
+<br>
+
+#### 2. `migrate:drop-all`
+Drops all tables.
+
+<br>
+
+#### 3. `migrate:fresh`
+Drops all tables and performs migration.
+
+<br>
+
+#### 4. `migrate:refresh`
+Drops all tables one at a time and performs migration.  Use the step flag to drop previous changes based on value set.
+
+**Step Example**
+```sh
+php console migrate:refresh --step=2
+```
+Undo last 2 previous migration and then runs migration against all pending migrations.
 
 <br>
 
