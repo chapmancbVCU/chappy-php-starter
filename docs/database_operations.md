@@ -180,7 +180,7 @@ Open your database management software package and you will see that the table h
 <br>
 
 ### B. Updating an Existing Table <a id="updating-an-existing-table"></a>
-To add or modify columns:
+To add columns:
 
 ```sh
 php console make:migration foo --update
