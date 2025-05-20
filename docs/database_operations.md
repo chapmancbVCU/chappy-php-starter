@@ -6,9 +6,10 @@
 3. [Creating and Managing Migrations](#creating-and-managing-migrations)  
   * A. [Creating a New Table](#creating-a-new-table)  
   * B. [Updating an Existing Table](#updating-an-existing-table)  
-  * C. [Dropping a Table](#dropping-a-table)  
-  * D. [Migrations With Raw SQL Queries](#sql)
-  * E. [Migration CLI Commands](#cli)
+  * C. [Renaming an Existing Table](#renaming-an-existing-table)
+  * D. [Dropping a Table](#dropping-a-table)  
+  * E. [Migrations With Raw SQL Queries](#sql)
+  * F. [Migration CLI Commands](#cli)
 4. [Supported Field Types & Modifiers for Migrations](#field-types)
   * A. [Field Types](#types)
   * B. [Column Modifiers](#modifiers)
@@ -200,7 +201,24 @@ public function up(): void {
 
 <br>
 
-### C. Dropping a Table <a id="dropping-a-table"></a>
+### C. Renaming an Existing Table <a id="renaming-an-existing-table"></a>
+To rename an existing table:
+```sh
+php console make:migration bar --rename=foo
+```
+
+Resulting `up` function:
+```php
+public function up(): void {
+    Schema::rename('bar', 'foo');
+}
+```
+
+🔄 Adding the `--rename=foo` flag generates a migration file for renaming the table to `foo`.
+
+<br>
+
+### D. Dropping a Table <a id="dropping-a-table"></a>
 You can drop a table manually using:
 
 ```php
@@ -211,7 +229,7 @@ This is automatically included in your migrations class.
 
 <br>
 
-### D. Migrations With Raw SQL Queries <a id="sql"></a>
+### E. Migrations With Raw SQL Queries <a id="sql"></a>
 You are able to perform raw SQL queries within a migration.  You can create or update a table and then use SQL queries to add values.  This is useful if your database table already has data.
 
 **Example:**
@@ -226,7 +244,7 @@ As shown above, create your SQL statement and then chain the `query` function to
 
 <br>
 
-### D. Migration CLI Commands <a id="cli"></a>
+### F. Migration CLI Commands <a id="cli"></a>
 #### 1. `make:migration`
 Generates a new migration class.
 ```sh
