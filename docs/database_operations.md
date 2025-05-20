@@ -227,6 +227,27 @@ As shown above, create your SQL statement and then chain the `query` function to
 <br>
 
 ### D. Migration CLI Commands <a id="cli"></a>
+#### 1. `make:migration`
+Generates a new migration class.
+```sh
+php console make:migration foo
+```
+
+**Rename Example**
+Generates a migration class for renaming a table.
+```sh
+php console make:migration foo --rename=bar
+```
+`foo` is the original and `bar` will be its new name.
+
+**Update Example**
+Generates a migration class for updating a table.
+```sh
+php console make:migration foo--update
+```
+
+<br>
+
 #### 1. `migrate`
 Performs all pending migrations.
 
@@ -250,6 +271,26 @@ Drops all tables one at a time and performs migration.  Use the step flag to dro
 php console migrate:refresh --step=2
 ```
 Undo last 2 previous migration and then runs migration against all pending migrations.
+
+<br>
+
+#### 5. `migrate:rollback`
+Performs a roll back of the last batch of migrations.
+```sh
+php console rollback
+```
+
+**Batch Example**
+```sh
+php console migrate:rollback --batch=2
+```
+Roll back migrations for batch number 2
+
+**Step Example**
+```sh
+php console migrate:rollback --step=2
+```
+Undo last 2 previous migrations.
 
 <br>
 
