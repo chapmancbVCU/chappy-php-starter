@@ -8,8 +8,9 @@
   * B. [Updating an Existing Table](#updating-an-existing-table)  
   * C. [Renaming an Existing Table](#renaming-an-existing-table)
   * D. [Dropping a Table](#dropping-a-table)  
-  * E. [Migrations With Raw SQL Queries](#sql)
-  * F. [Migration CLI Commands](#cli)
+  * E. [Renaming a Column](#renameing-column)
+  * F. [Migrations With Raw SQL Queries](#sql)
+  * G. [Migration CLI Commands](#cli)
 4. [Supported Field Types & Modifiers for Migrations](#field-types)
   * A. [Field Types](#types)
   * B. [Column Modifiers](#modifiers)
@@ -229,7 +230,23 @@ This is automatically included in your migrations class.
 
 <br>
 
-### E. Migrations With Raw SQL Queries <a id="sql"></a>
+### E. Renaming a Column <a id="renaming-column"></a>
+To rename an existing column use the renameColumn function:
+```php
+public function up(): void {
+    Schema::table('test', function (Blueprint $table) {
+        $table->renameColumn('foo', 'bar');
+    });
+}
+```
+
+This function accepts two arguments:
+- `$from` - The column's original name
+- `$to` - The column's new name
+
+<br>
+
+### F. Migrations With Raw SQL Queries <a id="sql"></a>
 You are able to perform raw SQL queries within a migration.  You can create or update a table and then use SQL queries to add values.  This is useful if your database table already has data.
 
 **Example:**
@@ -244,7 +261,7 @@ As shown above, create your SQL statement and then chain the `query` function to
 
 <br>
 
-### F. Migration CLI Commands <a id="cli"></a>
+### G. Migration CLI Commands <a id="cli"></a>
 #### 1. `make:migration`
 Generates a new migration class.
 ```sh
