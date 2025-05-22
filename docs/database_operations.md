@@ -312,6 +312,11 @@ Undo last 2 previous migrations.
 
 <br>
 
+#### 6. `migrate:status`
+Displays status of ran and pending migrations.
+
+<br>
+
 ## 4. Supported Field Types & Modifiers for Migrations <a id="field-types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Chappy.php’s migration system includes a flexible schema builder via the Blueprint class. It supports most standard SQL column types, modifiers, and constraints across both MySQL and SQLite databases. The table below outlines supported fields and how to define them.
 
