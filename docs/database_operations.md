@@ -9,6 +9,7 @@
   * C. [Renaming an Existing Table](#renaming-an-existing-table)
   * D. [Dropping a Table](#dropping-a-table)  
   * E. [Renaming a Column](#renameing-column)
+  * F. [Dropping Columns](#dropping-columns)
   * F. [Migrations With Raw SQL Queries](#sql)
   * G. [Migration CLI Commands](#cli)
 4. [Supported Field Types & Modifiers for Migrations](#field-types)
@@ -243,6 +244,19 @@ public function up(): void {
 This function accepts two arguments:
 - `$from` - The column's original name
 - `$to` - The column's new name
+
+<br>
+
+### F. Dropping Columns <a id="dropping-columns"></a>
+You can drop an individual column using the `dropColumns` function.
+```php
+$table->dropColumns('bar');
+```
+
+Multiple columns can be dropped by providing the column names as an array.
+```php
+$table->dropColumns(['foo', 'bar']);
+```
 
 <br>
 
