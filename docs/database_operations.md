@@ -258,6 +258,8 @@ Multiple columns can be dropped by providing the column names as an array.
 $table->dropColumns(['foo', 'bar']);
 ```
 
+This function checks if column is an index or primary key.  If these conditions are detected a warning is printed to the console and that field is skipped.
+
 <br>
 
 ### F. Migrations With Raw SQL Queries <a id="sql"></a>
