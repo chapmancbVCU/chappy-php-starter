@@ -164,6 +164,7 @@ class Migration1741215401 extends Migration {
 - `$table->timestamps()` — Adds `created_at` and `updated_at`
 - `$table->softDeletes()` — Adds `deleted_at` for soft deletion
 - `$table->index('user_id')` — Adds an index
+- `$table->string('bar', 25)->unique()` - Chaining the unique function makes a field unique.
 
 Run the migration and the console output, if successful, will be shown below:
 
