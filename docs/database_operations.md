@@ -290,6 +290,16 @@ public function up(): void {
     });
 }
 ```
+
+**Dropping Foreign Keys**
+To drop a foreign key use the `dropForeign` function.
+```php
+public function up(): void {
+    Schema::table('test', function (Blueprint $table) {
+        $table->dropForeign('my_foreign_key');
+    });
+}
+```
 <br>
 
 ### F. Migrations With Raw SQL Queries <a id="sql"></a>
