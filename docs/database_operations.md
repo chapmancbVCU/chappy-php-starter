@@ -262,7 +262,9 @@ $table->dropColumns(['foo', 'bar']);
 This function checks if column is an index or primary key.  If these conditions are detected a warning is printed to the console and that field is skipped.
 
 **Dropping Primary Keys**
+
 To drop a primary key use the `dropPrimaryKey` function.
+
 ```php
 public function up(): void {
     Schema::table('test', function (Blueprint $table) {
@@ -272,7 +274,9 @@ public function up(): void {
 ```
 
 **Dropping Indexes**
+
 To drop an indexed value use the `dropIndex` function.
+
 ```php
 public function up(): void {
     Schema::table('test', function (Blueprint $table) {
@@ -282,7 +286,9 @@ public function up(): void {
 ```
 
 **Dropping Unique Constrained Columns**
+
 To drop a column with the unique constraint use the `dropUnique` function.
+
 ```php
 public function up(): void {
     Schema::table('test', function (Blueprint $table) {
@@ -292,7 +298,9 @@ public function up(): void {
 ```
 
 **Dropping Foreign Keys**
+
 To drop a foreign key use the `dropForeign` function.
+
 ```php
 public function up(): void {
     Schema::table('test', function (Blueprint $table) {
