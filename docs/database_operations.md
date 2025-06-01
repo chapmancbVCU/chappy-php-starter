@@ -280,6 +280,17 @@ public function up(): void {
 }
 ```
 
+**Rename Foreign Keys**
+
+To rename a column with a foreign key constraint use the `renameForeign` function:
+```php
+public function up(): void {
+    Schema::table('test', function (Blueprint $table) {
+        $table->renameForeign('foreign_key', 'new_fk');
+    });
+}
+```
+
 <br>
 
 ### F. Dropping Columns <a id="dropping-columns"></a>
