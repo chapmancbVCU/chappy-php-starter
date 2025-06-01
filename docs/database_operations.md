@@ -292,10 +292,14 @@ To drop an indexed value use the `dropIndex` function.
 ```php
 public function up(): void {
     Schema::table('test', function (Blueprint $table) {
-        $table->dropIndex('my_index');
+        $table->dropIndex('my_index', true);
     });
 }
 ```
+
+This function accepts two arguments:
+- `$column` - The name of the column to be dropped.
+- `$preserveColumn` - A boolean flag that defaults to false.  Set to true if you want to keep the column and drop only the index constraint.
 
 **Dropping Unique Constrained Columns**
 
