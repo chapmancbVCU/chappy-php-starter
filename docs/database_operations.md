@@ -299,7 +299,7 @@ public function up(): void {
 
 This function accepts two arguments:
 - `$column` - The name of the column to be dropped.
-- `$preserveColumn` - A boolean flag that defaults to false.  Set to true if you want to keep the column and drop only the index constraint.
+- `$preserveColumn` - A boolean flag that defaults to false.  Set to true if you want to keep the column and drop only the index constraint.  The default value is true.
 
 **Dropping Unique Constrained Columns**
 
