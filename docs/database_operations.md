@@ -258,6 +258,19 @@ public function up(): void {
 }
 ```
 
+**Renaming Primary Keys**
+
+To rename a table's primary key use the `renamePrimaryKey` function:
+```php
+public function up(): void {
+    Schema::table('test', function (Blueprint $table) {
+        $table->renamePrimaryKey('id', 'id_new');
+    });
+}
+```
+
+This function preserves data to ensure tables do not become corrupted.
+
 <br>
 
 ### F. Dropping Columns <a id="dropping-columns"></a>
