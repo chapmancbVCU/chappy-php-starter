@@ -312,10 +312,14 @@ To drop a column with the unique constraint use the `dropUnique` function.
 ```php
 public function up(): void {
     Schema::table('test', function (Blueprint $table) {
-        $table->dropUnique('bar');
+        $table->dropUnique('bar', true);
     });
 }
 ```
+
+This function accepts two arguments:
+- `$column` - The name of the column to be dropped.
+- `$preserveColumn` - A boolean flag that defaults to true.  Set to true if you want to keep the column and drop only the unique index constraint.  The default value is true.
 
 **Dropping Foreign Keys**
 
