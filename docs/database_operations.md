@@ -415,6 +415,9 @@ Drops all tables and performs migration.
 
 #### 5. `migrate:refresh`
 Drops all tables one at a time and performs migration.  Use the step flag to drop previous changes based on value set.
+```php
+php console migrate:refresh --step=<number__of_steps>
+```
 
 **Step Example**
 ```sh
@@ -424,7 +427,7 @@ Undo last 2 previous migration and then runs migration against all pending migra
 
 <br>
 
-#### 5. `migrate:rollback`
+#### 6. `migrate:rollback`
 Performs a roll back of the last batch of migrations.
 ```sh
 php console rollback
@@ -444,7 +447,7 @@ Undo last 2 previous migrations.
 
 <br>
 
-#### 6. `migrate:status`
+#### 7. `migrate:status`
 Displays status of ran and pending migrations.
 
 <br>
