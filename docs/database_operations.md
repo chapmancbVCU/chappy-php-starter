@@ -315,7 +315,7 @@ public function up(): void {
 
 **Dropping Foreign Keys**
 
-To drop a foreign key use the `dropForeign` function.
+To drop a foreign key use the `dropForeign` function (MySQL only).
 
 ```php
 public function up(): void {
