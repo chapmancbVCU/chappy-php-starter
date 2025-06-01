@@ -285,6 +285,10 @@ public function up(): void {
 }
 ```
 
+This function accepts two arguments:
+- `$column` - The name of the column to be dropped.
+- `$preserveColumn` - A boolean flag that defaults to true.  Set to true if you want to keep the column and drop only the foreign key constraint.  The default value is true.
+
 **Dropping Indexes**
 
 To drop an indexed value use the `dropIndex` function.
@@ -299,7 +303,7 @@ public function up(): void {
 
 This function accepts two arguments:
 - `$column` - The name of the column to be dropped.
-- `$preserveColumn` - A boolean flag that defaults to false.  Set to true if you want to keep the column and drop only the index constraint.  The default value is true.
+- `$preserveColumn` - A boolean flag that defaults to true.  Set to true if you want to keep the column and drop only the primary key constraint.  The default value is true.
 
 **Dropping Unique Constrained Columns**
 
@@ -327,7 +331,7 @@ public function up(): void {
 
 This function accepts two arguments:
 - `$column` - The name of the column to be dropped.
-- `$preserveColumn` - A boolean flag that defaults to false.  Set to true if you want to keep the column and drop only the foreign key constraint.  The default value is true.
+- `$preserveColumn` - A boolean flag that defaults to true.  Set to true if you want to keep the column and drop only the foreign key constraint.  The default value is true.
 
 <br>
 
