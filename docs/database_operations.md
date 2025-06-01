@@ -242,7 +242,7 @@ public function up(): void {
 }
 ```
 
-This function accepts two arguments:
+All renaming functions accepts two arguments:
 - `$from` - The column's original name
 - `$to` - The column's new name
 
