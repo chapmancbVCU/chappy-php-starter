@@ -246,6 +246,18 @@ This function accepts two arguments:
 - `$from` - The column's original name
 - `$to` - The column's new name
 
+**Renaming indexes**
+
+To rename a column that is indexed use the `renameIndex` function:
+```php
+public function up(): void {
+    Schema::table('test', function (Blueprint $table) {
+
+        $table->renameIndex('my_index', 'blah');
+    });
+}
+```
+
 <br>
 
 ### F. Dropping Columns <a id="dropping-columns"></a>
