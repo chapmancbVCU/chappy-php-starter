@@ -269,7 +269,16 @@ public function up(): void {
 }
 ```
 
-This function preserves data to ensure tables do not become corrupted.
+**Rename Unique Constrained Columns**
+
+To rename a column with a unique constraint use the `renameUnique` function:
+```php
+public function up(): void {
+    Schema::table('test', function (Blueprint $table) {
+        $table->renameUnique('bar', 'blah');
+    });
+}
+```
 
 <br>
 
