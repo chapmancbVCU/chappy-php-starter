@@ -398,22 +398,22 @@ php console make:migration foo--update
 
 <br>
 
-#### 1. `migrate`
+#### 2. `migrate`
 Performs all pending migrations.
 
 <br>
 
-#### 2. `migrate:drop-all`
+#### 3. `migrate:drop-all`
 Drops all tables.
 
 <br>
 
-#### 3. `migrate:fresh`
+#### 4. `migrate:fresh`
 Drops all tables and performs migration.
 
 <br>
 
-#### 4. `migrate:refresh`
+#### 5. `migrate:refresh`
 Drops all tables one at a time and performs migration.  Use the step flag to drop previous changes based on value set.
 
 **Step Example**
