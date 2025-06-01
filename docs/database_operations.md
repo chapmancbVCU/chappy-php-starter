@@ -320,10 +320,15 @@ To drop a foreign key use the `dropForeign` function.
 ```php
 public function up(): void {
     Schema::table('test', function (Blueprint $table) {
-        $table->dropForeign('my_foreign_key');
+        $table->dropForeign('my_foreign_key', true);
     });
 }
 ```
+
+This function accepts two arguments:
+- `$column` - The name of the column to be dropped.
+- `$preserveColumn` - A boolean flag that defaults to false.  Set to true if you want to keep the column and drop only the foreign key constraint.  The default value is true.
+
 <br>
 
 ### F. Migrations With Raw SQL Queries <a id="sql"></a>
