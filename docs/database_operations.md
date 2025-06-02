@@ -424,6 +424,13 @@ Drops all tables.
 #### 4. `migrate:fresh`
 Drops all tables and performs migration.
 
+**Seed Example**
+
+Use the `--seed` flag to seed your database after migrations have completed.
+```sh
+php console migrate:fresh --seed
+```
+
 <br>
 
 #### 5. `migrate:refresh`
