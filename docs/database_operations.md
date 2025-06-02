@@ -414,6 +414,13 @@ php console make:migration foo--update
 #### 2. `migrate`
 Performs all pending migrations.
 
+**Seed Example**
+
+Use the `--seed` flag to seed your database after migrations have completed.
+```sh
+php console migrate:fresh --seed
+```
+
 <br>
 
 #### 3. `migrate:drop-all`
