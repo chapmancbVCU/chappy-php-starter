@@ -395,6 +395,7 @@ php console make:migration foo
 ```
 
 **Rename Example**
+
 Generates a migration class for renaming a table.
 ```sh
 php console make:migration foo --rename=bar
@@ -402,6 +403,7 @@ php console make:migration foo --rename=bar
 `foo` is the original and `bar` will be its new name.
 
 **Update Example**
+
 Generates a migration class for updating a table.
 ```sh
 php console make:migration foo--update
@@ -425,12 +427,17 @@ Drops all tables and performs migration.
 <br>
 
 #### 5. `migrate:refresh`
-Drops all tables one at a time and performs migration.  Use the step flag to drop previous changes based on value set.
-```php
-php console migrate:refresh --step=<number__of_steps>
+Drops all tables one at a time and performs migration.  
+
+**Seed Example**
+
+Use the `--seed` flag to seed your database after migrations have completed.
+```sh
+php console migrate:refresh --seed
 ```
 
 **Step Example**
+
 ```sh
 php console migrate:refresh --step=2
 ```
