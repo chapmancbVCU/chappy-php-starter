@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Undocumented class
  */
-class ExampleTest extends TestCase {
+class FeatureTest extends TestCase {
     public function test_feature_example_1() {
         $string1 = 'testing';
         $string2 = 'testing';
