@@ -28,7 +28,21 @@ php console make:test ${testName} --feature
 
 
 ## 3. Running Tests <a id="running-tests"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-After running the command a new file is created inside the `tests` directory under project root.  Once you implemented your test you it can be executed by running the following command:
+Run all available tests.
 ```sh
-php console test ${testName}
+php console test
 ```
+
+**Run Tests By File**
+Run all tests in a file that exists within the feature, unit, or both test suites.
+```sh
+php console test ${fileName}
+```
+
+**Run A Particular Test**
+Run a specific test in a file.
+```sh
+php console test ${fileName}::${functionName}
+```
+
+If you have the same function in a class with the same name inside both test suites only the one found within the unit test suite will be executed.
