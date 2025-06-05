@@ -48,4 +48,7 @@ php console test ${fileName}::${functionName}
 If you have the same function in a class with the same name inside both test suites only the one found within the unit test suite will be executed.
 
 **Run A Test Suite**
-Run all test within a particular test suite by adding the `--unit` or `--feature` flags.
+Run all test within a particular test suite by adding the `--unit` and/or `--feature` flags.
+
+**Run Specific Test File Within A Suite**
+You can run all test within a specific test file for an individual suite by specifying the file name and adding the `--unit` and/or `--feature` flags.
