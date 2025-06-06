@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
+<phpunit bootstrap="vendor/chappy-php/chappy-php-framework/src/scripts/bootstrap_phpunit.php"
          colors="true"
         cacheDirectory="cache/phpunit/">
     <testsuites>
