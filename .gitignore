@@ -38,3 +38,6 @@ public/build
 toggle-composer.sh
 composer_local.txt
 composer_remote.txt
+
+# PHPUnit
+:memory:
