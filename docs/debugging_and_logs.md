@@ -34,10 +34,11 @@ To clear these logs, use the following command:
 php console log:clear
 ```
 
-This command has 3 flags that can be set.
-* --all: Clears both log files
-* --app: Clears only app.log
-* --cli: Clears only cli.log
+This command has 4 flags that can be set.
+* `--all`: Clears both log files
+* `--app`: Clears only app.log
+* `--cli`: Clears only cli.log
+* `--unit`: Clears only phpunit.log
 
 If the framework has issues writing to the logs files run the following command:
 ```sh
