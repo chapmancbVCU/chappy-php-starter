@@ -2,7 +2,7 @@
 namespace Tests\Unit;
 use Core\DB;
 use App\Models\Users;
-use Tests\ApplicationTestCase;
+use Core\Lib\Testing\ApplicationTestCase;
 
 /**
  * Undocumented class
