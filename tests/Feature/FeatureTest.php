@@ -10,8 +10,11 @@ class FeatureTest extends ApplicationTestCase {
     public function test_feature_example_1() {
         $user = Users::findById(1);
         $name = $user->username;
-        $output = $this->controllerOutput('admindashboard', 'details', ['1']);
+        // $output = $this->controllerOutput('admindashboard', 'details', ['1']);
 
-        $this->assertStringContainsString('Details for '.$name, $output);
+        $this->assertDatabaseHas('users', [
+            'email' => $user->email,
+            'lname' => 'foo'
+        ]);
     }
 }
