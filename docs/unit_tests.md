@@ -25,8 +25,7 @@ By default the `make:test` places the file under the unit test suite.  To create
 php console make:test ${testName} --feature
 ```
 
-**Application Test Support**
-To create a PHPUnit test class that extends `ApplicationTestCase` use the `--app` flag.  This version of the PHPUnit test class adds support for migrations and database seeding.
+This version of the PHPUnit test class adds support for migrations and database seeding.
 
 <br>
 
