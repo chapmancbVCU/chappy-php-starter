@@ -254,7 +254,7 @@ This will fail if a record with the specified conditions exists in the table.
 <br>
 
 ## 7. PHPUnit Assertions <a id="phpunit-assertions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-HPUnit provides a rich set of built-in assertions you can use in your tests. These are all supported out of the box in your test classes (like ApplicationTestCase) because they extend PHPUnit\Framework\TestCase.
+PHPUnit provides a rich set of built-in assertions you can use in your tests. These are all supported out of the box in your test classes (like ApplicationTestCase) because they extend PHPUnit\Framework\TestCase.
 
 Here’s a categorized list of commonly used PHPUnit assertions (as of PHPUnit 11.x):
 
