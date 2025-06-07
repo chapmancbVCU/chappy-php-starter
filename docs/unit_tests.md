@@ -6,7 +6,8 @@
 3. [Running Tests](#running-tests)
 4. [Testing Configuration](#configuration)
 5. [Simulating Controller Output](#controller)
-
+6. [ApplicationTestCase Assertions](#test-case-assertions)
+7. [PHPUnit Assertions](#phpunit-assertions)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -188,3 +189,144 @@ Since this method operates inside your test environment, ensure the required dat
 - Calling a seeder (e.g. `DatabaseSeeder`)
 - Manually inserting records
 - Otherwise, calls like `Users::findById($id)` may return `null`, causing your view or controller to throw exceptions during the test.
+
+<br>
+
+## 6. ApplicationTestCase Assertions <a id="test-case-assertions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This framework's test infrastructure provides convenient assertion helpers to validate the state of the database during tests. These assertions are especially useful in integration and feature tests that interact with the database.
+
+The following support assertions are available in the ApplicationTestCase base class:
+
+🔍 `assertDatabaseHas()`
+```php
+$this->assertDatabaseHas(string $table, array $data, string $message = '');
+```
+
+Description:
+Asserts that a given row exists in the specified database table. This is useful for verifying that a model or query correctly created or updated a record.
+
+Parameters:
+
+| Name | Type | Description |
+|:----:|:----:|-------------|
+| $table | string | The name of the database table to search. |
+| $data | array | Key-value pairs representing column and expected value. |
+| $message | string | (Optional) Custom error message if the assertion fails. |
+
+Example:
+```php
+$this->assertDatabaseHas('users', [
+    'email' => 'jane@example.com',
+    'lname' => 'Doe',
+]);
+```
+
+If the record is not found, the test will fail and display an informative error message.
+
+<br>
+
+🚫 `assertDatabaseMissing()`
+```php
+$this->assertDatabaseMissing(string $table, array $data, string $message = '');
+```
+
+Description:
+Asserts that no row exists in the given table with the provided data. Useful for checking deletions, failed inserts, or rollback behavior.
+
+Parameters:
+
+| Name | Type | Description |
+|:----:|:----:|-------------|
+| $table | string | The name of the database table to search. |
+| $data | array | Key-value pairs representing column and value to search for. |
+| $message | string | (Optional) Custom error message if the assertion fails. |
+
+Example:
+```php
+$this->assertDatabaseMissing('orders', [
+    'user_id' => 1,
+    'status' => 'canceled',
+]);
+```
+
+This will fail if a record with the specified conditions exists in the table.
+
+<br>
+
+## 7. PHPUnit Assertions <a id="phpunit-assertions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+HPUnit provides a rich set of built-in assertions you can use in your tests. These are all supported out of the box in your test classes (like ApplicationTestCase) because they extend PHPUnit\Framework\TestCase.
+
+Here’s a categorized list of commonly used PHPUnit assertions (as of PHPUnit 11.x):
+
+✅ Equality & Identity
+
+| Assertion                             | Description                               |
+| ------------------------------------- | ----------------------------------------- |
+| `assertEquals($expected, $actual)`    | Checks if two values are equal (==)       |
+| `assertSame($expected, $actual)`      | Checks if two values are identical (===)  |
+| `assertNotEquals($expected, $actual)` | Asserts that two values are not equal     |
+| `assertNotSame($expected, $actual)`   | Asserts that two values are not identical |
+
+<br>
+
+🚫 Null / Empty / Boolean
+
+| Assertion                 | Description                                              |
+| ------------------------- | -------------------------------------------------------- |
+| `assertNull($actual)`     | Checks if a value is `null`                              |
+| `assertNotNull($actual)`  | Checks if a value is not `null`                          |
+| `assertTrue($condition)`  | Checks if condition is `true`                            |
+| `assertFalse($condition)` | Checks if condition is `false`                           |
+| `assertEmpty($actual)`    | Checks if a variable is empty (e.g., `[]`, `""`, `null`) |
+| `assertNotEmpty($actual)` | Checks if a variable is not empty                        |
+
+<br>
+
+🧵 Type Assertions
+
+| Assertion                                   | Description                                                |
+| ------------------------------------------- | ---------------------------------------------------------- |
+| `assertInstanceOf($expectedClass, $object)` | Asserts object is an instance of a class                   |
+| `assertIsArray($actual)`                    | Asserts variable is an array                               |
+| `assertIsString($actual)`                   | Asserts variable is a string                               |
+| `assertIsInt($actual)`                      | Asserts variable is an integer                             |
+| `assertIsBool($actual)`                     | Asserts variable is a boolean                              |
+| `assertIsFloat($actual)`                    | Asserts variable is a float                                |
+| `assertIsCallable($actual)`                 | Asserts variable is callable                               |
+| `assertIsObject($actual)`                   | Asserts variable is an object                              |
+| `assertIsScalar($actual)`                   | Asserts variable is a scalar (int, float, string, or bool) |
+
+<br>
+
+🧮 Array / Count / Contains
+
+| Assertion                             | Description                                          |
+| ------------------------------------- | ---------------------------------------------------- |
+| `assertCount($expectedCount, $array)` | Asserts array has expected number of elements        |
+| `assertContains($needle, $haystack)`  | Asserts that a value exists in array or string       |
+| `assertArrayHasKey($key, $array)`     | Asserts key exists in an array                       |
+| `assertArrayNotHasKey($key, $array)`  | Asserts key does not exist in array                  |
+| `assertContainsOnly($type, $array)`   | Asserts array contains only values of a certain type |
+
+<br>
+
+⚠️ Exception / Error / Output
+
+| Assertion                                        | Description                                   |
+| ------------------------------------------------ | --------------------------------------------- |
+| `expectException(Exception::class)`              | Expects an exception to be thrown             |
+| `expectExceptionMessage('message')`              | Expects exception message to match            |
+| `expectExceptionCode(123)`                       | Expects exception code to match               |
+| `expectOutputString('expected output')`          | Asserts output matches string                 |
+| `assertStringContainsString($needle, $haystack)` | Asserts that a string contains another string |
+
+<br>
+
+⏱️ Performance / Custom
+
+| Assertion                                           | Description                                  |
+| --------------------------------------------------- | -------------------------------------------- |
+| `assertLessThan($expected, $actual)`                | Asserts that actual is less than expected    |
+| `assertGreaterThan($expected, $actual)`             | Asserts that actual is greater than expected |
+| `assertMatchesRegularExpression($pattern, $string)` | Asserts that a string matches regex          |
+| `assertThat($value, $constraint)`                   | Use custom constraints (advanced)            |
