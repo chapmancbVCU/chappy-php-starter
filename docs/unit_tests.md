@@ -154,18 +154,18 @@ $this->controllerOutput(string $controller, string $action, array $params = []):
 ```
 
 Description of arguments:
-- controller — The lowercase controller slug (e.g. 'home', 'user')
-- action — The lowercase action name without the Action suffix (e.g. 'index', 'details')
+- controller — The lowercase controller slug (e.g. `'home'`, `'user'`)
+- action — The lowercase action name without the `Action` suffix (e.g. `'index'`, `'details'`)
 - params — Optional array of route parameters (like path segments)
 
 🧪 Example Usage
-✅ Simulate a basic route like /home/index
+✅ Simulate a basic route like `/home/index`
 ```php
 $html = $this->controllerOutput('home', 'index');
 $this->assertStringContainsString('Welcome to Chappy.php', $html);
 ```
 
-✅ Simulate a route like /admindashboard/details/1
+✅ Simulate a route like `/admindashboard/details/1`
 ```php
 public function test_feature_example_1() {
     $user = Users::findById(1);
@@ -178,13 +178,13 @@ public function test_feature_example_1() {
 ```
 
 ✅ Behavior Details
-- The controller is instantiated using the same logic as the router (App\Controllers\{Name}Controller)
-- The action is called with any extra parameters (mimicking a parsed URL like /user/edit/3)
-- Output from the controller is captured using ob_start() and returned as a string
+- The controller is instantiated using the same logic as the router (`App\Controllers\{Name}Controller`)
+- The action is called with any extra parameters (mimicking a parsed URL like `/user/edit/3`)
+- Output from the controller is captured using `ob_start()` and returned as a string
 - This method is ideal for asserting against full HTML responses or checking content rendered by views
 
 ⚠️ Note on Test Data
 Since this method operates inside your test environment, ensure the required database records (e.g. users, posts) exist either by:
-- Calling a seeder (e.g. DatabaseSeeder)
+- Calling a seeder (e.g. `DatabaseSeeder`)
 - Manually inserting records
-- Otherwise, calls like Users::findById($id) may return null, causing your view or controller to throw exceptions during the test.
+- Otherwise, calls like `Users::findById($id)` may return `null`, causing your view or controller to throw exceptions during the test.
