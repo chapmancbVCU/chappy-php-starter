@@ -29,8 +29,16 @@ abstract class ApplicationTestCase extends TestCase {
             'charset'  => Env::get('DB_CHARSET', 'utf8mb4'),
         ]);
         
+        // Control DB setup via env toggles
+        if(Env::get('DB_REFRESH', true)) {
+            Migrate::refresh();
+        }
+
         $this->runMigrations();
-        $this->runSeeders();
+
+        if(Env::get('DB_SEED', true)) {
+            $this->runSeeders();
+        }
     }
 
     protected function runMigrations(): void

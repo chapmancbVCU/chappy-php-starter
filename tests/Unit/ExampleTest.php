@@ -3,7 +3,6 @@ namespace Tests\Unit;
 use Core\DB;
 use App\Models\Users;
 use Tests\ApplicationTestCase;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Undocumented class
