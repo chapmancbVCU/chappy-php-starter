@@ -72,7 +72,7 @@ This gives you flexibility for:
 For quick and isolated test runs, SQLite is ideal. It requires **no setup** and runs entirely in memory.
 
 #### **Configure PHPUnit to use SQLite**
-Update your `phpunit.xml`:
+Update your `phpunit.xml` and make sure `.env.testing` does not exist in your project root:
 
 ```xml
 <env name="APP_ENV" value="testing"/>
