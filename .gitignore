@@ -40,4 +40,5 @@ composer_local.txt
 composer_remote.txt
 
 # PHPUnit
+.env.testing
 :memory:
