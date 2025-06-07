@@ -3,7 +3,8 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [Creating Tests](#creating-tests)
-3. [Running Tests](#running-tests)
+3. [Running Tests](#running-tests)\
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -23,6 +24,9 @@ By default the `make:test` places the file under the unit test suite.  To create
 ```sh
 php console make:test ${testName} --feature
 ```
+
+**Application Test Support**
+To create a PHPUnit test class that extends `ApplicationTestCase` use the `--app` flag.  This version of the PHPUnit test class adds support for migrations and database seeding.
 
 <br>
 
