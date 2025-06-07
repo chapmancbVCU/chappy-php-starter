@@ -5,6 +5,7 @@
 2. [Creating Tests](#creating-tests)
 3. [Running Tests](#running-tests)
 4. [Testing Configuration](#configuration)
+5. [Simulating Controller Output](#controller)
 
 <br>
 
@@ -138,3 +139,52 @@ DB_SEED=true
 ✅ Requirements
 - MySQL test database must exist (e.g., chappy_test)
 - Test user must have privileges to create/drop tables
+
+<br>
+
+## 5. Simulating Controller Output <a id="controller"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The Chappy.php framework provides a convenient test helper method named `controllerOutput()` that allows you to simulate controller behavior inside unit or feature tests, similar to how routes behave when accessed via a browser.
+
+This method is available within `ApplicationTestCase` and is ideal for verifying the output of controller actions.
+
+### 🔧 Syntax
+
+```php
+$this->controllerOutput(string $controller, string $action, array $params = []): string
+```
+
+Description of arguments:
+- controller — The lowercase controller slug (e.g. 'home', 'user')
+- action — The lowercase action name without the Action suffix (e.g. 'index', 'details')
+- params — Optional array of route parameters (like path segments)
+
+🧪 Example Usage
+✅ Simulate a basic route like /home/index
+```php
+$html = $this->controllerOutput('home', 'index');
+$this->assertStringContainsString('Welcome to Chappy.php', $html);
+```
+
+✅ Simulate a route like /admindashboard/details/1
+```php
+public function test_feature_example_1() {
+    $user = Users::findById(1);
+
+    $username = $user->username;
+    $output = $this->controllerOutput('admindashboard', 'details', ['1']);
+
+    $this->assertStringContainsString('Details for '.$username, $output);
+}
+```
+
+✅ Behavior Details
+- The controller is instantiated using the same logic as the router (App\Controllers\{Name}Controller)
+- The action is called with any extra parameters (mimicking a parsed URL like /user/edit/3)
+- Output from the controller is captured using ob_start() and returned as a string
+- This method is ideal for asserting against full HTML responses or checking content rendered by views
+
+⚠️ Note on Test Data
+Since this method operates inside your test environment, ensure the required database records (e.g. users, posts) exist either by:
+- Calling a seeder (e.g. DatabaseSeeder)
+- Manually inserting records
+- Otherwise, calls like Users::findById($id) may return null, causing your view or controller to throw exceptions during the test.
