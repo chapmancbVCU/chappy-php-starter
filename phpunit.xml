@@ -20,8 +20,11 @@
         <env name="DB_PORT" value="3306"/>
         <env name="DB_DATABASE" value=""/>
         <env name="DB_USERNAME" value=""/>
-        <env name="DB_PASSWORD" value=""/>
-        <env name="DB_REFRESH" value="true"/>
-        <env name="DB_SEED" value="true"/> -->
+        <env name="DB_PASSWORD" value=""/> -->
+
+        <!-- Feature test configuration -->
+        <!-- <env name="DB_REFRESH" value="true"/> -->
+        <!-- <env name="DB_MIGRATE" value="true"/> -->
+        <!-- <env name="DB_SEED" value="true"/> -->
     </php>
 </phpunit>
