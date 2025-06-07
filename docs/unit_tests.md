@@ -253,6 +253,67 @@ This will fail if a record with the specified conditions exists in the table.
 
 <br>
 
+🧪 Testing View Variables with c`ontrollerOutput()` and `assertViewContains()`
+This section describes how to test whether a controller assigns the expected properties to the `View` object using `controllerOutput()` and the `assertViewContains()` assertion method.
+
+✅ Overview
+In this framework, controller actions assign data to views via dynamic properties:
+
+```php
+$this->view->user = $user;
+$this->view->render('admindashboard/details');
+```
+
+To test whether specific view variables are set correctly during a controller action, you can use:
+- `controllerOutput()` – simulates dispatching a controller and stores output
+- `logViewForTesting()` – captures the view during rendering
+- `assertViewContains()` – checks whether a specific view property exists (and optionally, its value)
+
+🧩 Prerequisites
+Make sure the controller action includes:
+```php
+$this->logViewForTesting($this->view);
+$this->view->render('admindashboard/details');
+```
+
+📥 Example Controller Action
+```php
+public function detailsAction($id): void {
+    $user = Users::findById((int)$id);
+    $profileImage = ProfileImages::findCurrentProfileImage($user->id);
+
+    $this->view->profileImage = $profileImage;
+    $this->view->user = $user;
+
+    $this->logViewForTesting($this->view); // Required for testing
+    $this->view->render('admindashboard/details');
+}
+```
+
+🧪 Writing the Test
+```php
+public function test_user_details_view_contains_user()
+{
+    static::controllerOutput('admindashboard', 'details', [1]);
+
+    $this->assertViewContains('user');
+    $this->assertViewContains('profileImage');
+}
+```
+
+You can also verify the value if needed:
+```php
+$this->assertViewContains('user', Users::findById(1));
+```
+
+🧠 How It Works
+- `controllerOutput()` simulates the route to `AdmDashboardController@details`
+- The controller calls `logViewForTesting()`, which stores `$this->view` in a static test property
+- `assertViewContains()` retrieves the view object and verifies its dynamic properties
+
+<br>
+
+
 ## 7. PHPUnit Assertions <a id="phpunit-assertions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 PHPUnit provides a rich set of built-in assertions you can use in your tests. These are all supported out of the box in your test classes (like ApplicationTestCase) because they extend PHPUnit\Framework\TestCase.
 
