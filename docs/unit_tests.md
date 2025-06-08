@@ -30,6 +30,9 @@ php console make:test ${testName} --feature
 
 This version of the PHPUnit test class adds support for migrations and database seeding.
 
+**Naming Functions**
+A PHPUnit enforced rule requires that each test case within your class begins with the word `test`.
+
 <br>
 
 
