@@ -27,13 +27,13 @@ class UsersTableSeeder extends Seeder {
         $i = 0;
         while($i < $numberOfRecords) {
             $users = new Users();
-            $users->username = $faker->userName;
-            $users->email = $faker->safeEmail;
+            $users->username = $faker->userName();
+            $users->email = $faker->safeEmail();
             $users->acl = json_encode([""]);
-            $users->password = $faker->password;
+            $users->password = $faker->password();
             $users->confirm = $users->password;
-            $users->fname = $faker->firstName;
-            $users->lname = $faker->lastName;
+            $users->fname = $faker->firstName();
+            $users->lname = $faker->lastName();
             $users->description = $faker->sentence(3);
             $users->inactive = 0;
             $users->reset_password = 0;
