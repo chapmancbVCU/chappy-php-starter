@@ -40,21 +40,25 @@ php console test
 ```
 
 **Run Tests By File**
+
 Run all tests in a file that exists within the feature, unit, or both test suites.
 ```sh
 php console test ${fileName}
 ```
 
 **Run A Particular Test**
+
 Run a specific test in a file.
 ```sh
 php console test ${fileName}::${functionName}
 ```
 
 **Running Tests With PHPUnit**
+
 You can use `vendor/bin/phpunit` to bypass the console's `test` command.
 
 **Supported PHPUnit flags**
+
 The following flags are supported without running PHPUnit directly using `vendor/bin/phpunit`.
 - `--coverage-text`
 - `--debug`
@@ -68,9 +72,11 @@ The following flags are supported without running PHPUnit directly using `vendor
 If you have the same function in a class with the same name inside both test suites only the one found within the unit test suite will be executed.
 
 **Run A Test Suite**
+
 Run all test within a particular test suite by adding the `--unit` and/or `--feature` flags.
 
 **Run Specific Test File Within A Suite**
+
 You can run all test within a specific test file for an individual suite by specifying the file name and adding the `--unit` and/or `--feature` flags.
 
 <br>
