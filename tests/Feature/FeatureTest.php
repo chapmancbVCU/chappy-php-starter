@@ -14,7 +14,7 @@ class FeatureTest extends ApplicationTestCase {
 
         $this->assertDatabaseHas('users', [
             'email' => $user->email,
-            'lname' => 'foo'
+            'lname' => $user->lname
         ]);
     }
 }

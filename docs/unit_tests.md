@@ -51,6 +51,20 @@ Run a specific test in a file.
 php console test ${fileName}::${functionName}
 ```
 
+**Running Tests With PHPUnit**
+You can use `vendor/bin/phpunit` to bypass the console's `test` command.
+
+**Supported PHPUnit flags**
+The following flags are supported without running PHPUnit directly using `vendor/bin/phpunit`.
+- `--coverage-text`
+- `--debug`
+- `--testbox`
+- `--reverse-order`
+- `--random-order`
+- `--fail-on-incomplete`
+- `--fail-on-risky`
+- `--stop-on-failure`
+
 If you have the same function in a class with the same name inside both test suites only the one found within the unit test suite will be executed.
 
 **Run A Test Suite**
