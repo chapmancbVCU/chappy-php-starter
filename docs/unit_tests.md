@@ -63,14 +63,40 @@ You can use `vendor/bin/phpunit` to bypass the console's `test` command.
 **Supported PHPUnit flags**
 
 The following flags are supported without running PHPUnit directly using `vendor/bin/phpunit`.
-- `--coverage-text`
-- `--debug`
-- `--testbox`
-- `--reverse-order`
-- `--random-order`
-- `--fail-on-incomplete`
-- `--fail-on-risky`
-- `--stop-on-failure`
+🧹 Coverage and Logging
+
+| Flag                       | Description                             |
+| -------------------------- | --------------------------------------- |
+| `--coverage-text`          | Output code coverage summary to console |
+
+✅ Output / Display Flags
+
+| Flag                     | Description                                                      |
+| ------------------------ | ---------------------------------------------------------------- |
+<!-- | `--colors=always`        | Always use ANSI colors in output (`auto`, `never`, `always`)     | -->
+| `--debug`                | Show debugging info for each test (e.g., method names being run) |
+| `--display-deprecations` | Show deprecated method warnings                                  |
+| `--display-errors`       | Show errors (on by default)                                      |
+| `--display-incomplete`   | Show incomplete tests in summary                                 |
+| `--display-skipped`      | Show skipped tests in summary                                    |
+| `--fail-on-incomplete`   | Mark incomplete tests as failed                                  |
+| `--fail-on-risky`        | Fail if risky tests are detected                                 |
+| `--testdox`              | Print readable test names (e.g., "It returns true on success")   |
+
+
+🔁 Execution / Behavior Flags
+
+| Flag                   | Description                  |
+| ---------------------- | ---------------------------- |
+| `--random-order`       | Randomize test order         |
+| `--reverse-order`      | Run tests in reverse order   |
+| `--stop-on-error`      | Stop on error                |
+| `--stop-on-failure`    | Stop as soon as a test fails |
+| `--stop-on-incomplete` | Stop on incomplete test      |
+| `--stop-on-risky`      | Stop on risky test           |
+| `--stop-on-skipped`    | Stop on skipped test         |
+| `--stop-on-warning`    | Stop on warning              |
+
 
 If you have the same function in a class with the same name inside both test suites only the one found within the unit test suite will be executed.
 
