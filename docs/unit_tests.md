@@ -209,6 +209,7 @@ Description of arguments:
 - params — Optional array of route parameters (like path segments)
 
 🧪 Example Usage
+
 ✅ Simulate a basic route like `/home/index`
 ```php
 $html = $this->controllerOutput('home', 'index');
@@ -302,7 +303,8 @@ This will fail if a record with the specified conditions exists in the table.
 
 <br>
 
-🧪 Testing View Variables with c`ontrollerOutput()` and `assertViewContains()`
+🧪 Testing View Variables with `controllerOutput()` and `assertViewContains()`
+
 This section describes how to test whether a controller assigns the expected properties to the `View` object using `controllerOutput()` and the `assertViewContains()` assertion method.
 
 ✅ Overview
@@ -363,6 +365,7 @@ $this->assertViewContains('user', Users::findById(1));
 <br>
 
 📥 Simulating GET Requests with `get()` and `TestResponse`
+
 The `ApplicationTestCase` class provides a Laravel-style `get()` helper that lets you simulate HTTP GET requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
 
 🔧 Syntax
