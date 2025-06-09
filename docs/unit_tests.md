@@ -362,6 +362,59 @@ $this->assertViewContains('user', Users::findById(1));
 
 <br>
 
+📥 Simulating GET Requests with `get()` and `TestResponse`
+The `ApplicationTestCase` class provides a Laravel-style `get()` helper that lets you simulate HTTP GET requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
+
+🔧 Syntax
+```php
+$this->get(string $uri): TestResponse
+```
+
+✅ Example
+```php
+public function test_homepage_loads_successfully(): void
+{
+    $response = $this->get('/');
+    $response->assertStatus(200);
+    $response->assertSee('Welcome');
+}
+```
+
+This simulates a route to `HomeController@indexAction()` and captures its output and response code.
+
+⚙️ Behavior
+- Automatically maps URIs like `/products/show/3` to `ProductsController::showAction(3)`
+- Returns a TestResponse object with:
+    - `assertStatus(int $expected)`
+    - `assertSee(string $text)`
+    - `getContent(): string`
+
+📦 TestResponse Class
+
+The `TestResponse` class is used to encapsulate the response content and status returned by `get()`. It provides useful assertion helpers for verifying behavior in your feature tests.
+
+✅ Methods
+
+| Method                 | Description                                       |
+| ---------------------- | ------------------------------------------------- |
+| `assertStatus(int)`    | Asserts the response returned the expected status |
+| `assertSee(string)`    | Asserts that the response content contains text   |
+| `getContent(): string` | Returns the raw content captured from the output  |
+
+
+📘 Example
+```php
+$response = $this->get('/user/profile');
+$response->assertStatus(200);
+$response->assertSee('Profile');
+```
+
+🔍 Notes
+- `get()` uses `controllerOutput()` internally to resolve the controller and action.
+- Extra URI segments beyond `/controller/action` are passed as method parameters.
+- If the controller or action is not found, a 404 response is returned with the error message.
+
+<br>
 
 ## 7. PHPUnit Assertions <a id="phpunit-assertions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 PHPUnit provides a rich set of built-in assertions you can use in your tests. These are all supported out of the box in your test classes (like ApplicationTestCase) because they extend PHPUnit\Framework\TestCase.
