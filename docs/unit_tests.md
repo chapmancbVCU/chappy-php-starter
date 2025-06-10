@@ -9,6 +9,7 @@
 6. [ApplicationTestCase Assertions](#test-case-assertions)
     * A. [assertDatabaseHas()](#assert-database-has)
     * B. [assertDatabaseMissing()](#assert-database-missing)
+    * C. [assertStatus()](#assert-status)
     * C. [Testing View Variables with `controllerOutput()` and `assertViewContains()`](#view-variables)
     * D. [Simulating GET Requests with `get()` and `TestResponse`](#get)
     * E. [Simulating POST Requests in Feature Tests](#post)
@@ -324,6 +325,48 @@ $this->assertDatabaseMissing('orders', [
 ```
 
 This will fail if a record with the specified conditions exists in the table.
+
+<br>
+
+### C. `assertStatus(int $expected)`  <a id="assert-status"></a>
+**Overview**
+
+The `assertStatus()` method is used in feature and unit tests to verify that a controller or simulated HTTP request returned the expected status code. This method is part of the `TestResponse` class and ensures your controller logic responds with the correct HTTP semantics (e.g., 200 OK, 404 Not Found, 500 Internal Server Error).
+
+**Signature**
+```php
+public function assertStatus(int $expected): void
+```
+
+**Parameters**
+
+| Parameter   | Type  | Description                                                                        |
+| ----------- | ----- | ---------------------------------------------------------------------------------- |
+| `$expected` | `int` | The HTTP status code you expect the response to return (e.g., `200`, `404`, `500`) |
+
+
+**Usage**
+Use this method after performing a simulated request using `get()`, `post()`, `put()`, or `delete()` in your `ApplicationTestCase`. It will throw an assertion error if the actual status code does not match the expected one.
+
+
+**Example**
+```php
+public function test_homepage_returns_ok_status(): void
+{
+    $response = $this->get('/');
+
+    $response->assertStatus(200);
+}
+```
+
+If the response status is not `200`, the test will fail with a message like:
+```lua
+Expected response status 200 but got 404.
+```
+
+**When to Use**
+- After simulating a request to validate that your route and controller handled it successfully.
+- To confirm that error routes return correct HTTP codes like `404`, `403`, or `500`.
 
 <br>
 
