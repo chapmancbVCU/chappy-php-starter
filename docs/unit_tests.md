@@ -7,6 +7,12 @@
 4. [Testing Configuration](#configuration)
 5. [Simulating Controller Output](#controller)
 6. [ApplicationTestCase Assertions](#test-case-assertions)
+    * A. [assertDatabaseHas()](#assert-database-has)
+    * B. [assertDatabaseMissing()](#assert-database-missing)
+    * C. [Testing View Variables with `controllerOutput()` and `assertViewContains()`](#view-variables)
+    * D. [Simulating GET Requests with `get()` and `TestResponse`](#get)
+    * E. [Simulating POST Requests in Feature Tests](#post)
+    * F. [Mocking File Uploads in Tests](#mock-files)
 7. [PHPUnit Assertions](#phpunit-assertions)
 <br>
 
@@ -263,7 +269,9 @@ This framework's test infrastructure provides convenient assertion helpers to va
 
 The following support assertions are available in the ApplicationTestCase base class:
 
-🔍 `assertDatabaseHas()`
+<br>
+
+### A. 🔍 `assertDatabaseHas()` <a id="assert-database-has"></a>
 ```php
 $this->assertDatabaseHas(string $table, array $data, string $message = '');
 ```
@@ -291,7 +299,7 @@ If the record is not found, the test will fail and display an informative error 
 
 <br>
 
-🚫 `assertDatabaseMissing()`
+### B. 🚫 `assertDatabaseMissing()` <a id="assert-database-missing"></a>
 ```php
 $this->assertDatabaseMissing(string $table, array $data, string $message = '');
 ```
@@ -319,7 +327,7 @@ This will fail if a record with the specified conditions exists in the table.
 
 <br>
 
-🧪 Testing View Variables with `controllerOutput()` and `assertViewContains()`
+### C . 🧪 Testing View Variables with `controllerOutput()` and `assertViewContains()` <a id="view-variables"></a>
 
 This section describes how to test whether a controller assigns the expected properties to the `View` object using `controllerOutput()` and the `assertViewContains()` assertion method.
 
@@ -380,7 +388,7 @@ $this->assertViewContains('user', Users::findById(1));
 
 <br>
 
-📥 Simulating GET Requests with `get()` and `TestResponse`
+### D. 📥 Simulating GET Requests with `get()` and `TestResponse` <a id="get"></a>
 
 The `ApplicationTestCase` class provides a Laravel-style `get()` helper that lets you simulate HTTP GET requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
 
@@ -435,7 +443,7 @@ $response->assertSee('Profile');
 
 <br>
 
-✅ Simulating POST Requests in Feature Tests
+### E. ✅ Simulating POST Requests in Feature Tests <a id="post"></a>
 
 In your framework's test suite, the `post()` method allows you to simulate POST requests to any controller action as if it were triggered via a browser form submission. This is especially useful for testing routes like `/auth/register` or `/products/create`.
 
@@ -481,7 +489,7 @@ public function test_register_action_creates_user(): void
 
 <br>
 
-📂 Mocking File Uploads in Tests
+### F. 📂 Mocking File Uploads in Tests <a id="mock-files"></a>
 
 When your controller expects file uploads (like $_FILES['profileImage']), you must mock this data in your test to avoid runtime errors.
 
