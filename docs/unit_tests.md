@@ -419,6 +419,66 @@ $response->assertSee('Profile');
 
 <br>
 
+✅ Simulating POST Requests in Feature Tests
+
+In your framework's test suite, the `post()` method allows you to simulate POST requests to any controller action as if it were triggered via a browser form submission. This is especially useful for testing routes like `/auth/register` or `/products/create`.
+
+**Example: Register User Test**
+
+```php
+public function test_register_action_creates_user(): void
+{
+    // 👤 Mock file upload (required even if no image uploaded)
+    $this->mockFile('profileImage');
+
+    // 🧪 Prepare valid form input with CSRF token
+    $postData = [
+        'fname' => 'Test',
+        'lname' => 'User',
+        'email' => 'testuser@example.com',
+        'username' => 'testuser',
+        'description' => 'Test description',
+        'password' => 'Password@123',
+        'confirm' => 'Password@123',
+        'csrf_token' => FormHelper::generateToken(),
+    ];
+
+    // 🚀 Perform request to controller
+    $response = $this->post('/auth/register', $postData);
+
+    // ✅ Assert user was created
+    $user = \Core\DB::getInstance()->query(
+        "SELECT * FROM users WHERE username = ?",
+        ['testuser']
+    )->first();
+
+    $this->assertNotNull($user, 'User should exist in the database');
+    $this->assertEquals('testuser', $user->username);
+
+    // 🔒 Also confirm with database helper
+    $this->assertDatabaseHas('users', [
+        'username' => 'testuser',
+        'email' => 'testuser@example.com',
+    ]);
+}
+```
+
+<br>
+
+📂 Mocking File Uploads in Tests
+
+When your controller expects file uploads (like $_FILES['profileImage']), you must mock this data in your test to avoid runtime errors.
+
+**Usage in a test**
+
+```php
+$this->mockFile('profileImage');
+```
+
+This simulates an empty file upload, which is sufficient for passing validation or skipping optional image logic in `Uploads::handleUpload()`.
+
+<br>
+
 ## 7. PHPUnit Assertions <a id="phpunit-assertions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 PHPUnit provides a rich set of built-in assertions you can use in your tests. These are all supported out of the box in your test classes (like ApplicationTestCase) because they extend PHPUnit\Framework\TestCase.
 
