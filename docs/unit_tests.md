@@ -20,7 +20,7 @@
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The Unit Test system in the Chappy PHP framework enables developers to write automated tests for their applications using a clean, expressive API layered on top of PHPUnit. It includes a custom ApplicationTestCase base class that simulates HTTP requests (get, post, put, and delete) and provides convenient methods for asserting database state, capturing controller output, and validating view data.
+The Unit Test system in the Chappy PHP framework enables developers to write automated tests for their applications using a clean, expressive API layered on top of PHPUnit. It includes a custom ApplicationTestCase base class that simulates HTTP requests (get, post, and put) and provides convenient methods for asserting database state, capturing controller output, and validating view data.
 
 This setup is ideal for:
 - Testing controller logic in isolation
@@ -348,7 +348,7 @@ public function assertStatus(int $expected): void
 
 
 **Usage**
-Use this method after performing a simulated request using `get()`, `post()`, `put()`, or `delete()` in your `ApplicationTestCase`. It will throw an assertion error if the actual status code does not match the expected one.
+Use this method after performing a simulated request using `get()`, `post()`, or `put()` in your `ApplicationTestCase`. It will throw an assertion error if the actual status code does not match the expected one.
 
 
 **Example**
