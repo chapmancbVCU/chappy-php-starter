@@ -14,7 +14,8 @@
     * E. [Testing View Variables with `controllerOutput()` and `assertViewContains()`](#view-variables)
     * F. [Simulating GET Requests with `get()` and `TestResponse`](#get)
     * G. [Simulating POST Requests in Feature Tests](#post)
-    * H. [Mocking File Uploads in Tests](#mock-files)
+    * H. [Simulating PUT Requests in Feature Tests](#put)
+    * I. [Mocking File Uploads in Tests](#mock-files)
 7. [PHPUnit Assertions](#phpunit-assertions)
 <br>
 
@@ -602,7 +603,57 @@ public function test_register_action_creates_user(): void
 
 <br>
 
-### H. 📂 Mocking File Uploads in Tests <a id="mock-files"></a>
+### H. ♻️ Simulating PUT Requests in Feature Tests <a id="put">
+The `put()` method in `ApplicationTestCase` allows you to simulate HTTP `PUT` requests to test controller actions that update records. It mimics a real browser form submission using the `PUT` method and passes data to the targeted controller action.
+
+This is especially useful for testing resourceful routes like `/users/update/1`, where form data is submitted via `PUT`.
+
+🧪 Example: Update User Test
+```php
+public function test_put_updates_user(): void
+{
+    // ✅ Seed user
+    DB::getInstance()->insert('users', [
+        'fname' => 'Original',
+        'lname' => 'User',
+        'email' => 'original@example.com',
+        'username' => 'originaluser',
+        'description' => 'Seeded user',
+        'password' => password_hash('Password@123', PASSWORD_DEFAULT),
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+
+    $userId = DB::getInstance()->lastID();
+
+    // ✅ Prepare updated values
+    $data = [
+        'username' => 'updateduser',
+        'email' => 'updated@example.com',
+        'csrf_token' => FormHelper::generateToken()
+    ];
+
+    // ✅ Simulate PUT request to update controller
+    $response = $this->put("/admindashboard/update/{$userId}", $data);
+
+    // ✅ Assert changes in DB
+    $user = DB::getInstance()->query("SELECT * FROM users WHERE id = ?", [$userId])->first();
+
+    $this->assertNotNull($user);
+    $this->assertEquals('updateduser', $user->username);
+    $this->assertEquals('updated@example.com', $user->email);
+}
+```
+
+🔐 CSRF Support
+Ensure you include a valid CSRF token using your form helper before submitting the `PUT` request:
+```php
+'csrf_token' => FormHelper::generateToken()
+```
+
+<br>
+
+### I. 📂 Mocking File Uploads in Tests <a id="mock-files"></a>
 
 When your controller expects file uploads (like $_FILES['profileImage']), you must mock this data in your test to avoid runtime errors.
 

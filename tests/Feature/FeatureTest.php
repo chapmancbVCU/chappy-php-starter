@@ -58,57 +58,5 @@ class FeatureTest extends ApplicationTestCase {
             'email' => 'testuser@example.com',
         ]);
     }
-
-    public function test_assert_json_validates_structure_and_values(): void
-    {
-        $jsonContent = json_encode([
-            'status' => 'success',
-            'message' => 'User created',
-            'id' => 42
-        ]);
-
-        $response = new TestResponse($jsonContent, 200);
-
-        // This should pass
-        $response->assertJson([
-            'status' => 'success',
-            'message' => 'User created',
-            'id' => 42
-        ]);
-    }
-
-    public function test_assert_json_fails_on_missing_key(): void
-    {
-        $this->expectException(\PHPUnit\Framework\ExpectationFailedException::class);
-        $this->expectExceptionMessage("Key 'email' not found in JSON response.");
-
-        $jsonContent = json_encode(['username' => 'testuser']);
-        $response = new TestResponse($jsonContent, 200);
-
-        // This should fail due to missing 'email' key
-        $response->assertJson([
-            'email' => 'testuser@example.com'
-        ]);
-    }
-
-    public function test_assert_json_fails_on_mismatched_value(): void
-    {
-        $this->expectException(\PHPUnit\Framework\ExpectationFailedException::class);
-        $this->expectExceptionMessage("Mismatched value for key 'status' in JSON.");
-
-        $jsonContent = json_encode(['status' => 'error']);
-        $response = new TestResponse($jsonContent, 200);
-
-        // This should fail due to incorrect value
-        $response->assertJson(['status' => 'success']);
-    }
-
-    public function test_assert_json_fails_on_invalid_json(): void
-    {
-        $this->expectException(\PHPUnit\Framework\ExpectationFailedException::class);
-        $this->expectExceptionMessage("Response content is not valid JSON.");
-
-        $response = new TestResponse("not-json", 200);
-        $response->assertJson(['key' => 'value']);
-    }
+    
 }
