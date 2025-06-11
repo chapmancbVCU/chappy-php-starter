@@ -651,6 +651,13 @@ Ensure you include a valid CSRF token using your form helper before submitting t
 'csrf_token' => FormHelper::generateToken()
 ```
 
+✅ When to Use
+Use put() in feature tests to:
+- Verify that a controller correctly updates a database record
+- Simulate a PUT or PATCH form submission from the browser
+- Test CSRF validation and data sanitization
+- Assert redirect behavior after update
+
 <br>
 
 ### I. 📂 Mocking File Uploads in Tests <a id="mock-files"></a>
