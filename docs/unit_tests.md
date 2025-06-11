@@ -10,10 +10,11 @@
     * A. [assertDatabaseHas()](#assert-database-has)
     * B. [assertDatabaseMissing()](#assert-database-missing)
     * C. [assertStatus()](#assert-status)
-    * C. [Testing View Variables with `controllerOutput()` and `assertViewContains()`](#view-variables)
-    * D. [Simulating GET Requests with `get()` and `TestResponse`](#get)
-    * E. [Simulating POST Requests in Feature Tests](#post)
-    * F. [Mocking File Uploads in Tests](#mock-files)
+    * D. [assertJson()](#assert-json)
+    * E. [Testing View Variables with `controllerOutput()` and `assertViewContains()`](#view-variables)
+    * F. [Simulating GET Requests with `get()` and `TestResponse`](#get)
+    * G. [Simulating POST Requests in Feature Tests](#post)
+    * H. [Mocking File Uploads in Tests](#mock-files)
 7. [PHPUnit Assertions](#phpunit-assertions)
 <br>
 
@@ -370,7 +371,76 @@ Expected response status 200 but got 404.
 
 <br>
 
-### C . 🧪 Testing View Variables with `controllerOutput()` and `assertViewContains()` <a id="view-variables"></a>
+### D. ✅ assertJson()<a id="view-variables"></a>
+**Overview**
+The `assertJson()` method allows you to verify that the HTTP response body is valid JSON and contains specific key-value pairs. This is useful when testing API endpoints or any controller that returns JSON responses, such as AJAX routes or RESTful APIs.
+
+It ensures:
+- The response content is valid JSON
+- All expected keys are present
+- All expected values match exactly (using `assertSame`)
+
+**Method Signature**
+```php
+public function assertJson(array $expected): void
+```
+
+**Parameters**
+
+| Parameter   | Type    | Description                                                           |
+| ----------- | ------- | --------------------------------------------------------------------- |
+| `$expected` | `array` | An associative array of key-value pairs expected in the JSON response |
+
+**How It Works**
+- Parses JSON: It attempts to json_decode the response content.
+- Validates Format: It asserts the content is a valid JSON array.
+- Checks Keys: Asserts that each key in the $expected array exists.
+- Checks Values: Ensures the actual value matches the expected value exactly.
+
+**Example Usage**
+✅ Successful Test
+```php
+$response = new TestResponse(json_encode([
+    'status' => 'success',
+    'message' => 'User created',
+    'id' => 42
+]));
+
+$response->assertJson([
+    'status' => 'success',
+    'message' => 'User created',
+    'id' => 42
+]);
+```
+
+❌ Failing Test (Missing Key)
+```php
+$response = new TestResponse(json_encode([
+    'username' => 'testuser'
+]));
+
+$response->assertJson([
+    'email' => 'testuser@example.com' // will fail: key not found
+]);
+```
+
+❌ Failing Test (Mismatched Value)
+```php
+$response = new TestResponse(json_encode([
+    'status' => 'error'
+]));
+
+$response->assertJson([
+    'status' => 'success' // will fail: mismatched value
+]);
+```
+
+**When to Use**
+- API endpoint response validation
+- AJAX controller return assertions
+- JSON-based form submission confirmation
+
+### E. 🧪 Testing View Variables with `controllerOutput()` and `assertViewContains()` <a id="view-variables"></a>
 
 This section describes how to test whether a controller assigns the expected properties to the `View` object using `controllerOutput()` and the `assertViewContains()` assertion method.
 
@@ -431,7 +501,7 @@ $this->assertViewContains('user', Users::findById(1));
 
 <br>
 
-### D. 📥 Simulating GET Requests with `get()` and `TestResponse` <a id="get"></a>
+### F. 📥 Simulating GET Requests with `get()` and `TestResponse` <a id="get"></a>
 
 The `ApplicationTestCase` class provides a Laravel-style `get()` helper that lets you simulate HTTP GET requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
 
@@ -486,7 +556,7 @@ $response->assertSee('Profile');
 
 <br>
 
-### E. ✅ Simulating POST Requests in Feature Tests <a id="post"></a>
+### G. ✅ Simulating POST Requests in Feature Tests <a id="post"></a>
 
 In your framework's test suite, the `post()` method allows you to simulate POST requests to any controller action as if it were triggered via a browser form submission. This is especially useful for testing routes like `/auth/register` or `/products/create`.
 
@@ -532,7 +602,7 @@ public function test_register_action_creates_user(): void
 
 <br>
 
-### F. 📂 Mocking File Uploads in Tests <a id="mock-files"></a>
+### H. 📂 Mocking File Uploads in Tests <a id="mock-files"></a>
 
 When your controller expects file uploads (like $_FILES['profileImage']), you must mock this data in your test to avoid runtime errors.
 
