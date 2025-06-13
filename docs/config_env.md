@@ -55,6 +55,11 @@ echo Env::get('APP_NAME'); // Outputs: "My Custom App"
 echo Env::get('NON_EXISTENT_KEY', 'Default Value');
 ```
 
+You can also use the globally available version:
+```php
+echo env(''APP_NAME')
+```
+
 ✅ Example Output
 
 | `.env` Value | `Env::get('KEY')` Output |
@@ -112,6 +117,11 @@ echo Config::get('app.name'); // Outputs: "My Custom App"
 🛠 Providing a Default Value
 ```php
 echo Config::get('database.host', '127.0.0.1');
+```
+
+You can also use the globally available version of this function:
+```php
+echo config('database.host', '127.0.0.1');
 ```
 
 📌 Example Config Files
