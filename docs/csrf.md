@@ -19,6 +19,11 @@ For Any form you create you can add a CSRF token by adding the following stateme
 <?= FormHelper::csrfInput() ?>
 ```
 
+You can also use the shorthand globally accessible version of this function:
+```php
+<?= csrf() >
+```
+
 This statement will added a hidden element containing the session's CSRF token as its value.  Next, within the action associated with your form inside your controller class simply add the following statement:
 
 ```php
@@ -50,7 +55,7 @@ The original HTML for the toggled featured can be found at (A) in the References
     action="<?=Env::get('APP_DOMAIN')?>vendorproducts/toggleFeatured" 
     class="d-inline-block">
     <?= FormHelper::hidden('id', $product->id) ?>
-    <?= $csrfToken = FormHelper::csrfInput() ?>
+    <?= $csrfToken = csrf() ?>
     <button type="submit" class="btn btn-sm btn-light btn-outline-warning" title="Toggle Featured">
         <i class="<?=($product->featured == 1) ? 'fas fa-star' : 'far fa-star'?>"></i>
     </button>

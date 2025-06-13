@@ -13,7 +13,7 @@
         <h1 class="text-center">Edit Details for <?=$this->user->username?></h1>
         <hr>
         <form class="form" action="" method="POST" enctype="multipart/form-data">
-            <?= FormHelper::csrfInput() ?>
+            <?= csrf() ?>
             <?= FormHelper::hidden('images_sorted', '') ?>
             <?= FormHelper::displayErrors($this->displayErrors) ?>
             

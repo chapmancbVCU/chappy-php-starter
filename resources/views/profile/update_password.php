@@ -10,7 +10,7 @@ use Core\Lib\Utilities\Env;
         <hr>  
         <?php $this->component('password_complexity_requirements'); ?>
         <form class="form" action="" method="post">
-            <?= FormHelper::csrfInput() ?>
+            <?= csrf() ?>
             <?= FormHelper::displayErrors($this->displayErrors) ?>
             <?= FormHelper::inputBlock('password', "Current Password", 'current_password', $this->current_password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             <?= FormHelper::inputBlock('password', "Password", 'password', $this->new_password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>

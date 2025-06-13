@@ -7,7 +7,7 @@
     <div class="col-md-6 bg-light p-3">
         <h3 class="text-center">Log In</h3>
         <form class="form" action="<?=env('APP_DOMAIN', '/')?>auth/login" method="post">
-            <?= FormHelper::csrfInput() ?>
+            <?= csrf() ?>
             <?= FormHelper::displayErrors($this->displayErrors) ?>
             <?= FormHelper::inputBlock('text', 'Username', 'username', $this->login->username, ['class' => 'form-control'], ['class' => 'form-group mb-3']); ?>
             <?= FormHelper::inputBlock('password', 'Password', 'password', $this->login->password,['class' => 'form-control'], ['class' => 'form-group mb-3']); ?>

@@ -11,7 +11,7 @@
         <h3 class="text-center">Register Here!</h3>
         <hr>
         <form class="form" action="" method="post" enctype="multipart/form-data">
-            <?= FormHelper::csrfInput() ?>
+            <?= csrf() ?>
             <?= FormHelper::displayErrors($this->displayErrors) ?>
             <?= FormHelper::inputBlock('text', "User name", 'username', $this->user->username, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             

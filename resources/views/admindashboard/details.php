@@ -83,7 +83,7 @@ use Core\Lib\Utilities\DateTime; ?>
         <form method="POST"
             action="<?=env('APP_DOMAIN')?>admindashboard/delete/<?=$this->user->id?>"
             onsubmit="return confirm('Are you sure you want to delete the following user? <?=$this->user->username?>')">
-            <?= FormHelper::csrfInput() ?>
+            <?= csrf() ?>
             <button type="submit" class="btn btn-danger btn-sm mt-5 w-100 text-left">
                 <i class="fa fa-trash"></i> Delete
             </button>
