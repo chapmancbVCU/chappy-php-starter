@@ -1,4 +1,3 @@
-<?php use Core\Lib\Utilities\Config; ?>
 <?php $this->start('body'); ?>
 
 <div class="container">
@@ -76,7 +75,7 @@
     To customize this page, edit <code>resources/views/home/index.php</code> and <code>app/Controllers/HomeController.php</code>.
   </p>
   <p class="text-center text-muted mb-5">
-    Chappy.php Framework v<?=Config::get('config.version')?>
+    Chappy.php Framework v<?=config('config.version')?>
   <p>
 </div>
 
