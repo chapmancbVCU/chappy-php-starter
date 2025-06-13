@@ -381,7 +381,7 @@ You can also us it as a condition as part of an if statement.
 
 ```php
 if($user->save()) {
-    Router::redirect('admindashboard/details/'.$user->id);
+    redirect('admindashboard/details/'.$user->id);
 }
 ```
 

@@ -190,7 +190,7 @@ if($newUser->validationPassed()) {
     if($uploads) {
         ProfileImages::uploadProfileImage($newUser->id, $uploads);
     }
-    Router::redirect('auth/login');
+    redirect('auth/login');
 }
 ```
 

@@ -28,17 +28,17 @@ class AuthController extends Controller {
                 $user = Users::findByUsername($_POST['username']);
                 if($user && password_verify($this->request->get('password'), $user->password)) {
                     if($user->reset_password == 1) {
-                        Router::redirect('auth/resetPassword/'.$user->id);
+                        redirect('auth/resetPassword/'.$user->id);
                     }
                     if($user->inactive == 1) {
                         Session::addMessage('danger', 'Account is currently inactive');
-                        Router::redirect('auth/login');
+                        redirect('auth/login');
                     } 
                     $remember = $loginModel->getRememberMeChecked();
                     $user->login_attempts = 0;
                     $user->save();
                     $user->login($remember);
-                    Router::redirect('home');
+                    redirect('home');
                 }  else {
                     if($user) {
                         $loginModel = Users::loginAttempts($user, $loginModel);
@@ -64,7 +64,7 @@ class AuthController extends Controller {
      */
     public function logoutAction(): void {
         if(!$this->request->isPost()) {
-            Router::redirect('auth/login');
+            redirect('auth/login');
         }
 
         $this->request->csrfCheck();
@@ -73,7 +73,7 @@ class AuthController extends Controller {
             Users::currentUser()->logout();
         }
         
-        Router::redirect(('auth/login'));
+        redirect(('auth/login'));
     }
 
     /**
@@ -113,7 +113,7 @@ class AuthController extends Controller {
                 if($uploads) {
                     ProfileImages::uploadProfileImage($user->id, $uploads);
                 }
-                Router::redirect('auth/login');
+                redirect('auth/login');
             }
         }
 
@@ -133,7 +133,7 @@ class AuthController extends Controller {
         $user = Users::findById((int)$id);
         $user->password = "";
         
-        if(!$user) Router::redirect('');
+        if(!$user) redirect('');
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $user->assign($this->request->get(), Users::blackListedFormKeys);
@@ -148,7 +148,7 @@ class AuthController extends Controller {
                 // PW change mode off.
                 $user->reset_password = 0;
                 $user->setChangePassword(false);    
-                Router::redirect('auth/login');
+                redirect('auth/login');
             }
         }
 

@@ -37,7 +37,7 @@ class ProfileController extends Controller {
         $user = Users::currentUser();
         if(!$user) {
             Session::addMessage('danger', 'You do not have permission to edit this user.');
-            Router::redirect('');
+            redirect('');
         }
 
         $profileImages = ProfileImages::findByUserId($user->id);
@@ -64,7 +64,7 @@ class ProfileController extends Controller {
                 ProfileImages::updateSortByUserId($user->id, json_decode($_POST['images_sorted']));
 
                 // Redirect
-                Router::redirect('profile/index');
+                redirect('profile/index');
             }
         }
 
@@ -82,7 +82,7 @@ class ProfileController extends Controller {
     public function indexAction(): void {
         $user = Users::currentUser();
         $profileImages = ProfileImages::findByUserId($user->id);
-        if(!$user) { Router::redirect(''); }
+        if(!$user) { redirect(''); }
         $this->view->profileImages = $profileImages;
         $this->view->user = $user;
         $this->view->render('profile/index');
@@ -105,14 +105,14 @@ class ProfileController extends Controller {
     public function updatePasswordAction(): void {
         $user = Users::currentUser();
 
-        if(!$user) Router::redirect('');
+        if(!$user) redirect('');
         if($this->request->isPost()) {
             $this->request->csrfCheck();
 
             // Verify password and display message if incorrect.
             if($user && !password_verify($this->request->get('current_password'), $user->password)) {
                 Session::addMessage('danger', 'There was an error when entering your current password');
-                Router::redirect('profile/updatePassword/'.$user->id);
+                redirect('profile/updatePassword/'.$user->id);
             }
             $user->assign($this->request->get(), Users::blackListedFormKeys);
 
@@ -126,7 +126,7 @@ class ProfileController extends Controller {
                 // PW change mode off.
                 $user->setChangePassword(false);
                 Session::addMessage('success', 'Password updated!'); 
-                Router::redirect('profile/index');
+                redirect('profile/index');
             }
         }
 

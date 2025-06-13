@@ -92,7 +92,7 @@ public function addAction(): void {
         $contact->assign($this->request->get());
         $contact->user_id = Users::currentUser()->id;
         if($contact->save()) {
-            Router::redirect('contacts');
+            redirect('contacts');
         }
     }
 
@@ -129,7 +129,7 @@ public function detailsAction(int $id): void {
 
     // When user is not a contact we reroute to contacts index.
     if(!$contact) {
-        Router::redirect('contacts');
+        redirect('contacts');
     }
 
     $this->view->contact = $contact;
@@ -163,12 +163,12 @@ public function editAction($id) {
     $contact = Contacts::findByIdAndUserId((int)$id, Users::currentUser()->id);
 
     // Check if contact exists
-    if(!$contact) Router::redirect('contacts');
+    if(!$contact) redirect('contacts');
     if($this->request->isPost()) {
         $this->request->csrfCheck();
         $contact->assign($this->request->get(), Contacts::blackList);
         if($contact->save()) {
-            Router::redirect('contacts');
+            redirect('contacts');
         }
     }
     $this->view->displayErrors = $contact->getErrorMessages();
@@ -194,7 +194,7 @@ public function deleteAction(int $id): void {
         $contact->delete();
         Session::addMessage('success', 'Contact has been deleted');
     }
-    Router::redirect('contacts');
+    redirect('contacts');
 }
 ```
 

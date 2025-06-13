@@ -140,7 +140,7 @@ public function editAction(): void {
     $user = Users::currentUser();
     if(!$user) {
         Session::addMessage('danger', 'You do not have permission to edit this user.');
-        Router::redirect('');
+        redirect('');
     }
 
     $profileImages = ProfileImages::findByUserId($user->id);
@@ -167,7 +167,7 @@ public function editAction(): void {
             ProfileImages::updateSortByUserId($user->id, json_decode($_POST['images_sorted']));
 
             // Redirect
-            Router::redirect('profile/index');
+            redirect('profile/index');
         }
     }
 

@@ -80,7 +80,7 @@ public function toggleFeaturedAction(): void {
         }
     }
 
-    Router::redirect('vendorproducts/index');
+    redirect('vendorproducts/index');
 }
 ```
 
