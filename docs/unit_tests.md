@@ -57,7 +57,8 @@ This version of the PHPUnit test class adds support for migrations and database 
 
 **Naming Conventions**
 - A PHPUnit enforced rule requires that each test case within your class begins with the word `test`.
-- In order to properly use filtering file this framework prevents you from creating files/classes with the same name across test suites with the `make:test` command.
+- In order to properly use filtering file this framework prevents you from creating files/classes with the same name across test suites with the `make:test` command.  The filtering command also enforces this rule.
+- The name of your test case functions in all of your classes must be unique.  Otherwise you will get confusing messages regarding assertions even when filtering.
 
 <br>
 
