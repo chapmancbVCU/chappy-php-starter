@@ -1,8 +1,4 @@
-<?php 
-use Core\Session;
-use Core\Lib\Utilities\Env;
-use Core\Lib\Utilities\Config;
-?>
+<?php use Core\Session; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,8 +7,8 @@ use Core\Lib\Utilities\Config;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title><?=$this->siteTitle()?></title>
-    <link rel="icon" href="<?=Env::get('APP_DOMAIN', '/')?>public/noun-mvc-5340614.png">
-    <?php if (Env::get('APP_ENV', 'production') === 'local'): ?>
+    <link rel="icon" href="<?= env('APP_DOMAIN', '/')?>public/noun-mvc-5340614.png">
+    <?php if (env('APP_ENV', 'production') === 'local'): ?>
         <script type="module" src="http://localhost:5173/@vite/client"></script>
         <script type="module" src="<?= vite('resources/js/app.js') ?>"></script>
     <?php else: ?>
@@ -20,13 +16,13 @@ use Core\Lib\Utilities\Config;
       <link rel="stylesheet" href="<?= vite('resources/css/app.css') ?>">
       <script type="module" src="<?= vite('resources/js/app.js') ?>"></script>
     <?php endif; ?>
-    <link rel="stylesheet" href="<?=Env::get('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="<?=Env::get('APP_DOMAIN', '/')?>resources/css/alerts/alertMsg.min.css?v=<?=Config::get('config.version')?>" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="<?=Env::get('APP_DOMAIN', '/')?>node_modules/@fortawesome/fontawesome-free/css/all.min.css" media="screen" title="no title" charset="utf-8">
-    <script src="<?=Env::get('APP_DOMAIN', '/')?>node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="<?=Env::get('APP_DOMAIN', '/')?>node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="<?=Env::get('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="<?=Env::get('APP_DOMAIN', '/')?>resources/js/alerts/alertMsg.min.js?v=<?=Config::get('config.version')?>"></script>
+    <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>resources/css/alerts/alertMsg.min.css?v=<?=config('config.version')?>" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>node_modules/@fortawesome/fontawesome-free/css/all.min.css" media="screen" title="no title" charset="utf-8">
+    <script src="<?=env('APP_DOMAIN', '/')?>node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="<?=env('APP_DOMAIN', '/')?>node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="<?=env('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?=env('APP_DOMAIN', '/')?>resources/js/alerts/alertMsg.min.js?v=<?=config('config.version')?>"></script>
     <?= $this->content('head'); ?>
 
   </head>

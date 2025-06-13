@@ -1,15 +1,13 @@
 <?php
 use Core\FormHelper;
-use Core\Lib\Utilities\Config;
-use Core\Lib\Utilities\Env;
 ?>
 <?php $this->setSiteTitle("Edit Details for ".$this->user->username); ?>
 <?php $this->start('head') ?>
-<link rel="stylesheet" href="<?=Env::get('APP_DOMAIN', '/')?>resources/css/profileImage.css?v=<?=Config::get('config.version')?>" media="screen" title="no title" charset="utf-8">
-<script src="<?=Env::get('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=Config::get('config.version')?>"></script>
-<script src='<?=Env::get('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
-<script type="text/javascript" src="<?=Env::get('APP_DOMAIN', '/')?>node_modules/jquery-ui/ui/widgets/sortable.js"></script>
-<script type="text/javascript" src="<?=Env::get('APP_DOMAIN', '/')?>node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>resources/css/profileImage.css?v=<?=config('config.version')?>" media="screen" title="no title" charset="utf-8">
+<script src="<?=env('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=config('config.version')?>"></script>
+<script src='<?=env('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
+<script type="text/javascript" src="<?=env('APP_DOMAIN', '/')?>node_modules/jquery-ui/ui/widgets/sortable.js"></script>
+<script type="text/javascript" src="<?=env('APP_DOMAIN', '/')?>node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
 <?php $this->end() ?>
 
 <?php $this->start('body'); ?>
@@ -38,7 +36,7 @@ use Core\Lib\Utilities\Env;
             <?= $this->component('manage_profile_images'); ?>
 
             <div class="col-md-12 text-end">
-                <a href="<?=Env::get('APP_DOMAIN', '/')?>admindashboard/details/<?=$this->user->id?>" class="btn btn-default">Cancel</a>
+                <a href="<?=env('APP_DOMAIN', '/')?>admindashboard/details/<?=$this->user->id?>" class="btn btn-default">Cancel</a>
                 <?= FormHelper::submitTag('Update', ['class' => 'btn btn-primary'])  ?>
             </div>
         </form>

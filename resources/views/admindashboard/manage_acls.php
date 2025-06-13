@@ -1,10 +1,9 @@
 <?php use Core\Lib\Utilities\DateTime; ?>
-<?php use Core\Lib\Utilities\Env; ?>
 <?php use Core\FormHelper; ?>
 <?php $this->setSiteTitle("Manage ACLs"); ?>
 <?php $this->start('body'); ?>
 <h1 class="text-center">Manage ACLs
-    <a href="<?=Env::get('APP_DOMAIN', '/')?>admindashboard/addAcl/" class="btn btn-primary btn-sm me-5">
+    <a href="<?=env('APP_DOMAIN', '/')?>admindashboard/addAcl/" class="btn btn-primary btn-sm me-5">
         <i class="fa fa-plus"></i> Add ACL
     </a>
 </h1>
@@ -23,11 +22,11 @@
                     <td class="text-center"><?= DateTime::timeAgo($acl->created_at) ?></td>
                     <td class="text-center"><?= DateTime::timeAgo($acl->updated_at) ?></td>
                     <td class="text-center">
-                        <a href="<?=Env::get('APP_DOMAIN', '/')?>admindashboard/editAcl/<?=$acl->id?>" class="btn btn-info btn-sm">
+                        <a href="<?=env('APP_DOMAIN', '/')?>admindashboard/editAcl/<?=$acl->id?>" class="btn btn-info btn-sm">
                             <i class="fa fa-edit"></i> Edit ACL
                         </a>
                         <form method="POST" 
-                            action="<?=Env::get('APP_DOMAIN')?>admindashboard/deleteAcl/" 
+                            action="<?=env('APP_DOMAIN')?>admindashboard/deleteAcl/" 
                             class="d-inline-block" 
                             onsubmit="if(!confirm('Are you sure?')){return false;}">
                             <?= FormHelper::hidden('id', $acl->id) ?>

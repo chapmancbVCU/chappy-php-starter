@@ -1,12 +1,11 @@
 <?php
 use Core\FormHelper;
-use Core\Lib\Utilities\Env;
 use Core\Lib\Utilities\Config;
 ?>
 <?php $this->setSiteTitle("Register Here!"); ?>
 <?php $this->start('head') ?>
-<script src="<?=Env::get('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=Config::get('config.version')?>"></script>
-<script src='<?=Env::get('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
+<script src="<?=env('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=Config::get('config.version')?>"></script>
+<script src='<?=env('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
 <?php $this->end() ?>
 
 <?php $this->start('body'); ?>

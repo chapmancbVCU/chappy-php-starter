@@ -1,4 +1,3 @@
-<?php use Core\Lib\Utilities\Env; ?>
 <?php use Core\Lib\Utilities\Config; ?>
 <?php $this->start('body'); ?>
 
@@ -6,7 +5,7 @@
   <div class="text-center">
     <h1 class="display-4">Welcome to</h1>
     <div class="col-12 mx-auto text-center">
-      <img class="w-50" src="<?=Env::get('APP_DOMAIN', '/')?>public/logo.png" alt="Framework Logo">
+      <img class="w-50" src="<?=env('APP_DOMAIN', '/')?>public/logo.png" alt="Framework Logo">
     </div>
     <p class="lead mt-3">
       A lightweight and modern PHP framework built for simplicity, speed, and developer happiness.
@@ -61,7 +60,7 @@
     function ajaxTest() {
       $.ajax({
         type: "POST",
-        url: "<?= Env::get('APP_DOMAIN', '/') ?>home/testAjax",
+        url: "<?= env('APP_DOMAIN', '/') ?>home/testAjax",
         data: { model_id: 45 },
         success: function (resp) {
           if (resp.success) {
