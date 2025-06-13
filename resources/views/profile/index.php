@@ -5,7 +5,7 @@
 
 <div class="col align-items-center justify-content-center mx-auto my-3 w-50">
     <?php if($this->profileImages != null):?>
-        <img src="<?=env('APP_DOMAIN', '/').$this->profileImages[0]->url?>"
+        <img src="<?=asset($this->profileImages[0]->url)?>"
             class="img-thumbnail mx-auto my-5 d-block w-50 rounded border border-primary shadow-lg">
         </img>
     <?php endif; ?>
