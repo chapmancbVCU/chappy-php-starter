@@ -42,10 +42,10 @@
         </tbody>
     </table>
     <div class="mb-5 d-flex justify-content-around">
-        <a href="<?=env('APP_DOMAIN', '/')?>profile/edit/<?=$this->user->id?>" class="btn btn-info btn-sm mx-2 mb-3">
+        <a href="<?=route('profile.edit', [$this->user->id])?>" class="btn btn-info btn-sm mx-2 mb-3">
             <i class="fa fa-edit"></i> Edit User Profile
         </a>
-        <a href="<?=env('APP_DOMAIN', '/')?>profile/updatePassword/<?=$this->user->id?>" class="btn btn-danger btn-sm mx-2 mb-3">
+        <a href="<?=route('profile.updatePassword', [$this->user->id])?>" class="btn btn-danger btn-sm mx-2 mb-3">
             <i class="fa fa-key"></i> Update Password
         </a>
     </div>
