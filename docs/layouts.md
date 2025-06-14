@@ -33,8 +33,8 @@ use Core\Lib\Utilities\Config;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title><?=$this->siteTitle()?></title>
-    <link rel="icon" href="<?=Env::get('APP_DOMAIN', '/')?>public/noun-mvc-5340614.png">
-    <?php if (Env::get('APP_ENV', 'production')): ?>
+    <link rel="icon" href="<?=env('APP_DOMAIN', '/')?>public/noun-mvc-5340614.png">
+    <?php if (env('APP_ENV', 'production')): ?>
         <script type="module" src="http://localhost:5173/@vite/client"></script>
         <script type="module" src="<?= vite('resources/js/app.js') ?>"></script>
     <?php else: ?>
@@ -42,13 +42,13 @@ use Core\Lib\Utilities\Config;
       <link rel="stylesheet" href="<?= vite('resources/css/app.css') ?>">
       <script type="module" src="<?= vite('resources/js/app.js') ?>"></script>
     <?php endif; ?>
-    <link rel="stylesheet" href="<?=Env::get('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="<?=Env::get('APP_DOMAIN', '/')?>resources/css/alerts/alertMsg.min.css?v=<?=Config::get('config.version')?>" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="<?=Env::get('APP_DOMAIN', '/')?>resources/css/font-awesome-4.7.0/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
-    <script src="<?=Env::get('APP_DOMAIN', '/')?>resources/js/jQuery-3.7.1/jQuery-3.7.1.min.js"></script>
-    <script src="<?=Env::get('APP_DOMAIN', '/')?>node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="<?=Env::get('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="<?=Env::get('APP_DOMAIN', '/')?>resources/js/alerts/alertMsg.min.js?v=<?=Config::get('config.version')?>"></script>
+    <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>resources/css/alerts/alertMsg.min.css?v=<?=Config::get('config.version')?>" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>resources/css/font-awesome-4.7.0/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <script src="<?=env('APP_DOMAIN', '/')?>resources/js/jQuery-3.7.1/jQuery-3.7.1.min.js"></script>
+    <script src="<?=env('APP_DOMAIN', '/')?>node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="<?=env('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?=env('APP_DOMAIN', '/')?>resources/js/alerts/alertMsg.min.js?v=<?=Config::get('config.version')?>"></script>
     <?= $this->content('head'); ?>
 
   </head>
@@ -134,7 +134,7 @@ $userMenu = Router::getMenu('user_menu');
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_menu" aria-controls="main_menu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="<?=Env::get('APP_DOMAIN', '/')?>home"><?=Env::get('MENU_BRAND', 'My Brand')?></a>
+  <a class="navbar-brand" href="<?=route('home')?>"><?=env('MENU_BRAND', 'My Brand')?></a>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="main_menu">
@@ -144,11 +144,11 @@ $userMenu = Router::getMenu('user_menu');
     <ul class="navbar-nav me-2 align-items-center"> <!-- Align items vertically -->
       <?= Helper::buildMenuListItems($userMenu, "dropdown-menu-end"); ?>
       <li class="nav-item">
-          <a class="nav-link p-0" href="<?=Env::get('APP_DOMAIN', '/')?>profile">
+          <a class="nav-link p-0" href="<?=env('APP_DOMAIN', '/')?>profile">
               <?php if ($profileImage != null): ?>
                   <img class="rounded-circle profile-img ms-2"
                       style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #ddd; transition: opacity 0.3s;"
-                      src="<?=Env::get('APP_DOMAIN', '/') . $profileImage->url?>"
+                      src="<?=env('APP_DOMAIN', '/') . $profileImage->url?>"
                       alt="Profile Picture">
               <?php endif; ?>
           </a>

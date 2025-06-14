@@ -52,7 +52,7 @@ The original HTML for the toggled featured can be found at (A) in the References
 
 ```php
 <form method="POST" 
-    action="<?=Env::get('APP_DOMAIN')?>vendorproducts/toggleFeatured" 
+    action="<?=route('vendorproducts.toggleFeatured')?>" 
     class="d-inline-block">
     <?= FormHelper::hidden('id', $product->id) ?>
     <?= $csrfToken = csrf() ?>
