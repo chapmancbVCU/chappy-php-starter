@@ -36,7 +36,7 @@ class ProfileController extends Controller {
     public function editAction(): void {
         $user = Users::currentUser();
         if(!$user) {
-            Session::addMessage('danger', 'You do not have permission to edit this user.');
+            flashMessage('danger', 'You do not have permission to edit this user.');
             redirect('');
         }
 
@@ -111,7 +111,7 @@ class ProfileController extends Controller {
 
             // Verify password and display message if incorrect.
             if($user && !password_verify($this->request->get('current_password'), $user->password)) {
-                Session::addMessage('danger', 'There was an error when entering your current password');
+                flashMessage('danger', 'There was an error when entering your current password');
                 redirect('profile/updatePassword/'.$user->id);
             }
             $user->assign($this->request->get(), Users::blackListedFormKeys);
@@ -125,7 +125,7 @@ class ProfileController extends Controller {
             if($user->save()) {
                 // PW change mode off.
                 $user->setChangePassword(false);
-                Session::addMessage('success', 'Password updated!'); 
+                flashMessage('success', 'Password updated!'); 
                 redirect('profile/index');
             }
         }
