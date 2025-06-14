@@ -23,7 +23,7 @@ class AdmindashboardController extends Controller {
             $this->request->csrfCheck();
             $acl->assign($this->request->get());
             if($acl->save()) {
-                Session::addMessage('success', 'ACL added!');
+                flashMessage('success', 'ACL added!');
                 redirect('admindashboard/manageAcls');
             }
         }
@@ -48,9 +48,9 @@ class AdmindashboardController extends Controller {
             if($user && $user->acl != '["Admin"]') {
                 ProfileImages::deleteImages($id, false);
                 $user->delete();
-                Session::addMessage('success', 'User has been deleted.');
+                flashMessage('success', 'User has been deleted.');
             } else {
-                Session::addMessage('danger', 'Cannot delete Admin user!');
+                flashMessage('danger', 'Cannot delete Admin user!');
             }
         }
         redirect('admindashboard');
@@ -70,13 +70,13 @@ class AdmindashboardController extends Controller {
             // Get users so we can get number using acl and update later.
             $users = $acl->isAssignedToUsers();
             if(is_countable($users) > 0) {
-                Session::addMessage('info', "Cannot delete ". $acl->acl. ", assigned to one or more users.");
+                flashMessage('info', "Cannot delete ". $acl->acl. ", assigned to one or more users.");
             }
             if($acl) {
                 $acl->delete();
-                Session::addMessage('success', 'ACL has been deleted');
+                flashMessage('success', 'ACL has been deleted');
             } else {
-                Session::addMessage('danger', 'You do not have permission to perform this action.');
+                flashMessage('danger', 'You do not have permission to perform this action.');
             }
         }
         redirect('admindashboard/manageAcls');
@@ -124,14 +124,14 @@ class AdmindashboardController extends Controller {
     public function editAclAction($id): void {
         $acl = ACL::findById((int)$id);
         if (!$acl) {
-            Session::addMessage('danger', "ACL not found.");
+            flashMessage('danger', "ACL not found.");
             redirect('admindashboard/manageAcls');
         }
     
         
         // Check if ACL is assigned to any users and restrict access
         if ($acl->isAssignedToUsers()) {
-            Session::addMessage('danger', "Access denied. '{$acl->acl}' is assigned to one or more users and cannot be edited.");
+            flashMessage('danger', "Access denied. '{$acl->acl}' is assigned to one or more users and cannot be edited.");
             redirect('admindashboard/manageAcls');
         }
     
@@ -140,10 +140,10 @@ class AdmindashboardController extends Controller {
             $acl->assign($this->request->get(), ACL::blackList);
     
             if ($acl->save()) {
-                Session::addMessage('info', "ACL Name updated.");
+                flashMessage('info', "ACL Name updated.");
                 redirect('admindashboard/manageAcls');
             } else {
-                Session::addMessage('danger', implode(" ", $acl->getErrorMessages()));
+                flashMessage('danger', implode(" ", $acl->getErrorMessages()));
             }
         }
     
@@ -164,7 +164,7 @@ class AdmindashboardController extends Controller {
         $user = Users::findById((int)$id);
     
         if (!$user) {
-            Session::addMessage('danger', 'You do not have permission to edit this user.');
+            flashMessage('danger', 'You do not have permission to edit this user.');
             redirect('');
         }
     

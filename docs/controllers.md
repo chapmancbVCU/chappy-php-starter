@@ -192,7 +192,7 @@ public function deleteAction(int $id): void {
     $contact = Contacts::findByIdAndUserId((int)$id, Users::currentUser()->id);
     if($contact) {
         $contact->delete();
-        Session::addMessage('success', 'Contact has been deleted');
+        flashMessage('success', 'Contact has been deleted');
     }
     redirect('contacts');
 }

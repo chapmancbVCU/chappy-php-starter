@@ -31,7 +31,7 @@ class AuthController extends Controller {
                         redirect('auth/resetPassword/'.$user->id);
                     }
                     if($user->inactive == 1) {
-                        Session::addMessage('danger', 'Account is currently inactive');
+                        flashMessage('danger', 'Account is currently inactive');
                         redirect('auth/login');
                     } 
                     $remember = $loginModel->getRememberMeChecked();

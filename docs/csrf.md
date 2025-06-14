@@ -75,7 +75,7 @@ public function toggleFeaturedAction(): void {
 
         if($product) {
             $product->featured = ($product->featured == 1)? 0 : 1;
-            Session::addMessage('success', ($product->featured ==1)? "{$product->name} is now featured." : "{$product->name} is no longer featured.");
+            flashMessage('success', ($product->featured ==1)? "{$product->name} is now featured." : "{$product->name} is no longer featured.");
             $product->save();
         }
     }
@@ -86,7 +86,7 @@ public function toggleFeaturedAction(): void {
 
 When compared to the original toggleFeaturedAction function found at (B) under the references section, this version does not contain responses to AJAX request and contains a call to perform a CSRF check.  This ensures the toggleFeaturedAction we implemented is more secure and does not have the added complexity associated with AJAX request and additional JavaScript.
 
-We also use `Session:addMessage` instead of the sending messages back to the front end with a response to the AJAX request.  Finally, we redirect the user back to the same page since we are not updating the `featured` field without reloading the page.
+We also use `flashMessage` instead of the sending messages back to the front end with a response to the AJAX request.  Finally, we redirect the user back to the same page since we are not updating the `featured` field without reloading the page.
 
 We also use Forms with CSRF protection for deleting ACLs within this starter application.
 

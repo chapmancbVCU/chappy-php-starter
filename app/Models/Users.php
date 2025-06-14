@@ -257,7 +257,7 @@ class Users extends Model {
         if($user->login_attempts < Env::get('MAX_LOGIN_ATTEMPTS', 5)) {
             $loginModel->addErrorMessage('username', 'There is an error with your username or password.');
         } else {
-            Session::addMessage('danger', 'Your account has been locked due to too many failed login attempts.');
+            flashMessage('danger', 'Your account has been locked due to too many failed login attempts.');
         }
         $user->login_attempts = $user->login_attempts + 1;
         $user->save();

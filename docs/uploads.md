@@ -139,7 +139,7 @@ Setting up single file uploads requires the correct configuration of your action
 public function editAction(): void {
     $user = Users::currentUser();
     if(!$user) {
-        Session::addMessage('danger', 'You do not have permission to edit this user.');
+        flashMessage('danger', 'You do not have permission to edit this user.');
         redirect('');
     }
 

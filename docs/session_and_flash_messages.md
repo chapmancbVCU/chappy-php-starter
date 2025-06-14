@@ -22,6 +22,11 @@ When using with PHP you must first call the addMessage function form the Session
 Session::addMessage('success', 'Contact has been deleted');
 ```
 
+A shorthand global version of this function is also available:
+```php
+flashMessage('success, 'Contact has been deleted');
+```
+ 
 The result of performing the action is shown below in Figure 1.
 
 <div style="text-align: center;">
