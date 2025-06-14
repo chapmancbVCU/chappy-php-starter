@@ -1,7 +1,4 @@
-<?php
-use Core\FormHelper;
-use Core\Lib\Utilities\Env;
-?>
+<?php use Core\FormHelper; ?>
 <?php $this->setSiteTitle("Change Password for ".$this->user->username); ?>
 <?php $this->start('body'); ?>
 <div class="row align-items-center justify-content-center">
