@@ -15,7 +15,7 @@
         <form class="form" action="" method="POST" enctype="multipart/form-data">
             <?= csrf() ?>
             <?= FormHelper::hidden('images_sorted', '') ?>
-            <?= FormHelper::displayErrors($this->displayErrors) ?>
+            <?= errorBag($this->displayErrors) ?>
             
             <!-- Primary profile details -->
             <?= $this->component('edit_profile_details'); ?>

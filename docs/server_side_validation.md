@@ -38,7 +38,7 @@ Use the `validator()` method in your model and call it automatically when save()
 </div>
 
 In the form you have two ways display errors:
-1. At the top of the form (general errors).  Laravel calls this the error bag.
+1. At the top of the form (general errors).  You can also use the globally declared version called `errorBag`.
 2. Inline with input elements (specific field errors).
 
 The form setup is shown below in figure 2.

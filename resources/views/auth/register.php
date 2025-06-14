@@ -12,7 +12,7 @@
         <hr>
         <form class="form" action="" method="post" enctype="multipart/form-data">
             <?= csrf() ?>
-            <?= FormHelper::displayErrors($this->displayErrors) ?>
+            <?= errorBag($this->displayErrors) ?>
             <?= FormHelper::inputBlock('text', "User name", 'username', $this->user->username, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             
             <!-- Primary profile details -->

@@ -11,7 +11,7 @@ use Core\Lib\Utilities\Env;
         <?php $this->component('password_complexity_requirements'); ?>
         <form class="form" action="" method="post">
             <?= csrf() ?>
-            <?= FormHelper::displayErrors($this->displayErrors) ?>
+            <?= errorBag($this->displayErrors) ?>
             <?= FormHelper::inputBlock('password', "Current Password", 'current_password', $this->current_password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             <?= FormHelper::inputBlock('password', "Password", 'password', $this->new_password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             <?= FormHelper::inputBlock('password', "Confirm Password", 'confirm', $this->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-4']) ?>

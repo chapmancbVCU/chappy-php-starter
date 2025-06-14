@@ -18,7 +18,7 @@ use Core\FormHelper;
         <form class="form" action=<?=$this->postAction?> method="post">
             <?= csrf() ?>
             <?= FormHelper::hidden('images_sorted', '') ?>
-            <?= FormHelper::displayErrors($this->displayErrors) ?>
+            <?= errorBag($this->displayErrors) ?>
             
             <!-- Primary profile details -->
             <?= $this->component('edit_profile_details'); ?>

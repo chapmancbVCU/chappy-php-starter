@@ -11,7 +11,7 @@ use Core\Helper;
         <?php $this->component('password_complexity_requirements'); ?>
         <form class="form" action="" method="post">
             <?= csrf() ?>
-            <?= FormHelper::displayErrors($this->displayErrors) ?>
+            <?= errorBag($this->displayErrors) ?>
             <?= FormHelper::inputBlock('password', "Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group']) ?>
             <?= FormHelper::inputBlock('password', "Confirm Password", 'confirm', $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group']) ?>
 
