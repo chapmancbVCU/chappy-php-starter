@@ -25,7 +25,7 @@
             <?= $this->component('manage_profile_images') ?>
 
             <div class="col-md-12 text-end">
-                <a href="<?=env('APP_DOMAIN', '/')?>profile" class="btn btn-default">Cancel</a>
+                <a href="<?=route('profile')?>" class="btn btn-default">Cancel</a>
                 <?= FormHelper::submitTag('Update', ['class' => 'btn btn-primary'])  ?>
             </div>
         </form>
