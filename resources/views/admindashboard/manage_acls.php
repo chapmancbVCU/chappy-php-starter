@@ -3,7 +3,7 @@
 <?php $this->setSiteTitle("Manage ACLs"); ?>
 <?php $this->start('body'); ?>
 <h1 class="text-center">Manage ACLs
-    <a href="<?=env('APP_DOMAIN', '/')?>admindashboard/addAcl/" class="btn btn-primary btn-sm me-5">
+    <a href="<?=route('admindashboard.addAcl')?>" class="btn btn-primary btn-sm me-5">
         <i class="fa fa-plus"></i> Add ACL
     </a>
 </h1>
