@@ -10,7 +10,7 @@ $userMenu = Router::getMenu('user_menu');
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_menu" aria-controls="main_menu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="<?=env('APP_DOMAIN', '/')?>home"><?=env('MENU_BRAND', 'My Brand')?></a>
+  <a class="navbar-brand" href="<?=route('home')?>"><?=env('MENU_BRAND', 'My Brand')?></a>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="main_menu">
@@ -20,7 +20,7 @@ $userMenu = Router::getMenu('user_menu');
     <ul class="navbar-nav me-2 align-items-center"> <!-- Align items vertically -->
       <?= Helper::buildMenuListItems($userMenu, "dropdown-menu-end"); ?>
       <li class="nav-item">
-        <a class="nav-link p-0" href="<?=env('APP_DOMAIN', '/')?>profile">
+        <a class="nav-link p-0" href="<?=route('profile')?>">
           <?php if ($profileImage != null): ?>
             <img class="rounded-circle profile-img ms-2"
               style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #ddd; transition: opacity 0.3s;"
