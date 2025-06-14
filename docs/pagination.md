@@ -125,7 +125,7 @@ Putting everything together we can demonstrate what the final view looks like.  
         <?php foreach($this->contacts as $contact): ?>
             <tr>
                 <td>
-                    <a href="<?=Env::get('APP_DOMAIN', '/')?>contacts/details/<?=$contact->id?>">
+                    <a href="<?=route('contacts.details', [$contact->id])?>">
                         <?= $contact->displayName(); ?>
                     </a>
                 </td>
@@ -134,10 +134,10 @@ Putting everything together we can demonstrate what the final view looks like.  
                 <td><?= $contact->home_phone ?></td>
                 <td><?= $contact->work_phone ?></td>
                 <td class="text-center">
-                    <a href="<?=Env::get('APP_DOMAIN', '/')?>contacts/edit/<?=$contact->id?>" class="btn btn-info btn-sm">
+                    <a href="<?=route('contacts.edit', [$contact->id])?>" class="btn btn-info btn-sm">
                         <i class="fa fa-edit"></i> Edit
                     </a>
-                    <a href="<?=Env::get('APP_DOMAIN', '/')?>contacts/delete/<?=$contact->id?>" class="btn btn-danger btn-sm" onclick="if(!confirm('Are you sure?')){return false;}">
+                    <a href="<?=route('contacts.delete', [$contact->id])?>" class="btn btn-danger btn-sm" onclick="if(!confirm('Are you sure?')){return false;}">
                         <i class="fa fa-trash"></i> Delete
                     </a>
                 </td>
