@@ -11,7 +11,7 @@
             <?= errorBag($this->displayErrors) ?>
             <?= FormHelper::inputBlock('text', 'Username', 'username', $this->login->username, ['class' => 'form-control'], ['class' => 'form-group mb-3']); ?>
             <?= FormHelper::inputBlock('password', 'Password', 'password', $this->login->password,['class' => 'form-control'], ['class' => 'form-group mb-3']); ?>
-            <?= FormHelper::checkboxBlockLabelLeft('Remember Me', 'remember_me', "on", $this->login->getRememberMeChecked(), [], ['class' => 'form-group mb-3']); ?>
+            <?= checkboxLabelLeft('Remember Me', 'remember_me', "on", $this->login->getRememberMeChecked(), [], ['class' => 'form-group mb-3']); ?>
             
             <div class="d-flex justify-content-end">
                 <div class="flex-grow-1 text-body">Don't have an account? <a href="<?=route('auth.register')?>">Sign Up</a></div>
