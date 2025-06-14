@@ -17,7 +17,7 @@ use Core\Lib\Utilities\Env;
             <?= FormHelper::inputBlock('password', "Confirm Password", 'confirm', $this->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-4']) ?>
             
             <div class="col-md-12 text-end">
-                <a href="<?=env('APP_DOMAIN', '/')?>profile" class="btn btn-default">Cancel</a>
+                <a href="<?=route('profile')?>" class="btn btn-default">Cancel</a>
                 <?= FormHelper::submitTag('Update', ['class' => 'btn btn-primary'])  ?>
             </div>
         </form>
