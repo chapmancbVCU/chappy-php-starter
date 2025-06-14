@@ -7,6 +7,7 @@
 4. [Fallbacks](#fallbacks)
 5. [No Route File? Why?](#no-route)
 6. [Pros and Cons](#pros-cons)
+7. [Redirect](#redirect)
 
 <br>
 
@@ -73,3 +74,10 @@ Chappy.php uses dynamic routing to keep your application lightweight, fast, and 
 - You can’t assign route names or middleware per route (yet)
 - Custom route aliases or regex pattern matching aren't supported out of the box
 - You should avoid duplicate method names across controllers that could cause confusion
+
+<br>
+
+## 7. Redirect <a id="redirect"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This function comes with a static redirect function that can be called in two different ways.
+- `Router::redirect('admindashboard/details/' . $user->id)` - Directly calls static function
+- `redirect('admindashboard/details/' . $user->id)` - Shorthand publicly available global function
