@@ -22,11 +22,11 @@
                     <td class="text-center"><?= DateTime::timeAgo($acl->created_at) ?></td>
                     <td class="text-center"><?= DateTime::timeAgo($acl->updated_at) ?></td>
                     <td class="text-center">
-                        <a href="<?=env('APP_DOMAIN', '/')?>admindashboard/editAcl/<?=$acl->id?>" class="btn btn-info btn-sm">
+                        <a href="<?=route('admindashboard.editAcl', [$acl->id])?>" class="btn btn-info btn-sm">
                             <i class="fa fa-edit"></i> Edit ACL
                         </a>
                         <form method="POST" 
-                            action="<?=env('APP_DOMAIN')?>admindashboard/deleteAcl/" 
+                            action="<?=route('admindashboard.deleteAcl')?>" 
                             class="d-inline-block" 
                             onsubmit="if(!confirm('Are you sure?')){return false;}">
                             <?= FormHelper::hidden('id', $acl->id) ?>
