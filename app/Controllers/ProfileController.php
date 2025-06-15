@@ -112,7 +112,7 @@ class ProfileController extends Controller {
             // Verify password and display message if incorrect.
             if($user && !password_verify($this->request->get('current_password'), $user->password)) {
                 flashMessage('danger', 'There was an error when entering your current password');
-                redirect('profile/updatePassword/'.$user->id);
+                redirect('profile.updatePassword', [$user->id]);
             }
             $user->assign($this->request->get(), Users::blackListedFormKeys);
 
