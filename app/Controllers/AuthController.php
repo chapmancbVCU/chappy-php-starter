@@ -4,7 +4,7 @@ use Core\Lib\Utilities\Env;
 use Core\Lib\Logging\Logger;
 use Core\Lib\FileSystem\Uploads;
 use App\Models\{Login, ProfileImages, Users};
-use Core\{Controller, Router, Session};
+use Core\Controller;
 /**
  * Implements support for our Auth controller.  Functions found in this 
  * class will support tasks related to the user registration and 

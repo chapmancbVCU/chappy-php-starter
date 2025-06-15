@@ -13,7 +13,7 @@ class HomeController extends Controller {
      * @return void
      */
     public function indexAction(): void {
-        $this->view->render('home.index');
+        $this->view->render('home/index');
     }
 
     /**
