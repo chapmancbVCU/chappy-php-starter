@@ -167,7 +167,7 @@ public function editAction(): void {
             ProfileImages::updateSortByUserId($user->id, json_decode($_POST['images_sorted']));
 
             // Redirect
-            redirect('profile/index');
+            redirect('profile.index');
         }
     }
 

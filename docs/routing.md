@@ -79,5 +79,5 @@ Chappy.php uses dynamic routing to keep your application lightweight, fast, and 
 
 ## 7. Redirect <a id="redirect"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This function comes with a static redirect function that can be called in two different ways.
-- `Router::redirect('admindashboard/details/' . $user->id)` - Directly calls static function
-- `redirect('admindashboard/details/' . $user->id)` - Shorthand publicly available global function
+- `Router::redirect('admindashboard.details', [$user->id])` - Directly calls static function
+- `redirect('admindashboard.details', [$user->id])` - Shorthand publicly available global function

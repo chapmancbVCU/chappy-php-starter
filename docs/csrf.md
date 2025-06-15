@@ -80,7 +80,7 @@ public function toggleFeaturedAction(): void {
         }
     }
 
-    redirect('vendorproducts/index');
+    redirect('vendorproducts.index');
 }
 ```
 
