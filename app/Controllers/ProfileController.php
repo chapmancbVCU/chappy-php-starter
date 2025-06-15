@@ -126,7 +126,7 @@ class ProfileController extends Controller {
                 // PW change mode off.
                 $user->setChangePassword(false);
                 flashMessage('success', 'Password updated!'); 
-                redirect('profile/index');
+                redirect('profile.index');
             }
         }
 

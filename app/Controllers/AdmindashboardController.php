@@ -24,7 +24,7 @@ class AdmindashboardController extends Controller {
             $acl->assign($this->request->get());
             if($acl->save()) {
                 flashMessage('success', 'ACL added!');
-                redirect('admindashboard/manageAcls');
+                redirect('admindashboard.manageAcls');
             }
         }
 
@@ -79,7 +79,7 @@ class AdmindashboardController extends Controller {
                 flashMessage('danger', 'You do not have permission to perform this action.');
             }
         }
-        redirect('admindashboard/manageAcls');
+        redirect('admindashboard.manageAcls');
     }
 
     /**
@@ -125,14 +125,14 @@ class AdmindashboardController extends Controller {
         $acl = ACL::findById((int)$id);
         if (!$acl) {
             flashMessage('danger', "ACL not found.");
-            redirect('admindashboard/manageAcls');
+            redirect('admindashboard.manageAcls');
         }
     
         
         // Check if ACL is assigned to any users and restrict access
         if ($acl->isAssignedToUsers()) {
             flashMessage('danger', "Access denied. '{$acl->acl}' is assigned to one or more users and cannot be edited.");
-            redirect('admindashboard/manageAcls');
+            redirect('admindashboard.manageAcls');
         }
     
         if ($this->request->isPost()) {
@@ -141,7 +141,7 @@ class AdmindashboardController extends Controller {
     
             if ($acl->save()) {
                 flashMessage('info', "ACL Name updated.");
-                redirect('admindashboard/manageAcls');
+                redirect('admindashboard.manageAcls');
             } else {
                 flashMessage('danger', implode(" ", $acl->getErrorMessages()));
             }
@@ -196,7 +196,7 @@ class AdmindashboardController extends Controller {
             if ($user->save()) {
                 $sortOrder = json_decode($_POST['images_sorted']);
                 ProfileImages::updateSortByUserId($user->id, $sortOrder);
-                redirect('admindashboard/details/' . $user->id);
+                redirect('admindashboard.details', [$user->id]);
             }
         }
     
@@ -275,7 +275,7 @@ class AdmindashboardController extends Controller {
             $user->assign($this->request->get(), Users::blackListedFormKeys);
             $user->reset_password = ($this->request->get('reset_password') == 'on') ? 1 : 0;
             if($user->save()) {
-                redirect('admindashboard/details/'.$user->id);
+                redirect('admindashboard.details', [$user->id]);
             }
         }
 
@@ -301,7 +301,7 @@ class AdmindashboardController extends Controller {
             $user->inactive = ($this->request->get('inactive') == 'on') ? 1 : 0;
             $user->login_attempts = ($user->inactive == 0) ? 0 : $user->login_attempts;
             if($user->save()) {
-                redirect('admindashboard/details/'.$user->id);
+                redirect('admindashboard.details', [$user->id]);
             }
         }
 

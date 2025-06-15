@@ -28,11 +28,11 @@ class AuthController extends Controller {
                 $user = Users::findByUsername($_POST['username']);
                 if($user && password_verify($this->request->get('password'), $user->password)) {
                     if($user->reset_password == 1) {
-                        redirect('auth/resetPassword/'.$user->id);
+                        redirect('auth.resetPassword', [$user->id]);
                     }
                     if($user->inactive == 1) {
                         flashMessage('danger', 'Account is currently inactive');
-                        redirect('auth/login');
+                        redirect('auth.login');
                     } 
                     $remember = $loginModel->getRememberMeChecked();
                     $user->login_attempts = 0;
@@ -64,7 +64,7 @@ class AuthController extends Controller {
      */
     public function logoutAction(): void {
         if(!$this->request->isPost()) {
-            redirect('auth/login');
+            redirect('auth.login');
         }
 
         $this->request->csrfCheck();
@@ -73,7 +73,7 @@ class AuthController extends Controller {
             Users::currentUser()->logout();
         }
         
-        redirect(('auth/login'));
+        redirect(('auth.login'));
     }
 
     /**
@@ -113,7 +113,7 @@ class AuthController extends Controller {
                 if($uploads) {
                     ProfileImages::uploadProfileImage($user->id, $uploads);
                 }
-                redirect('auth/login');
+                redirect('auth.login');
             }
         }
 
@@ -148,7 +148,7 @@ class AuthController extends Controller {
                 // PW change mode off.
                 $user->reset_password = 0;
                 $user->setChangePassword(false);    
-                redirect('auth/login');
+                redirect('auth.login');
             }
         }
 
