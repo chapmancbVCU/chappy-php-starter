@@ -8,7 +8,7 @@ use Core\Lib\Utilities\DateTime; ?>
 <div class="align-items-center justify-content-center mx-auto my-3 w-50">
     <a href="<?=route('admindashboard.index')?>" class="btn btn-sm btn-secondary mb-3">Back</a>
     <?php if($this->profileImage != null):?>
-        <img src="<?=env('APP_DOMAIN', '/').$this->profileImage->url?>"
+        <img src="<?=asset($this->profileImage->url)?>"
             class="img-thumbnail mx-auto my-5 d-block w-50 rounded border border-primary shadow-lg">
         </img>
     <?php endif; ?>
