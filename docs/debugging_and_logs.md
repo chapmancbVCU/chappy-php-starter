@@ -23,6 +23,17 @@ filp/whoops is a pretty page handler for displaying errors within the browser.  
 <br>
 
 ## 3. Logs <a id="logs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Add content to the log files with the following global function:
+```php
+logger('My message', 'level');
+```
+
+Or call using the `Logger` class:
+```php
+use Core\Lib\Logging\Logger;
+Logger::('My message', 'level');
+```
+
 This framework supports two types of log files, located under `storage/logs`:
 
 - `app.log`: Logs frontend and application runtime events
