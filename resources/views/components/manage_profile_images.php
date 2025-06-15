@@ -3,7 +3,7 @@
         <div class="col flex-grow-0" id="image_<?=$image->id?>">
             <span class="btn-danger" onclick="deleteImage('<?=$image->id?>')"><i class="fa fa-times"></i></span>
             <div class="edit-image-wrapper <?= ($image->sort == 0) ? 'current-profile-img' : ''?>" data-id="<?=$image->id?>">
-                <img src="<?=env('APP_DOMAIN', '/').$image->url?>" />
+                <img src="<?=asset($image->url)?>" />
             </div>
         </div>
     <?php endforeach; ?>
