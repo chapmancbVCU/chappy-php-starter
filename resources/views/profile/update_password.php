@@ -9,9 +9,9 @@
         <form class="form" action="" method="post">
             <?= csrf() ?>
             <?= errorBag($this->displayErrors) ?>
-            <?= FormHelper::inputBlock('password', "Current Password", 'current_password', $this->current_password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
-            <?= FormHelper::inputBlock('password', "Password", 'password', $this->new_password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
-            <?= FormHelper::inputBlock('password', "Confirm Password", 'confirm', $this->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-4']) ?>
+            <?= input('password', "Current Password", 'current_password', $this->current_password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
+            <?= input('password', "Password", 'password', $this->new_password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
+            <?= input('password', "Confirm Password", 'confirm', $this->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-4']) ?>
             
             <div class="col-md-12 text-end">
                 <a href="<?=route('profile')?>" class="btn btn-default">Cancel</a>

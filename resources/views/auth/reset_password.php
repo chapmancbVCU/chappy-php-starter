@@ -12,8 +12,8 @@ use Core\Helper;
         <form class="form" action="" method="post">
             <?= csrf() ?>
             <?= errorBag($this->displayErrors) ?>
-            <?= FormHelper::inputBlock('password', "Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group']) ?>
-            <?= FormHelper::inputBlock('password', "Confirm Password", 'confirm', $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group']) ?>
+            <?= input('password', "Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group']) ?>
+            <?= input('password', "Confirm Password", 'confirm', $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group']) ?>
 
             <?= FormHelper::submitTag('Set Password',['class'=>'btn btn-primary']) ?>
         </form>
