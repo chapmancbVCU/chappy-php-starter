@@ -9,7 +9,7 @@
     <p class="lead mt-3">
       A lightweight and modern PHP framework built for simplicity, speed, and developer happiness.
     </p>
-
+<?=now()?>
     <div class="d-flex justify-content-center mt-4 flex-wrap gap-3">
       <a class="btn btn-primary" href="https://chapmancbvcu.github.io/chappy-php-starter/">📘 View Documentation</a>
     </div>
