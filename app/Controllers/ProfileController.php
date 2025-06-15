@@ -64,7 +64,7 @@ class ProfileController extends Controller {
                 ProfileImages::updateSortByUserId($user->id, json_decode($_POST['images_sorted']));
 
                 // Redirect
-                redirect('profile/index');
+                redirect('profile.index');
             }
         }
 
@@ -85,7 +85,7 @@ class ProfileController extends Controller {
         if(!$user) { redirect(''); }
         $this->view->profileImages = $profileImages;
         $this->view->user = $user;
-        $this->view->render('profile/index');
+        $this->view->render('profile.index');
     }
 
     /**
@@ -135,6 +135,6 @@ class ProfileController extends Controller {
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->user = $user;
         $this->view->postAction = route('profile.updatePassword', [$user->id]);
-        $this->view->render('profile/update_password');
+        $this->view->render('profile.update_password');
     }
 }

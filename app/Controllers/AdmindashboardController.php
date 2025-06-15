@@ -30,7 +30,7 @@ class AdmindashboardController extends Controller {
         $this->view->acl = $acl;
         $this->view->displayErrors = $acl->getErrorMessages();
         $this->view->postAction = route('admindashboard.addAcl');
-        $this->view->render('admindashboard/add_acl');
+        $this->view->render('admindashboard.add_acl');
     }
 
     /**
@@ -111,7 +111,7 @@ class AdmindashboardController extends Controller {
         $profileImage = ProfileImages::findCurrentProfileImage($user->id);
         $this->view->profileImage = $profileImage;
         $this->view->user = $user;
-        $this->view->render('admindashboard/details');
+        $this->view->render('admindashboard.details');
     }
 
     /**
@@ -149,7 +149,7 @@ class AdmindashboardController extends Controller {
         $this->view->displayErrors = $acl->getErrorMessages();
         $this->view->acl = $acl;
         $this->view->postAction = route('admindashboard.editAcl', [$acl->id]);
-        $this->view->render('admindashboard/edit_acl');
+        $this->view->render('admindashboard.edit_acl');
     }
     
 
@@ -202,7 +202,7 @@ class AdmindashboardController extends Controller {
         $this->view->profileImages = $profileImages;
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->postAction = route('admindashboard.edit', [$user->id]);
-        $this->view->render('admindashboard/edit');
+        $this->view->render('admindashboard.edit');
     }
 
     /** 
@@ -228,7 +228,7 @@ class AdmindashboardController extends Controller {
 
         $this->view->pagination = Pagination::pagination($page, $pagination->totalPages());
         $this->view->users = $users;
-        $this->view->render('admindashboard/index');
+        $this->view->render('admindashboard.index');
     }
 
     public function manageACLsAction(): void {
@@ -245,7 +245,7 @@ class AdmindashboardController extends Controller {
 
         $this->view->usedAcls = $usedAcls;
         $this->view->unUsedAcls = $unUsedAcls;
-        $this->view->render('admindashboard/manage_acls');
+        $this->view->render('admindashboard.manage_acls');
     }
 
     /**
@@ -280,7 +280,7 @@ class AdmindashboardController extends Controller {
         $this->view->user = $user;
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->postAction = route('admindashboard.setResetPassword', [$user->id]);
-        $this->view->render('admindashboard/set_reset_password');
+        $this->view->render('admindashboard.set_reset_password');
     }
 
     /**
@@ -306,6 +306,6 @@ class AdmindashboardController extends Controller {
         $this->view->user = $user;
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->postAction = route('admindashboard.setStatus', [$user->id]);
-        $this->view->render('admindashboard/set_account_status');
+        $this->view->render('admindashboard.set_account_status');
     }
 }
