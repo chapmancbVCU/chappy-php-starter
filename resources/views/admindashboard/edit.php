@@ -17,7 +17,7 @@ use Core\FormHelper;
         <hr>
         <form class="form" action=<?=$this->postAction?> method="post">
             <?= csrf() ?>
-            <?= FormHelper::hidden('images_sorted', '') ?>
+            <?= hidden('images_sorted', '') ?>
             <?= errorBag($this->displayErrors) ?>
             
             <!-- Primary profile details -->

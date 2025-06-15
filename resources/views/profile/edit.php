@@ -14,7 +14,7 @@
         <hr>
         <form class="form" action="" method="POST" enctype="multipart/form-data">
             <?= csrf() ?>
-            <?= FormHelper::hidden('images_sorted', '') ?>
+            <?= hidden('images_sorted', '') ?>
             <?= errorBag($this->displayErrors) ?>
             
             <!-- Primary profile details -->
