@@ -1,4 +1,3 @@
-<?php use Core\FormHelper; ?>
 <?php $this->setSiteTitle("Reset Password for ".$this->user->username); ?>
 <?php $this->start('body') ?>
 
@@ -12,7 +11,7 @@
             
             <div class="col-md-12 text-end">
                 <a href="<?=route('admindashboard.details', [$this->user->id])?>" class="btn btn-default">Cancel</a>
-                <?= FormHelper::submitTag('Reset Password',['class'=>'btn btn-primary']) ?>
+                <?= submit('Reset Password',['class'=>'btn btn-primary']) ?>
             </div>
         </form>
     </div>

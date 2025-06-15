@@ -1,4 +1,3 @@
-<?php use Core\FormHelper; ?>
 <?php $this->start('head'); ?>
 <?php $this->end(); ?>
 
@@ -15,7 +14,7 @@
             
             <div class="d-flex justify-content-end">
                 <div class="flex-grow-1 text-body">Don't have an account? <a href="<?=route('auth.register')?>">Sign Up</a></div>
-                <?= FormHelper::submitTag('Login',['class'=>'btn btn-primary']) ?>
+                <?= submit('Login',['class'=>'btn btn-primary']) ?>
             </div>
         </form>
     </div>

@@ -1,4 +1,3 @@
-<?php use Core\FormHelper;?>
 <?php $this->setSiteTitle("Set Status for ".$this->user->username); ?>
 <?php $this->start('body') ?>
 
@@ -11,7 +10,7 @@
             <?= checkboxLabelLeft('Select to activate/deactivate account', 'inactive', "on", $this->user->isInactiveChecked(), [], ['class' => 'form-group mb-3'], $this->displayErrors); ?>
             <div class="col-md-12 text-end">
                 <a href="<?=route('admindashboard.details', [$this->user->id])?>" class="btn btn-default">Cancel</a>
-                <?= FormHelper::submitTag('Activate / Deactivate',['class'=>'btn btn-primary']) ?>
+                <?= submit('Activate / Deactivate',['class'=>'btn btn-primary']) ?>
             </div>
         </form>
     </div>

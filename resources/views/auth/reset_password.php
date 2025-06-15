@@ -1,7 +1,3 @@
-<?php
-use Core\FormHelper;
-use Core\Helper;
-?>
 <?php $this->setSiteTitle('Reset Password'); ?>
 <?php $this->start('body'); ?>
 
@@ -15,7 +11,7 @@ use Core\Helper;
             <?= input('password', "Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group']) ?>
             <?= input('password', "Confirm Password", 'confirm', $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group']) ?>
 
-            <?= FormHelper::submitTag('Set Password',['class'=>'btn btn-primary']) ?>
+            <?= submit('Set Password',['class'=>'btn btn-primary']) ?>
         </form>
     </div>
 </div>

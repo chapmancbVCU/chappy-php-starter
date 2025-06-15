@@ -1,4 +1,3 @@
-<?php use Core\FormHelper; ?>
 <?php $this->setSiteTitle("Edit Details for ".$this->user->username); ?>
 <?php $this->start('head') ?>
 <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>resources/css/profileImage.css?v=<?=config('config.version')?>" media="screen" title="no title" charset="utf-8">
@@ -26,7 +25,7 @@
 
             <div class="col-md-12 text-end">
                 <a href="<?=route('profile')?>" class="btn btn-default">Cancel</a>
-                <?= FormHelper::submitTag('Update', ['class' => 'btn btn-primary'])  ?>
+                <?= submit('Update', ['class' => 'btn btn-primary'])  ?>
             </div>
         </form>
     </div>

@@ -1,4 +1,3 @@
-<?php use Core\FormHelper; ?>
 <?php $this->setSiteTitle("Register Here!"); ?>
 <?php $this->start('head') ?>
 <script src="<?=env('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=config('config.version')?>"></script>
@@ -24,7 +23,7 @@
 
             <?= input('password', "Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             <?= input('password', "Confirm Password", 'confirm', $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
-            <?= FormHelper::submitBlock('Register', ['class' => 'btn btn-large btn-primary'], ['class' => 'text-end'])  ?>
+            <?= submitBlock('Register', ['class' => 'btn btn-large btn-primary'], ['class' => 'text-end'])  ?>
         </form>
     </div>
 </div>

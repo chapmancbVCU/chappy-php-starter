@@ -1,4 +1,3 @@
-<?php use Core\FormHelper; ?>
 <?php $this->setSiteTitle("Change Password for ".$this->user->username); ?>
 <?php $this->start('body'); ?>
 <div class="row align-items-center justify-content-center">
@@ -15,7 +14,7 @@
             
             <div class="col-md-12 text-end">
                 <a href="<?=route('profile')?>" class="btn btn-default">Cancel</a>
-                <?= FormHelper::submitTag('Update', ['class' => 'btn btn-primary'])  ?>
+                <?= submit('Update', ['class' => 'btn btn-primary'])  ?>
             </div>
         </form>
     </div>
