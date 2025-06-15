@@ -452,7 +452,7 @@ In this framework, controller actions assign data to views via dynamic propertie
 
 ```php
 $this->view->user = $user;
-$this->view->render('admindashboard/details');
+$this->view->render('admindashboard.details');
 ```
 
 To test whether specific view variables are set correctly during a controller action, you can use:
@@ -464,7 +464,7 @@ To test whether specific view variables are set correctly during a controller ac
 Make sure the controller action includes:
 ```php
 $this->logViewForTesting($this->view);
-$this->view->render('admindashboard/details');
+$this->view->render('admindashboard.details');
 ```
 
 📥 Example Controller Action
@@ -477,7 +477,7 @@ public function detailsAction($id): void {
     $this->view->user = $user;
 
     $this->logViewForTesting($this->view); // Required for testing
-    $this->view->render('admindashboard/details');
+    $this->view->render('admindashboard.details');
 }
 ```
 

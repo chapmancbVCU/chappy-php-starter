@@ -91,7 +91,7 @@ public function indexAction(): void {
     // Configure the view
     $this->view->contacts = $contacts;
     $this->view->pagination = Pagination::pagination($page, $pagination->totalPages());
-    $this->view->render('contacts/index');
+    $this->view->render('contacts.index');
 }
 ```
 <br>

@@ -38,7 +38,7 @@ You can pass values assigned to the View object in the controller to any view.  
 // Configure the view
 $this->view->contacts = $contacts;
 $this->view->pagination = Pagination::pagination($page, $pagination->totalPages());
-$this->view->render('contacts/index');
+$this->view->render('contacts.index');
 ```
 
 After setting up $contacts and Pagination we can assign them to variables for the View object as shown in the first two lines.  To get Pagination to work within our view we just use the following statement in our view as shown below:

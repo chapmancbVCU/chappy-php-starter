@@ -100,7 +100,7 @@ public function addAction(): void {
     $this->view->displayErrors = $contact->getErrorMessages();
     // Set action for post.
     $this->view->postAction = Env::get('APP_DOMAIN', '/') . 'contacts' . DS . 'add';
-    $this->view->render('contacts/add');
+    $this->view->render('contacts.add');
 }
 ```
 
@@ -110,13 +110,11 @@ We first begin with creating a new $contact object and we test if the request is
 
 A quick note on configuring views by looking at line 12. You can think of this statement as being something familiar to passing props to blade.php views in Laravel. Within the view you don't have to use a @props directive. You, just have to use it. More on this in the views section of the user guide.
 
-Finally, we save the data to the database and redirect the user. Note that the redirect has one word but render has 'contacts/add'. If you just enter contacts the controller assumes that the index action is wanted. 'contact' is also the name of the directory for all of the contact related views. The structure is setup as follows:
+Finally, we save the data to the database and redirect the user. Note that the redirect has one word but render has 'contacts.add'. If you just enter contacts the controller assumes that the index action is wanted. 'contact' is also the name of the directory for all of the contact related views. The structure is setup as follows:
 
 ```php
-$this->view->render('model_name/action_name');
+$this->view->render('model_name/view_name');
 ```
-
-The URL path equivalent you will see in the address bar is as follows: ```http://hostname/model_name/action_name```
 
 <br>
 
@@ -133,7 +131,7 @@ public function detailsAction(int $id): void {
     }
 
     $this->view->contact = $contact;
-    $this->view->render('contacts/details');
+    $this->view->render('contacts.details');
 }
 ```
 
@@ -147,7 +145,7 @@ Then we determine if the contact exists. If not, we redirect to the contacts vie
 public function indexAction(): void {
     $contacts = Contacts::findAllByUserId($this->currentUser->id, ['order'=>'lname, fname']);
     $this->view->contacts = $contacts;
-    $this->view->render('contacts/index');
+    $this->view->render('contacts.index');
 }
 ```
 
@@ -174,7 +172,7 @@ public function editAction($id) {
     $this->view->displayErrors = $contact->getErrorMessages();
     $this->view->contact = $contact;
     $this->view->postAction = Env::get('APP_DOMAIN', '/') 'contacts' . DS . 'edit' . DS . $contact->id;
-    $this->view->render('contacts/edit');
+    $this->view->render('contacts.edit');
 }
 ```
 
@@ -217,12 +215,12 @@ ContactsController::detailsAction(1);
 **Rendering Views**
 Use:
 ```php
-$this->view->render('model_name/action_name');
+$this->view->render('model_name.view_name');
 ```
 
 For example:
 ```php
-$this->view->render('contacts/details');
+$this->view->render('contacts.details');
 ```
 
 This assumes your view file is at `resources/views/contacts/details.php`.

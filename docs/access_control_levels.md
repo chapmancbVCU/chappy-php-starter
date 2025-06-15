@@ -110,7 +110,7 @@ public function changePasswordAction(int $id): void {
     // Configure the view
     $this->view->displayErrors = $acl->getErrorMessages();
     $this->view->postAction = Env::get('APP_DOMAIN', '/') . 'auth' . DS . 'changePassword';
-    $this->view->render('auth/change_password');
+    $this->view->render('auth.change_password');
 }
 ```
 

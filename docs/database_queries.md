@@ -186,7 +186,7 @@ public function manageACLsAction(): void {
 
     $this->view->usedAcls = $usedAcls;
     $this->view->unUsedAcls = $unUsedAcls;
-    $this->view->render('admindashboard/manage_acls');
+    $this->view->render('admindashboard.manage_acls');
 }
 ```
 
