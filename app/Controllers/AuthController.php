@@ -155,7 +155,7 @@ class AuthController extends Controller {
         $user->setChangePassword(false);
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->user = $user;
-        $this->view->postAction = Env::get('APP_DOMAIN', '/') . 'auth' . DS . 'reset_password' . DS . $user->id;
+        $this->view->postAction = route('auth.resetPassword', [$user->id]);
         $this->view->render('auth/reset_password');
     }
 }
