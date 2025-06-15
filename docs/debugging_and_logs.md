@@ -34,6 +34,19 @@ use Core\Lib\Logging\Logger;
 Logger::('My message', 'level');
 ```
 
+📊 Supported Logger Levels (Typical)
+
+| Level       | Description                                                                |
+| ----------- | -------------------------------------------------------------------------- |
+| `emergency` | System is unusable. Immediate action required.                             |
+| `alert`     | Action must be taken immediately (e.g., database is down).                 |
+| `critical`  | Critical conditions (e.g., app component unavailable).                     |
+| `error`     | Runtime errors that don’t require immediate action but should be logged.   |
+| `warning`   | Exceptional occurrences that are not errors (e.g., deprecated API use).    |
+| `notice`    | Normal but significant events (e.g., config loaded, login attempt).        |
+| `info`      | Informational messages (e.g., user signed in, order placed).               |
+| `debug`     | Detailed debug information for developers (e.g., SQL queries, memory use). |
+
 This framework supports two types of log files, located under `storage/logs`:
 
 - `app.log`: Logs frontend and application runtime events
