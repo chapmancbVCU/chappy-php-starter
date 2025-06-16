@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62a4ced8859ee466c42e927a5280810d",
+    "content-hash": "adf79a0ac8f40b10ecf3014ffd8bca03",
     "packages": [
         {
             "name": "brick/math",
@@ -137,11 +137,17 @@
         },
         {
             "name": "chappy-php/chappy-php-framework",
-            "version": "dev-main",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chapmancbVCU/chappy-php-framework.git",
+                "reference": "b471a8e0070f7bb3fab8ead4c83443377ad15616"
+            },
             "dist": {
-                "type": "path",
-                "url": "../chappy-php-framework",
-                "reference": "48b935d1aa3005d2c684a69304bc3719c552920b"
+                "type": "zip",
+                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/b471a8e0070f7bb3fab8ead4c83443377ad15616",
+                "reference": "b471a8e0070f7bb3fab8ead4c83443377ad15616",
+                "shasum": ""
             },
             "require": {
                 "composer": "*",
@@ -163,24 +169,17 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Chappy\\": "src/",
                     "Core\\": "src/core/",
+                    "Chappy\\": "src/",
                     "Console\\": "src/console/",
-                    "Console\\Commands\\": "src/console/commands/",
-                    "Console\\Helpers\\": "src/console/helpers/"
+                    "Console\\Helpers\\": "src/console/helpers/",
+                    "Console\\Commands\\": "src/console/commands/"
                 },
                 "classmap": [
                     "src"
                 ]
             },
-            "scripts": {
-                "build-docs": [
-                    "@php src/api-docs/doctum.phar update src/api-docs/doctum.php -v"
-                ],
-                "post-install-cmd": [
-                    "@php src/scripts/setup.php"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -191,10 +190,11 @@
                 }
             ],
             "description": "A lightweight and extensible PHP MVC framework.",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/chapmancbVCU/chappy-php-framework/issues",
+                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.2.0"
+            },
+            "time": "2025-06-15T23:22:52+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -352,16 +352,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.18.2",
+            "version": "2.18.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "89dabca1490bc77dbcab41c2b20968c7e44bf7c3"
+                "reference": "59a123a3d459c5a23055802237cb317f609867e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/89dabca1490bc77dbcab41c2b20968c7e44bf7c3",
-                "reference": "89dabca1490bc77dbcab41c2b20968c7e44bf7c3",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/59a123a3d459c5a23055802237cb317f609867e5",
+                "reference": "59a123a3d459c5a23055802237cb317f609867e5",
                 "shasum": ""
             },
             "require": {
@@ -411,7 +411,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.18.2"
+                "source": "https://github.com/filp/whoops/tree/2.18.3"
             },
             "funding": [
                 {
@@ -419,7 +419,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-11T20:42:19+00:00"
+            "time": "2025-06-16T00:02:10+00:00"
         },
         {
             "name": "giggsey/libphonenumber-for-php",
@@ -4224,9 +4224,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "chappy-php/chappy-php-framework": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
