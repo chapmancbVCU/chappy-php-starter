@@ -6,6 +6,7 @@
 3. [currentPage](#current-page)
 4. [getObjectProperties](#obj-properties)
 5. [getProfileImage](#get-profile-image)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
