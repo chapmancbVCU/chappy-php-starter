@@ -10,8 +10,9 @@
   * D. [Dropping a Table](#dropping-a-table)  
   * E. [Renaming a Column](#renameing-column)
   * F. [Dropping Columns](#dropping-columns)
-  * F. [Migrations With Raw SQL Queries](#sql)
-  * G. [Migration CLI Commands](#cli)
+  * G. [After](#after)
+  * H. [Migrations With Raw SQL Queries](#sql)
+  * I. [Migration CLI Commands](#cli)
 4. [Supported Field Types & Modifiers for Migrations](#field-types)
   * A. [Field Types](#types)
   * B. [Column Modifiers](#modifiers)
@@ -372,7 +373,22 @@ This function accepts two arguments:
 
 <br>
 
-### F. Migrations With Raw SQL Queries <a id="sql"></a>
+### G. After <a id="after">
+Add a column after a specific column:
+```php
+public function up(): void {
+    Schema::table('users', function (Blueprint $table) {
+        $table->string('test')->after('password');
+    });
+}
+```
+
+This function accepts one argument:
+- `$column` - The name of the column we will add after
+
+<br>
+
+### H. Migrations With Raw SQL Queries <a id="sql"></a>
 You are able to perform raw SQL queries within a migration.  You can create or update a table and then use SQL queries to add values.  This is useful if your database table already has data.
 
 **Example:**
@@ -387,7 +403,7 @@ As shown above, create your SQL statement and then chain the `query` function to
 
 <br>
 
-### G. Migration CLI Commands <a id="cli"></a>
+### I. Migration CLI Commands <a id="cli"></a>
 #### 1. `make:migration`
 Generates a new migration class.
 ```sh
