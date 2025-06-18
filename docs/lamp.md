@@ -400,7 +400,7 @@ Then modify the following settings:
 | Setting | What it controls | Safe recommended value |
 |:-------:|-------------|-------------|
 | `upload_max_filesize` | Max size of a single uploaded file | `5M` (or `10M` if high-res image uploads) |
-| `post_max_size` | Max size of total POST body (form fields + files) | `8M` (or 1`5M` if `upload_max_filesize` is `10M`) |
+| `post_max_size` | Max size of total POST body (form fields + files) | `8M` (or `15M` if `upload_max_filesize` is `10M`) |
 | `max_execution_time` | Max script run time (seconds) | `30` to `60` |
 | `memory_limit` | Max memory a script can use | `128M` (or `256M` for image-heavy apps) | 
 
