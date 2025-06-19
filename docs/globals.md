@@ -52,7 +52,15 @@ dump($request);
 
 <br>
 
-### F. `flashMessage()`
+### F. `e()`
+**Description:** Escapes a string for safe HTML output.
+```php
+<h1>Welcome, <?= e($user['fname']) ?>!</h1>
+```
+
+<br>
+
+### G. `flashMessage()`
 **Description:** Adds a flash message to the session.
 ```php
 flashMessage('success', 'User created successfully.');
@@ -60,7 +68,7 @@ flashMessage('success', 'User created successfully.');
 
 <br>
 
-### G. `logger()`
+### H. `logger()`
 **Description:** Writes a message to the log file with a specified level.
 ```php
 logger('User login failed', 'error');
@@ -68,7 +76,7 @@ logger('User login failed', 'error');
 
 <br>
 
-### H. `now()`
+### I. `now()`
 **Description:** Returns the current time formatted using application or user preferences.
 ```php
 now();
@@ -77,7 +85,7 @@ now('Europe/Berlin', 'H:i', 'de');
 
 <br>
 
-### I. `redirect()`
+### J. `redirect()`
 **Description:** Redirects to a specified route.
 ```php
 redirect('login');
@@ -86,7 +94,7 @@ redirect('user.profile', [42]);
 
 <br>
 
-### J. `route()`
+### K. `route()`
 **Description:** Generates a route URL from a dot-notated path and optional parameters.
 ```php
 route('user.profile', [42]);
@@ -94,7 +102,7 @@ route('user.profile', [42]);
 
 <br>
 
-### K. `vite()`
+### L. `vite()`
 **Description:** Returns the correct URL for a Vite-managed frontend asset.
 ```php
 vite('resources/js/app.js');
