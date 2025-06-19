@@ -4,6 +4,7 @@
 1. [Overview](#overview)
 2. [Getting Data From Controller](#controller)
 3. [Creating Views](#make-views)
+4. [Creating CSS Files](#make-css)
 
 <br>
 
@@ -29,6 +30,7 @@ This template is separated into 3 sections:
 1. Set Title Section - What is displayed in the browser tab.
 2. Head - You can add additional information to the head element here.
 3. Body - Anything in this section gets displayed to the user.
+
 <br>
 
 ## 2. Getting Data From Controller <a id="controller"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -48,6 +50,7 @@ After setting up $contacts and Pagination we can assign them to variables for th
 ```
 
 Since each view file has access to an instance of the View class all the user has to do is type `$this->${variable_name}` to access any variables we setup in the controller's action functions.
+
 <br>
 
 ## 3. Creating Views <a id="make-views"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -66,3 +69,11 @@ The argument format assumes the following,
 ``` 
 
 such that `directory_name` is the location of the view file and `view_name` is the name of the actual file without the .php extension.  If the directory does not exist the user will be asked if they want it to be created before continuing.
+
+<br>
+
+## 4. Creating CSS Files <a id="make-css"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Create new CSS files for your views and E-mails using the `make:css` command.
+```sh
+php console make:css <file_name>
+```
