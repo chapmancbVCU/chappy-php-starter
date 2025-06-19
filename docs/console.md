@@ -67,6 +67,7 @@ php console
 | make:command-helper | Generates helper class that supports console commands |
 | make:component | Generates component based on flags that are set |
 | make:controller| Generates a new controller class |
+| make:css | Generates a new CSS file |
 | make:email | Generates a file for an E-mail |
 | make:email-layout | Generates an E-mail template |
 | make:layout | Generates a new layout |
