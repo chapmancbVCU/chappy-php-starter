@@ -21,4 +21,16 @@ class EmailTest extends ApplicationTestCase {
             'user@example.com', 'Welcome!', '<p>Your account is ready!</p>'
         ));
     }
+
+    public function test_email_template(): void {
+        $mail = new MailerService();
+        $hello = "Hello world";
+        $this->assertNotTrue($mail->sendTemplate(
+            'user@example.com',
+            'Welcome to ChappyPHP',
+            'hello',
+            ['user' => $hello],
+            'test'
+        ));
+    }
 }
