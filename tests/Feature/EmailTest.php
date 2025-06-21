@@ -44,4 +44,45 @@ class EmailTest extends ApplicationTestCase {
             ['user' => $hello],
         ));
     }
+
+    public function test_email_template_and_single_attachment(): void {
+        $mail = new MailerService();
+        $hello = "Hello world";
+        $this->assertTrue($mail->sendTemplate(
+            'user@example.com',
+            'Testing attachments',
+            'hello',
+            ['user' => $hello],
+            'test',
+            [
+                'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
+                'name' => 'test attachment',
+                'mime' => MailerService::MIME_TEXT
+            ]
+        ));
+    }
+
+    public function test_email_template_and_multiple_multiple(): void {
+        $mail = new MailerService();
+        $hello = "Hello world";
+        $this->assertTrue($mail->sendTemplate(
+            'user@example.com',
+            'Testing attachments',
+            'hello',
+            ['user' => $hello],
+            'test',
+            [
+                [
+                    'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
+                    'name' => 'test content attachment',
+                    'mime' => MailerService::MIME_TEXT
+                ],
+                [
+                    'path' => CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'Description.pdf',
+                    'name' => 'test path attachment',
+                    'mime' => MailerService::MIME_PDF
+                ]
+            ]
+        ));
+    }
 }
