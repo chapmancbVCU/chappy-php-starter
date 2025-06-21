@@ -62,7 +62,7 @@ class EmailTest extends ApplicationTestCase {
         ));
     }
 
-    public function test_email_template_and_multiple_multiple(): void {
+    public function test_email_template_and_multiple_attachments(): void {
         $mail = new MailerService();
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
@@ -71,6 +71,30 @@ class EmailTest extends ApplicationTestCase {
             'hello',
             ['user' => $hello],
             'test',
+            [
+                [
+                    'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
+                    'name' => 'test content attachment',
+                    'mime' => MailerService::MIME_TEXT
+                ],
+                [
+                    'path' => CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'Description.pdf',
+                    'name' => 'test path attachment',
+                    'mime' => MailerService::MIME_PDF
+                ]
+            ]
+        ));
+    }
+
+    public function test_email_text_template_with_attachments(): void {
+        $mail = new MailerService();
+        $hello = "Hello world";
+        $this->assertTrue($mail->sendTemplate(
+            'user@example.com',
+            'Welcome to ChappyPHP',
+            'welcome',
+            ['user' => $hello],
+            null,
             [
                 [
                     'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
