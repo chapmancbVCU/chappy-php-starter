@@ -18,7 +18,7 @@ class EmailTest extends ApplicationTestCase {
         
         // Assert true when using test E-mail service.
         $this->assertTrue($mail->send(
-            'user@example.com', 'Welcome!', '<p>Your account is ready!</p>'
+            'user@example.com', 'test_email_is_sent', '<p>Your account is ready!</p>'
         ));
     }
 
@@ -27,7 +27,7 @@ class EmailTest extends ApplicationTestCase {
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
             'user@example.com',
-            'Welcome to ChappyPHP',
+            'test_email_template',
             'hello',
             ['user' => $hello],
             'test'
@@ -39,7 +39,7 @@ class EmailTest extends ApplicationTestCase {
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
             'user@example.com',
-            'Welcome to ChappyPHP',
+            'test_email_text_template',
             'welcome',
             ['user' => $hello],
         ));
@@ -50,7 +50,7 @@ class EmailTest extends ApplicationTestCase {
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
             'user@example.com',
-            'Testing attachments',
+            'test_email_template_and_single_attachment',
             'hello',
             ['user' => $hello],
             'test',
@@ -67,7 +67,7 @@ class EmailTest extends ApplicationTestCase {
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
             'user@example.com',
-            'Testing attachments',
+            'test_email_template_and_multiple_attachments',
             'hello',
             ['user' => $hello],
             'test',
@@ -91,7 +91,7 @@ class EmailTest extends ApplicationTestCase {
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
             'user@example.com',
-            'Welcome to ChappyPHP',
+            'test_email_text_template_with_attachments',
             'welcome',
             ['user' => $hello],
             null,
