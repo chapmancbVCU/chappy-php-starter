@@ -1,5 +1,6 @@
 <?php
 namespace Tests\Feature;
+use Core\Lib\Mail\Attachments;
 use Core\Lib\Mail\MailerService;
 use Core\Lib\Testing\ApplicationTestCase;
 
@@ -57,7 +58,7 @@ class EmailTest extends ApplicationTestCase {
             [
                 'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
                 'name' => 'test attachment',
-                'mime' => MailerService::MIME_TEXT
+                'mime' => Attachments::MIME_TEXT
             ]
         ));
     }
@@ -75,12 +76,12 @@ class EmailTest extends ApplicationTestCase {
                 [
                     'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
                     'name' => 'test content attachment',
-                    'mime' => MailerService::MIME_TEXT
+                    'mime' => Attachments::MIME_TEXT
                 ],
                 [
                     'path' => CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'Description.pdf',
                     'name' => 'test path attachment',
-                    'mime' => MailerService::MIME_PDF
+                    'mime' => Attachments::MIME_PDF
                 ]
             ]
         ));
@@ -99,12 +100,12 @@ class EmailTest extends ApplicationTestCase {
                 [
                     'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
                     'name' => 'test content attachment',
-                    'mime' => MailerService::MIME_TEXT
+                    'mime' => Attachments::MIME_TEXT
                 ],
                 [
                     'path' => CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'Description.pdf',
                     'name' => 'test path attachment',
-                    'mime' => MailerService::MIME_PDF
+                    'mime' => Attachments::MIME_PDF
                 ]
             ]
         ));
