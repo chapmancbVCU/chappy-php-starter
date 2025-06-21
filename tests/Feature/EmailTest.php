@@ -17,7 +17,7 @@ class EmailTest extends ApplicationTestCase {
         $mail = new MailerService();
         
         // Assert true when using test E-mail service.
-        $this->assertNotTrue($mail->send(
+        $this->assertTrue($mail->send(
             'user@example.com', 'Welcome!', '<p>Your account is ready!</p>'
         ));
     }
@@ -25,7 +25,7 @@ class EmailTest extends ApplicationTestCase {
     public function test_email_template(): void {
         $mail = new MailerService();
         $hello = "Hello world";
-        $this->assertNotTrue($mail->sendTemplate(
+        $this->assertTrue($mail->sendTemplate(
             'user@example.com',
             'Welcome to ChappyPHP',
             'hello',
@@ -37,7 +37,7 @@ class EmailTest extends ApplicationTestCase {
     public function test_email_text_template(): void {
         $mail = new MailerService();
         $hello = "Hello world";
-        $this->assertNotTrue($mail->sendTemplate(
+        $this->assertTrue($mail->sendTemplate(
             'user@example.com',
             'Welcome to ChappyPHP',
             'welcome',
