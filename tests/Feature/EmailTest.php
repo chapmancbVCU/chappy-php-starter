@@ -21,7 +21,7 @@ class EmailTest extends ApplicationTestCase {
         
         // Assert true when using test E-mail service.
         $this->assertTrue($mail->send(
-            'user@example.com', 'test_email_is_sent', '<p>Your account is ready!</p>'
+            'chad.chapman2010@gmail.com', 'test_email_is_sent', '<p>Your account is ready!</p>'
         ));
     }
 
@@ -29,11 +29,15 @@ class EmailTest extends ApplicationTestCase {
         $mail = new MailerService();
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
-            'user@example.com',
+            'chad.chapman2010@gmail.com',
             'test_email_template',
             'hello',
             ['user' => $hello],
-            'test'
+            'default',
+            [],
+            null,
+            null,
+            'email_default'
         ));
     }
 
@@ -41,39 +45,47 @@ class EmailTest extends ApplicationTestCase {
         $mail = new MailerService();
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
-            'user@example.com',
+            'chad.chapman2010@gmail.com',
             'test_email_text_template',
             'welcome',
             ['user' => $hello],
+            'default',
+            [],
+            null,
+            null,
+            'email_default'
         ));
     }
 
-    public function test_email_template_and_single_attachment(): void {
+    public function test_email_single_attachment_and_template(): void {
         $mail = new MailerService();
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
-            'user@example.com',
-            'test_email_template_and_single_attachment',
+            'chad.chapman2010@gmail.com',
+            'test_email_single_attachment_and_template',
             'hello',
             ['user' => $hello],
-            'test',
+            'default',
             [
                 'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
                 'name' => 'test attachment',
                 'mime' => Attachments::MIME_TEXT
-            ]
+            ],
+            null,
+            null,
+            'email_default'
         ));
     }
 
-    public function test_email_template_and_multiple_attachments(): void {
+    public function test_email_multiple_attachments_and_template(): void {
         $mail = new MailerService();
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
-            'user@example.com',
-            'test_email_template_and_multiple_attachments',
+            'chad.chapman2010@gmail.com',
+            'test_email_multiple_attachments_and_template',
             'hello',
             ['user' => $hello],
-            'test',
+            'default',
             [
                 [
                     'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
@@ -85,7 +97,10 @@ class EmailTest extends ApplicationTestCase {
                     'name' => 'test path attachment',
                     'mime' => Attachments::MIME_PDF
                 ]
-            ]
+            ],
+            null,
+            null,
+            'email_default'
         ));
     }
 
@@ -93,11 +108,11 @@ class EmailTest extends ApplicationTestCase {
         $mail = new MailerService();
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
-            'user@example.com',
+            'chad.chapman2010@gmail.com',
             'test_email_text_template_with_attachments',
             'welcome',
             ['user' => $hello],
-            null,
+            'default',
             [
                 [
                     'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
@@ -109,12 +124,15 @@ class EmailTest extends ApplicationTestCase {
                     'name' => 'test path attachment',
                     'mime' => Attachments::MIME_PDF
                 ]
-            ]
+            ],
+            null,
+            null,
+            'email_default'
         ));
     }
 
     public function test_welcome_email(): void {
         $status = WelcomeMailer::send(Users::findById(1));
-        $this->assertNotTrue($status);
+        $this->assertTrue($status);
     }
 }
