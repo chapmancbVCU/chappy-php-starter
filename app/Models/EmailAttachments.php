@@ -41,7 +41,15 @@ class EmailAttachments extends Model {
     protected static $_uploadPath = 'storage'.DS.'app'.DS.'private'.DS .'email_attachments';
     
     // Fields from your database
-
+    public $created_at;
+    public $deleted = 0;
+    public $description;
+    public $id;
+    public $mime_type;
+    public $name;
+    public $path;
+    public $size;
+    public $updated_at;
 
     public function afterDelete(): void {
         // Implement your function
