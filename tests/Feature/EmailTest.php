@@ -4,6 +4,7 @@ use App\Models\Users;
 use Core\Lib\Mail\Attachments;
 use Core\Lib\Mail\MailerService;
 use Core\Lib\Mail\WelcomeMailer;
+use Core\Lib\Mail\PasswordResetMailer;
 use Core\Lib\Testing\ApplicationTestCase;
 
 /**
@@ -133,6 +134,11 @@ class EmailTest extends ApplicationTestCase {
 
     public function test_welcome_email(): void {
         $status = WelcomeMailer::send(Users::findById(1));
+        $this->assertTrue($status);
+    }
+
+    public function test_password_reset_email(): void {
+        $status = PasswordResetMailer::send(Users::findById(1));
         $this->assertTrue($status);
     }
 }
