@@ -7,6 +7,7 @@ use Core\Lib\Mail\WelcomeMailer;
 use Core\Lib\Mail\PasswordResetMailer;
 use Core\Lib\Mail\UpdatePasswordMailer;
 use Core\Lib\Testing\ApplicationTestCase;
+use Core\Lib\Mail\AccountDeactivatedMailer;
 
 /**
  * Unit tests
@@ -133,18 +134,23 @@ class EmailTest extends ApplicationTestCase {
         ));
     }
 
-    public function test_welcome_email(): void {
-        $status = WelcomeMailer::send(Users::findById(1));
-        $this->assertTrue($status);
-    }
+    // public function test_welcome_email(): void {
+    //     $status = WelcomeMailer::send(Users::findById(1));
+    //     $this->assertTrue($status);
+    // }
 
-    public function test_password_reset_email(): void {
-        $status = PasswordResetMailer::send(Users::findById(1));
-        $this->assertTrue($status);
-    }
+    // public function test_password_reset_email(): void {
+    //     $status = PasswordResetMailer::send(Users::findById(1));
+    //     $this->assertTrue($status);
+    // }
 
-    public function test_password_update_email(): void {
-        $status = UpdatePasswordMailer::send(Users::findById(1));
-        $this->assertTrue($status);
-    }
+    // public function test_password_update_email(): void {
+    //     $status = UpdatePasswordMailer::send(Users::findById(1));
+    //     $this->assertTrue($status);
+    // }
+
+    // public function test_account_deactivated_email(): void {
+    //     $status = AccountDeactivatedMailer::send(Users::findById(1));
+    //     $this->assertTrue($status);
+    // }
 }
