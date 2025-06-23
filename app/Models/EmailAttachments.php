@@ -41,7 +41,7 @@ class EmailAttachments extends Model {
     }
 
     public function beforeSave(): void {
-        // Implement your function
+        $this->timeStamps();
     }
 
     /**
