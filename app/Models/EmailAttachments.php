@@ -37,6 +37,7 @@ class EmailAttachments extends Model {
     public $path;
     public $size;
     public $updated_at;
+    public $user_id;
 
     public function afterDelete(): void {
         // Implement your function

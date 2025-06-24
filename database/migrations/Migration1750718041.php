@@ -21,6 +21,8 @@ class Migration1750718041 extends Migration {
             $table->text('description');
             $table->string('mime_type', 100);
             $table->integer('size');
+            $table->integer('user_id');
+            $table->index('user_id');
             $table->softDeletes();
             $table->timestamps();
         });
