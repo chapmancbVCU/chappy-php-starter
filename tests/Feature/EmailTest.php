@@ -72,7 +72,7 @@ class EmailTest extends ApplicationTestCase {
             [
                 'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
                 'name' => 'test attachment',
-                'mime' => Attachments::MIME_TEXT
+                'mime' => Attachments::mime('txt')
             ],
             null,
             null,
@@ -93,12 +93,12 @@ class EmailTest extends ApplicationTestCase {
                 [
                     'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
                     'name' => 'test content attachment',
-                    'mime' => Attachments::MIME_TEXT
+                    'mime' => Attachments::mime('txt')
                 ],
                 [
                     'path' => CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'Description.pdf',
                     'name' => 'test path attachment',
-                    'mime' => Attachments::MIME_PDF
+                    'mime' => Attachments::mime('pdf')
                 ]
             ],
             null,
@@ -120,12 +120,12 @@ class EmailTest extends ApplicationTestCase {
                 [
                     'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
                     'name' => 'test content attachment',
-                    'mime' => Attachments::MIME_TEXT
+                    'mime' => Attachments::mime('txt')
                 ],
                 [
                     'path' => CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'Description.pdf',
                     'name' => 'test path attachment',
-                    'mime' => Attachments::MIME_PDF
+                    'mime' => Attachments::mime('pdf')
                 ]
             ],
             null,
