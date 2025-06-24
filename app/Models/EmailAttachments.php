@@ -28,6 +28,7 @@ class EmailAttachments extends Model {
     protected static $_uploadPath = 'storage'.DS.'app'.DS.'private'.DS .'email_attachments';
     
     // Fields from your database
+    public $attachment_name;
     public $created_at;
     public $deleted = 0;
     public $description;
@@ -82,7 +83,8 @@ class EmailAttachments extends Model {
      *
      * @return void
      */
-    public static function uploadFile(): void {
+    public static function uploadFile($user_id, $uploads): void {
         // Implement your function
+        
     }
 }

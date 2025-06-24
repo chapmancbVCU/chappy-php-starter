@@ -16,6 +16,7 @@ class Migration1750718041 extends Migration {
     public function up(): void {
         Schema::create('email_attachments', function (Blueprint $table) {
             $table->id();
+            $table->string('attachment_name', 255);
             $table->string('name', 255);
             $table->string('path', 255);
             $table->text('description');
