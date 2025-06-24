@@ -69,11 +69,7 @@ class EmailTest extends ApplicationTestCase {
             'hello',
             ['user' => $hello],
             'default',
-            [
-                'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
-                'name' => 'test attachment',
-                'mime' => Attachments::mime('txt')
-            ],
+            Attachments::content('welcome.txt', 'test attachment'),
             null,
             null,
             'email_default'
@@ -90,16 +86,8 @@ class EmailTest extends ApplicationTestCase {
             ['user' => $hello],
             'default',
             [
-                [
-                    'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
-                    'name' => 'test content attachment',
-                    'mime' => Attachments::mime('txt')
-                ],
-                [
-                    'path' => CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'Description.pdf',
-                    'name' => 'test path attachment',
-                    'mime' => Attachments::mime('pdf')
-                ]
+                Attachments::content('welcome.txt', 'test attachment'),
+                Attachments::path('Description.pdf', 'test path attachment')
             ],
             null,
             null,
@@ -117,16 +105,8 @@ class EmailTest extends ApplicationTestCase {
             ['user' => $hello],
             'default',
             [
-                [
-                    'content' => file_get_contents(CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'welcome.txt'),
-                    'name' => 'test content attachment',
-                    'mime' => Attachments::mime('txt')
-                ],
-                [
-                    'path' => CHAPPY_BASE_PATH . DS . 'resources' . DS . 'views' . DS . 'emails' . DS . 'Description.pdf',
-                    'name' => 'test path attachment',
-                    'mime' => Attachments::mime('pdf')
-                ]
+                Attachments::content('welcome.txt', 'test attachment'),
+                Attachments::path('Description.pdf', 'test path attachment')
             ],
             null,
             null,

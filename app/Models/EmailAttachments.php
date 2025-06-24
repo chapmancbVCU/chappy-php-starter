@@ -2,6 +2,7 @@
 namespace App\Models;
 use Core\Model;
 use Core\Lib\Mail\Attachments;
+use Dom\Attr;
 
 /**
  * Implements features of the EmailAttachments class.
@@ -18,22 +19,8 @@ class EmailAttachments extends Model {
     protected static $_softDelete = true;
     
     // List your allowed file types.
-    protected static $allowedFileTypes = [
-        Attachments::MIME_7ZIP,
-        Attachments::MIME_DOC,
-        Attachments::MIME_DOCX,
-        Attachments::MIME_GIF,
-        Attachments::MIME_JPG,
-        Attachments::MIME_PDF,
-        Attachments::MIME_PNG,
-        Attachments::MIME_PPTX,
-        Attachments::MIME_SVG,
-        Attachments::MIME_TAR,
-        Attachments::MIME_TEXT,
-        Attachments::MIME_XLS,
-        Attachments::MIME_XLSX
-    ];
-    
+    protected static $allowedFileTypes;
+
     // Set your max file size.
     protected static $maxAllowedFileSize = 17825792;
 
@@ -86,6 +73,9 @@ class EmailAttachments extends Model {
         return self::$maxAllowedFileSize;
     }
 
+    public static function init(): void {
+        self::$allowedFileTypes = Attachments::getAllowedMimeTypes();
+    }
     /**
      * Performs upload
      *
