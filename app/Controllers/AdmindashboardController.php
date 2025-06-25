@@ -211,6 +211,14 @@ class AdmindashboardController extends Controller {
         $this->view->render('admindashboard.edit');
     }
 
+    public function editAttachmentsAction($id): void {
+        $attachment = ($id == 'new') ? new EmailAttachments() : 
+            EmailAttachments::findById((int)$id);
+
+        
+        $this->view->render('admindashboard/attachments_form');
+    }
+
     /** 
      * The default action for this controller.  It performs rendering of this 
      * site's admin dashboard page.
