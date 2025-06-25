@@ -1,4 +1,9 @@
-<?php $this->setSiteTitle("Attachments"); ?>
+<?php
+
+use App\Models\EmailAttachments;
+use App\Models\Users;
+
+ $this->setSiteTitle("Attachments"); ?>
 
 <!-- Head content between these two function calls.  Remove if not needed. -->
 <?php $this->start('head'); ?>
@@ -12,7 +17,7 @@
 <table class="table table-striped table-bordered table-hover table-striped table-sm">
     <thead>
         <th>Original Name</th>
-        <th>MIME Type</th>
+        <th>Uploader</th>
         <th>Size</th>
         <th></th>
     </thead>
@@ -20,7 +25,7 @@
         <?php foreach($this->attachments as $attachment): ?>
             <tr>
                 <td><?=$attachment->attachment_name?></td>
-                <td><?=$attachment->mime_type?></td>
+                <td><?=EmailAttachments::uploadUsername($attachment->user_id)?></td>
                 <td><?=$attachment->size?></td>
                 <td class="text-end">
                     <a href="<?=route('admindashboard.editAttachments', [$attachment->id])?>"

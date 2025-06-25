@@ -87,4 +87,15 @@ class EmailAttachments extends Model {
         // Implement your function
         
     }
+
+    /**
+     * Retrieves username for uploader of attachment.
+     *
+     * @param int $user_id The id for the user.
+     * @return string The uploader's username.
+     */
+    public static function uploadUsername(int $user_id): string {
+        $user = Users::findById($user_id);
+        return $user->username;
+    }
 }
