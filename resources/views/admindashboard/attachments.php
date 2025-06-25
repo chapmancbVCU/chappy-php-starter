@@ -8,7 +8,7 @@
 
 <!-- Body content between these two function calls. -->
 <?php $this->start('body'); ?>
-<h1>Attachments</h1>
+<h1 class="text-center mb-4">Attachments</h1>
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <th>Original Name</th>
