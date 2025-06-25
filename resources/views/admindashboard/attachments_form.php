@@ -13,6 +13,7 @@
 <div class="row align-items-center justify-content-center">
     <div class="col-md-6 bg-light p-3">
         <form class="form" action="" method="POST" enctype="multipart/form-data">
+            <?= errorBag($this->errors) ?>
             <?= csrf() ?>
             <?= textarea(
                 "Description",

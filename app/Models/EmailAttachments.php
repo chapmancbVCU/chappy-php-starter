@@ -3,6 +3,7 @@ namespace App\Models;
 use Core\Model;
 use Core\Lib\Mail\Attachments;
 use Dom\Attr;
+use Core\Validators\RequiredValidator as Required;
 
 /**
  * Implements features of the EmailAttachments class.
@@ -97,5 +98,12 @@ class EmailAttachments extends Model {
     public static function uploadUsername(int $user_id): string {
         $user = Users::findById($user_id);
         return $user->username;
+    }
+
+    public function validator(): void {
+        $this->runValidation(new Required($this, ['field' => 'description', 'message' => 'Description is required']));
+        if($this->isNew()) {
+            $this->runValidation(new Required($this, ['field' => 'attachment_name', 'message' => 'You must upload an attachment']));
+        }
     }
 }

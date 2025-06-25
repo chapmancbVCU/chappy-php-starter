@@ -3,6 +3,7 @@ namespace App\Controllers;
 use Core\Controller;
 use Core\Lib\Utilities\Arr;
 use Core\Lib\Utilities\Env;
+use Core\Lib\FileSystem\Uploads;
 use Core\Lib\Pagination\Pagination;
 use App\Models\{ACL, EmailAttachments, ProfileImages, Users};
 
@@ -215,7 +216,30 @@ class AdmindashboardController extends Controller {
         $attachment = ($id == 'new') ? new EmailAttachments() : 
             EmailAttachments::findById((int)$id);
 
+        if($this->request->isPost()) {
+            $this->request->csrfCheck();
+            
+            $uploads = Uploads::handleUpload(
+                $_FILES['attachment_name'],
+                EmailAttachments::class,
+                ROOT.DS,
+                '15mb',
+                $attachment,
+                'attachment_name'
+            );
+
+            $attachment->attachment_name = $this->request->get('attachment_name');
+            $attachment->description = $this->request->get('description');
+            $attachment->save();
+            if($attachment->validationPassed()) {
+                if($uploads) {
+
+                }
+            }
+        }
+
         $this->view->attachment = $attachment;
+        $this->view->errors = $attachment->getErrorMessages();
         $this->view->uploadMessage = ($id == 'new') ? "Upload file" : "Update Attachment";
         $this->view->header = ($id == 'new') ? "Added Attachment" : "Edit Attachment";
         $this->view->render('admindashboard/attachments_form');
