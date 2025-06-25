@@ -22,7 +22,21 @@
                 <td><?=$attachment->attachment_name?></td>
                 <td><?=$attachment->mime_type?></td>
                 <td><?=$attachment->size?></td>
-                <td></td>
+                <td class="text-end">
+                    <a href="<?=route('admindashboard.editAttachments', [$attachment->id])?>"
+                        class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i> Edit
+                    </a>
+                    <form method="POST"
+                        action="<?=route('admindashboard.deleteAttachment', [$attachment->id])?>"
+                        class="d-inline-block"
+                        onsubmit="return confirm('Are you sure you want to delete this attachment?');">
+                        <?=hidden('id', $attachment->id)?>
+                        <?=csrf()?>
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i> Delete
+                        </button>
+                    </form>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
