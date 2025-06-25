@@ -33,6 +33,10 @@ class AdmindashboardController extends Controller {
         $this->view->render('admindashboard.add_acl');
     }
 
+    public function attachmentsAction(): void {
+        $this->view->render('admindashboard.attachments');
+    }
+
     /**
      * Performs delete action on a user.
      *
