@@ -215,7 +215,9 @@ class AdmindashboardController extends Controller {
         $attachment = ($id == 'new') ? new EmailAttachments() : 
             EmailAttachments::findById((int)$id);
 
-        
+        $this->view->attachment = $attachment;
+        $this->view->uploadMessage = ($id == 'new') ? "Upload file" : "Update Attachment";
+        $this->view->header = ($id == 'new') ? "Added Attachment" : "Edit Attachment";
         $this->view->render('admindashboard/attachments_form');
     }
 
