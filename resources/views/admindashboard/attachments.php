@@ -18,10 +18,12 @@
     </thead>
     <tbody>
         <?php foreach($this->attachments as $attachment): ?>
-            <td><?$attachment->attachment_name?></td>
-            <td><?$attachment->mime_type?></td>
-            <td><?$attachment->size?></td>
-            <td></td>
+            <tr>
+                <td><?=$attachment->attachment_name?></td>
+                <td><?=$attachment->mime_type?></td>
+                <td><?=$attachment->size?></td>
+                <td></td>
+            </tr>
         <?php endforeach; ?>
     </tbody>
 </table>

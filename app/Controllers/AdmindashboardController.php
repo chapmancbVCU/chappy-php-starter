@@ -1,10 +1,10 @@
 <?php
 namespace App\Controllers;
+use Core\Controller;
 use Core\Lib\Utilities\Arr;
 use Core\Lib\Utilities\Env;
 use Core\Lib\Pagination\Pagination;
-use Core\Controller;
-use App\Models\{ACL, ProfileImages, Users};
+use App\Models\{ACL, EmailAttachments, ProfileImages, Users};
 
 /**
  * Implements support for our Admindashboard controller.
@@ -34,6 +34,8 @@ class AdmindashboardController extends Controller {
     }
 
     public function attachmentsAction(): void {
+        $attachments = EmailAttachments::find();
+        $this->view->attachments = $attachments;
         $this->view->render('admindashboard.attachments');
     }
 
