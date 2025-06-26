@@ -76,9 +76,15 @@ class EmailAttachments extends Model {
         return self::$maxAllowedFileSize;
     }
 
-    public static function init(): void {
+    /**
+     * Implements onConstruct from parent class.
+     *
+     * @return void
+     */
+    public function onConstruct(): void {
         self::$allowedFileTypes = Attachments::getAllowedMimeTypes();
     }
+
     /**
      * Performs upload
      *
