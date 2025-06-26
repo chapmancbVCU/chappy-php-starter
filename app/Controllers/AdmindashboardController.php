@@ -228,13 +228,15 @@ class AdmindashboardController extends Controller {
                 'attachment_name'
             );
 
-            $attachment->attachment_name = $this->request->get('attachment_name');
             $attachment->description = $this->request->get('description');
+            $attachment->attachment_name = htmlspecialchars($_FILES['attachment_name']['name']);
+            $attachment->user_id = Users::currentUser()->id;
             $attachment->save();
             if($attachment->validationPassed()) {
-                if($uploads) {
+                // if($uploads) {
 
-                }
+                // }
+                redirect('admindashboard.attachments');
             }
         }
 
