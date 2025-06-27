@@ -6,6 +6,7 @@ use Core\Lib\Utilities\Env;
 use Core\Lib\FileSystem\Uploads;
 use Core\Lib\Pagination\Pagination;
 use App\Models\{ACL, EmailAttachments, ProfileImages, Users};
+use Core\Lib\Mail\Attachments;
 
 /**
  * Implements support for our Admindashboard controller.
@@ -233,9 +234,18 @@ class AdmindashboardController extends Controller {
             $attachment->user_id = Users::currentUser()->id;
             $attachment->save();
             if($attachment->validationPassed()) {
-                // if($uploads) {
-
-                // }
+                if($uploads) {
+                    $file = $uploads->getFiles();
+                    $path = EmailAttachments::$_uploadPath . DS;
+                    $uploadName = $uploads->generateUploadFilename($file[0]['name']);
+                    $attachment->name =$uploadName;
+                    $attachment->path = $path . $uploadName;
+                    $attachment->size = $file[0]['size'];
+                    // dd($file[0]['name']);
+                    $attachment->mime_type = Attachments::mime(pathinfo($file[0]['name'], PATHINFO_EXTENSION));
+                    $uploads->upload($path, $uploadName, $file[0]['tmp_name']);
+                    $attachment->save();
+                }
                 redirect('admindashboard.attachments');
             }
         }
