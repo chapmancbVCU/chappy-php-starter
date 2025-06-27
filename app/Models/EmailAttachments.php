@@ -26,7 +26,7 @@ class EmailAttachments extends Model {
     protected static $maxAllowedFileSize = 17825792;
 
     // Set your file path.  Include your bucket if necessary.
-    protected static $_uploadPath = 'storage'.DS.'app'.DS.'private'.DS .'email_attachments';
+    public static $_uploadPath = 'storage'.DS.'app'.DS.'private'.DS .'email_attachments';
     
     // Fields from your database
     public $attachment_name;
