@@ -1,5 +1,7 @@
 <?php
 namespace Tests\Feature;
+
+use App\Models\EmailAttachments;
 use App\Models\Users;
 use Core\Lib\Mail\Attachments;
 use Core\Lib\Mail\MailerService;
@@ -61,6 +63,7 @@ class EmailTest extends ApplicationTestCase {
     }
 
     public function test_email_single_attachment_and_template(): void {
+        $attachment = EmailAttachments::findById(2);
         $mail = new MailerService();
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
@@ -69,7 +72,7 @@ class EmailTest extends ApplicationTestCase {
             'hello',
             ['user' => $hello],
             'default',
-            Attachments::content('welcome.txt', 'test attachment'),
+            Attachments::content($attachment),
             null,
             null,
             'email_default'
@@ -77,6 +80,8 @@ class EmailTest extends ApplicationTestCase {
     }
 
     public function test_email_multiple_attachments_and_template(): void {
+        $attachment1 = EmailAttachments::findById(1);
+        $attachment2 = EmailAttachments::findById(2);
         $mail = new MailerService();
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
@@ -86,8 +91,8 @@ class EmailTest extends ApplicationTestCase {
             ['user' => $hello],
             'default',
             [
-                Attachments::content('welcome.txt', 'test attachment'),
-                Attachments::path('Description.pdf', 'test path attachment')
+                Attachments::content($attachment2),
+                Attachments::path($attachment1)
             ],
             null,
             null,
@@ -96,6 +101,8 @@ class EmailTest extends ApplicationTestCase {
     }
 
     public function test_email_text_template_with_attachments(): void {
+        $attachment1 = EmailAttachments::findById(1);
+        $attachment2 = EmailAttachments::findById(2);
         $mail = new MailerService();
         $hello = "Hello world";
         $this->assertTrue($mail->sendTemplate(
@@ -105,8 +112,8 @@ class EmailTest extends ApplicationTestCase {
             ['user' => $hello],
             'default',
             [
-                Attachments::content('welcome.txt', 'test attachment'),
-                Attachments::path('Description.pdf', 'test path attachment')
+                Attachments::content($attachment2),
+                Attachments::path($attachment1)
             ],
             null,
             null,
