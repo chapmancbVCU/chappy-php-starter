@@ -347,6 +347,25 @@ class AdmindashboardController extends Controller {
     }
 
     /**
+     * Previews an attachment
+     *
+     * @param int $id The primary key for the record of the attachment.
+     * @return void
+     */
+    public function previewAction(int $id): void {
+        $attachment = EmailAttachments::findById($id);
+        if (!$attachment || !file_exists(CHAPPY_BASE_PATH . DS . $attachment->path)) {
+            http_response_code(404);
+            exit('File not found.');
+        }
+
+        header('Content-Type: ' . $attachment->mime_type);
+        header('Content-Disposition: inline; filename="' . $attachment->attachment_name . '"');
+        readfile($attachment->path);
+        exit;
+    }
+
+    /**
      * Support ability to toggle on or off the reset password flag for a 
      * particular user.
      *

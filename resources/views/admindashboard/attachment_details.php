@@ -22,6 +22,7 @@
                 <p><strong>MIME Type: </strong><?= $this->attachment->mime_type ?></p>
                 <p><strong>Uploader: </strong><?= $this->uploader->username ?></p>
                 <p><strong>Description: </strong><?= htmlspecialchars_decode(stripslashes($this->attachment->description)) ?></p>
+                <p><strong>Preview: </strong><a href="<?= route('admindashboard.preview', [$this->attachment->id]) ?>" target="_blank"><?= $this->attachment->attachment_name ?></a></p>
             </div>
         </div>
     </div>
