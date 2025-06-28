@@ -1,4 +1,4 @@
-<?php $this->setSiteTitle("My title here"); ?>
+<?php $this->setSiteTitle("Details for " . $this->attachment->attachment_name); ?>
 
 <!-- Head content between these two function calls.  Remove if not needed. -->
 <?php $this->start('head'); ?>

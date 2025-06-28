@@ -46,6 +46,11 @@ class AdmindashboardController extends Controller {
         $this->view->render('admindashboard.attachments');
     }
 
+    public function attachmentDetailsAction(int $id): void {
+        $this->view->attachment = EmailAttachments::findById((int)$id);
+        $this->view->render('admindashboard.attachment_details');
+    }
+
     /**
      * Performs delete action on a user.
      *

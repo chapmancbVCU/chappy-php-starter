@@ -28,7 +28,9 @@ use App\Models\Users;
     <tbody>
         <?php foreach($this->attachments as $attachment): ?>
             <tr>
-                <td><?=$attachment->attachment_name?></td>
+                <td>
+                    <a href="<?=route('admindashboard.attachmentDetails', [$attachment->id])?>"><?=$attachment->attachment_name?></a>
+                </td>
                 <td><?=EmailAttachments::uploadUsername($attachment->user_id)?></td>
                 <td><?=EmailAttachments::formatBytes($attachment->size)?></td>
                 <td class="text-end">
