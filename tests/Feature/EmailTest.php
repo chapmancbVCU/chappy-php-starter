@@ -23,21 +23,22 @@ class EmailTest extends ApplicationTestCase {
     public function test_email_is_sent(): void
     {
         $mail = new MailerService();
-        
+        $user = Users::findById(1);
+
         // Assert true when using test E-mail service.
         $this->assertTrue($mail->send(
-            'chad.chapman2010@gmail.com', 'test_email_is_sent', '<p>Your account is ready!</p>'
+            $user->email, 'test_email_is_sent', '<p>Your account is ready!</p>'
         ));
     }
 
     public function test_email_template(): void {
         $mail = new MailerService();
-        $hello = "Hello world";
+        $user = Users::findById(1);
         $this->assertTrue($mail->sendTemplate(
-            'chad.chapman2010@gmail.com',
+            $user->email,
             'test_email_template',
             'hello',
-            ['user' => $hello],
+            ['user' => $user->username],
             'default',
             [],
             null,
@@ -48,12 +49,12 @@ class EmailTest extends ApplicationTestCase {
 
     public function test_email_text_template(): void {
         $mail = new MailerService();
-        $hello = "Hello world";
+        $user = Users::findById(1);
         $this->assertTrue($mail->sendTemplate(
-            'chad.chapman2010@gmail.com',
+            $user->email,
             'test_email_text_template',
             'welcome',
-            ['user' => $hello],
+            ['user' => $user->username],
             'default',
             [],
             null,
@@ -65,12 +66,12 @@ class EmailTest extends ApplicationTestCase {
     public function test_email_single_attachment_and_template(): void {
         $attachment = EmailAttachments::findById(2);
         $mail = new MailerService();
-        $hello = "Hello world";
+        $user = Users::findById(1);
         $this->assertTrue($mail->sendTemplate(
-            'chad.chapman2010@gmail.com',
+            $user->email,
             'test_email_single_attachment_and_template',
             'hello',
-            ['user' => $hello],
+            ['user' => $user->username],
             'default',
             Attachments::content($attachment),
             null,
@@ -83,12 +84,12 @@ class EmailTest extends ApplicationTestCase {
         $attachment1 = EmailAttachments::findById(1);
         $attachment2 = EmailAttachments::findById(2);
         $mail = new MailerService();
-        $hello = "Hello world";
+        $user = Users::findById(1);
         $this->assertTrue($mail->sendTemplate(
-            'chad.chapman2010@gmail.com',
+            $user->email,
             'test_email_multiple_attachments_and_template',
             'hello',
-            ['user' => $hello],
+            ['user' => $user->username],
             'default',
             [
                 Attachments::content($attachment2),
@@ -104,12 +105,12 @@ class EmailTest extends ApplicationTestCase {
         $attachment1 = EmailAttachments::findById(1);
         $attachment2 = EmailAttachments::findById(2);
         $mail = new MailerService();
-        $hello = "Hello world";
+        $user = Users::findById(1);
         $this->assertTrue($mail->sendTemplate(
-            'chad.chapman2010@gmail.com',
+            $user->email,
             'test_email_text_template_with_attachments',
             'welcome',
-            ['user' => $hello],
+            ['user' => $user->username],
             'default',
             [
                 Attachments::content($attachment2),

@@ -241,7 +241,6 @@ class AdmindashboardController extends Controller {
                     $attachment->name =$uploadName;
                     $attachment->path = $path . $uploadName;
                     $attachment->size = $file[0]['size'];
-                    // dd($file[0]['name']);
                     $attachment->mime_type = Attachments::mime(pathinfo($file[0]['name'], PATHINFO_EXTENSION));
                     $uploads->upload($path, $uploadName, $file[0]['tmp_name']);
                     $attachment->save();
