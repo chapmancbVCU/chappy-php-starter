@@ -23,15 +23,16 @@
                 ['class' => 'form-group mb-3']
             ) ?>
 
-            <?= input(
-                'file', 
-                $this->uploadMessage, 
-                'attachment_name', 
-                '', 
-                ['class' => 'form-control', 'accept' => 'image/gif image/jpeg image/png'], 
-                ['class' => 'form-group mb-3']
-            ) ?>
-
+            <?php if($this->id == 'new'): ?>
+                <?= input(
+                    'file', 
+                    $this->uploadMessage, 
+                    'attachment_name', 
+                    '', 
+                    ['class' => 'form-control', 'accept' => 'image/gif image/jpeg image/png'], 
+                    ['class' => 'form-group mb-3']
+                ) ?>
+            <?php endif; ?>
             <div class="col-md-12 text-end">
                 <a href="<?=route('admindashboard.attachments')?>" class="btn btn-default">Cancel</a>
                 <?= submit('Save', ['class' => 'btn btn-primary']) ?>

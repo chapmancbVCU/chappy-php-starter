@@ -30,7 +30,7 @@ use App\Models\Users;
             <tr>
                 <td><?=$attachment->attachment_name?></td>
                 <td><?=EmailAttachments::uploadUsername($attachment->user_id)?></td>
-                <td><?=$attachment->size?></td>
+                <td><?=EmailAttachments::formatBytes($attachment->size)?></td>
                 <td class="text-end">
                     <a href="<?=route('admindashboard.editAttachments', [$attachment->id])?>"
                         class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i> Edit

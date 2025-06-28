@@ -58,6 +58,25 @@ class EmailAttachments extends Model {
     }
 
     /**
+     * Formats size of attachment to human readable format.
+     *
+     * @param int $bytes The size of the attachment.
+     * @param int $precision The precision in number of decimal places to
+     * report.
+     * @return string The file size in human readable format.
+     */
+    public static function formatBytes(int $bytes, int $precision = 2): string {
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+        if ($bytes === 0) return '0 B';
+
+        $i = (int) floor(log($bytes, 1024));
+        $size = $bytes / pow(1024, $i);
+
+        return round($size, $precision) . ' ' . $units[$i];
+    }
+
+    /**
      * Getter function for $allowedFileTypes array
      *
      * @return array $allowedFileTypes The array of allowed file types.

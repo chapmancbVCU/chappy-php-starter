@@ -230,7 +230,7 @@ class AdmindashboardController extends Controller {
             );
 
             $attachment->description = $this->request->get('description');
-            $attachment->attachment_name = htmlspecialchars($_FILES['attachment_name']['name']);
+            
             $attachment->user_id = Users::currentUser()->id;
             $attachment->save();
             if($attachment->validationPassed()) {
@@ -238,6 +238,7 @@ class AdmindashboardController extends Controller {
                     $file = $uploads->getFiles();
                     $path = EmailAttachments::$_uploadPath . DS;
                     $uploadName = $uploads->generateUploadFilename($file[0]['name']);
+                    $attachment->attachment_name = htmlspecialchars($_FILES['attachment_name']['name']);
                     $attachment->name =$uploadName;
                     $attachment->path = $path . $uploadName;
                     $attachment->size = $file[0]['size'];
@@ -249,6 +250,7 @@ class AdmindashboardController extends Controller {
             }
         }
 
+        $this->view->id = $id;
         $this->view->attachment = $attachment;
         $this->view->errors = $attachment->getErrorMessages();
         $this->view->uploadMessage = ($id == 'new') ? "Upload file" : "Update Attachment";
