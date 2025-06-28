@@ -47,7 +47,9 @@ class AdmindashboardController extends Controller {
     }
 
     public function attachmentDetailsAction(int $id): void {
-        $this->view->attachment = EmailAttachments::findById((int)$id);
+        $attachment = EmailAttachments::findById((int)$id);
+        $this->view->uploader = Users::findById($attachment->user_id);
+        $this->view->attachment = $attachment;
         $this->view->render('admindashboard.attachment_details');
     }
 
