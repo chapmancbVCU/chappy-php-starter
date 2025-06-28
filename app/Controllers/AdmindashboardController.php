@@ -35,6 +35,11 @@ class AdmindashboardController extends Controller {
         $this->view->render('admindashboard.add_acl');
     }
 
+    /**
+     * Displays list of attachments.
+     *
+     * @return void
+     */
     public function attachmentsAction(): void {
         $attachments = EmailAttachments::find();
         $this->view->attachments = $attachments;
