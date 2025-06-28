@@ -264,7 +264,6 @@ class AdmindashboardController extends Controller {
             }
         }
 
-        $this->view->id = $id;
         $this->view->attachment = $attachment;
         $this->view->errors = $attachment->getErrorMessages();
         $this->view->uploadMessage = $attachment->isNew() ? "Upload file" : "Update Attachment";

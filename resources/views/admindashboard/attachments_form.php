@@ -23,7 +23,7 @@
                 ['class' => 'form-group mb-3']
             ) ?>
 
-            <?php if($this->id == 'new'): ?>
+            <?php if($this->attachment->isNew()): ?>
                 <?= input(
                     'file', 
                     $this->uploadMessage, 
