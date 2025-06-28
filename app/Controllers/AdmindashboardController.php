@@ -2,11 +2,10 @@
 namespace App\Controllers;
 use Core\Controller;
 use Core\Lib\Utilities\Arr;
-use Core\Lib\Utilities\Env;
+use Core\Lib\Mail\Attachments;
 use Core\Lib\FileSystem\Uploads;
 use Core\Lib\Pagination\Pagination;
 use App\Models\{ACL, EmailAttachments, ProfileImages, Users};
-use Core\Lib\Mail\Attachments;
 
 /**
  * Implements support for our Admindashboard controller.
