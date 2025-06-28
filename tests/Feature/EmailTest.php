@@ -37,13 +37,14 @@ class EmailTest extends ApplicationTestCase {
         $this->assertTrue($mail->sendTemplate(
             $user->email,
             'test_email_template',
-            'hello',
-            ['user' => $user->username],
+            'welcome',
+            ['user' => $user],
             'default',
             [],
-            null,
-            null,
-            'email_default'
+            MailerService::FRAMEWORK_LAYOUT_PATH,
+            MailerService::FRAMEWORK_TEMPLATE_PATH,
+            'default',
+            MailerService::FRAMEWORK_STYLES_PATH
         ));
     }
 
@@ -53,13 +54,14 @@ class EmailTest extends ApplicationTestCase {
         $this->assertTrue($mail->sendTemplate(
             $user->email,
             'test_email_text_template',
-            'welcome',
+            'welcome_text',
             ['user' => $user->username],
             'default',
             [],
-            null,
-            null,
-            'email_default'
+            MailerService::FRAMEWORK_LAYOUT_PATH,
+            MailerService::FRAMEWORK_TEMPLATE_PATH,
+            'default',
+            MailerService::FRAMEWORK_STYLES_PATH
         ));
     }
 
@@ -70,13 +72,14 @@ class EmailTest extends ApplicationTestCase {
         $this->assertTrue($mail->sendTemplate(
             $user->email,
             'test_email_single_attachment_and_template',
-            'hello',
+            'welcome',
             ['user' => $user->username],
             'default',
             Attachments::content($attachment),
-            null,
-            null,
-            'email_default'
+            MailerService::FRAMEWORK_LAYOUT_PATH,
+            MailerService::FRAMEWORK_TEMPLATE_PATH,
+            'default',
+            MailerService::FRAMEWORK_STYLES_PATH
         ));
     }
 
@@ -88,16 +91,17 @@ class EmailTest extends ApplicationTestCase {
         $this->assertTrue($mail->sendTemplate(
             $user->email,
             'test_email_multiple_attachments_and_template',
-            'hello',
+            'welcome',
             ['user' => $user->username],
             'default',
             [
                 Attachments::content($attachment2),
                 Attachments::path($attachment1)
             ],
-            null,
-            null,
-            'email_default'
+            MailerService::FRAMEWORK_LAYOUT_PATH,
+            MailerService::FRAMEWORK_TEMPLATE_PATH,
+            'default',
+            MailerService::FRAMEWORK_STYLES_PATH
         ));
     }
 
@@ -109,16 +113,17 @@ class EmailTest extends ApplicationTestCase {
         $this->assertTrue($mail->sendTemplate(
             $user->email,
             'test_email_text_template_with_attachments',
-            'welcome',
+            'welcome_text',
             ['user' => $user->username],
             'default',
             [
                 Attachments::content($attachment2),
                 Attachments::path($attachment1)
             ],
-            null,
-            null,
-            'email_default'
+            MailerService::FRAMEWORK_LAYOUT_PATH,
+            MailerService::FRAMEWORK_TEMPLATE_PATH,
+            'default',
+            MailerService::FRAMEWORK_STYLES_PATH
         ));
     }
 
