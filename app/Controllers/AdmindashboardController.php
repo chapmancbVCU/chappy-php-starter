@@ -225,7 +225,14 @@ class AdmindashboardController extends Controller {
         $this->view->render('admindashboard.edit');
     }
 
-    public function editAttachmentsAction($id): void {
+    /**
+     * Creates or edits the details of an existing E-mail attachment.
+     *
+     * @param int $id The primary key for the record associated with an 
+     * E-mail attachment.
+     * @return void
+     */
+    public function editAttachmentsAction(int $id): void {
         $attachment = ($id == 'new') ? new EmailAttachments() : 
             EmailAttachments::findById((int)$id);
 
