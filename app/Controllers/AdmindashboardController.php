@@ -46,6 +46,12 @@ class AdmindashboardController extends Controller {
         $this->view->render('admindashboard.attachments');
     }
 
+    /**
+     * Displays details for a particular E-mail attachment.
+     *
+     * @param int $id Primary key for attachment record.
+     * @return void
+     */
     public function attachmentDetailsAction(int $id): void {
         $attachment = EmailAttachments::findById((int)$id);
         $this->view->uploader = Users::findById($attachment->user_id);
