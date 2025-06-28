@@ -232,17 +232,20 @@ class AdmindashboardController extends Controller {
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             
-            $uploads = Uploads::handleUpload(
-                $_FILES['attachment_name'],
-                EmailAttachments::class,
-                ROOT.DS,
-                '15mb',
-                $attachment,
-                'attachment_name'
-            );
+            if($attachment->isNew()) {
+                $uploads = Uploads::handleUpload(
+                    $_FILES['attachment_name'],
+                    EmailAttachments::class,
+                    ROOT.DS,
+                    '15mb',
+                    $attachment,
+                    'attachment_name'
+                );
+            }
 
             $attachment->description = $this->request->get('description');
-            
+            $attachment->attachment_name = ($attachment->isNew()) ? htmlspecialchars($_FILES['attachment_name']['name']) :
+                $attachment->attachment_name;
             $attachment->user_id = Users::currentUser()->id;
             $attachment->save();
             if($attachment->validationPassed()) {
@@ -250,7 +253,6 @@ class AdmindashboardController extends Controller {
                     $file = $uploads->getFiles();
                     $path = EmailAttachments::$_uploadPath . DS;
                     $uploadName = $uploads->generateUploadFilename($file[0]['name']);
-                    $attachment->attachment_name = htmlspecialchars($_FILES['attachment_name']['name']);
                     $attachment->name =$uploadName;
                     $attachment->path = $path . $uploadName;
                     $attachment->size = $file[0]['size'];
@@ -265,8 +267,8 @@ class AdmindashboardController extends Controller {
         $this->view->id = $id;
         $this->view->attachment = $attachment;
         $this->view->errors = $attachment->getErrorMessages();
-        $this->view->uploadMessage = ($id == 'new') ? "Upload file" : "Update Attachment";
-        $this->view->header = ($id == 'new') ? "Added Attachment" : "Edit Attachment";
+        $this->view->uploadMessage = $attachment->isNew() ? "Upload file" : "Update Attachment";
+        $this->view->header = $attachment->isNew() ? "Added Attachment" : "Edit Attachment";
         $this->view->render('admindashboard/attachments_form');
     }
 
