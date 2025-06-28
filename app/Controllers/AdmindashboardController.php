@@ -81,7 +81,7 @@ class AdmindashboardController extends Controller {
      * @param int $id The id for the ACL we want to delete.
      * @return void
      */
-    function deleteAclAction(): void {
+    public function deleteAclAction(): void {
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $acl = ACL::findById((int)$this->request->get('id'));
@@ -99,6 +99,22 @@ class AdmindashboardController extends Controller {
             }
         }
         redirect('admindashboard.manageAcls');
+    }
+
+    /**
+     * Deletes an attachment and sets deleted field in table to 1.
+     *
+     * @param int $id The primary key for the attachment's database 
+     * record.
+     * @return void
+     */
+    public function deleteAttachmentAction(int $id): void {
+        $attachment = EmailAttachments::findById($id);
+        if($attachment) {
+            unlink($attachment->path);
+            $attachment->delete();
+        }
+        redirect('admindashboard.attachments');
     }
 
     /**
@@ -228,11 +244,11 @@ class AdmindashboardController extends Controller {
     /**
      * Creates or edits the details of an existing E-mail attachment.
      *
-     * @param int $id The primary key for the record associated with an 
+     * @param int|string $id The primary key for the record associated with an 
      * E-mail attachment.
      * @return void
      */
-    public function editAttachmentsAction(int $id): void {
+    public function editAttachmentsAction(int|string $id): void {
         $attachment = ($id == 'new') ? new EmailAttachments() : 
             EmailAttachments::findById((int)$id);
 
