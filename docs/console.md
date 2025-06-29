@@ -71,6 +71,7 @@ php console
 | make:email | Generates a file for an E-mail |
 | make:email-layout | Generates an E-mail template |
 | make:layout | Generates a new layout |
+| make:mailer | Generates a new custom mailer class |
 | make:menu | Generates a new menu file |
 | make:migration | Generates a Database Migration |
 | make:model | Generates a new model file |
