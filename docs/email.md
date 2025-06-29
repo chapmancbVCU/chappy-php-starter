@@ -12,6 +12,10 @@
     * G. [Environment Configuration](#environment-configuration)
     * H. [Example Use Case](#example-use-case)
     * I. [Notes](#notes)
+3. [Using sendTemplate() in Chappy.php](#send-template)
+    * A. [Test Case Examples](#test-case-examples)
+    * B. [Adding Attachments](#adding-attachments)
+    * C. [Overriding Default Paths](#overriding-defaults)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -178,3 +182,180 @@ This sends a templated welcome email using the default layout and style.
 - HTML and text versions improve deliverability
 - CSS is inlined to ensure better rendering across clients
 - All template rendering uses output buffering and extract() for dynamic data injection
+
+<br>
+
+## 3. 📬 Using `sendTemplate()` in Chappy.php <a id="send-template"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The `MailerService::sendTemplate()` method allows you to send HTML (and optionally plain-text) emails using reusable templates, layouts, and CSS stylesheets. This method is powerful and flexible, supporting both embedded and path-based file attachments.
+
+🧠 Basic Usage
+```php
+$mail = new MailerService();
+$user = Users::findById(1);
+
+$mail->sendTemplate(
+    $user->email,
+    'Welcome Subject',
+    'welcome',                   // Template name (without extension)
+    ['user' => $user],           // Data passed to template
+    'default',                   // Layout name
+    [],                          // Attachments
+    MailerService::FRAMEWORK_LAYOUT_PATH,
+    MailerService::FRAMEWORK_TEMPLATE_PATH,
+    'default',                   // CSS filename (no extension)
+    MailerService::FRAMEWORK_STYLES_PATH
+);
+```
+
+<br>
+
+### A. Test Case Examples <a id="test-case-examples"></a>
+#### 1. Basic HTML E-mail
+Sends a raw HTML string without templates:
+```php
+$mail->send($user->email, 'test_email_is_sent', '<p>Your account is ready!</p>');
+```
+
+<br>
+
+#### 2. HTML Template with Layout and Stylesheet
+```php
+$mail->sendTemplate(
+    $user->email,
+    'test_email_template',
+    'welcome',                   // welcome.php under views/emails/
+    ['user' => $user],
+    'default',                   // default.php under views/emails/layouts/
+    [],
+    MailerService::FRAMEWORK_LAYOUT_PATH,
+    MailerService::FRAMEWORK_TEMPLATE_PATH,
+    'default',                   // default.css under views/emails/styles/
+    MailerService::FRAMEWORK_STYLES_PATH
+);
+```
+
+<br>
+
+#### 3. HTML + Text Email from Dual Template
+Includes `welcome_text.txt` if found in `views/emails/`:
+```php
+$mail->sendTemplate(
+    $user->email,
+    'test_email_text_template',
+    'welcome_text',
+    ['user' => $user->username],
+    'default',
+    [],
+    MailerService::FRAMEWORK_LAYOUT_PATH,
+    MailerService::FRAMEWORK_TEMPLATE_PATH,
+    'default',
+    MailerService::FRAMEWORK_STYLES_PATH
+);
+```
+
+<br>
+
+### B. Adding Attachments <a id="adding-attachments"></a>
+#### 1. Single Attachment
+```php
+$attachment = EmailAttachments::findById(2);
+
+$mail->sendTemplate(
+    $user->email,
+    'test_email_single_attachment_and_template',
+    'welcome',
+    ['user' => $user->username],
+    'default',
+    Attachments::content($attachment),
+    ...
+);
+```
+
+<br>
+
+#### 2. Multiple Attachments (Content + Path)
+```php
+$attachments = [
+    Attachments::content($attachment2),
+    Attachments::path($attachment1)
+];
+
+$mail->sendTemplate(
+    $user->email,
+    'test_email_multiple_attachments_and_template',
+    'welcome',
+    ['user' => $user->username],
+    'default',
+    $attachments,
+    ...
+);
+```
+
+#### 3. Text Template with Attachments
+Combines `.txt` content fallback and multiple files:
+```php
+$mail->sendTemplate(
+    $user->email,
+    'test_email_text_template_with_attachments',
+    'welcome_text',
+    ['user' => $user->username],
+    'default',
+    $attachments,
+    ...
+);
+```
+
+### C. 🗂 Overriding Default Paths <a id="overriding-defaults"></a>
+To use custom layout, template, or styles from your own application:
+
+| Parameter       | Default Constant                         | Custom Example                    |
+| --------------- | ---------------------------------------- | --------------------------------- |
+| `$layoutPath`   | `MailerService::FRAMEWORK_LAYOUT_PATH`   | `resources/views/emails/layouts/` |
+| `$templatePath` | `MailerService::FRAMEWORK_TEMPLATE_PATH` | `resources/views/emails/`         |
+| `$stylesPath`   | `MailerService::FRAMEWORK_STYLES_PATH`   | `resources/css/`                  |
+
+Pass custom paths manually to override framework defaults:
+```php
+$mail->sendTemplate(
+    $to,
+    $subject,
+    $template,
+    $data,
+    'custom_layout',
+    [],
+    CHAPPY_BASE_PATH . '/resources/views/emails/layouts/',
+    CHAPPY_BASE_PATH . '/resources/views/emails/',
+    'custom_style',
+    CHAPPY_BASE_PATH . '/resources/css/'
+);
+```
+
+🧭 Using Default Application Paths
+
+If you want to use your own customized email templates, layouts, and styles located in:
+- `resources/views/emails/layouts/`
+- `resources/views/emails/`
+- `resources/css/`
+
+You do not need to pass path parameters at all — just set them to `null`, or omit them entirely:
+```php
+$mail->sendTemplate(
+    $user->email,
+    'Welcome to Chappy.php!',
+    'welcome',
+    ['user' => $user],
+    'default',     // Layout name (e.g., default.php)
+    [],            // No attachments
+    null,          // Use default layout path: /resources/views/emails/layouts/
+    null,          // Use default template path: /resources/views/emails/
+    'default',     // CSS file: default.css
+    null           // Use default style path: /resources/css/
+);
+```
+
+These values are automatically resolved using:
+- self::$layoutPath
+- self::$templatePath
+- self::$stylesPath
+
+…which are set to point to your `resources/` directory.
