@@ -16,6 +16,11 @@
     * A. [Test Case Examples](#test-case-examples)
     * B. [Adding Attachments](#adding-attachments)
     * C. [Overriding Default Paths](#overriding-defaults)
+4. [Attachment Management](#attachment-management)
+    * A. [Attachments Listing](#attachments-listing)
+    * B. [Add or Edit Attachments](#add-or-edit)
+    * C. [Attachment Details](#attachment-details)
+    * D. [Usage with MailerService](#usage-with-mailerservice)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -359,3 +364,63 @@ These values are automatically resolved using:
 - self::$stylesPath
 
 …which are set to point to your `resources/` directory.
+
+<br>
+
+## 4. Attachment Management <a id="attachment-management"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The admin dashboard allows administrators to upload, preview, update, and delete email attachments. These attachments can later be used with the framework's `MailerService::sendTemplate()` functionality. This section documents the related views and controller actions.
+
+### A. 📄 Attachments Listing <a id="attachments-listing"></a>
+**View:** `admindashboard.attachments`
+
+This page displays a table of all uploaded attachments, including:
+- Original filename (with a link to the attachment details)
+- Uploader username
+- File size (formatted)
+-Action buttons: Edit / Delete
+
+Add New Attachment: A button is available to navigate to the upload form:`/admindashboard/editAttachments/new`
+
+<br>
+
+### B. 📋 Add or Edit Attachment <a id="add-or-edit"></a>
+**View:** `admindashboard.attachments_form`
+This form supports both creating and updating attachments:
+- Description (WYSIWYG via TinyMCE)
+- File Upload (only for new records)
+- CSRF Protection enabled via `csrf()`
+- Save and Cancel buttons
+
+<br>
+
+### C. 📁 Attachment Details <a id="attachment-details"></a>
+**View:** `admindashboard.attachment_details`
+
+This view shows metadata and a preview link:
+- Created and Updated timestamps (in human-readable format)
+- File size and MIME type
+- Uploader username
+- Description (rich text rendered safely)
+- Link to Preview the file: `/admindashboard/preview/:id`
+
+<br>
+
+### D. 🧪 Usage with MailerService <a id="usage-with-mailerservice"></a>
+Once uploaded, attachments can be used in `MailerService::sendTemplate()`:
+```php
+$mailer->sendTemplate(
+    $to,
+    'Subject Line',
+    'template_name',
+    ['user' => $user],
+    'default',
+    [
+        Attachments::content($attachment),
+        Attachments::path($attachment)
+    ],
+    null, // layout path (null uses /resources/views/emails/layouts)
+    null, // template path (null uses /resources/views/emails/templates)
+    'default',
+    null  // styles path
+);
+```
