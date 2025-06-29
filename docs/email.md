@@ -21,6 +21,7 @@
     * B. [Add or Edit Attachments](#add-or-edit)
     * C. [Attachment Details](#attachment-details)
     * D. [Usage with MailerService](#usage-with-mailerservice)
+    * E. [Additional Notes](#additional-notes)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -424,3 +425,13 @@ $mailer->sendTemplate(
     null  // styles path
 );
 ```
+
+<br>
+
+### E. ✅ Additional Notes <a id="additional-notes"></a>
+- Uploaded files are stored and accessible only within admin.
+- Attachments are associated with users via the `user_id` column.
+- File metadata such as MIME type and size are captured and stored during upload.
+- Descriptions are HTML-safe and stored with support for rich formatting.
+
+This section allows administrators to manage reusable file assets securely and efficiently for use in transactional emails.
