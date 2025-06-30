@@ -16,12 +16,14 @@
     * A. [Test Case Examples](#test-case-examples)
     * B. [Adding Attachments](#adding-attachments)
     * C. [Overriding Default Paths](#overriding-defaults)
-4. [Attachment Management](#attachment-management)
+4. [Customizing sendTo() with Advanced Parameters](#send-to)
+5. [Attachment Management](#attachment-management)
     * A. [Attachments Listing](#attachments-listing)
     * B. [Add or Edit Attachments](#add-or-edit)
     * C. [Attachment Details](#attachment-details)
     * D. [Usage with MailerService](#usage-with-mailerservice)
     * E. [Additional Notes](#additional-notes)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -368,7 +370,83 @@ These values are automatically resolved using:
 
 <br>
 
-## 4. Attachment Management <a id="attachment-management"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Customizing sendTo() with Advanced Parameters <a id="send-to"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+By default, `AbstractMailer::sendTo()` uses the base `send()` method, which calls `buildAndSend()` with default parameters. However, if your custom mailer requires attachments or custom layout/template/style paths, you can override `sendTo()` directly.
+
+🛠 Example: Overriding `sendTo()` to Add Attachments
+```php
+use App\Models\Users;
+use App\Models\EmailAttachments;
+use Core\Lib\Mail\AbstractMailer;
+use Core\Lib\Mail\Attachments;
+
+class WelcomeMailer extends AbstractMailer
+{
+    protected function getData(): array {
+        return ['user' => $this->user];
+    }
+
+    protected function getSubject(): string {
+        return 'Welcome to ' . env('SITE_TITLE');
+    }
+
+    protected function getTemplate(): string {
+        return 'welcome';
+    }
+
+    /**
+     * Override the static sendTo method to include custom build options.
+     */
+    public static function sendTo(Users $user): bool {
+        $mailer = new static($user);
+
+        $attachment1 = EmailAttachments::findById(1);
+        $attachment2 = EmailAttachments::findById(2);
+
+        return $mailer->buildAndSend(
+            null, // layout (defaults to 'default')
+            [
+                Attachments::content($attachment1),
+                Attachments::path($attachment2)
+            ],
+            null, // layout path (uses /resources/views/emails/layouts/)
+            null, // template path (uses /resources/views/emails/)
+            'default', // CSS filename
+            null  // CSS path (uses /resources/css/)
+        );
+    }
+}
+```
+
+🔍 Usage in Controller or Console
+```php
+$user = Users::findById(1);
+WelcomeMailer::sendTo($user); // Sends with attachments and full customization
+```
+
+✅ When Should You Override `sendTo()`?
+You should override sendTo() when:
+- You want to embed logic unique to that mailer (e.g. attachments, path overrides)
+- You need to inject data not handled by the getData() method
+- You want to isolate one-off logic from your controller or service layer
+
+📌 Reminder: `buildAndSend()` Signature
+```php
+protected function buildAndSend(
+    ?string $layout = null,
+    array $attachments = [],
+    ?string $layoutPath = null,
+    ?string $templatePath = null,
+    ?string $styles = null,
+    ?string $stylesPath = null
+): bool
+```
+
+🧼 Best Practice
+If your attachments or logic are conditional, wrap them cleanly in the overridden `sendTo()` to keep your mailer class readable.
+<br>
+
+## 5. Attachment Management <a id="attachment-management"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The admin dashboard allows administrators to upload, preview, update, and delete email attachments. These attachments can later be used with the framework's `MailerService::sendTemplate()` functionality. This section documents the related views and controller actions.
 
 ### A. 📄 Attachments Listing <a id="attachments-listing"></a>
