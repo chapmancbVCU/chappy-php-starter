@@ -73,7 +73,7 @@ class AuthController extends Controller {
             Users::currentUser()->logout();
         }
         
-        redirect(('auth.login'));
+        redirect('auth.login');
     }
 
     /**
