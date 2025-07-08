@@ -1,8 +1,7 @@
 <?php
 namespace App\Models;
-use Core\{Cookie, Model, Session};
+use Core\{Model, Session};
 use core\Auth\AuthService;
-use Core\Lib\Logging\Logger;
 use Core\Validators\{
     EmailValidator,
     LowerCharValidator,
@@ -15,10 +14,8 @@ use Core\Validators\{
     UniqueValidator,
     UpperCharValidator
 };
-use Core\Models\UserSessions;
 use Core\Lib\Utilities\Env;
 use Core\Lib\Utilities\Arr;
-use Core\Lib\Utilities\Str;
 /**
  * Extends the Model class.  Supports functions for the Users model.
  */
