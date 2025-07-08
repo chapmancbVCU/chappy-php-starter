@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 use Core\{Cookie, Model, Session};
+use core\Auth\AuthService;
 use Core\Lib\Logging\Logger;
 use Core\Validators\{
     EmailValidator,
@@ -98,10 +99,10 @@ class Users extends Model {
     public function beforeSave(): void {
         $this->timeStamps();
         if($this->isNew()) {
-            $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+            $this->password = AuthService::hashPassword($this->password);
         }
         if($this->changePassword) {
-            $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+            $this->password = AuthService::hashPassword($this->password);
             $this->reset_password = 0;
         }
         
@@ -167,17 +168,6 @@ class Users extends Model {
             return false; // Ensures it always returns a boolean
         }
         return in_array($acl, $userAcls, true);
-    }
-    
-    /**
-     * Hashes password.
-     *
-     * @param string $password Original password submitted on a registration 
-     * or update password form.
-     * @return void
-     */
-    public function hashPassword($password) {
-        $password = password_hash($password, PASSWORD_DEFAULT);
     }
 
     /**
