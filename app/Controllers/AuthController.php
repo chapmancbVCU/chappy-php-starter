@@ -112,20 +112,7 @@ class AuthController extends Controller {
         if(!$user) redirect('');
         if($this->request->isPost()) {
             $this->request->csrfCheck();
-            $user->assign($this->request->get(), Users::blackListedFormKeys);
-            
-            // PW mode on for correct validation.
-            $user->setChangePassword(true);
-            
-            // Allows password matching confirmation.
-            $user->confirm = $this->request->get('confirm');
-            
-            if($user->save()) {
-                // PW change mode off.
-                $user->reset_password = 0;
-                $user->setChangePassword(false);    
-                redirect('auth.login');
-            }
+            AuthService::passwordReset($this->request, $user);
         }
 
         $user->setChangePassword(false);
