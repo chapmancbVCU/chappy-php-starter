@@ -6,6 +6,7 @@ use Core\Lib\Mail\Attachments;
 use Core\Lib\FileSystem\Uploads;
 use Core\Lib\Pagination\Pagination;
 use App\Models\{EmailAttachments, ProfileImages, Users};
+use core\Auth\ACLService;
 use core\Auth\AuthService;
 use Core\Models\ACL;
 
@@ -230,7 +231,7 @@ class AdmindashboardController extends Controller {
             // Handle ACL updates from checkboxes
             $newAcls = $_POST['acls'] ?? [];
             $newAcls = Users::aclToArray($newAcls);
-            Users::manageAcls($acls, $user, $newAcls, $userAcls);
+            ACLService::manageAcls($acls, $user, $newAcls, $userAcls);
             
             // Save updated ACLs
             $user->acl = json_encode($newAcls);

@@ -67,26 +67,6 @@ class Users extends Model {
     }
 
     /**
-     * Add ACL to user's acl field as an element of an array.
-     *
-     * @param int $user_id The id of the user whose acl field we want to 
-     * modify.
-     * @param string $acl The name of the new ACL.
-     * @return bool True or false depending on success of operation.
-     */
-    public static function addAcl($user_id,$acl) {
-        $user = self::findById($user_id);
-        if(!$user) return false;
-        $acls = $user->acls();
-        if(!in_array($acl, $acls)){
-            $acls[] = $acl;
-            $user->acl = json_encode($acls);
-            $user->save();
-        }
-        return true;
-    }
-
-    /**
      * Implements beforeSave function described in Model parent class.  
      * Ensures password is not in plain text but a hashed one.  The 
      * reset_password flag is also set to 0.
@@ -109,8 +89,6 @@ class Users extends Model {
         }
         
     }
-
-    
 
     /**
      * Retrieves a list of all users except current logged in user.
@@ -175,47 +153,6 @@ class Users extends Model {
      */
     public function isResetPWChecked() {
         return $this->reset_password === 1;
-    }
-
-    /**
-     * Manages the adding and removing of ACLs.
-     *
-     * @param array $acls ACLs stored in acl table.
-     * @param Users $user The user we want to modify 
-     * @param array $newAcls The new ACLs for the user.
-     * @param array $userAcls The user's existing ACLs.
-     * @return void
-     */
-    public static function manageAcls(array $acls, Users $user, array $newAcls, array $userAcls): void {
-        foreach ($acls as $aclName) {
-            $aclKeyStr = (string)$aclName;
-            if (in_array($aclKeyStr, $newAcls, true) && !in_array($aclKeyStr, $userAcls, true)) {
-                self::addAcl($user->id, $aclKeyStr);
-            } elseif (!in_array($aclKeyStr, $newAcls, true) && in_array($aclKeyStr, $userAcls, true)) {
-                self::removeAcl($user->id, $aclKeyStr);
-            }
-        }
-    }
-
-
-    /**
-     * Removes ACL from user's acl field array.
-     *
-     * @param int $user_id The id of the user whose acl field we want to modify.
-     * @param string $acl The name of the ACL to be removed.
-     * @return void
-     */
-    public static function removeAcl($user_id, $acl) {
-        $user = self::findById($user_id);
-        if(!$user) return false;
-        $acls = $user->acls();
-        if(in_array($acl,$acls)){
-            $key = Arr::search($acls, $acl);
-            unset($acls[$key]);
-            $user->acl = json_encode($acls);
-            $user->save();
-        }
-        return true;
     }
 
     /**

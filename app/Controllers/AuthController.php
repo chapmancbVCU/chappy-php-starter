@@ -2,9 +2,8 @@
 namespace App\Controllers;
 use Core\Controller;
 use Core\Models\Login;
+use core\Auth\ACLService;
 use core\Auth\AuthService;
-use Core\Lib\Utilities\Env;
-use Core\Lib\Logging\Logger;
 use Core\Lib\FileSystem\Uploads;
 use App\Models\{ProfileImages, Users};
 /**
@@ -83,7 +82,7 @@ class AuthController extends Controller {
 
             $user->assign($this->request->get());
             $user->confirm = $this->request->get('confirm');
-            $user->acl = AuthService::setAclAtRegistration();
+            $user->acl = ACLService::setAclAtRegistration();
             $user->save();
             if($user->validationPassed()) {
                 if($uploads) {
