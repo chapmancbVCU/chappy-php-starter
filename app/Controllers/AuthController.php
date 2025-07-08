@@ -26,7 +26,7 @@ class AuthController extends Controller {
             $loginModel->assign($this->request->get());
             $loginModel->validator();
             if($loginModel->validationPassed()){
-                $loginModel = AuthService::attemptLogin($this->request, $loginModel, $_POST['username']);
+                $loginModel = AuthService::login($this->request, $loginModel, $_POST['username']);
             }
         }
         $this->view->login = $loginModel;
@@ -48,12 +48,7 @@ class AuthController extends Controller {
         }
 
         $this->request->csrfCheck();
-
-        $user = Users::currentUser();
-        if($user) {
-            $user->logout();
-        }
-        
+        AuthService::logout();
         redirect('auth.login');
     }
 
