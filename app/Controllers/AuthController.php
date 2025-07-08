@@ -83,7 +83,7 @@ class AuthController extends Controller {
 
             $user->assign($this->request->get());
             $user->confirm = $this->request->get('confirm');
-            $user->acl = Users::setAclAtRegistration();
+            $user->acl = AuthService::setAclAtRegistration();
             $user->save();
             if($user->validationPassed()) {
                 if($uploads) {

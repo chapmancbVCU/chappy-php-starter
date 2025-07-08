@@ -320,20 +320,6 @@ class Users extends Model {
     }
 
     /**
-     * Sets ACL at registration.  If users table is empty the default 
-     * value is Admin.  Otherwise, we set the value to "".
-     *
-     * @return string The value of the ACL we are setting upon 
-     * registration of a user.
-     */
-    public static function setAclAtRegistration() {
-        if(Users::findTotal() == 0) {
-            return '["Admin"]';
-        }
-        return '[""]';
-    }
-
-    /**
      * Setter function for $changePassword.
      *
      * @param bool $value The value we will assign to $changePassword.
