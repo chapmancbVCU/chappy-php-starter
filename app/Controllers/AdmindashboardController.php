@@ -5,7 +5,8 @@ use Core\Lib\Utilities\Arr;
 use Core\Lib\Mail\Attachments;
 use Core\Lib\FileSystem\Uploads;
 use Core\Lib\Pagination\Pagination;
-use App\Models\{ACL, EmailAttachments, ProfileImages, Users};
+use App\Models\{EmailAttachments, ProfileImages, Users};
+use Core\Models\ACL;
 
 /**
  * Implements support for our Admindashboard controller.
