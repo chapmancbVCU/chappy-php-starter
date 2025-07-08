@@ -65,13 +65,15 @@ class AuthController extends Controller {
      */
     public function logoutAction(): void {
         if(!$this->request->isPost()) {
-            redirect('auth.login');
+            flashMessage('danger', 'You must logout through menu');
+            redirect('home');
         }
 
         $this->request->csrfCheck();
 
-        if(Users::currentUser()) {
-            Users::currentUser()->logout();
+        $user = Users::currentUser();
+        if($user) {
+            $user->logout();
         }
         
         redirect('auth.login');
