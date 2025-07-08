@@ -1,11 +1,12 @@
 <?php
 namespace App\Controllers;
+use Core\Controller;
+use Core\Models\Login;
+use core\Auth\AuthService;
 use Core\Lib\Utilities\Env;
 use Core\Lib\Logging\Logger;
 use Core\Lib\FileSystem\Uploads;
 use App\Models\{ProfileImages, Users};
-use Core\Models\Login;
-use Core\Controller;
 /**
  * Implements support for our Auth controller.  Functions found in this 
  * class will support tasks related to the user registration and 
@@ -21,34 +22,11 @@ class AuthController extends Controller {
     public function loginAction(): void {
         $loginModel = new Login();
         if($this->request->isPost()) {
-            // form validation
             $this->request->csrfCheck();
             $loginModel->assign($this->request->get());
             $loginModel->validator();
             if($loginModel->validationPassed()){
-                $user = Users::findByUsername($_POST['username']);
-                if($user && password_verify($this->request->get('password'), $user->password)) {
-                    if($user->reset_password == 1) {
-                        redirect('auth.resetPassword', [$user->id]);
-                    }
-                    if($user->inactive == 1) {
-                        flashMessage('danger', 'Account is currently inactive');
-                        redirect('auth.login');
-                    } 
-                    $remember = $loginModel->getRememberMeChecked();
-                    $user->login_attempts = 0;
-                    $user->save();
-                    $user->login($remember);
-                    redirect('home');
-                }  else {
-                    if($user) {
-                        $loginModel = Users::loginAttempts($user, $loginModel);
-                    }
-                    else {
-                        $loginModel->addErrorMessage('username','There is an error with your username or password');
-                        Logger::log('User failed to log in', 'warning');
-                    }
-                }
+                $loginModel = AuthService::attemptLogin($this->request, $loginModel, $_POST['username']);
             }
         }
         $this->view->login = $loginModel;

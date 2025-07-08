@@ -241,30 +241,6 @@ class Users extends Model {
     }
 
     /**
-     * Tests for login attempts and sets session messages when there is a 
-     * failed attempt or when account is locked.
-     *
-     * @param User $user The user whose login attempts we are tracking.
-     * @param Login $loginModel The model that will be responsible for 
-     * displaying messages.
-     * @return Login $loginModel The Login model after login in attempt test 
-     * and session messages are assigned.
-     */
-    public static function loginAttempts($user, $loginModel) {
-        if($user->login_attempts >= Env::get('MAX_LOGIN_ATTEMPTS', 5)) {
-            $user->inactive = 1; 
-        }
-        if($user->login_attempts < Env::get('MAX_LOGIN_ATTEMPTS', 5)) {
-            $loginModel->addErrorMessage('username', 'There is an error with your username or password.');
-        } else {
-            flashMessage('danger', 'Your account has been locked due to too many failed login attempts.');
-        }
-        $user->login_attempts = $user->login_attempts + 1;
-        $user->save();
-        return $loginModel;
-    }
-
-    /**
      * Logs in user from cookie.
      *
      * @return Users The user associated with previous session.
