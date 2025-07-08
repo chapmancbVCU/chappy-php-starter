@@ -14,7 +14,7 @@ use Core\Validators\{
     UniqueValidator,
     UpperCharValidator
 };
-use App\Models\UserSessions;
+use Core\Models\UserSessions;
 use Core\Lib\Utilities\Env;
 use Core\Lib\Utilities\Arr;
 use Core\Lib\Utilities\Str;
