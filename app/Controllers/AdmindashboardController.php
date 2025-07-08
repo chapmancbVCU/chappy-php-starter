@@ -6,6 +6,7 @@ use Core\Lib\Mail\Attachments;
 use Core\Lib\FileSystem\Uploads;
 use Core\Lib\Pagination\Pagination;
 use App\Models\{EmailAttachments, ProfileImages, Users};
+use core\Auth\AuthService;
 use Core\Models\ACL;
 
 /**
@@ -131,7 +132,7 @@ class AdmindashboardController extends Controller {
     public function deleteImageAction(): void {
         $resp = ['success' => false];
         if($this->request->isPost()) {
-            $user = Users::currentUser();
+            $user = AuthService::currentUser();
             $id = $this->request->get('image_id');
             $image = ProfileImages::findById($id);
             if($user) {
@@ -275,7 +276,7 @@ class AdmindashboardController extends Controller {
             $attachment->description = $this->request->get('description');
             $attachment->attachment_name = ($attachment->isNew()) ? htmlspecialchars($_FILES['attachment_name']['name']) :
                 $attachment->attachment_name;
-            $attachment->user_id = Users::currentUser()->id;
+            $attachment->user_id = AuthService::currentUser()->id;
             $attachment->save();
             if($attachment->validationPassed()) {
                 if($uploads) {
@@ -311,13 +312,13 @@ class AdmindashboardController extends Controller {
         $page = Pagination::currentPage($this->request);
         $totalUsers = Users::findTotal([
             'conditions' => 'id != ?',
-            'bind' => [Users::currentUser()->id]
+            'bind' => [AuthService::currentUser()->id]
         ]);
 
         $pagination = new Pagination($page, 10, $totalUsers);
         $users = Users::find($pagination->paginationParams(
             'id != ?',
-            [Users::currentUser()->id],
+            [AuthService::currentUser()->id],
             'created_at DESC'
         ));
 

@@ -110,18 +110,7 @@ class Users extends Model {
         
     }
 
-    /**
-     * Checks if a user is logged in.
-     *
-     * @return object|null An object containing information about current 
-     * logged in user from users table.
-     */
-    public static function currentUser() {
-        if(!isset(self::$currentLoggedInUser) && Session::exists(Env::get('CURRENT_USER_SESSION_NAME'))) {
-            self::$currentLoggedInUser = self::findById((int)Session::get(Env::get('CURRENT_USER_SESSION_NAME')));
-        }
-        return self::$currentLoggedInUser;
-    }
+    
 
     /**
      * Retrieves a list of all users except current logged in user.

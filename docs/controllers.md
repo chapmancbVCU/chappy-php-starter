@@ -90,7 +90,7 @@ public function addAction(): void {
     if($this->request->isPost()) {
         $this->request->csrfCheck();
         $contact->assign($this->request->get());
-        $contact->user_id = Users::currentUser()->id;
+        $contact->user_id = AuthService::currentUser()->id;
         if($contact->save()) {
             redirect('contacts');
         }
@@ -123,7 +123,7 @@ This controller has a couple of ways to perform the Read operation from the CRUD
 
 ```php
 public function detailsAction(int $id): void {
-    $contact = Contacts::findByIdAndUserId((int)$id, Users::currentUser()->id);
+    $contact = Contacts::findByIdAndUserId((int)$id, AuthService::currentUser()->id);
 
     // When user is not a contact we reroute to contacts index.
     if(!$contact) {
@@ -158,7 +158,7 @@ Update operations is similar to the Create operation. There are some noteworthy 
 
 ```php
 public function editAction($id) {
-    $contact = Contacts::findByIdAndUserId((int)$id, Users::currentUser()->id);
+    $contact = Contacts::findByIdAndUserId((int)$id, AuthService::currentUser()->id);
 
     // Check if contact exists
     if(!$contact) redirect('contacts');
@@ -187,7 +187,7 @@ The Delete operation is also very simple. In the example below you will find the
 
 ```php
 public function deleteAction(int $id): void {
-    $contact = Contacts::findByIdAndUserId((int)$id, Users::currentUser()->id);
+    $contact = Contacts::findByIdAndUserId((int)$id, AuthService::currentUser()->id);
     if($contact) {
         $contact->delete();
         flashMessage('success', 'Contact has been deleted');

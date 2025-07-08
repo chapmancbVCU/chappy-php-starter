@@ -3,6 +3,7 @@ namespace App\Controllers;
 use Core\Lib\Utilities\Env;
 use Core\Lib\FileSystem\Uploads;
 use App\Models\{ProfileImages, Users};
+use core\Auth\AuthService;
 use Core\Controller;
 
 /**
@@ -17,7 +18,7 @@ class ProfileController extends Controller {
     function deleteImageAction(): void {
         $resp = ['success' => false];
         if($this->request->isPost()) {
-            $user = Users::currentUser();
+            $user = AuthService::currentUser();
             $id = $this->request->get('image_id');
             $image = ProfileImages::findById($id);
             if($user) {
@@ -34,7 +35,7 @@ class ProfileController extends Controller {
      * @return void
      */
     public function editAction(): void {
-        $user = Users::currentUser();
+        $user = AuthService::currentUser();
         if(!$user) {
             flashMessage('danger', 'You do not have permission to edit this user.');
             redirect('');
@@ -80,7 +81,7 @@ class ProfileController extends Controller {
      * @return void
      */
     public function indexAction(): void {
-        $user = Users::currentUser();
+        $user = AuthService::currentUser();
         $profileImages = ProfileImages::findByUserId($user->id);
         if(!$user) { redirect(''); }
         $this->view->profileImages = $profileImages;
@@ -103,7 +104,7 @@ class ProfileController extends Controller {
      * @return void
      */
     public function updatePasswordAction(): void {
-        $user = Users::currentUser();
+        $user = AuthService::currentUser();
 
         if(!$user) redirect('');
         if($this->request->isPost()) {
