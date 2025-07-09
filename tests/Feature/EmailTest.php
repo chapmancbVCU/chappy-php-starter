@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Feature;
 
-use App\Models\EmailAttachments;
+use Core\Models\EmailAttachments;
 use App\Models\Users;
 use Core\Lib\Mail\Attachments;
 use Core\Lib\Mail\MailerService;

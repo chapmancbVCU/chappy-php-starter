@@ -376,7 +376,7 @@ By default, `AbstractMailer::sendTo()` uses the base `send()` method, which call
 🛠 Example: Overriding `sendTo()` to Add Attachments
 ```php
 use App\Models\Users;
-use App\Models\EmailAttachments;
+use Core\Models\EmailAttachments;
 use Core\Lib\Mail\AbstractMailer;
 use Core\Lib\Mail\Attachments;
 
