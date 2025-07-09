@@ -7,7 +7,7 @@ use Core\Lib\Database\Seeder;
 use Console\Helpers\Tools;
 
 // Import your model
-use App\Models\ProfileImages;
+use Core\Models\ProfileImages;
 
 /**
  * Class for generating profile images.

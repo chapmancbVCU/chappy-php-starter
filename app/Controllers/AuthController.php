@@ -5,7 +5,8 @@ use Core\Models\Login;
 use core\Auth\ACLService;
 use core\Auth\AuthService;
 use Core\Lib\FileSystem\Uploads;
-use App\Models\{ProfileImages, Users};
+use App\Models\Users;
+use Core\Models\ProfileImages;
 /**
  * Implements support for our Auth controller.  Functions found in this 
  * class will support tasks related to the user registration and 

@@ -7,7 +7,8 @@ use core\Auth\AuthService;
 use Core\Lib\Utilities\Arr;
 use Core\Models\EmailAttachments;
 use Core\Lib\Pagination\Pagination;
-use App\Models\{ProfileImages, Users};
+use App\Models\Users;
+use Core\Models\ProfileImages;
 use Core\Lib\Mail\Services\AttachmentService;
 
 /**
