@@ -1,9 +1,5 @@
-<?php
-
-use App\Models\EmailAttachments;
-use App\Models\Users;
-
- $this->setSiteTitle("Attachments"); ?>
+<?php use Core\Models\EmailAttachments; ?>
+<?php $this->setSiteTitle("Attachments"); ?>
 
 <!-- Head content between these two function calls.  Remove if not needed. -->
 <?php $this->start('head'); ?>
