@@ -85,7 +85,7 @@ class ProfileImages extends Model {
      * record.
      */
     public static function findCurrentProfileImage($user_id) {
-        return $image = self::findFirst([
+        return self::findFirst([
             'conditions' => 'user_id = ? AND sort = 0',
             'bind' => ['user_id' => $user_id]
         ]);

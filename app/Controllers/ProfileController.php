@@ -45,14 +45,7 @@ class ProfileController extends Controller {
             $this->request->csrfCheck();
 
             // Handle file upload
-            $uploads = Uploads::handleUpload(
-                $_FILES['profileImage'],
-                ProfileImages::class,
-                ROOT . DS,
-                "5mb",
-                $user,
-                'profileImage'
-            );
+            $uploads = AuthService::profileImageUpload($user);
 
             $user->assign($this->request->get(), Users::blackListedFormKeys);
             $user->save();
