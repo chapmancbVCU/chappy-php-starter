@@ -1,6 +1,5 @@
 <?php
 namespace App\Controllers;
-use Core\Lib\Utilities\Env;
 use Core\Lib\FileSystem\Uploads;
 use App\Models\{ProfileImages, Users};
 use core\Auth\AuthService;

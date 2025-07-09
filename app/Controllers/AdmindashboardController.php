@@ -5,8 +5,6 @@ use Core\Models\ACL;
 use core\Auth\ACLService;
 use core\Auth\AuthService;
 use Core\Lib\Utilities\Arr;
-use Core\Lib\Mail\Attachments;
-use Core\Lib\FileSystem\Uploads;
 use Core\Models\EmailAttachments;
 use Core\Lib\Pagination\Pagination;
 use App\Models\{ProfileImages, Users};
