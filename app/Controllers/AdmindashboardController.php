@@ -261,26 +261,13 @@ class AdmindashboardController extends Controller {
 
         if($this->request->isPost()) {
             $this->request->csrfCheck();
-            
-            $uploads = AttachmentService::attachmentUpload($attachment);
-
+            $upload = AttachmentService::attachmentUpload($attachment);
             $attachment->description = $this->request->get('description');
-            $attachment->attachment_name = ($attachment->isNew()) ? htmlspecialchars($_FILES['attachment_name']['name']) :
-                $attachment->attachment_name;
+            $attachment->attachment_name = AttachmentService::name($attachment, $_FILES['attachment_name']['name']);
             $attachment->user_id = AuthService::currentUser()->id;
             $attachment->save();
             if($attachment->validationPassed()) {
-                if($uploads) {
-                    $file = $uploads->getFiles();
-                    $path = EmailAttachments::$_uploadPath . DS;
-                    $uploadName = $uploads->generateUploadFilename($file[0]['name']);
-                    $attachment->name =$uploadName;
-                    $attachment->path = $path . $uploadName;
-                    $attachment->size = $file[0]['size'];
-                    $attachment->mime_type = Attachments::mime(pathinfo($file[0]['name'], PATHINFO_EXTENSION));
-                    $uploads->upload($path, $uploadName, $file[0]['tmp_name']);
-                    $attachment->save();
-                }
+                AttachmentService::processAttachment($attachment, $upload);
                 redirect('admindashboard.attachments');
             }
         }
