@@ -1,14 +1,16 @@
 <?php
 namespace App\Controllers;
 use Core\Controller;
+use Core\Models\ACL;
+use core\Auth\ACLService;
+use core\Auth\AuthService;
 use Core\Lib\Utilities\Arr;
 use Core\Lib\Mail\Attachments;
 use Core\Lib\FileSystem\Uploads;
+use Core\Models\EmailAttachments;
 use Core\Lib\Pagination\Pagination;
-use App\Models\{EmailAttachments, ProfileImages, Users};
-use core\Auth\ACLService;
-use core\Auth\AuthService;
-use Core\Models\ACL;
+use App\Models\{ProfileImages, Users};
+use Core\Lib\Mail\Services\AttachmentService;
 
 /**
  * Implements support for our Admindashboard controller.
@@ -118,10 +120,7 @@ class AdmindashboardController extends Controller {
      */
     public function deleteAttachmentAction(int $id): void {
         $attachment = EmailAttachments::findById($id);
-        if($attachment) {
-            unlink($attachment->path);
-            $attachment->delete();
-        }
+        AttachmentService::deleteAttachment($attachment);
         redirect('admindashboard.attachments');
     }
 
