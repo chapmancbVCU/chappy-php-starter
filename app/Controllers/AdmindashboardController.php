@@ -262,16 +262,7 @@ class AdmindashboardController extends Controller {
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             
-            if($attachment->isNew()) {
-                $uploads = Uploads::handleUpload(
-                    $_FILES['attachment_name'],
-                    EmailAttachments::class,
-                    ROOT.DS,
-                    '15mb',
-                    $attachment,
-                    'attachment_name'
-                );
-            }
+            $uploads = AttachmentService::attachmentUpload($attachment);
 
             $attachment->description = $this->request->get('description');
             $attachment->attachment_name = ($attachment->isNew()) ? htmlspecialchars($_FILES['attachment_name']['name']) :
