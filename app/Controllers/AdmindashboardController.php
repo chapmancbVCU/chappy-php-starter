@@ -2,13 +2,14 @@
 namespace App\Controllers;
 use Core\Controller;
 use Core\Models\ACL;
+use App\Models\Users;
 use core\Auth\ACLService;
 use core\Auth\AuthService;
 use Core\Lib\Utilities\Arr;
+use Core\Models\ProfileImages;
 use Core\Models\EmailAttachments;
 use Core\Lib\Pagination\Pagination;
-use App\Models\Users;
-use Core\Models\ProfileImages;
+use Core\Administration\DashboardService;
 use Core\Lib\Mail\Services\AttachmentService;
 
 /**
@@ -284,17 +285,8 @@ class AdmindashboardController extends Controller {
     public function indexAction(): void {
         // Determine current page
         $page = Pagination::currentPage($this->request);
-        $totalUsers = Users::findTotal([
-            'conditions' => 'id != ?',
-            'bind' => [AuthService::currentUser()->id]
-        ]);
-
-        $pagination = new Pagination($page, 10, $totalUsers);
-        $users = Users::find($pagination->paginationParams(
-            'id != ?',
-            [AuthService::currentUser()->id],
-            'created_at DESC'
-        ));
+        $pagination = new Pagination($page, 10, DashboardService::allUsersExceptCurrent());
+        $users = DashboardService::paginateUsers($pagination);
 
         $this->view->pagination = Pagination::pagination($page, $pagination->totalPages());
         $this->view->users = $users;
