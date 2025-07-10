@@ -1,4 +1,4 @@
-<?php use App\Models\EmailAttachments; ?>
+<?php use Core\Models\EmailAttachments; ?>
 <?php use Core\Lib\Utilities\DateTime; ?>
 <?php $this->setSiteTitle("Details for " . $this->attachment->attachment_name); ?>
 
