@@ -42,18 +42,6 @@ class Users extends Model {
     public $username;
 
     /**
-     * Returns an array containing access control list information.  When the 
-     * $acl instance variable is empty an empty array is returned.
-     *
-     * @return array The array containing access control list information.
-     */
-    public function acls() {
-        if(empty($this->acl)) return [];
-        return json_decode($this->acl, true);
-
-    }
-
-    /**
      * Ensures that we are always dealing with an array of ACLs
      *
      * @param mixed $acls An array or any type that we want to add to an array.
