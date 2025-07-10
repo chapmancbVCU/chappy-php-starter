@@ -304,6 +304,11 @@ class AdmindashboardController extends Controller {
         $this->view->render('admindashboard.index');
     }
 
+    /**
+     * Renders view for managing ACLs.
+     *
+     * @return void
+     */
     public function manageACLsAction(): void {
         $acls = ACL::getACLs();
         $usedAcls = [];
