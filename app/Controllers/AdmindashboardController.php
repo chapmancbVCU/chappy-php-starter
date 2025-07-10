@@ -58,7 +58,7 @@ class AdmindashboardController extends Controller {
      */
     public function attachmentDetailsAction(int $id): void {
         $attachment = EmailAttachments::findById((int)$id);
-        $this->view->uploader = Users::findById($attachment->user_id);
+        $this->view->uploader = Users::findById((int)$attachment->user_id);
         $this->view->attachment = $attachment;
         $this->view->render('admindashboard.attachment_details');
     }
@@ -258,13 +258,8 @@ class AdmindashboardController extends Controller {
 
         if($this->request->isPost()) {
             $this->request->csrfCheck();
-            $upload = AttachmentService::attachmentUpload($attachment);
-            $attachment->description = $this->request->get('description');
-            $attachment->attachment_name = AttachmentService::name($attachment, $_FILES['attachment_name']['name']);
-            $attachment->user_id = AuthService::currentUser()->id;
-            $attachment->save();
+            AttachmentService::processAttachment($attachment, $this->request);
             if($attachment->validationPassed()) {
-                AttachmentService::processAttachment($attachment, $upload);
                 redirect('admindashboard.attachments');
             }
         }
