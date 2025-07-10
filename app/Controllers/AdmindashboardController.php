@@ -294,19 +294,8 @@ class AdmindashboardController extends Controller {
      * @return void
      */
     public function manageACLsAction(): void {
-        $acls = ACL::getACLs();
-        $usedAcls = [];
-        $unUsedAcls = [];
-        foreach($acls as $acl) {
-            if($acl->isAssignedToUsers()) {
-                Arr::push($usedAcls, $acl);
-            } else {
-                Arr::push($unUsedAcls, $acl);
-            }
-        }
-
-        $this->view->usedAcls = $usedAcls;
-        $this->view->unUsedAcls = $unUsedAcls;
+        $this->view->usedAcls = ACLService::usedACLs();
+        $this->view->unUsedAcls = ACLService::unUsedACLs();
         $this->view->render('admindashboard.manage_acls');
     }
 
