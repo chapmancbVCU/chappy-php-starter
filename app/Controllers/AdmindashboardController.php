@@ -233,8 +233,7 @@ class AdmindashboardController extends Controller {
             $user->acl = json_encode($newAcls);
             
             if ($user->save()) {
-                $sortOrder = json_decode($_POST['images_sorted']);
-                ProfileImages::updateSortByUserId($user->id, $sortOrder);
+                ProfileImages::updateSortByUserId($user->id, json_decode($_POST['images_sorted']));
                 redirect('admindashboard.details', [$user->id]);
             }
         }
