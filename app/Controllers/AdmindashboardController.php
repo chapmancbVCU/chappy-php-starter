@@ -280,7 +280,7 @@ class AdmindashboardController extends Controller {
     public function indexAction(): void {
         // Determine current page
         $page = Pagination::currentPage($this->request);
-        $pagination = new Pagination($page, 10, DashboardService::allUsersExceptCurrent());
+        $pagination = new Pagination($page, 10, DashboardService::totalUserCountExceptCurrent());
         $users = DashboardService::paginateUsers($pagination);
 
         $this->view->pagination = Pagination::pagination($page, $pagination->totalPages());
