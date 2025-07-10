@@ -226,8 +226,7 @@ class AdmindashboardController extends Controller {
             $user->assign($this->request->get(), Users::blackListedFormKeys);
     
             // Handle ACL updates from checkboxes
-            $newAcls = $_POST['acls'] ?? [];
-            $newAcls = ACLService::aclToArray($newAcls);
+            $newAcls = ACLService::aclsFromPost($_POST['acls']);
             ACLService::manageAcls($acls, $user, $newAcls, $userAcls);
             
             // Save updated ACLs
