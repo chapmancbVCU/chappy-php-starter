@@ -42,19 +42,6 @@ class Users extends Model {
     public $username;
 
     /**
-     * Ensures that we are always dealing with an array of ACLs
-     *
-     * @param mixed $acls An array or any type that we want to add to an array.
-     * @return array An array of acls.
-     */
-    public static function aclToArray(mixed $acls): array {
-        if (!is_array($acls)) {
-            $acls = [];
-        }
-        return Arr::map($acls, 'strval');
-    }
-
-    /**
      * Implements beforeSave function described in Model parent class.  
      * Ensures password is not in plain text but a hashed one.  The 
      * reset_password flag is also set to 0.
