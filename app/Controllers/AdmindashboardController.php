@@ -64,6 +64,20 @@ class AdmindashboardController extends Controller {
     }
 
     /**
+     * Deletes ACL from acl table.
+     *
+     * @param int $id The id for the ACL we want to delete.
+     * @return void
+     */
+    public function deleteAclAction(): void {
+        if($this->request->isPost()) {
+            $this->request->csrfCheck();
+            ACLService::deleteIfAllowed($this->request->get('id'));
+        }
+        redirect('admindashboard.manageAcls');
+    }
+    
+    /**
      * Performs delete action on a user.
      *
      * @param integer $id The id for the user we want to delete.
@@ -83,20 +97,6 @@ class AdmindashboardController extends Controller {
             }
         }
         redirect('admindashboard');
-    }
-
-    /**
-     * Deletes ACL from acl table.
-     *
-     * @param int $id The id for the ACL we want to delete.
-     * @return void
-     */
-    public function deleteAclAction(): void {
-        if($this->request->isPost()) {
-            $this->request->csrfCheck();
-            ACLService::deleteIfAllowed($this->request->get('id'));
-        }
-        redirect('admindashboard.manageAcls');
     }
 
     /**
