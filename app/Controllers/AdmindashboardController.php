@@ -3,14 +3,15 @@ namespace App\Controllers;
 use Core\Controller;
 use Core\Models\ACL;
 use App\Models\Users;
-use core\Services\ACLService;
-use core\Services\AuthService;
 use Core\Lib\Utilities\Arr;
+use core\Services\ACLService;
 use Core\Models\ProfileImages;
+use core\Services\AuthService;
+use core\Services\UserService;
 use Core\Models\EmailAttachments;
 use Core\Lib\Pagination\Pagination;
-use core\Services\DashboardService;
-use core\Services\AttachmentService;
+use Core\Services\DashboardService;
+use Core\Services\AttachmentService;
 
 /**
  * Implements support for our Admindashboard controller.
@@ -84,17 +85,9 @@ class AdmindashboardController extends Controller {
      * @return void
      */
     public function deleteAction(int $id): void {
-        $user = Users::findById((int)$id);
-
         if($this->request->isPost()) {
             $this->request->csrfCheck();
-            if($user && $user->acl != '["Admin"]') {
-                ProfileImages::deleteImages($id, false);
-                $user->delete();
-                flashMessage('success', 'User has been deleted.');
-            } else {
-                flashMessage('danger', 'Cannot delete Admin user!');
-            }
+            UserService::deleteIfAllowed($id, false);
         }
         redirect('admindashboard');
     }
