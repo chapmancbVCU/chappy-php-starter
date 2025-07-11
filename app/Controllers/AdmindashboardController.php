@@ -27,8 +27,8 @@ class AdmindashboardController extends Controller {
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $acl->assign($this->request->get());
-            if($acl->save()) {
-                flashMessage('success', 'ACL added!');
+            if(ACLService::saveACL($acl, $this->request)) {
+                flashMessage('info', "ACL record added.");
                 redirect('admindashboard.manageAcls');
             }
         }
@@ -153,27 +153,13 @@ class AdmindashboardController extends Controller {
      */
     public function editAclAction($id): void {
         $acl = ACL::findById((int)$id);
-        if (!$acl) {
-            flashMessage('danger', "ACL not found.");
-            redirect('admindashboard.manageAcls');
-        }
-    
-        
-        // Check if ACL is assigned to any users and restrict access
-        if ($acl->isAssignedToUsers()) {
-            flashMessage('danger', "Access denied. '{$acl->acl}' is assigned to one or more users and cannot be edited.");
-            redirect('admindashboard.manageAcls');
-        }
+        ACLService::checkACL($acl);
     
         if ($this->request->isPost()) {
             $this->request->csrfCheck();
-            $acl->assign($this->request->get(), ACL::blackList);
-    
-            if ($acl->save()) {
-                flashMessage('info', "ACL Name updated.");
+            if(ACLService::saveACL($acl, $this->request)) {
+                flashMessage('info', "ACL record updated.");
                 redirect('admindashboard.manageAcls');
-            } else {
-                flashMessage('danger', implode(" ", $acl->getErrorMessages()));
             }
         }
     
