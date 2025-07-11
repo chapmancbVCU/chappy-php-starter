@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-use Core\{Model, Session};
+use Core\Model;
 use core\Services\AuthService;
 use Core\Validators\{
     EmailValidator,
