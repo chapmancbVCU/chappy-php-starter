@@ -94,19 +94,7 @@ class AdmindashboardController extends Controller {
     public function deleteAclAction(): void {
         if($this->request->isPost()) {
             $this->request->csrfCheck();
-            $acl = ACL::findById((int)$this->request->get('id'));
-    
-            // Get users so we can get number using acl and update later.
-            $users = $acl->isAssignedToUsers();
-            if(is_countable($users) > 0) {
-                flashMessage('info', "Cannot delete ". $acl->acl. ", assigned to one or more users.");
-            }
-            if($acl) {
-                $acl->delete();
-                flashMessage('success', 'ACL has been deleted');
-            } else {
-                flashMessage('danger', 'You do not have permission to perform this action.');
-            }
+            ACLService::deleteIfAllowed($this->request->get('id'));
         }
         redirect('admindashboard.manageAcls');
     }
