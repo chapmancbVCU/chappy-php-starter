@@ -215,11 +215,7 @@ class AdmindashboardController extends Controller {
             $user->assign($this->request->get(), Users::blackListedFormKeys);
     
             // Handle ACL updates from checkboxes
-            $newAcls = ACLService::aclsFromPost($_POST['acls']);
-            ACLService::manageAcls($acls, $user, $newAcls, $userAcls);
-            
-            // Save updated ACLs
-            $user->acl = json_encode($newAcls);
+            ACLService::updateUserACLs($user, $userAcls, $acls, $_POST['acls']);
             
             if ($user->save()) {
                 ProfileImages::updateSortByUserId($user->id, json_decode($_POST['images_sorted']));
@@ -303,16 +299,7 @@ class AdmindashboardController extends Controller {
      * @return void
      */
     public function previewAction(int $id): void {
-        $attachment = EmailAttachments::findById($id);
-        if (!$attachment || !file_exists(CHAPPY_BASE_PATH . DS . $attachment->path)) {
-            http_response_code(404);
-            exit('File not found.');
-        }
-
-        header('Content-Type: ' . $attachment->mime_type);
-        header('Content-Disposition: inline; filename="' . $attachment->attachment_name . '"');
-        readfile($attachment->path);
-        exit;
+        AttachmentService::previewAttachment($id);
     }
 
     /**
