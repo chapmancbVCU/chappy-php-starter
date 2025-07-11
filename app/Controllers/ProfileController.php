@@ -3,7 +3,7 @@ namespace App\Controllers;
 use Core\Lib\FileSystem\Uploads;
 use App\Models\Users;
 use Core\Models\ProfileImages;
-use core\Auth\AuthService;
+use core\Services\AuthService;
 use Core\Controller;
 
 /**

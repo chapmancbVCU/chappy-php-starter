@@ -3,14 +3,14 @@ namespace App\Controllers;
 use Core\Controller;
 use Core\Models\ACL;
 use App\Models\Users;
-use core\Auth\ACLService;
-use core\Auth\AuthService;
+use core\Services\ACLService;
+use core\Services\AuthService;
 use Core\Lib\Utilities\Arr;
 use Core\Models\ProfileImages;
 use Core\Models\EmailAttachments;
 use Core\Lib\Pagination\Pagination;
-use Core\Administration\DashboardService;
-use Core\Lib\Mail\Services\AttachmentService;
+use core\Services\DashboardService;
+use core\Services\AttachmentService;
 
 /**
  * Implements support for our Admindashboard controller.
@@ -76,7 +76,7 @@ class AdmindashboardController extends Controller {
         }
         redirect('admindashboard.manageAcls');
     }
-    
+
     /**
      * Performs delete action on a user.
      *

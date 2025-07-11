@@ -2,8 +2,8 @@
 namespace App\Controllers;
 use Core\Controller;
 use Core\Models\Login;
-use core\Auth\ACLService;
-use core\Auth\AuthService;
+use core\Services\ACLService;
+use core\Services\AuthService;
 use App\Models\Users;
 use Core\Models\ProfileImages;
 /**
