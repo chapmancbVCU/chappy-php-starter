@@ -167,10 +167,6 @@ class AdmindashboardController extends Controller {
     public function editAction($id): void {
         $user = Users::findById((int)$id);
         DashboardService::checkIfCurrentUser($user);
-        // if (!$user || AuthService::currentUser()) {
-        //     flashMessage('danger', 'You do not have permission to edit this user.');
-        //     redirect('');
-        // }
     
         $this->view->user = $user;
     
