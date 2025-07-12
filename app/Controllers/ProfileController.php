@@ -1,10 +1,11 @@
 <?php
 namespace App\Controllers;
-use Core\Lib\FileSystem\Uploads;
+use Core\Controller;
 use App\Models\Users;
 use Core\Models\ProfileImages;
 use core\Services\AuthService;
-use Core\Controller;
+use core\Services\UserService;
+use Core\Lib\FileSystem\Uploads;
 
 /**
  * Supports ability to use user profile features and render relevant views.
@@ -104,24 +105,13 @@ class ProfileController extends Controller {
             $this->request->csrfCheck();
 
             // Verify password and display message if incorrect.
-            if($user && !password_verify($this->request->get('current_password'), $user->password)) {
+            if(UserService::updatePassword($user, $this->request)) {
                 flashMessage('danger', 'There was an error when entering your current password');
                 redirect('profile.updatePassword', [$user->id]);
             }
-            $user->assign($this->request->get(), Users::blackListedFormKeys);
 
-            // PW mode on for correct validation.
-            $user->setChangePassword(true);
-
-            // Allows password matching confirmation.
-            $user->confirm = $this->request->get('confirm');
-            
-            if($user->save()) {
-                // PW change mode off.
-                $user->setChangePassword(false);
-                flashMessage('success', 'Password updated!'); 
-                redirect('profile.index');
-            }
+            flashMessage('success', 'Password updated!'); 
+            redirect('profile.index');
         }
 
         // PW change mode off and final page setup.
