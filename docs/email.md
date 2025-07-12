@@ -78,7 +78,7 @@ class WelcomeMailer extends AbstractMailer {
 ```
 
 **Built In Mailers**
-- AccountDeactivatedMailer - Notifies user when account is deactivated
+- AccountDeactivatedMailer - Notifies user when account is deactivated.  More info in UserService section.
 - PasswordResetMailer - Notifies user when password needs to be reset
 - UpdatePasswordMailer - Notifies user when password is updated
 - WelcomeMailer - Sent when user creates an account
