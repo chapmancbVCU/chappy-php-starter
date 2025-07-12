@@ -88,7 +88,7 @@ class ProfileController extends Controller {
             $this->request->csrfCheck();
 
             // Verify password and display message if incorrect.
-            if(UserService::updatePassword($user, $this->request)) {
+            if(!UserService::updatePassword($user, $this->request)) {
                 flashMessage('danger', 'There was an error when entering your current password');
                 redirect('profile.updatePassword', [$user->id]);
             }
