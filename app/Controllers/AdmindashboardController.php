@@ -3,6 +3,7 @@ namespace App\Controllers;
 use Core\Controller;
 use Core\Models\ACL;
 use App\Models\Users;
+use Core\Lib\Mail\AccountDeactivatedMailer;
 use Core\Lib\Utilities\Arr;
 use core\Services\ACLService;
 use Core\Models\ProfileImages;
@@ -282,13 +283,15 @@ class AdmindashboardController extends Controller {
      */
     public function setResetPasswordAction($id) {
         $user = Users::findById((int)$id);
+        $resetPW = $user->reset_password;
         DashboardService::checkIfCurrentUser($user);
 
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $user->assign($this->request->get(), Users::blackListedFormKeys);
-            $user->reset_password = UserService::toggleResetPassword($this->request);
+            $shouldSendEmail = UserService::toggleResetPassword($user, $this->request, $resetPW);
             if($user->save()) {
+                UserService::sendWhenSetToResetPW($user, $shouldSendEmail);
                 redirect('admindashboard.details', [$user->id]);
             }
         }
@@ -308,13 +311,15 @@ class AdmindashboardController extends Controller {
      */
     public function setStatusAction($id) {
         $user = Users::findById((int)$id);
+        $inactive = $user->inactive;
         DashboardService::checkIfCurrentUser($user);
 
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $user->assign($this->request->get(), Users::blackListedFormKeys);
-            UserService::toggleAccountStatus($user, $this->request);
+            $shouldSendEmail = UserService::toggleAccountStatus($user, $this->request, $inactive);
             if($user->save()) {
+                UserService::sendWhenSetToInactive($user, $shouldSendEmail);
                 redirect('admindashboard.details', [$user->id]);
             }
         }
