@@ -25,7 +25,7 @@ class AuthController extends Controller {
             $loginModel->assign($this->request->get());
             $loginModel->validator();
             if($loginModel->validationPassed()){
-                $loginModel = AuthService::login($this->request, $loginModel, $_POST['username']);
+                $loginModel = AuthService::login($this->request, $loginModel, $_POST['username'], true);
             }
         }
         $this->view->login = $loginModel;
