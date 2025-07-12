@@ -45,20 +45,11 @@ class ProfileController extends Controller {
         $profileImages = ProfileImages::findByUserId($user->id);
         if($this->request->isPost()) {
             $this->request->csrfCheck();
-
-            // Handle file upload
             $uploads = AuthService::profileImageUpload($user);
-
             $user->assign($this->request->get(), Users::blackListedFormKeys);
             $user->save();
             if($user->validationPassed()){
-                if($uploads) {
-                    // Upload Image
-                    ProfileImages::uploadProfileImage($user->id, $uploads);
-                }
-                ProfileImages::updateSortByUserId($user->id, json_decode($_POST['images_sorted']));
-
-                // Redirect
+                UserService::handleProfileImages($user, $uploads, $_POST['images_sorted']);
                 redirect('profile.index');
             }
         }
