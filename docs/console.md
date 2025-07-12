@@ -76,6 +76,7 @@ php console
 | make:migration | Generates a Database Migration |
 | make:model | Generates a new model file |
 | make:seeder | Creates a new database seeder class |
+| make:service | Generates a new service class |
 | make:test | Generates a new test class |
 | make:validator | Generates a new custom form validator class |
 | make:view | Create a new view |
