@@ -31,10 +31,7 @@ class ProfileController extends Controller {
      */
     public function editAction(): void {
         $user = AuthService::currentUser();
-        if(!$user) {
-            flashMessage('danger', 'You do not have permission to edit this user.');
-            redirect('');
-        }
+        UserService::ensureAuthenticatedUser($user);
 
         $profileImages = ProfileImages::findByUserId($user->id);
         if($this->request->isPost()) {
@@ -61,8 +58,9 @@ class ProfileController extends Controller {
      */
     public function indexAction(): void {
         $user = AuthService::currentUser();
+        UserService::ensureAuthenticatedUser($user);
         $profileImages = ProfileImages::findByUserId($user->id);
-        if(!$user) { redirect(''); }
+        
         $this->view->profileImages = $profileImages;
         $this->view->user = $user;
         $this->view->render('profile.index');
@@ -84,8 +82,8 @@ class ProfileController extends Controller {
      */
     public function updatePasswordAction(): void {
         $user = AuthService::currentUser();
-
-        if(!$user) redirect('');
+        UserService::ensureAuthenticatedUser($user);
+        
         if($this->request->isPost()) {
             $this->request->csrfCheck();
 
