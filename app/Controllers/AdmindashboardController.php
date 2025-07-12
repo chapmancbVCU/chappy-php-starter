@@ -313,8 +313,7 @@ class AdmindashboardController extends Controller {
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $user->assign($this->request->get(), Users::blackListedFormKeys);
-            $user->inactive = UserService::toggleAccountStatus($this->request);
-            $user->login_attempts = ($user->inactive == 0) ? 0 : $user->login_attempts;
+            UserService::toggleAccountStatus($user, $this->request);
             if($user->save()) {
                 redirect('admindashboard.details', [$user->id]);
             }
