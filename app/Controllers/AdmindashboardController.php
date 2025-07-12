@@ -132,6 +132,7 @@ class AdmindashboardController extends Controller {
      */
     public function detailsAction($id): void {
         $user = Users::findById((int)$id);
+        DashboardService::checkIfCurrentUser($user);
         $profileImage = ProfileImages::findCurrentProfileImage($user->id);
         $this->view->profileImage = $profileImage;
         $this->view->user = $user;
@@ -171,8 +172,8 @@ class AdmindashboardController extends Controller {
      */
     public function editAction($id): void {
         $user = Users::findById((int)$id);
-    
-        if (!$user) {
+        DashboardService::checkIfCurrentUser($user);
+        if (!$user || AuthService::currentUser()) {
             flashMessage('danger', 'You do not have permission to edit this user.');
             redirect('');
         }
@@ -291,6 +292,7 @@ class AdmindashboardController extends Controller {
      */
     public function setResetPasswordAction($id) {
         $user = Users::findById((int)$id);
+        DashboardService::checkIfCurrentUser($user);
         
         if($this->request->isPost()) {
             $this->request->csrfCheck();
@@ -316,6 +318,7 @@ class AdmindashboardController extends Controller {
      */
     public function setStatusAction($id) {
         $user = Users::findById((int)$id);
+        DashboardService::checkIfCurrentUser($user);
 
         if($this->request->isPost()) {
             $this->request->csrfCheck();

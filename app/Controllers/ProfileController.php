@@ -19,13 +19,7 @@ class ProfileController extends Controller {
     function deleteImageAction(): void {
         $resp = ['success' => false];
         if($this->request->isPost()) {
-            $user = AuthService::currentUser();
-            $id = $this->request->get('image_id');
-            $image = ProfileImages::findById($id);
-            if($user) {
-                ProfileImages::deleteById($image->id);
-                $resp = ['success' => true, 'model_id' => $image->id];
-            }
+            $resp = UserService::deleteProfileImage($this->request);
         }
         $this->jsonResponse($resp);
     }
