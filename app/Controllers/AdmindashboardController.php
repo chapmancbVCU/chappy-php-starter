@@ -113,13 +113,7 @@ class AdmindashboardController extends Controller {
     public function deleteImageAction(): void {
         $resp = ['success' => false];
         if($this->request->isPost()) {
-            $user = AuthService::currentUser();
-            $id = $this->request->get('image_id');
-            $image = ProfileImages::findById($id);
-            if($user) {
-                ProfileImages::deleteById($image->id);
-                $resp = ['success' => true, 'model_id' => $image->id];
-            }
+            $resp = UserService::deleteProfileImage($this->request);
         }
         $this->jsonResponse($resp);
     }
@@ -173,10 +167,10 @@ class AdmindashboardController extends Controller {
     public function editAction($id): void {
         $user = Users::findById((int)$id);
         DashboardService::checkIfCurrentUser($user);
-        if (!$user || AuthService::currentUser()) {
-            flashMessage('danger', 'You do not have permission to edit this user.');
-            redirect('');
-        }
+        // if (!$user || AuthService::currentUser()) {
+        //     flashMessage('danger', 'You do not have permission to edit this user.');
+        //     redirect('');
+        // }
     
         $this->view->user = $user;
     
@@ -293,7 +287,7 @@ class AdmindashboardController extends Controller {
     public function setResetPasswordAction($id) {
         $user = Users::findById((int)$id);
         DashboardService::checkIfCurrentUser($user);
-        
+
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $user->assign($this->request->get(), Users::blackListedFormKeys);
