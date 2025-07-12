@@ -5,7 +5,6 @@ use App\Models\Users;
 use Core\Models\ProfileImages;
 use core\Services\AuthService;
 use core\Services\UserService;
-use Core\Lib\FileSystem\Uploads;
 
 /**
  * Supports ability to use user profile features and render relevant views.
