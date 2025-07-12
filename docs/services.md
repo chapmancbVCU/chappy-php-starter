@@ -40,3 +40,12 @@ You may group services by domain if your application scales (e.g., AuthService, 
 <br>
 
 ## 2. User Defined Services <a id="service-services"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+You can create your own service with the following command:
+```sh
+php console make:service ${service_name}
+```
+
+All user defined services are namespaced as:
+```php
+namespace App\Services
+```
