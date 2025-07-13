@@ -3,6 +3,7 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [Public Methods](#public-methods)
+3. [Notes](#notes)
 
 <br>
 
