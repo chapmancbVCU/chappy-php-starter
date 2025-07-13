@@ -28,11 +28,11 @@ Get to any resource within the Chappy.php Wiki from here.
 15. [Routing](routing)
 16. [Server Side Validation](server_side_validation)
 17. [Services](services)
-    * A. [ACLService](acl_service) - Coming soon
-    * B. [AttachmentService](attachment_service) - Coming soon
-    * C. [AuthService](auth_service) - Coming soon
-    * D. [DashboardService](dashboard_service) - Coming soon
-    * E. [UserService](user_service) - Coming soon
+    * A. [ACLService](acl_service)
+    * B. [AttachmentService](attachment_service)
+    * C. [AuthService](auth_service)
+    * D. [DashboardService](dashboard_service)
+    * E. [UserService](user_service)
 18. [Session and Flash Messages](session_and_flash_messages)
 19. [Tinker Command](tinker)
 20. [Unit Tests](unit_tests)
