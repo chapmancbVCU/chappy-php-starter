@@ -24,7 +24,7 @@ class AdmindashboardController extends Controller {
     public function attachmentsAction(): void {
         $attachments = EmailAttachments::find();
         $this->view->attachments = $attachments;
-        $this->view->render('admindashboard.attachments');
+        $this->view->render('admindashboard.attachments', true, true);
     }
 
     /**
@@ -37,7 +37,7 @@ class AdmindashboardController extends Controller {
         $attachment = EmailAttachments::findById((int)$id);
         $this->view->uploader = AttachmentService::attachmentUploader($attachment->user_id);
         $this->view->attachment = $attachment;
-        $this->view->render('admindashboard.attachment_details');
+        $this->view->render('admindashboard.attachment_details', true, true);
     }
 
     /**
@@ -106,7 +106,7 @@ class AdmindashboardController extends Controller {
         $profileImage = ProfileImages::findCurrentProfileImage($user->id);
         $this->view->profileImage = $profileImage;
         $this->view->user = $user;
-        $this->view->render('admindashboard.details');
+        $this->view->render('admindashboard.details', true, true);
     }
 
     /**
@@ -130,7 +130,7 @@ class AdmindashboardController extends Controller {
         $this->view->displayErrors = $acl->getErrorMessages();
         $this->view->acl = $acl;
         $this->view->header = $acl->isNew() ? "Added ACL" : "Edit ACL";
-        $this->view->render('admindashboard.edit_acl', true);
+        $this->view->render('admindashboard.edit_acl', true, true);
     }
     
 
@@ -172,7 +172,7 @@ class AdmindashboardController extends Controller {
         $this->view->profileImages = $profileImages;
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->postAction = route('admindashboard.edit', [$user->id]);
-        $this->view->render('admindashboard.edit');
+        $this->view->render('admindashboard.edit', true, true);
     }
 
     /**
@@ -198,7 +198,7 @@ class AdmindashboardController extends Controller {
         $this->view->errors = $attachment->getErrorMessages();
         $this->view->uploadMessage = $attachment->isNew() ? "Upload file" : "Update Attachment";
         $this->view->header = $attachment->isNew() ? "Added Attachment" : "Edit Attachment";
-        $this->view->render('admindashboard/attachments_form');
+        $this->view->render('admindashboard/attachments_form', true, true);
     }
 
     /** 
@@ -215,7 +215,7 @@ class AdmindashboardController extends Controller {
 
         $this->view->pagination = Pagination::pagination($page, $pagination->totalPages());
         $this->view->users = $users;
-        $this->view->render('admindashboard.index');
+        $this->view->render('admindashboard.index', true, true);
     }
 
     /**
@@ -226,7 +226,7 @@ class AdmindashboardController extends Controller {
     public function manageACLsAction(): void {
         $this->view->usedAcls = ACLService::usedACLs();
         $this->view->unUsedAcls = ACLService::unUsedACLs();
-        $this->view->render('admindashboard.manage_acls', true);
+        $this->view->render('admindashboard.manage_acls', true, true);
     }
 
     /**
@@ -235,7 +235,7 @@ class AdmindashboardController extends Controller {
      * @return void
      */
     public function onConstruct(): void {
-        $this->view->setLayout('admin');
+        $this->view->setLayout('internal');
     }
 
     /**
@@ -274,7 +274,7 @@ class AdmindashboardController extends Controller {
         $this->view->user = $user;
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->postAction = route('admindashboard.setResetPassword', [$user->id]);
-        $this->view->render('admindashboard.set_reset_password');
+        $this->view->render('admindashboard.set_reset_password', true, true);
     }
 
     /**
@@ -302,6 +302,6 @@ class AdmindashboardController extends Controller {
         $this->view->user = $user;
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->postAction = route('admindashboard.setStatus', [$user->id]);
-        $this->view->render('admindashboard.set_account_status');
+        $this->view->render('admindashboard.set_account_status', true, true);
     }
 }
