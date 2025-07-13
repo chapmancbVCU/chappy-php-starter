@@ -47,5 +47,20 @@ php console make:service ${service_name}
 
 All user defined services are namespaced as:
 ```php
-namespace App\Services
+namespace App\Services;
+```
+
+When you create a new service the command attempts to identify the correct name of the model that the service supports.  Here is an example:
+```php
+<?php
+namespace App\Services;
+
+use App\Models\Product;
+
+/**
+ * Service that supports the Product model.
+ */
+class ProductService {
+
+}
 ```
