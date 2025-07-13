@@ -14,7 +14,7 @@ This service helps enforce permission rules across the application while maintai
 
 **Setup**
 ```php
-use Core\Services\AclService
+use Core\Services\AclService;
 ```
 
 ✅ **Common Use Cases**
