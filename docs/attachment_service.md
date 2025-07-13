@@ -17,6 +17,8 @@ This service ensures file integrity and security, while integrating with your fr
 use Core\Services\AttachmentService;
 ```
 
+✅ **Common Use Cases**
+
 <br>
 
 ## 2. ⚙️ Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
