@@ -4,7 +4,7 @@
     <div class="col-md-6 bg-light p-3">
         <h1 class="text-center">Change Password for <?=$this->user->username?></h1>
         <hr>  
-        <?php $this->component('password_complexity_requirements'); ?>
+        <?php $this->component('password_complexity_requirements', true); ?>
         <form class="form" action="" method="post">
             <?= csrf() ?>
             <?= errorBag($this->displayErrors) ?>

@@ -19,7 +19,7 @@
             
             <?= input('file', "Upload Profile Image (Optional)", 'profileImage', '', ['class' => 'form-control', 'accept' => 'image/png image/jpeg image/png'], ['class' => 'form-group mb-3']) ?>
             
-            <?= $this->component('password_complexity_requirements'); ?>
+            <?= $this->component('password_complexity_requirements', true); ?>
 
             <?= input('password', "Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             <?= input('password', "Confirm Password", 'confirm', $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
