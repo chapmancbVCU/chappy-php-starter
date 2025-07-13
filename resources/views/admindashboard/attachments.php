@@ -10,7 +10,7 @@
 <!-- Body content between these two function calls. -->
 <?php $this->start('body'); ?>
 <h1 class="text-center mb-4">Attachments
-    <a href="<?=route('admindashboard.editAttachments/new')?>" class="btn btn-primary btn-sm me-5">
+    <a href="<?=route('admindashboard.editAttachments', ['new'])?>" class="btn btn-primary btn-sm me-5">
         <i class="fa fa-plus"></i> Add Attachment
     </a>
 </h1>
