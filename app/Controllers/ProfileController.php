@@ -3,8 +3,8 @@ namespace App\Controllers;
 use Core\Controller;
 use App\Models\Users;
 use Core\Models\ProfileImages;
-use core\Services\AuthService;
-use core\Services\UserService;
+use Core\Services\AuthService;
+use Core\Services\UserService;
 
 /**
  * Supports ability to use user profile features and render relevant views.
