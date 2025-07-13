@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 use Core\Model;
-use core\Services\AuthService;
+use Core\Services\AuthService;
 use Core\Validators\{
     EmailValidator,
     LowerCharValidator,
