@@ -16,29 +16,6 @@ use Core\Services\AttachmentService;
  * Implements support for our Admindashboard controller.
  */
 class AdmindashboardController extends Controller {
-
-    /**
-     * Renders add acl view and adds ACL to acl table.
-     *
-     * @return void
-     */
-    public function addAclAction(): void {
-        $acl = new ACL();
-        if($this->request->isPost()) {
-            $this->request->csrfCheck();
-            $acl->assign($this->request->get());
-            if(ACLService::saveACL($acl, $this->request)) {
-                flashMessage('info', "ACL record added.");
-                redirect('admindashboard.manageAcls');
-            }
-        }
-
-        $this->view->acl = $acl;
-        $this->view->displayErrors = $acl->getErrorMessages();
-        $this->view->postAction = route('admindashboard.addAcl');
-        $this->view->render('admindashboard.add_acl');
-    }
-
     /**
      * Displays list of attachments.
      *
@@ -135,11 +112,11 @@ class AdmindashboardController extends Controller {
     /**
      * Supports ability to edit ACLs not assigned to a user through a web form.
      *
-     * @param int $id The id of the ACL we want to modify.
+     * @param int|string $id The id of the ACL we want to modify.
      * @return void
      */
-    public function editAclAction($id): void {
-        $acl = ACL::findById((int)$id);
+    public function editAclAction(int|string $id): void {
+        $acl = ($id == 'new') ? new ACL() : ACL::findById((int)$id);
         ACLService::checkACL($acl);
     
         if ($this->request->isPost()) {
@@ -152,8 +129,7 @@ class AdmindashboardController extends Controller {
     
         $this->view->displayErrors = $acl->getErrorMessages();
         $this->view->acl = $acl;
-        $this->view->postAction = route('admindashboard.editAcl', [$acl->id]);
-        $this->view->render('admindashboard.edit_acl');
+        $this->view->render('admindashboard.edit_acl', true);
     }
     
 
@@ -249,7 +225,7 @@ class AdmindashboardController extends Controller {
     public function manageACLsAction(): void {
         $this->view->usedAcls = ACLService::usedACLs();
         $this->view->unUsedAcls = ACLService::unUsedACLs();
-        $this->view->render('admindashboard.manage_acls');
+        $this->view->render('admindashboard.manage_acls', true);
     }
 
     /**
