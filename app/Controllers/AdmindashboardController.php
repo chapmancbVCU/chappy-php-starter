@@ -235,7 +235,7 @@ class AdmindashboardController extends Controller {
      * @return void
      */
     public function onConstruct(): void {
-        $this->view->setLayout('internal');
+        $this->view->setLayout('admin');
     }
 
     /**
