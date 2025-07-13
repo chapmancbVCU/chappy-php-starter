@@ -129,6 +129,7 @@ class AdmindashboardController extends Controller {
     
         $this->view->displayErrors = $acl->getErrorMessages();
         $this->view->acl = $acl;
+        $this->view->header = $acl->isNew() ? "Added ACL" : "Edit ACL";
         $this->view->render('admindashboard.edit_acl', true);
     }
     
