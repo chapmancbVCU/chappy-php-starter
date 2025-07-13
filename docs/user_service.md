@@ -18,7 +18,7 @@ use Core\Services\UserService;
 <br>
 
 ## 2. ⚙️ Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-`aclsForUser(Users $user): array`
+
 
 <br>
 

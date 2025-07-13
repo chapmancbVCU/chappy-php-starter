@@ -92,7 +92,7 @@ This method should be used in both attachment create and update flows.
 
 <br>
 
-## 4. 📦 Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. 📦 Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 📦 Related Components
 - `EmailAttachments` – The model representing stored attachment records.
 - `Uploads` – Upload handler responsible for file processing.
