@@ -8,7 +8,14 @@
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The AttachmentService class provides static methods for managing file attachments uploaded through the admin interface. It handles uploading, previewing, deleting, and metadata processing for email-related attachments.
 
+This service ensures file integrity and security, while integrating with your framework's upload and email systems.
+
+**Setup**
+```php
+use Core\Services\AttachmentService;
+```
 
 <br>
 
