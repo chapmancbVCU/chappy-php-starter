@@ -217,7 +217,6 @@ class AdmindashboardController extends Controller {
         $sessions = UserSessions::find();
 
         $this->view->addWidget('dashboard.index', 'dashboard.activeSessions', $sessions);
-        $this->view->addWidget('dashboard.index', 'dashboard.test');
         $this->view->pagination = Pagination::pagination($page, $pagination->totalPages());
         $this->view->users = $users;
         $this->view->render('admindashboard.index', true, true);
