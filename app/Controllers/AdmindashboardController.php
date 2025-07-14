@@ -9,6 +9,7 @@ use Core\Models\ProfileImages;
 use Core\Services\UserService;
 use Core\Models\EmailAttachments;
 use Core\Lib\Pagination\Pagination;
+use Core\Models\UserSessions;
 use Core\Services\DashboardService;
 use Core\Services\AttachmentService;
 
@@ -213,6 +214,9 @@ class AdmindashboardController extends Controller {
         $pagination = new Pagination($page, 10, DashboardService::totalUserCountExceptCurrent());
         $users = DashboardService::paginateUsers($pagination);
 
+        $sessions = UserSessions::find();
+
+        $this->view->addWidget('dashboard', 'dashboard.activeSessions', $sessions);
         $this->view->pagination = Pagination::pagination($page, $pagination->totalPages());
         $this->view->users = $users;
         $this->view->render('admindashboard.index', true, true);
