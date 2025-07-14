@@ -54,7 +54,7 @@ Get to any resource within the Chappy.php Wiki from here.
     * D. [Navigation Bar](nav_bar)
     * E. [Pagination](pagination)
     * F. [Views](views)
-26. [Widgets](widgets)
+    * G. [Widgets](widgets)
 
 <br>
 [Visit us on GitHub!](https://github.com/chapmancbVCU/chappy-php-framework)
