@@ -23,6 +23,14 @@ resources/views/widgets/
 
 <br>
 
+**Making your own widget**
+Create a new widget using the following command:
+```sh
+php console make:widget ${widget-name}
+```
+
+<br>
+
 Organize your widgets by feature for clarity, for example:
 ```bash
 resources/views/widgets/
