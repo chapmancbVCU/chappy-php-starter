@@ -80,6 +80,7 @@ php console
 | make:test | Generates a new test class |
 | make:validator | Generates a new custom form validator class |
 | make:view | Create a new view |
+| make:widget | Creates a new widget|
 
 <br>
 
