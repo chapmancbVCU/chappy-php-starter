@@ -518,6 +518,7 @@ Chappy.php’s migration system includes a flexible schema builder via the Bluep
 | `smallInteger('flag')` | Adds a `SMALLINT` field |
 | `tinyInteger('bool_flag')` | Adds a `TINYINT` (or `INTEGER` on SQLite) |
 | `unsignedInteger('num')` | Adds `UNSIGNED INT` (MySQL only) or `INTEGER` (SQLite) |
+| `unsignedBigInteger('num)` | Adds `BIGINT  UNSIGNED` (mYsql only) or `BIGINT` (SQLite) |
 | `decimal('amount', 10, 2)` | Adds a `DECIMAL` field with precision and scale |
 | `float('ratio', 8, 2)` | Adds a `FLOAT` field |
 | `double('rate', 16, 4)`	| Adds a `DOUBLE` field |
