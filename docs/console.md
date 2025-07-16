@@ -6,9 +6,10 @@
 3. [Summary of Available Commands](#summary-of-available-commands)
     * A. [Generators](#generators)  
     * B. [Migrations & Seeders](#migrations)  
-    * C. [Local Servers](#local-servers)  
-    * D. [Testing](#testing)  
-    * E. [Tools](#tools) 
+    * C. [Local Servers](#local-servers)
+    * D. [Notifications](#notifications)
+    * E. [Testing](#testing)  
+    * F. [Tools](#tools) 
 4. [Building Your Own Command](#build-command)
 5. [Command Helpers](#command-helpers)
 6. [Tools](#tools)
@@ -106,7 +107,14 @@ php console
 
 <br>
 
-### D. Testing <a id="testing"></a>
+### D. Notifications <a id="notifications"></a>
+| Command | Description |
+|:-------:|-------------|
+| notifications:migration | Creates new migration for notifications table |
+
+<br>
+
+### E. Testing <a id="testing"></a>
 
 | Command | Description |
 |:-------:|-------------|
@@ -115,7 +123,7 @@ php console
 
 <br>
 
-### E. Tools <a id="tools"></a>
+### F. Tools <a id="tools"></a>
 
 | Command | Description |
 |:-------:|-------------|
