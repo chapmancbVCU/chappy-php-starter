@@ -31,7 +31,7 @@ php console ${command_name} ${argument}
 An example of a command that requires arguments is demonstrated below:
 
 ```sh
-php console test:run-test Test
+php console test Test
 ```
 
 Where Test is the name of the file containing the test. Typing php console in the command line at project root will display all of the available commands. Each of the supported commands will be covered in their respective sections in this user guide.
