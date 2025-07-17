@@ -542,6 +542,7 @@ Chappy.php’s migration system includes a flexible schema builder via the Bluep
 | `default('value')` | Assigns a default value to the most recent column |
 | `index('column')` | Adds an index to the specified column |
 | `foreign('col', 'id', 'table')`	| Adds a foreign key constraint (MySQL only) |
+| `primary('col') or primary([$columns])` | Sets column as primary key |
 
 <br>
 
