@@ -61,5 +61,6 @@ Get to any resource within the Chappy.php Wiki from here.
 
 [Starter App on Github](https://github.com/chapmancbVCU/chappy-php-starter)
 
-<h2>Inspiration<h2>
-Ruah MVC Framework by Freeskills [playlist](https://www.youtube.com/playlist?list=PLFPkAJFH7I0keB1qpWk5qVVUYdNLTEUs3)
+<h2>Inspiration</h2>
+
+Ruah MVC Framework by Freeskills [playlist](<https://www.youtube.com/playlist?list=PLFPkAJFH7I0keB1qpWk5qVVUYdNLTEUs3>)
