@@ -4,14 +4,17 @@ use Core\Controller;
 use Core\Models\ACL;
 use App\Models\Users;
 use Core\Lib\Utilities\Arr;
+use Core\Models\UserSessions;
 use Core\Services\ACLService;
+use Core\Models\Notifications;
 use Core\Models\ProfileImages;
+use Core\Services\AuthService;
 use Core\Services\UserService;
 use Core\Models\EmailAttachments;
 use Core\Lib\Pagination\Pagination;
-use Core\Models\UserSessions;
 use Core\Services\DashboardService;
 use Core\Services\AttachmentService;
+use Core\Services\NotificationService;
 
 /**
  * Implements support for our Admindashboard controller.
@@ -209,13 +212,15 @@ class AdmindashboardController extends Controller {
      * @return void
      */
     public function indexAction(): void {
+        NotificationService::flashUnreadNotifications();
+
         // Determine current page
         $page = Pagination::currentPage($this->request);
         $pagination = new Pagination($page, 10, DashboardService::totalUserCountExceptCurrent());
         $users = DashboardService::paginateUsers($pagination);
 
         $sessions = UserSessions::find();
-
+        // $this->view->notifications = $notifications;
         $this->view->addWidget('dashboard.index', 'dashboard.activeSessions', $sessions);
         $this->view->pagination = Pagination::pagination($page, $pagination->totalPages());
         $this->view->users = $users;

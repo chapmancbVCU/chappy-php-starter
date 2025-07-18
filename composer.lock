@@ -141,7 +141,7 @@
             "dist": {
                 "type": "path",
                 "url": "../chappy-php-framework",
-                "reference": "4c8bd26f372550eeba28e4ec95b1c668e9cbe074"
+                "reference": "24654ba18da51cf62f52f21ad09b17d2bdf99a42"
             },
             "require": {
                 "composer": "*",
@@ -152,7 +152,7 @@
                 "nesbot/carbon": "^3.8",
                 "php": ">=8.3",
                 "phpunit/phpunit": "^11.3",
-                "ramsey/uuid": "^4.7",
+                "ramsey/uuid": "^4.9",
                 "smknstd/fakerphp-picsum-images": "^1.0",
                 "symfony/console": "^7.1",
                 "symfony/filesystem": "^7.1",
