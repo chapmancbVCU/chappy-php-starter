@@ -16,10 +16,12 @@ use Core\Validators\{
 };
 use Core\Lib\Utilities\Env;
 use Core\Lib\Utilities\Arr;
+use Core\Lib\Notifications\Notifiable; 
 /**
  * Extends the Model class.  Supports functions for the Users model.
  */
 class Users extends Model {
+    use Notifiable;
     public $acl;
     public const blackListedFormKeys = ['id','deleted'];
     private $changePassword = false;
