@@ -1,11 +1,13 @@
 <?php
 namespace App\Controllers;
 use Core\Controller;
+use App\Models\Users;
 use Core\Models\Login;
 use Core\Services\ACLService;
-use Core\Services\AuthService;
-use App\Models\Users;
 use Core\Models\ProfileImages;
+use Core\Services\AuthService;
+use Core\Services\NotificationService;
+
 /**
  * Implements support for our Auth controller.  Functions found in this 
  * class will support tasks related to the user registration and 
@@ -81,6 +83,8 @@ class AuthController extends Controller {
                 if($uploads) {
                     ProfileImages::uploadProfileImage($user->id, $uploads);
                 }
+
+                NotificationService::sendUserRegistrationNotification($user);
                 redirect('auth.login');
             }
         }
