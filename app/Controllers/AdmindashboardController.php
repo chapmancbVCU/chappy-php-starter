@@ -220,7 +220,6 @@ class AdmindashboardController extends Controller {
         $users = DashboardService::paginateUsers($pagination);
 
         $sessions = UserSessions::find();
-        // $this->view->notifications = $notifications;
         $this->view->addWidget('dashboard.index', 'dashboard.activeSessions', $sessions);
         $this->view->pagination = Pagination::pagination($page, $pagination->totalPages());
         $this->view->users = $users;
