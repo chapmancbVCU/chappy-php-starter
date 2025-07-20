@@ -76,6 +76,7 @@ php console
 | make:menu | Generates a new menu file |
 | make:migration | Generates a Database Migration |
 | make:model | Generates a new model file |
+| make:provider | Generates a new event service provider class |
 | make:seeder | Creates a new database seeder class |
 | make:service | Generates a new service class |
 | make:test | Generates a new test class |
