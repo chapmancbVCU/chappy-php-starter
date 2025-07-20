@@ -71,6 +71,7 @@ php console
 | make:css | Generates a new CSS file |
 | make:email | Generates a file for an E-mail |
 | make:email-layout | Generates an E-mail template |
+| make:event | Generates a new Event class |
 | make:layout | Generates a new layout |
 | make:mailer | Generates a new custom mailer class |
 | make:menu | Generates a new menu file |
