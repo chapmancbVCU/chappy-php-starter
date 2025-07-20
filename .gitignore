@@ -11,7 +11,9 @@ Thumbs.db*
 !/config/config.php
 !/config/console.php
 !/config/database.php
+!/config/email.php
 !/config/password.php
+!/config/providers.php
 !/config/session.php
 
 # Vendor / dependencies
