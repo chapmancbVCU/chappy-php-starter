@@ -272,9 +272,9 @@ class AdmindashboardController extends Controller {
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $user->assign($this->request->get(), Users::blackListedFormKeys);
-            $shouldSendEmail = UserService::toggleResetPassword($user, $this->request, $resetPW);
+            //$shouldSendEmail = UserService::toggleResetPassword($user, $this->request, $resetPW);
             if($user->save()) {
-                UserService::sendWhenSetToResetPW($user, $shouldSendEmail);
+                //UserService::sendWhenSetToResetPW($user, $shouldSendEmail);
                 redirect('admindashboard.details', [$user->id]);
             }
         }

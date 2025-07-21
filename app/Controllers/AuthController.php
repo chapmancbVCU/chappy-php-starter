@@ -84,7 +84,7 @@ class AuthController extends Controller {
                     ProfileImages::uploadProfileImage($user->id, $uploads);
                 }
 
-                NotificationService::sendUserRegistrationNotification($user);
+                //NotificationService::sendUserRegistrationNotification($user);
                 redirect('auth.login');
             }
         }
