@@ -86,7 +86,7 @@ class AuthController extends Controller {
                     ProfileImages::uploadProfileImage($user->id, $uploads);
                 }
 
-                EventManager::dispatcher()->dispatch(new UserRegistered($user));
+                EventManager::dispatcher()->dispatch(new UserRegistered($user, false));
                 redirect('auth.login');
             }
         }
