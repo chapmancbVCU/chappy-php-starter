@@ -6,6 +6,8 @@ use Core\Models\Login;
 use Core\Services\ACLService;
 use Core\Models\ProfileImages;
 use Core\Services\AuthService;
+use Core\Lib\Events\EventManager;
+use Core\Lib\Events\UserRegistered;
 use Core\Services\NotificationService;
 
 /**
@@ -84,7 +86,7 @@ class AuthController extends Controller {
                     ProfileImages::uploadProfileImage($user->id, $uploads);
                 }
 
-                //NotificationService::sendUserRegistrationNotification($user);
+                EventManager::dispatcher()->dispatch(new UserRegistered($user));
                 redirect('auth.login');
             }
         }
