@@ -1,5 +1,7 @@
 <h1 style="font-size: 50px; text-align: center;">Table of Contents</h1>
-Get to any resource within the Chappy.php Wiki from here.
+Chappy.php is a lightweight, developer‑friendly PHP MVC framework built from the ground up to simplify modern web application development.  
+It offers clean routing, an intuitive Event/Listener system, built‑in authentication, migrations, and tools that streamline both backend and frontend workflows.  
+Designed for flexibility and clarity, it’s ideal for learning, rapid prototyping, or building full‑scale apps with a structure inspired by proven frameworks.
 
 1. [Access Control Levels (ACLs)](access_control_levels)
 2. [Administration](administration)
