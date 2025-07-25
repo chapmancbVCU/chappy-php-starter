@@ -8,6 +8,7 @@
     * B. [Migrations & Seeders](#migrations)  
     * C. [Local Servers](#local-servers)
     * D. [Notifications](#notifications)
+    * E. [Queue](#queue)
     * E. [Testing](#testing)  
     * F. [Tools](#tools) 
 4. [Building Your Own Command](#build-command)
@@ -112,11 +113,19 @@ php console
 ### D. Notifications <a id="notifications"></a>
 | Command | Description |
 |:-------:|-------------|
-| notifications:migration | Creates new migration for notifications table |
+| notifications:migration | Creates new migration for the notifications table |
 
 <br>
 
-### E. Testing <a id="testing"></a>
+### E. Queue <a id="queue"></a>
+| Command | Description |
+|:-------:|-------------|
+| queue:migration | Creates new migration for queue table |
+| queue:worker | Starts a new queue worker |
+
+<br>
+
+### F. Testing <a id="testing"></a>
 
 | Command | Description |
 |:-------:|-------------|
@@ -125,7 +134,7 @@ php console
 
 <br>
 
-### F. Tools <a id="tools"></a>
+### G. Tools <a id="tools"></a>
 
 | Command | Description |
 |:-------:|-------------|
