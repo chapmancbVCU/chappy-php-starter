@@ -111,6 +111,7 @@ php console
 <br>
 
 ### D. Notifications <a id="notifications"></a>
+
 | Command | Description |
 |:-------:|-------------|
 | notifications:migration | Creates new migration for the notifications table |
@@ -118,6 +119,7 @@ php console
 <br>
 
 ### E. Queue <a id="queue"></a>
+
 | Command | Description |
 |:-------:|-------------|
 | queue:migration | Creates new migration for queue table |
