@@ -15,10 +15,10 @@ class SendWelcomeEmail implements QueueableJobInterface {
     }
 
     public function handle(): void {
+        
         // Actual logic to send email (example stub)
         $user = Users::findById($this->data['user_id']);
         echo "Sending welcome email to {$user->username} at ({$user->email})...\n";
-        
         // Use your mail system here
         WelcomeMailer::sendTo($user);
     }

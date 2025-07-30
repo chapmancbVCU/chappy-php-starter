@@ -9,6 +9,7 @@ use Core\Services\AuthService;
 use Core\Lib\Events\EventManager;
 use Core\Lib\Events\UserRegistered;
 use Core\Services\NotificationService;
+use Core\Services\UserService;
 
 /**
  * Implements support for our Auth controller.  Functions found in this 
@@ -82,6 +83,7 @@ class AuthController extends Controller {
             $user->acl = ACLService::setAclAtRegistration();
             $user->save();
             if($user->validationPassed()) {
+                UserService::queueWelcomeMailer((int)$user->id);
                 if($uploads) {
                     ProfileImages::uploadProfileImage($user->id, $uploads);
                 }
