@@ -73,6 +73,7 @@ php console
 | make:email | Generates a file for an E-mail |
 | make:email-layout | Generates an E-mail template |
 | make:event | Generates a new Event class |
+| make:job | Generates a new job class |
 | make:layout | Generates a new layout |
 | make:mailer | Generates a new custom mailer class |
 | make:menu | Generates a new menu file |
