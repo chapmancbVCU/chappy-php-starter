@@ -89,10 +89,10 @@ If you want to directly include a specific widget without registering:
 ## 4. 📌 Slots <a id="slots"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 A slot is simply a grouping name that organizes widgets in a particular location.
 Example slots:
-- `dashboard.cards` – for dashboard cards
-- `dashboard.stats` – for statistics sections
-- `analytics.reports` – for reports sections
-
+- `dashboard.attachments` – for adding widgets to the admindashboard.attachment_details view
+- `dashboard.details` – for widgets on the user profile (admindashboard.details) view
+- `dashboard.index` – for widgets in the admindashboard.index view
+- `dashboard.acls` – for widgets in the manage_acls view
 <br>
 
 ## 5. 🧠 Best Practices <a id="best-practices"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
