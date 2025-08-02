@@ -7,7 +7,7 @@ use Core\Lib\Database\Migration;
 /**
  * Migration class for the queue table.
  */
-class Migration1753312824 extends Migration {
+class Migration1754092869 extends Migration {
     /**
      * Performs a migration for a new table.
      *
@@ -18,9 +18,11 @@ class Migration1753312824 extends Migration {
             $table->id();
             $table->string('queue')->default('default');
             $table->text('payload');
+            $table->text('exception');
             $table->unsignedInteger('attempts')->default(0);
             $table->timestamp('reserved_at')->nullable();
             $table->timestamp('available_at');
+            $table->timestamp('failed_at');
             $table->timestamp('created_at');
         });
     }
