@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Jobs;
 
 use App\Models\Users;
+use Console\Helpers\Tools;
 use Core\Lib\Mail\WelcomeMailer;
 use Core\Lib\Queue\QueueableJobInterface;
 
@@ -18,7 +19,7 @@ class SendWelcomeEmail implements QueueableJobInterface {
         
         // Actual logic to send email (example stub)
         $user = Users::findById($this->data['user_id']);
-        echo "Sending welcome email to {$user->username} at ({$user->email})...\n";
+        Tools::info("Sending welcome email to {$user->username} at ({$user->email})...", "info");
         // Use your mail system here
         WelcomeMailer::sendTo($user);
     }
