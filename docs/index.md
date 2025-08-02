@@ -3,26 +3,26 @@ Chappy.php is a lightweight, developer‑friendly PHP MVC framework built from t
 It offers clean routing, an intuitive Event/Listener system, built‑in authentication, migrations, and tools that streamline both backend and frontend workflows.  
 Designed for flexibility and clarity, it’s ideal for learning, rapid prototyping, or building full‑scale apps with a structure inspired by proven frameworks.
 
-1. [Access Control Levels (ACLs)](access_control_levels)
-2. [Administration](administration)
-3. [Console](console)
-4. [Controllers](controllers)
-5. [Database Migrations and Operations](database_operations)
-    * A. [Database Queries](database_queries)
-    * B. [Database Seeders](database_seeders)
-6. [Debugging and Logs](debugging_and_logs)
-7. [Directory Structure](directory_structure)
-8. Event/Listener - Coming soon
-9. Forms
-    * A. [Form Helper Functions](forms)
-    * B. [CSRF Protection](csrf)
-    * C. [Input and Request Handling](input_and_request_handling)
-10. Getting Started
+1. Getting Started
     * A. [Linux Standalone PHP](linux_php_standalone)
     * B. [LAMP Stack](lamp)
     * C. [LEMP Stack](lemp)
     * D. [MacOS](macos)
     * E. [Windows](windows)
+2. [Access Control Levels (ACLs)](access_control_levels)
+3. [Administration](administration)
+4. [Console](console)
+5. [Controllers](controllers)
+6. [Database Migrations and Operations](database_operations)
+    * A. [Database Queries](database_queries)
+    * B. [Database Seeders](database_seeders)
+7. [Debugging and Logs](debugging_and_logs)
+8. [Directory Structure](directory_structure)
+9. Event/Listener - Coming soon
+10. Forms
+    * A. [Form Helper Functions](forms)
+    * B. [CSRF Protection](csrf)
+    * C. [Input and Request Handling](input_and_request_handling)
 11. [Global Helpers](globals)
 12. [Helper Class](helpers)
 13. [JavaScript and Vite](javascript)
