@@ -4,7 +4,7 @@ use Core\Lib\Utilities\Env;
 
 return [
     'driver' => Env::get('QUEUE_DRIVER', 'database'),
-
+    'max_attempts' => Env::get('MAX_ATTEMPTS', 3),
     'database' => [],
 
     'redis' => [
