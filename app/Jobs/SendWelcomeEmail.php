@@ -10,9 +10,11 @@ use Core\Lib\Queue\QueueableJobInterface;
 
 class SendWelcomeEmail implements QueueableJobInterface {
     protected array $data;
+    protected int $delayInSeconds;
 
-    public function __construct(array $data) {
+    public function __construct(array $data, int $delayInSeconds) {
         $this->data = $data;
+        $this->delayInSeconds = $delayInSeconds;
     }
 
     public function handle(): void {
@@ -27,7 +29,8 @@ class SendWelcomeEmail implements QueueableJobInterface {
     public function toPayload(): array {
         return [
             'job' => static::class,
-            'data' => $this->data
+            'data' => $this->data,
+            'available_at' => time() + $this->delayInSeconds
         ];
     }
 }
