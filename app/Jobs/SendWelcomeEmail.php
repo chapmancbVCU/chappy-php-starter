@@ -22,6 +22,7 @@ class SendWelcomeEmail implements QueueableJobInterface {
     public function backoff(): int|array {
         return [10, 30, 60];
     }
+    
     public function delay(): int {
         return $this->delayInSeconds;
     }
