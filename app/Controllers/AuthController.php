@@ -83,7 +83,6 @@ class AuthController extends Controller {
             $user->acl = ACLService::setAclAtRegistration();
             $user->save();
             if($user->validationPassed()) {
-                UserService::queueWelcomeMailer((int)$user->id);
                 if($uploads) {
                     ProfileImages::uploadProfileImage($user->id, $uploads);
                 }
