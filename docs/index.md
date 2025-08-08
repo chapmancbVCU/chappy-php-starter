@@ -29,7 +29,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 14. [Mailer Service](email)
 15. [Models](models)
 16. Notifications - Coming Soon
-17. Queue / Job Dispatcher - Coming Soon
+17. [Queue / Job Dispatcher](queue)
 18. [Routing](routing)
 19. [Server Side Validation](server_side_validation)
 20. [Services](services)
