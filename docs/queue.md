@@ -139,7 +139,7 @@ REDIS_PORT='6379'
 ## 6. 🧃 Starting the Worker <a id="worker"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Start a worker process to handle jobs:
 ```bash
-php console queue:work
+php console queue:worker
 ```
 
 Optional arguments:
@@ -152,7 +152,7 @@ Optional arguments:
 
 Example:
 ```bash
-php console queue:work --queue=default --max=50
+php console queue:worker --queue=default --max=50
 ```
 
 <br>
