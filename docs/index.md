@@ -18,7 +18,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * B. [Database Seeders](database_seeders)
 7. [Debugging and Logs](debugging_and_logs)
 8. [Directory Structure](directory_structure)
-9. Event/Listener - Coming soon
+9. [Events/Listeners](events)
 10. Forms
     * A. [Form Helper Functions](forms)
     * B. [CSRF Protection](csrf)
