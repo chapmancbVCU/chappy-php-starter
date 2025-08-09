@@ -7,6 +7,7 @@ use App\Models\Users;
 use Console\Helpers\Tools;
 use Core\Lib\Mail\WelcomeMailer;
 use Core\Lib\Queue\QueueableJobInterface;
+use Core\Lib\Utilities\DateTime;
 
 class SendWelcomeEmail implements QueueableJobInterface {
     protected array $data;
@@ -44,7 +45,7 @@ class SendWelcomeEmail implements QueueableJobInterface {
         return [
             'job' => static::class,
             'data' => $this->data,
-            'available_at' => time() + $this->delay(),
+            'available_at' => DateTime::nowPlusSeconds($this->delay()),
             'max_attempts' => $this->maxAttempts(),
         ];
     }
