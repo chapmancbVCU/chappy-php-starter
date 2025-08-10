@@ -9,7 +9,15 @@
 6. [Replacing Direct Service Calls](#example)
 7. [Writing Core vs Userland Events](#types)
 8. [Advanced](#advanced)
-9. [Summary](#summary)
+9. [Queued Events](#queued-events)
+10. [Summary](#summary)
+    A. [Creating a Queued Event](#create-queued-event)
+    B. [Creating a Queued Listener](#create-queued-listener)
+    C. [Registering the Listener](#registration)
+    D. [Dispatching the Event](#dispatching)
+    E. [Running the Queue Worker](#running-worker)
+    F. [Advantages of Using Queued Listeners](#advantages)
+    G. [Key Notes](#keynotes)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -226,7 +234,254 @@ public function handle(UserRegistered $event): void
 
 <br>
 
-## 9. 📌 Summary <a id="summary"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. 📦 Queued Event Listeners <a id="queued-events"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span> <a id="summary"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Queued event listeners allow you to defer the execution of an event listener until it is processed by a queue worker, rather than executing it immediately when the event is fired.
+This is ideal for time-consuming tasks such as sending emails, processing images, or performing external API calls, which should not delay the user’s request.
+
+<br>
+
+### A. Creating a Queued Event <a id="create-queued-event"></a>
+When generating an event with the `--queue` flag, the event class will automatically include payload serialization (`toPayload()`) and rehydration (`fromPayload()`) methods.
+These methods ensure that the event data can be stored in the queue and restored later when processed.
+
+Example:
+```bash
+php console make:event TestEvent --queue
+```
+
+Generated Event Class:
+```php
+<?php
+namespace Core\Lib\Events;
+
+use App\Models\Users;
+
+/**
+ * Document class here.
+ */
+class TestEvent {
+    public $user;
+
+    /**
+     * Constructor
+     *
+     * @param User $user User associated with event.
+     */
+    public function __construct(Users $user) {
+        $this->user = $user;
+    }
+
+    /**
+     * Adds instance variables to payload.
+     *
+     * @return array An associative array containing values of instance 
+     * variables.
+     */
+    public function toPayload(): array {
+        return [];
+    }
+
+    /**
+     * Retrieves information from payload array and returns new instance of 
+     * this class.
+     *
+     * @param array $data The payload array.
+     * @return self New instance of this class.
+     */
+    public static function fromPayload(array $data): self {
+        $user = Users::findById((int)$data['user_id']);
+        return new self($user);
+    }
+}
+```
+
+Working example built into framework:
+```php
+<?php
+declare(strict_types=1);
+namespace Core\Lib\Events;
+
+use App\Models\Users;
+
+class UserRegistered {
+    public $user;
+
+    public function __construct(Users $user) {
+        $this->user = $user;
+    }
+
+    public function toPayload(): array {
+        return [
+            'user_id' => (int)$this->user->id,
+        ];
+    }
+
+    public static function fromPayload(array $data): self {
+        $user   = Users::findById((int)$data['user_id']);
+        return new self($user);
+    }
+}
+```
+
+<br>
+
+### B. Creating a Queued Listener <a id="create-queued-listener"></a>
+When generating a listener with the --queue flag, the listener will automatically implement:
+- ShouldQueue – Marks this listener for queueing.
+- QueuePreferences – Allows you to configure the queue name, delay, backoff, and max attempts.
+
+Example:
+```bash
+php console make:listener TestListener --queue
+```
+
+Generated Listener Class:
+```php
+<?php
+namespace Core\Lib\Listeners;
+
+use App\Events\TestEvent;
+use Core\Lib\Events\Contracts\ShouldQueue;
+use Core\Lib\Events\Contracts\QueuePreferences;
+
+/**
+ * Add description for class here
+ */
+class TestListener implements ShouldQueue, QueuePreferences {
+    /**
+     * Handle the event.
+     *
+     * @param TestEvent $event The event.
+     * @return void
+     */
+    public function handle(TestEvent $event) : void {
+        $user = $event->user;
+    }
+
+    /**
+     * Set name of queue to be used.
+     *
+     * @return string|null
+     */
+    public function viaQueue(): ?string { 
+        return 'default'; 
+    }
+
+    /**
+     * Set the delay in seconds.
+     *
+     * @return int The delay in seconds.
+     */
+    public function delay(): int { 
+        return 60; 
+    }
+
+    /**
+     * Get backoff for job.  Can be an array of integers or a single in 
+     * seconds.
+     *
+     * @return int|array The backoff times.
+     */
+    public function backoff(): int|array { 
+        return [10, 30, 60];
+    }
+
+    /**
+     * Gets number of maximum allowed attempts.
+     *
+     * @return int The maximum allowed number of attempts.
+     */
+    public function maxAttempts(): int { 
+        return 5; 
+    }
+}
+```
+
+Working example built into framework:
+```php
+<?php
+namespace Core\Lib\Listeners;
+
+use Core\Lib\Events\UserRegistered;
+use Core\Lib\Events\Contracts\ShouldQueue;
+use Core\Lib\Events\Contracts\QueuePreferences;
+use Core\Services\UserService;
+use Core\Services\NotificationService;
+
+class SendWelcomeEmailListener implements ShouldQueue, QueuePreferences {
+    public function handle(UserRegistered $event) : void {
+        NotificationService::sendUserRegistrationNotification($event->user);
+        UserService::queueWelcomeMailer((int)$event->user->id, $this->viaQueue());
+    }
+
+    public function viaQueue(): ?string { return 'mail'; }
+    public function delay(): int { return 60; }
+    public function backoff(): int|array { return [10, 30, 60]; }
+    public function maxAttempts(): int { return 5; }
+}
+```
+
+Implementation of `queueWelcomeMailer`:
+```php
+public static function queueWelcomeMailer(int $user_id, string $queueName = 'default') {
+    $queue = new QueueManager();
+    $job   = new SendWelcomeEmail(['user_id' => $user_id], 0); // delay=0
+
+    $payload = $job->toPayload();
+    // Fix DATETIME format
+    $payload['available_at'] = DateTime::nowPlusSeconds($job->delay());
+
+    $queue->push($payload, $queueName);
+}
+```
+
+When pushing job into the queue make sure you use `mail` via the `$queueName` parameter.  Otherwise, the job will not run due to conflicts.
+
+<br>
+
+### C. Registering the Listener <a id="registration"></a>
+All listeners (queued or synchronous) must be registered in your `EventServiceProvider`:
+```php
+protected array $listen = [
+    UserRegistered::class => [
+        SendWelcomeEmailListener::class,
+    ],
+];
+```
+<br>
+
+### D. Dispatching the Event <a id="dispatching"></a>
+You can dispatch the event normally.
+If the listener implements `ShouldQueue`, it will be serialized into the queue rather than executed immediately.
+```php
+EventManager::dispatcher()->dispatch(new UserRegistered($user,));
+```
+
+<br>
+
+### E. Running the Queue Worker <a id="running-worker"></a>
+Queued listeners won’t run until a queue worker processes them:
+```bash
+php console queue:work
+```
+
+You can run multiple workers, or run them in the background using a process manager such as `supervisord` or `systemd`.
+
+### F. Advantages of Using Queued Listeners <a id="advantages"></a>
+- Improves response time for user requests.
+- Decouples time-consuming tasks from your application’s main request lifecycle.
+- Allows retry handling with `maxAttempts()` and `backoff()`.
+<br>
+
+### G. Key Notes <a id="keynotes"></a>
+- Always implement `toPayload()` and f`romPayload()` for queued events to ensure safe serialization.
+- Be careful not to include sensitive data (e.g., raw passwords) in the payload.
+- You can change the queue name with `viaQueue()`, or leave it as `'default'`.
+- Listeners without `ShouldQueue` will run immediately.
+
+<br>
+
+## 10. 📌 Summary <a id="summary"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - Define your events in app/Events.
 - Create listeners in app/Listeners.
 - Register them in an EventServiceProvider.
