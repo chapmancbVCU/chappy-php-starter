@@ -12,6 +12,7 @@ Thumbs.db*
 !/config/console.php
 !/config/database.php
 !/config/email.php
+!/config/notifications.php
 !/config/password.php
 !/config/providers.php
 !/config/queue.php
