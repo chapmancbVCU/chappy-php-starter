@@ -22,6 +22,7 @@ class Migration1752788062 extends Migration {
             $table->text('data');
             $table->timestamp('read_at')->nullable();
             $table->timestamps();
+            $table->index('created_at');
             $table->index('notifiable_type');
             $table->index('notifiable_id');
         });
