@@ -117,6 +117,7 @@ php console
 | Command | Description |
 |:-------:|-------------|
 | notifications:migration | Creates new migration for the notifications table |
+| notifications:prune --days={days} | Prunes table base on value older than days set |
 
 <br>
 
