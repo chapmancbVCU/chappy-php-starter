@@ -4,7 +4,9 @@
 1. [Overview](#overview)
 2. [Channel Registry](#channel-registry)
 3. [Channels & Payloads](#channels-and-payloads)
-    * A [Database Channel](#database-channel)
+    * A. [Database Channel](#database-channel)
+    * B. [Log Channel](#log-channel)
+    * C. [Mail Channel](#mail-channel)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -33,3 +35,18 @@ We currently support 3 channels for notifications
 - Persists records into `notifications` table via `Core\Models\Notifications`.
 - Expects payload from `Notification::toDatabase()` (array).
 - Requires `$notifiable->id`.
+
+<br>
+
+### B. Log Channel <a id="log-channel"></a>
+- Writes a structured JSON entry via Logger::log().
+- Reads:
+    - `message` (string or any JSON-encodable)
+    - `level` (default `info`)
+    - `_meta/meta` (array)
+    - all other keys treated as “data” fields.
+- Falls back to `Notification::toLog()` or `data['message']` or a synthesized message.
+
+<br>
+
+### C. Mail Channel <a id="mail-channel"></a>
