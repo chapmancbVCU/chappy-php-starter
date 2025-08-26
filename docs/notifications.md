@@ -2,12 +2,34 @@
 
 ## Table of contents
 1. [Overview](#overview)
-
-
+2. [Channel Registry](#channel-registry)
+3. [Channels & Payloads](#channels-and-payloads)
+    * A [Database Channel](#database-channel)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This guide shows you how to register channels, write notifications, send them from code, and exercise everything from the CLI. It’s based on the classes you shared.
+This guide shows you how to register channels, write notifications, send them from code, and exercise everything from the CLI.  
 
 <br>
 
+## 2. Channels Registry <a id="channels-registry"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Channel registry is run automatically.  Here is an overview of what happens.
+- Use `ChannelRegistry::register('log', LogChannel::class)` to add/override channels.
+- `ChannelRegistry::resolve('log')` returns a channel driver.
+- `ChannelRegistry::has('log')` to check registration.
+- Registry stores names as lowercase.
+
+<br>
+
+## 3. Channels & Payloads <a id="channels-and-payloads"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+We currently support 3 channels for notifications
+- Database
+- E-mail
+- Log
+
+<br>
+
+### A. Database Channel <a id="database-channel"></a>
+- Persists records into `notifications` table via `Core\Models\Notifications`.
+- Expects payload from `Notification::toDatabase()` (array).
+- Requires `$notifiable->id`.
