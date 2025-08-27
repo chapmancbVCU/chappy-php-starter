@@ -28,7 +28,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 13. [JavaScript and Vite](javascript)
 14. [Mailer Service](email)
 15. [Models](models)
-16. Notifications - Coming Soon
+16. [Notifications](notifications)
 17. [Queue / Job Dispatcher](queue)
 18. [Routing](routing)
 19. [Server Side Validation](server_side_validation)
