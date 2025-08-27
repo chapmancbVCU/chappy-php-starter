@@ -38,6 +38,8 @@ We currently support 3 channels for notifications
 - Expects payload from `Notification::toDatabase()` (array).
 - Requires `$notifiable->id`.
 
+To display information from this driver to a user in flash messages you can call the `\Core\Services\NotificationService::flashUnreadNotifications` function.
+
 <br>
 
 ### B. Log Channel <a id="log-channel"></a>
