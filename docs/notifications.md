@@ -9,6 +9,8 @@
     * C. [Mail Channel](#mail-channel)
 4. [Writing a Notification](#writing-a-notification)
 5. [Making a Model Notifiable](#making-model-notifiable)
+6. [Events and Listeners](#events-and-listeners)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -186,7 +188,7 @@ class NewUser extends Notification {
 
 <br>
 
-## 4. Making a Model Notifiable <a id="making-model-notifiable"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Making a Model Notifiable <a id="making-model-notifiable"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Use the `Notifiable` trait on your model (e.g., `Users`):
 ```php
 use Core\Lib\Notifications\Notifiable;
@@ -209,3 +211,43 @@ $user->notify(
 );
 ```
 The trait ensures array payloads stay top-level (for Mail/DB) and strings are wrapped as `['message' => '...']` (for Log).
+
+<br>
+
+## 6. Events and Listeners <a id="events-and-listeners"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+You can hook notifications into this framework's events/listener and queue system.  The events/listener example is as follows:
+```php
+class SendRegistrationEmail {
+    /**
+     * Handles event for sending user registered E-mail.
+     *
+     * @param UserRegistered $event The event.
+     * @return void
+     */
+    public function handle(UserRegistered $event): void {
+        $user = $event->user;
+        $shouldSendEmail = $event->shouldSendEmail;
+        NotificationService::notifyUsers(new UserRegisteredNotification($user));
+        if($shouldSendEmail) {
+            WelcomeMailer::sendTo($user);
+        }
+    }
+}
+```
+
+The following example is for a queued event listener:
+```php
+class SendWelcomeEmailListener implements ShouldQueue, QueuePreferences {
+    public function handle(UserRegistered $event) : void {
+        NotificationService::notifyUsers(new UserRegisteredNotification($event->user));
+        UserService::queueWelcomeMailer((int)$event->user->id, $this->viaQueue());
+    }
+
+    public function viaQueue(): ?string { return 'mail'; }
+    public function delay(): int { return 60; }               // 1 min
+    public function backoff(): int|array { return [10, 30, 60]; }
+    public function maxAttempts(): int { return 5; }
+}
+```
+
+This demonstrates two approaches: synchronous mail vs. queued mail. Both use `NotificationService::notifyAdmins(new UserRegisteredNotification($user))`.
