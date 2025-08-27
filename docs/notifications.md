@@ -50,3 +50,55 @@ We currently support 3 channels for notifications
 <br>
 
 ### C. Mail Channel <a id="mail-channel"></a>
+
+Supports three payload shapes from `toMail()`:
+
+#### 1. Template mode (preferred for templates)
+
+    ```php
+    return [
+    'subject'      => 'Welcome!',
+    'template'     => 'welcome_user',
+    'data'         => ['user' => $user],
+    // optional:
+    'layout'       => 'default',
+    'attachments'  => [...],
+    'layoutPath'   => null,
+    'templatePath' => null,
+    'styles'       => 'default',
+    'stylesPath'   => null,
+    ];
+    ```
+
+<br>
+
+#### 2. Raw HTML (with optional text fallback)
+
+```php
+return [
+  'subject'     => 'Subject',
+  'html'        => '<p>Hello</p>',
+  'text'        => 'Hello',           // optional; triggers sendWithText()
+  'attachments' => [...],             // optional
+];
+```
+
+<br>
+
+#### 3. Custom mailer
+
+```php
+return [
+  'mailer'      => \Core\Lib\Mail\WelcomeMailer::class,
+  // optional overrides used by buildAndSend():
+  'layout'      => null,
+  'attachments' => [],
+  'layoutPath'  => null,
+  'templatePath'=> null,
+  'styles'      => null,
+  'stylesPath'  => null,
+];
+```
+
+If none of `template`, `html`, or `mailer` is present, MailChannel throws:
+“Mail payload must include one of: "template", "html", or "mailer".”
