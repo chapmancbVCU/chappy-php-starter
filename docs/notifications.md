@@ -10,6 +10,7 @@
 4. [Writing a Notification](#writing-a-notification)
 5. [Making a Model Notifiable](#making-model-notifiable)
 6. [Events and Listeners](#events-and-listeners)
+7. [CLI Commands](#cli-commands)
 
 <br>
 
@@ -251,3 +252,58 @@ class SendWelcomeEmailListener implements ShouldQueue, QueuePreferences {
 ```
 
 This demonstrates two approaches: synchronous mail vs. queued mail. Both use `NotificationService::notifyAdmins(new UserRegisteredNotification($user))`.
+
+<br>
+
+## 7. CLI Commands <a id="cli-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+### A. Test a Notification (no side-effects by default)
+```bash
+php console notification:test DummyNotification --dry-run
+```
+
+Options:
+- `--user=<id|email|username>` — target notifiable (falls back to `"dummy"` if omitted).
+- `--channels=log,database` — override channels; omit to use `via()`.
+- `--with=key:value,key2:value2` — attach additional payload fields (e.g., `level:warning`).
+
+Examples:
+```bash
+# Dry run with defaults (uses via()):
+php console notification:test UserRegistered --dry-run
+
+# Dry run with channel override and payload overrides
+php console notification:test UserRegistered --dry-run --channels=log,database --with=level:warning,tag:cli
+
+# Actually send (remove --dry-run)
+php console notification:test UserRegistered --user=42 --channels=mail
+```
+ The command uses `Tools::setOutput($output)` so output is captured in tests.
+ On `--dry-run`, it prints the “Would send … via [X,Y]” line plus the JSON payload.
+
+ <br>
+
+ ### B. Generate a Notification class
+ ```bash
+ php console make:notification UserRegistered --channels=log,database,mail
+```
+
+- Creates `app/Notifications/UserRegistered.php`.
+- Includes channel methods matching the provided list and a `via()` that returns them.
+- If you omit `--channels`, it scaffolds with all available channels.
+
+<br>
+
+### C. Generate the notifications migration
+```bash
+php console notifications:migration
+```
+- Writes a migration class that creates the notifications table with useful indexes.
+
+ <br>
+
+ ### D. Prune old notifications
+ ```bash
+ php console notifications:prune --days=90
+```
+- Deletes notifications older than `N` days (default 90).
+- Uses `Core\Models\Notifications::notificationsToPrune($days)` internally.
