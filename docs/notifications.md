@@ -14,6 +14,7 @@
 8. [Testing](#testing)
 9. [Notifications Model](#model)
     * A. [Fields](#fields)
+    * B. [Common Queries](#common-queries)
 10. [Troubleshooting](#troubleshooting)
 
 <br>
@@ -330,7 +331,7 @@ The `Core\Models\Notifications` model represents rows in the `notifications` tab
 
 <br>
 
-### A. Fields <a id="fields"></a>
+#### A. Fields <a id="fields"></a>
 
 | Property          | Type            | Notes                                                         |                          |
 | ----------------- | --------------- | ------------------------------------------------------------- | ------------------------ |
@@ -343,6 +344,123 @@ The `Core\Models\Notifications` model represents rows in the `notifications` tab
 | `created_at`      | timestamp       | Auto-managed in `beforeSave()`.                               |                          |
 | `updated_at`      | timestamp       | Auto-managed in `beforeSave()`.                               |                          |
 
+
+<br>
+
+#### Common Queries. Fields <a id="common-queries"></a>
+**Get a user’s notifications**
+```php
+use Core\Models\Notifications;
+use App\Models\Users;
+
+$user = Users::findById(42);
+
+// All (read + unread), newest first
+$rows = Notifications::find([
+    'conditions' => 'notifiable_type = ? AND notifiable_id = ?',
+    'bind'       => [Users::class, $user->id],
+    'order'      => 'created_at DESC',
+]);
+```
+
+**Only unread**
+```php
+$unread = Notifications::find([
+    'conditions' => 'notifiable_type = ? AND notifiable_id = ? AND read_at IS NULL',
+    'bind'       => [Users::class, $user->id],
+    'order'      => 'created_at DESC',
+]);
+```
+
+**Count unread**
+```php
+$unreadCount = Notifications::count([
+    'conditions' => 'notifiable_type = ? AND notifiable_id = ? AND read_at IS NULL',
+    'bind'       => [Users::class, $user->id],
+]);
+```
+
+**Marking as Read**
+
+1) Mark a single record (instance method)
+```php
+$note = Notifications::findFirst(['conditions' => 'id = ?', 'bind' => [$id]]);
+if ($note) {
+    $note->markAsRead(); // sets read_at = now and saves
+}
+```
+
+2) Mark by ID (static helper)
+```php
+$ok = Notifications::markAsReadById($id); // true if updated, false otherwise
+```
+
+**Pruning Old Notifications**
+Use this to reclaim space and keep the table fast.
+Basic prune (all rows older than N days):
+```php
+// Delete notifications older than 90 days (read or unread)
+$deleted = Notifications::notificationsToPrune(90);
+```
+
+Prune only read rows:
+```php
+// Delete only read notifications older than 30 days
+$deleted = Notifications::notificationsToPrune(30, true);
+```
+
+Return value: Number of rows deleted.
+Constraints: `$days` must be ≥ 1 (throws `InvalidArgumentException` otherwise).
+
+Indexing tip: Add indexes on `created_at` and `(notifiable_type, notifiable_id)` for best performance. If you plan to prune by “read only”, consider `(read_at, created_at)`.
+
+**Working with the data JSON**
+The `data` column stores whatever your `Notification::toDatabase()` returned. Typical shape:
+```php
+[
+  'user_id'       => 42,
+  'username'      => 'alice',
+  'message'       => 'A new user has registered: alice',
+  'registered_at' => '2025-08-01 12:00:00'
+]
+```
+
+To use it:
+```php
+$note = Notifications::findFirst(['conditions' => 'id = ?', 'bind' => [$id]]);
+if ($note) {
+    $payload = json_decode((string) $note->data, true) ?: [];
+    $message = $payload['message'] ?? '';
+}
+```
+
+**Quick Recipes**
+Show last 10 unread messages for a user:
+```php
+$rows = Notifications::find([
+    'conditions' => 'notifiable_type = ? AND notifiable_id = ? AND read_at IS NULL',
+    'bind'       => [Users::class, $user->id],
+    'order'      => 'created_at DESC',
+    'limit'      => 10,
+]);
+
+foreach ($rows as $row) {
+    $data = json_decode((string)$row->data, true) ?: [];
+    echo $data['message'] ?? '[no message]', PHP_EOL;
+}
+```
+
+Mark all of a user’s notifications as read (simple loop):
+```php
+$rows = Notifications::find([
+    'conditions' => 'notifiable_type = ? AND notifiable_id = ? AND read_at IS NULL',
+    'bind'       => [Users::class, $user->id],
+]);
+
+foreach ($rows as $row) {
+    $row->markAsRead();
+}
+```
 
 <br>
 
