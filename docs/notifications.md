@@ -12,7 +12,9 @@
 6. [Events and Listeners](#events-and-listeners)
 7. [CLI Commands](#cli-commands)
 8. [Testing](#testing)
-9. [Troubleshooting](#troubleshooting)
+9. [Notifications Model](#model)
+    * A. [Fields](#fields)
+10. [Troubleshooting](#troubleshooting)
 
 <br>
 
@@ -258,7 +260,7 @@ This demonstrates two approaches: synchronous mail vs. queued mail. Both use `No
 <br>
 
 ## 7. CLI Commands <a id="cli-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. Test a Notification (no side-effects by default)
+#### A. Test a Notification (no side-effects by default)
 ```bash
 php console notification:test DummyNotification --dry-run
 ```
@@ -284,7 +286,7 @@ php console notification:test UserRegistered --user=42 --channels=mail
 
  <br>
 
- ### B. Generate a Notification class
+ #### B. Generate a Notification class
  ```bash
  php console make:notification UserRegistered --channels=log,database,mail
 ```
@@ -295,7 +297,7 @@ php console notification:test UserRegistered --user=42 --channels=mail
 
 <br>
 
-### C. Generate the notifications migration
+#### C. Generate the notifications migration
 ```bash
 php console notifications:migration
 ```
@@ -303,7 +305,7 @@ php console notifications:migration
 
  <br>
 
- ### D. Prune old notifications
+ #### D. Prune old notifications
  ```bash
  php console notifications:prune --days=90
 ```
@@ -323,7 +325,28 @@ php console notifications:migration
 
 <br>
 
-## 9. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Notifications Model <a id="model"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The `Core\Models\Notifications` model represents rows in the `notifications` table and gives you simple helpers to mark notifications as read and prune old rows. Most apps let the notification system write these rows automatically (via the Database channel). Use this model when you need to build an inbox, mark items read, or clean up.
+
+<br>
+
+### A. Fields <a id="fields"></a>
+
+| Property          | Type            | Notes                                                         |                          |
+| ----------------- | --------------- | ------------------------------------------------------------- | ------------------------ |
+| `id`              | string          | Primary key (UUID or string).                                 |                          |
+| `type`            | string          | FQCN of the notification class that created the row.          |                          |
+| `notifiable_type` | string          | FQCN of the target entity (e.g., `App\Models\Users`).         |                          |
+| `notifiable_id`   | int             | string                                                        | ID of the target entity. |
+| `data`            | text (JSON)     | Payload from `Notification::toDatabase()` (stringified JSON). |                          |
+| `read_at`         | timestamp\|null | `null` if unread; timestamp when marked read.                 |                          |
+| `created_at`      | timestamp       | Auto-managed in `beforeSave()`.                               |                          |
+| `updated_at`      | timestamp       | Auto-managed in `beforeSave()`.                               |                          |
+
+
+<br>
+
+## 10. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - “Unsupported notification channel X”:  Make sure `NotificationManager::boot()` ran and your channel is registered in `config('notifications.channels')`.
 - MailChannel errors: Ensure `toMail()` returns one of: `template`, `html` (optionally `text`), or `mailer`. Missing these throws `InvalidPayloadException`.
 - DatabaseChannel errors: Your notifiable must have a public `id`. If you send to a dummy string in “simulate” mode, the helper logs instead of saving.
