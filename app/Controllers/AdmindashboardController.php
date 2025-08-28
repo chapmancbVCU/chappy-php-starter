@@ -212,8 +212,6 @@ class AdmindashboardController extends Controller {
      * @return void
      */
     public function indexAction(): void {
-        NotificationService::flashUnreadNotifications();
-
         // Determine current page
         $page = Pagination::currentPage($this->request);
         $pagination = new Pagination($page, 10, DashboardService::totalUserCountExceptCurrent());
