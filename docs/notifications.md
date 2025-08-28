@@ -11,6 +11,8 @@
 5. [Making a Model Notifiable](#making-model-notifiable)
 6. [Events and Listeners](#events-and-listeners)
 7. [CLI Commands](#cli-commands)
+8. [Testing](#testing)
+9. [Troubleshooting](#troubleshooting)
 
 <br>
 
@@ -307,3 +309,23 @@ php console notifications:migration
 ```
 - Deletes notifications older than `N` days (default 90).
 - Uses `Core\Models\Notifications::notificationsToPrune($days)` internally.
+
+<br>
+
+## 8. Testing <a id="testing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+- For console tests, use Symfony’s `CommandTester` and ensure:
+    - Your command calls `Tools::setOutput($output)` at the start of `execute()`.
+    - The notification class exists under `App\Notifications\YourNotification`.
+- Typical assertions:
+    - error path: prints “does not exist”
+    - dry-run path: prints `[DRY-RUN] … via [log]`
+    - payload echo contains "level": "info", etc.
+
+<br>
+
+## 9. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+- “Unsupported notification channel X”:  Make sure `NotificationManager::boot()` ran and your channel is registered in `config('notifications.channels')`.
+- MailChannel errors: Ensure `toMail()` returns one of: `template`, `html` (optionally `text`), or `mailer`. Missing these throws `InvalidPayloadException`.
+- DatabaseChannel errors: Your notifiable must have a public `id`. If you send to a dummy string in “simulate” mode, the helper logs instead of saving.
+- LogChannel message is empty: Provide `toLog()` or include a `message` key in your payload/`toArray()`.
+- Namespaces & autoload: Place app notifications in `app/Notifications` with namespace `App\Notifications`;. Run `composer dump-autoload` after adding files.
