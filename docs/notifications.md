@@ -281,14 +281,14 @@ php console notification:test UserRegistered --dry-run --channels=log,database -
 # Actually send (remove --dry-run)
 php console notification:test UserRegistered --user=42 --channels=mail
 ```
- The command uses `Tools::setOutput($output)` so output is captured in tests.
- On `--dry-run`, it prints the “Would send … via [X,Y]” line plus the JSON payload.
 
- <br>
+The command uses `Tools::setOutput($output)` so output is captured in tests.
+On `--dry-run`, it prints the “Would send … via [X,Y]” line plus the JSON payload.
 
- #### B. Generate a Notification class
- ```bash
- php console make:notification UserRegistered --channels=log,database,mail
+<br>
+#### B. Generate a Notification class
+```bash
+php console make:notification UserRegistered --channels=log,database,mail
 ```
 
 - Creates `app/Notifications/UserRegistered.php`.
@@ -303,11 +303,11 @@ php console notifications:migration
 ```
 - Writes a migration class that creates the notifications table with useful indexes.
 
- <br>
+<br>
 
- #### D. Prune old notifications
- ```bash
- php console notifications:prune --days=90
+#### D. Prune old notifications
+```bash
+php console notifications:prune --days=90
 ```
 - Deletes notifications older than `N` days (default 90).
 - Uses `Core\Models\Notifications::notificationsToPrune($days)` internally.
