@@ -1,4 +1,3 @@
-<?php use Core\Lib\Utilities\Env; ?>
 <?php $this->setSiteTitle("Profile Details for ".$this->user->username); ?>
 <?php $this->start('body'); ?>
 <h1 class="text-center">Profile Details for <?=$this->user->username?></h1>
