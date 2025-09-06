@@ -31,8 +31,6 @@
     <div class="container-fluid" style="min-height:calc(100% - 125px);">
       <?= Session::displayMessage() ?>
       <?= $this->content('body'); ?>
-    </div>
-    <?php //$this->component(footer.php'); ?>
-    
+    </div> 
   </body>
 </html>
