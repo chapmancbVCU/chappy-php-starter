@@ -87,13 +87,10 @@ class ProfileController extends Controller {
             $this->request->csrfCheck();
 
             // Verify password and display message if incorrect.
-            if(!UserService::updatePassword($user, $this->request)) {
-                flashMessage('danger', 'There was an error when entering your current password');
-                redirect('profile.updatePassword', [$user->id]);
+            if(UserService::updatePassword($user, $this->request)) {
+                flashMessage('success', 'Password updated!'); 
+                redirect('profile.index');
             }
-
-            flashMessage('success', 'Password updated!'); 
-            redirect('profile.index');
         }
 
         // PW change mode off and final page setup.
