@@ -4,7 +4,7 @@
   <div class="text-center">
     <h1 class="display-4">Welcome to</h1>
     <div class="col-12 mx-auto text-center">
-      <img class="w-50" src="<?=asset('public/logo.png')?>" alt="Framework Logo">
+      <img class="w-50" src="<?=asset('public/logo.png', true)?>" alt="Framework Logo">
     </div>
     <p class="lead mt-3">
       A lightweight and modern PHP framework built for simplicity, speed, and developer happiness.
