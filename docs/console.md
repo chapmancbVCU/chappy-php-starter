@@ -155,6 +155,7 @@ php console
 | Command | Description |
 |:-------:|-------------|
 | react:component | Generates a react component |
+| react:page | Generates a new react component for views |
 
 <br>
 
