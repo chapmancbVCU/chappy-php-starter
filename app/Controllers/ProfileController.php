@@ -100,7 +100,6 @@ class ProfileController extends Controller {
         $user->setChangePassword(false);
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->user = $user;
-        $this->view->postAction = route('profile.updatePassword', [$user->id]);
         $this->view->render('profile.update_password');
     }
 }
