@@ -9,8 +9,9 @@
     * C. [Local Servers](#local-servers)
     * D. [Notifications](#notifications)
     * E. [Queue](#queue)
-    * E. [Testing](#testing)  
-    * F. [Tools](#tools) 
+    * F. [Testing](#testing)  
+    * G. [Tools](#tools) 
+    * H. [React](#react)
 4. [Building Your Own Command](#build-command)
 5. [Command Helpers](#command-helpers)
 6. [Tools](#tools)
@@ -146,6 +147,14 @@ php console
 | log:clear | Deletes existing log file |
 | tools:mk-env | Creates the .env file |
 | tools:rm-profile-images | Removes all profile images |
+
+<br>
+
+### H. React <a id="react"></a>
+
+| Command | Description |
+|:-------:|-------------|
+| react:component | Generates a react component |
 
 <br>
 
