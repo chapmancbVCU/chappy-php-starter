@@ -85,6 +85,8 @@ php console make:layout Foo
 
 This tells the framework to create a new layout using the default main_menu  The `make:layout` also accepts `--menu` and `-menu-acl` as arguments for generating the menu file and the menu_acl json file.  Using these arguments will create new menu and menu_acl files.  More about this in the next two sections.
 
+Add the `--react` flag to generate a layout that is compatible with React.js views.
+
 <br>
 
 ## 4. Setting Layout <a id="setting-layout"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
