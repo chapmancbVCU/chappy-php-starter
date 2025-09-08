@@ -156,6 +156,7 @@ php console
 |:-------:|-------------|
 | react:component | Generates a react component |
 | react:page | Generates a new react component for views |
+| react:util | Generates a JavaScript utility file to support React.js |
 
 <br>
 
