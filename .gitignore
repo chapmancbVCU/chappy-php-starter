@@ -25,9 +25,7 @@ package-lock.json
 
 # Caches / logs / runtime
 /cache/
-
-# Public uploads
-/public/images/uploads/profile_images/
+/storage/cache/
 
 # Database (local only)
 database/database.sqlite
