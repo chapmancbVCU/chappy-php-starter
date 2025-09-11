@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
+import ErrorBoundary from '@chappy/components/ErrorBoundary';
 import '@css/app.css';
 
 // Code-split all pages under ./pages
@@ -47,8 +48,10 @@ function normalize(name) {
 
   const Mod = (await loader()).default;
   createRoot(el).render(
-    <Suspense fallback={<div />}>
-      <Mod {...props} />
-    </Suspense>
+    <ErrorBoundary>
+      <Suspense fallback={<div />}>
+        <Mod {...props} />
+      </Suspense>
+    </ErrorBoundary>
   );
 })();
