@@ -154,8 +154,12 @@ php console
 
 | Command | Description |
 |:-------:|-------------|
+| react:auth | Generates page components for the auth controller |
 | react:component | Generates a react component |
+| react:error | Restores error/NotFound.jsx page component |
+| react:home | Generates Index.jsx page component for the home controller |
 | react:page | Generates a new react component for views |
+| react:profile | Generates page components for the profile controller | 
 | react:util | Generates a JavaScript utility file to support React.js |
 
 <br>
