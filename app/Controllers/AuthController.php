@@ -33,9 +33,18 @@ class AuthController extends Controller {
                 $loginModel = AuthService::login($this->request, $loginModel, $_POST['username']);
             }
         }
+
+        // Toggle comments to enable React.js view.
         $this->view->login = $loginModel;
         $this->view->displayErrors = $loginModel->getErrorMessages();
         $this->view->render('auth.login');
+
+        // $this->view->props = [
+        //     'login' => $loginModel,
+        //     'errors' => $loginModel->getErrorMessages(),
+        //     'rememberMeChecked' => $loginModel->getRememberMeChecked()
+        // ];
+        // $this->view->renderJsx('auth.Login');
     }
 
     /**
@@ -90,9 +99,16 @@ class AuthController extends Controller {
             }
         }
 
+        // Toggle comments to enable React.js view
         $this->view->user = $user;
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->render('auth.register');
+
+        // $this->view->props = [
+        //     'user' => $user,
+        //     'errors' => $user->getErrorMessages()
+        // ];
+        // $this->view->renderJsx('auth.Register');
     }
 
     /**
