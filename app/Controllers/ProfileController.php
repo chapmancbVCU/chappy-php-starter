@@ -44,10 +44,18 @@ class ProfileController extends Controller {
             }
         }
 
+        // Toggle comments to use React.js
         $this->view->profileImages = $profileImages;
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->user = $user;
         $this->view->render('profile.edit');
+
+        // $props = [
+        //     'user' => $user,
+        //     'errors' => $user->getErrorMessages(),
+        //     'profileImages' => $profileImages,
+        // ];
+        // $this->view->renderJsx('profile.Edit', $props);
     }
 
     /**
@@ -60,9 +68,16 @@ class ProfileController extends Controller {
         UserService::ensureAuthenticatedUser($user);
         $profileImages = ProfileImages::findByUserId($user->id);
         
+        // Toggle comments to use React.js
         $this->view->profileImages = $profileImages;
         $this->view->user = $user;
         $this->view->render('profile.index');
+
+        // $this->view->props = [
+        //     'user' => $user, 
+        //     'profileImage' => $profileImages[0]
+        // ];
+        // $this->view->renderJSX('profile.Index');
     }
 
     /**
@@ -95,8 +110,16 @@ class ProfileController extends Controller {
 
         // PW change mode off and final page setup.
         $user->setChangePassword(false);
+
+        // Toggle comments to use React.js
         $this->view->displayErrors = $user->getErrorMessages();
         $this->view->user = $user;
         $this->view->render('profile.update_password');
+
+        // $props = [
+        //     'user' => $user,
+        //     'errors' => $user->getErrorMessages()
+        // ];
+        // $this->view->renderJsx('profile.UpdatePassword', $props);
     }
 }
