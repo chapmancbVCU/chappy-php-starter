@@ -14,8 +14,7 @@ class HomeController extends Controller {
      * @return void
      */
     public function indexAction(): void {
-        // Comment line below and uncomment last 3 lines to switch to React.js view.
-        // Run npm run dev
+        // Toggle comments to enable React.js view.
         $this->view->render('home.index');
 
         // $user = AuthService::currentUser();
