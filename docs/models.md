@@ -17,7 +17,6 @@
     * G. [runValidation](#run-validation)
     * H. [validationPassed](#validation-passed)
     * I. [validator](#validator)
-    * J. [updateWhere](#update-where)
 
 <br>
 
@@ -200,18 +199,3 @@ When we create a new user we want to check if form validation has passed before 
 
 ### I. validator <a id="validator">
 Use this function to perform form validation.  More about server side validation can be found [here](server_side_validation).
-
-<br>
-
-### J. updateWhere <a id="update-where">
-Updates one or more rows in this model's underlying table using this framework's params-style conditions.
-     
-This method delegates to the DB::updateWhere() method and allows you to pass both the fields to update and a parameterized WHERE clause (using `conditions` and `bind` arrays just like find/findFirst).
-
-Example:
-```php
-Queue::updateWhere(
-    ['reserved_at' => date('Y-m-d H:i:s')],
-    ['conditions' => 'id = ?', 'bind' => [$jobId]]
-);
-```
