@@ -3,7 +3,7 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [Passing in Props](#passing-in-props)
-
+3. [View Commands](#view-commands)
 
 
 
@@ -49,3 +49,29 @@ export default function Index({ user }) {
     );
 }
 ```
+
+<br>
+
+## 3. View Commands <a id="view-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+We support several commands for managing views and layouts with React.
+
+**Layouts**
+The default layout supports React integration.  To create a support layout run:
+```sh
+php console make:layout <layout_name> --react
+```
+
+**Views**
+Generate a React view under `resources/js/pages/<area>/<view_name>.jsx`:
+```sh
+php console react:page <area>.<view_name>
+```
+
+**Generating Built-in Views**
+
+| Command | Description |
+|:-------:|-------------|
+| react:auth | Generates page components for the auth controller |
+| react:error | Restores error/NotFound.jsx page component |
+| react:home | Generates Index.jsx page component for the home controller |
+| react:profile | Generates page components for the profile controller | 
