@@ -31,7 +31,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 16. [Notifications](notifications)
 17. [Queue / Job Dispatcher](queue)
 18. [React.js](react)
-    * A. [Controllers and Views](controllers_and_views)
+    * A. [Controllers and React Views](controllers_and_views)
     * B. [React Forms](react_forms)
 19. [Routing](routing)
 20. [Server Side Validation](server_side_validation)
