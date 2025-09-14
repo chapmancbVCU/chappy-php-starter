@@ -71,7 +71,7 @@ php console react:page <area>.<view_name>
 
 | Command | Description |
 |:-------:|-------------|
-| react:auth | Generates page components for the auth controller |
-| react:error | Restores error/NotFound.jsx page component |
-| react:home | Generates Index.jsx page component for the home controller |
-| react:profile | Generates page components for the profile controller | 
+| `php console react:auth` | Generates page components for the auth controller |
+| `php console react:error` | Restores error/NotFound.jsx page component |
+| `php console react:home` | Generates Index.jsx page component for the home controller |
+| `php console react:profile` | Generates page components for the profile controller | 
