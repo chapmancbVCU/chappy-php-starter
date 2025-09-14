@@ -8,7 +8,8 @@
     * C. [Update](#update)
     * D. [Delete](#delete)
     * E. [Checking If Value Exists In Column](#value-exists)
-    * F. [DB Summary](#db-summary)
+    * F. [Transaction API](#transaction-api)
+    * G. [DB Summary](#db-summary)
 3. [Using Models](#models)
     * A. [assign](#assign)
     * B. [delete](#model-delete)
@@ -195,7 +196,117 @@ Here, we want to create two separate arrays.  One for used ACLs and another for 
 
 <br>
 
-### F. Summary  <a id="db-summary">
+
+### F. Transaction API  <a id="transaction-api">
+This guide covers the 5 DB methods the queue relies on:
+- `beginTransaction()`
+- `commit()`
+- `rollBack()`
+- `tableExists(string $table): bool`
+- `updateWhere(string $table, array $fields, array $params = []): int`
+It also shows how they’re used together for safe job reservation and status updates.
+
+<br>
+
+**`beginTransaction(): bool`**
+
+Start a database transaction on the underlying PDO connection.
+When to use (queue):
+* Reserving a job (`reserved_at`) atomically.
+* Incrementing attempts + updating availability as a single unit.
+* Marking jobs as failed after reaching max attempts.
+
+Example:
+```php
+$db = \Core\DB::getInstance();
+
+try {
+    $db->beginTransaction();
+
+    // 1) fetch next available job with lock (MySQL/MariaDB)
+    $job = \Core\Models\Queue::findFirst([
+        'conditions' => 'queue = ? AND reserved_at IS NULL AND failed_at IS NULL AND available_at <= ?',
+        'bind'       => [$queueName, date('Y-m-d H:i:s')],
+        'order'      => 'id',
+        'limit'      => 1,
+        'lock'       => true, // Note: ignored on SQLite
+    ]);
+
+    if ($job) {
+        // 2) mark as reserved
+        \Core\Models\Queue::updateWhere(
+            ['reserved_at' => date('Y-m-d H:i:s')],
+            ['conditions' => 'id = ?', 'bind' => [$job->id]]
+        );
+    }
+
+    $db->commit();
+} catch (\Throwable $e) {
+    $db->rollBack();
+    throw $e;
+}
+```
+
+SQLite note: `FOR UPDATE` is not used on SQLite (your code already skips it). If you run multiple workers on SQLite, you don’t get row-level locks. Prefer MySQL/MariaDB in production.
+
+<br>
+
+**`commit(): bool`**
+
+Persist all changes made within the active transaction.
+When to use (queue):
+* After reserving a job.
+* After updating attempts / scheduling a retry.
+* After marking a job as failed.
+
+Always pair `commit()` with a preceding `beginTransaction()` inside a `try` block.
+
+<br>
+
+**`rollBack(): bool`**
+
+Undo all changes in the current transaction.
+
+When to use (queue):
+* Any exception during reservation or update flow.
+* Validation or precondition failures mid-transaction.
+
+Pattern
+```php
+try {
+    $db->beginTransaction();
+    // ... do work
+    $db->commit();
+} catch (\Throwable $e) {
+    $db->rollBack();
+    throw $e;
+}
+```
+
+<br>
+
+**Schema checks**
+
+`tableExists(string $table): bool`
+Checks if a table exists. Uses driver-specific SQL:
+* SQLite: `sqlite_master`
+* MySQL/MariaDB: `SHOW TABLES LIKE ...`
+
+When to use (queue):
+* Startup checks to ensure the `queue` table is present.
+* Migration/install scripts.
+
+Example:
+```php
+$db = \Core\DB::getInstance();
+if (!$db->tableExists('queue')) {
+    throw new \RuntimeException('Queue table is missing; run migrations.');
+}
+```
+
+Security tip: The `$table` identifier is used directly in SQL. Pass trusted table names (constants/known strings), not user input.
+
+### G. Summary  <a id="db-summary">
 Many of these functions have their equivalent wrapper functions that will be described in the **Using Models** section.  Here are the descriptions for additional functions:
 1. count - Getter function for the private _count variable.
 2. findFirst - Returns the first result performed by an SQL query.
