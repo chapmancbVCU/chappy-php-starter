@@ -32,3 +32,8 @@ All npm packages needed for React are automatically installed when you create a 
 <br>
 
 ## 3. File Structure & Naming <a id="file-structure"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+- Pages: `resources/js/pages/<area>/<Page>.jsx`
+- PHP can pass names like h`ome.index`, `home/Index`, or `admin/Users.index`.
+- Components: `resources/js/components/*`
+- Utils: `resources/js/utils/*`
+- Core package (vendor): `vendor/chappy-php/chappy-php-framework/src/React/*` (reusable helpers/components)
