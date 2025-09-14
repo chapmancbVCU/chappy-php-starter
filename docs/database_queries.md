@@ -376,6 +376,42 @@ Your `Queue::reserveNext()` already models the ideal pattern:
 
 This gives you atomic state transitions and protects against double-processing (on DBs that support row locks).
 
+**Behavior differences: SQLite vs MySQL/MariaDB**
+
+* Row locks: Only MySQL/MariaDB uses `FOR UPDATE`. SQLite ignores it; rely on single worker or accept a higher chance of race in dev.
+* Conditions syntax: Your code already normalizes `!=` → `<>` for SQLite in `_read()`.
+
+<br>
+
+**Troubleshooting & Tips**
+
+* “Rows affected = 0” with `updateWhere` - Likely your `WHERE` didn’t match (another worker won the race) or the values didn’t change. Handle as a benign conflict.
+* Always close transactions - If you start one (`beginTransaction()`), ensure `commit()` or `rollBack()` runs even on exceptions.
+* Idempotency - Design updates so retrying the same step doesn’t corrupt state (e.g., only reserve when `reserved_at IS NULL`).
+* Testing - `Use DB::connect()` to point to a test DB (SQLite `:memory:` is OK for unit tests). Remember row-lock semantics differ from MySQL.
+
+<br>
+
+**Quick reference**
+
+```php
+bool DB::beginTransaction()
+bool DB::commit()
+bool DB::rollBack()
+
+bool DB::tableExists(string $table)
+
+int DB::updateWhere(
+  string $table,
+  array $fields,
+  array $params = [
+    'conditions' => 'id = ? AND queue = ?',
+    'bind'       => [$id, $queue],
+  ]
+)
+```
+
+<br>
 
 ### G. Summary  <a id="db-summary">
 Many of these functions have their equivalent wrapper functions that will be described in the **Using Models** section.  Here are the descriptions for additional functions:
