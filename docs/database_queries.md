@@ -22,7 +22,8 @@
     * J. [save](#save)
     * K. [timeStamps](#timestamps)
     * L. [Validation](#validation)
-    * M. [Model Summary](#model-summary)
+    * M. [updateWhere](#update-where)
+    * N. [Model Summary](#model-summary)
 4. [Joins](#joins)
 <br>
 
@@ -414,7 +415,19 @@ Validation must be defined in the `validator()` method. `save()` will not procee
 
 <br>
 
-### M. Model Summary  <a id="model-summary">
+### M. updateWhere <a id="update-where">
+Updates one or more rows in this model's underlying table using this framework's params-style conditions.
+     
+This method delegates to the DB::updateWhere() method and allows you to pass both the fields to update and a parameterized WHERE clause (using `conditions` and `bind` arrays just like find/findFirst).
+
+Example:
+```php
+Queue::updateWhere(
+    ['reserved_at' => date('Y-m-d H:i:s')],
+    ['conditions' => 'id = ?', 'bind' => [$jobId]]
+);
+```
+### N. Model Summary  <a id="model-summary">
 
 | Method | Description |
 |:------:|-------------|
