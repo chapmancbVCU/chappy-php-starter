@@ -306,6 +306,77 @@ if (!$db->tableExists('queue')) {
 
 Security tip: The `$table` identifier is used directly in SQL. Pass trusted table names (constants/known strings), not user input.
 
+<br>
+
+**Targeted Updates**
+
+`updateWhere(string $table, array $fields, array $params = []): int`
+* Performs an `UPDATE` with:
+* `SET` from `$fields` (key/value pairs)
+* `WHERE` from `$params['conditions']` and `$params['bind']`
+
+Returns number of affected rows.
+
+Params shape:
+```php
+$fields = ['reserved_at' => date('Y-m-d H:i:s')];
+
+$params = [
+  'conditions' => 'id = ? AND reserved_at IS NULL',
+  'bind'       => [$jobId],
+];
+```
+
+Example – reserve a job
+```php
+$rows = $db->updateWhere('queue', ['reserved_at' => date('Y-m-d H:i:s')], [
+    'conditions' => 'id = ? AND reserved_at IS NULL AND failed_at IS NULL',
+    'bind'       => [$jobId],
+]);
+
+if ($rows === 0) {
+    // another worker may have reserved it; handle gracefully
+}
+```
+
+Example – mark failed
+```php
+$db->updateWhere('queue', ['failed_at' => date('Y-m-d H:i:s')], [
+    'conditions' => 'id = ?',
+    'bind'       => [$jobId],
+]);
+```
+
+Example – schedule retry
+```php
+$db->updateWhere('queue', [
+    'attempts'     => $job->attempts + 1,
+    'available_at' => $retryTime,
+    'exception'    => $e->getMessage(),
+], [
+    'conditions' => 'id = ?',
+    'bind'       => [$job->id],
+]);
+```
+
+Guardrails:
+- If `$fields` is empty, the method logs an error and returns 0.
+- Keep your `conditions/bind` aligned. `conditions` can be a string or an array of strings joined by `AND`.
+
+<br>
+
+**Putting it together – Safe reservation flow**
+
+Your `Queue::reserveNext()` already models the ideal pattern:
+* `beginTransaction()`
+* `SELECT ... FOR UPDATE` (if supported) to fetch a candidate job.
+* If exceeded attempts → update `failed_at` via `updateWhere()` and `commit()`.
+* Else → set `reserved_at` via `updateWhere()` and `commit()`.
+* `catch` → `rollBack()` and rethrow.
+
+This gives you atomic state transitions and protects against double-processing (on DBs that support row locks).
+
+
 ### G. Summary  <a id="db-summary">
 Many of these functions have their equivalent wrapper functions that will be described in the **Using Models** section.  Here are the descriptions for additional functions:
 1. count - Getter function for the private _count variable.
