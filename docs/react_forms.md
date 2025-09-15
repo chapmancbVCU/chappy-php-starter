@@ -226,6 +226,8 @@ Example:
 />
 ```
 
+<br>
+
 **`CSRF`**
 
 Generates hidden component for csrf token.
