@@ -418,3 +418,27 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+
+<br>
+
+**`Tel`**
+
+Renders an HTML div element that surrounds an input of type tel.
+
+Prop names:
+- `{string} label` - Sets the label for this input.
+- `{string} name` - Sets the value for the name, for, and id attributes for this input.
+- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+
+Example:
+```jsx
+<Forms.Tel 
+    label="Cell Phone"
+    name="cell"
+    value={cellNumber}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
