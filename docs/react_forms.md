@@ -62,8 +62,10 @@ function Register({ users, errors }) {
 <br>
 
 ## 3. Buttons <a id="buttons"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
 **`Button`**
-Returns Button component with text set.
+
+Returns Button component with text set.  Supports ability to have functions for event handlers
 
 Prop names:
 {string} label - The contents of the button's label.
@@ -71,6 +73,28 @@ Prop names:
 
 Example:
 ```jsx
-<Forms.Button label="My Button" inputAttrs={className: 'btn btn-large btn-primary'}>
+<Forms.Button 
+    label="My Button" 
+    inputAttrs={{className: 'btn btn-large btn-primary'}} 
+/>
 ```
 
+<br>
+
+**`ButtonBlock`**
+
+Supports ability to create a styled button and styled surrounding div block.  Supports ability to have functions for event handlers.
+
+Prop names:
+{string} label - The contents of the button's label.
+{object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+{object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+
+Example:
+```jsx
+<Forms.ButtonBlock 
+    label="My Button" 
+    inputAttrs={{className: 'btn btn-large btn-primary'}}
+    divAttrs={{className: 'text-end'}}
+/>
+```
