@@ -189,6 +189,7 @@ Prop names:
 - `{bool} checked` - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
 - `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
 ```jsx
@@ -214,6 +215,7 @@ Prop names:
 - `{bool} checked` - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
 - `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
 ```jsx
@@ -252,6 +254,7 @@ Prop names:
 - `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
 - `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
 ```jsx
@@ -295,6 +298,7 @@ Prop names:
 - `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
 - `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
 ```jsx
@@ -378,6 +382,7 @@ Prop names:
 - `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
 - `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
 ```jsx
@@ -405,6 +410,7 @@ Prop names:
  * select option dropdown.  The default value is an empty array.
 - `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
 ```jsx
@@ -431,6 +437,7 @@ Prop names:
 - `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
 - `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
 ```jsx
