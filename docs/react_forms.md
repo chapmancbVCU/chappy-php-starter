@@ -192,7 +192,7 @@ Prop names:
 
 Example:
 ```jsx
-<CheckBoxLeftLabel
+<Forms.CheckBoxLeftLabel
     label="Remember Me"
     name="remember_me"
     value="on"
@@ -217,7 +217,7 @@ Prop names:
 
 Example:
 ```jsx
-<CheckBoxLeftLabel
+<Forms.CheckBoxLeftLabel
     label="Remember Me"
     name="remember_me"
     value="on"
