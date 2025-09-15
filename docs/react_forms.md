@@ -449,3 +449,28 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+
+<br>
+
+**`TextArea`**
+
+Assists in the development of textarea in forms.  It accepts parameters for setting  attribute tags in the form section.
+
+Prop names:
+- `{string} label` - Sets the label for this input.
+- `{string} name` - Sets the value for the name, for, and id attributes for this input.
+- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
+
+Example:
+```jsx
+<Forms.TextArea
+    label="Description"
+    name="description"
+    value={user.description || ""}
+    inputAttrs={{ placeholder: 'Describe yourself here...' }}
+    divAttrs={{ className: 'form-group mb-3' }}
+/>
+```
