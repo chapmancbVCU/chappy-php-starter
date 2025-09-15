@@ -118,3 +118,23 @@ Example:
     divAttrs={{className: 'text-end'}}
 />
 ```
+
+<br>
+
+**`SubmitTag`**
+
+Create a input element of type submit.
+
+Prop names:
+{string} label - The contents of the button's label.
+{object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+{object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+
+Example:
+```jsx
+<Forms.SubmitTag 
+    label="Submit" 
+    inputAttrs={{className: 'btn btn-large btn-primary'}}
+    divAttrs={{className: 'text-end'}}
+/>
+```
