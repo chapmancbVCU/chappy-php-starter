@@ -378,3 +378,13 @@ Prop names:
 - `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
 - `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+
+```jsx
+<Forms.RichText
+    label="Description"
+    name="description"
+    value={user.description || ""}
+    inputAttrs={{ placeholder: 'Describe yourself here...' }}
+    divAttrs={{ className: 'form-group mb-3' }}
+/>
+```
