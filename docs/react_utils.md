@@ -3,6 +3,7 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [asset](#asset)
+3. [documentTitle](#document-title)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -40,4 +41,23 @@ Uses `S3_BUCKET` as host.  By default this variable is set to `APP_DOMAIN`.
 
 <br>
 
+## 3. documentTitle <a id="document-title"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Sets the document title for current page.
 
+Setup:
+```jsx
+import documentTitle from "@chappy/utils/documentTitle"
+```
+
+Usage:
+```jsx
+function Edit({user, errors, profileImages}) {
+    documentTitle(`Edit Details for ${user.username}`);
+
+    return (
+        <>
+        ...
+        </>
+    )
+}
+```
