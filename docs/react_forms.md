@@ -225,3 +225,13 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+
+**`CSRF`**
+Generates hidden component for csrf token.
+
+Prop name:
+- `{string} name` - The name for the csrf token. 
+
+Example:
+```jsx
+<Forms.CSRF />
