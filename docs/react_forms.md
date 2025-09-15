@@ -389,3 +389,32 @@ Example:
     divAttrs={{ className: 'form-group mb-3' }}
 />
 ```
+
+<br>
+
+**`Select`**
+
+Renders a select element with a list of options.
+
+Prop names:
+- `{string} label` - Sets the label for this input.
+- `{string} name` - Sets the value for the name, for, and id attributes for this input.
+- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `{string} fieldName` - The name of the field in the model to use.
+- `{array} options` - The list of options we will use to populate the 
+ * select option dropdown.  The default value is an empty array.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+
+Example:
+```jsx
+<Forms.Select 
+    label="Example"
+    name="options"
+    value={selectedVal}
+    fieldName="name"
+    options={options}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
