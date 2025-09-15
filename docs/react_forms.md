@@ -310,3 +310,21 @@ Example:
 
 <br>
 
+**`Output`**
+
+Generates an HTML output element.
+
+Prop names:
+- `{string} name` - Sets the value for the name attributes for this input.
+- `{string} forAttr` - Sets the value for the for attribute.
+
+Example:
+```jsx
+<Forms.Output 
+    name="my-name"
+    forAttr="for-attr-value"
+/>
+```
+
+<br>
+
