@@ -4,6 +4,8 @@
 1. [Overview](#overview)
 2. [asset](#asset)
 3. [documentTitle](#document-title)
+4. [route](#route)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -60,4 +62,20 @@ function Edit({user, errors, profileImages}) {
         </>
     )
 }
+```
+
+<br>
+
+## 4. route <a id="route"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Redirects a user to a view using dot notation.
+
+Parameters:
+- `path` - The path using dot notation (`controller_name.action_name`)
+- `params` - Any parameters you want to pass to controller's action as an array
+
+Example:
+```jsx
+<a href={route('profile.edit', [user.id])} className="btn btn-info btn-sm mx-2 mb-3">
+    <i className="fa fa-edit"></i> Edit User Profile
+</a>
 ```
