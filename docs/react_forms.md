@@ -103,8 +103,8 @@ Prop names for each component is described for the corresponding sections below.
 Returns Button component with text set.  Supports ability to have functions for event handlers
 
 Prop names:
-{string} label - The contents of the button's label.
-{object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- {string} label - The contents of the button's label.
+- {object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 
 Example:
 ```jsx
@@ -121,9 +121,9 @@ Example:
 Supports ability to create a styled button and styled surrounding div block.  Supports ability to have functions for event handlers.
 
 Prop names:
-{string} label - The contents of the button's label.
-{object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
-{object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- {string} label - The contents of the button's label.
+- {object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- {object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
 Example:
 ```jsx
@@ -141,9 +141,9 @@ Example:
 Generates a div containing an input of type submit.
 
 Prop names:
-{string} label - The contents of the button's label.
-{object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
-{object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- {string} label - The contents of the button's label.
+- {object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- {object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
 Example:
 ```jsx
@@ -161,9 +161,9 @@ Example:
 Create a input element of type submit.
 
 Prop names:
-{string} label - The contents of the button's label.
-{object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
-{object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- {string} label - The contents of the button's label.
+- {object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- {object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
 Example:
 ```jsx
