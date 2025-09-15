@@ -379,6 +379,7 @@ Prop names:
 - `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
+Example:
 ```jsx
 <Forms.RichText
     label="Description"
