@@ -3,7 +3,7 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [Setup](#setup)
-
+3. [Buttons](#buttons)
 
 
 <br>
@@ -45,7 +45,7 @@ Every form needs a CSRF token to prevent CSRF attacks.  Add the `<Forms.CSRF />`
 
 **Error Bag**
 
-To add the optional Error Bag add the `<Forms.DisplayErrors />` component.  Make sure you pass in the errors prop. The word `error` before the `=` sign must be spelled exactly as in the example.
+To add the optional Error Bag add the `<Forms.DisplayErrors />` component.  Make sure you pass in the errors prop. The prop name `error` before the `=` sign must be spelled exactly as in the example.
 
 Example:
 ```jsx
@@ -58,3 +58,19 @@ function Register({ users, errors }) {
     )
 }
 ```
+
+<br>
+
+## 3. Buttons <a id="buttons"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+**`Button`**
+Returns Button component with text set.
+
+Prop names:
+{string} label - The contents of the button's label.
+{object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+
+Example:
+```jsx
+<Forms.Button label="My Button" inputAttrs={className: 'btn btn-large btn-primary'}>
+```
+
