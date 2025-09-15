@@ -5,9 +5,6 @@
 2. [Passing in Props](#passing-in-props)
 3. [View Commands](#view-commands)
 
-
-
-
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
