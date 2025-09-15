@@ -103,8 +103,8 @@ Prop names for each component is described for the corresponding sections below.
 Returns Button component with text set.  Supports ability to have functions for event handlers
 
 Prop names:
-- {string} label - The contents of the button's label.
-- {object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{string} label` - The contents of the button's label.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 
 Example:
 ```jsx
@@ -121,9 +121,9 @@ Example:
 Supports ability to create a styled button and styled surrounding div block.  Supports ability to have functions for event handlers.
 
 Prop names:
-- {string} label - The contents of the button's label.
-- {object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
-- {object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{string} label` - The contents of the button's label.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
 Example:
 ```jsx
@@ -141,9 +141,9 @@ Example:
 Generates a div containing an input of type submit.
 
 Prop names:
-- {string} label - The contents of the button's label.
-- {object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
-- {object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{string} label` - The contents of the button's label.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
 Example:
 ```jsx
@@ -161,9 +161,9 @@ Example:
 Create a input element of type submit.
 
 Prop names:
-- {string} label - The contents of the button's label.
-- {object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
-- {object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{string} label` - The contents of the button's label.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
 Example:
 ```jsx
@@ -184,12 +184,12 @@ Generates a div containing an input of type checkbox with the label to
 the left.
 
 Prop names:
-- {string} label - Sets the label for this input.
-- {string} name - Sets the value for the name, for, and id attributes for this input.
-- {string} value - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
-- {bool} checked - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
-- {object} inputAttrs - The values used to set the class and other attributes of the input string.  The default value is an empty object.
-- {object} divAttrs - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{string} label` - Sets the label for this input.
+- `{string} name` - Sets the value for the name, for, and id attributes for this input.
+- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `{bool} checked` - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
 Example:
 ```jsx
