@@ -59,6 +59,41 @@ function Register({ users, errors }) {
 }
 ```
 
+**Add Your Elements and Buttons**
+Add your elements and buttons by using supplied components.  Elements, buttons, and submit button components are described in the following sections.
+
+Example:
+```jsx
+function Register({ users, errors }) {
+    return (
+        <form action="" className="form" method="post" encType="multipart/form-data">
+            <Forms.CSRF />
+            <Forms.Input 
+                type="text"
+                label="User name"
+                name="username"
+                value={user.username}
+                inputAttrs={{className: 'form-control input-sm'}}
+                divAttrs={{className: 'form-group mb-3'}}
+                errors={errors}
+            />
+            
+            ...
+
+            <Forms.SubmitBlock
+                label="Register"
+                inputAttrs={{className: 'btn btn-large btn-primary'}}
+                divAttrs={{className: 'text-end'}}
+            />
+        </form>
+    )
+}
+```
+
+Many components come with common prop names such as label, name, value, inputAttrs, divAttrs, and the optional error prop.  Use error prop if you want validation message displayed below any field.
+
+Prop names for each component is described for the corresponding sections below.
+
 <br>
 
 ## 3. Buttons <a id="buttons"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
