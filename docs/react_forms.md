@@ -361,3 +361,20 @@ Example:
 />
 ```
 
+<br>
+
+**`RichText`**
+
+Rich text editor field (TinyMCE) that posts HTML via a hidden input.
+
+Behavior:
+- Decodes any HTML entities in `value` before seeding the editor (so `<p>` renders as a paragraph).
+- Uses TinyMCE as an uncontrolled editor; current HTML is mirrored into a hidden `<input name={name}>` so your PHP controller receives `$_POST[name]` as HTML.
+- UI skin CSS is expected to be imported elsewhere; `skin:false` prevents URL fetches.
+
+Prop names:
+- `{string} label` - Sets the label for this input.
+- `{string} name` - Sets the value for the name, for, and id attributes for this input.
+- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
