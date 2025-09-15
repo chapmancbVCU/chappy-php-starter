@@ -281,3 +281,32 @@ Example:
     value={myValue}
 />
 ```
+
+<br>
+
+**`Input`**
+
+Assists in the development of forms input blocks in forms.  It accepts parameters for setting attribute tags in the form section.  Not to be used for inputs of type "Submit"  For submit inputs use the submitBlock or submitTag functions.
+
+Prop names:
+- `{'color'|'date'|'date-local'|'email'|'file'|'month'|'number'|'password'|'range'|'search'|'tel'|'text'|'time'|'url'|'week'} [type='text']` - The input type we want to generate.
+- `{string} label` - Sets the label for this input.
+- `{string} name` - Sets the value for the name, for, and id attributes for this input.
+- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+
+Example:
+```jsx
+<Forms.Input 
+    type="text"
+    label="User name"
+    name="username"
+    value={user.username}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+
+<br>
+
