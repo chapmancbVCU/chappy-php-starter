@@ -261,3 +261,20 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+
+<br>
+
+**`Hidden`**
+Generates a hidden input element.
+
+Prop names:
+- `{string} name` - The value for the name and id attributes.
+- `{string|number}` - value The value for the value attribute.
+
+Example:
+```jsx
+<Forms.Hidden
+    name="hidden_name"
+    value={myValue}
+/>
+```
