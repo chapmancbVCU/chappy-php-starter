@@ -328,3 +328,36 @@ Example:
 
 <br>
 
+**`Radio`**
+
+Creates an input element of type radio with an accompanying label element.  Compatible with radio button groups.
+
+Prop names:
+- `{string} label` - Sets the label for this input.
+- `{string} id` - The id attribute for the radio input button.
+- `{string} name` - Sets the value for the name attribute.
+- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `{bool} checked` - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+
+Example:
+```jsx
+<Forms.Radio 
+    label="HTML"
+    id="html"
+    name="fav_language"
+    value="HTML"
+    checked={test1Var}
+    inputAttrs={{className: 'form-group me-1'}}
+/>
+<Forms.Radio 
+    label="CSS"
+    id="css"
+    name="fav_language"
+    value="CSS"
+    checked={test2Var}
+    inputAttrs={{className: 'form-group me-1'}}
+/>
+```
+
