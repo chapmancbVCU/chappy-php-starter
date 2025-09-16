@@ -33,6 +33,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 18. [React.js](react)
     * A. [Controllers and React Views](controllers_and_views)
     * B. [React Forms](react_forms)
+    * C. [React Utils](react_utils)
 19. [Routing](routing)
 20. [Server Side Validation](server_side_validation)
 21. [Services](services)
