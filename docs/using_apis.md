@@ -5,6 +5,7 @@
 2. [Configuration](#configuration)
 3. [Service: OpenWeather client (server-side)](#service)
 4. [Controller: API endpoint](#controller)
+5. [Router & ACL](#router)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -124,5 +125,30 @@ class WeatherController extends Controller
     {
         $this->preflight();
     }
+}
+```
+
+<br>
+
+## 5. Router & ACL <a id="router"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Router
+
+Your router maps /{Controller}/{action}. Two common choices:
+- ***Option A** (as written): call `GET /api/weather/show?q=...`
+- **Option B**: make indexAction and call `GET /weather?q=...`
+
+Use whichever you prefer—your current style is fine.
+
+**ACL** (app/acl.json)
+Let Guests read weather; restrict writes if needed.
+```json
+{
+  "Guest": {
+    "Weather": ["show", "preflight"]
+  },
+  "LoggedIn": {
+    "Weather": ["show", "preflight"]
+  },
+  "denied": {}
 }
 ```
