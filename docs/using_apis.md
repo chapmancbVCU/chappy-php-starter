@@ -7,6 +7,7 @@
 4. [Controller: API endpoint](#controller)
 5. [Router & ACL](#router)
 6. [Front End](#front-end)
+7. [Test](#test)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -187,5 +188,27 @@ export default function WeatherCard({ city = 'Newport News, Virginia', units = '
       </div>
     </div>
   );
+}
+```
+
+Mount from a PHP host view the same way you mount other React pages (via your `app.jsx` entry + `data-component/data-props`).
+
+<br>
+
+## 7. Test <a id="test"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+**Browser/React**
+Open a page that renders WeatherCard.
+
+**cURL / Postman**
+```bash
+curl "http://localhost:8000/api/weather/show?q=Austin,TX&units=imperial"
+```
+
+**Example error**
+```json
+{
+  "success": false,
+  "message": "Provide ?q=City or ?lat=&lon=",
+  "errors": []
 }
 ```
