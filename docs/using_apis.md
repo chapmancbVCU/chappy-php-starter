@@ -6,6 +6,7 @@
 3. [Service: OpenWeather client (server-side)](#service)
 4. [Controller: API endpoint](#controller)
 5. [Router & ACL](#router)
+6. [Front End](#front-end)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -150,5 +151,41 @@ Let Guests read weather; restrict writes if needed.
     "Weather": ["show", "preflight"]
   },
   "denied": {}
+}
+```
+
+<br>
+
+## 6. Front End <a id="front-end"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Make a new component:
+```sh
+php console react:component WeatherCard
+```
+
+The file is created at `resources\js\components\`.
+
+Import `apiGet` and `useAsync` from `@chappy/utils/api` then implement the `WeatherCard`.
+
+```jsx
+import React from 'react';
+import { apiGet, useAsync } from '@chappy/utils/api';
+
+export default function WeatherCard({ city = 'Newport News, Virginia', units = 'imperial' }) {
+  const { data, loading, error } = useAsync(({ signal }) =>
+    apiGet('/weather/show', { query: { q: city, units }, signal }),
+  [city, units]);
+
+  if (loading) return <div>Loading…</div>;
+  if (error)   return <div className="text-danger">{error.message}</div>;
+
+  const d = data?.data || {};
+  return (
+    <div className="card p-3">
+      <h5 className="mb-2">{d.name}</h5>
+      <div>
+        {Math.round(d.main?.temp)}°{units === 'metric' ? 'C' : 'F'} — {d.weather?.[0]?.description}
+      </div>
+    </div>
+  );
 }
 ```
