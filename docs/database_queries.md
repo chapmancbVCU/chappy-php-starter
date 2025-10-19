@@ -8,7 +8,8 @@
     * C. [Update](#update)
     * D. [Delete](#delete)
     * E. [Checking If Value Exists In Column](#value-exists)
-    * F. [DB Summary](#db-summary)
+    * F. [Transaction API](#transaction-api)
+    * G. [DB Summary](#db-summary)
 3. [Using Models](#models)
     * A. [assign](#assign)
     * B. [delete](#model-delete)
@@ -22,7 +23,8 @@
     * J. [save](#save)
     * K. [timeStamps](#timestamps)
     * L. [Validation](#validation)
-    * M. [Model Summary](#model-summary)
+    * M. [updateWhere](#update-where)
+    * N. [Model Summary](#model-summary)
 4. [Joins](#joins)
 <br>
 
@@ -194,7 +196,224 @@ Here, we want to create two separate arrays.  One for used ACLs and another for 
 
 <br>
 
-### F. Summary  <a id="db-summary">
+
+### F. Transaction API  <a id="transaction-api">
+This guide covers the 5 DB methods the queue relies on:
+- `beginTransaction()`
+- `commit()`
+- `rollBack()`
+- `tableExists(string $table): bool`
+- `updateWhere(string $table, array $fields, array $params = []): int`
+It also shows how they’re used together for safe job reservation and status updates.
+
+<br>
+
+**`beginTransaction(): bool`**
+
+Start a database transaction on the underlying PDO connection.
+When to use (queue):
+* Reserving a job (`reserved_at`) atomically.
+* Incrementing attempts + updating availability as a single unit.
+* Marking jobs as failed after reaching max attempts.
+
+Example:
+```php
+$db = \Core\DB::getInstance();
+
+try {
+    $db->beginTransaction();
+
+    // 1) fetch next available job with lock (MySQL/MariaDB)
+    $job = \Core\Models\Queue::findFirst([
+        'conditions' => 'queue = ? AND reserved_at IS NULL AND failed_at IS NULL AND available_at <= ?',
+        'bind'       => [$queueName, date('Y-m-d H:i:s')],
+        'order'      => 'id',
+        'limit'      => 1,
+        'lock'       => true, // Note: ignored on SQLite
+    ]);
+
+    if ($job) {
+        // 2) mark as reserved
+        \Core\Models\Queue::updateWhere(
+            ['reserved_at' => date('Y-m-d H:i:s')],
+            ['conditions' => 'id = ?', 'bind' => [$job->id]]
+        );
+    }
+
+    $db->commit();
+} catch (\Throwable $e) {
+    $db->rollBack();
+    throw $e;
+}
+```
+
+SQLite note: `FOR UPDATE` is not used on SQLite (your code already skips it). If you run multiple workers on SQLite, you don’t get row-level locks. Prefer MySQL/MariaDB in production.
+
+<br>
+
+**`commit(): bool`**
+
+Persist all changes made within the active transaction.
+When to use (queue):
+* After reserving a job.
+* After updating attempts / scheduling a retry.
+* After marking a job as failed.
+
+Always pair `commit()` with a preceding `beginTransaction()` inside a `try` block.
+
+<br>
+
+**`rollBack(): bool`**
+
+Undo all changes in the current transaction.
+
+When to use (queue):
+* Any exception during reservation or update flow.
+* Validation or precondition failures mid-transaction.
+
+Pattern
+```php
+try {
+    $db->beginTransaction();
+    // ... do work
+    $db->commit();
+} catch (\Throwable $e) {
+    $db->rollBack();
+    throw $e;
+}
+```
+
+<br>
+
+**Schema checks**
+
+`tableExists(string $table): bool`
+Checks if a table exists. Uses driver-specific SQL:
+* SQLite: `sqlite_master`
+* MySQL/MariaDB: `SHOW TABLES LIKE ...`
+
+When to use (queue):
+* Startup checks to ensure the `queue` table is present.
+* Migration/install scripts.
+
+Example:
+```php
+$db = \Core\DB::getInstance();
+if (!$db->tableExists('queue')) {
+    throw new \RuntimeException('Queue table is missing; run migrations.');
+}
+```
+
+Security tip: The `$table` identifier is used directly in SQL. Pass trusted table names (constants/known strings), not user input.
+
+<br>
+
+**Targeted Updates**
+
+`updateWhere(string $table, array $fields, array $params = []): int`
+* Performs an `UPDATE` with:
+* `SET` from `$fields` (key/value pairs)
+* `WHERE` from `$params['conditions']` and `$params['bind']`
+
+Returns number of affected rows.
+
+Params shape:
+```php
+$fields = ['reserved_at' => date('Y-m-d H:i:s')];
+
+$params = [
+  'conditions' => 'id = ? AND reserved_at IS NULL',
+  'bind'       => [$jobId],
+];
+```
+
+Example – reserve a job
+```php
+$rows = $db->updateWhere('queue', ['reserved_at' => date('Y-m-d H:i:s')], [
+    'conditions' => 'id = ? AND reserved_at IS NULL AND failed_at IS NULL',
+    'bind'       => [$jobId],
+]);
+
+if ($rows === 0) {
+    // another worker may have reserved it; handle gracefully
+}
+```
+
+Example – mark failed
+```php
+$db->updateWhere('queue', ['failed_at' => date('Y-m-d H:i:s')], [
+    'conditions' => 'id = ?',
+    'bind'       => [$jobId],
+]);
+```
+
+Example – schedule retry
+```php
+$db->updateWhere('queue', [
+    'attempts'     => $job->attempts + 1,
+    'available_at' => $retryTime,
+    'exception'    => $e->getMessage(),
+], [
+    'conditions' => 'id = ?',
+    'bind'       => [$job->id],
+]);
+```
+
+Guardrails:
+- If `$fields` is empty, the method logs an error and returns 0.
+- Keep your `conditions/bind` aligned. `conditions` can be a string or an array of strings joined by `AND`.
+
+<br>
+
+**Putting it together – Safe reservation flow**
+
+Your `Queue::reserveNext()` already models the ideal pattern:
+* `beginTransaction()`
+* `SELECT ... FOR UPDATE` (if supported) to fetch a candidate job.
+* If exceeded attempts → update `failed_at` via `updateWhere()` and `commit()`.
+* Else → set `reserved_at` via `updateWhere()` and `commit()`.
+* `catch` → `rollBack()` and rethrow.
+
+This gives you atomic state transitions and protects against double-processing (on DBs that support row locks).
+
+**Behavior differences: SQLite vs MySQL/MariaDB**
+
+* Row locks: Only MySQL/MariaDB uses `FOR UPDATE`. SQLite ignores it; rely on single worker or accept a higher chance of race in dev.
+* Conditions syntax: Your code already normalizes `!=` → `<>` for SQLite in `_read()`.
+
+<br>
+
+**Troubleshooting & Tips**
+
+* “Rows affected = 0” with `updateWhere` - Likely your `WHERE` didn’t match (another worker won the race) or the values didn’t change. Handle as a benign conflict.
+* Always close transactions - If you start one (`beginTransaction()`), ensure `commit()` or `rollBack()` runs even on exceptions.
+* Idempotency - Design updates so retrying the same step doesn’t corrupt state (e.g., only reserve when `reserved_at IS NULL`).
+* Testing - `Use DB::connect()` to point to a test DB (SQLite `:memory:` is OK for unit tests). Remember row-lock semantics differ from MySQL.
+
+<br>
+
+**Quick reference**
+
+```php
+bool DB::beginTransaction()
+bool DB::commit()
+bool DB::rollBack()
+
+bool DB::tableExists(string $table)
+
+int DB::updateWhere(
+  string $table,
+  array $fields,
+  array $params = [
+    'conditions' => 'id = ? AND queue = ?',
+    'bind'       => [$id, $queue],
+  ]
+)
+```
+
+<br>
+
+### G. Summary  <a id="db-summary">
 Many of these functions have their equivalent wrapper functions that will be described in the **Using Models** section.  Here are the descriptions for additional functions:
 1. count - Getter function for the private _count variable.
 2. findFirst - Returns the first result performed by an SQL query.
@@ -414,7 +633,19 @@ Validation must be defined in the `validator()` method. `save()` will not procee
 
 <br>
 
-### M. Model Summary  <a id="model-summary">
+### M. updateWhere <a id="update-where">
+Updates one or more rows in this model's underlying table using this framework's params-style conditions.
+     
+This method delegates to the DB::updateWhere() method and allows you to pass both the fields to update and a parameterized WHERE clause (using `conditions` and `bind` arrays just like find/findFirst).
+
+Example:
+```php
+Queue::updateWhere(
+    ['reserved_at' => date('Y-m-d H:i:s')],
+    ['conditions' => 'id = ?', 'bind' => [$jobId]]
+);
+```
+### N. Model Summary  <a id="model-summary">
 
 | Method | Description |
 |:------:|-------------|
