@@ -40,4 +40,7 @@ export default defineConfig({
         react(), // ✅ enables React fast refresh + JSX/TSX support
         FullReload(['resources/view/**/*.php', 'resources/views/**/*.php']),
     ],
+    optimizeDeps: {
+        include: ['@tinymce/tinymce-react', 'tinymce'],
+    },
 });
