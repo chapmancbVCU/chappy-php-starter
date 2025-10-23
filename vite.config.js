@@ -31,8 +31,9 @@ export default defineConfig({
     resolve: {
         alias: {
             tinymce: path.resolve(__dirname, 'node_modules/tinymce'),
-            '@': path.resolve(__dirname, 'resources/js'), // ✅ shortcut for imports
-            '@chappy' : path.resolve(__dirname, 'vendor/chappy-php/chappy-php-framework/src/React'),
+            '@tinymce/tinymce-react': path.resolve(__dirname, 'node_modules/@tinymce/tinymce-react'),
+            '@': path.resolve(__dirname, 'resources/js'),
+            '@chappy': path.resolve(__dirname, 'vendor/chappy-php/chappy-php-framework/src/React'),
             '@css': path.resolve(__dirname, 'resources/css'),
         }
     },
