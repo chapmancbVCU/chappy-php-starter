@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62a4ced8859ee466c42e927a5280810d",
+    "content-hash": "adf79a0ac8f40b10ecf3014ffd8bca03",
     "packages": [
         {
             "name": "brick/math",
@@ -137,11 +137,17 @@
         },
         {
             "name": "chappy-php/chappy-php-framework",
-            "version": "dev-main",
+            "version": "v1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chapmancbVCU/chappy-php-framework.git",
+                "reference": "218f3530014921de1f895d0b151756dc004ba42b"
+            },
             "dist": {
-                "type": "path",
-                "url": "../chappy-php-framework",
-                "reference": "d03fdf66ed6ad18cf078d53ba3ac262143402c8e"
+                "type": "zip",
+                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/218f3530014921de1f895d0b151756dc004ba42b",
+                "reference": "218f3530014921de1f895d0b151756dc004ba42b",
+                "shasum": ""
             },
             "require": {
                 "composer": "*",
@@ -167,24 +173,17 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Chappy\\": "src/",
                     "Core\\": "src/core/",
+                    "Chappy\\": "src/",
                     "Console\\": "src/console/",
-                    "Console\\Commands\\": "src/console/commands/",
-                    "Console\\Helpers\\": "src/console/helpers/"
+                    "Console\\Helpers\\": "src/console/helpers/",
+                    "Console\\Commands\\": "src/console/commands/"
                 },
                 "classmap": [
                     "src"
                 ]
             },
-            "scripts": {
-                "build-docs": [
-                    "@php src/api-docs/doctum.phar update src/api-docs/doctum.php -v"
-                ],
-                "post-install-cmd": [
-                    "@php src/scripts/setup.php"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -195,10 +194,11 @@
                 }
             ],
             "description": "A lightweight and extensible PHP MVC framework.",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/chapmancbVCU/chappy-php-framework/issues",
+                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.3.4"
+            },
+            "time": "2025-09-19T01:01:43+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -929,16 +929,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.6.1",
+            "version": "v5.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "f103601b29efebd7ff4a1ca7b3eeea9e3336a2a2"
+                "reference": "3a454ca033b9e06b63282ce19562e892747449bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/f103601b29efebd7ff4a1ca7b3eeea9e3336a2a2",
-                "reference": "f103601b29efebd7ff4a1ca7b3eeea9e3336a2a2",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/3a454ca033b9e06b63282ce19562e892747449bb",
+                "reference": "3a454ca033b9e06b63282ce19562e892747449bb",
                 "shasum": ""
             },
             "require": {
@@ -981,9 +981,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.6.1"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.6.2"
             },
-            "time": "2025-08-13T20:13:15+00:00"
+            "time": "2025-10-21T19:32:17+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -5355,9 +5355,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "chappy-php/chappy-php-framework": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
