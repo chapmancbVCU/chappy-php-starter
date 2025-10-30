@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'; // ✅ ADD THIS
 import FullReload from 'vite-plugin-full-reload';
 
 export default defineConfig({
+    publicDir: false,
     build: {
         outDir: 'public/build',
         manifest: true,
