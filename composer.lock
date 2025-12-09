@@ -137,7 +137,7 @@
         },
         {
             "name": "chappy-php/chappy-php-framework",
-            "version": "v1.3.9",
+            "version": "v1.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chapmancbVCU/chappy-php-framework.git",
@@ -196,7 +196,7 @@
             "description": "A lightweight and extensible PHP MVC framework.",
             "support": {
                 "issues": "https://github.com/chapmancbVCU/chappy-php-framework/issues",
-                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.3.9"
+                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.3.10"
             },
             "time": "2025-12-09T00:44:09+00:00"
         },
