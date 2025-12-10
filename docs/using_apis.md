@@ -38,50 +38,258 @@ Run the command:
 php console make:service WeatherService
 ```
 
-New file is created at `app\Services`.
+New file is created at `app\Services`.  In this class we will add support for OpenWeatherMap's free, OneCall, and GeoLocate APIs.
 
-Implement the `WeatherService` class:
+Begin implementation of the `WeatherService` class by importing `Core\Lib\Http\Api` and extend the `Api` class.
 ```php
 <?php
-declare(strict_types=1);
-
 namespace App\Services;
-
-use Core\Lib\Utilities\Env;
 use Core\Lib\Http\Api;
+/**
+ * Service that supports retrieving weather from OpenWeatherMap.
+ */
 class WeatherService extends Api {
-    public function __construct()
-    {
+
+}
+```
+
+<br>
+
+### A. Setting Our API Endpoints.
+Let's begin by declaring constants for the API endpoints that we will use:
+```php
+public const GEO_LOCATE = 'http://api.openweathermap.org/geo/1.0';
+public const ONE_CALL = 'http://api.openweathermap.org/data/3.0';
+public const STANDARD = 'http://api.openweathermap.org/data/2.5';
+```
+
+<br>
+
+### B. Our Constructor
+Next we implement the constructor:
+```php
+/**
+     * Setup instance of this class.  Configures default query with 
+     * appid and units for suggestions to be returned.
+     */
+    public function __construct(string $mode = self::STANDARD) {
+        
+        self::isValidMode($mode);
         parent::__construct(
-            baseUrl: 'https://api.openweathermap.org/data/2.5',
+            baseUrl: $mode,
             cacheNamespace: 'owm',
             defaultHeaders: ['Accept' => 'application/json'],
-            defaultQuery: [
-                'appid' => Env::get('OWM_API_KEY'),
-                // Set a default; client can override via ?units=metric|imperial
-                'units' => 'imperial',
-            ],
-            defaultTtl: 120,  // seconds to cache GETs
+            defaultQuery: self::buildQuery($mode),
+            defaultTtl: 120,
+            timeout: 6
+        );
+    }
+```
+
+The parent class constructor accepts the following arguments:
+- `$baseUrl` - The service's base url.  We use one of 3 constants that we declared above as parameter for the this class' constructor to set value.  
+- `$cacheNamespace` - Subdirectory under cache root.  Default value is `api`.
+- `$defaultHeaders` - Default headers for all requests.  Default value is `['Accept' => 'application/json']`.
+- `$defaultQuery` - Default query params for all requests.  Default value is an empty array.
+- `$defaultTtl` - Default cache TTL (seconds) for GET; 0 disables caching.  Default value is `0`.
+- `$timeout` - cURL timeout in seconds (also used as a connect timeout).  Default value is `0`.
+
+This constructor uses two helper functions:
+- `isValidMode()` - Test to ensure a supported mode is being set.
+- `buildQuery()` - Builds defaultQuery based on which API is selected.
+
+These functions are as follows:
+```php
+/**
+ * Builds defaultQuery based on which API is selected.
+ *
+ * @param string $mode The specific API to use.
+ * @return array $query The params for the defaultQuery.
+ */
+private static function buildQuery(string $mode): array {
+    $query = [];
+    $query['appid'] = env('OWM_API_KEY');
+    // $query['units'] = 'imperial';
+
+    if($mode === self::GEO_LOCATE) {
+        $query['limit'] = env('OWM_SEARCH_TERM_LIMIT');
+    }
+
+    return $query;
+}
+
+/**
+ * Determines if mode provided in constructor is valid value
+ *
+ * @param string $mode The mode that determines appropriate API call.
+ * @return void
+ */
+private static function isValidMode(string $mode): void {
+    if(!in_array($mode, [self::GEO_LOCATE, self::ONE_CALL, self::STANDARD])) {
+        throw new InvalidArgumentException("Invalid api call: $mode");
+    }
+}
+```
+
+<br>
+
+### C. Retrieving Data
+Below is the function that fetches data from their free API.
+```php
+/**
+ * Packages query for current conditions using free tier api call.
+ *
+ * @param array $query The query string
+ * @return array The response data for the API request containing 
+ * weather information.
+ */
+public function current(array $query): array {
+    $allowed = ['q', 'units', 'lang'];
+    $params = array_intersect_key($query, array_flip($allowed));
+    return $this->get('/weather', $params);
+}
+```
+
+The `$query` parameter contains data packaged together on the front end.  The query will contain information used to build the URl for the fetch request.  We want to ensure the request contains data that is allowed.  For this function we allow the query string (`q`), the system of units, and the preferred language.
+
+Next we package the `$query` into a $params array that is provided as a parameter to th Api class' `get` function.  The `get` function will perform the fetch request to OpenWeatherMap for us.
+
+An example of the complete URL that gets submitted is shown below:
+```sh
+https://api.openweathermap.org/data/2.5/weather?lat=37.5407&lon=-77.4360&units=imperial&appid=YOUR_API_KEY
+```
+
+The operation for OneCall and GeoLocation is similar.  For GeoLocation we only need to be concerned about the query string.  OneCall is a little more complex regarding the contents of the `$allowed` array.  Both functions are shown below:
+```php
+/**
+ * Packages query for geo location based on user input.
+ *
+ * @param array $query The query string.
+ * @return array The response data for the API request.
+ */
+public function geoLocation(array $query): array {
+    $allowed = ['q'];
+    $params = array_intersect_key($query, array_flip($allowed));
+    return $this->get('/direct', $params);
+}
+
+/**
+ * Packages query for onecall api call.
+ *
+ * @param array $query The query string.
+ * @return array The response data for the API request.
+ */
+public function oneCall(array $query): array {
+    $allowed = ['lat', 'lon', 'units', 'lang', 'exclude'];
+    $params = array_intersect_key($query, array_flip($allowed));
+    return $this->get('/onecall', $params);
+}
+```
+
+<br>
+
+### D. Putting It All Together
+The complete class is shown below:
+```php
+<?php
+namespace App\Services;
+
+use Core\Lib\Http\Api;
+use Core\Lib\Logging\Logger;
+use InvalidArgumentException;
+
+/**
+ * Service that supports retrieving weather from OpenWeatherMap.
+ */
+class WeatherService extends Api {
+    public const GEO_LOCATE = 'http://api.openweathermap.org/geo/1.0';
+    public const ONE_CALL = 'http://api.openweathermap.org/data/3.0';
+    public const STANDARD = 'http://api.openweathermap.org/data/2.5';
+    /**
+     * Setup instance of this class.  Configures default query with 
+     * appid and units for suggestions to be returned.
+     */
+    public function __construct(string $mode = self::STANDARD) {
+        
+        self::isValidMode($mode);
+        parent::__construct(
+            baseUrl: $mode,
+            cacheNamespace: 'owm',
+            defaultHeaders: ['Accept' => 'application/json'],
+            defaultQuery: self::buildQuery($mode),
+            defaultTtl: 120,
             timeout: 6
         );
     }
 
     /**
-     * Current conditions by free-form query 'q' (e.g., city,country).
-     * Supports 'q', 'units', 'lang', or lat/lon parameters.
+     * Builds defaultQuery based on which API is selected.
+     *
+     * @param string $mode The specific API to use.
+     * @return array $query The params for the defaultQuery.
      */
-    public function current(array $query): array
-    {
-        // Allow q=, zip=, or lat/lon; pass through units/lang if present
-        $allowed = ['q', 'zip', 'lat', 'lon', 'units', 'lang'];
-        $params  = array_intersect_key($query, array_flip($allowed));
+    private static function buildQuery(string $mode): array {
+        $query = [];
+        $query['appid'] = env('OWM_API_KEY');
+        // $query['units'] = 'imperial';
 
-        return $this->get('/weather', $params); // cached via Api::get
+        if($mode === self::GEO_LOCATE) {
+            $query['limit'] = env('OWM_SEARCH_TERM_LIMIT');
+        }
+
+        return $query;
+    }
+
+    /**
+     * Packages query for current conditions using free tier api call.
+     *
+     * @param array $query The query string
+     * @return array The response data for the API request containing 
+     * weather information.
+     */
+    public function current(array $query): array {
+        $allowed = ['q', 'units', 'lang'];
+        $params = array_intersect_key($query, array_flip($allowed));
+        return $this->get('/weather', $params);
+    }
+
+    /**
+     * Packages query for geo location based on user input.
+     *
+     * @param array $query The query string.
+     * @return array The response data for the API request.
+     */
+    public function geoLocation(array $query): array {
+        $allowed = ['q'];
+        $params = array_intersect_key($query, array_flip($allowed));
+        return $this->get('/direct', $params);
+    }
+
+    /**
+     * Packages query for onecall api call.
+     *
+     * @param array $query The query string.
+     * @return array The response data for the API request.
+     */
+    public function oneCall(array $query): array {
+        $allowed = ['lat', 'lon', 'units', 'lang', 'exclude'];
+        $params = array_intersect_key($query, array_flip($allowed));
+        return $this->get('/onecall', $params);
+    }
+
+    /**
+     * Determines if mode provided in constructor is valid value
+     *
+     * @param string $mode The mode that determines appropriate API call.
+     * @return void
+     */
+    private static function isValidMode(string $mode): void {
+        if(!in_array($mode, [self::GEO_LOCATE, self::ONE_CALL, self::STANDARD])) {
+            throw new InvalidArgumentException("Invalid api call: $mode");
+        }
     }
 }
 ```
-
-Make sure you import `Core\Lib\Http\Api` and extend the `Api` class.
 
 <br>
 
