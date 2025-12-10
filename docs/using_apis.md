@@ -136,7 +136,7 @@ class WeatherController extends Controller
 Router
 
 Your router maps /{Controller}/{action}. Two common choices:
-- ***Option A** (as written): call `GET /api/weather/show?q=...`
+- **Option A** (as written): call `GET /api/weather/show?q=...`
 - **Option B**: make indexAction and call `GET /weather?q=...`
 
 Use whichever you prefer—your current style is fine.
