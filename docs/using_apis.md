@@ -44,6 +44,7 @@ Begin implementation of the `WeatherService` class by importing `Core\Lib\Http\A
 ```php
 <?php
 namespace App\Services;
+use Core\Lib\Logging\Logger;
 use Core\Lib\Http\Api;
 /**
  * Service that supports retrieving weather from OpenWeatherMap.
@@ -52,6 +53,8 @@ class WeatherService extends Api {
 
 }
 ```
+
+**TIP:** Debugging the back end when performing API calls can be difficult because calls to the global `dd()` and `dump()` do not get rendered in the front end when using React.js.  That is why we added an import to the `use Core\Lib\Logging\Logger` class.  Use the `Logger::log()` function to write your debugging details to the log file.
 
 <br>
 
