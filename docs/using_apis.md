@@ -332,6 +332,8 @@ class WeatherController extends Controller {
 }
 ```
 
+<br>
+
 ### A. Free tier API
 
 We will begin with adding support for the free API.  First we need to extract the required query parameters.
@@ -502,6 +504,7 @@ public function searchAction() {
 Key differences:
 - We return a response if an invalid location is provided.
 - When creating an instance of the `WeatherService` class we use the `GEO_LOCATE` constant to select the correct API.
+
 <br>
 
 ### D. Putting It All Together
