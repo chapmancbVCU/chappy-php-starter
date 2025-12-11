@@ -636,40 +636,145 @@ Let Guests read weather; restrict writes if needed.
 <br>
 
 ## 6. Front End <a id="front-end"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Make a new component:
-```sh
-php console react:component WeatherCard
-```
-
-The file is created at `resources\js\components\`.
-
-Import `apiGet` and `useAsync` from `@chappy/utils/api` then implement the `WeatherCard`.
-
-```jsx
-import React from 'react';
+For the front end we will rely on the framework's `api` utility.  The import statement is as follows:
+```js
 import { apiGet, useAsync } from '@chappy/utils/api';
-
-export default function WeatherCard({ city = 'Newport News, Virginia', units = 'imperial' }) {
-  const { data, loading, error } = useAsync(({ signal }) =>
-    apiGet('/weather/show', { query: { q: city, units }, signal }),
-  [city, units]);
-
-  if (loading) return <div>Loading…</div>;
-  if (error)   return <div className="text-danger">{error.message}</div>;
-
-  const d = data?.data || {};
-  return (
-    <div className="card p-3">
-      <h5 className="mb-2">{d.name}</h5>
-      <div>
-        {Math.round(d.main?.temp)}°{units === 'metric' ? 'C' : 'F'} — {d.weather?.[0]?.description}
-      </div>
-    </div>
-  );
-}
 ```
 
-Mount from a PHP host view the same way you mount other React pages (via your `app.jsx` entry + `data-component/data-props`).
+<br>
+
+### A. Fetching Weather Data in React Using `useAsync`
+The following example demonstrates how to fetch weather data inside a React component using the framework's built-in `useAsync` hook together with the API endpoints exposed by the backend (`/weather/currentConditions` and `/weather/oneCall`).
+
+This pattern provides:
+- Automatic loading and error tracking
+- Safe cancellation 
+- Dependency-based re-execution (similar to React's `useEffect`)
+
+<br>
+
+#### 1. Fetching Current Weather Conditions
+
+```php
+/**
+ * Fetches data for current conditions using free tier API.
+ */
+const { 
+    data: currentData, 
+    loading: currentLoading, 
+    error: currentError
+} = useAsync(({ signal }) => {
+        if (fetch == false) return Promise.resolve(null);
+        if (!city) return Promise.resolve(null);
+
+        const u = units || "imperial";
+        return apiGet("/weather/currentConditions", { 
+            query: { q: city, units: u }, 
+            signal 
+        });
+}, [city, units]);
+
+const current = currentData?.data || {};
+const coords = current?.coord;
+```
+
+**Explanation**
+1. useAsync wrapper
+    The callback passed to `useAsync` is executed whenever the values in the dependency array (`city`, `units`) change.
+2. Early exits
+  - If fetch is disabled, the hook returns immediately.
+  - If no city is provided, the request is skipped.
+3. Calling the backend endpoint
+
+    The hook calls your PHP controller at:
+```bash
+/weather/currentConditions?q={city}&units={units}
+```
+4. Automatic state handling 
+
+    `useAsync` exposes:
+
+    - `currentLoading` → true while waiting
+    - `currentError` → contains error info if the request fails
+    - `currentData` → normalized API response
+
+5. Extracting coordinates
+
+    The API returns the coord block from OpenWeatherMap.
+    These coordinates are required for the next API call (One Call).
+<br>
+
+#### 2. Fetching Extended Forecast (One Call API)
+```jsx
+/**
+ * Fetches data using oneCall api.
+ */
+const {
+    data: oneCallData,
+    loading: oneCallLoading,
+    error: oneCallError,
+} = useAsync(({ signal }) => {
+    if (fetch == false) return Promise.resolve(null);
+
+    if (!coords || typeof coords.lat !== "number" || typeof coords.lon !== "number") {
+        return Promise.resolve(null);
+    }
+
+    const u = units || "imperial";
+    return apiGet("/weather/oneCall", { 
+        query: { lat: coords.lat, lon: coords.lon, units: u }, 
+        signal 
+    });
+}, [coords?.lat, coords?.lon, units]);
+
+const oneCall = oneCallData?.data || {};
+```
+
+**Explanation**
+1. Runs only after coordinates are available
+
+    The hook waits until coords.lat and coords.lon are valid numbers.
+    This ensures the One Call API is not triggered prematurely.
+
+2. Dependency-driven updates
+
+    The hook re-runs when:
+    - The latitude changes
+    - The longitude changes
+    - The selected temperature unit changes
+
+3. Backend endpoint call
+
+    The request is routed through:
+```bash
+/weather/oneCall?lat={lat}&lon={lon}&units={units}
+```
+    Your PHP backend then proxies this call to the OpenWeatherMap One Call API.
+
+4. Returned data
+
+    `oneCall` typically contains:
+    - Current conditions
+    - Hourly forecast
+    - Daily forecast
+    - Alerts (location-dependent)
+
+5. Graceful error handling
+
+    Any network or upstream failure is captured in `oneCallError`.
+    The hook will safely cancel the request if the component unmounts.
+
+<br>
+
+#### 3. Summary
+
+This pattern demonstrates how to chain API calls safely:
+- Fetch current conditions → extract coordinates
+- Use coordinates to fetch detailed forecast data
+- Handle loading and errors automatically
+- Prevent unnecessary or invalid API calls
+
+The combination of `useAsync`, `apiGet()`, and your framework’s PHP controllers creates a clean and reliable workflow for consuming external APIs inside React.
 
 <br>
 
