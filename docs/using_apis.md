@@ -786,6 +786,8 @@ This feature is typically used for:
 - selecting a location before fetching weather data
 - validating city names before making additional API calls
 
+<br>
+
 #### 1. Setup
 ```jsx
 /**
@@ -868,6 +870,8 @@ Your backend wraps results inside a `data` property, so this line extracts the a
 ```
 
 These entries can then populate a dropdown or pass coordinates to the next API call.
+
+<br>
 
 #### 2. Summary
 1. This hook provides a clean and efficient way to search for cities:
