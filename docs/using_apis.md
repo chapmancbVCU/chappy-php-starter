@@ -769,12 +769,115 @@ const oneCall = oneCallData?.data || {};
 #### 3. Summary
 
 This pattern demonstrates how to chain API calls safely:
-- Fetch current conditions → extract coordinates
-- Use coordinates to fetch detailed forecast data
-- Handle loading and errors automatically
-- Prevent unnecessary or invalid API calls
+1. Fetch current conditions → extract coordinates
+2. Use coordinates to fetch detailed forecast data
+3. Handle loading and errors automatically
+4. Prevent unnecessary or invalid API calls
 
 The combination of `useAsync`, `apiGet()`, and your framework’s PHP controllers creates a clean and reliable workflow for consuming external APIs inside React.
+
+<br>
+
+### B. GeoLocate Data
+The following example demonstrates how the frontend performs a geolocation lookup based on a user’s search input. This request uses your backend’s /weather/search endpoint, which proxies the OpenWeatherMap Direct Geocoding API.
+
+This feature is typically used for:
+- auto-complete search bars
+- selecting a location before fetching weather data
+- validating city names before making additional API calls
+
+#### 1. Setup
+```jsx
+/**
+ * Performs API request for geo location data.
+ */
+const { data: options = [], loading, error } = useAsync(({ signal }) => {
+    if (!q) return Promise.resolve([]);
+    return apiGet('/weather/search', { query: { q }, signal })
+}, [q]);
+
+let geoData = options?.data;
+```
+
+**Explanation**
+
+1. Triggered by user input
+
+The hook runs whenever the search query q changes:
+```jsx
+useAsync(..., [q]);
+```
+
+This makes the geolocation lookup behave like a live search.
+
+2. Prevents unnecessary API calls
+
+If q is empty or undefined:
+
+```jsx
+if (!q) return Promise.resolve([]);
+```
+
+3. Calls the backend search endpoint
+
+```jsx
+apiGet('/weather/search', { query: { q }, signal })
+```
+
+This hits your PHP controller:
+
+```bash
+/weather/search?q={searchTerm}
+```
+
+Your backend then calls the OpenWeatherMap Direct Geocoding API and returns:
+    - city name
+    - state
+    - country
+    - latitude
+    - longitude
+
+4. Handles loading and error states automatically
+
+From useAsync, the hook receives:
+  - loading → true while fetching
+  - error → error object if the request fails
+  - options → normalized backend response
+
+This keeps UI logic simple and consistent.
+
+5. Normalizes returned data
+
+```jsx
+let geoData = options?.data;
+```
+
+Your backend wraps results inside a `data` property, so this line extracts the actual results array.
+
+`geoData` typically contains multiple matching locations, such as:
+```json
+[
+  {
+    "name": "Richmond",
+    "state": "Virginia",
+    "country": "US",
+    "lat": 37.5407,
+    "lon": -77.4360
+  }
+]
+```
+
+These entries can then populate a dropdown or pass coordinates to the next API call.
+
+#### 2. Summary
+1. This hook provides a clean and efficient way to search for cities:
+2. Runs only when the user types something
+3. Avoids wasted API calls for empty input
+4. Queries the backend for geolocation data
+5. Uses built-in loading/error state handling
+6. Delivers a list of matching cities for UI components
+
+It's a simple but powerful example of using useAsync to build a reactive, API-driven front end.
 
 <br>
 
