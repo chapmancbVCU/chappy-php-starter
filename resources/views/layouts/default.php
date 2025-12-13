@@ -32,9 +32,6 @@
     <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>resources/css/alerts/alertMsg.min.css?v=<?=config('config.version')?>" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>node_modules/@fortawesome/fontawesome-free/css/all.min.css" media="screen" title="no title" charset="utf-8">
-    <script src="<?=env('APP_DOMAIN', '/')?>node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="<?=env('APP_DOMAIN', '/')?>node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="<?=env('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?=env('APP_DOMAIN', '/')?>resources/js/alerts/alertMsg.min.js?v=<?=config('config.version')?>"></script>
     <?= $this->content('head'); ?>
 
