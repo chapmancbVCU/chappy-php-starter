@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62a4ced8859ee466c42e927a5280810d",
+    "content-hash": "adf79a0ac8f40b10ecf3014ffd8bca03",
     "packages": [
         {
             "name": "brick/math",
@@ -137,11 +137,17 @@
         },
         {
             "name": "chappy-php/chappy-php-framework",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "../chappy-php-framework",
+            "version": "v1.3.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chapmancbVCU/chappy-php-framework.git",
                 "reference": "b2f76ec38121b7ad95379341f27e5d6f944666de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/b2f76ec38121b7ad95379341f27e5d6f944666de",
+                "reference": "b2f76ec38121b7ad95379341f27e5d6f944666de",
+                "shasum": ""
             },
             "require": {
                 "composer": "*",
@@ -167,24 +173,17 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Chappy\\": "src/",
                     "Core\\": "src/core/",
+                    "Chappy\\": "src/",
                     "Console\\": "src/console/",
-                    "Console\\Commands\\": "src/console/commands/",
-                    "Console\\Helpers\\": "src/console/helpers/"
+                    "Console\\Helpers\\": "src/console/helpers/",
+                    "Console\\Commands\\": "src/console/commands/"
                 },
                 "classmap": [
                     "src"
                 ]
             },
-            "scripts": {
-                "build-docs": [
-                    "@php src/api-docs/doctum.phar update src/api-docs/doctum.php -v"
-                ],
-                "post-install-cmd": [
-                    "@php src/scripts/setup.php"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -195,10 +194,11 @@
                 }
             ],
             "description": "A lightweight and extensible PHP MVC framework.",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/chapmancbVCU/chappy-php-framework/issues",
+                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.3.10"
+            },
+            "time": "2025-12-09T00:44:09+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -2017,20 +2017,20 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "4.9.1",
+            "version": "4.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "81f941f6f729b1e3ceea61d9d014f8b6c6800440"
+                "reference": "8429c78ca35a09f27565311b98101e2826affde0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/81f941f6f729b1e3ceea61d9d014f8b6c6800440",
-                "reference": "81f941f6f729b1e3ceea61d9d014f8b6c6800440",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/8429c78ca35a09f27565311b98101e2826affde0",
+                "reference": "8429c78ca35a09f27565311b98101e2826affde0",
                 "shasum": ""
             },
             "require": {
-                "brick/math": "^0.8.8 || ^0.9 || ^0.10 || ^0.11 || ^0.12 || ^0.13 || ^0.14",
+                "brick/math": "^0.8.16 || ^0.9 || ^0.10 || ^0.11 || ^0.12 || ^0.13 || ^0.14",
                 "php": "^8.0",
                 "ramsey/collection": "^1.2 || ^2.0"
             },
@@ -2089,9 +2089,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
-                "source": "https://github.com/ramsey/uuid/tree/4.9.1"
+                "source": "https://github.com/ramsey/uuid/tree/4.9.2"
             },
-            "time": "2025-09-04T20:59:21+00:00"
+            "time": "2025-12-14T04:43:48+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -5363,9 +5363,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "chappy-php/chappy-php-framework": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
