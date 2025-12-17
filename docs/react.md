@@ -26,7 +26,27 @@ This framework natively supports React.js views along with any supporting compon
 ## 2. Vite Setup <a id="vite-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 All npm packages needed for React are automatically installed when you create a new project.
 
-**Production**: build with `npm run build` and use your PHP helper (`Vite::tags(...)`) to load hashed assets from `public/build/manifest.json`.
+**Development**
+
+Start the development server by running the following command:
+```bash
+npm run dev
+```
+
+Make sure the `APP_ENV` environment variable is set to `local`.  If you are using the PHP standalone the `APP_DOMAIN` environment variable should be set to `'http://localhost:8000/'`.
+
+**Pre-Production**
+
+Test your app in pre-production with the PHP standalone server by running the following command:
+```bash
+npm run build
+```
+
+Set the `APP_ENV` environment variable to `production`.  Make sure the Vite server is not running.  Your React.js views will now render without using the Vite server.
+
+**Production**
+
+When configuring your Apache or Nginx server make sure the `APP_DOMAIN` environment variable is set to `/`.
 
 <br>
 
