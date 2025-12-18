@@ -12,7 +12,7 @@ This framework natively supports React.js views along with any supporting compon
 
 **Goals & Architecture**
 - Goal: 
-    - richer, interactive UI via React while keeping your PHP framework’s routing, ACL, validation, and controllers.
+    - Richer, interactive UI via React while keeping this framework’s routing, ACL, validation, and controllers.
     - Support this feature natively so user does no have to spend time setting up React.
     - Support an environment where PHP and React views coexist within the same project.
 
