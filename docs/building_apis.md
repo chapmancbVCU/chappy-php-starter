@@ -12,7 +12,12 @@ The built-in API library can be utilized to build your own API.  Just like regul
 <br>
 
 ## 2. Building The API End Points <a id="end-points"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-When building API End Points we will leverage a Controller class.  This discussion will leverage code from a weather app's favorites features for demonstration purposes.  Let's begin by running the following command:
+When building API End Points we will leverage a Controller class and Model class.  This discussion will leverage code from a weather app's favorites features for demonstration purposes.  
+
+
+
+
+Next, we need to create a controller.  Let's begin by running the following command:
 
 ```bash
 php console make:controller Favorites
