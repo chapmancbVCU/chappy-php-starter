@@ -230,7 +230,7 @@ Example:
 
 <br>
 
-**`CSRF`**
+**`CSRFInput`**
 
 Generates hidden component for csrf token.
 
@@ -240,6 +240,23 @@ Prop name:
 Example:
 ```jsx
 <Forms.CSRF />
+```
+
+<br>
+
+**`CSRFToken`**
+
+Returns CSRF token that is used when a form is submitted.
+
+Argument:
+- `{Event} e` - The event associated with a form submission.
+
+Returns:
+- `{string}` - The CSRF token string.
+
+Example: 
+```jsx
+Forms.CSRFToken(e)
 ```
 
 <br>

@@ -1,16 +1,18 @@
 import { defineConfig } from 'vite';
 import path from 'path';
-import react from '@vitejs/plugin-react'; // ✅ ADD THIS
+import react from '@vitejs/plugin-react';
 import FullReload from 'vite-plugin-full-reload';
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+    // Use a base only for *build* so runtime assets resolve correctly
+    base: command === 'build' ? '/public/build/' : '',
     publicDir: false,
     build: {
         outDir: 'public/build',
         manifest: true,
         rollupOptions: {
             input: {
-                main: 'resources/js/app.jsx',   // ✅ use .jsx for React entry
+                main: 'resources/js/app.jsx',
                 styles: 'resources/css/app.css',
             },
         },
@@ -23,7 +25,7 @@ export default defineConfig({
         cors: true,
         fs: {
             allow: [
-                '..', 
+                '..',
                 'node_modules',
                 path.resolve(__dirname, 'vendor/chappy-php/chappy-php-framework'),
             ]
@@ -39,10 +41,10 @@ export default defineConfig({
         }
     },
     plugins: [
-        react(), // ✅ enables React fast refresh + JSX/TSX support
+        react(),
         FullReload(['resources/view/**/*.php', 'resources/views/**/*.php']),
     ],
     optimizeDeps: {
         include: ['@tinymce/tinymce-react', 'tinymce'],
     },
-});
+}));

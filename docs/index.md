@@ -34,7 +34,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * A. [Controllers and React Views](controllers_and_views)
     * B. [React Forms](react_forms)
     * C. [React Utils](react_utils)
-    * D. [Using APIs](using_apis) - Coming soon
+    * D. [Using APIs](using_apis)
     * E. [Building APIs](building_apis) - Coming soon
 19. [Routing](routing)
 20. [Server Side Validation](server_side_validation)
