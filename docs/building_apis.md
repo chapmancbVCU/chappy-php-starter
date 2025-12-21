@@ -126,4 +126,56 @@ public function storeAction() {
 }
 ```
 
-First we perform a CSRF check since we will be submitting a form.  Next we create a new `Favorites` object and use the `get()` from the `JsonResponse()` trait to retrieve data from our front end.  This is similar to using the `$this->request->get` for  PHP views.
+This function performs the following tasks:
+- We perform a CSRF check since we will be submitting a form.  
+- Create a new `Favorites` object and use the `get()` from the `JsonResponse()` trait to retrieve data from our front end.  This is similar to using the `$this->request->get` for  PHP views.  
+- Set `user_id` to id of current user.
+- Save the record.
+- Catch any exceptions and return jsonError response.
+
+Next we create our form:
+```jsx
+<form method="POST" onSubmit={handleSubmit}>
+    <Forms.CSRFInput />
+    <Forms.Hidden name="city" value={weather.getCityInfo()} />
+    <Forms.Hidden name="latitude" value={weather.getLatitude()} />
+    <Forms.Hidden name="longitude" value={weather.getLongitude()} />
+    <button 
+        type="submit" 
+        className="btn btn-primary btn-sm mt-1">
+        <i className="me-2 fa fa-plus"></i>Add
+    </button>
+</form>
+```
+
+This form performs the following steps:
+- Reference the `handleSubmit` callback by setting it as the value for the `onSubmit` attribute.
+- Add CSRFInput hidden element.
+- Use hidden elements to send the name of the city, latitude, and longitude to the backend.  This form needs no input fields for this task.
+
+We now need to handle submission of the form as shown below:
+```jsx
+async function handleSubmit(e) {
+    const storedWeather = weather.readStorage();
+    e.preventDefault();
+    try {
+        const payload = {
+            name: storedWeather.location,
+            latitude: e.target.latitude.value,
+            longitude: e.target.longitude.value,
+            csrf_token: Forms.CSRFToken(e)
+        }
+        const json = await apiPost("/favorites/store", payload);
+        window.location.reload();
+    } catch (err) {
+        setError(apiError(err));
+    }    
+}
+```
+
+This function performs the following steps:
+- Tell the user agent that the event is being explicitly handled.
+- Inside the try block we ned to setup the payload.  We need to send the location's name, latitude, longitude, and CSRF as part of our request.
+- Call the apiPost function with our route and payload as our parameters.
+- Reload the window when we successfully submit our request.
+- Catch any errors and present them to the user.
