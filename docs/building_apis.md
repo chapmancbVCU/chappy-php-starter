@@ -7,6 +7,7 @@
     * A. [Create](#create)
     * B. [Read](#read)
     * C. [Update](#update)
+    * D. [Delete](#delete)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -213,6 +214,8 @@ This function performs the following steps:
 - Reload the window when we successfully submit our request.
 - Catch any errors and present them to the user.
 
+This example uses the `apiPost` and `useAsync` utilities, which are documented in the **API Utility and JsonResponse Trait** section.
+
 <br>
 
 ### B. Read  <a id="read"></a>
@@ -337,3 +340,64 @@ async function handleSubmit(e) {
 }
 ```
 
+This example uses the `apiPost` and `useAsync` utilities, which are documented in the **API Utility and JsonResponse Trait** section.
+
+<br>
+
+### D. Delete  <a id="delete"></a>
+The controller action for the delete operation is shown below.
+```php
+public function destroyAction(int $id) {
+    try {
+        if(!$this->apiCsrfCheck()) {
+            return $this->jsonError('Corrupted token');
+        }
+        $favorite = Favorites::findById($id);
+        if($favorite) {
+            $favorite->delete();
+        }
+    } catch (Throwable $e){
+        return $this->jsonError('Server error', 500);
+    }
+}
+```
+
+This function performs the following tasks:
+- CSRF check.
+- Find Favorite record using ID provided.
+- Performs delete operation.
+- Report any errors that may exist.
+
+The form is pretty straight forward.  No data is sent as part of request except for the CSRF token by the form.
+```jsx
+<form method="POST" onSubmit={onDeleteClick}>
+    <Forms.CSRFInput />
+    <button 
+        type="submit" 
+        className="btn-danger delete-favorite">
+        <i className="fa fa-times"></i>
+    </button>
+</form>
+```
+
+The onDeleteClick callback is shown below.
+```jsx
+async function onDeleteClick(e) {
+    e.preventDefault()
+    if(window.confirm(`Are you sure you want to delete the location ${favorite.name}?`)) {
+        try {
+            const payload = {
+                csrf_token: Forms.CSRFToken(e)
+            }
+            const json = await apiDelete(`/favorites/destroy/${favorite.id}`, payload);
+            window.location.reload();
+        } catch (err) {
+            setError(apiError(err));
+        }
+    }
+}
+```
+
+The above function sends the CSRF token as the payload and uses the `id` for the favorite record as a parameter in the path.
+
+This example uses the `apiDelete` and `useAsync` utilities, which are documented in the **API Utility and JsonResponse Trait** section.
