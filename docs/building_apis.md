@@ -204,3 +204,64 @@ This function performs the following steps:
 <br>
 
 ### B. Create  <a id="read"></a>
+The read operation is pretty straight forward.  We implement our action, perform an `apiGet` function call, and render the data.  In this section the favorites will be displayed as a series of cards.
+
+The controller's action is pretty straight forward.  We determine who is the logged in user, find all their favorites, and return the response as shown below:
+
+```php
+public function showAction(): void {
+    $user = AuthService::currentUser();
+    $data = Favorites::findAllByUserId($user->id);
+    $this->jsonResponse(['success' => true, 'data' => $data]);
+}
+```
+
+We will use a hook that we will import into our views to retrieve the data.
+
+```jsx
+import { useAsync, apiGet } from "@chappy/utils/api";
+
+/**
+ * Obtains list favorites using the showAction of the FavoritesController.
+ * @returns 
+ */
+const useFavorites = () => {
+    const { data, loading, error } = useAsync(({ signal }) => 
+            apiGet('/favorites/show', { signal }))
+    
+    let favorites = data?.data;
+
+    return { favorites }
+}
+
+export default useFavorites;
+```
+
+This hook retrieves a list of favorites from the back end using the **FavoritesController** `showAction` endpoint.
+- The API request is executed automatically when the component using this hook is mounted.
+- The response data is normalized and exposed as `favorites`.
+- The components consuming this hook do **not** need to be aware of how the API call is implemented.
+
+This example uses the `apiGet` and `useAsync` utilities, which are documented in the **API Utility and JsonResponse Trait** section.
+
+Finally, were present the data to the user.
+```jsx
+function Favorites({ favorites, units }) {
+    const isDataNotEmpty = favorites && Object.keys(favorites).length > 0;
+
+    return (
+        <>
+            {isDataNotEmpty && (
+                <div className="favorites-bar mx-auto my-3">
+                    <h5 className="text-center mt-4">Favorite Locations</h5>
+                    <div className="favorite-cards-container">
+                        {favorites && favorites.map((favorite, index) => (
+                            <FavoritesCard favorite={favorite} key={index} units={units}/> 
+                        ))}
+                    </div>
+                </div>
+            )}
+        </>
+    );
+}  
+```
