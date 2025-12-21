@@ -36,7 +36,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * B. [React Forms](react_forms)
     * C. [React Utils](react_utils)
     * D. [Using APIs](using_apis)
-    * E. [Building APIs](building_apis) - Coming soon
+    * E. [Building APIs](building_apis)
 19. [Routing](routing)
 20. [Server Side Validation](server_side_validation)
 21. [Services](services)
