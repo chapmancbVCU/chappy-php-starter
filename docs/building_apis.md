@@ -2,8 +2,10 @@
 
 ## Table of contents
 1. [Overview](#overview)
-2. [Building The API End Points](#end-points)
+2. [Routing](#routing)
+3. [Building The API End Points](#end-points)
     * A. [Create](#create)
+    * B. [Read](#read)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -11,7 +13,26 @@ The built-in API library can be utilized to build your own API.  Just like regul
 
 <br>
 
-## 2. Building The API End Points <a id="end-points"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Routing <a id="routing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Before we implement anything we need to setup or routing.
+
+```json
+"LoggedIn" : {
+    "denied" : {
+        "Auth" : ["login", "register", "resetPassword"]
+    },
+    "Auth" : ["logout"],
+    "Contacts" : ["*"],
+    "Profile" : ["*"],
+    "Favorites" : ["store", "show", "destroy", "patch"]
+},
+```
+
+In the json snippet above we added a new section that will match the name of our controller.  Since we want this feature to be available only to logged in users we set our routes inside the LoggedIn section.  The name of our routs will be `store`, `show`, `destroy`, and `patch`.
+
+<br>
+
+## 3. Building The API End Points <a id="end-points"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 When building API End Points we will leverage a Controller class and Model class.  This discussion will leverage code from a weather app's favorites features for demonstration purposes.  
 
 First we need to create a model:
@@ -179,3 +200,7 @@ This function performs the following steps:
 - Call the apiPost function with our route and payload as our parameters.
 - Reload the window when we successfully submit our request.
 - Catch any errors and present them to the user.
+
+<br>
+
+### B. Create  <a id="read"></a>
