@@ -15,7 +15,7 @@
     * D. [Putting It All Together](#together)
 5. [Router & ACL](#router)
 6. [Front End](#front-end)
-    * A. [Fetching Weather Data in React Using useAsync] (#fetching-data)
+    * A.[Fetching Weather Data in React Using useAsync](#fetching-data)
     * B [GeoLocate Data](#geo-locate-data)
 
 <br>
