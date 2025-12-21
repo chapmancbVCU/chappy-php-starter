@@ -3,7 +3,7 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [Building The API End Points](#end-points)
-
+    * A. [Create](#create)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -102,3 +102,28 @@ class FavoritesController extends Controller {
     }
 }
 ```
+
+<br>
+
+### A. Create  <a id="create"></a>
+This section we will discuss what is needed to retrieve records from our API and present the data to the user.
+
+In our FavoritesController we will create the following function:
+```php
+public function storeAction() {
+    try {
+        if(!$this->apiCsrfCheck()) {
+            return $this->jsonError('Corrupted token');
+        }
+
+        $favorite = new Favorites();
+        $favorite->assign($this->get());
+        $favorite->user_id = AuthService::currentUser()->id;
+        $favorite->save();
+    } catch (Throwable $e){
+        return $this->jsonError('Server error', 500);
+    }
+}
+```
+
+First we perform a CSRF check since we will be submitting a form.  Next we create a new `Favorites` object and use the `get()` from the `JsonResponse()` trait to retrieve data from our front end.  This is similar to using the `$this->request->get` for  PHP views.
