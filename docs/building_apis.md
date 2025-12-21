@@ -307,3 +307,33 @@ public function patchAction(int $id) {
     }
 }
 ```
+
+The form that we will use is as follows:
+```jsx
+<form method="POST" onSubmit={handleSubmit}>
+    <Forms.CSRFInput />
+    <button 
+        type="submit" 
+        className="btn btn-primary btn-sm mt-1">
+        <i className="me-2 fa fa-home"></i>Set Home
+    </button>
+</form>
+```
+
+There is no need to have any input fields besides the CSRF token.  The only data that we need to send is the `$id` of the currently selected favorite.  We accomplish this as a parameter for our route as shown below:
+```jsx
+async function handleSubmit(e) {
+    const storedWeather = weather.readStorage();
+    e.preventDefault();
+    try {
+        const payload = {
+            csrf_token: Forms.CSRFToken(e)
+        }
+        const json = await apiPost(`/favorites/patch/${favorite.id}`, payload);
+        window.location.reload();
+    } catch (err) {
+        setError(apiError(err));
+    }
+}
+```
+
