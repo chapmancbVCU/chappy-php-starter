@@ -4,10 +4,20 @@
 1. [Overview](#overview)
 2. [Configuration](#configuration)
 3. [Service: OpenWeather client (server-side)](#service)
+    * A. [Setting Up Our Service](#service-setup)
+    * B. [Constructor](#constructor)
+    * C. [Retrieving Data](#retrieving-data)
+    * D. [Putting It All Together](#putting-it-all-together)
 4. [Controller: API endpoint](#controller)
+    * A. [Free tier API](#free-tier-api)
+    * B. [OneCall API](#one-call-api)
+    * C. [GeoLocation Data](#geo-location-data)
+    * D. [Putting It All Together](#together)
 5. [Router & ACL](#router)
 6. [Front End](#front-end)
-7. [Test](#test)
+    * A. [Fetching Weather Data in React Using useAsync] (#fetching-data)
+    * B [GeoLocate Data](#geo-locate-data)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -58,7 +68,7 @@ class WeatherService extends Api {
 
 <br>
 
-### A. Setting Our Service.
+### A. Setting Up Our Service <a id="service-setup"></a>
 Let's begin by declaring constants for the API endpoints that we will use:
 ```php
 public const GEO_LOCATE = 'http://api.openweathermap.org/geo/1.0';
@@ -68,7 +78,7 @@ public const STANDARD = 'http://api.openweathermap.org/data/2.5';
 
 <br>
 
-### B. Our Constructor
+### B. Our Constructor <a id="constructor"></a>
 Next we implement the constructor:
 ```php
 /**
@@ -136,7 +146,7 @@ private static function isValidMode(string $mode): void {
 
 <br>
 
-### C. Retrieving Data
+### C. Retrieving Data <a id="retrieving-data"></a>
 Below is the function that fetches data from their free API.
 ```php
 /**
@@ -191,7 +201,7 @@ public function oneCall(array $query): array {
 
 <br>
 
-### D. Putting It All Together
+### D. Putting It All Together <a id="putting-it-all-together"></a>
 The complete class is shown below:
 ```php
 <?php
@@ -334,7 +344,7 @@ class WeatherController extends Controller {
 
 <br>
 
-### A. Free tier API
+### A. Free tier API <a id="free-tier-api"></a>
 
 We will begin with adding support for the free API.  First we need to extract the required query parameters.
 ```php
@@ -397,7 +407,7 @@ public function currentConditionsAction() {
 
 <br>
 
-### B. OneCall API
+### B. OneCall API <a id="one-call-api"></a>
 The process is similar for OneCall requests.  Extract the query parameters:
 ```php
 $lat = $this->request->get('lat');
@@ -476,7 +486,7 @@ public function oneCallAction() {
 
 <br>
 
-### C. GeoLocation Data
+### C. GeoLocation Data <a id="geo-location-data"></a>
 We also want to provide a list of candidate locations while the user types into the search bar.  The function is as follows:
 ```php
 /**
@@ -507,7 +517,7 @@ Key differences:
 
 <br>
 
-### D. Putting It All Together
+### D. Putting It All Together <a id="together"></a>
 The complete class is shown below:
 ```php
 <?php
@@ -643,7 +653,7 @@ import { apiGet, useAsync } from '@chappy/utils/api';
 
 <br>
 
-### A. Fetching Weather Data in React Using `useAsync`
+### A. Fetching Weather Data in React Using useAsync <a id="fetching-data"></a>
 The following example demonstrates how to fetch weather data inside a React component using the framework's built-in `useAsync` hook together with the API endpoints exposed by the backend (`/weather/currentConditions` and `/weather/oneCall`).
 
 This pattern provides:
@@ -778,8 +788,8 @@ The combination of `useAsync`, `apiGet()`, and your framework’s PHP controller
 
 <br>
 
-### B. GeoLocate Data
-The following example demonstrates how the frontend performs a geolocation lookup based on a user’s search input. This request uses your backend’s /weather/search endpoint, which proxies the OpenWeatherMap Direct Geocoding API.
+### B. GeoLocate Data <a id="geo-locate-data"></a>
+The following example demonstrates how the frontend performs a GeoLocation lookup based on a user’s search input. This request uses your backend’s /weather/search endpoint, which proxies the OpenWeatherMap Direct Geocoding API.
 
 This feature is typically used for:
 - auto-complete search bars
@@ -882,23 +892,3 @@ These entries can then populate a dropdown or pass coordinates to the next API c
 6. Delivers a list of matching cities for UI components
 
 It's a simple but powerful example of using useAsync to build a reactive, API-driven front end.
-
-<br>
-
-## 7. Test <a id="test"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-**Browser/React**
-Open a page that renders WeatherCard.
-
-**cURL / Postman**
-```bash
-curl "http://localhost:8000/api/weather/show?q=Austin,TX&units=imperial"
-```
-
-**Example error**
-```json
-{
-  "success": false,
-  "message": "Provide ?q=City or ?lat=&lon=",
-  "errors": []
-}
-```
