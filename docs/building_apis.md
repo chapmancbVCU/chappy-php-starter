@@ -6,6 +6,7 @@
 3. [Building The API End Points](#end-points)
     * A. [Create](#create)
     * B. [Read](#read)
+    * C. [Update](#update)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -82,7 +83,7 @@ public $name;           // Location name
 public $user_id;        // User associated with location
 ```
 
-We will also need a static function to return the current home location:
+We will also need 2 static functions.  The function below returns a record for a favorite that is the current home location.
 ```php
 public static function findCurrentHome(int $user_id) {
     $conditions = [
@@ -92,6 +93,17 @@ public static function findCurrentHome(int $user_id) {
     
     return self::findFirst($conditions);
 } 
+```
+
+The next function returns a Favorite record based on it's `$id` and `$user_id` fields:
+```php
+public static function findByIdAndUserId(int $id, int $user_id): object|bool {
+    return self::findFirst(
+        [
+        'conditions' => 'id = ? AND user_id = ?',
+        'bind' => [(int)$id, (int)$user_id]
+    ]);
+}
 ```
 
 Next, we need to create a controller.  Let's begin by running the following command:
@@ -203,7 +215,7 @@ This function performs the following steps:
 
 <br>
 
-### B. Create  <a id="read"></a>
+### B. Read  <a id="read"></a>
 The read operation is pretty straight forward.  We implement our action, perform an `apiGet` function call, and render the data.  In this section the favorites will be displayed as a series of cards.
 
 The controller's action is pretty straight forward.  We determine who is the logged in user, find all their favorites, and return the response as shown below:
@@ -264,4 +276,34 @@ function Favorites({ favorites, units }) {
         </>
     );
 }  
+```
+
+<br>
+
+### C. Update  <a id="update"></a>
+The update operation is similar to the create operation.  In the example below the main difference is we check if a home location already exists.  If a home location exists we set the `is_home` field to 0 and update the record.  Next, we retrieve the record based on the `$id` parameter then set it's `is_home` field to 1.  Finally, we save that record.  
+
+```php
+public function patchAction(int $id) {
+    try {
+        if(!$this->apiCsrfCheck()) {
+            return $this->jsonError('Corrupted token');
+        }
+        $user = AuthService::currentUser();
+        $currentHome = Favorites::findCurrentHome($user->id);
+
+        if($currentHome && $currentHome->is_home == 1) {
+            $currentHome->is_home = 0;
+            $currentHome->save();
+        }
+
+        $favorite = Favorites::findByIdAndUserId($id, $user->id);
+        if($favorite) {
+            $favorite->is_home = 1;
+            $favorite->save();
+        }
+    } catch (Throwable $e){
+        return $this->jsonError('Server error' . $e, 500);
+    }
+}
 ```
