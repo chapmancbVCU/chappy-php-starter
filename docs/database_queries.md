@@ -478,7 +478,7 @@ Before we move on we will go over a more complex usage.  Within the **ProfileIma
 
 ```php
 public static function findByUserId($user_id) {
-    return $images = self::find([
+    return self::find([
         'conditions' => 'user_id = ?',
         'bind' => ['user_id' => $user_id],
         'order' => 'sort'
