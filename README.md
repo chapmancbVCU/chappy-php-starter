@@ -14,7 +14,7 @@ Originally a fork of the Ruah PHP MVC framework inspired by Freeskills’ YouTub
 
 ## 🚀 Quick Start
 1. **Install system dependencies**:
-  - PHP 8.3+
+  - PHP 8.2+
   - Composer
   - npm
 2. **Create a new project**:
@@ -34,6 +34,7 @@ Originally a fork of the Ruah PHP MVC framework inspired by Freeskills’ YouTub
 ---
 
 🧰 Features
+- Native React.js View support
 - ✍️ Custom form handling & validation
 - 🧭 Dynamic routing
 - 🧪 Unit test support
@@ -50,7 +51,7 @@ Originally a fork of the Ruah PHP MVC framework inspired by Freeskills’ YouTub
 
 ## System Requirements
 - Apache or Nginx (or XAMPP)
-- PHP 8.3
+- PHP 8.2
 - MySQL or MariaDB
 - Composer, Node.js, npm
 - SQL Management software
