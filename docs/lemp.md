@@ -402,17 +402,19 @@ php -v
 <br>
 
 ## 6. Configure Nginx and PHP-FPM <a id="configure-nginx-php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. Configure Nginx Server Block
-Create your project and replace my-app with the name of your project.  Then move to location described below:
+
+### A. Create Temporary Location
+We will temporarily create the location for our app:
 ```sh
-cd ~/
-composer create-project chappy-php/chappy-php my-app
-sudo mv my-app/ /var/www/
-cd /var/www/my-app
+cd /var/www
+mkdir my-app
+```
 <br>
 
 ### B. Set proper permissions:
+
 **Ubuntu**
+
 ```sh
 sudo chown -R your-username:www-data /var/www/my-app
 sudo chmod -R 755 /var/www/my-app
@@ -546,7 +548,7 @@ http://localhost/info.php
 
 Remove the file after testing:
 ```sh
-sudo rm /var/www/my-app/info.php
+sudo rm -rf /var/www/my-app/
 ```
 <br>
 
@@ -760,10 +762,12 @@ npm -v
 
 ## 10. Project Setup <a id="project-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 ### A. Navigate to your user's root directory and install dependencies:
+Create your project and replace my-app with the name of your project.  Then move to location described below:
 ```sh
-cd /var/www/my-app/
-composer run install-project
-```
+cd ~/
+composer create-project chappy-php/chappy-php my-app
+sudo mv my-app/ /var/www/
+cd /var/www/my-app
 <br>
 
 ### B. Project Configuration
