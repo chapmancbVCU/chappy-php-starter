@@ -14,7 +14,28 @@ The built-in API library can be utilized to build your own API.  Just like regul
 ## 2. Building The API End Points <a id="end-points"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 When building API End Points we will leverage a Controller class and Model class.  This discussion will leverage code from a weather app's favorites features for demonstration purposes.  
 
-Let's begin by creating our model:
+First we need to create a model:
+```php
+php console make:migration
+```
+
+Add the following to our migration:
+```php
+public function up(): void {
+    Schema::create('favorites', function (Blueprint $table) {
+        $table->id();
+        $table->string('name', 150);
+        $table->float('latitude');
+        $table->float('longitude');
+        $table->integer('user_id');
+        $table->index('user_id');
+        $table->tinyInteger('is_home');
+        $table->softDeletes();
+    });
+}
+```
+
+Now that we have a migration we will create our model:
 ```php
 php console make:model Favorites
 ```
