@@ -14,8 +14,43 @@ The built-in API library can be utilized to build your own API.  Just like regul
 ## 2. Building The API End Points <a id="end-points"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 When building API End Points we will leverage a Controller class and Model class.  This discussion will leverage code from a weather app's favorites features for demonstration purposes.  
 
+Let's begin by creating our model:
+```php
+php console make:model Favorites
+```
 
+Constants and instance fields are as follows:
+```php
+// Fields you don't want saved on form submit
+public const blackList = ['deleted', 'id'];
 
+// Set to name of database table.
+protected static $_table = 'favorites';
+
+// Soft delete
+protected static $_softDelete = true;
+
+// Fields from your database
+public $deleted = 0;
+public $id;
+public $is_home = 0;    // Tracks if location is user's home
+public $latitude;
+public $longitude;
+public $name;           // Location name
+public $user_id;        // User associated with location
+```
+
+We will also need a static function to return the current home location:
+```php
+public static function findCurrentHome(int $user_id) {
+    $conditions = [
+        'conditions' => 'user_id = ? AND is_home = ?',
+        'bind' => [(int)$user_id, 1]
+    ];
+    
+    return self::findFirst($conditions);
+} 
+```
 
 Next, we need to create a controller.  Let's begin by running the following command:
 
