@@ -14,6 +14,7 @@
     * B. [apiCsrfCheck()](#api-csrf-check)
     * C. [get($input = null)](#get)
     * D. [jsonError($message, $status = 400, $errors = [])](#json-error)
+    * E. [jsonResponse($data, $status = 200, $extraHeaders = [])](#json-response)
 
 
 <br>
@@ -434,4 +435,40 @@ Sends a standardized error response payload:
 $this->jsonError('Validation failed.', 422, [
     'email' => ['Email is required.']
 ]);
+```
+
+<br>
+
+### E. `jsonResponse($data, $status = 200, $extraHeaders = [])` <a id="json-response"></a>
+```php
+public function jsonResponse(mixed $data, int $status = 200, array $extraHeaders = []): void
+```
+
+Sends a JSON response with headers and status code.
+
+**Default headers**
+- `Access-Control-Allow-Origin: *`
+- `Content-Type: application/json; charset=UTF-8`
+- `Cache-control: no-store`
+
+You can merge additional headers via $extraHeaders.
+
+**Environment-based formatting**
+- In non-production environments (`APP_ENV !== production`), JSON is pretty-printed.
+- In production, responses are compact.
+
+**Safe JSON encoding**
+This method uses `JSON_THROW_ON_ERROR` and catches `Throwable` so encoding failures return:
+- HTTP 500
+- A minimal JSON error payload:
+    ```json
+    { "success": false, "message": "JSON encoding error" }
+    ```
+
+**Example**
+```php
+$this->jsonResponse([
+    'success' => true,
+    'data' => $favorites
+], 200);
 ```
