@@ -6,7 +6,7 @@
     * A. [Request Helpers](#request-helpers)
     * B. [Options (opts) Shared by All Helpers](#options)
     * C. [Error Helper](#error-helper)
-
+    * D. [Core Client](#core-client)
 
 <br>
 
@@ -165,3 +165,55 @@ try {
 ```
 
 Note: `apiRequest` throws an `Error` annotated with `.status` and `.data`, and does **not** create an `err.response.data` structure. That shape is commonly associated with Axios. If you want `apiError()` to fully support `apiRequest()` errors, the best source is usually `err.data` / `err.status`. (You can  check those too by wrapping errors in your controller responses for consistently.)
+
+<br>
+
+### D. Core Client <a id="core-client"></a>
+`apiRequest(method, path, opts)`
+
+This is the implementation that all helpers call.
+
+**What it does**
+1. **Builds the URL**
+    - Uses `new URL(path, window.location.origin)` so relative paths work.
+    - If `opts.query` is provided, it appends it as a query string via `URLSearchParams`.
+2. **Sends cookies automatically**
+    - Uses `credentials: 'same-origin'` so session cookies are included.
+    - This matches typical CSRF/session setups in PHP apps.
+3. **Adds the “AJAX request” header**
+    - Always includes `X-Requested-With: XMLHttpRequest`
+    - Many server stacks use this to detect an AJAX request and return JSON errors.
+4. **Determines whether to send a request body**
+    - `GET` never sends a body.
+    - `DELETE` only sends a body if you pass one.
+    - Other methods send a body by default if provided.
+5. **Encodes the body correctly**
+
+    If the body is one of these “browser-managed” types:
+
+    - `FormData`, `Blob`, `ArrayBuffer`, `URLSearchParams`, `ReadableStream`
+
+    …then it **does not** set `Content-Type`, and it passes the body through so the browser sets headers properly (especially important for `FormData`).
+
+6. **Parses JSON responses (when appropriate)**
+- If the response is “no content” (`204`, `205`, `304`) or it was a `HEAD` request, it returns `{}`.
+- Otherwise, it checks the `content-type` header and parses JSON if it looks like JSON.
+
+7. **Throws consistent errors**
+It throws an `Error` when:
+- `res.ok` is false (non-2xx), or
+- the JSON payload contains `{ success: false }`
+
+Thrown errors are annotated:
+- `err.status = res.status`
+- `err.data = json`
+
+This gives consumers a consistent way to handle failures:
+```js
+try {
+    await apiPatch('/api/favorites/1', { is_home: true });
+} catch (err) {
+    console.log(err.status); // e.g. 422
+    console.log(err.data);   // server payload (if JSON)
+}
+```
