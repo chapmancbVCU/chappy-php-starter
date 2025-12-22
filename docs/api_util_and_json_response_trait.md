@@ -12,7 +12,7 @@
 3. [JsonResponse Trait](#json-response-trait)
     * A. [Using the Trait](#using-the-trait)
     * B. [apiCsrfCheck()](#api-csrf-check)
-
+    * C. [get($input = null)](#get)
 
 <br>
 
@@ -364,3 +364,42 @@ Checks whether the incoming request includes a valid CSRF token.
 **Typical usage**
 Call this at the top of any action that **mutates server state**:
 - POST / PUT / PATCH / DELETE
+
+<br>
+
+### C. `get($input = null)` <a id="get"></a>
+```php
+public function get(string|null $input = null): array|string
+```
+
+Reads JSON from the request body (`php://input`), decodes it, and returns sanitized data.
+
+This is similar in spirit to a classic `Input::get()` pattern, but specifically for JSON API requests.
+
+**Behavior**
+**When** `$input` **is** `null`
+
+Returns **all** JSON fields as an array after sanitization.
+- Strings are sanitized and trimmed
+- Arrays are sanitized recursively using `Arr::map(...)`
+
+```php
+$data = $this->get(); // entire decoded & sanitized JSON payload
+```
+
+**When** `$input` **is provided**
+Returns the single sanitized value:
+```php
+$email = $this->get('email');
+```
+
+If the requested field is an array:
+```php
+$ids = $this->get('ids'); // returns sanitized array
+```
+
+If the field does not exist, it returns an empty string `''`.
+
+**Notes and expectations**
+- This method assumes the request body is JSON.
+- If the body is empty or invalid JSON, `$data` may not be an array. Your API actions should treat missing inputs defensively (e.g., validate required fields before use).
