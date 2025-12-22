@@ -340,7 +340,7 @@ async function handleSubmit(e) {
 }
 ```
 
-This example uses the `apiPut` and `useAsync` utilities, which are documented in the **API Utility and JsonResponse Trait** section.
+This example uses the `apiPatch` and `useAsync` utilities, which are documented in the **API Utility and JsonResponse Trait** section.
 
 <br>
 
