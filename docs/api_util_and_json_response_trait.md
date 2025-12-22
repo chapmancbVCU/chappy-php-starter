@@ -18,7 +18,7 @@
     * F. [preflight()](#preflight)
     * G. [Recommended Response Shapes](#response-shapes)
     * H. [Practical Example: PATCH Update](#practical-example)
-    
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -530,3 +530,27 @@ $this->jsonError('Invalid CSRF token.', 419);
 <br>
 
 ### H. Practical Example: PATCH Update <a id="practicale-example"></a>
+```php
+public function updateAction(): void
+{
+    if (!$this->apiCsrfCheck()) {
+        $this->jsonError('Invalid CSRF token.', 419);
+    }
+
+    $id = (int)$this->get('id');
+    $isHome = (bool)$this->get('is_home');
+
+    if ($id <= 0) {
+        $this->jsonError('Invalid id.', 422);
+    }
+
+    // ...perform update...
+
+    $this->jsonResponse([
+        'success' => true,
+        'message' => 'Favorite updated.'
+    ]);
+}
+```
+
+This pattern stays consistent across controllers: sanitize input, validate, return standardized JSON, and let the front end handle errors uniformly.
