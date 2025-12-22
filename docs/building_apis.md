@@ -332,7 +332,7 @@ async function handleSubmit(e) {
         const payload = {
             csrf_token: Forms.CSRFToken(e)
         }
-        const json = await apiPut(`/favorites/patch/${favorite.id}`, payload);
+        const json = await apiPatch(`/favorites/patch/${favorite.id}`, payload);
         window.location.reload();
     } catch (err) {
         setError(apiError(err));
