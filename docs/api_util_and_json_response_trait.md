@@ -15,7 +15,7 @@
     * C. [get($input = null)](#get)
     * D. [jsonError($message, $status = 400, $errors = [])](#json-error)
     * E. [jsonResponse($data, $status = 200, $extraHeaders = [])](#json-response)
-
+    * F. [preflight()](#preflight)
 
 <br>
 
@@ -471,4 +471,32 @@ $this->jsonResponse([
     'success' => true,
     'data' => $favorites
 ], 200);
+```
+
+<br>
+
+### F. `preflight()` <a id="preflight"></a>
+```php
+public function preflight(): void
+```
+
+Handles **CORS preflight** requests (OPTIONS).
+
+It returns:
+- `Access-Control-Allow-Origin: *`
+- `Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS`
+- `Access-Control-Allow-Headers: Content-Type, X-Requested-With, X-CSRF-Token`
+- HTTP status `204 No Content`
+- then exits
+
+**When to use**
+If your client sends requests that trigger preflight (common with:
+- `Content-Type: application/json`
+- custom headers like `X-CSRF-Token`
+- cross-origin calls)
+
+You can route OPTIONS requests to an action that calls:
+
+```php
+$this->preflight();
 ```
