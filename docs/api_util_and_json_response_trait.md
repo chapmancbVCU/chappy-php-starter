@@ -9,6 +9,10 @@
     * D. [Core Client](#core-client)
     * E. [React Hook](#react-hook)
     * F. [Practical Patterns in Chappy.php Apps](#practical-patterns)
+3. [JsonResponse Trait](#json-response-trait)
+    * A. [Using the Trait](#using-the-trait)
+    * B. [apiCsrfCheck()](#api-csrf-check)
+
 
 <br>
 
@@ -290,3 +294,73 @@ Example pattern:
 - `apiPatch('/favorites/update')` to update a field like “home favorite”
 
 This keeps your UI logic clean and keeps request behavior consistent across the app.
+
+<br>
+
+## 3. JsonResponse Trait <a id="json-response-trait"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+`JsonResponse` is a reusable trait for controllers (or other HTTP-facing classes) that need to:
+- Read and sanitize **JSON request bodies**
+- Perform an **API CSRF check**
+- Return consistent **JSON success/error payloads**
+- Handle **CORS** and **preflight (OPTIONS)** requests
+
+It centralizes the “API plumbing” so your API actions can stay focused on business logic.
+
+**Namespace**
+```js
+namespace Core\Lib\Http;
+```
+
+**Dependencies**
+- `Core\FormHelper` – CSRF + sanitization helpers
+- `Core\Lib\Utilities\Arr` – array detection + mapping utilities
+- `Throwable` – safely catching JSON encoding failures
+
+<br>
+
+### A. Using the Trait <a id="using-the-trait"></a>
+Add the trait to any controller that returns JSON:
+
+```php
+use Core\Lib\Http\JsonResponse;
+
+class FavoritesController extends Controller {
+    use JsonResponse;
+
+    public function storeAction(): void
+    {
+        if (!$this->apiCsrfCheck()) {
+            $this->jsonError('Invalid CSRF token.', 419);
+        }
+
+        $placeId = $this->get('place_id');
+
+        // ...create favorite...
+
+        $this->jsonResponse(['success' => true, 'message' => 'Favorite added.']);
+    }
+}
+```
+
+`jsonResponse()` calls `exit`, so your action should end after calling it.
+
+<br>
+
+### B. `apiCsrfCheck()` <a id="api-csrf-check"></a>
+```php
+public function apiCsrfCheck(): bool
+```
+
+Checks whether the incoming request includes a valid CSRF token.
+
+**How it works**
+- Reads `csrf_token` from the JSON payload using `$this->get('csrf_token')`
+- Validates the token via `FormHelper::checkToken(...)`
+
+**Return value**
+- `true` if token is valid
+- `false` if invalid or missing
+
+**Typical usage**
+Call this at the top of any action that **mutates server state**:
+- POST / PUT / PATCH / DELETE
