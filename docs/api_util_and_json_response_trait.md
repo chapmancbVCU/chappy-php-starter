@@ -16,7 +16,7 @@
     * D. [jsonError($message, $status = 400, $errors = [])](#json-error)
     * E. [jsonResponse($data, $status = 200, $extraHeaders = [])](#json-response)
     * F. [preflight()](#preflight)
-
+    * G. [Recommended Response Shapes](#response-shapes)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -499,4 +499,28 @@ You can route OPTIONS requests to an action that calls:
 
 ```php
 $this->preflight();
+```
+
+<br>
+
+### G. Recommended Response Shapes <a id="response-shapes"></a>
+To align cleanly with your React utilities (where `apiRequest()` treats `success: false` as an error), use these conventions:
+
+**Success**
+```php
+$this->jsonResponse([
+    'success' => true,
+    'data' => $data,
+    'message' => 'OK'
+]);
+```
+
+**Validation failure**
+```php
+$this->jsonError('Validation failed.', 422, $validatorErrors);
+```
+
+**Auth/CSRF failure**
+```php
+$this->jsonError('Invalid CSRF token.', 419);
 ```
