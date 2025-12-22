@@ -2,7 +2,7 @@
 
 ## Table of contents
 1. [Overview](#overview)
-2. [Configuration](#configuration)
+2. [Configuration and Routing](#configuration-and-routing)
 3. [Service: OpenWeather client (server-side)](#service)
     * A. [Setting Up Our Service](#service-setup)
     * B. [Constructor](#constructor)
@@ -33,12 +33,20 @@ Why proxy?
 
 <br>
 
-## 2. Configuration <a id="configuration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Configuration and Routing<a id="configuration-and-routing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Add your OWM key to .env (server only):
 ```ini
 OWM_API_KEY=your_openweather_key_here
 ```
 (Do not expose this key to Vite or the browser.)
+
+We also need to add the following to the `"Guest"` object in the `acl.json` file.
+
+```json
+"Weather": ["currentConditions", "preflight", "search", "oneCall"]
+```
+
+This will allow our front-end API calls to be able to access the API Endpoints within the controller.
 
 <br>
 
