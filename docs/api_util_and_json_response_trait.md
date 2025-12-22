@@ -13,6 +13,8 @@
     * A. [Using the Trait](#using-the-trait)
     * B. [apiCsrfCheck()](#api-csrf-check)
     * C. [get($input = null)](#get)
+    * D. [jsonError($message, $status = 400, $errors = [])](#json-error)
+
 
 <br>
 
@@ -388,6 +390,7 @@ $data = $this->get(); // entire decoded & sanitized JSON payload
 ```
 
 **When** `$input` **is provided**
+
 Returns the single sanitized value:
 ```php
 $email = $this->get('email');
@@ -403,3 +406,32 @@ If the field does not exist, it returns an empty string `''`.
 **Notes and expectations**
 - This method assumes the request body is JSON.
 - If the body is empty or invalid JSON, `$data` may not be an array. Your API actions should treat missing inputs defensively (e.g., validate required fields before use).
+
+<br>
+
+### D. `jsonError($message, $status = 400, $errors = [])` <a id="json-error"></a>
+```php
+public function jsonError(string $message, int $status = 400, array $errors = []): void
+```
+
+Sends a standardized error response payload:
+
+```json
+{
+  "success": false,
+  "message": "Validation failed.",
+  "errors": { ... }
+}
+```
+
+**Parameters**
+- `$message` – high-level error message for the client
+- `$status` – HTTP status code (default 400)
+- `$errors` – optional structured validation errors (default `[]`)
+
+**Example**
+```php
+$this->jsonError('Validation failed.', 422, [
+    'email' => ['Email is required.']
+]);
+```
