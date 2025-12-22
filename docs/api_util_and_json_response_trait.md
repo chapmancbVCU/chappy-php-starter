@@ -8,6 +8,7 @@
     * C. [Error Helper](#error-helper)
     * D. [Core Client](#core-client)
     * E. [React Hook](#react-hook)
+    * F. [Practical Patterns in Chappy.php Apps](#practical-patterns)
 
 <br>
 
@@ -274,3 +275,18 @@ return <Forecast data={data} />;
 - You control exactly when it reruns.
 - If you inline `asyncFn` and capture values, ensure `deps` includes what the function depends on.
 - For best stability (especially in larger components), wrap `asyncFn` in `useCallback`.
+
+<br>
+
+### D. Practical Patterns in Chappy.php Apps <a id="practical-patterns"></a>
+**List + refresh after mutations**
+
+Use `useAsync` to load the list, then call a mutation endpoint and trigger a refresh by changing deps (or by implementing a `reloadKey` pattern in the component).
+
+Example pattern:
+- `apiGet('/favorites/show')` for list
+- `apiPost('/favorites/store')` to add
+- `apiDelete('/favorites/destroy')` to remove
+- `apiPatch('/favorites/update')` to update a field like “home favorite”
+
+This keeps your UI logic clean and keeps request behavior consistent across the app.
