@@ -3,7 +3,7 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [api.js](#api-js)
-
+    * A. [Request Helpers](#request-helpers)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -23,3 +23,78 @@ This file contains all of the API utilities needed to perform operations with Ja
 
 These utilities are intended for **same-origin** API calls (your Chappy.php app and its API endpoints), and they work with CSRF protection and cookie-base authentication.
 
+<br>
+
+### A. Request Helpers <a id="request-helpers"></a>
+#### 1. `apiGet(path, opts)`
+Runs a **GET** request.
+
+**Typical Use Cases**
+- Fetching lists, detail views, search results
+- Requests that should not include a body
+
+**Example**
+```js
+const weather = await apiGet('/api/weather', {
+  query: { q: 'Austin', units: 'imperial' }
+});
+```
+
+<br>
+
+#### 2. `apiPost(path, body, opts)`
+Runs a **POST** request and sends `body` (JSON by default).
+
+**Typical Use Cases**
+- Creating records
+- Submitting forms
+
+**Example**
+```js
+await apiPost('/api/favorites', { placeId: 123 }, {
+  headers: { 'X-CSRF-Token': getCsrf() }
+});
+```
+
+<br>
+
+#### 3. `apiPut(path, body, opts)`
+Runs a **PUT** request and sends `body` (JSON by default).
+
+**Typical Use Cases**
+- Full record updates (replace semantics)
+
+<br>
+
+#### 4. `apiPatch(path, body, opts)`
+Runs a **Patch** request and sends `body` (JSON by default).
+
+**Typical Use Cases**
+- Partial updates (change one field like `is_home`, notes, etc.)
+
+**Example**
+```js
+const payload = {
+    csrf_token: Forms.CSRFToken(e)
+}
+const json = await apiPatch(`/favorites/patch/${favorite.id}`, payload);
+```
+
+<br>
+
+#### 5. `apiDelete(path, body, opts)`
+Runs a **DELETE** request.
+
+**Important behavior**
+- Some APIs accept a body on DELETE, some don't.
+- This helper **only includes a body if you pass one**.
+
+**Example (no body)**
+```js
+await apiDelete(`/api/favorites/${id}`);
+```
+
+**Example (body allowed by server)**
+```js
+await apiDelete('/api/favorites', { ids: [1, 2, 3] });
+```
