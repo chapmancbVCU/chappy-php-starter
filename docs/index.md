@@ -32,7 +32,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 17. [Queue / Job Dispatcher](queue)
 18. [React.js](react)
     * A. [Controllers and React Views](controllers_and_views)
-    * B. [API Utility and JsonResponse Trait](#json_response_trait) - Coming soon
+    * B. [API Utility and JsonResponse Trait](api_util_and_json_response_trait) - Coming soon
     * B. [React Forms](react_forms)
     * C. [React Utils](react_utils)
     * D. [Using APIs](using_apis)
