@@ -7,6 +7,7 @@
     * B. [Options (opts) Shared by All Helpers](#options)
     * C. [Error Helper](#error-helper)
     * D. [Core Client](#core-client)
+    * E. [React Hook](#react-hook)
 
 <br>
 
@@ -217,3 +218,59 @@ try {
     console.log(err.data);   // server payload (if JSON)
 }
 ```
+
+<br>
+
+### E. React Hook <a id="react-hook"></a>
+`useAsync(asyncFn, deps = [])`
+
+A hook that runs an async function and manages state:
+```js
+{ data, loading, error }
+```
+
+**Why this exists**
+React effects often need to:
+- Fetch data when inputs change
+- Show loading state
+- Capture errors
+- Cancel stale requests if the user changes inputs quickly or navigates away
+
+`useAsync` provides a consistent pattern for that.
+
+**How it works**
+1. Initializes state
+    - Starts with `{ data: null, loading: true, error: null }`
+
+2. Creates an AbortController
+    - Stored in a `useRef` so it persists across renders.
+
+3. On every deps change
+    - Aborts the previous request
+    - Creates a brand new controller (fresh `signal`)
+    - Resets state to loading
+    - Executes `asyncFn({ signal })`
+
+4. Prevents stale updates
+    - Uses an `alive` flag so resolved promises can’t update state after cleanup.
+
+5. Ignores abort errors
+    - If the error is an `"AbortError"`, it is intentionally not stored in state.
+
+**Example: using with your API helpers**
+```js
+const { data, loading, error } = useAsync(
+    ({ signal }) => apiGet('/api/weather', { query: { q: city }, signal }),
+    [city]
+);
+
+if (loading) return <Spinner />;
+if (error) return <Alert>{apiError(error)}</Alert>;
+return <Forecast data={data} />;
+```
+
+**Dependency note**
+- useAsync disables the exhaustive-deps lint rule and uses `deps` directly. That means:
+- You control exactly when it reruns.
+- If you inline `asyncFn` and capture values, ensure `deps` includes what the function depends on.
+- For best stability (especially in larger components), wrap `asyncFn` in `useCallback`.
