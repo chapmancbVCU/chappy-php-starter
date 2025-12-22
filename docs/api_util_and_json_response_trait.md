@@ -4,6 +4,10 @@
 1. [Overview](#overview)
 2. [api.js](#api-js)
     * A. [Request Helpers](#request-helpers)
+    * B. [Options (opts) Shared by All Helpers](#options)
+
+
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -98,3 +102,40 @@ await apiDelete(`/api/favorites/${id}`);
 ```js
 await apiDelete('/api/favorites', { ids: [1, 2, 3] });
 ```
+
+<br>
+
+### B. Options (opts) Shared by All Helpers <a id="options"></a>
+Each helper accepts an `opts` object with:
+
+`opts.query`
+
+Key/value pair appended to the URL as a query string.
+- Supports strings, numbers, booleans
+- Arrays are allowed in the type definition, but note: `URLSearchParams(query)` does not automatically expand arrays the way some libs do. If you pass arrays, they’ll typically stringify (implementation-dependent). If you need repeated keys (e.g. `?id=1&id=2`), consider pre-building the query string or enhancing this helper
+
+**Example**
+```js
+apiGet('/api/search', { query: { q: 'cloud', page: 2 } });
+```
+
+`opts.headers`
+
+Extra headers merged into the request headers.
+Common usage:
+- CSRF token headers
+- Custom authentication headers (if applicable)
+- Content negotiation
+
+**Example**
+```js
+apiPost('/api/items', { title: 'Book' }, {
+  headers: { 'X-CSRF-Token': getCsrf() }
+});
+```
+
+`opts.signal`
+
+An `AbortSignal` to cancel the request.
+
+This is especially useful with React hooks/effects to prevent "setState on unmounted component" warnings and race conditions.
