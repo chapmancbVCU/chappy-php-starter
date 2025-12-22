@@ -332,7 +332,7 @@ async function handleSubmit(e) {
         const payload = {
             csrf_token: Forms.CSRFToken(e)
         }
-        const json = await apiPost(`/favorites/patch/${favorite.id}`, payload);
+        const json = await apiPut(`/favorites/patch/${favorite.id}`, payload);
         window.location.reload();
     } catch (err) {
         setError(apiError(err));
@@ -340,7 +340,7 @@ async function handleSubmit(e) {
 }
 ```
 
-This example uses the `apiPost` and `useAsync` utilities, which are documented in the **API Utility and JsonResponse Trait** section.
+This example uses the `apiPut` and `useAsync` utilities, which are documented in the **API Utility and JsonResponse Trait** section.
 
 <br>
 
