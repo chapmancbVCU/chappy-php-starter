@@ -17,6 +17,8 @@
     * E. [jsonResponse($data, $status = 200, $extraHeaders = [])](#json-response)
     * F. [preflight()](#preflight)
     * G. [Recommended Response Shapes](#response-shapes)
+    * H. [Practical Example: PATCH Update](#practical-example)
+    
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -524,3 +526,7 @@ $this->jsonError('Validation failed.', 422, $validatorErrors);
 ```php
 $this->jsonError('Invalid CSRF token.', 419);
 ```
+
+<br>
+
+### H. Practical Example: PATCH Update <a id="practicale-example"></a>
