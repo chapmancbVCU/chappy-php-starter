@@ -5,7 +5,7 @@
 2. [api.js](#api-js)
     * A. [Request Helpers](#request-helpers)
     * B. [Options (opts) Shared by All Helpers](#options)
-
+    * C. [Error Helper](#error-helper)
 
 
 <br>
@@ -139,3 +139,29 @@ apiPost('/api/items', { title: 'Book' }, {
 An `AbortSignal` to cancel the request.
 
 This is especially useful with React hooks/effects to prevent "setState on unmounted component" warnings and race conditions.
+
+<br>
+
+### C. Error Helpers <a id="error-helper"></a>
+
+`apiError(err)`
+
+Produces a human-friendly message from an error object.
+
+It checks common API error shapes in order:
+1. `err.response.data.message`
+2. `err.response.data.error`
+3. `err.response.data.errors` (object of arrays, flattened)
+4. Fallback: `err.message`
+5. Final fallback: `"Something went wrong with your request."`
+
+**Example**
+```js
+try {
+    await apiPost('/api/items', payload);
+} catch (err) {
+    toast.error(apiError(err));
+}
+```
+
+Note: `apiRequest` throws an `Error` annotated with `.status` and `.data`, and does **not** create an `err.response.data` structure. That shape is commonly associated with Axios. If you want `apiError()` to fully support `apiRequest()` errors, the best source is usually `err.data` / `err.status`. (You can  check those too by wrapping errors in your controller responses for consistently.)
