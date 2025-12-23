@@ -55,8 +55,6 @@ use Core\Lib\Utilities\Config;
       <?= Session::displayMessage() ?>
       <?= $this->content('body'); ?>
     </div>
-    <?php //$this->component(footer.php'); ?>
-    
   </body>
 </html>
 ```
