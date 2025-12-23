@@ -220,7 +220,7 @@ Since this framework is fully Object-Oriented you can generate helper files to m
 You can build your own command helper class by running the `make:command-helper` command.  Let's create a FooHelper class by running the following:
 
 ```sh
-php console make:helper FooHelper
+php console make:command-helper FooHelper
 ```
 
 Once your run this command the file generated will look as follows:
