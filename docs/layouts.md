@@ -45,9 +45,6 @@ use Core\Lib\Utilities\Config;
     <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>resources/css/alerts/alertMsg.min.css?v=<?=Config::get('config.version')?>" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>resources/css/font-awesome-4.7.0/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
-    <script src="<?=env('APP_DOMAIN', '/')?>resources/js/jQuery-3.7.1/jQuery-3.7.1.min.js"></script>
-    <script src="<?=env('APP_DOMAIN', '/')?>node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="<?=env('APP_DOMAIN', '/')?>node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?=env('APP_DOMAIN', '/')?>resources/js/alerts/alertMsg.min.js?v=<?=Config::get('config.version')?>"></script>
     <?= $this->content('head'); ?>
 
