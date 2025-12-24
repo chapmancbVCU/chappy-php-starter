@@ -4,17 +4,13 @@ use Core\Controller;
 use Core\Models\ACL;
 use App\Models\Users;
 use Core\Lib\Utilities\Arr;
-use Core\Models\UserSessions;
 use Core\Services\ACLService;
-use Core\Models\Notifications;
 use Core\Models\ProfileImages;
-use Core\Services\AuthService;
 use Core\Services\UserService;
 use Core\Models\EmailAttachments;
 use Core\Lib\Pagination\Pagination;
 use Core\Services\DashboardService;
 use Core\Services\AttachmentService;
-use Core\Services\NotificationService;
 use Core\Lib\Http\JsonResponse;
 
 /**
@@ -22,7 +18,7 @@ use Core\Lib\Http\JsonResponse;
  */
 class AdmindashboardController extends Controller {
     use JsonResponse;
-    
+
     /**
      * Displays list of attachments.
      *
