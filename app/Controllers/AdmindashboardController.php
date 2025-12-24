@@ -15,11 +15,14 @@ use Core\Lib\Pagination\Pagination;
 use Core\Services\DashboardService;
 use Core\Services\AttachmentService;
 use Core\Services\NotificationService;
+use Core\Lib\Http\JsonResponse;
 
 /**
  * Implements support for our Admindashboard controller.
  */
 class AdmindashboardController extends Controller {
+    use JsonResponse;
+    
     /**
      * Displays list of attachments.
      *
