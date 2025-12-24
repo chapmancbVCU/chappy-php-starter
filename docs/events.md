@@ -10,14 +10,15 @@
 7. [Writing Core vs Userland Events](#types)
 8. [Advanced](#advanced)
 9. [Queued Events](#queued-events)
+    * A. [Creating a Queued Event](#create-queued-event)
+    * B. [Creating a Queued Listener](#create-queued-listener)
+    * C. [Registering the Listener](#registration)
+    * D. [Dispatching the Event](#dispatching)
+    * E. [Running the Queue Worker](#running-worker)
+    * F. [Advantages of Using Queued Listeners](#advantages)
+    * G. [Key Notes](#keynotes)
 10. [Summary](#summary)
-    A. [Creating a Queued Event](#create-queued-event)
-    B. [Creating a Queued Listener](#create-queued-listener)
-    C. [Registering the Listener](#registration)
-    D. [Dispatching the Event](#dispatching)
-    E. [Running the Queue Worker](#running-worker)
-    F. [Advantages of Using Queued Listeners](#advantages)
-    G. [Key Notes](#keynotes)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -234,7 +235,7 @@ public function handle(UserRegistered $event): void
 
 <br>
 
-## 9. 📦 Queued Event Listeners <a id="queued-events"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span> <a id="summary"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. 📦 Queued Event Listeners <a id="queued-events"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Queued event listeners allow you to defer the execution of an event listener until it is processed by a queue worker, rather than executing it immediately when the event is fired.
 This is ideal for time-consuming tasks such as sending emails, processing images, or performing external API calls, which should not delay the user’s request.
 
@@ -467,10 +468,13 @@ php console queue:work
 
 You can run multiple workers, or run them in the background using a process manager such as `supervisord` or `systemd`.
 
+<br>
+
 ### F. Advantages of Using Queued Listeners <a id="advantages"></a>
 - Improves response time for user requests.
 - Decouples time-consuming tasks from your application’s main request lifecycle.
 - Allows retry handling with `maxAttempts()` and `backoff()`.
+
 <br>
 
 ### G. Key Notes <a id="keynotes"></a>
