@@ -4,7 +4,8 @@
 1. [Overview](#overview)
 2. [Public Methods](#public-methods)
 3. [Related Components](#related-components)
-4. [Notes](#notes)
+4. [Examples](#examples)
+5. [Notes](#notes)
 
 <br>
 
@@ -113,6 +114,38 @@ $shouldEmail = UserService::toggleResetPassword($user, $request, $previousReset)
 - `Uploads` – File upload handler.
 - `AccountDeactivatedMailer / PasswordResetMailer` – Responsible for user notification emails.
 - `Users` – Model representing application users.
+
+<br>
+
+## 4. Examples <a id="Examples"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
+#### A. Password Reset
+You can use the `UserService::toggleResetPassword` and `UserService::sendWhenSetToResetPW` to send an E-mail to a user when an administrator sets the `reset_password` field for an account.  An example is shown below:
+
+```php
+public function setResetPasswordAction($id) {
+    $user = Users::findById((int)$id);
+    $resetPW = $user->reset_password;
+    DashboardService::checkIfCurrentUser($user);
+
+    if($this->request->isPost()) {
+        $this->request->csrfCheck();
+        $user->assign($this->request->get(), Users::blackListedFormKeys);
+        $shouldSendEmail = UserService::toggleResetPassword($user, $this->request, $resetPW);
+        if($user->save()) {
+            UserService::sendWhenSetToResetPW($user, $shouldSendEmail);
+            redirect('admindashboard.details', [$user->id]);
+        }
+    }
+
+    $this->view->user = $user;
+    $this->view->displayErrors = $user->getErrorMessages();
+    $this->view->postAction = route('admindashboard.setResetPassword', [$user->id]);
+    $this->view->render('admindashboard.set_reset_password', true, true);
+}
+```
+
+The `toggleResetPassword` function manages the user's `inactive` and `login_attempts` fields and returns true if a password reset E-mail should be sent.  The `sendWhenSetToResetPW` function creates an event for sending the E-mail only if `$shouldSendEmail` is true.  For example, when the administrator removes the `inactive` status for a user.
 
 <br>
 
