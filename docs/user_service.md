@@ -119,7 +119,7 @@ $shouldEmail = UserService::toggleResetPassword($user, $request, $previousReset)
 
 ## 4. Examples <a id="Examples"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
-#### A. Password Reset
+### A. Password Reset
 You can use the `UserService::toggleResetPassword` and `UserService::sendWhenSetToResetPW` to send an E-mail to a user when an administrator sets the `reset_password` field for an account.  An example is shown below:
 
 ```php
@@ -146,6 +146,35 @@ public function setResetPasswordAction($id) {
 ```
 
 The `toggleResetPassword` function manages the user's `reset_password` field and returns true if a password reset E-mail should be sent.  The `sendWhenSetToResetPW` function creates an event for sending the E-mail only if `$shouldSendEmail` is true.  For example, when the administrator removes the `reset_password` status for a user.
+
+<br>
+
+### B. Account Deactivation
+Below is an example for sending an E-mail when the administrator deactivates an account:
+```php
+public function setStatusAction($id) {
+    $user = Users::findById((int)$id);
+    $inactive = $user->inactive;
+    DashboardService::checkIfCurrentUser($user);
+
+    if($this->request->isPost()) {
+        $this->request->csrfCheck();
+        $user->assign($this->request->get(), Users::blackListedFormKeys);
+        $shouldSendEmail = UserService::toggleAccountStatus($user, $this->request, $inactive);
+        if($user->save()) {
+            UserService::sendWhenSetToInactive($user, $shouldSendEmail);
+            redirect('admindashboard.details', [$user->id]);
+        }
+    }
+
+    $this->view->user = $user;
+    $this->view->displayErrors = $user->getErrorMessages();
+    $this->view->postAction = route('admindashboard.setStatus', [$user->id]);
+    $this->view->render('admindashboard.set_account_status', true, true);
+}
+```
+
+Just like above we follow a similar two step process.  We toggle the `active` and `login_attempts` fields and send the email after `save` when appropriate.
 
 <br>
 

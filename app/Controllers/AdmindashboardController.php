@@ -287,15 +287,12 @@ class AdmindashboardController extends Controller {
      */
     public function setStatusAction($id) {
         $user = Users::findById((int)$id);
-        $inactive = $user->inactive;
         DashboardService::checkIfCurrentUser($user);
 
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $user->assign($this->request->get(), Users::blackListedFormKeys);
-            $shouldSendEmail = UserService::toggleAccountStatus($user, $this->request, $inactive);
             if($user->save()) {
-                UserService::sendWhenSetToInactive($user, $shouldSendEmail);
                 redirect('admindashboard.details', [$user->id]);
             }
         }
