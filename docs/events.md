@@ -429,7 +429,6 @@ public static function queueWelcomeMailer(int $user_id, string $queueName = 'def
     $job   = new SendWelcomeEmail(['user_id' => $user_id], 0); // delay=0
 
     $payload = $job->toPayload();
-    // Fix DATETIME format
     $payload['available_at'] = DateTime::nowPlusSeconds($job->delay());
 
     $queue->push($payload, $queueName);
