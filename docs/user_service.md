@@ -145,7 +145,7 @@ public function setResetPasswordAction($id) {
 }
 ```
 
-The `toggleResetPassword` function manages the user's `inactive` and `login_attempts` fields and returns true if a password reset E-mail should be sent.  The `sendWhenSetToResetPW` function creates an event for sending the E-mail only if `$shouldSendEmail` is true.  For example, when the administrator removes the `inactive` status for a user.
+The `toggleResetPassword` function manages the user's `reset_password` field and returns true if a password reset E-mail should be sent.  The `sendWhenSetToResetPW` function creates an event for sending the E-mail only if `$shouldSendEmail` is true.  For example, when the administrator removes the `reset_password` status for a user.
 
 <br>
 
