@@ -262,15 +262,12 @@ class AdmindashboardController extends Controller {
      */
     public function setResetPasswordAction($id) {
         $user = Users::findById((int)$id);
-        $resetPW = $user->reset_password;
         DashboardService::checkIfCurrentUser($user);
 
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $user->assign($this->request->get(), Users::blackListedFormKeys);
-            //$shouldSendEmail = UserService::toggleResetPassword($user, $this->request, $resetPW);
             if($user->save()) {
-                //UserService::sendWhenSetToResetPW($user, $shouldSendEmail);
                 redirect('admindashboard.details', [$user->id]);
             }
         }
