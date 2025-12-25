@@ -10,7 +10,7 @@
     * E. [Logging](#logging)
     * F. [Attachments](#attachments)
     * G. [Environment Configuration](#environment-configuration)
-    * H. [Example Use Case](#example-use-case)
+    * H. [Example Use Case - Welcome Email](#example-use-case)
     * I. [Notes](#notes)
 3. [Using sendTemplate() in Chappy.php](#send-template)
     * A. [Test Case Examples](#test-case-examples)
@@ -176,7 +176,7 @@ MAIL_FROM_ADDRESS=noreply@example.com
 
 <br>
 
-### H. Example Use Case <a id="example-use-case"></a>
+### H. Example Use Case  - Welcome Email <a id="example-use-case"></a>
 ```php
 $user = Users::findById(1);
 WelcomeMailer::sendTo($user);
