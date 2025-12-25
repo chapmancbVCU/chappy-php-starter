@@ -145,7 +145,6 @@ php console
 | Command | Description |
 |:-------:|-------------|
 | log:clear | Deletes existing log file |
-| tools:mk-env | Creates the .env file |
 | tools:rm-profile-images | Removes all profile images |
 
 <br>
