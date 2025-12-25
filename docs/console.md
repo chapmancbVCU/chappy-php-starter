@@ -303,6 +303,7 @@ if($viewArray == Command::FAILURE) return Command::FAILURE;
 ```
 
 In the above example we use the result of the dotNotification Verify function call to test if there are any failures.  In this case we return Command::FAILURE.
+
 <br>
 
 ### D. info Function <a id="info">
