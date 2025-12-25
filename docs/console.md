@@ -17,8 +17,9 @@
 6. [Tools](#tools)
     * A. [border Function](#border)
     * B. [createDirWithPrompt](#dir-with-prompt)
-    * C. [info Function](#info)
-    * D. [writeFile Function](#write-file)
+    * C. [dotNotificationVerify](#dot-notification-Verify)
+    * D. [info Function](#info)
+    * E. [writeFile Function](#write-file)
 
 <br>
 
@@ -264,15 +265,47 @@ Creates a directory.  It checks if it already exists.  If not, user is asked to 
 - `InputInterface $cmdInput` - The Symfony InputInterface object.
 - `OutputInterface $cmdOutput` - The Symfony OutputInterface object.
 
+**Returns**
+- `array` - An array containing the contents of the $inputName variable.
+- `int` - A value that indicates success, invalid, or failure.
+
 **Example** 
 ```php
 $directory = View::VIEW_PATH.$viewArray[0];
-Tools::createDirWithPrompt($directory, $input, $output);
+$isDirMade = Tools::createDirWithPrompt($directory, $input, $output);
+if($isDirMade == Command::FAILURE) return Command::FAILURE;
 ```
+
+In the above example we use the result of this function's call to test if there is a failure.  In this case we return Command::FAILURE.
 
 <br>
 
-### C. info Function <a id="info">
+### C. dotNotificationVerify <a id="dot-notification-Verify">
+Checks if input is in dot notation.  If in dot notation the string is placed in an array where the first index is the directory name.  The second element is the file name.  The structure is shown below:
+
+```PHP
+["directory_name","file_name"]
+```
+
+If not in the `<directory_name>.<file_name>` an error message is displayed an a Command::FAILURE integer value is returned.
+
+**Parameters**
+- `string $inputName` - The name in `<directory_name>.<file_name>` format.
+
+**Returns**
+- `array` - An array containing the contents of the $inputName variable.
+- `int` - If $inputName is not in correct format then Command::FAILURE is returned.
+
+**Example** 
+```php
+$viewArray = Tools::dotNotationVerify('view-name', $input);
+if($viewArray == Command::FAILURE) return Command::FAILURE;
+```
+
+In the above example we use the result of the dotNotification Verify function call to test if there are any failures.  In this case we return Command::FAILURE.
+<br>
+
+### D. info Function <a id="info">
 The info function is used to present to the user logging information.  The following is an example of how to call this function:
 
 ```php
@@ -324,7 +357,7 @@ The following text colors are supported:
 
 <br>
 
-### D. writeFile Function <a id="write-file">
+### E. writeFile Function <a id="write-file">
 The writeFile function is what we used when we need to dump contents of a command to a file.  We use this for commands such as making controllers, models, and migrations.  
 
 Here is an example call to this function for generating a new menu_acl json file.
