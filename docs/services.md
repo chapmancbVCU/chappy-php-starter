@@ -40,7 +40,7 @@ You may group services by domain if your application scales (e.g., AuthService, 
 <br>
 
 ## 2. User Defined Services <a id="service-services"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-You can create your own service with the following command:
+Users have the ability to create their own services.  A complete example using OpenWeatherMap can be found [here](using_apis#service-setup).  You can create your own service with the following command:
 ```sh
 php console make:service ${service_name}
 ```
