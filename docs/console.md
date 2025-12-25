@@ -16,8 +16,9 @@
 5. [Command Helpers](#command-helpers)
 6. [Tools](#tools)
     * A. [border Function](#border)
-    * B. [info Function](#info)
-    * C. [writeFile Function](#write-file)
+    * B. [createDirWithPrompt](#dir-with-prompt)
+    * C. [info Function](#info)
+    * D. [writeFile Function](#write-file)
 
 <br>
 
@@ -254,7 +255,24 @@ The border prints a dashed line.
 
 <br>
 
-### B. info Function <a id="info">
+### B. createDirWithPrompt <a id="dir-with-prompt">
+Creates a directory.  It checks if it already exists.  If not, user is asked to confirm the want to create a new directory.
+
+**Parameters**
+
+- `string $directory` - The full path for the directory to be created.
+- `InputInterface $cmdInput` - The Symfony InputInterface object.
+- `OutputInterface $cmdOutput` - The Symfony OutputInterface object.
+
+**Example** 
+```php
+$directory = View::VIEW_PATH.$viewArray[0];
+Tools::createDirWithPrompt($directory, $input, $output);
+```
+
+<br>
+
+### C. info Function <a id="info">
 The info function is used to present to the user logging information.  The following is an example of how to call this function:
 
 ```php
@@ -306,7 +324,7 @@ The following text colors are supported:
 
 <br>
 
-### C. writeFile Function <a id="write-file">
+### D. writeFile Function <a id="write-file">
 The writeFile function is what we used when we need to dump contents of a command to a file.  We use this for commands such as making controllers, models, and migrations.  
 
 Here is an example call to this function for generating a new menu_acl json file.
