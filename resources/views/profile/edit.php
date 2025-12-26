@@ -1,9 +1,12 @@
 <?php $this->setSiteTitle("Edit Details for ".$this->user->username); ?>
+
 <?php $this->start('head') ?>
 <link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>resources/css/profileImage.css?v=<?=config('config.version')?>" media="screen" title="no title" charset="utf-8">
+<script src="<?=env('APP_DOMAIN', '/')?>node_modules/jquery/dist/jquery.min.js"></script>
 <script src="<?=env('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=config('config.version')?>"></script>
 <script src='<?=env('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
 <script type="text/javascript" src="<?=env('APP_DOMAIN', '/')?>node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<?=env('APP_DOMAIN', '/')?>node_modules/jquery-ui/ui/widgets/sortable.js"></script>
 <?php $this->end() ?>
 
 <?php $this->start('body'); ?>
