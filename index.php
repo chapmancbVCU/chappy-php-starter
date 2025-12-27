@@ -29,6 +29,6 @@ SessionManager::initialize();
 try {
     Router::route();
 } catch (Exception $e) {
-    Logger::log("Unhandled Exception: " . $e->getMessage(), 'error');
+    Logger::log("Unhandled Exception: " . $e->getMessage(), Logger::ERROR);
     throw $e; // Let Whoops handle it
 }
