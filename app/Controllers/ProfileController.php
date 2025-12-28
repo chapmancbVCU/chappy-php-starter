@@ -5,11 +5,14 @@ use App\Models\Users;
 use Core\Models\ProfileImages;
 use Core\Services\AuthService;
 use Core\Services\UserService;
+use Core\Lib\Http\JsonResponse;
 
 /**
  * Supports ability to use user profile features and render relevant views.
  */
 class ProfileController extends Controller {
+    use JsonResponse;
+    
     /**
      * Deletes an image associated with a user's profile.
      *
