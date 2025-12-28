@@ -335,6 +335,8 @@ The standard Logger Alert Levels (Based on PSR-3)
 | `Logger::INFO` | Informational messages (e.g., user logins, API requests, background jobs). |
 | `Logger::DEBUG` | Debugging details (e.g., variables, performance metrics). |
 
+A `LoggerLevelException` is thrown if the `$level` parameter does not match a supported Logger Alert Level.
+
 The following is a list of supported background colors (`const`):
 1. `Tools::BLACK`
 2. `Tools::RED`
@@ -362,6 +364,8 @@ The following text colors are supported (`const`):
 14. `Tools::LIGHT_GREEN`
 15. `Tools::LIGHT_BLUE`
 16. `Tools::LIGHT_MAGENTA`
+
+A `ConsoleException` is thrown if you use a value for text color in place of background color and vice versa.  If a value provided for `$background` and `$text` does not match any of the supported colors this exception is also thrown.
 
 <br>
 
