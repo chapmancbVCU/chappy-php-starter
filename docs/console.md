@@ -338,32 +338,32 @@ The standard Logger Alert Levels (Based on PSR-3)
 A `LoggerLevelException` is thrown if the `$level` parameter does not match a supported Logger Alert Level.
 
 The following is a list of supported background colors (`const`):
-1. `Tools::BLACK`
-2. `Tools::RED`
-3. `Tools::GREEN`
-4. `Tools::YELLOW`
-5. `Tools::BLUE`
-6. `Tools::MAGENTA`
-7. `Tools::CYAN`
-8. `Tools::LIGHT_GREY`
+1. `Tools::BG_BLACK`
+2. `Tools::BG_RED`
+3. `Tools::BG_GREEN`
+4. `Tools::BG_YELLOW`
+5. `Tools::BG_BLUE`
+6. `Tools::BG_MAGENTA`
+7. `Tools::BG_CYAN`
+8. `Tools::BG_LIGHT_GREY`
 
 The following text colors are supported (`const`):
-1. `Tools::BLACK`
-2. `Tools::WHITE`
-3. `Tools::DARK_GREY`
-4. `Tools::RED`
-5. `Tools::GREEN`
-6. `Tools::BROWN`
-7. `Tools::YELLOW`
-8. `Tools::BLUE`
-9. `Tools::MAGENTA`
-10. `Tools::CYAN`
-11. `Tools::LIGHT_CYAN`
-12. `Tools::LIGHT_GREY`
-13. `Tools::LIGHT_RED`
-14. `Tools::LIGHT_GREEN`
-15. `Tools::LIGHT_BLUE`
-16. `Tools::LIGHT_MAGENTA`
+1. `Tools::TEXT_BLACK`
+2. `Tools::TEXT_WHITE`
+3. `Tools::TEXT_DARK_GREY`
+4. `Tools::TEXT_RED`
+5. `Tools::TEXT_GREEN`
+6. `Tools::TEXT_BROWN`
+7. `Tools::TEXT_YELLOW`
+8. `Tools::TEXT_BLUE`
+9. `Tools::TEXT_MAGENTA`
+10. `Tools::TEXT_CYAN`
+11. `Tools::TEXT_LIGHT_CYAN`
+12. `Tools::TEXT_LIGHT_GREY`
+13. `Tools::TEXT_LIGHT_RED`
+14. `Tools::TEXT_LIGHT_GREEN`
+15. `Tools::TEXT_LIGHT_BLUE`
+16. `Tools::TEXT_LIGHT_MAGENTA`
 
 A `ConsoleException` is thrown if you use a value for text color in place of background color and vice versa.  If a value provided for `$background` and `$text` does not match any of the supported colors this exception is also thrown.
 
