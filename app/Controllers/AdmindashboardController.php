@@ -259,7 +259,7 @@ class AdmindashboardController extends Controller {
      * modify.
      * @return void
      */
-    public function setResetPasswordAction($id) {
+    public function setResetPasswordAction($id): void {
         $user = Users::findById((int)$id);
         DashboardService::checkIfCurrentUser($user);
 
@@ -284,7 +284,7 @@ class AdmindashboardController extends Controller {
      * @param int $id The id of the user we want to activate or inactivate.
      * @return void
      */
-    public function setStatusAction($id) {
+    public function setStatusAction($id): void {
         $user = Users::findById((int)$id);
         DashboardService::checkIfCurrentUser($user);
 
