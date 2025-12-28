@@ -12,7 +12,7 @@ use Core\Lib\Http\JsonResponse;
  */
 class ProfileController extends Controller {
     use JsonResponse;
-    
+
     /**
      * Deletes an image associated with a user's profile.
      *
@@ -88,7 +88,7 @@ class ProfileController extends Controller {
      *
      * @return void
      */
-    public function onConstruct(): void{
+    public function onConstruct(): void {
         $this->view->setLayout('default');
     }
     
