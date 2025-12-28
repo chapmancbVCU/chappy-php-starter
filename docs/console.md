@@ -310,51 +310,58 @@ In the above example we use the result of the dotNotification Verify function ca
 The info function is used to present to the user logging information.  The following is an example of how to call this function:
 
 ```php
-Tools::info("My message", 'info', 'red', 'white')
+Tools::info("My message", Logger::INFO, Tools::BG_RED, Tools::TEXT_WHITE);
 ```
 
-The first argument is you message, the second argument is the severity level for cli logging, the third is the background color, and finally the fourth is the text color.  We usually don't use the fourth argument since it may sometimes be ignored especially if you are using the terminal that comes with Visual Studio Code.
+**Parameters**
+
+- `string $message` - The message we want to show.
+- `string $level` - The level of severity for log file.  The valid levels are `info`, `debug`, `warning`, `error`, `critical`, `alert`, and `emergency`.
+- `string $background` - The background color.  This function supports `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, and `light-grey.
+- `string $text` - The color of the text.  This function supports `black`, `white`, `dark-grey`, `red`, `green`, `brown`, `blue`, `magenta`, `cyan`, `light-cyan`, `light-grey`, `light-red`, `light green`, `light-blue`, and `light-magenta`.
+
+We usually don't use the fourth argument since it may sometimes be ignored especially if you are using the terminal that comes with Visual Studio Code.
 
 The standard Logger Alert Levels (Based on PSR-3)
 
 | Severity Level | Description |
 |:-------:|-------------|
-| emergency | System is unusable (e.g., database crash, critical application failure). |
-| alert | Immediate action required (e.g., entire system down, security breach). |
-| critical | Critical errors (e.g., service failures, unexpected shutdowns). |
-| error | Application errors (e.g., exceptions, failed transactions, runtime errors). |
-| warning | Warning messages (e.g., deprecated features, high memory usage). |
-| notice | Normal but significant events (e.g., config changes, recoverable issues). |
-| info | Informational messages (e.g., user logins, API requests, background jobs). |
-| debug | Debugging details (e.g., variables, performance metrics). |
+| `Logger::EMERGENCY` | System is unusable (e.g., database crash, critical application failure). |
+| `Logger::ALERT` | Immediate action required (e.g., entire system down, security breach). |
+| `Logger::CRITICAL` | Critical errors (e.g., service failures, unexpected shutdowns). |
+| `Logger::ERROR` | Application errors (e.g., exceptions, failed transactions, runtime errors). |
+| `Logger::WARNING` | Warning messages (e.g., deprecated features, high memory usage). |
+| `Logger::NOTICE` | Normal but significant events (e.g., config changes, recoverable issues). |
+| `Logger::INFO` | Informational messages (e.g., user logins, API requests, background jobs). |
+| `Logger::DEBUG` | Debugging details (e.g., variables, performance metrics). |
 
-The following is a list of supported background colors:
-1. black
-2. red
-3. green
-4. yellow
-5. blue
-6. magenta
-7. cyan
-8. light-grey
+The following is a list of supported background colors (`const`):
+1. `Tools::BLACK`
+2. `Tools::RED`
+3. `Tools::GREEN`
+4. `Tools::YELLOW`
+5. `Tools::BLUE`
+6. `Tools::MAGENTA`
+7. `Tools::CYAN`
+8. `Tools::LIGHT_GREY`
 
-The following text colors are supported:
-1. black
-2. white
-3. dark-grey
-4. red
-5. green
-6. brown
-7. yellow
-8. blue
-9. magenta
-10. cyan
-11. light-cyan
-12. light-grey
-13. light-red
-14. light-green
-15. light-blue
-16. light-magenta
+The following text colors are supported (`const`):
+1. `Tools::BLACK`
+2. `Tools::WHITE`
+3. `Tools::DARK_GREY`
+4. `Tools::RED`
+5. `Tools::GREEN`
+6. `Tools::BROWN`
+7. `Tools::YELLOW`
+8. `Tools::BLUE`
+9. `Tools::MAGENTA`
+10. `Tools::CYAN`
+11. `Tools::LIGHT_CYAN`
+12. `Tools::LIGHT_GREY`
+13. `Tools::LIGHT_RED`
+14. `Tools::LIGHT_GREEN`
+15. `Tools::LIGHT_BLUE`
+16. `Tools::LIGHT_MAGENTA`
 
 <br>
 
