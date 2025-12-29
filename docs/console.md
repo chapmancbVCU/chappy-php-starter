@@ -157,15 +157,15 @@ Each of these commands can accept the following flags:
 
 ### H. React <a id="react"></a>
 
-| Command | Description |
-|:-------:|-------------|
-| react:auth | Generates page components for the auth controller |
-| react:component | Generates a react component |
-| react:error | Restores error/NotFound.jsx page component |
-| react:home | Generates Index.jsx page component for the home controller |
-| react:page | Generates a new react component for views |
-| react:profile | Generates page components for the profile controller | 
-| react:util | Generates a JavaScript utility file to support React.js |
+| Command | Description | Arguments |
+|:-------:|-------------|-----------|
+| [`react:auth`](controllers_and_views#view-commands) | Generates page components for the auth controller | |
+| [`react:component`](controllers_and_views#view-commands) | Generates a react component | [`--named`](controllers_and_views#view-commands) | 
+| [`react:error`](controllers_and_views#view-commands) | Restores error/NotFound.jsx page component | |
+| [`react:home`](controllers_and_views#view-commands) | Generates Index.jsx page component for the home controller | |
+| [`react:page`](controllers_and_views#view-commands) | Generates a new react component for views | |
+| [`react:profile`](controllers_and_views#view-commands) | Generates page components for the profile controller |  |
+| [`react:util`](react_utils#overview) | Generates a JavaScript utility file to support React.js | |
 
 <br>
 
