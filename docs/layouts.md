@@ -97,7 +97,7 @@ The setLayout function accepts the name of your layout as a string argument.  On
 
 <br>
 
-## 5. Menus <a id="menu"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Menus <a id="menus"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 You can create custom menus to be used with your layouts.  There are two ways to accomplish this task.  You can create a menu using the following command:
 
 ```sh
