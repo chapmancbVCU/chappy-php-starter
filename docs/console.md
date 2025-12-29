@@ -133,7 +133,7 @@ Each of these commands can accept the following flags:
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
 | [`queue:migration`](queue#migration) | Creates new migration for queue table | |
-| [`queue:worker`](queue#worker) | Starts a new queue worker | [`--once`](queue#worker), [`--max`](queue#worker), [`--queue`](queue#worker) |
+| [`queue:worker`](queue#worker) | Starts a new queue worker | [`--once`](queue#worker), <br>[`--max`](queue#worker), <br>[`--queue`](queue#worker) |
 
 <br>
 
@@ -141,7 +141,7 @@ Each of these commands can accept the following flags:
 
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
-| [`test`](unit_tests#running-tests) | Performs a phpunit test | [`--feature`](unit_tests#test-suite), [`--unit`](unit_tests#test-suite), [`--coverage`](unit_tests#coverage), <br>[`--debug`](unit_tests#display-flags), [`--display-depreciations`](unit_tests#display-flags), <br>[`--display-errors`](unit_tests#display-flags), [`--display-incomplete`](unit_tests#display-flags), <br>[`--display-skipped`](unit_tests#display-flags), [`--fail-on-complete`](unit_tests#display-flags), <br>[`--fail-on-risky`](unit_tests#display-flags), [`--testdox`](unit_tests#display-flags), <br>[`--random-order`](unit_tests#behavior-flags), [`--reverse-order`](unit_tests#behavior-flags), <br>[`--stop-on-error`](unit_tests#behavior-flags), [`--stop-on-failure`](unit_tests#behavior-flags), <br>[`--stop-on-incomplete`](unit_tests#behavior-flags), [`--stop-on-risky`](unit_tests#behavior-flags), <br>[`--stop-on-skipped`](unit_tests#behavior-flags), [`--stop-on-warning`](unit_tests#behavior-flags) |
+| [`test`](unit_tests#running-tests) | Performs a phpunit test | [`--feature`](unit_tests#test-suite), <br>[`--unit`](unit_tests#test-suite), <br>[`--coverage`](unit_tests#coverage), <br>[`--debug`](unit_tests#display-flags), <br>[`--display-depreciations`](unit_tests#display-flags), <br>[`--display-errors`](unit_tests#display-flags), <br>[`--display-incomplete`](unit_tests#display-flags), <br>[`--display-skipped`](unit_tests#display-flags), <br>[`--fail-on-complete`](unit_tests#display-flags), <br>[`--fail-on-risky`](unit_tests#display-flags), <br>[`--testdox`](unit_tests#display-flags), <br>[`--random-order`](unit_tests#behavior-flags), <br>[`--reverse-order`](unit_tests#behavior-flags), <br>[`--stop-on-error`](unit_tests#behavior-flags), <br>[`--stop-on-failure`](unit_tests#behavior-flags), <br>[`--stop-on-incomplete`](unit_tests#behavior-flags), <br>[`--stop-on-risky`](unit_tests#behavior-flags), <br>[`--stop-on-skipped`](unit_tests#behavior-flags), <br>[`--stop-on-warning`](unit_tests#behavior-flags) |
 | [`tinker`](tinker#startup) | Launches tinker shell | |
 
 <br>
