@@ -441,11 +441,13 @@ Use the `--seed` flag to seed your database after migrations have completed.
 ```sh
 php console migrate:fresh --seed
 ```
+<a id="drop-all"></a>
 
 <br>
 
 #### 3. `migrate:drop-all`
 Drops all tables.
+<a id="migrate-fresh"></a>
 
 <br>
 
@@ -458,6 +460,7 @@ Use the `--seed` flag to seed your database after migrations have completed.
 ```sh
 php console migrate:fresh --seed
 ```
+<a id="migrate-refresh"></a>
 
 <br>
 
