@@ -141,17 +141,17 @@ Each of these commands can accept the following flags:
 
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
-| [`test`](unit_tests#running-tests) | Performs a phpunit test | [`--feature`](unit_tests#test-suite),[`--unit`](unit_tests#test-suite),[`--coverage`](unit_tests#coverage),[`--debug`](unit_tests#display-flags),[`--display-depreciations`](unit_tests#display-flags),[`--display-errors`](unit_tests#display-flags),[`display-incomplete`](unit_tests#display-flags),[`display-skipped`](unit_tests#display-flags),[`fail-on-complete`](unit_tests#display-flags),[`fail-on-risky`](unit_tests#display-flags),[`testdox`](unit_tests#display-flags),[`random-order`](unit_tests#behavior-flags),[`reverse-order`](unit_tests#behavior-flags),[`stop-on-error`](unit_tests#behavior-flags),[`stop-on-failure`](unit_tests#behavior-flags),[`stop-on-incomplete`](unit_tests#behavior-flags),[`stop-on-risky`](unit_tests#behavior-flags),[`stop-on-skipped`](unit_tests#behavior-flags),[`stop-on-warning`](unit_tests#behavior-flags) |
+| [`test`](unit_tests#running-tests) | Performs a phpunit test | [`--feature`](unit_tests#test-suite), [`--unit`](unit_tests#test-suite), [`--coverage`](unit_tests#coverage), [`--debug`](unit_tests#display-flags), [`--display-depreciations`](unit_tests#display-flags), [`--display-errors`](unit_tests#display-flags), [`--display-incomplete`](unit_tests#display-flags), [`--display-skipped`](unit_tests#display-flags), [`--fail-on-complete`](unit_tests#display-flags), [`--fail-on-risky`](unit_tests#display-flags), [`--testdox`](unit_tests#display-flags), [`--random-order`](unit_tests#behavior-flags), [`--reverse-order`](unit_tests#behavior-flags), [`--stop-on-error`](unit_tests#behavior-flags), [`--stop-on-failure`](unit_tests#behavior-flags), [`--stop-on-incomplete`](unit_tests#behavior-flags), [`--stop-on-risky`](unit_tests#behavior-flags), [`--stop-on-skipped`](unit_tests#behavior-flags), [`--stop-on-warning`](unit_tests#behavior-flags) |
 | [`tinker`](tinker#startup) | Launches tinker shell | |
 
 <br>
 
 ### G. Tools <a id="tools"></a>
 
-| Command | Description |
-|:-------:|-------------|
-| log:clear | Deletes existing log file |
-| tools:rm-profile-images | Removes all profile images |
+| Command | Description | Arguments |
+|:-------:|-------------|-----------|
+| [`log:clear`](debugging_and_logs#clear-logs) | Deletes existing log file | [`--all`](debugging_and_logs#clear-logs), [`--app`](debugging_and_logs#clear-logs), [`--cli`](debugging_and_logs#clear-logs), [`--unit`](debugging_and_logs#clear-logs) |
+| `tools:rm-profile-images` | Removes all profile images | |
 
 <br>
 
