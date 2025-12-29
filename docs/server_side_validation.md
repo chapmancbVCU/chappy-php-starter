@@ -141,7 +141,7 @@ php console make:validator ${validator_name}
 An example output after running the command is shown below:
 ```php
 <?php
-namespace App\CustomValidators;
+namespace App\Lib\Validators;
 use Core\Validators\CustomValidator;
 /**
  * Describe your validator class.
