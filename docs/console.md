@@ -107,11 +107,15 @@ php console
 
 ### C. Local Servers <a id="local-servers"></a>
 
-| Command | Description |
-|:-------:|-------------|
-| serve | Runs local PHP server without having to use Apache2 or Nginx |
-| serve:api | Locally serves API using built in PHP server |
-| serve:docs | Locally serves jekyll based user guide |
+| Command | Description | Arguments |
+|:-------:|-------------|-----------|
+| `serve` | Runs local PHP standalone server | `--host`, `--port` |
+| `serve:api` | Locally serves API using built in PHP server | `--host`, `--port` |
+| `serve:docs` | Locally serves jekyll based user guide | `--host`, `--port` |
+
+Each of these commands can accept the following flags:
+- `--host` - Hostname or ipaddress
+- `--port` - Overrides default port
 
 <br>
 
