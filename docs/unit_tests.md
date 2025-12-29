@@ -90,18 +90,21 @@ You can use `vendor/bin/phpunit` to bypass the console's `test` command.
 **Supported PHPUnit flags**
 
 The following flags are supported without running PHPUnit directly using `vendor/bin/phpunit`.
+<a id="coverage"></a>
 🧹 Coverage and Logging
 
 | Flag                       | Description                             |
 | -------------------------- | --------------------------------------- |
 | `--coverage-text`          | Output code coverage summary to console |
 
+<a id="display-flags"></a>
+
 ✅ Output / Display Flags
 
 | Flag                     | Description                                                      |
 | ------------------------ | ---------------------------------------------------------------- |
 | `--debug`                | Show debugging info for each test (e.g., method names being run) |
-| `--display-deprecations` | Show deprecated method warnings                                  |
+| `--display-depreciations`| Show deprecated method warnings                                  |
 | `--display-errors`       | Show errors (on by default)                                      |
 | `--display-incomplete`   | Show incomplete tests in summary                                 |
 | `--display-skipped`      | Show skipped tests in summary                                    |
@@ -109,6 +112,7 @@ The following flags are supported without running PHPUnit directly using `vendor
 | `--fail-on-risky`        | Fail if risky tests are detected                                 |
 | `--testdox`              | Print readable test names (e.g., "It returns true on success")   |
 
+<a id="behavior-flags"></a>
 
 🔁 Execution / Behavior Flags
 
@@ -125,6 +129,8 @@ The following flags are supported without running PHPUnit directly using `vendor
 
 
 If you have the same function in a class with the same name inside both test suites only the one found within the unit test suite will be executed.
+
+<a id="test-suite"></a>
 
 **Run A Test Suite**
 
