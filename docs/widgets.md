@@ -24,6 +24,7 @@ resources/views/widgets/
 <br>
 
 **Making your own widget**
+
 Create a new widget using the following command:
 ```sh
 php console make:widget ${widget-name}
