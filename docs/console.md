@@ -130,10 +130,10 @@ Each of these commands can accept the following flags:
 
 ### E. Queue <a id="queue"></a>
 
-| Command | Description |
-|:-------:|-------------|
-| queue:migration | Creates new migration for queue table |
-| queue:worker | Starts a new queue worker |
+| Command | Description | Arguments |
+|:-------:|-------------|-----------|
+| [`queue:migration`](queue#migration) | Creates new migration for queue table | |
+| [`queue:worker`](queue#worker) | Starts a new queue worker | [`--once`](queue#worker), [`--max`](queue#worker), [`--queue`](queue#worker) |
 
 <br>
 
