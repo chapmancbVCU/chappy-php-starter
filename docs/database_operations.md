@@ -40,6 +40,11 @@ Chappy.php supports full migration-based database management using its built-in 
 
 Migrations are managed using the `migrations` table, which keeps track of which files have been executed. This ensures that only **new** migration files are applied each time you run `php console migrate`.
 
+Running this command with the `--seed` flag runs database seeders after all migrations are completed.
+```bash
+php console migrate --seed
+```
+
 <br>
 
 ## 2. Migration <a id="migration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
