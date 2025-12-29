@@ -99,8 +99,8 @@ php console
 |:-------:|-------------|-----------|
 | [`migrate`](database_operations#overview) | Runs a Database Migration | [`--seed`](database_operations#overview)|
 | [`migrate:drop-all`](database_operations#drop-all) | Drops all database tables | |
-| [`migrate:fresh`](database_operations#migrate-fresh) | Drops all tables and performs migration | |
-| [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | |
+| [`migrate:fresh`](database_operations#migrate-fresh) | Drops all tables and performs migration | [`--seed`](database_operations#migrate-fresh)|
+| [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | [`--seed`](database_operations#migrate-refresh), [`--step`](database_operations#migrate-refresh)|
 | [`seed:run`](database_seeders#running-seeder) | Runs database seeders | |
 
 <br>
