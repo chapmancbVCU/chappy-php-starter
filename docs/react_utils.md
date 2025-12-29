@@ -15,6 +15,13 @@ This framework supports the following utilities:
 - documentTitle - Sets title for document.
 - route - Similar to php route function.  Pass name of controller/action along with any props.
 
+Make your own JavaScript utility file:
+```bash
+php console react:util <util_name>
+```
+
+The file gets created at `resources\js\utils\`.
+
 <br>
 
 ## 2. asset <a id="asset"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
