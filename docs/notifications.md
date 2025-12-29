@@ -296,6 +296,7 @@ php console make:notification UserRegistered --channels=log,database,mail
 - Creates `app/Notifications/UserRegistered.php`.
 - Includes channel methods matching the provided list and a `via()` that returns them.
 - If you omit `--channels`, it scaffolds with all available channels.
+<a id="notification-migration"></a>
 
 <br>
 
@@ -304,6 +305,7 @@ php console make:notification UserRegistered --channels=log,database,mail
 php console notifications:migration
 ```
 - Writes a migration class that creates the notifications table with useful indexes.
+<a id="notification-prune"></a>
 
 <br>
 
