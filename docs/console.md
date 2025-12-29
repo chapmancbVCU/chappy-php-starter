@@ -95,13 +95,13 @@ php console
 
 ### B. Migrations & Seeders <a id="migrations"></a>
 
-| Command | Description |
-|:-------:|-------------|
-| migrate | Runs a Database Migration |
-| migrate:drop-all | Drops all database tables |
-| migrate:fresh | Drops all tables and performs migration |
-| migrate:refresh | Drops all tables with down function and runs a Database Migration |
-| seed:run | Runs database seeders |
+| Command | Description | Arguments |
+|:-------:|-------------|-----------|
+| [`migrate`](database_operations#overview) | Runs a Database Migration | [`--seed`](database_operations#overview)|
+| [`migrate:drop-all`](database_operations#drop-all) | Drops all database tables | |
+| [`migrate:fresh`](database_operations#migrate-fresh) | Drops all tables and performs migration | |
+| [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | |
+| [`seed:run`](database_seeders#running-seeder) | Runs database seeders | |
 
 <br>
 
