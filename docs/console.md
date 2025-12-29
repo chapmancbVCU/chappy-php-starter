@@ -70,17 +70,17 @@ php console
 | [`make:acl`](layouts#menu-acls) | Generates a new menu_acl json file | |
 | [`make:command`](console#build-command) | Generates a new command class | |
 | [`make:command-helper`](console#command-helpers) | Generates helper class that supports console commands | |
-| [`make:component`](components) | Generates component based on flags that are set | [`--card`](components#card), [`--form`](components#form), [`--table`](components#table)|
+| [`make:component`](components) | Generates component based on flags that are set | [`--card`](components#card), <br>[`--form`](components#form), <br>[`--table`](components#table)|
 | [`make:controller`](controllers#creating-a-controller) | Generates a new controller class | [`--layout`](controllers#creating-a-controller), [`--resource`](controllers#creating-a-controller) |
 | [`make:css`](views#make-css) | Generates a new CSS file | |
 | [`make:email`](email#templates-and-layouts) | Generates a file for an E-mail | |
 | [`make:email-layout`](email#templates-and-layouts) | Generates an E-mail template | |
 | [`make:event`](events#creating) | Generates a new Event class | [`--queue`](events#create-queued-event) |
 | [`make:job`](queue#job-class) | Generates a new job class | |
-| [`make:layout`](layouts#build-layout) | Generates a new layout | [`--menu`](layouts#menus), [`--menu-acl`](layouts#menu-acls) |
+| [`make:layout`](layouts#build-layout) | Generates a new layout | [`--menu`](layouts#menus), <br>[`--menu-acl`](layouts#menu-acls) |
 | [`make:mailer`](email#custom-mailers) | Generates a new custom mailer class | |
 | [`make:menu`](layouts#menus) | Generates a new menu file | |
-| [`make:migration`](database_operations#creating-a-new-table) | Generates a Database Migration | [`--update`](database_operations#updating-an-existing-table), [`--rename`](database_operations#renaming-an-existing-table) |
+| [`make:migration`](database_operations#creating-a-new-table) | Generates a Database Migration | [`--update`](database_operations#updating-an-existing-table), <br>[`--rename`](database_operations#renaming-an-existing-table) |
 | [`make:model`](models#overview) | Generates a new model file | [`--upload`](uploads#model-setup) |
 | [`make:notification`](notifications#writing-a-notification) | Generates a new notification class | [`--channels`](notifications#notification-class) |
 | [`make:provider`](events#make-provider) | Generates a new event service provider class | |
@@ -100,7 +100,7 @@ php console
 | [`migrate`](database_operations#overview) | Runs a Database Migration | [`--seed`](database_operations#overview)|
 | [`migrate:drop-all`](database_operations#drop-all) | Drops all database tables | |
 | [`migrate:fresh`](database_operations#migrate-fresh) | Drops all tables and performs migration | [`--seed`](database_operations#migrate-fresh)|
-| [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | [`--seed`](database_operations#migrate-refresh), [`--step`](database_operations#migrate-refresh)|
+| [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | [`--seed`](database_operations#migrate-refresh), <br>[`--step`](database_operations#migrate-refresh)|
 | [`seed:run`](database_seeders#running-seeder) | Runs database seeders | |
 
 <br>
@@ -141,7 +141,7 @@ Each of these commands can accept the following flags:
 
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
-| [`test`](unit_tests#running-tests) | Performs a phpunit test | [`--feature`](unit_tests#test-suite), [`--unit`](unit_tests#test-suite), [`--coverage`](unit_tests#coverage), [`--debug`](unit_tests#display-flags), [`--display-depreciations`](unit_tests#display-flags), [`--display-errors`](unit_tests#display-flags), [`--display-incomplete`](unit_tests#display-flags), [`--display-skipped`](unit_tests#display-flags), [`--fail-on-complete`](unit_tests#display-flags), [`--fail-on-risky`](unit_tests#display-flags), [`--testdox`](unit_tests#display-flags), [`--random-order`](unit_tests#behavior-flags), [`--reverse-order`](unit_tests#behavior-flags), [`--stop-on-error`](unit_tests#behavior-flags), [`--stop-on-failure`](unit_tests#behavior-flags), [`--stop-on-incomplete`](unit_tests#behavior-flags), [`--stop-on-risky`](unit_tests#behavior-flags), [`--stop-on-skipped`](unit_tests#behavior-flags), [`--stop-on-warning`](unit_tests#behavior-flags) |
+| [`test`](unit_tests#running-tests) | Performs a phpunit test | [`--feature`](unit_tests#test-suite), [`--unit`](unit_tests#test-suite), [`--coverage`](unit_tests#coverage), <br>[`--debug`](unit_tests#display-flags), [`--display-depreciations`](unit_tests#display-flags), <br>[`--display-errors`](unit_tests#display-flags), [`--display-incomplete`](unit_tests#display-flags), <br>[`--display-skipped`](unit_tests#display-flags), [`--fail-on-complete`](unit_tests#display-flags), <br>[`--fail-on-risky`](unit_tests#display-flags), [`--testdox`](unit_tests#display-flags), <br>[`--random-order`](unit_tests#behavior-flags), [`--reverse-order`](unit_tests#behavior-flags), <br>[`--stop-on-error`](unit_tests#behavior-flags), [`--stop-on-failure`](unit_tests#behavior-flags), <br>[`--stop-on-incomplete`](unit_tests#behavior-flags), [`--stop-on-risky`](unit_tests#behavior-flags), <br>[`--stop-on-skipped`](unit_tests#behavior-flags), [`--stop-on-warning`](unit_tests#behavior-flags) |
 | [`tinker`](tinker#startup) | Launches tinker shell | |
 
 <br>
@@ -150,7 +150,7 @@ Each of these commands can accept the following flags:
 
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
-| [`log:clear`](debugging_and_logs#clear-logs) | Deletes existing log file | [`--all`](debugging_and_logs#clear-logs), [`--app`](debugging_and_logs#clear-logs), [`--cli`](debugging_and_logs#clear-logs), [`--unit`](debugging_and_logs#clear-logs) |
+| [`log:clear`](debugging_and_logs#clear-logs) | Deletes existing log file | [`--all`](debugging_and_logs#clear-logs), <br>[`--app`](debugging_and_logs#clear-logs), <br>[`--cli`](debugging_and_logs#clear-logs), <br>[`--unit`](debugging_and_logs#clear-logs) |
 | `tools:rm-profile-images` | Removes all profile images | |
 
 <br>
