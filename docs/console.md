@@ -121,10 +121,10 @@ Each of these commands can accept the following flags:
 
 ### D. Notifications <a id="notifications"></a>
 
-| Command | Description |
-|:-------:|-------------|
-| notifications:migration | Creates new migration for the notifications table |
-| notifications:prune --days={days} | Prunes table base on value older than days set |
+| Command | Description | Arguments |
+|:-------:|-------------|-----------|
+| [`notifications:migration`](notifications#notification-migration) | Creates new migration for the notifications table | |
+| [`notifications:prune`](notifications#notification-prune) | Prunes table base on value older than days set | [`--days`](notifications#notification-prune) |
 
 <br>
 
