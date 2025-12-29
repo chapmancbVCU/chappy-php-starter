@@ -52,6 +52,7 @@ This framework supports two types of log files, located under `storage/logs`:
 - `app.log`: Logs frontend and application runtime events
 - `cli.log`: Logs activity from console commands
 
+<a id="clear-logs"></a>
 To clear these logs, use the following command:
 
 ```sh
