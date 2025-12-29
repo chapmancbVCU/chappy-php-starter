@@ -139,10 +139,10 @@ Each of these commands can accept the following flags:
 
 ### F. Testing <a id="testing"></a>
 
-| Command | Description |
-|:-------:|-------------|
-| test | Performs a phpunit test |
-| tinker | Launches tinker shell |
+| Command | Description | Arguments |
+|:-------:|-------------|-----------|
+| [`test`](unit_tests#running-tests) | Performs a phpunit test | [`--feature`](unit_tests#test-suite),[`--unit`](unit_tests#test-suite),[`--coverage`](unit_tests#coverage),[`--debug`](unit_tests#display-flags),[`--display-depreciations`](unit_tests#display-flags),[`--display-errors`](unit_tests#display-flags),[`display-incomplete`](unit_tests#display-flags),[`display-skipped`](unit_tests#display-flags),[`fail-on-complete`](unit_tests#display-flags),[`fail-on-risky`](unit_tests#display-flags),[`testdox`](unit_tests#display-flags),[`random-order`](unit_tests#behavior-flags),[`reverse-order`](unit_tests#behavior-flags),[`stop-on-error`](unit_tests#behavior-flags),[`stop-on-failure`](unit_tests#behavior-flags),[`stop-on-incomplete`](unit_tests#behavior-flags),[`stop-on-risky`](unit_tests#behavior-flags),[`stop-on-skipped`](unit_tests#behavior-flags),[`stop-on-warning`](unit_tests#behavior-flags) |
+| [`tinker`](tinker#startup) | Launches tinker shell | |
 
 <br>
 
