@@ -100,7 +100,6 @@ The following flags are supported without running PHPUnit directly using `vendor
 
 | Flag                     | Description                                                      |
 | ------------------------ | ---------------------------------------------------------------- |
-<!-- | `--colors=always`        | Always use ANSI colors in output (`auto`, `never`, `always`)     | -->
 | `--debug`                | Show debugging info for each test (e.g., method names being run) |
 | `--display-deprecations` | Show deprecated method warnings                                  |
 | `--display-errors`       | Show errors (on by default)                                      |
