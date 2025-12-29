@@ -67,29 +67,29 @@ php console
 
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
-| make:acl | Generates a new menu_acl json file | |
-| make:command | Generates a new command class | |
-| make:command-helper | Generates helper class that supports console commands | |
-| make:component | Generates component based on flags that are set | |
-| make:controller| Generates a new controller class | --layout={layout_name}, --resource |
-| make:css | Generates a new CSS file | |
-| make:email | Generates a file for an E-mail | |
-| make:email-layout | Generates an E-mail template | |
-| make:event | Generates a new Event class | --queue |
-| make:job | Generates a new job class | |
-| make:layout | Generates a new layout | --menu, menu={menu_name}, --menu-acl, --menu-acl={menu_acl_name} |
-| make:mailer | Generates a new custom mailer class | |
-| make:menu | Generates a new menu file | |
-| make:migration | Generates a Database Migration | --update, --rename={new_table_name} |
-| make:model | Generates a new model file | --upload |
-| make:notification | Generates a new notification class | --channels=database,log |
-| make:provider | Generates a new event service provider class | |
-| make:seeder | Creates a new database seeder class | |
-| make:service | Generates a new service class | |
-| make:test | Generates a new test class | --feature |
-| make:validator | Generates a new custom form validator class | |
-| make:view | Create a new view | |
-| make:widget | Creates a new widget| |
+| [`make:acl`](layouts#menu-acls) | Generates a new menu_acl json file | |
+| [`make:command`](console#build-command) | Generates a new command class | |
+| [`make:command-helper`](console#command-helpers) | Generates helper class that supports console commands | |
+| [`make:component`](components) | Generates component based on flags that are set | [`--card`](components#card), [`--form`](components#form), [`--table`](components#table)|
+| [`make:controller`](controllers#creating-a-controller) | Generates a new controller class | [`--layout`](controllers#creating-a-controller), [`--resource`](controllers#creating-a-controller) |
+| [`make:css`](views#make-css) | Generates a new CSS file | |
+| [`make:email`](email#templates-and-layouts) | Generates a file for an E-mail | |
+| [`make:email-layout`](email#templates-and-layouts) | Generates an E-mail template | |
+| [`make:event`](events#creating) | Generates a new Event class | [`--queue`](events#create-queued-event) |
+| [`make:job`](queue#job-class) | Generates a new job class | |
+| [`make:layout`](layouts#build-layout) | Generates a new layout | [`--menu`](layouts#menus), [`--menu-acl`](layouts#menu-acls) |
+| [`make:mailer`](email#custom-mailers) | Generates a new custom mailer class | |
+| [`make:menu`](layouts#menus) | Generates a new menu file | |
+| [`make:migration`](database_operations#creating-a-new-table) | Generates a Database Migration | [`--update`](database_operations#updating-an-existing-table), [`--rename`](database_operations#renaming-an-existing-table) |
+| [`make:model`](models#overview) | Generates a new model file | [`--upload`](uploads#model-setup) |
+| [`make:notification`](notifications#writing-a-notification) | Generates a new notification class | [`--channels`](notifications#notification-class) |
+| [`make:provider`](events#make-provider) | Generates a new event service provider class | |
+| [`make:seeder`](database_seeders#seeder-class) | Creates a new database seeder class | |
+| [`make:service`](services#user-services) | Generates a new service class | |
+| [`make:test`](unit_tests#creating-tests) | Generates a new test class | [`--feature`](unit_tests#creating-tests) |
+| [`make:validator`](server_side_validation#custom-validators) | Generates a new custom form validator class | |
+| [`make:view`](views#make-views) | Create a new view | |
+| [`make:widget`](widgets#overview) | Creates a new widget| |
 
 <br>
 
