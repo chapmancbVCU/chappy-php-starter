@@ -72,3 +72,4 @@ php console react:page <area>.<view_name>
 | `php console react:error` | Restores error/NotFound.jsx page component |
 | `php console react:home` | Generates Index.jsx page component for the home controller |
 | `php console react:profile` | Generates page components for the profile controller | 
+| `php console react:component` | Generates a new component.  Use `--named` flag to generate a named component |
