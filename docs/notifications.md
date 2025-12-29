@@ -287,7 +287,8 @@ The command uses `Tools::setOutput($output)` so output is captured in tests.
 On `--dry-run`, it prints the “Would send … via [X,Y]” line plus the JSON payload.
 
 <br>
-#### B. Generate a Notification class
+
+#### B. Generate a Notification class <a id="notification-class"></a>
 ```bash
 php console make:notification UserRegistered --channels=log,database,mail
 ```
