@@ -19,7 +19,19 @@ Session messages provides support for displaying information to the user in a di
 When using with PHP you must first call the addMessage function form the Session class. An example for how to perform this task is shown below:
 
 ```php
-Session::addMessage('success', 'Contact has been deleted');
+Session::addMessage(Session::Success, 'Contact has been deleted');
+```
+
+The supported alert levels are:
+```php
+Session::INFO = "info";
+Session::SUCCESS = "success";
+Session::WARNING = "warning";
+Session::DANGER = "danger";
+Session::PRIMARY = "primary";
+Session::SECONDARY = "secondary";
+Session::DARK = "dark";
+Session::LIGHT = "light";
 ```
 
 A shorthand global version of this function is also available:
