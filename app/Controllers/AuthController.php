@@ -2,7 +2,6 @@
 namespace App\Controllers;
 use Core\Controller;
 use App\Models\Users;
-use Core\Lib\Logging\Logger;
 use Core\Models\Login;
 use Core\Services\ACLService;
 use Core\Models\ProfileImages;
@@ -53,7 +52,7 @@ class AuthController extends Controller {
      */
     public function logoutAction(): void {
         if(!$this->request->isPost()) {
-            flashMessage(Logger::WARNING, 'You must logout through menu');
+            flashMessage('danger', 'You must logout through menu');
             redirect('home');
         }
 
