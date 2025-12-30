@@ -68,7 +68,15 @@ flashMessage(Session::SUCCESS, 'User created successfully.');
 
 <br>
 
-### H. `logger()`
+### H. `info()`
+**Description** Generates output messages for console commands.  A wrapper for the [Session::info() function](console#info).
+```php
+info("My message", Logger::INFO, Tools::BG_GREEN, Tools::TEXT_LIGHT_GREY);
+```
+
+<br>
+
+### I. `logger()`
 **Description:** Writes a message to the log file with a specified level.
 ```php
 logger('User login failed', 'error');
@@ -76,7 +84,7 @@ logger('User login failed', 'error');
 
 <br>
 
-### I. `now()`
+### J. `now()`
 **Description:** Returns the current time formatted using application or user preferences.
 ```php
 now();
@@ -85,7 +93,7 @@ now('Europe/Berlin', 'H:i', 'de');
 
 <br>
 
-### J. `redirect()`
+### K. `redirect()`
 **Description:** Redirects to a specified route.
 ```php
 redirect('login');
@@ -94,7 +102,7 @@ redirect('user.profile', [42]);
 
 <br>
 
-### K. `route()`
+### L. `route()`
 **Description:** Generates a route URL from a dot-notated path and optional parameters.
 ```php
 route('user.profile', [42]);
@@ -102,7 +110,7 @@ route('user.profile', [42]);
 
 <br>
 
-### L. `vite()`
+### M. `vite()`
 **Description:** Returns the correct URL for a Vite-managed frontend asset.
 ```php
 vite('resources/js/app.js');
