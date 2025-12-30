@@ -6,6 +6,7 @@ use Core\Models\ProfileImages;
 use Core\Services\AuthService;
 use Core\Services\UserService;
 use Core\Lib\Http\JsonResponse;
+use Core\Session;
 
 /**
  * Supports ability to use user profile features and render relevant views.
@@ -106,7 +107,7 @@ class ProfileController extends Controller {
 
             // Verify password and display message if incorrect.
             if(UserService::updatePassword($user, $this->request)) {
-                flashMessage('success', 'Password updated!'); 
+                flashMessage(Session::SUCCESS, 'Password updated!'); 
                 redirect('profile.index');
             }
         }

@@ -63,7 +63,7 @@ dump($request);
 ### G. `flashMessage()`
 **Description:** Adds a flash message to the session.
 ```php
-flashMessage('success', 'User created successfully.');
+flashMessage(Session::SUCCESS, 'User created successfully.');
 ```
 
 <br>

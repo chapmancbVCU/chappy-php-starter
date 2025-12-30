@@ -12,6 +12,7 @@ use Core\Lib\Pagination\Pagination;
 use Core\Services\DashboardService;
 use Core\Services\AttachmentService;
 use Core\Lib\Http\JsonResponse;
+use Core\Session;
 
 /**
  * Implements support for our Admindashboard controller.
@@ -125,7 +126,7 @@ class AdmindashboardController extends Controller {
         if ($this->request->isPost()) {
             $this->request->csrfCheck();
             if(ACLService::saveACL($acl, $this->request)) {
-                flashMessage('info', "ACL record updated.");
+                flashMessage(Session::INFO, "ACL record updated.");
                 redirect('admindashboard.manageAcls');
             }
         }

@@ -75,7 +75,7 @@ public function toggleFeaturedAction(): void {
 
         if($product) {
             $product->featured = ($product->featured == 1)? 0 : 1;
-            flashMessage('success', ($product->featured ==1)? "{$product->name} is now featured." : "{$product->name} is no longer featured.");
+            flashMessage(Session::SUCCESS, ($product->featured ==1)? "{$product->name} is now featured." : "{$product->name} is no longer featured.");
             $product->save();
         }
     }

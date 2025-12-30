@@ -190,7 +190,7 @@ public function deleteAction(int $id): void {
     $contact = Contacts::findByIdAndUserId((int)$id, AuthService::currentUser()->id);
     if($contact) {
         $contact->delete();
-        flashMessage('success', 'Contact has been deleted');
+        flashMessage(Session::SUCCESS, 'Contact has been deleted');
     }
     redirect('contacts');
 }

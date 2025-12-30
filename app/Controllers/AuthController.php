@@ -6,6 +6,7 @@ use Core\Models\Login;
 use Core\Services\ACLService;
 use Core\Models\ProfileImages;
 use Core\Services\AuthService;
+use Core\Session;
 
 /**
  * Implements support for our Auth controller.  Functions found in this 
@@ -52,7 +53,7 @@ class AuthController extends Controller {
      */
     public function logoutAction(): void {
         if(!$this->request->isPost()) {
-            flashMessage('danger', 'You must logout through menu');
+            flashMessage(Session::DANGER, 'You must logout through menu');
             redirect('home');
         }
 
