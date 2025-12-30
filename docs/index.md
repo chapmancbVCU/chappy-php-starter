@@ -4,11 +4,12 @@ It offers clean routing, an intuitive Event/Listener system, built‑in authenti
 Designed for flexibility and clarity, it’s ideal for learning, rapid prototyping, or building full‑scale apps with a structure inspired by proven frameworks.
 
 1. Getting Started
-    * A. [Linux Standalone PHP](linux_php_standalone)
-    * B. [LAMP Stack](lamp)
-    * C. [LEMP Stack](lemp)
-    * D. [MacOS](macos)
-    * E. [Windows](windows)
+    * A. [API](https://chapmancbvcu.github.io/chappy-php-framework/)
+    * B. [Linux Standalone PHP](linux_php_standalone)
+    * C. [LAMP Stack](lamp)
+    * D. [LEMP Stack](lemp)
+    * E. [MacOS](macos)
+    * F. [Windows](windows)
 2. [Access Control Levels (ACLs)](access_control_levels)
 3. [Administration](administration)
 4. [Console](console)
