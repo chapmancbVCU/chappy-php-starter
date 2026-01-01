@@ -480,6 +480,7 @@ php console migrate:refresh --seed
 php console migrate:refresh --step=2
 ```
 Undo last 2 previous migration and then runs migration against all pending migrations.
+<a id="rollback"></a>
 
 <br>
 
