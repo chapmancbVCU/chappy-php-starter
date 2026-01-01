@@ -501,6 +501,7 @@ Roll back migrations for batch number 2
 php console migrate:rollback --step=2
 ```
 Undo last 2 previous migrations.
+<a id="status"></a>
 
 <br>
 
