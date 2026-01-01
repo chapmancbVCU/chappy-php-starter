@@ -36,7 +36,7 @@ class ProfileController extends Controller {
         $user = AuthService::currentUser();
         UserService::ensureAuthenticatedUser($user);
 
-        $profileImages = ProfileImages::findByUserId($user->id);
+        $profileImages = ProfileImages::findByUserId((int)$user->id);
         if($this->request->isPost()) {
             $this->request->csrfCheck();
             $uploads = AuthService::profileImageUpload($user);
@@ -70,7 +70,7 @@ class ProfileController extends Controller {
     public function indexAction(): void {
         $user = AuthService::currentUser();
         UserService::ensureAuthenticatedUser($user);
-        $profileImages = ProfileImages::findByUserId($user->id);
+        $profileImages = ProfileImages::findByUserId((int)$user->id);
         
         // Toggle comments to use React.js
         $this->view->profileImages = $profileImages;

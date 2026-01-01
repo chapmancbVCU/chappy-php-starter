@@ -90,7 +90,7 @@ class AuthController extends Controller {
             $user->save();
             if($user->validationPassed()) {
                 if($uploads) {
-                    ProfileImages::uploadProfileImage($user->id, $uploads);
+                    ProfileImages::uploadProfileImage((int)$user->id, $uploads);
                 }
                 redirect('auth.login');
             }
