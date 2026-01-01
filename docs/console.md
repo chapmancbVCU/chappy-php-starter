@@ -102,7 +102,7 @@ php console
 | [`migrate:drop-all`](database_operations#drop-all) | Drops all database tables | |
 | [`migrate:fresh`](database_operations#migrate-fresh) | Drops all tables and performs migration | [`--seed`](database_operations#migrate-fresh)|
 | [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | [`--seed`](database_operations#migrate-refresh), <br>[`--step`](database_operations#migrate-refresh)|
-| [`migrate:rollback`](database_operations#rollback) | Performs rollback operation | [`--step`](database_operations#rollback), <br>[`batch`](database_operations#rollback) | 
+| [`migrate:rollback`](database_operations#rollback) | Performs rollback operation | [`--step`](database_operations#rollback), <br>[`--batch`](database_operations#rollback) | 
 | [`migrate:status`](database_operations#status) | Reports status of migrations | |
 | [`seed:run`](database_seeders#running-seeder) | Runs database seeders | |
 
@@ -128,6 +128,7 @@ Each of these commands can accept the following flags:
 |:-------:|-------------|-----------|
 | [`notifications:migration`](notifications#notification-migration) | Creates new migration for the notifications table | |
 | [`notifications:prune`](notifications#notification-prune) | Prunes table base on value older than days set | [`--days`](notifications#notification-prune) |
+| [`notifications:test`](notifications#cli-commands) | Tests a notification through specified channels | [`--user`](notifications#cli-commands), <br>[`--channels`](notifications#cli-commands), <br>[`--dry-run`](notifications#cli-commands), <br>[`--with`](notifications#cli-commands) | 
 
 <br>
 
