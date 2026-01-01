@@ -16,7 +16,7 @@ Session messages provides support for displaying information to the user in a di
 <br>
 
 ## 2. Usage <a id="usage"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-When using with PHP you must first call the addMessage function form the Session class. An example for how to perform this task is shown below:
+When using with PHP you must first call the addMessage function from the Session class. An example for how to perform this task is shown below:
 
 ```php
 Session::addMessage(Session::SUCCESS, 'Contact has been deleted');
