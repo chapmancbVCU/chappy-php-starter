@@ -17,16 +17,17 @@ use Core\Validators\{
 use Core\Lib\Utilities\Env;
 use Core\Lib\Utilities\Arr;
 use Core\Lib\Notifications\Notifiable; 
+use Core\Traits\HasTimestamps;
 /**
  * Extends the Model class.  Supports functions for the Users model.
  */
 class Users extends Model {
+    use HasTimestamps;
     use Notifiable;
     public $acl;
     public const blackListedFormKeys = ['id','deleted'];
     private $changePassword = false;
     public $confirm;
-    public $created_at;
     public static $currentLoggedInUser = null;
     public $deleted = 0;                // Set default value for db field.
     public $description;
@@ -40,7 +41,6 @@ class Users extends Model {
     public $password;
     protected static $_softDelete = true;
     protected static $_table = 'users';
-    public $updated_at;
     public $username;
 
     /**
