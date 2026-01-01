@@ -181,16 +181,6 @@ class AdmindashboardController extends Controller {
     }
 
     /**
-     * Previews an attachment
-     *
-     * @param int $id The primary key for the record of the attachment.
-     * @return void
-     */
-    public function previewAction(int $id): void {
-        AttachmentService::previewAttachment($id);
-    }
-
-    /**
      * Support ability to toggle on or off the reset password flag for a 
      * particular user.
      *
