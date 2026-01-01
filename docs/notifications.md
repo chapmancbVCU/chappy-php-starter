@@ -263,7 +263,7 @@ This demonstrates two approaches: synchronous mail vs. queued mail. Both use `No
 ## 7. CLI Commands <a id="cli-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 #### A. Test a Notification (no side-effects by default)
 ```bash
-php console notification:test DummyNotification --dry-run
+php console notifications:test DummyNotification --dry-run
 ```
 
 Options:
@@ -274,13 +274,13 @@ Options:
 Examples:
 ```bash
 # Dry run with defaults (uses via()):
-php console notification:test UserRegistered --dry-run
+php console notifications:test UserRegistered --dry-run
 
 # Dry run with channel override and payload overrides
-php console notification:test UserRegistered --dry-run --channels=log,database --with=level:warning,tag:cli
+php console notifications:test UserRegistered --dry-run --channels=log,database --with=level:warning,tag:cli
 
 # Actually send (remove --dry-run)
-php console notification:test UserRegistered --user=42 --channels=mail
+php console notifications:test UserRegistered --user=42 --channels=mail
 ```
 
 The command uses `Tools::setOutput($output)` so output is captured in tests.
