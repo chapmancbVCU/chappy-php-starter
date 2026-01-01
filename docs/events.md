@@ -94,11 +94,12 @@ class UserPromoted
 }
 ```
 
+<a id="event-flag"></a>
 <br>
 
 2️⃣ Make a new Listener
 ```bash
-php console make:listener UserPromoted NotifyAdminOfPromotion
+php console make:listener UserPromoted --event=NotifyAdminOfPromotion
 ```
 
 This creates:

@@ -78,6 +78,7 @@ php console
 | [`make:event`](events#creating) | Generates a new Event class | [`--queue`](events#create-queued-event) |
 | [`make:job`](queue#job-class) | Generates a new job class | |
 | [`make:layout`](layouts#build-layout) | Generates a new layout | [`--menu`](layouts#menus), <br>[`--menu-acl`](layouts#menu-acls) |
+| [`make:listener`](events#event-flag) | Generates new listener class | [`--event`](events#event-flag), <br>[`--queue`](events#create-queued-listener) |
 | [`make:mailer`](email#custom-mailers) | Generates a new custom mailer class | |
 | [`make:menu`](layouts#menus) | Generates a new menu file | |
 | [`make:migration`](database_operations#creating-a-new-table) | Generates a Database Migration | [`--update`](database_operations#updating-an-existing-table), <br>[`--rename`](database_operations#renaming-an-existing-table) |
