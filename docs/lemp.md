@@ -869,8 +869,9 @@ sudo chmod -R 777 storage/
 ```
 <br>
 
-Run migrations:
+Create JavaScript bundle if necessary and run migrations:
 ```sh
+npm run build
 php console migrate
 ```
 
