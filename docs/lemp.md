@@ -434,11 +434,11 @@ sudo chmod -R 755 /var/www/my-app
 sudo vi /etc/nginx/sites-available/my-app
 ```
 
-Paste the following content while making sure correct php version is set (replace myapp.local and my_ip_address with information relevant for your case):
+Paste the following content while making sure correct php version is set (replace my-app.local and my_ip_address with information relevant for your case):
 ```rust
 server {
     listen 80;
-    server_name myapp.local my_ip_address;
+    server_name my-app.local my_ip_address;
     root /var/www/my-app;
 
     add_header X-Frame-Options "SAMEORIGIN";
