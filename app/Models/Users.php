@@ -15,7 +15,6 @@ use Core\Validators\{
     UpperCharValidator
 };
 use Core\Lib\Utilities\Arr;
-use Core\Lib\Notifications\Notifiable; 
 use Core\Traits\HasTimestamps;
 use Core\Traits\PasswordPolicy;
 
@@ -25,7 +24,6 @@ use Core\Traits\PasswordPolicy;
 class Users extends Model {
     use PasswordPolicy;
     use HasTimestamps;
-    use Notifiable;
     public $acl;
     public const blackListedFormKeys = ['id','deleted'];
     private $changePassword = false;
