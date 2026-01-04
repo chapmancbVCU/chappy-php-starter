@@ -8,10 +8,6 @@ use Core\Lib\Utilities\Env;
     'debug' => Env::get('DEBUG') ?? false,
     'app_env' => Env::get('APP_ENV') ?? 'production',
 
-    // This should be set to false for security reasons.
-    // If you need to run migrations from the browser, you can set this to true temporarily.
-    'run_migrations_from_browser' => Env::get('RUN_MIGRATIONS_FROM_BROWSER') ?? false,
-
     'default_controller' => Env::get('DEFAULT_CONTROLLER') ?? 'Home', // Default controller if not set in .env
     'default_layout' => Env::get('DEFAULT_LAYOUT') ?? 'main', // Default layout if not set in controller
 
