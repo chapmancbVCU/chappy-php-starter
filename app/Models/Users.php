@@ -14,11 +14,11 @@ use Core\Validators\{
     UniqueValidator,
     UpperCharValidator
 };
-use Core\Lib\Utilities\Env;
 use Core\Lib\Utilities\Arr;
 use Core\Lib\Notifications\Notifiable; 
 use Core\Traits\HasTimestamps;
 use Core\Traits\PasswordPolicy;
+
 /**
  * Extends the Model class.  Supports functions for the Users model.
  */
