@@ -124,11 +124,17 @@ class AuthController extends Controller {
             $this->request->csrfCheck();
             AuthService::passwordReset($this->request, $user);
         }
-
+        dump($user->password);
         $user->setChangePassword(false);
-        $this->view->displayErrors = $user->getErrorMessages();
-        $this->view->user = $user;
-        $this->view->postAction = route('auth.resetPassword', [$user->id]);
-        $this->view->render('auth.reset_password');
+        // $this->view->displayErrors = $user->getErrorMessages();
+        // $this->view->user = $user;
+        // $this->view->postAction = route('auth.resetPassword', [$user->id]);
+        // $this->view->render('auth.reset_password');
+
+        $this->view->props = [
+            'user' => $user,
+            'errors' => $user->getErrorMessages(),
+        ];
+        $this->view->renderJsx('auth.ResetPassword');
     }
 }
