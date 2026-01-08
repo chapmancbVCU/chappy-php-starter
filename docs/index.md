@@ -47,7 +47,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * D. [DashboardService](dashboard_service)
     * E. [UserService](user_service)
 22. [Session and Flash Messages](session_and_flash_messages)
-23. [Supported Traits](traits) - Coming soon
+23. [Supported Traits](traits)
 23. [Tinker Command](tinker)
 24. [Unit Tests](unit_tests)
 25. [User Guide](user_guide)
