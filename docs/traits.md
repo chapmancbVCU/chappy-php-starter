@@ -30,3 +30,4 @@ Contains a collection of functions for enforcing your project's password policy:
 <br>
 
 ## 3. PasswordPolicy <a id="password-policy"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Supports timestamp related features for your `$created_at` and `$updated_at` database fields.  The `timeStamps` function is used to manage these fields.
