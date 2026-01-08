@@ -17,8 +17,15 @@ This framework currently supports 4 traits intended for developer use:
 <br>
 
 ## 2. HasTimestamps <a id="has-timestamps"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-
-
+Contains a collection of functions for enforcing your project's password policy:
+- `isMaxLength` - True if this policy is enabled
+- `isMinLength` - True if this policy is enabled
+- `lowerChar` - True if this policy is enabled
+- `maxLength` - Maximum allowed length
+- `minLength` - Minimum allowed length
+- `numericChar` - True if this policy is enabled
+- `specialChar` - True if this policy is enabled
+- `upperChar` - True if this policy is enabled
 
 <br>
 
