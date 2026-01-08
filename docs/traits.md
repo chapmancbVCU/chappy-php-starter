@@ -2,7 +2,8 @@
 
 ## Table of contents
 1. [Overview](#overview)
-
+2. [HasTimestamps](#has-timestamps)
+3. [PasswordPolicy](#password-policy)
 
 <br>
 
@@ -13,3 +14,12 @@ This framework currently supports 4 traits intended for developer use:
 - Notifiable - More details [here](notifications#making-model-notifiable)
 - PasswordPolicy
 
+<br>
+
+## 2. HasTimestamps <a id="has-timestamps"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
+
+
+<br>
+
+## 3. PasswordPolicy <a id="password-policy"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
