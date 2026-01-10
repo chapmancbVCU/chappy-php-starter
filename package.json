@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -31,8 +31,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.7.0",
-    "jest": "^30.2.0",
     "vite": "^6.3.6",
-    "vite-plugin-full-reload": "^1.2.0"
+    "vite-plugin-full-reload": "^1.2.0",
+    "vitest": "^4.0.16"
   }
 }
