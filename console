@@ -46,7 +46,7 @@ foreach ($commandSources as $source) {
         }
 
         if (class_exists($commandClass)) {
-            $app->add(new $commandClass());
+            $app->addCommand(new $commandClass());
         }
     }
 }
