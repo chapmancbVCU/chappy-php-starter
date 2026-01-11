@@ -48,6 +48,9 @@ export default defineConfig(({ command }) => ({
         include: ['@tinymce/tinymce-react', 'tinymce'],
     },
     test: {
+        globals: true,
         environment: 'jsdom',
+        setupFiles: './setup.js',
+        css: true,
     }
 }));
