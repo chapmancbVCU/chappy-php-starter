@@ -17,11 +17,11 @@ class HomeController extends Controller {
      */
     public function indexAction(): void {
         // Toggle comments to enable React.js view.
-        $this->view->render('home.index');
+        // $this->view->render('home.index');
 
-        // $user = AuthService::currentUser();
-        // $props = ['user' => $user ?? 'Guest'];
-        // $this->view->renderJSX('home.Index', $props);
+        $user = AuthService::currentUser();
+        $props = ['user' => $user ?? 'Guest'];
+        $this->view->renderJSX('home.Index', $props);
     }
 
     /**
