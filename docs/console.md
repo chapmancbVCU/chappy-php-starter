@@ -74,7 +74,7 @@ php console
 | [`make:controller`](controllers#creating-a-controller) | Generates a new controller class | [`--layout`](controllers#creating-a-controller), [`--resource`](controllers#creating-a-controller) |
 | [`make:css`](views#make-css) | Generates a new CSS file | |
 | [`make:email`](email#templates-and-layouts) | Generates a file for an E-mail | |
-| [`make:email-layout`](email#templates-and-layouts) | Generates an E-mail template | |
+| [`make:email:layout`](email#templates-and-layouts) | Generates an E-mail template | |
 | [`make:event`](events#creating) | Generates a new Event class | [`--queue`](events#create-queued-event) |
 | [`make:job`](queue#job-class) | Generates a new job class | |
 | [`make:layout`](layouts#build-layout) | Generates a new layout | [`--menu`](layouts#menus), <br>[`--menu-acl`](layouts#menu-acls) |
@@ -99,7 +99,7 @@ php console
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
 | [`migrate`](database_operations#overview) | Runs a Database Migration | [`--seed`](database_operations#overview)|
-| [`migrate:drop-all`](database_operations#drop-all) | Drops all database tables | |
+| [`migrate:drop:all`](database_operations#drop-all) | Drops all database tables | |
 | [`migrate:fresh`](database_operations#migrate-fresh) | Drops all tables and performs migration | [`--seed`](database_operations#migrate-fresh)|
 | [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | [`--seed`](database_operations#migrate-refresh), <br>[`--step`](database_operations#migrate-refresh)|
 | [`migrate:rollback`](database_operations#rollback) | Performs rollback operation | [`--step`](database_operations#rollback), <br>[`--batch`](database_operations#rollback) | 
