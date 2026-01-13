@@ -76,7 +76,7 @@ php console migrate
 php console migrate:refresh
 
 # Drop all tables without rerunning
-php console migrate:drop-all
+php console migrate:drop:all
 ```
 
 💡 The migrate:refresh command is great during local development when you want a clean slate.
@@ -445,7 +445,7 @@ php console migrate:fresh --seed
 
 <br>
 
-#### 3. `migrate:drop-all`
+#### 3. `migrate:drop:all`
 Drops all tables.
 <a id="migrate-fresh"></a>
 

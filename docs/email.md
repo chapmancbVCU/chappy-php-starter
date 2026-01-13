@@ -113,7 +113,7 @@ You can find the new template at `resources/views/emails/`
 
 **Making a layout**
 ```sh
-php console make:email-layout
+php console make:email:layout
 ```
 
 ```php

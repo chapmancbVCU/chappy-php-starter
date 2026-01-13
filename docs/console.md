@@ -69,7 +69,7 @@ php console
 |:-------:|-------------|-----------|
 | [`make:acl`](layouts#menu-acls) | Generates a new menu_acl json file | |
 | [`make:command`](console#build-command) | Generates a new command class | |
-| [`make:command-helper`](console#command-helpers) | Generates helper class that supports console commands | |
+| [`make:command:helper`](console#command-helpers) | Generates helper class that supports console commands | |
 | [`make:component`](components) | Generates component based on flags that are set | [`--card`](components#card), <br>[`--form`](components#form), <br>[`--table`](components#table)|
 | [`make:controller`](controllers#creating-a-controller) | Generates a new controller class | [`--layout`](controllers#creating-a-controller), [`--resource`](controllers#creating-a-controller) |
 | [`make:css`](views#make-css) | Generates a new CSS file | |
@@ -229,7 +229,7 @@ Since this framework is fully Object-Oriented you can generate helper files to m
 You can build your own command helper class by running the `make:command-helper` command.  Let's create a FooHelper class by running the following:
 
 ```sh
-php console make:command-helper FooHelper
+php console make:command:helper FooHelper
 ```
 
 Once your run this command the file generated will look as follows:
