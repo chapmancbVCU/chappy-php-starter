@@ -92,6 +92,7 @@ You can use `vendor/bin/phpunit` to bypass the console's `test` command.
 
 The following flags are supported without running PHPUnit directly using `vendor/bin/phpunit`.
 <a id="coverage"></a>
+
 🧹 Coverage and Logging
 
 | Flag                       | Description                             |
