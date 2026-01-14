@@ -17,6 +17,7 @@
     * H. [Simulating PUT Requests in Feature Tests](#put)
     * I. [Mocking File Uploads in Tests](#mock-files)
 7. [PHPUnit Assertions](#phpunit-assertions)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
