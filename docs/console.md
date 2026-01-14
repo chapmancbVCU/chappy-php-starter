@@ -12,6 +12,7 @@
     * F. [Testing](#testing)  
     * G. [Tools](#tools) 
     * H. [React](#react)
+    * I. [Vitest](#vitest)
 4. [Building Your Own Command](#build-command)
 5. [Command Helpers](#command-helpers)
 6. [Tools](#tools)
@@ -170,6 +171,15 @@ Each of these commands can accept the following flags:
 | [`react:page`](controllers_and_views#view-commands) | Generates a new react component for views | |
 | [`react:profile`](controllers_and_views#view-commands) | Generates page components for the profile controller |  |
 | [`react:util`](react_utils#overview) | Generates a JavaScript utility file to support React.js | |
+
+<br>
+
+### I. Vitest <a id="vitest"></a>
+
+| Command | Description | Arguments |
+|:-------:|-------------|-----------|
+| `react:make:test` | Generates a new test case file | `--component`, <br> `--unit`, <br> `--view` |
+| `react:test` | Performs Vitest unit tests | `--component`, <br> `--unit`, <br> `--view` |
 
 <br>
 
