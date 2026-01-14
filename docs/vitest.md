@@ -45,11 +45,11 @@ Run all tests in a file that exists within the component, unit, and view test su
 php console react:test ${fileName}
 ```
 
-**Run A Particular Test**
+**Select Particular Test By Line**
 
 Run a specific test in a file.
 ```sh
-php console test ${fileName}::${lineNumber}
+php console react:test ${fileName}::${lineNumber}
 ```
 
 **Running Tests With PHPUnit**
