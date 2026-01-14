@@ -72,7 +72,7 @@ php console test
 
 **Run Tests By File**
 
-Run all tests in a file that exists within the feature, unit, or both test suites.
+Run all tests in a file that exists within the feature and unit test suites.
 ```sh
 php console test ${fileName}
 ```
