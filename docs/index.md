@@ -51,7 +51,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 23. [Tinker Command](tinker)
 24. Unit Tests
     * A. [PHPUnit](unit_tests)
-    * B. [Vitest](vitest)
+    * B. [Vitest](vitest) - In progress
 25. [User Guide](user_guide)
   * A. [Setup With Jekyll](jekyll_setup)
 26. [User Profiles](user_profiles)
