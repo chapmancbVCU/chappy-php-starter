@@ -88,7 +88,7 @@ php console
 | [`make:provider`](events#make-provider) | Generates a new event service provider class | |
 | [`make:seeder`](database_seeders#seeder-class) | Creates a new database seeder class | |
 | [`make:service`](services#user-services) | Generates a new service class | |
-| [`make:test`](unit_tests#creating-tests) | Generates a new test class | [`--feature`](unit_tests#creating-tests) |
+| [`make:test`](php_unit#creating-tests) | Generates a new test class | [`--feature`](php_unit#creating-tests) |
 | [`make:validator`](server_side_validation#custom-validators) | Generates a new custom form validator class | |
 | [`make:view`](views#make-views) | Create a new view | |
 | [`make:widget`](widgets#overview) | Creates a new widget| |
@@ -146,7 +146,7 @@ Each of these commands can accept the following flags:
 
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
-| [`test`](unit_tests#running-tests) | Performs a phpunit test | [`--feature`](unit_tests#test-suite), <br>[`--unit`](unit_tests#test-suite), <br>[`--coverage`](unit_tests#coverage), <br>[`--debug`](unit_tests#display-flags), <br>[`--display-depreciations`](unit_tests#display-flags), <br>[`--display-errors`](unit_tests#display-flags), <br>[`--display-incomplete`](unit_tests#display-flags), <br>[`--display-skipped`](unit_tests#display-flags), <br>[`--fail-on-complete`](unit_tests#display-flags), <br>[`--fail-on-risky`](unit_tests#display-flags), <br>[`--testdox`](unit_tests#display-flags), <br>[`--random-order`](unit_tests#behavior-flags), <br>[`--reverse-order`](unit_tests#behavior-flags), <br>[`--stop-on-error`](unit_tests#behavior-flags), <br>[`--stop-on-failure`](unit_tests#behavior-flags), <br>[`--stop-on-incomplete`](unit_tests#behavior-flags), <br>[`--stop-on-risky`](unit_tests#behavior-flags), <br>[`--stop-on-skipped`](unit_tests#behavior-flags), <br>[`--stop-on-warning`](unit_tests#behavior-flags) |
+| [`test`](php_unit#running-tests) | Performs a phpunit test | [`--feature`](php_unit#test-suite), <br>[`--unit`](php_unit#test-suite), <br>[`--coverage`](php_unit#coverage), <br>[`--debug`](php_unit#display-flags), <br>[`--display-depreciations`](php_unit#display-flags), <br>[`--display-errors`](php_unit#display-flags), <br>[`--display-incomplete`](php_unit#display-flags), <br>[`--display-skipped`](php_unit#display-flags), <br>[`--fail-on-complete`](php_unit#display-flags), <br>[`--fail-on-risky`](php_unit#display-flags), <br>[`--testdox`](php_unit#display-flags), <br>[`--random-order`](php_unit#behavior-flags), <br>[`--reverse-order`](php_unit#behavior-flags), <br>[`--stop-on-error`](php_unit#behavior-flags), <br>[`--stop-on-failure`](php_unit#behavior-flags), <br>[`--stop-on-incomplete`](php_unit#behavior-flags), <br>[`--stop-on-risky`](php_unit#behavior-flags), <br>[`--stop-on-skipped`](php_unit#behavior-flags), <br>[`--stop-on-warning`](php_unit#behavior-flags) |
 | [`tinker`](tinker#startup) | Launches tinker shell | |
 
 <br>
