@@ -141,7 +141,7 @@
             "dist": {
                 "type": "path",
                 "url": "../chappy-php-framework",
-                "reference": "1a71d66718c347708489fc8da56a5e1d67acdf1d"
+                "reference": "2dd6eec03cfc64d28328ae7ecb8128dad5b7a550"
             },
             "require": {
                 "composer": "*",
@@ -571,16 +571,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "9.0.20",
+            "version": "9.0.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "bafb1741c3bc351b39652ed570a6adeec7d8032b"
+                "reference": "68d6f48a934f13257196773d716c02935ec6696d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/bafb1741c3bc351b39652ed570a6adeec7d8032b",
-                "reference": "bafb1741c3bc351b39652ed570a6adeec7d8032b",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/68d6f48a934f13257196773d716c02935ec6696d",
+                "reference": "68d6f48a934f13257196773d716c02935ec6696d",
                 "shasum": ""
             },
             "require": {
@@ -643,7 +643,7 @@
                 "issues": "https://github.com/giggsey/libphonenumber-for-php/issues",
                 "source": "https://github.com/giggsey/libphonenumber-for-php"
             },
-            "time": "2025-12-05T12:07:14+00:00"
+            "time": "2025-12-18T13:45:51+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -1516,16 +1516,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.5.46",
+            "version": "11.5.48",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "75dfe79a2aa30085b7132bb84377c24062193f33"
+                "reference": "fe3665c15e37140f55aaf658c81a2eb9030b6d89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/75dfe79a2aa30085b7132bb84377c24062193f33",
-                "reference": "75dfe79a2aa30085b7132bb84377c24062193f33",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fe3665c15e37140f55aaf658c81a2eb9030b6d89",
+                "reference": "fe3665c15e37140f55aaf658c81a2eb9030b6d89",
                 "shasum": ""
             },
             "require": {
@@ -1539,7 +1539,7 @@
                 "phar-io/manifest": "^2.0.4",
                 "phar-io/version": "^3.2.1",
                 "php": ">=8.2",
-                "phpunit/php-code-coverage": "^11.0.11",
+                "phpunit/php-code-coverage": "^11.0.12",
                 "phpunit/php-file-iterator": "^5.1.0",
                 "phpunit/php-invoker": "^5.0.1",
                 "phpunit/php-text-template": "^4.0.1",
@@ -1597,7 +1597,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.46"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.48"
             },
             "funding": [
                 {
@@ -1621,7 +1621,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-06T08:01:15+00:00"
+            "time": "2026-01-16T16:26:27+00:00"
         },
         {
             "name": "predis/predis",
