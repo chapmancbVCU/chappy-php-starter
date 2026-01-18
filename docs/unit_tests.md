@@ -3,7 +3,7 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [TestBuilderInterface](#test-builder)
-
+3. [TestRunner Class](#test-runner)
 
 <br>
 
@@ -25,3 +25,26 @@ Parameters:
 
 Return:
 - `int` - A value that indicates success, invalid, or failure
+
+<br>
+
+## 3. TestRunner Class <a id="test-runner"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The TestRunner class contains functions available for you to use in your own child classes.
+
+**Constructor**
+
+Parameter:
+
+- `OutputInterface $output` - This enables logging of test output to console.
+
+<br>
+
+**areAllSuitesEmpty**
+
+Parameter:
+
+-`array $testSuites` - The collection of all available test suites.
+
+Returns:
+
+- `bool` - True if all test suites are empty.  Otherwise, we return false.
