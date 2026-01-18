@@ -72,3 +72,11 @@ Parameters:
 
 Returns:
 - `array` - The array of all filenames in a particular directory.
+
+<br>
+
+**runTest**
+
+Runs the unit test for your testing suite.
+Parameter:
+- `string $test` - The test to be performed.
