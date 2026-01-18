@@ -34,7 +34,6 @@ The TestRunner class contains functions available for you to use in your own chi
 **Constructor**
 
 Parameter:
-
 - `OutputInterface $output` - This enables logging of test output to console.
 
 <br>
@@ -42,9 +41,20 @@ Parameter:
 **areAllSuitesEmpty**
 
 Parameter:
-
--`array $testSuites` - The collection of all available test suites.
+- `array $testSuites` - The collection of all available test suites.  Best practice is to use const provided by child class.
 
 Returns:
 
 - `bool` - True if all test suites are empty.  Otherwise, we return false.
+
+<br>
+
+**allTests**
+
+Parameters:
+- `array $testSuites` - An array of test suite paths.
+- `string|array $extensions` - A string or an array of supported file extensions.  Best practice is to use const provided by child class.
+- `string $testCommand` - The command for running the tests.
+
+Returns:
+- `int` - A value that indicates success, invalid, or failure.
