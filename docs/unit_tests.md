@@ -40,6 +40,7 @@ Parameter:
 
 **areAllSuitesEmpty**
 
+Test to ensure there is not an empty test suite.
 Parameter:
 - `array $testSuites` - The collection of all available test suites.  Best practice is to use const provided by child class.
 
@@ -51,6 +52,7 @@ Returns:
 
 **allTests**
 
+Performs all available tests.
 Parameters:
 - `array $testSuites` - An array of test suite paths.
 - `string|array $extensions` - A string or an array of supported file extensions.  Best practice is to use const provided by child class.
