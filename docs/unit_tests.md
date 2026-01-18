@@ -156,3 +156,13 @@ Parameter:
 Returns:
 - `bool` - True if execution is successful.  Otherwise, we return false.
 
+<br>
+
+**verifyFilterSyntax**
+
+Ensure filter syntax is correct.  Does not test if only one : is in string.
+Parameter:
+- `string $testArg`  - The name of the test file with filter.
+
+Returns:
+- `bool` - True if filter syntax is correct.  Otherwise, we return false.
