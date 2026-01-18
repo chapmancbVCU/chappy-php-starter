@@ -52,6 +52,6 @@ Run a specific test in a file.
 php console react:test ${fileName}::${lineNumber}
 ```
 
-**Running Tests With PHPUnit**
+**Running Tests With Vitest**
 
 You can use `npm test` to bypass the console's `test` command to run all tests.  To run tests with filtering and other Vitest supported options you will need to provide the full path.
