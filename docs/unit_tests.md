@@ -17,3 +17,11 @@ The API consists of the following:
 <br>
 
 ## 2. TestBuilderInterface <a id="test-builder"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+TestBuilderInterface contains the `makeTest` function which is required for all test builders to implement.  The signature of this function is described below.
+
+Parameters:
+- `string $testName` - The name of the test
+- `InputInterface $input` - The Symfony InputInterface object
+
+Return:
+- `int` - A value that indicates success, invalid, or failure
