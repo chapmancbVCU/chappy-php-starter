@@ -79,7 +79,7 @@ Returns:
 Runs the unit test for your testing suite.
 Parameter:
 - `string $test` - The test to be performed.
-
+- `string $testCommand` - The test command to be executed.
 <br>
 
 **selectByTestName**
@@ -132,3 +132,15 @@ Parameters:
 
 Returns:
 - `bool` - True if the class or file name exists in multiple test suites.  Otherwise, we return false.
+
+<br>
+
+**testSuite**
+
+Run all test files in an individual test suite.
+Parameters:
+- `array $collection` - All classes in a particular test suite.
+- `string $testCommand` - The test command to be executed.
+
+Returns:
+- `int` - A value that indicates success, invalid, or failure.
