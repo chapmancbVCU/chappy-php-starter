@@ -136,7 +136,7 @@ If you have the same function in a class with the same name inside both test sui
 
 **Run A Test Suite**
 
-Run all test within a particular test suite by adding the `--unit` and/or `--feature` flags.
+Run all test within a particular test suite by adding the `--unit` and/or `--feature` flags.  You can target more than one suite at a time by using more than one flag.
 
 **Run Specific Test File Within A Suite**
 
