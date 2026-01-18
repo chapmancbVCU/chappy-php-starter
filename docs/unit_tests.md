@@ -119,3 +119,16 @@ Parameters:
 
 Returns:
 - `bool` - True if test does exist.  Otherwise, we return false.
+
+<br>
+
+**testIfSame**
+
+Enforces rule that classes/files across test suites should be unique for filtering.
+Parameters:
+- `string $name` - name of the test class to be executed.
+- `array $testSuites` - The array of test suites.  Best practice is to use const provided by child class.
+- `string $extension` - A string or an array of supported file extensions.  Best practice is to use const provided by child class.
+
+Returns:
+- `bool` - True if the class or file name exists in multiple test suites.  Otherwise, we return false.
