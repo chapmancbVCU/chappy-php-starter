@@ -4,6 +4,7 @@
 1. [Overview](#overview)
 2. [TestBuilderInterface](#test-builder)
 3. [TestRunner Class](#test-runner)
+4. [Building A Test Suite](#test-suite)
 
 <br>
 
@@ -166,3 +167,14 @@ Parameter:
 
 Returns:
 - `bool` - True if filter syntax is correct.  Otherwise, we return false.
+
+<br>
+
+## 4. Building A Test Suite <a id="test-suite"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+To add support for another 3rd party framework you will need the following:
+- Location for test suites
+- Test builder class
+- Test runner class
+- Custom commands for making tests
+- Custom command for running the tests
+
