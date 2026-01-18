@@ -60,3 +60,15 @@ Parameters:
 
 Returns:
 - `int` - A value that indicates success, invalid, or failure.
+
+<br>
+
+**getAllTestsInSuite**
+
+Retrieves all files in test suite so they can be run.
+Parameters:
+- `string $path` - Path to test suite.
+- `string $ext` - File extension to specify between php and js related tests.  Best practice is to use const provided by child class.
+
+Returns:
+- `array` - The array of all filenames in a particular directory.
