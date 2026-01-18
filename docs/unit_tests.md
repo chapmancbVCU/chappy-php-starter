@@ -144,3 +144,15 @@ Parameters:
 
 Returns:
 - `int` - A value that indicates success, invalid, or failure.
+
+<br>
+
+**testSuiteStatus**
+
+Determines if execution of a test suite(s) is successful.  The result is determined by testing if the status value is set and  its integer value is equal to Command::SUCCESS.
+Parameter:
+- `array<int>` - $suiteStatuses Array of integers that indicates a test is successful. 
+
+Returns:
+- `bool` - True if execution is successful.  Otherwise, we return false.
+
