@@ -80,3 +80,13 @@ Returns:
 Runs the unit test for your testing suite.
 Parameter:
 - `string $test` - The test to be performed.
+
+<br>
+
+**selectByTestName**
+
+Supports ability to run test by class/file name.
+Parameter:
+- `string $testArg` - The name of the class/file.
+- `array $testSuites` - An array of test suite paths.  Best practice is to use const provided by child class.
+- `string|array $extensions` - A string or an array of supported file  extensions.  Best practice is to use const provided by child class.
