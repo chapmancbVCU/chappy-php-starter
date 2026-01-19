@@ -89,6 +89,7 @@ php console
 | [`make:seeder`](database_seeders#seeder-class) | Creates a new database seeder class | |
 | [`make:service`](services#user-services) | Generates a new service class | |
 | [`make:test`](php_unit#creating-tests) | Generates a new test class | [`--feature`](php_unit#creating-tests) |
+| `make:test:builder` | Generates a new test builder class | |
 | [`make:validator`](server_side_validation#custom-validators) | Generates a new custom form validator class | |
 | [`make:view`](views#make-views) | Create a new view | |
 | [`make:widget`](widgets#overview) | Creates a new widget| |
