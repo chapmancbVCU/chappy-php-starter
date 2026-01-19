@@ -5,7 +5,8 @@
 2. [TestBuilderInterface](#test-builder)
 3. [TestRunner Class](#test-runner)
 4. [Building A Test Suite](#test-suite)
-    * A. [Support Files](#support-files)
+    * A. [Test Runner](#test-runner)
+    * B. [Test Builder](#test-builder)
 
 <br>
 
@@ -180,7 +181,7 @@ To add support for another 3rd party framework you will need the following:
 
 <br>
 
-### A. Support Files <a id="support-files"></a>
+### A. Test Builder <a id="test-builder"></a>
 The command line interface wrapper for your testing suite will need two support files.  They are a builder and a runner.
 
 To create a builder run the following command:
@@ -248,3 +249,7 @@ public static function makeTest(string $testName, InputInterface $input): int {
 ```
 
 The main workflow is to test if a test case file with the same name exists in one your test suites and to process any flags that direct creation of those files.  With PHPUnit we support `unit` and `feature` tests.
+
+<br>
+
+### B. Test Runner <a id="test-runner"></a>
