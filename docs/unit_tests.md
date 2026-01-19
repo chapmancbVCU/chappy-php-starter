@@ -303,7 +303,20 @@ final class ExampleRunner extends TestRunner {
      * @return string A string containing the arguments to be provided to 
      * PHPUnit.
      */
-    public static function parseOptions(InputInterface $input): string { return ""; }
+    public static function parseOptions(InputInterface $input): string { 
+        $args = [];
+
+        foreach(self::ALLOWED_OPTIONS as $allowed) {
+            if($input->hasOption($allowed) && $input->getOption($allowed)) {
+                switch($allowed) {
+                    default;
+                        $args[] = '--' . $allowed;
+                        break;
+                }
+            }
+        }
+        return (Arr::isEmpty($args)) ? '' : ' ' . implode(' ', $args);
+    }
 }
 ```
 
