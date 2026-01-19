@@ -7,6 +7,7 @@
 4. [Building A Test Suite](#test-suite)
     * A. [Test Runner](#test-runner)
     * B. [Test Builder](#test-builder)
+5. [Running Tests](#running-tests)
 
 <br>
 
@@ -530,6 +531,203 @@ final class PHPUnitRunner extends TestRunner {
             }
         }
         
+        return Command::FAILURE;
+    }
+}
+```
+
+<br>
+
+## 5. Running Tests <a id="running-test"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
+First, you need to create a new command for running tests as demonstrated below:
+
+```bash
+php console make:command <your-test-command>
+```
+
+The file will be created at `app\Lib\Console\Command`.  Make sure you run composer update if the command is not recognized.
+
+The output is shown below:
+```php
+<?php
+namespace App\Lib\Console\Commands;
+ 
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
+
+/**
+ * Undocumented class
+ */
+class CustomTestCommand extends Command {
+    /**
+     * Configures the command.
+     *
+     * @return void
+     */
+    protected function configure(): void
+    {
+        $this->setName('my-command');
+    }
+
+    /**
+     * Executes the command
+     *
+     * @param InputInterface $input The input.
+     * @param OutputInterface $output The output.
+     * @return int A value that indicates success, invalid, or failure.
+     */
+    protected function execute(InputInterface $input, OutputInterface $output): int
+    {
+        //
+    }
+}
+```
+
+In the `configure` function you will need to set the description, help, and argument for the test name.  For any additional options you will need to define those as well.
+
+You can define the behavior any way you want.  The API above many useful functions for executing tests by name, all tests, and individual suites.
+
+A complete example of the PHPUnit command is shown below.
+
+```php
+<?php
+namespace Console\Commands;
+
+use Console\Helpers\Testing\PHPUnitRunner;
+use Console\Helpers\Testing\TestRunner;
+use Console\Helpers\Tools;
+use Core\Lib\Logging\Logger;
+use Core\Lib\Utilities\Str;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+/**
+ * Supports ability to run a phpunit test with only the name of the test file is accepted as a required input.
+ * More information can be found <a href="https://chapmancbvcu.github.io/chappy-php-starter/php_unit#running-tests">here</a>.
+ */
+class RunTestCommand extends Command
+{
+    /**
+     * Configures the command.
+     *
+     * @return void
+     */
+    protected function configure(): void
+    {
+        $this->setName('test')
+            ->setDescription('Performs the phpunit test.')
+            ->setHelp('php console test <test_file_name> without the .php extension.')
+            ->addArgument('testname', InputArgument::OPTIONAL, 'Pass the test file\'s name.')
+
+            // Flags
+            ->addOption('coverage', null, InputOption::VALUE_NONE, 'Display code coverage summary.')
+            ->addOption('debug', null, InputOption::VALUE_NONE, 'Enable debug output.')
+            ->addOption('display-depreciations', null, InputOption::VALUE_NONE, 'Show deprecated method warnings.')
+            ->addOption('display-errors', null, InputOption::VALUE_NONE, 'Show errors (on by default).')
+            ->addOption('display-incomplete', null, InputOption::VALUE_NONE, 'Show incomplete tests in summary .')
+            ->addOption('display-skipped', null, InputOption::VALUE_NONE, 'Show skipped tests in summary.')
+            ->addOption('fail-on-incomplete', null, InputOption::VALUE_NONE, 'Mark incomplete tests as failed.')
+            ->addOption('fail-on-risky', null, InputOption::VALUE_NONE, 'Fail if risky tests are detected.')
+            ->addOption('feature', null, InputOption::VALUE_NONE, 'Run feature tests.')
+            ->addOption('random-order', null, InputOption::VALUE_NONE, 'Perform tests in random order.')
+            ->addOption('reverse-order', null, InputOption::VALUE_NONE, 'Perform tests in reverse order.')
+            ->addOption('stop-on-error', null, InputOption::VALUE_NONE, 'Stop on error.')
+            ->addOption('stop-on-failure', null, InputOption::VALUE_NONE, 'Stop on first failure.')
+            ->addOption('stop-on-incomplete', null, InputOption::VALUE_NONE, 'Stop on incomplete test.')
+            ->addOption('stop-on-risky', null, InputOption::VALUE_NONE, 'Stop on risky test.')
+            ->addOption('stop-on-skipped', null, InputOption::VALUE_NONE, 'Stop on skipped test.')
+            ->addOption('stop-on-warning', null, InputOption::VALUE_NONE, 'Stop on warning.')
+            ->addOption('testdox', null, InputOption::VALUE_NONE, 'Use TestDox output.')
+            ->addOption('unit', null, InputOption::VALUE_NONE, 'Run unit tests.');
+    }
+ 
+    /**
+     * Executes the command
+     *
+     * @param InputInterface $input The input.
+     * @param OutputInterface $output The output.
+     * @return int A value that indicates success, invalid, or failure.
+     */
+    protected function execute(InputInterface $input, OutputInterface $output): int
+    {
+        // Get options and arguments
+        $testArg = $input->getArgument('testname');
+        $unit = $input->getOption('unit');
+        $feature = $input->getOption('feature');
+        
+        $test = new PHPUnitRunner($input, $output);
+        $testSuites = [PHPUnitRunner::FEATURE_PATH, PHPUnitRunner::UNIT_PATH];
+
+        // Run all tests.
+        if(!$feature && !$unit && !$testArg) {
+            return $test->allTests($testSuites, PHPUnitRunner::TEST_FILE_EXTENSION, PHPUnitRunner::TEST_COMMAND);
+        }
+        
+        // Select test based on file name or function name.
+        if($testArg && !$unit && !$feature) {
+            
+            if(Str::contains($testArg, '::')) {
+               return $test->testByFilter($testArg, $testSuites, PHPUnitRunner::TEST_FILE_EXTENSION); 
+            }
+            return $test->selectByTestName($testArg, $testSuites, PHPUnitRunner::TEST_FILE_EXTENSION, PHPUnitRunner::TEST_COMMAND);
+        }
+        
+        /* 
+         * Run tests based on --unit and --feature flags and verify successful 
+         * completion.
+         */
+        $runBySuiteStatus = [];
+        if(!$testArg && $unit) {
+            $runBySuiteStatus[] = $test->testSuite(
+                TestRunner::getAllTestsInSuite(PHPUnitRunner::UNIT_PATH, PHPUnitRunner::TEST_FILE_EXTENSION), 
+                PHPUnitRunner::TEST_COMMAND
+            );
+        }
+        if(!$testArg && $feature) {
+            $runBySuiteStatus[] = $test->testSuite(
+                TestRunner::getAllTestsInSuite(PHPUnitRunner::FEATURE_PATH, PHPUnitRunner::TEST_FILE_EXTENSION), 
+                PHPUnitRunner::TEST_COMMAND
+            );
+        }
+        if(!$testArg && PHPUnitRunner::testSuiteStatus($runBySuiteStatus)) {
+            Tools::info("Completed tests by suite(s)");
+            return Command::SUCCESS;
+        }
+
+        /* 
+         * Run individual test file based on --unit and --feature flags and 
+         * verify successful completion.
+         */
+        $testNameByFlagStatus = [];
+        if($testArg && $unit) {
+            $testNameByFlagStatus[] = $test->singleFileWithinSuite(
+                $testArg, 
+                PHPUnitRunner::UNIT_PATH, 
+                PHPUnitRunner::TEST_FILE_EXTENSION, 
+                PHPUnitRunner::TEST_COMMAND
+            );
+        }
+        if($testArg && $feature) {
+            $testNameByFlagStatus[] = $test->singleFileWithinSuite(
+                $testArg, 
+                PHPUnitRunner::FEATURE_PATH, 
+                PHPUnitRunner::TEST_FILE_EXTENSION, 
+                PHPUnitRunner::TEST_COMMAND
+            );
+        }
+        if($testArg && PHPUnitRunner::testSuiteStatus($testNameByFlagStatus)) {
+            Tools::info("Completed tests by name and suite(s)");
+            return Command::SUCCESS;
+        }
+
+        Tools::info("There was an issue running unit tests.  Check your command line input.", Logger::ERROR, Tools::BG_RED);
         return Command::FAILURE;
     }
 }
