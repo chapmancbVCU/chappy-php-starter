@@ -301,7 +301,7 @@ final class ExampleRunner extends TestRunner {
      *
      * @param InputInterface $input Instance of InputInterface from command.
      * @return string A string containing the arguments to be provided to 
-     * PHPUnit.
+     * your testing framework.
      */
     public static function parseOptions(InputInterface $input): string { 
         $args = [];
@@ -320,4 +320,26 @@ final class ExampleRunner extends TestRunner {
 }
 ```
 
-The `ALLOWED_OPTIONS` array is available if you want to support those.  
+#### Description of constants:
+- `public const ALLOWED_OPTIONS = []` - Allowed options you want to support
+- `public const TEST_COMMAND` - The command for the testing framework
+
+<br>
+
+#### Functions
+
+**construct**
+
+Parameters:
+- `InputInterface $input` - Symfony InputInterface object. Needed to support option flags
+- `OutputInterface $output` - The Symfony OutputInterface object.
+
+<br>
+
+**parseOptions**
+
+Parameters:
+- `InputInterface $input` - Instance of InputInterface from command.
+
+Returns:
+- `string` - A string containing the arguments to be provided to your testing framework.
