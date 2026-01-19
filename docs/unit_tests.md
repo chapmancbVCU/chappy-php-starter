@@ -208,7 +208,7 @@ class ExampleBuilder implements TestBuilderInterface {
 }
 ```
 
-The primary goal of this class is to be used by a custom command that is used to create new unit test files.  The `makeTest` function for PHPUnit is shown below:
+The primary goal of this class is to be used by a custom command that is used to create new unit test files.  Use the `php console make:command <command-name>` command to create your command.  The `makeTest` function for PHPUnit is shown below:
 
 ```php
 /**
@@ -253,3 +253,58 @@ The main workflow is to test if a test case file with the same name exists in on
 <br>
 
 ### B. Test Runner <a id="test-runner"></a>
+A test runner class is used to support the actual execution of your test cases.  Run the following command to generate a test runner:
+
+```bash
+php console make:test:runner <runner-name>
+```
+
+The this file is created at `app\testing\`.  An example is shown below:
+
+```php
+<?php
+declare(strict_types=1);
+namespace App\Testing;
+
+use Console\Helpers\Tools;
+use Console\Helpers\Testing\TestRunner;
+use Core\Lib\Logging\Logger;
+use Core\Lib\Utilities\Arr;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+final class ExampleRunner extends TestRunner {
+    /**
+     * The array of options allowed as input for the test command.
+     */
+    public const ALLOWED_OPTIONS = [];
+
+    /**
+     * The command for Unit Testing Framework.
+     */
+    public const TEST_COMMAND = '';
+
+    /**
+     * Constructor
+     *
+     * @param InputInterface $input The Symfony InputInterface object.
+     * @param OutputInterface $output The Symfony OutputInterface object.
+     */
+    public function __construct(InputInterface $input, OutputInterface $output) {
+        $this->inputOptions = self::parseOptions($input);
+        parent::__construct($output);
+    }
+
+    /**
+     * Parses unit test related arguments and ignore Symfony arguments.
+     *
+     * @param InputInterface $input Instance of InputInterface from command.
+     * @return string A string containing the arguments to be provided to 
+     * PHPUnit.
+     */
+    public static function parseOptions(InputInterface $input): string { return ""; }
+}
+```
+
+The `ALLOWED_OPTIONS` array is available if you want to support those.  
