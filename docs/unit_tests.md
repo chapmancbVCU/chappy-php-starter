@@ -5,6 +5,7 @@
 2. [TestBuilderInterface](#test-builder)
 3. [TestRunner Class](#test-runner)
 4. [Building A Test Suite](#test-suite)
+    * A. [Support Files](#support-files)
 
 <br>
 
@@ -172,9 +173,78 @@ Returns:
 
 ## 4. Building A Test Suite <a id="test-suite"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 To add support for another 3rd party framework you will need the following:
-- Location for test suites
 - Test builder class
 - Test runner class
 - Custom commands for making tests
 - Custom command for running the tests
 
+<br>
+
+### A. Support Files <a id="support-files"></a>
+The command line interface wrapper for your testing suite will need two support files.  They are a builder and a runner.
+
+To create a builder run the following command:
+```bash
+php console make:test:builder <builder-name>
+```
+
+The file is created at `app\TestBuilder\`.  This class implements the `TestBuilderInterface`.  The output for this class is shown below:
+
+```php
+<?php
+namespace App\Testing;
+
+use Console\Helpers\Testing\TestBuilderInterface;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+
+class ExampleBuilder implements TestBuilderInterface {
+
+    public static function makeTest(string $testName, InputInterface $input): int {
+
+        return Command::SUCCESS;
+    }
+}
+```
+
+The primary goal of this class is to be used by a custom command that is used to create new unit test files.  The `makeTest` function for PHPUnit is shown below:
+
+```php
+/**
+ * Creates a new test class.  When --feature flag is provided a test 
+ * feature class is created.
+ *
+ * @param string $testName The name for the test.
+ * @param InputInterface $input The Symfony InputInterface object.
+ * @return int A value that indicates success, invalid, or failure.
+ */
+public static function makeTest(string $testName, InputInterface $input): int {
+    $testSuites = [PHPUnitRunner::FEATURE_PATH, PHPUnitRunner::UNIT_PATH];
+    
+    if(PHPUnitRunner::testExists($testName, $testSuites, PHPUnitRunner::TEST_FILE_EXTENSION)) {
+        Tools::info(
+            "File with the name '{$testName}' already exists in one of the supported test suites", Logger::ERROR, 
+            Tools::BG_RED
+        );
+        return Command::FAILURE;
+    }
+
+    if($input->getOption('feature')) {
+        return Tools::writeFile(
+            ROOT.DS.PHPUnitRunner::FEATURE_PATH.$testName.PHPUnitRunner::TEST_FILE_EXTENSION,
+            PHPUnitStubs::featureTestStub($testName),
+            'Test'
+        );
+    } else {
+        return Tools::writeFile(
+            ROOT.DS.PHPUnitRunner::UNIT_PATH.$testName.PHPUnitRunner::TEST_FILE_EXTENSION,
+            PHPUnitStubs::unitTestStub($testName),
+            'Test'
+        );
+    }
+
+    return Command::FAILURE;
+}
+```
+
+The main workflow is to test if a test case file with the same name exists in one your test suites and to process any flags that direct creation of those files.  With PHPUnit we support `unit` and `feature` tests.
