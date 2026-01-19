@@ -179,6 +179,11 @@ To add support for another 3rd party framework you will need the following:
 - Test runner class
 - Custom commands for making tests
 - Custom command for running the tests
+- Choose a location for your test cases
+
+This framework already has locations for testing that you can use:
+- PHPUnit - `tests\`
+- Vitest - `resources\js\tests\`
 
 <br>
 
