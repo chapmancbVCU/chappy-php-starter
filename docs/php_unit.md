@@ -140,7 +140,7 @@ Run all test within a particular test suite by adding the `--unit` and/or `--fea
 
 **Run Specific Test File Within A Suite**
 
-You can run all test within a specific test file for an individual suite by specifying the file name and adding the `--unit` and/or `--feature` flags.  You can target more than one suite at a time by using more than one flag.
+You can run all test within a specific test file for an individual suite by specifying the file name and adding the `--unit` or `--feature` flags.  You can target more than one suite at a time by using more than one flag.
 
 <br>
 
