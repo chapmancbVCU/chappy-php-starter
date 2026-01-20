@@ -54,4 +54,26 @@ php console react:test ${fileName}::${lineNumber}
 
 **Running Tests With Vitest**
 
-You can use `npm test` to bypass the console's `test` command to run all tests.  To run tests with filtering and other Vitest supported options you will need to provide the full path.
+You can use `npx test run` to bypass the console's `test` command with native support for all of its features.  Their documentation can be found [here](https://vitest.dev/).
+
+**Supported Vitest Flags**
+The following flags:
+
+| Flag                       | Description                             |
+| -------------------------- | --------------------------------------- |
+| `--bail` | Stop after N failure. |
+| `--clearCache` | Clears the cache. |
+| `--coverage` | Display code coverage summary. |
+| `--pass-with-no-tests` | Pass with no tests. |
+| `--retry` | Retry failing tests. |
+| `--update` | Update snapshots. |
+
+**Run A Test Suite**
+
+Run all test within a particular test suite by adding the `--unit` and/or `--feature` flags.  You can target more than one suite at a time by using more than one flag.
+
+**Run Specific Test File Within A Suite**
+
+You can run all test within a specific test file for an individual suite by specifying the file name and adding the `--unit`, `--component`, and/or `--view` flags.  You can target more than one suite at a time by using more than one flag.
+
+<br>
