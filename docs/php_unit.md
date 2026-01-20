@@ -630,7 +630,9 @@ public function test_put_updates_user(): void
         'description' => 'Seeded user',
         'password' => password_hash('Password@123', PASSWORD_DEFAULT),
         'created_at' => date('Y-m-d H:i:s'),
-        'updated_at' => date('Y-m-d H:i:s')
+        'updated_at' => date('Y-m-d H:i:s'),
+        'acl' => '[""]',
+        'deleted' => 0
     ]);
 
     $userId = DB::getInstance()->lastID();
@@ -639,6 +641,7 @@ public function test_put_updates_user(): void
     $data = [
         'username' => 'updateduser',
         'email' => 'updated@example.com',
+        'images_sorted' => '[]',
         'csrf_token' => FormHelper::generateToken()
     ];
 
