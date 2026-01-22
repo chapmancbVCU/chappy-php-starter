@@ -146,11 +146,7 @@ You can run all test within a specific test file for an individual suite by spec
 
 ## 4. Testing Configuration <a id="configuration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
-The Chappy.php framework allows you to run your unit and feature tests against **SQLite (in-memory)** or **MySQL**, depending on your project's requirements.
 
-This gives you flexibility for:
-- ✅ Fast, isolated testing with SQLite
-- ✅ Full-database compatibility testing with MySQL
 
 ### 🧪 SQLite (In-Memory) for Fast Testing
 
