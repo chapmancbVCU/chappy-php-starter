@@ -1,4 +1,4 @@
-<h1 style="font-size: 50px; text-align: center;">PHPUnit</h1>
+<h1 style="font-size: 50px; text-align: center;">Unit Tests</h1>
 
 ## Table of contents
 1. [Overview](#overview)
