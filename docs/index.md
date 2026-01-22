@@ -50,6 +50,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 23. [Supported Traits](traits)
 23. [Tinker Command](tinker)
 24. Unit Tests
+    * A. [Unit Test Configuration](unit_test_configuration)
     * A. [Unit Tests API](unit_tests_api)
     * B. [PHPUnit](php_unit)
     * C. [Vitest](vitest) - In progress
