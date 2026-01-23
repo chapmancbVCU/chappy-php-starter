@@ -53,7 +53,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * A. [Unit Test Configuration](unit_test_configuration)
     * A. [Unit Tests API](unit_tests_api)
     * B. [PHPUnit](php_unit)
-    * C. [Vitest](vitest) - In progress
+    * C. [Vitest](vitest)
 25. [User Guide](user_guide)
   * A. [Setup With Jekyll](jekyll_setup)
 26. [User Profiles](user_profiles)
