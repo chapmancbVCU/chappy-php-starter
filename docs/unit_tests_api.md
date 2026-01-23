@@ -543,7 +543,7 @@ final class PHPUnitRunner extends TestRunner {
 
 <br>
 
-## 5. Running Tests <a id="running-test"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Running Tests <a id="running-tests"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
 First, you need to create a new command for running tests as demonstrated below:
 
