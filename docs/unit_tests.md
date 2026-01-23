@@ -10,12 +10,15 @@
     * D. [assertJson()](#assert-json)
     * E. [Testing View Variables with `controllerOutput()` and `assertViewContains()`](#view-variables)
 4. [Simulating DELETE Requests with `delete()`](#delete)
-4. [Simulating GET Requests with `get()`](#get)
-5. [Simulating POST Requests with `post()`](#post)
+5. [Simulating GET Requests with `get()`](#get)
+    * A. [`get()` Standard Page Load Test](#get-standard)
+    * B. [`get()` With API Example](get-api)
+6. [Simulating PATCH Requests with `patch()`](#patch)
+7. [Simulating POST Requests with `post()`](#post)
     * A. [`post()` Register User Test](#post-standard)
     * B. [`post()` with API Example](post-api)
-6. [Simulating PUT Requests with `put()`](#put)
-7. [Mocking File Uploads in Tests](#mock-files)
+8. [Simulating PUT Requests with `put()`](#put)
+9. [Mocking File Uploads in Tests](#mock-files)
 
 <br>
 
@@ -328,9 +331,113 @@ $this->assertViewContains('user', Users::findById(1));
 
 <br>
 
-## 4 Simulating DELETE Requests with `delete() <a id="get"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4 Simulating DELETE Requests with `delete() <a id="delete"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The `ApplicationTestCase` class provides a Laravel-style `delete()` helper that lets you simulate HTTP GET requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
 
-## 4. Simulating GET Requests with `get() <a id="get"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+**Example destroy action for an API**
+```php
+<?php
+declare(strict_types=1);
+
+namespace Tests\Feature;
+
+use App\Controllers\FavoritesController;
+use Core\DB;
+use Core\FormHelper;
+use Core\Lib\Http\JsonResponse;
+use Core\Lib\Testing\ApplicationTestCase;
+use Core\Lib\Utilities\Env;
+
+class RESTfulDestroyTest extends ApplicationTestCase
+{
+    public function test_destroy_deletes_one_favorite_and_leaves_other_intact(): void
+    {
+        JsonResponse::$testing = true;
+
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // 1) Seed user
+        DB::getInstance()->insert('users', [
+            'fname'       => 'Test',
+            'lname'       => 'User',
+            'email'       => 'destroy@example.com',
+            'username'    => 'destroyuser',
+            'description' => 'Seeded user',
+            'password'    => password_hash('Password@123', PASSWORD_DEFAULT),
+            'deleted'     => 0,
+            'created_at'  => date('Y-m-d H:i:s'),
+            'updated_at'  => date('Y-m-d H:i:s'),
+        ]);
+        $userId = (int) DB::getInstance()->lastID();
+        $_SESSION[Env::get('CURRENT_USER_SESSION_NAME')] = $userId;
+
+        // 2) Seed TWO favorites
+        DB::getInstance()->insert('favorites', [
+            'user_id'    => $userId,
+            'name'       => 'Norfolk, VA',
+            'latitude'   => 36.85,    // you said you store 2 decimal places
+            'longitude'  => -76.29,
+            'is_home'    => 0,
+            'deleted'    => 0,
+        ]);
+        $fav1Id = (int) DB::getInstance()->lastID();
+
+        DB::getInstance()->insert('favorites', [
+            'user_id'    => $userId,
+            'name'       => 'Virginia Beach, VA',
+            'latitude'   => 36.85,
+            'longitude'  => -75.98,
+            'is_home'    => 0,
+            'deleted'    => 0,
+        ]);
+        $fav2Id = (int) DB::getInstance()->lastID();
+
+        $this->assertNotSame($fav1Id, $fav2Id);
+
+        // 3) JSON body for CSRF (destroyAction reads csrf_token from JsonResponse::get())
+        $payload = [
+            'csrf_token' => FormHelper::generateToken(),
+        ];
+        FavoritesController::$rawInputOverride = json_encode($payload);
+
+        // 4) DELETE /favorites/destroy/{id}
+        $_SERVER['REQUEST_METHOD'] = 'DELETE';
+        $response = $this->delete("/favorites/destroy/{$fav1Id}", []);
+
+        // Cleanup override
+        FavoritesController::$rawInputOverride = null;
+
+        // 5) On success, destroyAction returns no body
+        $response->assertStatus(200);
+        $this->assertSame('', trim($response->getContent()), 'Expected empty response body on success.');
+
+        // 6) Assert only ONE favorite was deleted
+        // Soft delete (preferred): deleted = 1
+        $deletedRow = DB::getInstance()->query("SELECT * FROM favorites WHERE id = ?", [$fav1Id])->first();
+        $remainingRow = DB::getInstance()->query("SELECT * FROM favorites WHERE id = ?", [$fav2Id])->first();
+
+        // If you hard delete, $deletedRow will be false/null.
+        // If you soft delete, it will exist and have deleted=1.
+        if ($deletedRow) {
+            $this->assertSame(1, (int)($deletedRow->deleted ?? 0), 'Expected destroyed favorite to be soft-deleted.');
+        } else {
+            $this->assertFalse($deletedRow, 'Expected destroyed favorite to be removed.');
+        }
+
+        $this->assertNotNull($remainingRow, 'Expected second favorite to remain.');
+        if ($remainingRow) {
+            $this->assertSame(0, (int)($remainingRow->deleted ?? 0), 'Expected remaining favorite to not be deleted.');
+            $this->assertSame('Virginia Beach, VA', (string)$remainingRow->name);
+        }
+    }
+}
+```
+
+<br>
+
+## 5. Simulating GET Requests with `get() <a id="get"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `ApplicationTestCase` class provides a Laravel-style `get()` helper that lets you simulate HTTP GET requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
 
 🔧 Syntax
@@ -338,7 +445,9 @@ The `ApplicationTestCase` class provides a Laravel-style `get()` helper that let
 $this->get(string $uri): TestResponse
 ```
 
-✅ Example
+<br>
+
+### A. `post()` Standard Page Load Test <a id="get-standard"></a>
 ```php
 public function test_homepage_loads_successfully(): void
 {
@@ -377,6 +486,101 @@ $response->assertStatus(200);
 $response->assertSee('Profile');
 ```
 
+<br>
+
+### B. `post()` With API Example <a id="get-api"></a>
+The example below demonstrates usage when building an API:
+```php
+<?php
+declare(strict_types=1);
+namespace Tests\Feature;
+
+use Core\DB;
+use Core\Lib\Utilities\Env;
+use Core\Lib\Http\JsonResponse; // trait with static test mode toggles
+use Core\Lib\Testing\ApplicationTestCase;
+
+/**
+ * Unit tests
+ */
+class RESTfulShowTest extends ApplicationTestCase {
+    public function test_show_returns_favorites_for_current_user(): void
+    {
+        // Ensure JSON responses don't exit during tests
+        JsonResponse::$testing = true;
+
+        // Start session for AuthService::currentUser()
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // 1) Seed a user record
+        DB::getInstance()->insert('users', [
+            'fname'       => 'Test',
+            'lname'       => 'User',
+            'email'       => 'test@example.com',
+            'username'    => 'testuser',
+            'description' => 'PHPUnit seeded user',
+            'password'    => password_hash('Password@123', PASSWORD_DEFAULT),
+
+            // Include fields your model/framework expects
+            'deleted'     => 0,
+            'created_at'  => date('Y-m-d H:i:s'),
+            'updated_at'  => date('Y-m-d H:i:s'),
+        ]);
+
+        $userId = (int) DB::getInstance()->lastID();
+        $this->assertGreaterThan(0, $userId);
+
+        // 2) "Log in" as that user (adjust this key to your AuthService/session convention)
+        $sessionKey = Env::get('CURRENT_USER_SESSION_NAME');
+        $_SESSION[$sessionKey] = $userId;
+
+        // 3) Seed favorites for that user
+        DB::getInstance()->insert('favorites', [
+            'user_id'     => $userId,
+            'name'        => 'Norfolk, VA',
+            'latitude'    => 36.8508,
+            'longitude'   => -76.2859,
+            'is_home'     => 0,
+            'deleted'     => 0,
+        ]);
+
+        DB::getInstance()->insert('favorites', [
+            'user_id'     => $userId,
+            'name'        => 'Virginia Beach, VA',
+            'latitude'    => 36.8529,
+            'longitude'   => -75.9780,
+            'is_home'     => 1,
+            'deleted'     => 0
+        ]);
+
+        // 4) Call the controller endpoint (router-style URL)
+        // If your ApplicationTestCase::get() routes /controller/action, this should hit FavoritesController::showAction()
+        $response = $this->get('/favorites/show');
+
+        // 5) Assert response status + JSON payload
+        $response->assertStatus(200);
+
+        $payload = json_decode($response->getContent(), true);
+
+        $this->assertIsArray($payload, 'Response body is not valid JSON.');
+        $this->assertTrue($payload['success'] ?? false, 'Expected success=true in JSON response.');
+        $this->assertArrayHasKey('data', $payload, 'Expected data key in JSON response.');
+        $this->assertIsArray($payload['data'], 'Expected data to be an array.');
+
+        // 6) Assert only this user’s favorites returned
+        $this->assertCount(2, $payload['data']);
+
+        foreach ($payload['data'] as $fav) {
+            $this->assertSame($userId, (int)($fav['user_id'] ?? 0));
+        }
+    }
+}
+```
+
+<br>
+
 🔍 Notes
 - `get()` uses `controllerOutput()` internally to resolve the controller and action.
 - Extra URI segments beyond `/controller/action` are passed as method parameters.
@@ -384,7 +588,118 @@ $response->assertSee('Profile');
 
 <br>
 
-## 5. Simulating POST Requests with `post()` <a id="post"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Simulating PATCH Requests with `patch() <a id="patch"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The `ApplicationTestCase` class provides a Laravel-style `patch()` helper that lets you simulate HTTP PATCH requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
+
+**Example PATCH request for an API**
+```php
+<?php
+declare(strict_types=1);
+
+namespace Tests\Feature;
+
+use App\Controllers\FavoritesController;
+use Core\DB;
+use Core\Lib\Utilities\Env;
+use Core\Lib\Http\JsonResponse; // trait with static test mode toggles
+use Core\Lib\Testing\ApplicationTestCase;
+use Core\FormHelper;
+
+/**
+ * Unit tests
+ */
+class RESTfulPatchTest extends ApplicationTestCase {
+    public function test_patch_sets_selected_favorite_as_home_and_unsets_previous_home(): void
+    {
+        // Ensure JSON responses don't exit during tests
+        JsonResponse::$testing = true;
+
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // 1) Seed user
+        DB::getInstance()->insert('users', [
+            'fname'       => 'Test',
+            'lname'       => 'User',
+            'email'       => 'test@example.com',
+            'username'    => 'testuser',
+            'description' => 'Seeded user',
+            'password'    => password_hash('Password@123', PASSWORD_DEFAULT),
+            'deleted'     => 0,
+            'created_at'  => date('Y-m-d H:i:s'),
+            'updated_at'  => date('Y-m-d H:i:s'),
+        ]);
+
+        $userId = (int) DB::getInstance()->lastID();
+        $this->assertGreaterThan(0, $userId);
+
+        // 2) Authenticate session (match what your router/AuthService expects)
+        $_SESSION[Env::get('CURRENT_USER_SESSION_NAME')] = $userId;
+
+        // 3) Seed two favorites: one currently home, one not
+        DB::getInstance()->insert('favorites', [
+            'user_id'     => $userId,
+            'name'        => 'Norfolk, VA',
+            'latitude'    => 36.8508,
+            'longitude'   => -76.2859,
+            'is_home'     => 1,
+            'deleted'     => 0
+        ]);
+        $currentHomeId = (int) DB::getInstance()->lastID();
+
+        DB::getInstance()->insert('favorites', [
+            'user_id'     => $userId,
+            'name'        => 'Virginia Beach, VA',
+            'latitude'    => 36.8529,
+            'longitude'   => -75.9780,
+            'is_home'     => 0,
+            'deleted'     => 0
+        ]);
+        $targetId = (int) DB::getInstance()->lastID();
+
+        $this->assertNotSame($currentHomeId, $targetId);
+
+        // 4) Prepare JSON body (apiCsrfCheck reads csrf_token from JsonResponse::get())
+        $payload = [
+            'csrf_token' => FormHelper::generateToken(),
+        ];
+
+        // IMPORTANT: set the override on the class using the trait
+        FavoritesController::$rawInputOverride = json_encode($payload);
+
+        // If you added this testing flag to prevent exit()
+        FavoritesController::$testing = true;
+
+        $_SERVER['REQUEST_METHOD'] = 'PATCH';
+
+        $response = $this->patch("/favorites/patch/{$targetId}", []);
+
+        FavoritesController::$rawInputOverride = null;
+        // 6) Assert response looks like JSON success (optional but helpful)
+        $response->assertStatus(200);
+
+        $this->assertSame('', trim($response->getContent()), 'Expected empty response body on success.');
+
+        // 7) Assert DB: previous home unset, target set
+        $old = DB::getInstance()->query("SELECT is_home FROM favorites WHERE id = ?", [$currentHomeId])->first();
+        $new = DB::getInstance()->query("SELECT is_home FROM favorites WHERE id = ?", [$targetId])->first();
+
+        $this->assertNotNull($old);
+        $this->assertNotNull($new);
+
+        $this->assertSame(0, (int) $old->is_home, 'Expected previous home to be unset.');
+        $this->assertSame(1, (int) $new->is_home, 'Expected selected favorite to be set as home.');
+
+        // Cleanup override so it doesn't leak into other tests
+        JsonResponse::$rawInputOverride = null;
+    }
+}
+```
+
+<br>
+
+## 7. Simulating POST Requests with `post()` <a id="post"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 In your framework's test suite, the `post()` method allows you to simulate POST requests to any controller action as if it were triggered via a browser form submission. This is especially useful for testing routes like `/auth/register` or `/products/create`.
 
 <br>
@@ -525,7 +840,7 @@ class RESTfulStoreTest extends ApplicationTestCase {
 
 <br>
 
-## 6. Simulating PUT Requests with `put()` <a id="put"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Simulating PUT Requests with `put()` <a id="put"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `put()` method in `ApplicationTestCase` allows you to simulate HTTP `PUT` requests to test controller actions that update records. It mimics a real browser form submission using the `PUT` method and passes data to the targeted controller action.
 
 This is especially useful for testing resourceful routes like `/users/update/1`, where form data is submitted via `PUT`.
@@ -585,7 +900,7 @@ Use put() in feature tests to:
 
 <br>
 
-## 7. 📂 Mocking File Uploads in Tests <a id="mock-files"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. 📂 Mocking File Uploads in Tests <a id="mock-files"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 When your controller expects file uploads (like $_FILES['profileImage']), you must mock this data in your test to avoid runtime errors.
 
 **Usage in a test**
