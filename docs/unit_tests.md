@@ -12,11 +12,11 @@
 4. [Simulating DELETE Requests with `delete()`](#delete)
 5. [Simulating GET Requests with `get()`](#get)
     * A. [`get()` Standard Page Load Test](#get-standard)
-    * B. [`get()` With API Example](get-api)
+    * B. [`get()` With API Example](#get-api)
 6. [Simulating PATCH Requests with `patch()`](#patch)
 7. [Simulating POST Requests with `post()`](#post)
     * A. [`post()` Register User Test](#post-standard)
-    * B. [`post()` with API Example](post-api)
+    * B. [`post()` with API Example](#post-api)
 8. [Simulating PUT Requests with `put()`](#put)
 9. [Mocking File Uploads in Tests](#mock-files)
 
@@ -447,7 +447,7 @@ $this->get(string $uri): TestResponse
 
 <br>
 
-### A. `post()` Standard Page Load Test <a id="get-standard"></a>
+### A. `get()` Standard Page Load Test <a id="get-standard"></a>
 ```php
 public function test_homepage_loads_successfully(): void
 {
@@ -488,7 +488,7 @@ $response->assertSee('Profile');
 
 <br>
 
-### B. `post()` With API Example <a id="get-api"></a>
+### A. `get()` With API Example <a id="get-api"></a>
 The example below demonstrates usage when building an API:
 ```php
 <?php
@@ -910,5 +910,3 @@ $this->mockFile('profileImage');
 ```
 
 This simulates an empty file upload, which is sufficient for passing validation or skipping optional image logic in `Uploads::handleUpload()`.
-
-<br>
