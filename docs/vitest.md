@@ -8,8 +8,7 @@
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-
-
+This guide provides an overview on how to use the console Command Line Interface (CLI) for running Vitest related unit tests.
 
 <br>
 
@@ -75,5 +74,3 @@ Run all test within a particular test suite by adding the `--unit` and/or `--fea
 **Run Specific Test File Within A Suite**
 
 You can run all test within a specific test file for an individual suite by specifying the file name and adding the `--unit`, `--component`, or `--view` flags.  You can target more than one suite at a time by using more than one flag.
-
-<br>
