@@ -49,7 +49,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 22. [Session and Flash Messages](session_and_flash_messages)
 23. [Supported Traits](traits)
 23. [Tinker Command](tinker)
-24. Unit Tests
+24. [Unit Tests](unit_tests)
     * A. [Unit Test Configuration](unit_test_configuration)
     * A. [Unit Tests API](unit_tests_api)
     * B. [PHPUnit](php_unit)
