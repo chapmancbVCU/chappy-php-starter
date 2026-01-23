@@ -53,12 +53,14 @@ export default function Index({ user }) {
 We support several commands for managing views and layouts with React.
 
 **Layouts**
+
 The default layout supports React integration.  To create a layout run:
 ```sh
 php console make:layout <layout_name>
 ```
 
 **Views**
+
 Generate a React view under `resources/js/pages/<area>/<view_name>.jsx`:
 ```sh
 php console react:page <area>.<view_name>
