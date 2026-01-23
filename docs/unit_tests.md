@@ -9,10 +9,13 @@
     * C. [assertStatus()](#assert-status)
     * D. [assertJson()](#assert-json)
     * E. [Testing View Variables with `controllerOutput()` and `assertViewContains()`](#view-variables)
-    * F. [Simulating GET Requests with `get()` and `TestResponse`](#get)
-    * G. [Simulating POST Requests in Feature Tests](#post)
-    * H. [Simulating PUT Requests in Feature Tests](#put)
-    * I. [Mocking File Uploads in Tests](#mock-files)
+4. [Simulating DELETE Requests with `delete()`](#delete)
+4. [Simulating GET Requests with `get()`](#get)
+5. [Simulating POST Requests with `post()`](#post)
+    * A. [`post()` Register User Test](#post-standard)
+    * B. [`post()` with API Example](post-api)
+6. [Simulating PUT Requests with `put()`](#put)
+7. [Mocking File Uploads in Tests](#mock-files)
 
 <br>
 
@@ -90,7 +93,7 @@ Since this method operates inside your test environment, ensure the required dat
 
 <br>
 
-## 6. ApplicationTestCase Assertions <a id="test-case-assertions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. ApplicationTestCase Assertions <a id="test-case-assertions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This framework's test infrastructure provides convenient assertion helpers to validate the state of the database during tests. These assertions are especially useful in integration and feature tests that interact with the database.
 
 The following support assertions are available in the ApplicationTestCase base class:
@@ -325,8 +328,9 @@ $this->assertViewContains('user', Users::findById(1));
 
 <br>
 
-### F. 📥 Simulating GET Requests with `get()` and `TestResponse` <a id="get"></a>
+## 4 Simulating DELETE Requests with `delete() <a id="get"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
+## 4. Simulating GET Requests with `get() <a id="get"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `ApplicationTestCase` class provides a Laravel-style `get()` helper that lets you simulate HTTP GET requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
 
 🔧 Syntax
@@ -380,11 +384,13 @@ $response->assertSee('Profile');
 
 <br>
 
-### G. ✅ Simulating POST Requests in Feature Tests <a id="post"></a>
-
+## 5. Simulating POST Requests with `post()` <a id="post"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 In your framework's test suite, the `post()` method allows you to simulate POST requests to any controller action as if it were triggered via a browser form submission. This is especially useful for testing routes like `/auth/register` or `/products/create`.
 
-**Example: Register User Test**
+<br>
+
+### A. `post()` Register User Test <a id="post-standard"></a>
+Below is an example using standard create operation.
 
 ```php
 public function test_register_action_creates_user(): void
@@ -426,7 +432,100 @@ public function test_register_action_creates_user(): void
 
 <br>
 
-### H. ♻️ Simulating PUT Requests in Feature Tests <a id="put">
+### B. `post()` with API Example <a id="post-api"></a>
+The example below demonstrates a `PUT` request whe building an API:
+```php
+<?php
+declare(strict_types=1);
+
+namespace Tests\Feature;
+
+use App\Controllers\FavoritesController;
+use Core\DB;
+use Core\Lib\Utilities\Env;
+use Core\Lib\Http\JsonResponse; // trait with static test mode toggles
+use Core\Lib\Testing\ApplicationTestCase;
+use Core\FormHelper;
+
+/**
+ * Unit tests
+ */
+class RESTfulStoreTest extends ApplicationTestCase {
+    public function test_store_creates_favorite_for_current_user(): void
+    {
+        // Prevent jsonResponse() from exiting during tests
+        JsonResponse::$testing = true;
+
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // 1) Seed user
+        DB::getInstance()->insert('users', [
+            'fname'       => 'Test',
+            'lname'       => 'User',
+            'email'       => 'test@example.com',
+            'username'    => 'testuser',
+            'description' => 'Seeded user',
+            'password'    => password_hash('Password@123', PASSWORD_DEFAULT),
+            'deleted'     => 0,
+            'created_at'  => date('Y-m-d H:i:s'),
+            'updated_at'  => date('Y-m-d H:i:s'),
+        ]);
+
+        $userId = (int) DB::getInstance()->lastID();
+        $this->assertGreaterThan(0, $userId);
+
+        // 2) Authenticate session (whatever AuthService::currentUser() expects)
+        $_SESSION[Env::get('CURRENT_USER_SESSION_NAME')] = $userId;
+
+        // 3) Prepare JSON payload (storeAction reads JSON body via JsonResponse::get())
+        $payload = [
+            'name'       => 'Norfolk, VA',
+            'latitude'   => '36.85',
+            'longitude'  => '-76.28',
+            'csrf_token' => FormHelper::generateToken(),
+        ];
+
+        // Inject JSON body for JsonResponse::get()
+        FavoritesController::$rawInputOverride = json_encode($payload);
+
+        // 4) Call store endpoint (your controller/action routing)
+        $_SERVER['REQUEST_METHOD'] = 'POST';
+        $response = $this->post('/favorites/store', []);
+
+        // Cleanup override to avoid leaking into other tests
+        FavoritesController::$rawInputOverride = null;
+
+        // 5) On success, your action returns no JSON body (same as patch)
+        $response->assertStatus(200);
+        $this->assertSame('', trim($response->getContent()), 'Expected empty response body on success.');
+
+        // 6) Assert DB row created for this user
+        $row = DB::getInstance()->query(
+            "SELECT * FROM favorites WHERE user_id = ? AND name = ?",
+            [$userId, 'Norfolk, VA']
+        )->first();
+
+        $this->assertNotNull($row, 'Expected favorites row to be created.');
+        $this->assertSame($userId, (int)$row->user_id);
+        $this->assertSame('Norfolk, VA', (string)$row->name);
+
+        // Float comparisons can be annoying; cast to float and compare with delta if needed
+        $this->assertEquals(36.85, (float)$row->latitude);
+        $this->assertEquals(-76.28, (float)$row->longitude);
+
+        // Optional if you use soft deletes
+        if (property_exists($row, 'deleted')) {
+            $this->assertSame(0, (int)$row->deleted);
+        }
+    }
+}
+```
+
+<br>
+
+## 6. Simulating PUT Requests with `put()` <a id="put"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `put()` method in `ApplicationTestCase` allows you to simulate HTTP `PUT` requests to test controller actions that update records. It mimics a real browser form submission using the `PUT` method and passes data to the targeted controller action.
 
 This is especially useful for testing resourceful routes like `/users/update/1`, where form data is submitted via `PUT`.
@@ -486,8 +585,7 @@ Use put() in feature tests to:
 
 <br>
 
-### I. 📂 Mocking File Uploads in Tests <a id="mock-files"></a>
-
+## 7. 📂 Mocking File Uploads in Tests <a id="mock-files"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 When your controller expects file uploads (like $_FILES['profileImage']), you must mock this data in your test to avoid runtime errors.
 
 **Usage in a test**
