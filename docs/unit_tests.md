@@ -397,14 +397,14 @@ class RESTfulDestroyTest extends ApplicationTestCase
         $payload = [
             'csrf_token' => FormHelper::generateToken(),
         ];
-        FavoritesController::$rawInputOverride = json_encode($payload);
+        FavoritesController::setRawInputOverride(json_encode($payload));
 
         // 4) DELETE /favorites/destroy/{id}
         $_SERVER['REQUEST_METHOD'] = 'DELETE';
         $response = $this->delete("/favorites/destroy/{$fav1Id}", []);
 
         // Cleanup override
-        FavoritesController::$rawInputOverride = null;
+        FavoritesController::setRawInputOverride();
 
         // 5) On success, destroyAction returns no body
         $response->assertStatus(200);
@@ -659,7 +659,7 @@ class RESTfulPatchTest extends ApplicationTestCase {
         ];
 
         // IMPORTANT: set the override on the class using the trait
-        FavoritesController::$rawInputOverride = json_encode($payload);
+        FavoritesController::setRawInputOverride(json_encode($payload));
 
         // If you added this testing flag to prevent exit()
         FavoritesController::$testing = true;
@@ -668,7 +668,7 @@ class RESTfulPatchTest extends ApplicationTestCase {
 
         $response = $this->patch("/favorites/patch/{$targetId}", []);
 
-        FavoritesController::$rawInputOverride = null;
+        FavoritesController::setRawInputOverride();
         // 6) Assert response looks like JSON success (optional but helpful)
         $response->assertStatus(200);
 
@@ -685,7 +685,7 @@ class RESTfulPatchTest extends ApplicationTestCase {
         $this->assertSame(1, (int) $new->is_home, 'Expected selected favorite to be set as home.');
 
         // Cleanup override so it doesn't leak into other tests
-        JsonResponse::$rawInputOverride = null;
+        JsonResponse::setRawInputOverride();
     }
 }
 ```
@@ -794,14 +794,14 @@ class RESTfulStoreTest extends ApplicationTestCase {
         ];
 
         // Inject JSON body for JsonResponse::get()
-        FavoritesController::$rawInputOverride = json_encode($payload);
+        FavoritesController::setRawInputOverride(json_encode($payload));
 
         // 4) Call store endpoint (your controller/action routing)
         $_SERVER['REQUEST_METHOD'] = 'POST';
         $response = $this->post('/favorites/store', []);
 
         // Cleanup override to avoid leaking into other tests
-        FavoritesController::$rawInputOverride = null;
+        FavoritesController::setRawInputOverride();
 
         // 5) On success, your action returns no JSON body (same as patch)
         $response->assertStatus(200);
