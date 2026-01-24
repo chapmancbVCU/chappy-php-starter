@@ -19,6 +19,7 @@
     * B. [`post()` with API Example](#post-api)
 8. [Simulating PUT Requests with `put()`](#put)
 9. [Mocking File Uploads in Tests](#mock-files)
+10. [Additional Functions](#additional-functions)
 
 <br>
 
@@ -901,3 +902,7 @@ $this->mockFile('profileImage');
 ```
 
 This simulates an empty file upload, which is sufficient for passing validation or skipping optional image logic in `Uploads::handleUpload()`.
+
+<br>
+
+## 10. Additional Functions <a id="additional-functions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
