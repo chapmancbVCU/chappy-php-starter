@@ -20,7 +20,10 @@ class HomeController extends Controller {
         $this->view->render('home.index');
 
         // $user = AuthService::currentUser();
-        // $props = ['user' => $user ?? 'Guest'];
+        // $props = [
+        //     'user' => $user ?? 'Guest',
+        //     'version' => config('config.version')
+        // ];
         // $this->view->renderJSX('home.Index', $props);
     }
 
