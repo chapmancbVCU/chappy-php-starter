@@ -510,7 +510,7 @@ $this->preflight();
 Inject JSON body by providing payload parameter.  Also performs cleanup to avoid leaking into other tests.
 
 Parameter:
-- `$payload` - Result of json_encode or null
+- `$payload` - The JSON payload or null
 
 <br>
 

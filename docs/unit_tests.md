@@ -398,7 +398,7 @@ class RESTfulDestroyTest extends ApplicationTestCase
         $payload = [
             'csrf_token' => FormHelper::generateToken(),
         ];
-        FavoritesController::setRawInputOverride(json_encode($payload));
+        FavoritesController::setRawInputOverride($payload);
 
         // 4) DELETE /favorites/destroy/{id}
         $_SERVER['REQUEST_METHOD'] = 'DELETE';
@@ -660,7 +660,7 @@ class RESTfulPatchTest extends ApplicationTestCase {
         ];
 
         // IMPORTANT: set the override on the class using the trait
-        FavoritesController::setRawInputOverride(json_encode($payload));
+        FavoritesController::setRawInputOverride($payload);
 
         // If you added this testing flag to prevent exit()
         FavoritesController::$testing = true;
@@ -795,7 +795,7 @@ class RESTfulStoreTest extends ApplicationTestCase {
         ];
 
         // Inject JSON body for JsonResponse::get()
-        FavoritesController::setRawInputOverride(json_encode($payload));
+        FavoritesController::setRawInputOverride($payload);
 
         // 4) Call store endpoint (your controller/action routing)
         $_SERVER['REQUEST_METHOD'] = 'POST';
