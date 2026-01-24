@@ -2,8 +2,8 @@
 
 ## Table of contents
 1. [Overview](#overview)
-2. [TestBuilderInterface](#test-builder)
-3. [TestRunner Class](#test-runner)
+2. [TestBuilderInterface](#test-builder-interface)
+3. [TestRunner Class](#test-runner-class)
 4. [Building A Test Suite](#test-suite)
     * A. [Test Runner](#test-runner)
     * B. [Test Builder](#test-builder)
@@ -20,7 +20,7 @@ The API consists of the following:
 
 <br>
 
-## 2. TestBuilderInterface <a id="test-builder"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. TestBuilderInterface <a id="test-builder-interface"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 TestBuilderInterface contains the `makeTest` function which is required for all test builders to implement.  The signature of this function is described below.
 
 Parameters:
@@ -32,7 +32,7 @@ Return:
 
 <br>
 
-## 3. TestRunner Class <a id="test-runner"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. TestRunner Class <a id="test-runner-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The TestRunner class contains functions available for you to use in your own child classes.
 
 **Constructor**
