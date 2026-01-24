@@ -906,3 +906,11 @@ This simulates an empty file upload, which is sufficient for passing validation 
 <br>
 
 ## 10. Additional Functions <a id="additional-functions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
+**enableJsonTestingMode**
+Set JsonResponse::$testing to true so we can test responses.
+
+<br>
+
+**ensureSessionStarts**
+Simulate a session where a function we are testing expects a user  to be authenticated.
