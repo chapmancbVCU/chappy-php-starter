@@ -35,7 +35,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * A. [Controllers and React Views](controllers_and_views)
     * B. [API Utility and JsonResponse Trait](api_util_and_json_response_trait)
     * B. [React Forms](react_forms)
-    * C. [React Utils](react_utils)
+    * C. [React Utils and Hooks](react_utils)
     * D. [Using APIs](using_apis)
     * E. [Building APIs](building_apis)
 19. [Routing](routing)

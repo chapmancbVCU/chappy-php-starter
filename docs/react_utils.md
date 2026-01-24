@@ -1,4 +1,4 @@
-<h1 style="font-size: 50px; text-align: center;">React Utils</h1>
+<h1 style="font-size: 50px; text-align: center;">React Utils and Hooks</h1>
 
 ## Table of contents
 1. [Overview](#overview)
@@ -21,6 +21,13 @@ php console react:util <util_name>
 ```
 
 The file gets created at `resources\js\utils\`.
+
+Hooks are another type of support file.  Create your own custom hooks by running the following command:
+```bash
+php console react:hook <hook-name>
+```
+
+New hooks are created at `resources\js\hooks\`.  All hooks start with use but you don't have to add `use` when generating a new one.
 
 <br>
 

@@ -170,6 +170,7 @@ Each of these commands can accept the following flags:
 | [`react:component`](controllers_and_views#view-commands) | Generates a react component | [`--named`](controllers_and_views#view-commands) | 
 | [`react:error`](controllers_and_views#view-commands) | Restores error/NotFound.jsx page component | |
 | [`react:home`](controllers_and_views#view-commands) | Generates Index.jsx page component for the home controller | |
+| [`react:hook`](react_utils#overview) | Generates a new React.js hook file | |
 | [`react:page`](controllers_and_views#view-commands) | Generates a new react component for views | |
 | [`react:profile`](controllers_and_views#view-commands) | Generates page components for the profile controller |  |
 | [`react:util`](react_utils#overview) | Generates a JavaScript utility file to support React.js | |
