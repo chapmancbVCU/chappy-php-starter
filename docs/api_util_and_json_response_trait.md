@@ -16,8 +16,9 @@
     * D. [jsonError($message, $status = 400, $errors = [])](#json-error)
     * E. [jsonResponse($data, $status = 200, $extraHeaders = [])](#json-response)
     * F. [preflight()](#preflight)
-    * G. [Recommended Response Shapes](#response-shapes)
-    * H. [Practical Example: PATCH Update](#practical-example)
+    * G. [setRawInputOverride](#raw-input-override)
+    * H. [Recommended Response Shapes](#response-shapes)
+    * I. [Practical Example: PATCH Update](#practical-example)
 
 <br>
 
@@ -505,7 +506,16 @@ $this->preflight();
 
 <br>
 
-### G. Recommended Response Shapes <a id="response-shapes"></a>
+### G. `setRawInputOverride()` <a id="raw-input-override"></a>
+Inject JSON body by providing payload parameter.  Also performs cleanup to avoid leaking into other tests.
+
+Parameter:
+- `$payload` - Result of json_encode or null
+
+<br>
+
+
+### H. Recommended Response Shapes <a id="response-shapes"></a>
 To align cleanly with your React utilities (where `apiRequest()` treats `success: false` as an error), use these conventions:
 
 **Success**
@@ -529,7 +539,7 @@ $this->jsonError('Invalid CSRF token.', 419);
 
 <br>
 
-### H. Practical Example: PATCH Update <a id="practicale-example"></a>
+### I. Practical Example: PATCH Update <a id="practicale-example"></a>
 ```php
 public function updateAction(): void
 {
