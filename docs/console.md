@@ -181,8 +181,8 @@ Each of these commands can accept the following flags:
 
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
-| `react:make:test` | Generates a new test case file | `--component`, <br> `--unit`, <br> `--view` |
-| `react:test` | Performs Vitest unit tests | `--component`, <br> `--unit`, <br> `--view` |
+| [`react:make:test`](vitest#creating-tests) | Generates a new test case file | `--component`, <br> `--unit`, <br> `--view` |
+| [`react:test`](vitest#running-tests) | Performs Vitest unit tests | `--component`, <br> `--unit`, <br> `--view` |
 
 <br>
 
