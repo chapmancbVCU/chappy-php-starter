@@ -352,11 +352,8 @@ class RESTfulDestroyTest extends ApplicationTestCase
 {
     public function test_destroy_deletes_one_favorite_and_leaves_other_intact(): void
     {
-        JsonResponse::$testing = true;
-
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::enableJsonTestingMode();
+        self::ensureSessionStarts();
 
         // 1) Seed user
         DB::getInstance()->insert('users', [
@@ -507,12 +504,10 @@ class RESTfulShowTest extends ApplicationTestCase {
     public function test_show_returns_favorites_for_current_user(): void
     {
         // Ensure JSON responses don't exit during tests
-        JsonResponse::$testing = true;
+        self::enableJsonTestingMode();
 
         // Start session for AuthService::currentUser()
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::ensureSessionStarts();
 
         // 1) Seed a user record
         DB::getInstance()->insert('users', [
@@ -612,11 +607,9 @@ class RESTfulPatchTest extends ApplicationTestCase {
     public function test_patch_sets_selected_favorite_as_home_and_unsets_previous_home(): void
     {
         // Ensure JSON responses don't exit during tests
-        JsonResponse::$testing = true;
+        self::enableJsonTestingMode();
 
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::ensureSessionStarts();
 
         // 1) Seed user
         DB::getInstance()->insert('users', [
@@ -769,11 +762,9 @@ class RESTfulStoreTest extends ApplicationTestCase {
     public function test_store_creates_favorite_for_current_user(): void
     {
         // Prevent jsonResponse() from exiting during tests
-        JsonResponse::$testing = true;
+        self::enableJsonTestingMode();
 
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        self::ensureSessionStarts();
 
         // 1) Seed user
         DB::getInstance()->insert('users', [
