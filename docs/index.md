@@ -79,6 +79,8 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 
 [Starter App on Github](https://github.com/chapmancbVCU/chappy-php-starter)
 
+[Complete Weather App using framework](https://github.com/chapmancbVCU/chappy-weather-app)
+
 <h2>Inspiration</h2>
 
 Ruah MVC Framework by Freeskills [playlist](<https://www.youtube.com/playlist?list=PLFPkAJFH7I0keB1qpWk5qVVUYdNLTEUs3>)
