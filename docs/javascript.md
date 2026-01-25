@@ -2,9 +2,8 @@
 
 ## Table of contents
 1. [Overview](#overview)
-2. [app.js](#app_js)
-3. [Vite Asset Bundling](#vite-asset-bundling)
-4. [Included JavaScript Files](#javascript)
+2. [Vite Asset Bundling](#vite-asset-bundling)
+3. [Included JavaScript Files](#javascript)
 
 <br>
 
@@ -18,41 +17,14 @@ Common use cases already supported include:
 - ✅ Phone number formatting helpers  
 - ✅ TinyMCE rich text editor configuration
 
-These can be imported directly in `app.js` or included via your views.
-
-<br>
-
-## 2. app.js <a id="app_js"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The entry point for your custom JavaScript is located at:
-- resources/js/app.js
-
-Use this file to:
-- Import utility functions or packages
-- Initialize form validation
-- Configure TinyMCE
-- Write view-specific scripts (e.g., document ready)
-
-### ✳️ Example
-```js
-import './phoneFormat.js';
-import './passwordMatch.js';
-
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('App.js loaded');
-
-  // Example: Hook into a custom button
-  const button = document.querySelector('#myButton');
-  if (button) {
-    button.addEventListener('click', () => alert('Clicked!'));
-  }
-});
+These can be imported directly included via your views by including the following in the head block:
+```php
+<script src='<?=env('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
 ```
 
-You can split your code into modules and import them here. Vite will compile it all into a single optimized bundle.
-
 <br>
 
-## 3. Vite Asset Bundling <a id="vite-asset-bundling"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Vite Asset Bundling <a id="vite-asset-bundling"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This framework includes the ability to perform Vite asset bundling.  Run the following command to bundle your assets:
 
 ```sh
@@ -71,7 +43,7 @@ Running above commands in Windows PowerShell can cause an issue.  Make sure to r
 
 <br>
 
-## 4. Included JavaScript Files <a id="javascript"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Included JavaScript Files <a id="javascript"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This framework comes with two JavaScript files that can be found at `resources\js`:
 - TinyMCE.js - Initializes TinyMCE editor
 - frontEndPasswordMatchValidate.js - Ensures passwords match
