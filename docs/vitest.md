@@ -56,7 +56,8 @@ php console react:test ${fileName}::${lineNumber}
 You can use `npx test run` to bypass the console's `test` command with native support for all of its features.  Their documentation can be found [here](https://vitest.dev/).
 
 **Supported Vitest Flags**
-The following flags:
+
+The following flags are supported without running Vitest directly by using `npx vitest run`:
 
 | Flag                       | Description                             |
 | -------------------------- | --------------------------------------- |
