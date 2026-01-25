@@ -90,8 +90,9 @@ choco install 7zip -y
 * B. Select download location and run installer using default options.
 * D. If you get a dialog box asking "Do you want to allow public and private networks to access this app?" for Apache select **Allow**
 * E. Install **Composer** using the instructions described above.  We recommend using Chocolatey.
-* F. `cd` to `C:\xampp\htdocs` using the terminal.
-* G. Run the command (replace my-app with the name of your project):
+* F. Ensure PHP for XAMPP appears lower in list for SYSTEM PATH.
+* G. `cd` to `C:\xampp\htdocs` using the terminal.
+* H. Run the command (replace my-app with the name of your project):
 
 ```powershell
 composer create-project chappy-php/chappy-php my-app
@@ -163,7 +164,7 @@ These value should be set depending on what type of files being uploaded.  Files
 <br>
 
 ## 5. Standalone PHP <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### 1: Install PHP 8.3+
+#### 1: Install PHP 8.4+
 * A **Install with Composer**
     - Install Composer using Chocolately as described above.  PHP, which is a dependency will automatically be installed.  When setting up as standalone without XAMPP you can skip to **Setup the Project**.  If you change your mind later on, you will need to remove both Composer and PHP along with any values set in the SYSTEM path.  Installing PHP with this method will install PHP 8.4 at `C:\tools\php<ver_number>`.
 
@@ -171,7 +172,7 @@ OR
 
 * B. **Download PHP**
     - Go to the official [Windows PHP downloads](https://windows.php.net/download).
-    - Download the **latest PHP 8.3+ (Thread Safe) zip package**.
+    - Download the **latest PHP 8.4+ (Thread Safe) zip package**.
    
 * C. **Extract and Set Up PHP**  
     - Extract the downloaded ZIP to `C:\php`.
@@ -193,7 +194,7 @@ extension=openssl
 ```sh
 php -v
 ```
-    - If PHP 8.3+ is displayed, it's correctly installed.
+    - If PHP 8.4+ is displayed, it's correctly installed.
 * E. **Install Composer**
     - Refer to instruction in the **Common** section for installing from Composer.
 
