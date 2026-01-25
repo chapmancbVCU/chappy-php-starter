@@ -409,8 +409,7 @@ final class PHPUnitRunner extends TestRunner {
     public const FEATURE_PATH = 'tests'.DS.'Feature'.DS;
 
     /**
-     * The command for PHPUnit.  NOTE: space is required after command or else 
-     * you will have a failure.
+     * The command for PHPUnit.
      */
     public const TEST_COMMAND = 'php vendor/bin/phpunit ';
 
