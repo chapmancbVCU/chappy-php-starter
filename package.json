@@ -12,7 +12,22 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "keywords": [],
+  "keywords": [
+    "php",
+    "mvc",
+    "framework",
+    "react",
+    "vite",
+    "phpunit",
+    "vitest",
+    "symfony console",
+    "chappy",
+    "fullstack",
+    "starter kit",
+    "frontend",
+    "backend",
+    "open source"
+  ],
   "author": "Chad Chapman (chad.chapman2010@gmail.com)",
   "license": "MIT",
   "dependencies": {
