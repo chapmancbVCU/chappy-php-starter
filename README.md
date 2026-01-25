@@ -42,7 +42,10 @@ Running above command in Windows PowerShell can cause an issue.  Make sure to ru
 - 🔐 Built‑in user authentication & ACL
 - ✍️ Custom form handling and validation
 - 📥 Secure file uploads
-- 🧪 Unit testing with PHPUnit and Vitest
+- 🔔 Email service with customizable templates
+- 📡 Event/Listener system for decoupled logic
+- 🧵 Job dispatching and background queue support
+- 🧪 Unit testing with PHPUnit, Vitest, and test API helpers
 - 🔥 Vite‑based asset bundling
 - 🎛 Symfony Console–powered CLI (console)
 - 🌱 Seeders, migrations, and database helpers
