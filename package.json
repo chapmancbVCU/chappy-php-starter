@@ -13,7 +13,7 @@
     "preview": "vite preview"
   },
   "keywords": [],
-  "author": "",
+  "author": "Chad Chapman (chad.chapman2010@gmail.com)",
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
