@@ -34,6 +34,8 @@ function Register({ users, errors }) {
 }
 ```
 
+<br>
+
 **CSRF**
 
 Every form needs a CSRF token to prevent CSRF attacks.  Add the `<Forms.CSRF />` component to the top of your form.
@@ -42,6 +44,8 @@ Every form needs a CSRF token to prevent CSRF attacks.  Add the `<Forms.CSRF />`
         <Forms.CSRF />
     </form>
 ```
+
+<br>
 
 **Error Bag**
 
@@ -58,6 +62,8 @@ function Register({ users, errors }) {
     )
 }
 ```
+
+<br>
 
 **Add Your Elements and Buttons**
 Add your elements and buttons by using supplied components.  Elements, buttons, and submit button components are described in the following sections.
