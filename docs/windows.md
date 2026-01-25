@@ -90,7 +90,7 @@ choco install 7zip -y
 * B. Select download location and run installer using default options.
 * D. If you get a dialog box asking "Do you want to allow public and private networks to access this app?" for Apache select **Allow**
 * E. Install **Composer** using the instructions described above.  We recommend using Chocolatey.
-* F. Ensure PHP for XAMPP appears lower in list for SYSTEM PATH.
+* F. Ensure PHP for XAMPP appears lower in list for SYSTEM PATH and reboot.
 * G. `cd` to `C:\xampp\htdocs` using the terminal.
 * H. Run the command (replace my-app with the name of your project):
 
