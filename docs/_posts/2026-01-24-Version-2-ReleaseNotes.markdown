@@ -2,13 +2,13 @@
 layout: post
 title:  "Version 2.0 Release Notes!"
 date:   2026-01-24 20:06:52 -0500
-categories: jekyll update
+categories: release
 ---
 ---
 
 🎉 **Version 2.0 of the Chappy PHP Framework is here!**
 
-This is the most feature-packed release to date, introducing powerful new capabilities across the board—from E-mail automation to real-time CLI testing.
+This is the most feature-packed release to date, introducing powerful new capabilities across the board from E-mail automation to real-time CLI testing.
 
 ---
 
@@ -37,13 +37,17 @@ This is the most feature-packed release to date, introducing powerful new capabi
 
 ---
 
+<br>
+
 ## 📘 Documentation
 
 Everything is documented in the user guide:  
 👉 [https://chapmancbvcu.github.io/chappy-php-starter/](https://chapmancbvcu.github.io/chappy-php-starter/)
 
+<br>
+
 ---
 
-This release is the result of real-world testing through apps like the [Chappy Weather App] and includes critical DX enhancements and stability improvements.
+This release is the result of real-world testing through apps like the [Chappy Weather App](https://github.com/chapmancbVCU/chappy-weather-app) and includes critical DX enhancements and stability improvements.
 
 Thank you to everyone testing, building, and exploring Chappy v2!

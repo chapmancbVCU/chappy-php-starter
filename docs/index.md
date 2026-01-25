@@ -84,5 +84,3 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 <h2>Inspiration</h2>
 
 Ruah MVC Framework by Freeskills [playlist](<https://www.youtube.com/playlist?list=PLFPkAJFH7I0keB1qpWk5qVVUYdNLTEUs3>)
-
-Version 2 [release notes](https://chapmancbvcu.github.io/chappy-php-starter/jekyll/update/2026/01/25/Version-2-ReleaseNotes.html)
