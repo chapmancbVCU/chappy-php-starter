@@ -411,7 +411,7 @@ final class PHPUnitRunner extends TestRunner {
     /**
      * The command for PHPUnit.
      */
-    public const TEST_COMMAND = 'php vendor/bin/phpunit ';
+    public const TEST_COMMAND = 'php vendor/bin/phpunit';
 
     /**
      * File extension for PHPUnit unit tests.
