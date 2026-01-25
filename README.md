@@ -58,7 +58,7 @@ Running above command in Windows PowerShell can cause an issue.  Make sure to ru
 - SQL Management software
 - Composer
 - git
-- OS: macOS / Linux / Windows 10+
+- OS: macOS / Linux / Windows 11+
 
 ---
 
