@@ -12,8 +12,11 @@ This version consists of the following updates:
 - Notifications
 - PHPUnit support
 - Vitest support
-- Utility classes for Arrays, Array Sets, Strings, Config/Env, Time, Uploads
+- Uploads Library
 - Widgets
 - Events/Listeners
 - Global helpers
 - Improved migration system
+- Builtin Exception classes
+- API support
+- Builtin traits
