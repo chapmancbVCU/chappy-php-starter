@@ -67,6 +67,8 @@ npm run dev
 
 After running the command the npm based Vite server is started just like any Laravel or React.js based project.
 
+Running above commands in Windows PowerShell can cause an issue.  Make sure to run with Command Prompt.
+
 <br>
 
 ## 4. Included JavaScript Files <a id="javascript"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>

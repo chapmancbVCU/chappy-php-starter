@@ -127,6 +127,9 @@ DB_USER=root
 ```sh
 npm run dev
 ```
+
+Running above command in Windows PowerShell can cause an issue.  Make sure to run with Command Prompt.
+
 * K. Open browser and navigate to `http://localhost/chappy-php/home`.
 
 <br>
@@ -216,4 +219,7 @@ php console serve
 ```sh
 npm run dev
 ```
+
+Running above command in Windows PowerShell can cause an issue.  Make sure to run with Command Prompt.
+
 * F. Navigate to `localhost:8000` in your preferred web browser.

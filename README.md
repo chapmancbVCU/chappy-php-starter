@@ -31,6 +31,7 @@ Originally a fork of the Ruah PHP MVC framework inspired by Freeskills’ YouTub
   npm run dev
   ```
 
+Running above command in Windows PowerShell can cause an issue.  Make sure to run with Command Prompt.
 ---
 
 🧰 Features

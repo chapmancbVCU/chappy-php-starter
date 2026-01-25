@@ -35,6 +35,8 @@ npm run dev
 
 Make sure the `APP_ENV` environment variable is set to `local`.  If you are using the PHP standalone the `APP_DOMAIN` environment variable should be set to `'http://localhost:8000/'`.
 
+Running above command in Windows PowerShell can cause an issue.  Make sure to run with Command Prompt.
+
 **Pre-Production**
 
 Test your app in pre-production with the PHP standalone server by running the following command:
@@ -43,6 +45,8 @@ npm run build
 ```
 
 Set the `APP_ENV` environment variable to `production`.  Make sure the Vite server is not running.  Your React.js views will now render without using the Vite server.
+
+Running above command in Windows PowerShell can cause an issue.  Make sure to run with Command Prompt.
 
 **Production**
 
