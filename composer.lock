@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4bac11f0a07c9cb7027b7e4603866ad0",
+    "content-hash": "f603ad7a4fd3dce2c2f3b0d6b017cb2f",
     "packages": [
         {
             "name": "brick/math",
@@ -137,16 +137,16 @@
         },
         {
             "name": "chappy-php/chappy-php-framework",
-            "version": "v1.4.12",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chapmancbVCU/chappy-php-framework.git",
-                "reference": "6186f96f456395dc18f815a9e5d6e2a9349e5c1f"
+                "reference": "df0a225d70d9bfd9009da042f325857397f419bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/6186f96f456395dc18f815a9e5d6e2a9349e5c1f",
-                "reference": "6186f96f456395dc18f815a9e5d6e2a9349e5c1f",
+                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/df0a225d70d9bfd9009da042f325857397f419bd",
+                "reference": "df0a225d70d9bfd9009da042f325857397f419bd",
                 "shasum": ""
             },
             "require": {
@@ -197,9 +197,9 @@
             "description": "A lightweight and extensible PHP MVC framework.",
             "support": {
                 "issues": "https://github.com/chapmancbVCU/chappy-php-framework/issues",
-                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v1.4.12"
+                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v2.0.0"
             },
-            "time": "2026-01-25T15:33:55+00:00"
+            "time": "2026-01-25T17:47:49+00:00"
         },
         {
             "name": "doctrine/inflector",
