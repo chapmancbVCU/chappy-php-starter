@@ -151,6 +151,7 @@ Uncomment the following lines:
 ```rust
 extension=pdo_mysql
 extension=pdo_sqlite
+extension=fileinfo
 ```
 
 Then modify the following settings:
@@ -169,7 +170,7 @@ These value should be set depending on what type of files being uploaded.  Files
 ## 5. Standalone PHP <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 #### 1: Install PHP 8.4+
 * A **Install with Composer**
-    - Install Composer using Chocolately as described above.  PHP, which is a dependency will automatically be installed.  When setting up as standalone without XAMPP you can skip to **Setup the Project**.  If you change your mind later on, you will need to remove both Composer and PHP along with any values set in the SYSTEM path.  Installing PHP with this method will install PHP 8.4 at `C:\tools\php<ver_number>`.
+    - Install Composer using Chocolately as described above.  PHP, which is a dependency will automatically be installed.  When setting up as standalone without XAMPP you can skip to **Setup the Project**.  If you change your mind later on, you will need to remove both Composer and PHP along with any values set in the SYSTEM path.  Installing PHP with this method will install PHP 8.4 at `C:\tools\php<ver_number>`.  Make sure `extension=fileinfo` is uncommented in php.ini file.
 
 OR
 
@@ -185,6 +186,7 @@ OR
 extension=sqlite3
 extension=mbstring
 extension=openssl
+extension=fileinfo
 ```
     - Add `C:\php` to the **system PATH**:
         - Open **Start Menu**, search for **"Environment Variables"**.
