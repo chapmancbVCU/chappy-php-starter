@@ -1,6 +1,6 @@
 {
   "name": "chappy-php",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "chappy.php is a whole new Model View Controller framework tailored to all of the fellows of the internet. Our goal is to provide a light weight and easily expandable framework for any PHP developer.",
   "main": "app.jsx",
   "directories": {
