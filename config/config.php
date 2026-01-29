@@ -5,7 +5,8 @@ use Core\Lib\Utilities\Env;
  */
 
  return [
-    'debug' => Env::get('DEBUG') ?? false,
+    'debug' => Env::get('DEBUG') ?? "false",
+    'logging' => Env::get('LOGGING') ?? 'debug',
     'app_env' => Env::get('APP_ENV') ?? 'production',
 
     'default_controller' => Env::get('DEFAULT_CONTROLLER') ?? 'Home', // Default controller if not set in .env
