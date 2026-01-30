@@ -66,7 +66,7 @@ class ContactsTableSeeder extends Seeder {
                 $i++;
             }
         }
-        Tools::info("Seeded contacts table.");
+        console_info("Seeded contacts table.");
     }
 }
 ```
@@ -100,7 +100,7 @@ public function run(): void {
             $i++;
         }
     }
-    Tools::info("Seeded contacts table.");
+    console_info("Seeded contacts table.");
 }
 ```
 
@@ -219,15 +219,15 @@ public function run(): void {
         $profileImage->url = $uploadPath . $imageFileName;
 
         if ($profileImage->save()) {
-            Tools::info("Saved profile image record: $imageFileName");
+            console_info("Saved profile image record: $imageFileName");
             $i++;
         } else {
-            Tools::info("Failed to save profile image record: $imageFileName");
-            Tools::info("Validation Errors: " . json_encode($profileImage->getErrorMessages()));
+            console_error("Failed to save profile image record: $imageFileName");
+            console_error("Validation Errors: " . json_encode($profileImage->getErrorMessages()));
         }
     }
 
-    Tools::info("Finished seeding profileImage table.");
+    console_info("Finished seeding profileImage table.");
 }
 ```
 
