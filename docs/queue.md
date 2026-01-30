@@ -96,7 +96,7 @@ class SendWelcomeEmail implements QueueableJobInterface {
 
     public function handle(): void {
         $user = Users::findById($this->data['user_id']);
-        Tools::info("Sending welcome email to {$user->username} at {$user->email}", "info");
+        console_info("Sending welcome email to {$user->username} at {$user->email}");
         WelcomeMailer::sendTo($user);
     }
 
