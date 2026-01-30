@@ -3,7 +3,6 @@ namespace Database\Seeders;
 
 use Faker\Factory as Faker;
 use Core\Lib\Database\Seeder;
-use Console\Helpers\Tools;
 
 // Import your model
 use App\Models\Users;
@@ -43,16 +42,16 @@ class UsersTableSeeder extends Seeder {
             // Try saving and catch the error
             try {
                 if ($users->save()) {
-                    Tools::info("✅ Created user: " . $users->username);
+                    console_info("✅ Created user: " . $users->username);
                     $i++;
                 } else {
-                    Tools::info("❌ Failed to save user: " . json_encode($users));
+                    console_error("❌ Failed to save user: " . json_encode($users));
                 }
             } catch (\Exception $e) {
-                Tools::info("❌ Database error: " . $e->getMessage());
+                console_error("❌ Database error: " . $e->getMessage());
                 break; // Prevent infinite loop
             }
         }
-        Tools::info("Seeded users table.");
+        console_info("Seeded users table.");
     }
 }
