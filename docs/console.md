@@ -334,6 +334,8 @@ The info function is used to present to the user logging information.  The follo
 Tools::info("My message", Logger::INFO, Tools::BG_RED, Tools::TEXT_WHITE);
 ```
 
+The frequency of the output for various severity levels depends on the value of the `LOGGING` environmental variable in the `.env` file.  If the level is set to `notice` then logging set to a lower level are ignored.
+
 **Parameters**
 
 - `string $message` - The message we want to show.
