@@ -31,9 +31,37 @@ filp/whoops is a pretty page handler for displaying errors within the browser.  
 <br>
 
 ## 3. Logs <a id="logs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Add content to the log files with the following global function:
+Add content to the log files with the following global functions:
 ```php
-logger('My message', 'level');
+emergency('My message',);
+```
+
+```php
+alert('My message',);
+```
+
+```php
+critical('My message',);
+```
+
+```php
+error('My message',);
+```
+
+```php
+warning('My message',);
+```
+
+```php
+notice('My message',);
+```
+
+```php
+info('My message',);
+```
+
+```php
+debug('My message',);
 ```
 
 Or call using the `Logger` class:
