@@ -398,14 +398,14 @@ A `ConsoleException` is thrown if you use a value for text color in place of bac
 
 Global functions for console logging are also available based on severity level.
 
-- `console_emergency($message)` - Prints message with red background.
-- `console_alert($message)` - Prints message with red background.
-- `console_critical($message)` - Prints message with magenta background.
-- `console_error($message)` - Prints message with red background.
-- `console_warning($message)` - Prints message with yellow background.
-- `console_notice($message)` - Prints message with cyan background.
-- `console_info($message)` - Prints message with green background.
-- `console_debug($message)` - Prints message with blue background.
+- `console_emergency($message)` - Prints emergency message with red background.
+- `console_alert($message)` - Prints alert message with red background.
+- `console_critical($message)` - Prints critical message with magenta background.
+- `console_error($message)` - Prints error message with red background.
+- `console_warning($message)` - Prints warning message with yellow background.
+- `console_notice($message)` - Prints notice message with cyan background.
+- `console_info($message)` - Prints info message with green background.
+- `console_debug($message)` - Prints debug message with blue background.
 
 <br>
 
