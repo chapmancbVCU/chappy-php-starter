@@ -4,7 +4,6 @@ namespace Database\Seeders;
 use Faker\Factory as Faker;
 use Smknstd\FakerPicsumImages\FakerPicsumImagesProvider;
 use Core\Lib\Database\Seeder;
-use Console\Helpers\Tools;
 
 // Import your model
 use Core\Models\ProfileImages;
@@ -52,14 +51,14 @@ class ProfileImageTableSeeder extends Seeder {
             $profileImage->url = $uploadPath . $imageFileName;
 
             if ($profileImage->save()) {
-                Tools::info("Saved profile image record: $imageFileName");
+                console_info("Saved profile image record: $imageFileName");
                 $i++;
             } else {
-                Tools::info("Failed to save profile image record: $imageFileName");
-                Tools::info("Validation Errors: " . json_encode($profileImage->getErrorMessages()));
+                console_error("Failed to save profile image record: $imageFileName");
+                console_error("Validation Errors: " . json_encode($profileImage->getErrorMessages()));
             }
         }
 
-        Tools::info("Finished seeding profileImage table.");
+        console_info("Finished seeding profileImage table.");
     }
 }
