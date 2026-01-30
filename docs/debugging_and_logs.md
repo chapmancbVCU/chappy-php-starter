@@ -15,6 +15,14 @@ This framework provides built-in tools for identifying and resolving issues duri
 - Application and CLI log files for capturing system events
 - Developer-friendly helper functions for debugging within controllers, views, or models
 
+How verbose your logging can be set in the `.env` file using severity levels based on the PSR-3 specification.
+
+Example:
+```bash
+LOGGING="notice"
+```
+
+When logging is set to `notice` any messages with a lower severity level is not logged.
 <br>
 
 ## 2. filp/whoops <a id="whoops"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
