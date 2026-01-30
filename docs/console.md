@@ -347,7 +347,24 @@ The frequency of the output for various severity levels depends on the value of 
 
 We usually don't use the fourth argument since it may sometimes be ignored especially if you are using the terminal that comes with Visual Studio Code.
 
-The standard Logger Alert Levels (Based on PSR-3)
+<br>
+
+**Globals**
+
+Global functions for console logging are also available based on severity level.
+
+- `console_emergency($message)` - Prints emergency message with red background.
+- `console_alert($message)` - Prints alert message with red background.
+- `console_critical($message)` - Prints critical message with magenta background.
+- `console_error($message)` - Prints error message with red background.
+- `console_warning($message)` - Prints warning message with yellow background.
+- `console_notice($message)` - Prints notice message with cyan background.
+- `console_info($message)` - Prints info message with green background.
+- `console_debug($message)` - Prints debug message with blue background.
+
+<br>
+
+**The standard Logger Alert Levels (Based on PSR-3)**
 
 | Severity Level | Description |
 |:-------:|-------------|
@@ -391,21 +408,6 @@ The following text colors are supported (`const`):
 16. `Tools::TEXT_LIGHT_MAGENTA`
 
 A `ConsoleException` is thrown if you use a value for text color in place of background color and vice versa.  If a value provided for `$background` and `$text` does not match any of the supported colors this exception is also thrown.
-
-<br>
-
-**Globals**
-
-Global functions for console logging are also available based on severity level.
-
-- `console_emergency($message)` - Prints emergency message with red background.
-- `console_alert($message)` - Prints alert message with red background.
-- `console_critical($message)` - Prints critical message with magenta background.
-- `console_error($message)` - Prints error message with red background.
-- `console_warning($message)` - Prints warning message with yellow background.
-- `console_notice($message)` - Prints notice message with cyan background.
-- `console_info($message)` - Prints info message with green background.
-- `console_debug($message)` - Prints debug message with blue background.
 
 <br>
 
