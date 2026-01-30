@@ -334,6 +334,8 @@ The info function is used to present to the user logging information.  The follo
 Tools::info("My message", Logger::INFO, Tools::BG_RED, Tools::TEXT_WHITE);
 ```
 
+This function can be called using the `console()` global using the same parameters.
+
 The frequency of the output for various severity levels depends on the value of the `LOGGING` environmental variable in the `.env` file.  If the level is set to `notice` then logging set to a lower level are ignored.
 
 **Parameters**
@@ -389,6 +391,21 @@ The following text colors are supported (`const`):
 16. `Tools::TEXT_LIGHT_MAGENTA`
 
 A `ConsoleException` is thrown if you use a value for text color in place of background color and vice versa.  If a value provided for `$background` and `$text` does not match any of the supported colors this exception is also thrown.
+
+<br>
+
+**Globals**
+
+Global functions for console logging are also available based on severity level.
+
+- `console_emergency($message)` - Prints message with red background.
+- `console_alert($message)` - Prints message with red background.
+- `console_critical($message)` - Prints message with magenta background.
+- `console_error($message)` - Prints message with red background.
+- `console_warning($message)` - Prints message with yellow background.
+- `console_notice($message)` - Prints message with cyan background.
+- `console_info($message)` - Prints message with green background.
+- `console_debug($message)` - Prints message with blue background.
 
 <br>
 
