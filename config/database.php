@@ -2,7 +2,8 @@
 use Core\Lib\Utilities\Env;
 return [
     'default' => Env::get('DB_CONNECTION') ?? 'mysql', // Default to MySQL if not specified
-
+    'db_log_params' => Env::get('DB_LOG_PARAMS' ?? 'none'),
+    
     'connections' => [
         'sqlite' => [
             'driver' => 'sqlite',
