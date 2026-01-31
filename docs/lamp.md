@@ -540,6 +540,7 @@ sudo chmod -R 755 /var/www/html/my-app
 Open your preferred IDE (We use VSCode) and edit the `.env` file:
 - Set `APP_DOMAIN` TO `/`.
 - For **security** purposes ensure `DB_LOG_PARAMS` is set to `none` instead of `full`.
+- Set `LOGGING` environmental variable as appropriate for your use.  In production we recommend `info` to prevent excessive logging.
 - Update the database section:
 ```php
 # Set to mysql or mariadb for production
