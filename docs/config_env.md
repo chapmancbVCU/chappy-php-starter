@@ -92,7 +92,7 @@ DB_PORT=3306
 DB_DATABASE=database/database.sqlite
 DB_USER=
 DB_PASSWORD=
-DB_LOG_PARAMS='full'
+DB_LOG_PARAMS=full
 ```
 
 Controls database connectivity and query logging.
@@ -185,7 +185,7 @@ Supports Symfony Mailer DSN format.
 📬 **Queue / Job Dispatch**
 
 ```bash
-QUEUE_DRIVER='database'
+QUEUE_DRIVER=database
 MAX_ATTEMPTS=3
 REDIS_HOST='127.0.0.1'
 REDIS_PORT='6379'
