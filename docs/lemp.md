@@ -768,11 +768,15 @@ cd ~/
 composer create-project chappy-php/chappy-php my-app
 sudo mv my-app/ /var/www/
 cd /var/www/my-app
+```
+
 <br>
 
 ### B. Project Configuration
+
 Open your preferred IDE (We use VSCode) and edit the `.env` file:
 - Set `APP_DOMAIN` TO `/`.
+- For **security** purposes ensure `DB_LOG_PARAMS` is set to `none` instead of `full`.
 - Update the database section:
 ```php
 # Set to mysql or mariadb for production
