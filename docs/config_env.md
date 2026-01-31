@@ -2,11 +2,12 @@
 
 ## Table of contents
 1. [Overview](#overview)
-2. [Env Utility](#env)
-3. [Config Utility](#config)
-4. [Best Practices](#best-practices)
-5. [Debugging](#debugging)
-6. [Conclusion](#conclusion)
+2. [Environment Configuration](#environment-configuration)
+3. [Env Utility](#env)
+4. [Config Utility](#config)
+5. [Best Practices](#best-practices)
+6. [Debugging](#debugging)
+7. [Conclusion](#conclusion)
 
 <br>
 
@@ -15,7 +16,209 @@ We use two classes called Config and Env to manage configuration files and envir
 
 <br>
 
-## 2. Env Utility <a id="env"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Environment Configuration <a id="environment-configuration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This file controls application behavior across development, staging, and production environments. Values are loaded at runtime and influence logging, database connections, security policies, queues, mail, and frontend tooling.
+
+<br>
+
+🔧 **Application Environment**
+
+```bash
+DEBUG=true
+LOGGING="debug"
+APP_ENV=local
+```
+
+Controls overall runtime behavior.
+
+**DEBUG**
+
+Enables detailed error output and verbose logging when set to `true`. Should be `false` in production.
+
+**LOGGING**
+
+Sets the minimum PSR-3 severity level written to logs (`debug`, `info`, `notice`, `warning`, `error`, etc).
+Messages below this threshold are ignored.
+
+**APP_ENV**
+
+Indicates the current environment (`local`, `staging`, `production`). Used for environment-specific behavior.
+
+<br>
+
+🌐 **Application Identity & Routing**
+
+```bash
+APP_DOMAIN='http://localhost:8000/'
+SITE_TITLE='My App'
+MENU_BRAND='My Brand'
+
+DEFAULT_CONTROLLER=Home
+DEFAULT_LAYOUT=default
+```
+
+Defines application URLs and UI defaults.
+- **APP_DOMAIN** – Base application URL
+- **SITE_TITLE** – Default browser title
+- **MENU_BRAND** – Branding text shown in navigation
+- **DEFAULT_CONTROLLER** – Controller used when no route is specified
+- **DEFAULT_LAYOUT** – Default layout template
+
+<br>
+
+🔐 **Security & Sessions**
+
+```bash
+APP_KEY=
+CURRENT_USER_SESSION_NAME=
+REMEMBER_ME_COOKIE_NAME=
+REMEMBER_ME_COOKIE_EXPIRY=2592000
+```
+
+Authentication and session configuration.
+- **APP_KEY** – Application encryption key
+- **CURRENT_USER_SESSION_NAME** – Session identifier for logged-in users
+- **REMEMBER_ME_COOKIE_NAME** – Persistent login cookie name
+- **REMEMBER_ME_COOKIE_EXPIRY** – Cookie lifetime (seconds)
+
+<br>
+
+🗄 **Database Configuration**
+
+```bash
+DB_CONNECTION=sqlite
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=database/database.sqlite
+DB_USER=
+DB_PASSWORD=
+DB_LOG_PARAMS='full'
+```
+
+Controls database connectivity and query logging.
+- **DB_CONNECTION** – `sqlite`, `mysql`, or `mariadb`
+- **DB_HOST / DB_PORT** – MySQL connection details
+- **DB_DATABASE** – Database name or SQLite path
+- **DB_USER / DB_PASSWORD** – Credentials
+- **DB_LOG_PARAMS**
+
+Controls parameter logging:
+- `none` → only parameter count/type
+- `masked` → redacted values
+- `full` → full parameters (dev only)
+- This integrates with your logging system to prevent sensitive data leakage.
+
+<br>
+
+🔑 **Password Policy**
+
+```bash
+PW_LOWER_CHAR=true
+PW_UPPER_CHAR=true
+PW_NUM_CHAR=true
+PW_SPECIAL_CHAR=true
+PW_MIN_LENGTH=12
+PW_MAX_LENGTH=30
+SET_PW_MIN_LENGTH=true
+SET_PW_MAX_LENGTH=true
+```
+
+Defines password complexity requirements.
+
+Supports:
+- lowercase
+- uppercase
+- numbers
+- special characters
+- configurable minimum and maximum lengths
+
+These values are also exposed to Vite for frontend validation.
+
+<br>
+
+🚫 **Login Protection**
+
+```bash
+MAX_LOGIN_ATTEMPTS=100
+```
+
+Maximum allowed login attempts before lockout.
+
+<br>
+
+⏰ **Localization**
+
+```bash
+TIME_ZONE='America/New_York'
+LOCALE='en'
+```
+
+Sets application timezone and locale.
+
+<br>
+
+🎨 **Console Styling**
+
+```bash
+BACKGROUND_COLOR='green'
+TEXT_COLOR='light-grey'
+```
+
+Used by console helpers for visual output formatting.
+
+<br>
+
+✉ **Mail Configuration**
+
+```bash
+MAILER_DSN=smtp://username:password@smtp.mailtrap.io:2525
+MAIL_FROM_ADDRESS=no-reply@chappyphp.test
+MAIL_FROM_NAME="ChappyPHP Framework"
+```
+
+SMTP configuration for outgoing mail.
+
+Supports Symfony Mailer DSN format.
+
+<br>
+
+📬 **Queue / Job Dispatch**
+
+```bash
+QUEUE_DRIVER='database'
+MAX_ATTEMPTS=3
+REDIS_HOST='127.0.0.1'
+REDIS_PORT='6379'
+```
+
+Controls background job processing.
+- **QUEUE_DRIVER** – database or redis
+- **MAX_ATTEMPTS** – Retry count for failed jobs
+- **REDIS_HOST / REDIS_PORT** – Redis connection (if enabled)
+
+<br>
+
+⚡ **Vite / Frontend Environment**
+
+```bash
+VITE_APP_DOMAIN=${APP_DOMAIN}
+VITE_S3_BUCKET=${S3_BUCKET}
+VITE_PW_LOWER_CHAR=${PW_LOWER_CHAR}
+...
+```
+
+Exposes selected backend values to Vite for frontend builds.
+
+Includes:
+- domain
+- password rules
+- security constraints
+
+This ensures React/UI validation matches backend enforcement.
+
+<br>
+
+## 3. Env Utility <a id="env"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The Env utility helps load and manage environment variables from a `.env` file.
 <br>
 
@@ -79,7 +282,7 @@ If `Env::get('SOME_KEY')` returns `null`, check:
 
 <br>
 
-## 3. Config Utility <a id="config"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Config Utility <a id="config"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `Config` utility helps manage configuration files stored in the `config/` directory.
 <br>
 
@@ -152,14 +355,14 @@ echo Config::get('app.debug'); // Outputs: true
 ```
 <br>
 
-## 4. 🚀 Best Practices <a id="best-practices"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. 🚀 Best Practices <a id="best-practices"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 * ✔️ Use `.env` for sensitive credentials (API keys, database passwords).
 * ✔️ Use `Config::get()` instead of hardcoding values.
 * ✔️ Ensure all `config/*.php` files return arrays.
 
 <br>
 
-## 5. 🛠 Debugging <a id="debugging"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. 🛠 Debugging <a id="debugging"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 If `Config::get('app.name')` returns `null`, check:
 * `Config::load(ROOT . '/config');` was called before using `Config::get()`.
 * The file exists in `config/` and returns an array.
@@ -167,7 +370,7 @@ If `Config::get('app.name')` returns `null`, check:
 
 <br>
 
-## 6. 🎯 Conclusion <a id="conclusion"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. 🎯 Conclusion <a id="conclusion"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 * `Env` Utility loads environment variables dynamically.
 * `Config` Utility centralizes configuration management.
 * Use `Env::get()` for `.env` values and `Config::get()` for app settings.
