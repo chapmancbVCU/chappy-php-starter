@@ -229,10 +229,7 @@ public static function makeTest(string $testName, InputInterface $input): int {
     $testSuites = [PHPUnitRunner::FEATURE_PATH, PHPUnitRunner::UNIT_PATH];
     
     if(PHPUnitRunner::testExists($testName, $testSuites, PHPUnitRunner::TEST_FILE_EXTENSION)) {
-        Tools::info(
-            "File with the name '{$testName}' already exists in one of the supported test suites", Logger::ERROR, 
-            Tools::BG_RED
-        );
+        console_warning("File with the name '{$testName}' already exists in one of the supported test suites");
         return Command::FAILURE;
     }
 
@@ -518,7 +515,7 @@ final class PHPUnitRunner extends TestRunner {
      */
     public function testByFilter(string $testArg, array $testSuites, string $extension): int {
         if(!self::verifyFilterSyntax($testArg)) {
-            Tools::info("Syntax error when filtering.", Logger::DEBUG, Tools::BG_YELLOW);
+            console_error("Syntax error when filtering.");
             return Command::FAILURE;
         }
 
@@ -702,7 +699,7 @@ class RunTestCommand extends Command
             );
         }
         if(!$testArg && PHPUnitRunner::testSuiteStatus($runBySuiteStatus)) {
-            Tools::info("Completed tests by suite(s)");
+            console_info("Completed tests by suite(s)");
             return Command::SUCCESS;
         }
 
@@ -728,11 +725,11 @@ class RunTestCommand extends Command
             );
         }
         if($testArg && PHPUnitRunner::testSuiteStatus($testNameByFlagStatus)) {
-            Tools::info("Completed tests by name and suite(s)");
+            console_info("Completed tests by name and suite(s)");
             return Command::SUCCESS;
         }
 
-        Tools::info("There was an issue running unit tests.  Check your command line input.", Logger::ERROR, Tools::BG_RED);
+        console_error("There was an issue running unit tests.  Check your command line input.", Logger::ERROR, Tools::BG_RED);
         return Command::FAILURE;
     }
 }
