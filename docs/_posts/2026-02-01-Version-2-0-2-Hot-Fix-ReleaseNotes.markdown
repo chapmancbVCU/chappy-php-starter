@@ -5,10 +5,10 @@ date:   2026-02-01 20:25:00 -0500
 categories: hotfix
 ---
 Performed the following updates:
-- Made frequency of logging configurable based on severity
-- Made frequency of console logging configurable based on severity
-- Created global helpers for logging based on severity
-- Created global helpers for console logging based on severity
+- Made frequency of logging configurable based on severity level
+- Made frequency of console logging configurable based on severity level
+- Created global helpers for logging based on severity level
+- Created global helpers for console logging based on severity level
 - Updated documentation to reflect updates
 - Fixed binding issue in tableExists function in DB class
 - Resolved issue where sensitive data can be written to log
