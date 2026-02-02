@@ -331,7 +331,7 @@ In the above example we use the result of the dotNotification Verify function ca
 The info function is used to present to the user logging information.  The following is an example of how to call this function:
 
 ```php
-Tools::info("My message", Logger::INFO, Tools::BG_RED, Tools::TEXT_WHITE);
+ConsoleLogger::log("My message", Logger::INFO, Tools::BG_RED, Tools::TEXT_WHITE);
 ```
 
 This function can be called using the `console()` global using the same parameters.
