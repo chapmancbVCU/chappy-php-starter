@@ -10,7 +10,6 @@
             "Auth" : ["login", "register", "resetPassword"]
         },
         "Auth" : ["logout"],
-        "Contacts" : ["*"],
         "Profile" : ["*"]
     },
     "Admin" : {
