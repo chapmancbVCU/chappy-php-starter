@@ -6,7 +6,7 @@ use Core\Lib\Database\Schema;
 /**
  * Migration class for the users table.
  */
-class Migration1722819717 extends Migration {
+class MDT20240805010157CreateUsersTable extends Migration {
     /**
      * Performs a migration task.
      *

@@ -7,7 +7,7 @@ use Core\Lib\Database\Migration;
 /**
  * Migration class for the profile_images table.
  */
-class Migration1724274442 extends Migration {
+class MDT20240821210722CreateProfileImagesTable extends Migration {
   /**
    * Performs a migration.
    *

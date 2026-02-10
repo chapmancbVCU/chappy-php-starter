@@ -6,7 +6,7 @@ use Core\Lib\Database\Schema;
 /**
  * Migration class for the acl table.
  */
-class Migration1723159214 extends Migration {
+class MDT20240808232014CreateAclTable extends Migration {
   /**
    * Performs a migration.
    *

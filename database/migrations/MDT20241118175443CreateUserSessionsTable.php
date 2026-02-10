@@ -7,7 +7,7 @@ use Core\Lib\Database\Migration;
 /**
  * Migration class for the user_sessions table.
  */
-class Migration1731861283 extends Migration {
+class MDT20241118175443CreateUserSessionsTable extends Migration {
     /**
      * Performs a migration.
      *

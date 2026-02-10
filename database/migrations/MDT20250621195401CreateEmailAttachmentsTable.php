@@ -7,7 +7,7 @@ use Core\Lib\Database\Migration;
 /**
  * Migration class for the email_attachments table.
  */
-class Migration1750718041 extends Migration {
+class MDT20250621195401CreateEmailAttachmentsTable extends Migration {
     /**
      * Performs a migration for a new table.
      *

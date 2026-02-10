@@ -7,7 +7,7 @@ use Core\Lib\Database\Migration;
 /**
  * Migration class for the migrations table.
  */
-class Migration1722819683 extends Migration {
+class MDT20240805010123CreateMigrationTable extends Migration {
     /**
      * Performs a migration.
      *
@@ -16,7 +16,7 @@ class Migration1722819683 extends Migration {
     public function up(): void {
         Schema::create('migrations', function (Blueprint $table) {
           $table->id();
-          $table->string('migration', 35);
+          $table->string('migration', 512);
           $table->index('migration');
           $table->integer('batch');
       });
