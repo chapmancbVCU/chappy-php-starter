@@ -101,7 +101,7 @@ use Core\Lib\Database\Migration;
 /**
  * Migration class for the foo table.
  */
-class Migration1741215401 extends Migration {
+class MDT20260211231125CreateFooTable extends Migration {
     /**
      * Performs a migration.
      *
@@ -136,7 +136,7 @@ use Core\Lib\Database\Migration;
 /**
  * Migration class for the foo table.
  */
-class Migration1741215401 extends Migration {
+class MDT20260211231125CreateFooTable extends Migration {
     /**
      * Performs a migration.
      *
