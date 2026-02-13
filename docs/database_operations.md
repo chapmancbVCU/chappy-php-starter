@@ -50,6 +50,14 @@ To restore or generate built-in migrations use the following command:
 php console migrate:restore
 ```
 
+This command accepts the following flags for restoring individual migration files:
+- `--acl`
+- `--email_attachments`
+- `--migrations`
+- `--profile_images`
+- `--user_sessions`
+- `--users`
+
 <br>
 
 ## 2. Migration <a id="migration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
