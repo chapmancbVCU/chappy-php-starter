@@ -40,5 +40,8 @@
         "symlink": true
       }
     }
-  ]
+  ],
+  "require-dev": {
+    "psy/psysh": "^0.12.20"
+  }
 }
