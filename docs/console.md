@@ -104,6 +104,7 @@ php console
 | [`migrate`](database_operations#overview) | Runs a Database Migration | [`--seed`](database_operations#overview)|
 | [`migrate:drop:all`](database_operations#drop-all) | Drops all database tables | |
 | [`migrate:fresh`](database_operations#migrate-fresh) | Drops all tables and performs migration | [`--seed`](database_operations#migrate-fresh)|
+| [`migrate:restore`](database_operations#overview) | Restores built-in migrations | |
 | [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | [`--seed`](database_operations#migrate-refresh), <br>[`--step`](database_operations#migrate-refresh)|
 | [`migrate:rollback`](database_operations#rollback) | Performs rollback operation | [`--step`](database_operations#rollback), <br>[`--batch`](database_operations#rollback) | 
 | [`migrate:status`](database_operations#status) | Reports status of migrations | |

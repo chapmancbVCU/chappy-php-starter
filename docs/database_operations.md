@@ -45,6 +45,11 @@ Running this command with the `--seed` flag runs database seeders after all migr
 php console migrate --seed
 ```
 
+To restore or generate built-in migrations use the following command:
+```bash
+php console migrate:restore
+```
+
 <br>
 
 ## 2. Migration <a id="migration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
