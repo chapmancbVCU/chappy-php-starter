@@ -141,7 +141,7 @@
             "dist": {
                 "type": "path",
                 "url": "../chappy-php-framework",
-                "reference": "f8d97cd47ca04226c7c48d4d79dcf63bfafdeb28"
+                "reference": "8094a23e040a40de4d90d5f978d66392876319f0"
             },
             "require": {
                 "composer": "*",
@@ -5534,5 +5534,5 @@
         "php": ">=8.4"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }

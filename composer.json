@@ -18,7 +18,8 @@
       "App\\": "app/",
       "Config\\": "config/",
       "Database\\Seeders\\": "database/seeders/",
-      "Database\\Migrations\\": "database/migrations/"
+      "Database\\Migrations\\": "database/migrations/",
+      "Database\\Factories\\": "database/factories/"
     }
   },
   "scripts": {
