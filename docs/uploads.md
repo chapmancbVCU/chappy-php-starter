@@ -149,12 +149,11 @@ public function editAction(): void {
 
         // Handle file upload using the static method in Uploads
         $uploads = Uploads::handleUpload(
-            $_FILES['profileImage'],
+            'profileImage'
             ProfileImages::class,
             ROOT . DS,
             "5mb",
             $user,
-            'profileImage'
         );
 
         $user->assign($this->request->get(), Users::blackListedFormKeys);
@@ -182,12 +181,11 @@ Let's zero in on the block of code below the comment for `Handle file uploads`. 
 
 ```php
 $uploads = Uploads::handleUpload(
-    $_FILES['profileImage'],
+    'profileImage'
     ProfileImages::class,
     ROOT . DS,
     "5mb",
     $user,
-    'profileImage'
 );
 ```
 
@@ -205,12 +203,11 @@ There are two main differences when it comes to setting up uploads with multiple
 
 ```php
 $uploads = Uploads::handleUpload(
-    $_FILES['profileImage'],
+    'profileImage',
     ProfileImages::class,
     ROOT . DS,
     "5mb",
     $user,
-    'profileImage',
     Uploads::MULTIPLE
 );
 ```
