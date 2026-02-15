@@ -13,10 +13,11 @@
     * C. [afterSave](#after-save)
     * D. [beforeDelete](#before-delete)
     * E. [beforeSave](#before-save)
-    * F. [onConstruct](#on-construct)
-    * G. [runValidation](#run-validation)
-    * H. [validationPassed](#validation-passed)
-    * I. [validator](#validator)
+    * F. [count](#count)
+    * G. [onConstruct](#on-construct)
+    * H. [runValidation](#run-validation)
+    * I. [validationPassed](#validation-passed)
+    * J. [validator](#validator)
 
 <br>
 
@@ -174,15 +175,20 @@ Implement procedures in your model class to perform tasks before deleting a reco
 Implement procedures in your model class to perform tasks before saving a record.
 <br>
 
-### F. onConstruct <a id="on-construct">
+### F. count <a id="count">
+Retrieves the number of rows affected or returned by the last query.  This is a wrapper function for `DB:count()`.
+
+<br>
+
+### G. onConstruct <a id="on-construct">
 Runs when the object is constructed.  Place statements here that you want every time a particular model in instantiated.  A frequent use case is to set the value for the current logged in user to a variable.
 <br>
 
-### G. runValidation <a id="run-validation">
+### H. runValidation <a id="run-validation">
 Runs a validator object and sets validates boolean and adds error message if validator fails.  Refer to the [Server Side Validation page](server_side_validation) for more details.
 <br>
 
-### H. validationPassed <a id="validation-passed">
+### I. validationPassed <a id="validation-passed">
 Use this function to check if form validation is successful.  An example is shown below:
 
 ```php
@@ -197,5 +203,5 @@ if($newUser->validationPassed()) {
 When we create a new user we want to check if form validation has passed before we begin to upload their profile picture to the server.  
 <br>
 
-### I. validator <a id="validator">
+### J. validator <a id="validator">
 Use this function to perform form validation.  More about server side validation can be found [here](server_side_validation).
