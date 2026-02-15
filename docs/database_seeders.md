@@ -2,6 +2,8 @@
 
 ## Table of contents
 1. [Overview](#overview)
+2. [Creating a Factory Class](#factory-class)
+3. [Setting Up the Factory Class](#factory-class-setup)
 2. [Creating a Seeder Class](#seeder-class)
 3. [Setting Up the Seeder Class](#seeder-class-setup)
 4. [Setting Up the DatabaseSeeder Class](#database-seeder)
@@ -13,6 +15,48 @@
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This framework supports the ability to seed a database with fake data utilizing a package called FakerPHP.  Consult their documentation [here](https://fakerphp.org/) for more information about what they support.  Using this package, along with the native support for Seeder classes you are able to populate tables in your database with test seeder data.  The list of third-party libraries can be found [here](https://fakerphp.org/third-party/).
+
+<br>
+
+## 2. Creating a Seeder Class <a id="seeder-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Create a new factory class by running the following command:
+```bash
+php console make:factory <model-name>
+```
+
+The new file will be created at `database\factories`.
+
+An example generated factory is shown below:
+
+```php
+<?php
+namespace Database\Factories;
+
+use App\Models\Foo;
+use Core\Lib\Database\Factory;
+
+class FooFactory extends Factory {
+    protected $modelName = Foo::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            
+        ];
+    }
+}
+```
+
+This file contains the definition that will need to be setup.  
+
+<br>
+
+## 3. Setting up The Factory Class <a id="factory-class-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
 <br>
 
