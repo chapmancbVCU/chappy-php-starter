@@ -7,6 +7,9 @@ use Core\Models\ProfileImages;
 use Core\Lib\Database\Factory;
 use Smknstd\FakerPicsumImages\FakerPicsumImagesProvider;
 
+/**
+ * Factory for generating new profile images.
+ */
 class ProfileImageFactory extends Factory {
     protected $modelName = ProfileImages::class;
     private $userId;

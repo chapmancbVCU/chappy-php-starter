@@ -4,6 +4,9 @@ namespace Database\Factories;
 use App\Models\Users;
 use Core\Lib\Database\Factory;
 
+/**
+ * Factory for creating new user table records.
+ */
 class UserFactory extends Factory {
     protected $modelName = Users::class;
 
