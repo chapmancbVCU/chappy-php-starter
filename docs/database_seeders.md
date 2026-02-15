@@ -32,11 +32,11 @@ An example generated factory is shown below:
 <?php
 namespace Database\Factories;
 
-use App\Models\Foo;
+use App\Models\Contacts;
 use Core\Lib\Database\Factory;
 
-class FooFactory extends Factory {
-    protected $modelName = Foo::class;
+class ContactsFactory extends Factory {
+    protected $modelName = Contacts::class;
 
     /**
      * Define the model's default state.
@@ -63,29 +63,30 @@ Below is an example using the UserFactory class:
 <?php
 namespace Database\Factories;
 
-use App\Models\Users;
+use App\Models\Contacts;
 use Core\Lib\Database\Factory;
 
-class UserFactory extends Factory {
-    protected $modelName = Users::class;
+class ContactsFactory extends Factory {
+    protected $modelName = Contacts::class;
+    private $userId;
+
+    public function __construct(int $userId)
+    {
+        $this->userId = $userId;
+        parent::__construct();
+    }
 
     public function definition(): array
     {
-        $tempPassword = $this->faker->password();
-        return [
-            'username' => $this->faker->unique()->userName(),
-            'email' => $this->faker->safeEmail(),
-            'acl' => json_encode([""]),
-            'password' => $tempPassword,
-            'confirm' => $tempPassword,
-            'fname' => $this->faker->firstName(),
-            'lname' => $this->faker->lastName(),
-            'description' => $this->faker->sentence(3),
-            'inactive' => 0,
-            'reset_password' => 0,
-            'login_attempts' => 0,
-            'deleted' => 0
-        ];
+        `fname = $this->faker->firstName;`
+        `lname` = $this->faker->lastName;
+        `email` = $this->faker->unique()->safeEmail;
+        `address` = $this->faker->streetAddress;
+        `city` = $this->faker->city;
+        `state` = $this->faker->stateAbbr;
+        `zip` = $this->faker->postcode;
+        `home_phone` = $this->faker->phoneNumber;
+        `user_id` = $this->userId;
     }
 }
 ```
@@ -112,12 +113,8 @@ will result in a new file called ContactsTableSeeder being created at `database/
 ```php
 namespace Database\Seeders;
 
-use Faker\Factory as Faker;
 use Core\Lib\Database\Seeder;
-use Console\Helpers\Tools;
-
-// Import your model
-use App\Models\Contacts;
+use Database\Factories\ContactsFactory;
 
 /**
  * Seeder for contacts table.
@@ -131,20 +128,7 @@ class ContactsTableSeeder extends Seeder {
      * @return void
      */
     public function run(): void {
-        $faker = Faker::create();
-        
-        // Set number of records to create.
-        $numberOfRecords = 10;
-        $i = 0;
-        while($i < $numberOfRecords) {
-            $contacts = new Contacts();
-            
 
-            if($contacts->save()) {
-                $i++;
-            }
-        }
-        console_info("Seeded contacts table.");
     }
 }
 ```
@@ -158,35 +142,13 @@ We will focus on the following code for a completed run function.
 
 ```php
 public function run(): void {
-    $faker = Faker::create('en_us');
-    
-    $numberOfRecords = 10;
-    $i = 0;
-    while($i < $numberOfRecords) {
-        $contact = new Contacts();
-        $contact->fname = $faker->firstName;
-        $contact->lname = $faker->lastName;
-        $contact->email = $faker->unique()->safeEmail;
-        $contact->address = $faker->streetAddress;
-        $contact->city = $faker->city;
-        $contact->state = $faker->stateAbbr;
-        $contact->zip = $faker->postcode;
-        $contact->home_phone = $faker->phoneNumber;
-        $contact->user_id = 1;
-
-        if($contact->save()) {
-            $i++;
-        }
-    }
+    $factory = new ContactsFactory(1);
+    $factory->count(5);
     console_info("Seeded contacts table.");
 }
 ```
 
-The call to create a new Faker Factory uses a static function called create.  In our case we include 'en_us' as a locality since we are making contacts for "people" who are United States residents.  This will ensure information such as state and zip follow US Postal Service standards.
-
-The variable `$numberOfRecords` is set to 10 by default.  You can change this to any positive integer within reason for your case.  The while loop contains statements for creating a contact and setting fake data to database fields.  The if statement at the end is really important because the incrementor statement will be executed only when there is a successful save operation.  This ensures the number of records you need are indeed created.
-
-The incrementor is only triggered when the record saves successfully, ensuring all records are created.
+You will create a new factory and set the parameter in call to the constructor.  Use the `count` function to generate new records.  It takes 1 parameter for the number of records to create.
 
 <br>
 
