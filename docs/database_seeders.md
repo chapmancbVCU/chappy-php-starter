@@ -229,55 +229,32 @@ As shown above in Figure 4, we can see that Carmel's information looks like we w
 Seeding records for images and uploading them requires a few extra steps.  You will need to use a third-party library called `Smknstd\FakerPicsumImages`.  Let's go over this example for profile images.
 
 ```php
-public function run(): void {
-    $faker = Faker::create();
-    $faker->addProvider(new FakerPicsumImagesProvider($faker));
-
-    // Generate a unique image filename
-    $userId = 1;
+public function definition(): array
+{
+    $this->faker->addProvider(new FakerPicsumImagesProvider($this->faker));
     $basePath = 'storage' . DS . 'app' . DS . 'private' . DS . 'profile_images' . DS;
-    $uploadPath = $basePath . 'user_' . $userId . DS;
+    $uploadPath = $basePath . 'user_' . $this->userId . DS;
+    Tools::pathExists($uploadPath);
+
+    // Generate the image and get the actual filename from Faker
+    $actualFilePath = $this->faker->image($uploadPath, 200, 200, false, null, false, 'jpg');
     
-    // Set number of records to create.
-    $numberOfRecords = 10;
-    $i = 0;
-    while($i < $numberOfRecords) {
-        // Ensure the directory exists
-        if (!file_exists($uploadPath)) {
-            mkdir($uploadPath, 0777, true);
-        }
-
-        // Generate the image and get the actual filename from Faker
-        $actualFilePath = $faker->image($uploadPath, 200, 200, false, null, false, 'jpg');
-        
-        // Extract only the filename
-        $imageFileName = basename($actualFilePath);
-
-        // Create ProfileImages record
-        $profileImage = new ProfileImages();
-        $profileImage->user_id = $userId;
-        $profileImage->sort = $i;
-        $profileImage->name = $imageFileName;
-
-        // Correct the database URL to match form-uploaded images
-        $profileImage->url = $uploadPath . $imageFileName;
-
-        if ($profileImage->save()) {
-            console_info("Saved profile image record: $imageFileName");
-            $i++;
-        } else {
-            console_error("Failed to save profile image record: $imageFileName");
-            console_error("Validation Errors: " . json_encode($profileImage->getErrorMessages()));
-        }
-    }
-
-    console_info("Finished seeding profileImage table.");
+    // Extract only the filename
+    $imageFileName = basename($actualFilePath);
+    ProfileImages::findAllByUserId($this->userId);
+    $sort = DB::getInstance()->count();
+    return [
+        'user_id' => $this->userId,
+        'sort' => $sort,
+        'name' => $imageFileName,
+        'url' => $uploadPath . $imageFileName
+    ];
 }
 ```
 
 You will need to import the third-party library, `use Smknstd\FakerPicsumImages\FakerPicsumImagesProvider;`, and manage where the file will be uploaded.  If the files do get saved but you are having trouble accessing them make sure the upload path is correct.  
 
-When uploading the image using the `$faker->image` function call we set the path, hight, width, and file type.  Next we setup information for the record.  Finally se save the file and produce the appropriate output messages.
+When uploading the image using the `$this->faker->image` function call we set the path, hight, width, and file type.  Next we setup information for the record.  Finally se save the file and produce the appropriate output messages.
 
 Ensure permissions are correct. This is suitable for test environments only.
 
