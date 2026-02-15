@@ -77,6 +77,7 @@ php console
 | [`make:email`](email#templates-and-layouts) | Generates a file for an E-mail | |
 | [`make:email:layout`](email#templates-and-layouts) | Generates an E-mail template | |
 | [`make:event`](events#creating) | Generates a new Event class | [`--queue`](events#create-queued-event) |
+| [`make:factory`](database_seeders#factory-class) | Creates a new factory class | |
 | [`make:job`](queue#job-class) | Generates a new job class | |
 | [`make:layout`](layouts#build-layout) | Generates a new layout | [`--menu`](layouts#menus), <br>[`--menu-acl`](layouts#menu-acls) |
 | [`make:listener`](events#event-flag) | Generates new listener class | [`--event`](events#event-flag), <br>[`--queue`](events#create-queued-listener) |
