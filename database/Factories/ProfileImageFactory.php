@@ -37,7 +37,7 @@ class ProfileImageFactory extends Factory {
         // Extract only the filename
         $imageFileName = basename($actualFilePath);
         ProfileImages::findAllByUserId($this->userId);
-        $sort = DB::getInstance()->count();
+        $sort = ProfileImages::count();
         return [
             'user_id' => $this->userId,
             'sort' => $sort,
