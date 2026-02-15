@@ -5,15 +5,17 @@ use App\Models\Users;
 use Core\Lib\Database\Factory;
 
 class UserFactory extends Factory {
-    //protected $modelName = Users::class;
+    protected $modelName = Users::class;
 
     public function definition(): array
     {
+        $tempPassword = $this->faker->password();
         return [
-            'username' => $this->faker->userName(),
-            'email' => $this->faker->saveEmail(),
+            'username' => $this->faker->unique()->userName(),
+            'email' => $this->faker->safeEmail(),
             'acl' => json_encode([""]),
-            'password' => $this->faker->password(),
+            'password' => $tempPassword,
+            'confirm' => $tempPassword,
             'fname' => $this->faker->firstName(),
             'lname' => $this->faker->lastName(),
             'description' => $this->faker->sentence(3),
