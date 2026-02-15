@@ -57,6 +57,40 @@ This file contains the definition that will need to be setup.
 <br>
 
 ## 3. Setting up The Factory Class <a id="factory-class-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Below is an example using the UserFactory class:
+
+```php
+<?php
+namespace Database\Factories;
+
+use App\Models\Users;
+use Core\Lib\Database\Factory;
+
+class UserFactory extends Factory {
+    protected $modelName = Users::class;
+
+    public function definition(): array
+    {
+        $tempPassword = $this->faker->password();
+        return [
+            'username' => $this->faker->unique()->userName(),
+            'email' => $this->faker->safeEmail(),
+            'acl' => json_encode([""]),
+            'password' => $tempPassword,
+            'confirm' => $tempPassword,
+            'fname' => $this->faker->firstName(),
+            'lname' => $this->faker->lastName(),
+            'description' => $this->faker->sentence(3),
+            'inactive' => 0,
+            'reset_password' => 0,
+            'login_attempts' => 0,
+            'deleted' => 0
+        ];
+    }
+}
+```
+
+You will need to set the `$modelName` variable to the name of the model being used.  Next, the array within the definition function needs to be filled out.  We will use an associative array where the keys are all of the fields the model expects when creating a new record.  Each key will be set to a value or call to a faker function.
 
 <br>
 
