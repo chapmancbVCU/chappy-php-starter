@@ -135,6 +135,8 @@ This function accepts the following parameters:
 2. $params - An associative array that contains key value pair parameters for our query such as conditions, bind, limit, offset, join, order, and sort.  The default value is an empty array.
 3. $class A default value of false, it contains the name of the class we will build based on the name of a model.
 
+<br>
+
 ### C. Update <a id="update">
 You can used the DB class' `update` function to update a record as shown below:
 
