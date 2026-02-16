@@ -348,6 +348,7 @@ use Core\FormHelper;
 use Core\Lib\Http\JsonResponse;
 use Core\Lib\Testing\ApplicationTestCase;
 use Core\Lib\Utilities\Env;
+use Core\Lib\Database\Factories\UserFactory;
 
 class RESTfulDestroyTest extends ApplicationTestCase
 {
@@ -357,17 +358,14 @@ class RESTfulDestroyTest extends ApplicationTestCase
         self::ensureSessionStarts();
 
         // 1) Seed user
-        DB::getInstance()->insert('users', [
-            'fname'       => 'Test',
-            'lname'       => 'User',
-            'email'       => 'destroy@example.com',
-            'username'    => 'destroyuser',
+        UserFactory::factory(UserFactory::class)->createOne([
+            'fname' => 'Test',
+            'lname' => 'User',
+            'email' => 'destroy@example.com',
+            'username' => 'destroyuser',
             'description' => 'Seeded user',
-            'password'    => password_hash('Password@123', PASSWORD_DEFAULT),
-            'deleted'     => 0,
-            'created_at'  => date('Y-m-d H:i:s'),
-            'updated_at'  => date('Y-m-d H:i:s'),
         ]);
+
         $userId = (int) DB::getInstance()->lastID();
         $_SESSION[Env::get('CURRENT_USER_SESSION_NAME')] = $userId;
 
@@ -497,6 +495,7 @@ use Core\DB;
 use Core\Lib\Utilities\Env;
 use Core\Lib\Http\JsonResponse; // trait with static test mode toggles
 use Core\Lib\Testing\ApplicationTestCase;
+use Core\Lib\Database\Factories\UserFactory;
 
 /**
  * Unit tests
@@ -511,18 +510,12 @@ class RESTfulShowTest extends ApplicationTestCase {
         self::ensureSessionStarts();
 
         // 1) Seed a user record
-        DB::getInstance()->insert('users', [
-            'fname'       => 'Test',
-            'lname'       => 'User',
-            'email'       => 'test@example.com',
-            'username'    => 'testuser',
+        UserFactory::factory(UserFactory::class)->createOne([
+            'fname' => 'Test',
+            'lname' => 'User',
+            'email' => 'test@example.com',
+            'username' => 'testuser',
             'description' => 'PHPUnit seeded user',
-            'password'    => password_hash('Password@123', PASSWORD_DEFAULT),
-
-            // Include fields your model/framework expects
-            'deleted'     => 0,
-            'created_at'  => date('Y-m-d H:i:s'),
-            'updated_at'  => date('Y-m-d H:i:s'),
         ]);
 
         $userId = (int) DB::getInstance()->lastID();
@@ -600,6 +593,7 @@ use Core\Lib\Utilities\Env;
 use Core\Lib\Http\JsonResponse; // trait with static test mode toggles
 use Core\Lib\Testing\ApplicationTestCase;
 use Core\FormHelper;
+use Core\Lib\Database\Factories\UserFactory;
 
 /**
  * Unit tests
@@ -613,16 +607,12 @@ class RESTfulPatchTest extends ApplicationTestCase {
         self::ensureSessionStarts();
 
         // 1) Seed user
-        DB::getInstance()->insert('users', [
-            'fname'       => 'Test',
-            'lname'       => 'User',
-            'email'       => 'test@example.com',
-            'username'    => 'testuser',
+        UserFactory::factory(UserFactory::class)->createOne([
+            'fname' => 'Test',
+            'lname' => 'User',
+            'email' => 'test@example.com',
+            'username' => 'testuser',
             'description' => 'Seeded user',
-            'password'    => password_hash('Password@123', PASSWORD_DEFAULT),
-            'deleted'     => 0,
-            'created_at'  => date('Y-m-d H:i:s'),
-            'updated_at'  => date('Y-m-d H:i:s'),
         ]);
 
         $userId = (int) DB::getInstance()->lastID();
@@ -755,6 +745,7 @@ use Core\Lib\Utilities\Env;
 use Core\Lib\Http\JsonResponse; // trait with static test mode toggles
 use Core\Lib\Testing\ApplicationTestCase;
 use Core\FormHelper;
+use Core\Lib\Database\Factories\UserFactory;
 
 /**
  * Unit tests
@@ -768,16 +759,12 @@ class RESTfulStoreTest extends ApplicationTestCase {
         self::ensureSessionStarts();
 
         // 1) Seed user
-        DB::getInstance()->insert('users', [
-            'fname'       => 'Test',
-            'lname'       => 'User',
-            'email'       => 'test@example.com',
-            'username'    => 'testuser',
+        UserFactory::factory(UserFactory::class)->createOne([
+            'fname' => 'Test',
+            'lname' => 'User',
+            'email' => 'test@example.com',
+            'username' => 'testuser',
             'description' => 'Seeded user',
-            'password'    => password_hash('Password@123', PASSWORD_DEFAULT),
-            'deleted'     => 0,
-            'created_at'  => date('Y-m-d H:i:s'),
-            'updated_at'  => date('Y-m-d H:i:s'),
         ]);
 
         $userId = (int) DB::getInstance()->lastID();
