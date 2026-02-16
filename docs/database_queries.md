@@ -451,6 +451,7 @@ $contact->delete()
 ```
 
 When you implement the **afterDelete** and **beforeDelete** functions in your models they get called when you perform a delete operation.
+
 <br>
 
 ### C. find  <a id="find">
