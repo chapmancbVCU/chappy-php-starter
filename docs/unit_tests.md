@@ -842,17 +842,12 @@ This is especially useful for testing resourceful routes like `/users/update/1`,
 public function test_put_updates_user(): void
 {
     // ✅ Seed user
-    DB::getInstance()->insert('users', [
+    UserFactory::factory(UserFactory::class)->createOne([
         'fname' => 'Original',
         'lname' => 'User',
         'email' => 'original@example.com',
         'username' => 'originaluser',
         'description' => 'Seeded user',
-        'password' => password_hash('Password@123', PASSWORD_DEFAULT),
-        'created_at' => date('Y-m-d H:i:s'),
-        'updated_at' => date('Y-m-d H:i:s'),
-        'acl' => '[""]',
-        'deleted' => 0
     ]);
 
     $userId = DB::getInstance()->lastID();
