@@ -16,8 +16,10 @@ class UsersTableSeeder extends Seeder {
      * @return void
      */
     public function run(): void {
-        //$factory = new UserFactory()->count(1);
-        // $factory->count(1);
+        $factory = (new UserFactory())->inactive()->count(1);
+        $factory2 = (new UserFactory())->inactive()->createOne();
+        $factory3 = new UserFactory();
+        $factory3->admin()->count(1);
         UserFactory::factory(UserFactory::class)->admin()->count(1);
         UserFactory::factory(UserFactory::class)->admin()->inactive()->createOne(['fname' => 'Jane', 'lname' => 'Doe']);
         console_info("Seeded users table.");
