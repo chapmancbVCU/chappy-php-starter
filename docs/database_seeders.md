@@ -6,8 +6,7 @@
 3. [Setting Up the Seeder Class](#seeder-class-setup)
 4. [Setting Up the DatabaseSeeder Class](#database-seeder)
 5. [Running a Database Seeder](#running-seeder)
-6. [Image Seeding](#image-seeding)
-7. [Seeder Tips and Best Practices](#seeder-tips)
+6. [Seeder Tips and Best Practices](#seeder-tips)
 
 <br>
 
@@ -56,6 +55,27 @@ class ContactsTableSeeder extends Seeder {
 
 This file contains the run function that does the actual work and all of the imports needed to get started.
 
+Each seeder you create must be registered in the `run` function in the `DatabaseSeeder` class.  You can use the call function to run seeders individually or as an array.
+
+**As Strings** 
+
+```php
+public function run(): void {
+    $this->call(UsersTableSeeder::class);
+    $this->call(ProfileImageTableSeeder::class);
+}
+```
+
+**As an Array**
+```php
+public function run(): void {
+    $this->call([
+        UsersTableSeeder::class, 
+        ProfileImageTableSeeder::class
+    ]);
+}
+```
+
 <br>
 
 ## 3. Setting up The Seeder Class <a id="seeder-class-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -64,12 +84,18 @@ We will focus on the following code for a completed run function.
 ```php
 public function run(): void {
     $factory = new ContactsFactory(1);
-    $factory->count(5);
+    $factory->count(5)->create();
     console_info("Seeded contacts table.");
 }
 ```
 
 You will create a new factory and set the parameter in call to the constructor.  Use the `count` function to generate new records.  It takes 1 parameter for the number of records to create.
+
+You can also use the static `factory` function.  The `factory` function accepts the spread parameter so you can supply the `user_id` described in the guide for Factories:
+
+```php
+ContactsFactory::factory(1)->count(5)->create();
+```
 
 <br>
 
@@ -142,67 +168,7 @@ As shown above in Figure 4, we can see that Carmel's information looks like we w
 
 <br>
 
-## 6. Image Seeding <a id="image-seeding"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Seeding records for images and uploading them requires a few extra steps.  You will need to use a third-party library called `Smknstd\FakerPicsumImages`.  Let's go over this example for profile images.
-
-```php
-<?php
-namespace Database\Factories;
-
-use Console\Helpers\Tools;
-use Core\DB;
-use Core\Models\ProfileImages;
-use Core\Lib\Database\Factory;
-use Smknstd\FakerPicsumImages\FakerPicsumImagesProvider;
-
-class ProfileImageFactory extends Factory {
-    protected $modelName = ProfileImages::class;
-    private $userId;
-    public function __construct(int $userId)
-    {
-        $this->userId = $userId;
-        parent::__construct();
-    }
-
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
-    {
-        $this->faker->addProvider(new FakerPicsumImagesProvider($this->faker));
-        $basePath = 'storage' . DS . 'app' . DS . 'private' . DS . 'profile_images' . DS;
-        $uploadPath = $basePath . 'user_' . $this->userId . DS;
-        Tools::pathExists($uploadPath);
-
-        // Generate the image and get the actual filename from Faker
-        $actualFilePath = $this->faker->image($uploadPath, 200, 200, false, null, false, 'jpg');
-        
-        // Extract only the filename
-        $imageFileName = basename($actualFilePath);
-        ProfileImages::findAllByUserId($this->userId);
-        $sort = ProfileImages::count();
-        return [
-            'user_id' => $this->userId,
-            'sort' => $sort,
-            'name' => $imageFileName,
-            'url' => $uploadPath . $imageFileName
-        ];
-    }
-}
-```
-
-When seeding images you may want to implement a constructor.  In the example above we provide the id of the user as a parameter for the function.
-You will need to import the third-party library, `use Smknstd\FakerPicsumImages\FakerPicsumImagesProvider;`, and manage where the file will be uploaded.  If the files do get saved but you are having trouble accessing them make sure the upload path is correct.  
-
-When uploading the image using the `$this->faker->image` function call we set the path, hight, width, and file type.  Next we setup information for the record.  Finally se save the file and produce the appropriate output messages.
-
-Ensure permissions are correct. This is suitable for test environments only.
-
-<br>
-
-## 7. Seeder Tips and Best Practices <a id="seeder-tips"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Seeder Tips and Best Practices <a id="seeder-tips"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - ✅ Use seeders only in development or staging.
 - 🔗 Use foreign key-safe references (`user_id = 1`) that exist.
 - 🧠 Use `Faker::unique()` sparingly to avoid memory overuse.
