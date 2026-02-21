@@ -93,8 +93,8 @@ You will need to set the `$modelName` variable to the name of the model being us
 
 <br>
 
-## 3. Image Factories <a id="image-seeding"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Seeding records for images and uploading them requires a few extra steps.  You will need to use a third-party library called `Smknstd\FakerPicsumImages`.  Let's go over this example for profile images.
+## 3. Image Factories <a id="image-factories"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Creating factories for images and uploading them requires a few extra steps.  You will need to use a third-party library called `Smknstd\FakerPicsumImages`.  Let's go over this example for profile images.
 
 ```php
 <?php
@@ -144,7 +144,7 @@ class ProfileImageFactory extends Factory {
 }
 ```
 
-When seeding images you may want to implement a constructor.  In the example above we provide the id of the user as a parameter for the function.
+When creating image factories you may want to implement a constructor.  In the example above we provide the id of the user as a parameter for the function.
 You will need to import the third-party library, `use Smknstd\FakerPicsumImages\FakerPicsumImagesProvider;`, and manage where the file will be uploaded.  If the files do get saved but you are having trouble accessing them make sure the upload path is correct.  
 
 When uploading the image using the `$this->faker->image` function call we set the path, hight, width, and file type.  Next we setup information for the record.  Finally se save the file and produce the appropriate output messages.
