@@ -11,6 +11,9 @@
     * C. [afterCreating](#after-creating)
     * D. [Sequencing](#sequencing)
     * E. [Function Chaining](#function-chaining)
+    * F. [Attributes](#attributes)
+6. [UserFactory](#user-factory)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -285,3 +288,25 @@ UserFactory::factory()->admin()->inactive()->create(['fname' => 'Jane', 'lname' 
 ```
 
 More on specific `UserFactory` state function in a later section.
+
+<br>
+
+### F. Attributes <a id="attributes"></a>
+You can override default values in the definition file while calling the `create` function.  You will need to supply an associative array where the key is the field and the value is what you want to be set instead.
+
+```php
+UserFactory::factory()->create(['fname' => 'Jane', 'lname' => 'Doe']);
+```
+
+<br>
+
+## 6. UserFactory <a id="user-factory"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The UserFactory class is built-in to the framework.  It contains everything you need to added a user record and set states for various values.
+
+Supplied state functions:
+- `UserFactory::admin()` - Sets `acl` value to `["Admin"]`
+- `UserFactory::deleted()` - Sets `deleted` to `1`
+- `UserFactory::inactive()` - Sets `inactive` to `1`
+- `UserFactory::loginAttempts()` - Sets `login_attempts` to `1`
+- `UserFactory::resetPassword()` - Sets `reset_password` to `1`
+- `UserFactory::withImages(int $count)` - Creates profile images based on value provided as a parameter
