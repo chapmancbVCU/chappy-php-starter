@@ -2,14 +2,12 @@
 
 ## Table of contents
 1. [Overview](#overview)
-2. [Creating a Factory Class](#factory-class)
-3. [Setting Up the Factory Class](#factory-class-setup)
-4. [Creating a Seeder Class](#seeder-class)
-5. [Setting Up the Seeder Class](#seeder-class-setup)
-6. [Setting Up the DatabaseSeeder Class](#database-seeder)
-7. [Running a Database Seeder](#running-seeder)
-8. [Image Seeding](#image-seeding)
-9. [Seeder Tips and Best Practices](#seeder-tips)
+2. [Creating a Seeder Class](#seeder-class)
+3. [Setting Up the Seeder Class](#seeder-class-setup)
+4. [Setting Up the DatabaseSeeder Class](#database-seeder)
+5. [Running a Database Seeder](#running-seeder)
+6. [Image Seeding](#image-seeding)
+7. [Seeder Tips and Best Practices](#seeder-tips)
 
 <br>
 
@@ -18,84 +16,7 @@ This framework supports the ability to seed a database with fake data utilizing 
 
 <br>
 
-## 2. Creating a Factory Class <a id="factory-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Create a new factory class by running the following command:
-```bash
-php console make:factory <model-name>
-```
-
-The new file will be created at `database\factories`.
-
-An example generated factory is shown below:
-
-```php
-<?php
-namespace Database\Factories;
-
-use App\Models\Contacts;
-use Core\Lib\Database\Factory;
-
-class ContactsFactory extends Factory {
-    protected $modelName = Contacts::class;
-
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
-    {
-        return [
-            
-        ];
-    }
-}
-```
-
-This file contains the definition that will need to be setup.  
-
-<br>
-
-## 3. Setting up The Factory Class <a id="factory-class-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Below is an example using the UserFactory class:
-
-```php
-<?php
-namespace Database\Factories;
-
-use App\Models\Contacts;
-use Core\Lib\Database\Factory;
-
-class ContactsFactory extends Factory {
-    protected $modelName = Contacts::class;
-    private $userId;
-
-    public function __construct(int $userId)
-    {
-        $this->userId = $userId;
-        parent::__construct();
-    }
-
-    public function definition(): array
-    {
-        `fname = $this->faker->firstName;`
-        `lname` = $this->faker->lastName;
-        `email` = $this->faker->unique()->safeEmail;
-        `address` = $this->faker->streetAddress;
-        `city` = $this->faker->city;
-        `state` = $this->faker->stateAbbr;
-        `zip` = $this->faker->postcode;
-        `home_phone` = $this->faker->phoneNumber;
-        `user_id` = $this->userId;
-    }
-}
-```
-
-You will need to set the `$modelName` variable to the name of the model being used.  Next, the array within the definition function needs to be filled out.  We will use an associative array where the keys are all of the fields the model expects when creating a new record.  Each key will be set to a value or call to a faker function.
-
-<br>
-
-## 4. Creating a Seeder Class <a id="seeder-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Creating a Seeder Class <a id="seeder-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 You can easily create a new database seeder by running the make:seeder console command.  This command has the following format:
 
 ```sh
@@ -137,7 +58,7 @@ This file contains the run function that does the actual work and all of the imp
 
 <br>
 
-## 5. Setting up The Seeder Class <a id="seeder-class-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Setting up The Seeder Class <a id="seeder-class-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 We will focus on the following code for a completed run function.
 
 ```php
@@ -152,7 +73,7 @@ You will create a new factory and set the parameter in call to the constructor. 
 
 <br>
 
-## 6. Setting Up the DatabaseSeeder Class <a id="database-seeder"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Setting Up the DatabaseSeeder Class <a id="database-seeder"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Before we can run the database seeder we need to update the DatabaseSeeder class.  It is found in the same directory as the class that we created above.  You will need to perform the imports and add the function calls in the order you want database seeding to occur.  A properly setup example is shown below:
 
 ```php
@@ -180,7 +101,7 @@ Notice that we need to include a use statements for each seeder we want to use. 
 
 <br>
 
-## 7. Running a Database Seeder <a id="running-seeder"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Running a Database Seeder <a id="running-seeder"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 We are finally ready to perform database seeding.  Let's look at the index view of the contacts management system before we start.
 
 <div style="text-align: center;">
@@ -221,7 +142,7 @@ As shown above in Figure 4, we can see that Carmel's information looks like we w
 
 <br>
 
-## 8. Image Seeding <a id="image-seeding"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Image Seeding <a id="image-seeding"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Seeding records for images and uploading them requires a few extra steps.  You will need to use a third-party library called `Smknstd\FakerPicsumImages`.  Let's go over this example for profile images.
 
 ```php
@@ -281,7 +202,7 @@ Ensure permissions are correct. This is suitable for test environments only.
 
 <br>
 
-## 9. Seeder Tips and Best Practices <a id="seeder-tips"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Seeder Tips and Best Practices <a id="seeder-tips"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - ✅ Use seeders only in development or staging.
 - 🔗 Use foreign key-safe references (`user_id = 1`) that exist.
 - 🧠 Use `Faker::unique()` sparingly to avoid memory overuse.
