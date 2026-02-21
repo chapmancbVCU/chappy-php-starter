@@ -5,14 +5,19 @@
 2. [Creating a Factory Class](#factory-class)
 3. [Setting Up the Factory Class](#factory-class-setup)
 4. [Image Factories](#image-factories)
+5. [Using Factories](#using-factories)
+    * A. [Instantiating Factories](#instantiating-factories)</a>
+    * B. [States](#states)</a>
+    * C. [afterCreating](#after-creating)</a>
+<br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+We support the users ability to utilize factories for seeding data and unit testing purposes.  Chappy.php also comes with two factories (`UserFactory` and `ProfileImageFactory`).
 
-
-
-
-
-
+Factories also support the following features:
+- states
+- sequences
+- afterCreating
 
 <br>
 
@@ -93,7 +98,7 @@ You will need to set the `$modelName` variable to the name of the model being us
 
 <br>
 
-## 3. Image Factories <a id="image-factories"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Image Factories <a id="image-factories"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Creating factories for images and uploading them requires a few extra steps.  You will need to use a third-party library called `Smknstd\FakerPicsumImages`.  Let's go over this example for profile images.
 
 ```php
@@ -150,3 +155,94 @@ You will need to import the third-party library, `use Smknstd\FakerPicsumImages\
 When uploading the image using the `$this->faker->image` function call we set the path, hight, width, and file type.  Next we setup information for the record.  Finally se save the file and produce the appropriate output messages.
 
 Ensure permissions are correct. This is suitable for test environments only.
+
+<br>
+
+## 5. Using Factories <a id="using-factories"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
+<br>
+
+### A. Instantiating Factories <a id="instantiating-factories"></a>
+A few ways of creating a factory instance is shown below:
+
+```php
+$userFactory1 = new UserFactory();
+$userFactory1->... chained functions
+
+$userFactory2 = (new UserFactory())->... chained functions
+
+UserFactory::factory()->... chained functions
+```
+
+The `factory()` function is used to get an instance of a factory class for elegant syntax with function chaining.
+
+<br>
+
+### B. States <a id="states"></a>
+States allows users to override default values generated in the definition function.  These functions are created in your factory class.  Here are two different syntaxes for an example admin function from the `UserFactory`.
+
+**Example 1:**
+
+```php
+public function admin(): static {
+    return $this->state(function (array $data , array $attributes) {
+        return [
+            'acl' => json_encode(["Admin"])
+        ];
+    });
+}
+```
+
+**Example 2:**
+
+```php
+public function admin(): static {
+    return $this->state(fn(array $data, array $attributes) => [
+        'acl' => json_encode(['Admin']),
+    ]);
+}
+```
+
+You can also invoke other factories using state as follows:
+```php
+public function withImages(int $count = 2): static {
+    return $this->afterCreating(function (Users $user) use ($count) {
+        ProfileImageFactory::factory($user->id)->count($count)->create();
+    });
+}
+```
+
+<br>
+
+### C. afterCreating <a id="after-creating"></a>
+Use the `afterCreating` feature to perform actions after a record is created with a factory.  Implement the `configure()` function in the parent `Factory` class with any additional task.
+
+```php
+protected function configure(): static {
+    return $this->afterCreating(function (Users $user) {
+        (new ProfileImageFactory($user->id))->count(2)->create();
+    });
+}
+```
+
+Chaining is also supported.
+
+```php
+protected function configure(): static
+{
+    return $this
+        ->afterCreating(function (Users $user) {
+            (new ProfileImageFactory($user->id))
+                ->count(2)
+                ->create();
+        })
+        ->afterCreating(function (Users $user) {
+            // Example: assign default role record
+            (new UserRoleFactory($user->id))
+                ->create();
+        });
+}
+```
+
+Under the hood `afterCreating` is not immutable like `state` and `sequences`.
+
