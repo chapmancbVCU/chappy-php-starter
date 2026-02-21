@@ -6,9 +6,11 @@
 3. [Setting Up the Factory Class](#factory-class-setup)
 4. [Image Factories](#image-factories)
 5. [Using Factories](#using-factories)
-    * A. [Instantiating Factories](#instantiating-factories)</a>
-    * B. [States](#states)</a>
-    * C. [afterCreating](#after-creating)</a>
+    * A. [Instantiating Factories](#instantiating-factories)
+    * B. [States](#states)
+    * C. [afterCreating](#after-creating)
+    * D. [Sequencing](#sequencing)
+    * E. [Function Chaining](#function-chaining)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -179,7 +181,14 @@ The `factory()` function is used to get an instance of a factory class for elega
 <br>
 
 ### B. States <a id="states"></a>
-States allows users to override default values generated in the definition function.  These functions are created in your factory class.  Here are two different syntaxes for an example admin function from the `UserFactory`.
+States allows users to override default values generated in the definition function.  These functions are created in your factory class.  
+
+The anonymous functions inside each callback accept the following parameters:
+
+- `$data` - Information from the definition function
+- `$attributes` - Array passed as parameter to the `create` function.
+
+Here are two different syntaxes for an example admin function from the `UserFactory`.
 
 **Example 1:**
 
@@ -246,3 +255,33 @@ protected function configure(): static
 
 Under the hood `afterCreating` is not immutable like `state` and `sequences`.
 
+<br>
+
+### D. Sequencing <a id="sequencing"></a>
+You can use sequencing to override default definition values in a specific order.  You will need to chain this function to the tail of the `count` function call.
+
+```php
+$factory3 = new UserFactory();
+$factory3->count(4)->sequence(
+    ['acl' => json_encode(["Admin"])],
+    ['acl' => json_encode(["test"])],
+)->create();
+$factory3->count(2)->sequence(
+    ['acl' => json_encode(["foo"])],
+    ['acl' => json_encode(["bar"])],
+)->create();
+```
+
+<br>
+
+### E. Function Chaining <a id="function-chaining"></a>
+You can chain together function calls to modify the definition before a record is inserted or change the number of records to be created.
+
+Some examples are shown below:
+
+```php
+UserFactory::factory()->admin()->count(1)->create();
+UserFactory::factory()->admin()->inactive()->create(['fname' => 'Jane', 'lname' => 'Doe']);
+```
+
+More on specific `UserFactory` state function in a later section.
