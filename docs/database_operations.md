@@ -45,9 +45,22 @@ Running this command with the `--seed` flag runs database seeders after all migr
 php console migrate --seed
 ```
 
+To specify the name of a specific seeder class use the `--seeder` flag:
+
+```sh
+php console migrate --seed --seeder=MySeederName
+```
+
+
 To restore or generate built-in migrations use the following command:
 ```bash
 php console migrate:restore
+```
+
+To specify the name of a specific seeder class use the `--seeder` flag:
+
+```sh
+php console migrate:restore --seed --seeder=MySeederName
 ```
 
 This command accepts the following flags for restoring individual migration files:
@@ -454,6 +467,13 @@ Use the `--seed` flag to seed your database after migrations have completed.
 ```sh
 php console migrate:fresh --seed
 ```
+
+To specify the name of a specific seeder class use the `--seeder` flag:
+
+```sh
+php console migrate:fresh --seed --seeder=MySeederName
+```
+
 <a id="drop-all"></a>
 
 <br>

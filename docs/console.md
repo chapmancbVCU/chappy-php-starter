@@ -72,7 +72,7 @@ php console
 | [`make:command`](console#build-command) | Generates a new command class | |
 | [`make:command:helper`](console#command-helpers) | Generates helper class that supports console commands | |
 | [`make:component`](components) | Generates component based on flags that are set | [`--card`](components#card), <br>[`--form`](components#form), <br>[`--table`](components#table)|
-| [`make:controller`](controllers#creating-a-controller) | Generates a new controller class | [`--layout`](controllers#creating-a-controller), [`--resource`](controllers#creating-a-controller) |
+| [`make:controller`](controllers#creating-a-controller) | Generates a new controller class | [`--layout`](controllers#creating-a-controller), <br>[`--resource`](controllers#creating-a-controller) |
 | [`make:css`](views#make-css) | Generates a new CSS file | |
 | [`make:email`](email#templates-and-layouts) | Generates a file for an E-mail | |
 | [`make:email:layout`](email#templates-and-layouts) | Generates an E-mail template | |
@@ -102,11 +102,11 @@ php console
 
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
-| [`migrate`](database_operations#overview) | Runs a Database Migration | [`--seed`](database_operations#overview)|
+| [`migrate`](database_operations#overview) | Runs a Database Migration | [`--seed`](database_operations#overview), <br>[`--seeder`](database_operations#overview)|
 | [`migrate:drop:all`](database_operations#drop-all) | Drops all database tables | |
-| [`migrate:fresh`](database_operations#migrate-fresh) | Drops all tables and performs migration | [`--seed`](database_operations#migrate-fresh)|
+| [`migrate:fresh`](database_operations#migrate-fresh) | Drops all tables and performs migration | [`--seed`](database_operations#migrate-fresh), <br>[`--seeder`](database_operations#migrate-fresh)|
 | [`migrate:restore`](database_operations#overview) | Restores built-in migrations | |
-| [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | [`--seed`](database_operations#migrate-refresh), <br>[`--step`](database_operations#migrate-refresh)|
+| [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | [`--seed`](database_operations#migrate-refresh), <br>[`--step`](database_operations#migrate-refresh), <br>[`--seeder`](database_operations#migrate-refresh)|
 | [`migrate:rollback`](database_operations#rollback) | Performs rollback operation | [`--step`](database_operations#rollback), <br>[`--batch`](database_operations#rollback) | 
 | [`migrate:status`](database_operations#status) | Reports status of migrations | |
 | [`seed:run`](database_seeders#running-seeder) | Runs database seeders | [`--seeder`](database_seeders#seeder-flag) |
