@@ -141,6 +141,12 @@ As shown above in Figure 1 we have the index view with no seeders.  Since the Co
 php console seed:run
 ```
 
+You can also specify a specific seeder class to run with the `--seeder` flag as shown below:
+
+```bash
+php console seed:run --seeder=UsersTableSeeder
+```
+
 After running the command you will see a series of messages describing our task as shown below in Figure 2.
 
 <div style="text-align: center;">
