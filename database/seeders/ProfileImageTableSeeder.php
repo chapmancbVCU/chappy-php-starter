@@ -14,10 +14,8 @@ class ProfileImageTableSeeder extends Seeder {
      * @return void
      */
     public function run(): void {
-        $factory = new ProfileImageFactory(1);
-        $factory->count(1)->create();
-
-        ProfileImageFactory::factory(1)->count(2)->create();
+        // $factory = new ProfileImageFactory(1);
+        // $factory->count(2)->create();
         console_info("Finished seeding profileImage table.");
     }
 }
