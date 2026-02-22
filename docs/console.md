@@ -87,7 +87,7 @@ php console
 | [`make:model`](models#overview) | Generates a new model file | [`--upload`](uploads#model-setup) |
 | [`make:notification`](notifications#writing-a-notification) | Generates a new notification class | [`--channels`](notifications#notification-class) |
 | [`make:provider`](events#make-provider) | Generates a new event service provider class | |
-| [`make:seeder`](database_seeders#seeder-class) | Creates a new database seeder class | |
+| [`make:seeder`](database_seeders#seeder-class) | Creates a new database seeder class | [`--factory`](database_seeders#seeder-class) |
 | [`make:service`](services#user-services) | Generates a new service class | |
 | [`make:test`](php_unit#creating-tests) | Generates a new test class | [`--feature`](php_unit#creating-tests) |
 | [`make:test:builder`](unit_tests_api#test-builder) | Generates a new test builder class | |

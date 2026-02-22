@@ -22,6 +22,8 @@ You can easily create a new database seeder by running the make:seeder console c
 php console make:seeder ${seederName}
 ```
 
+Use the optional `--factory` flag to generate a factory with this seeder.
+
 The seederName is the name of your model and the table you want to populate with data.  We will use the Contact management system as an example.  Running the following command,
 
 ```sh

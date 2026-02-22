@@ -141,7 +141,7 @@
             "dist": {
                 "type": "path",
                 "url": "../chappy-php-framework",
-                "reference": "485f0331723d92aaa886d5b27b304586d03d3c0f"
+                "reference": "7c139376cbcaa26adad55744697f6a6b2c413896"
             },
             "require": {
                 "composer": "*",
