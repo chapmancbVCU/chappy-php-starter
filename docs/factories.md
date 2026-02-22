@@ -7,22 +7,28 @@
 4. [Image Factories](#image-factories)
 5. [Using Factories](#using-factories)
     * A. [Instantiating Factories](#instantiating-factories)
-    * B. [States](#states)
-    * C. [afterCreating](#after-creating)
-    * D. [Sequencing](#sequencing)
-    * E. [Function Chaining](#function-chaining)
-    * F. [Attributes](#attributes)
+    * B. [create()](#create)
+    * C. [States](#states)
+    * D. [afterCreating](#after-creating)
+    * E. [Sequencing](#sequencing)
+    * F. [Function Chaining](#function-chaining)
+    * g. [Attributes](#attributes)
 6. [UserFactory](#user-factory)
+7. [Complete Example](#complete-example)
 
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-We support the users ability to utilize factories for seeding data and unit testing purposes.  Chappy.php also comes with two factories (`UserFactory` and `ProfileImageFactory`).
+We support the user's ability to utilize factories for seeding data and unit testing purposes.  Chappy.php also comes with two factories (`UserFactory` and `ProfileImageFactory`).
 
 Factories also support the following features:
 - states
 - sequences
 - afterCreating
+
+**Note**
+
+⚠ Factories and seeders cannot be executed when APP_ENV=production. Attempting to do so will throw a FactorySeederException.
 
 <br>
 
@@ -86,15 +92,15 @@ class ContactsFactory extends Factory {
 
     public function definition(): array
     {
-        `fname = $this->faker->firstName;`
-        `lname` = $this->faker->lastName;
-        `email` = $this->faker->unique()->safeEmail;
-        `address` = $this->faker->streetAddress;
-        `city` = $this->faker->city;
-        `state` = $this->faker->stateAbbr;
-        `zip` = $this->faker->postcode;
-        `home_phone` = $this->faker->phoneNumber;
-        `user_id` = $this->userId;
+        'fname' = $this->faker->firstName();
+        'lname' = $this->faker->lastName();
+        'email' = $this->faker->unique()->safeEmail;
+        'address' = $this->faker->streetAddress();
+        'city' = $this->faker->city();
+        'state' = $this->faker->stateAbbr();
+        'zip' = $this->faker->postcode();
+        'home_phone' = $this->faker->phoneNumber();
+        'user_id' = $this->userId;
     }
 }
 ```
@@ -157,7 +163,7 @@ class ProfileImageFactory extends Factory {
 When creating image factories you may want to implement a constructor.  In the example above we provide the id of the user as a parameter for the function.
 You will need to import the third-party library, `use Smknstd\FakerPicsumImages\FakerPicsumImagesProvider;`, and manage where the file will be uploaded.  If the files do get saved but you are having trouble accessing them make sure the upload path is correct.  
 
-When uploading the image using the `$this->faker->image` function call we set the path, hight, width, and file type.  Next we setup information for the record.  Finally se save the file and produce the appropriate output messages.
+When uploading the image using the `$this->faker->image` function call we set the path, height, width, and file type.  Next we setup information for the record.  Finally we save the file and produce the appropriate output messages.
 
 Ensure permissions are correct. This is suitable for test environments only.
 
@@ -183,7 +189,34 @@ The `factory()` function is used to get an instance of a factory class for elega
 
 <br>
 
-### B. States <a id="states"></a>
+### B. create() <a id="create"></a>
+Use the `create()` function to insert a new record into the database.
+
+**Parameter**
+- `array $attributes` - $attributes The an associative array attributes used to override default definition values. 
+
+**Returns**
+- `array|object` - The array of models that were created or a single object model if just one record is inserted.
+
+This framework does not currently support the `make()` function.
+
+<br>
+
+**Execution Order**
+
+The features of this framework assumes the current precedence order
+
+```bash
+definition()
+→ sequence()
+→ state()
+→ explicit create() attributes
+→ insert
+→ afterCreating
+```
+<br>
+
+### C. States <a id="states"></a>
 States allows users to override default values generated in the definition function.  These functions are created in your factory class.  
 
 The anonymous functions inside each callback accept the following parameters:
@@ -226,7 +259,7 @@ public function withImages(int $count = 2): static {
 
 <br>
 
-### C. afterCreating <a id="after-creating"></a>
+### D. afterCreating <a id="after-creating"></a>
 Use the `afterCreating` feature to perform actions after a record is created with a factory.  Implement the `configure()` function in the parent `Factory` class with any additional task.
 
 ```php
@@ -256,12 +289,16 @@ protected function configure(): static
 }
 ```
 
-Under the hood `afterCreating` is not immutable like `state` and `sequences`.
+Under the hood `afterCreating` is not immutable like `state` and `sequences`.  This allows the `configure()` method to register callbacks during construction without requiring reassignment.
+
+**Note**
+
+The `configure()` function is called automatically when the factory is instantiated.
 
 <br>
 
-### D. Sequencing <a id="sequencing"></a>
-You can use sequencing to override default definition values in a specific order.  You will need to chain this function to the tail of the `count` function call.
+### E. Sequencing <a id="sequencing"></a>
+You can use sequencing to override default definition values in a specific order.  The `sequence()` function should be chained before calling `create()`. It works in conjunction with `count()` to alternate values across multiple insertions.
 
 ```php
 $factory3 = new UserFactory();
@@ -277,7 +314,7 @@ $factory3->count(2)->sequence(
 
 <br>
 
-### E. Function Chaining <a id="function-chaining"></a>
+### F. Function Chaining <a id="function-chaining"></a>
 You can chain together function calls to modify the definition before a record is inserted or change the number of records to be created.
 
 Some examples are shown below:
@@ -291,7 +328,7 @@ More on specific `UserFactory` state function in a later section.
 
 <br>
 
-### F. Attributes <a id="attributes"></a>
+### G. Attributes <a id="attributes"></a>
 You can override default values in the definition file while calling the `create` function.  You will need to supply an associative array where the key is the field and the value is what you want to be set instead.
 
 ```php
@@ -301,7 +338,7 @@ UserFactory::factory()->create(['fname' => 'Jane', 'lname' => 'Doe']);
 <br>
 
 ## 6. UserFactory <a id="user-factory"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The UserFactory class is built-in to the framework.  It contains everything you need to added a user record and set states for various values.
+The UserFactory class is built-in to the framework.  It contains everything you need to add a new user record and set states for various values.
 
 Supplied state functions:
 - `UserFactory::admin()` - Sets `acl` value to `["Admin"]`
@@ -310,3 +347,22 @@ Supplied state functions:
 - `UserFactory::loginAttempts()` - Sets `login_attempts` to `1`
 - `UserFactory::resetPassword()` - Sets `reset_password` to `1`
 - `UserFactory::withImages(int $count)` - Creates profile images based on value provided as a parameter
+
+<br>
+
+## 7. Complete Example <a id="complete-example"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Below is a complete example using all features:
+
+```php
+UserFactory::factory()
+    ->count(2)
+    ->sequence(
+        ['acl' => json_encode(["foo"])],
+        ['acl' => json_encode(["bar"])],
+    )
+    ->admin()
+    ->inactive()
+    ->create([
+        'fname' => 'Jane', 'lname' => 'Doe'
+    ]);
+```
