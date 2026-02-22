@@ -109,7 +109,7 @@ php console
 | [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | [`--seed`](database_operations#migrate-refresh), <br>[`--step`](database_operations#migrate-refresh)|
 | [`migrate:rollback`](database_operations#rollback) | Performs rollback operation | [`--step`](database_operations#rollback), <br>[`--batch`](database_operations#rollback) | 
 | [`migrate:status`](database_operations#status) | Reports status of migrations | |
-| [`seed:run`](database_seeders#running-seeder) | Runs database seeders | |
+| [`seed:run`](database_seeders#running-seeder) | Runs database seeders | [`--seeder`](database_seeders#seeder-flag) |
 
 <br>
 
