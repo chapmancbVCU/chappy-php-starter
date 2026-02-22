@@ -304,11 +304,7 @@ You can use sequencing to override default definition values in a specific order
 $factory3 = new UserFactory();
 $factory3->count(4)->sequence(
     ['acl' => json_encode(["Admin"])],
-    ['acl' => json_encode(["test"])],
-)->create();
-$factory3->count(2)->sequence(
-    ['acl' => json_encode(["foo"])],
-    ['acl' => json_encode(["bar"])],
+    ['acl' => json_encode(["Vendor"])],
 )->create();
 ```
 
@@ -355,13 +351,14 @@ Below is a complete example using all features:
 
 ```php
 UserFactory::factory()
-    ->count(2)
+    ->count(4)
     ->sequence(
-        ['acl' => json_encode(["foo"])],
-        ['acl' => json_encode(["bar"])],
+        ['acl' => json_encode(["Admin"])],
+        ['acl' => json_encode(["Vendor"])],
     )
     ->admin()
     ->inactive()
+    ->withImages(2)
     ->create([
         'fname' => 'Jane', 'lname' => 'Doe'
     ]);
