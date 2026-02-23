@@ -8,7 +8,7 @@ categories: release
 
 🎉 **Version 2.1.0 of the Chappy PHP Framework is here!**
 
-This is the most feature-packed release to date, introducing powerful new capabilities across the board from E-mail automation to real-time CLI testing.
+This is the most feature-packed release to date, introducing updates for seeders and new factory support..
 
 ---
 
