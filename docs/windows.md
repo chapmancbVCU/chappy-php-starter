@@ -6,6 +6,7 @@
 3. [XAMPP](#xampp)
 4. [PHP Configuration](#php-configuration)
 5. [Standalone PHP](#php)
+6. [Image Seeding With Windows](#seeding)
 
 <br>
 
@@ -152,6 +153,7 @@ Uncomment the following lines:
 extension=pdo_mysql
 extension=pdo_sqlite
 extension=fileinfo
+extension=gd
 ```
 
 Then modify the following settings:
@@ -225,3 +227,23 @@ npm run dev
 Running above command in Windows PowerShell can cause an issue.  Make sure to run with Command Prompt.
 
 * F. Navigate to `localhost:8000` in your preferred web browser.
+
+<br>
+
+## 6. Image Seeding With Windows <a id="seeding"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
+To use image seeding you will need a CA certificate bundle.
+
+1. Go to `https://curl.se/docs/caextract.html`
+2. Download the latest bundle.
+3. Move to a its final location.
+4. Rename so filename is `cacert.pem`
+5. Determine version of PHP `php -v`
+6. Open `php.ini` file and add the following lines:
+
+    ```ini
+    curl.cainfo="C:\php\certs\cacert.pem"
+    openssl.cafile="C:\php\certs\cacert.pem"
+    ```
+
+7. Restart Windows. 
