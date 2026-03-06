@@ -31,9 +31,7 @@ You can create a form by running the following,
 php console make:component my_form --form
 ```
 
-There are 2 flags that you can set as described below:
-1. `--form-method=<method_name>` - Sets the method for the form with a default as `post`.
-2. `--enctype=<mime_type>` - Sets the enctype with `application/x-www-form-urlencoded` as the default even if attribute is not listed in form element.  Use `multipart/form-data` for file uploads and `text/plain` for ambiguous format, human-readable content not reliably interpretable by computer.
+After running the command you will be asked a series of questions to determine which 'method' and 'enctype' you want to use.
 
 <br>
 
