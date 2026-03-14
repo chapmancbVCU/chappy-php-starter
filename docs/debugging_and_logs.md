@@ -83,10 +83,11 @@ Logger::('My message', 'level');
 | `info`      | Informational messages (e.g., user signed in, order placed).               |
 | `debug`     | Detailed debug information for developers (e.g., SQL queries, memory use). |
 
-This framework supports two types of log files, located under `storage/logs`:
+This framework supports three types of log files, located under `storage/logs`:
 
 - `app.log`: Logs frontend and application runtime events
 - `cli.log`: Logs activity from console commands
+- `phpunit.log` : Logs activity related to PHPUnit testing.
 
 <a id="clear-logs"></a>
 To clear these logs, use the following command:
