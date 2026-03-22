@@ -42,7 +42,7 @@ class UserService {
     public static function queueWelcomeMailer(int $user_id): void {
         $queue = new QueueManager();
         $job = new SendWelcomeEmail(['user_id' => $user_id], 0); // delay 0s
-        $queue->push('default', $job->toPayload());
+        $queue->push($job->toPayload(), 'default');
     }
 }
 ```
@@ -116,7 +116,7 @@ class SendWelcomeEmail implements QueueableJobInterface {
         return [
             'job' => static::class,
             'data' => $this->data,
-            'available_at' => time() + $this->delay(),
+            'available_at' => DateTime::nowPlusSeconds($this->delay()),
             'max_attempts' => $this->maxAttempts()
         ];
     }
