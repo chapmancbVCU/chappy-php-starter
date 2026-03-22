@@ -289,6 +289,11 @@ final class ExampleRunner extends TestRunner {
     public const TEST_COMMAND = '';
 
     /**
+     * Array of available test suites.
+     */
+    public const TEST_SUITES = [];
+    
+    /**
      * Constructor
      *
      * @param InputInterface $input The Symfony InputInterface object.
