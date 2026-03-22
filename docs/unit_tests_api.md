@@ -151,6 +151,14 @@ Returns:
 
 <br>
 
+**testSuites**
+
+Returns an array of test suites found in the `TEST_SUITES` const.
+Returns:
+- `array` - An array of available test suites.
+
+<br>
+
 **testSuiteStatus**
 
 Determines if execution of a test suite(s) is successful.  The result is determined by testing if the status value is set and  its integer value is equal to Command::SUCCESS.
@@ -292,7 +300,7 @@ final class ExampleRunner extends TestRunner {
      * Array of available test suites.
      */
     public const TEST_SUITES = [];
-    
+
     /**
      * Constructor
      *
