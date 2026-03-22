@@ -113,6 +113,16 @@ Returns:
 
 <br>
 
+**testFileExtensions**
+
+Retrieves an array of values found in the TEST_FILE_EXTENSIONS const.
+
+Returns:
+
+`array` - An array of test file extensions.
+
+<br>
+
 **testExists**
 
 Determine if test file exists in any of the available test suites.
@@ -296,6 +306,11 @@ final class ExampleRunner extends TestRunner {
      * The command for Unit Testing Framework.
      */
     public const TEST_COMMAND = '';
+
+    /**
+     * Array of supported test file extensions.
+     */
+    public const TEST_FILE_EXTENSIONS = [];
 
     /**
      * Array of available test suites.
