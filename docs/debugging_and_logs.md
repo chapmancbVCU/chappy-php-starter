@@ -96,11 +96,7 @@ To clear these logs, use the following command:
 php console log:clear
 ```
 
-This command has 4 flags that can be set.
-* `--all`: Clears both log files
-* `--app`: Clears only app.log
-* `--cli`: Clears only cli.log
-* `--unit`: Clears only phpunit.log
+The user will be asked to select one of 3 log types to remove or all along with a follow up confirmation prompt.
 
 If the framework has issues writing to the logs files run the following command:
 ```sh
