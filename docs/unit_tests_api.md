@@ -154,6 +154,7 @@ Returns:
 **testSuites**
 
 Returns an array of test suites found in the `TEST_SUITES` const.
+
 Returns:
 - `array` - An array of available test suites.
 
