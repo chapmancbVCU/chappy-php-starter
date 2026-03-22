@@ -159,7 +159,7 @@ Each of these commands can accept the following flags:
 
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
-| [`log:clear`](debugging_and_logs#clear-logs) | Deletes existing log file | [`--all`](debugging_and_logs#clear-logs), <br>[`--app`](debugging_and_logs#clear-logs), <br>[`--cli`](debugging_and_logs#clear-logs), <br>[`--unit`](debugging_and_logs#clear-logs) |
+| [`log:clear`](debugging_and_logs#clear-logs) | Deletes existing log file | |
 | `tools:rm-profile-images` | Removes all profile images | |
 
 <br>
