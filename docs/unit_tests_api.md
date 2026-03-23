@@ -66,6 +66,15 @@ Returns:
 
 <br>
 
+**filter**
+
+Required by `testByFilter` function.  Returns string for test command that contains arguments for filtering.
+
+Returns:
+- `string` - The filter string.
+
+<br>
+
 **getAllTestsInSuite**
 
 Retrieves all files in test suite so they can be run.
@@ -118,8 +127,7 @@ Returns:
 Retrieves an array of values found in the TEST_FILE_EXTENSIONS const.
 
 Returns:
-
-`array` - An array of test file extensions.
+- `array` - An array of test file extensions.
 
 <br>
 
