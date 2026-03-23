@@ -189,17 +189,6 @@ Returns:
 
 <br>
 
-**verifyFilterSyntax**
-
-Ensure filter syntax is correct.  Does not test if only one : is in string.
-Parameter:
-- `string $testArg`  - The name of the test file with filter.
-
-Returns:
-- `bool` - True if filter syntax is correct.  Otherwise, we return false.
-
-<br>
-
 ## 4. Building A Test Suite <a id="test-suite"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 To add support for another 3rd party framework you will need the following:
 - Test builder class
@@ -540,37 +529,6 @@ final class PHPUnitRunner extends TestRunner {
         }
 
         return (Arr::isEmpty($args)) ? '' : ' ' . implode(' ', $args);
-    }
-
-    /**
-     * Run filtered test by function name.
-     *
-     * @param string $testArg The name of the class.
-     * @param array $testSuites An array of test suite paths.
-     * @param string $extensions The file extension for PHPUnit test files.
-     * @return int A value that indicates success, invalid, or failure.
-     */
-    public function testByFilter(string $testArg, array $testSuites, string $extension): int {
-        if(!self::verifyFilterSyntax($testArg)) {
-            console_error("Syntax error when filtering.");
-            return Command::FAILURE;
-        }
-
-        [$class, $method] = explode('::', $testArg);
-        if(self::testIfSame($class, $testSuites, $extension)) { 
-            return Command::FAILURE; 
-        }
-
-        foreach($testSuites as $testSuite) {
-            $file = $testSuite.$class;
-            if(file_exists($file.self::TEST_FILE_EXTENSION)) {
-                $filter = "--filter " . escapeshellarg("{$class}::{$method}");
-                $this->runTest($filter, self::TEST_COMMAND);
-                return Command::SUCCESS;
-            }
-        }
-        
-        return Command::FAILURE;
     }
 }
 ```
