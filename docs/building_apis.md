@@ -30,7 +30,7 @@ Before we implement anything we need to setup or routing.
 },
 ```
 
-In the json snippet above we added a new section that will match the name of our controller.  Since we want this feature to be available only to logged in users we set our routes inside the LoggedIn section.  The name of our routs will be `store`, `show`, `destroy`, and `patch`.
+In the json snippet above we added a new section that will match the name of our controller.  Since we want this feature to be available only to logged in users we set our routes inside the LoggedIn section.  The name of our routes will be `store`, `show`, `destroy`, and `patch`.
 
 <br>
 
