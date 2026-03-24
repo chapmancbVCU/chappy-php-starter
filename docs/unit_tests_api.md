@@ -97,8 +97,6 @@ Parameter:
 Supports ability to run test by class/file name.
 Parameters:
 - `string $testArg` - The name of the class/file.
-- `array $testSuites` - An array of test suite paths.  Best practice is to use const provided by child class.
-- `string|array $extensions` - A string or an array of supported file  extensions.  Best practice is to use const provided by child class.
 
 Returns:
 - `int` - A value that indicates success, invalid, or failure.
@@ -112,7 +110,6 @@ Parameters:
 - `string $testArg` - The name of the test file without extension.
 - `string $testSuite` - The name of the test suite.  Best practice is to use const provided by child class.
 - `string $ext` - The file extension.  Best practice is to use const provided by child class.
-- `string $command` - The test command.  Best practice is to use const provided by child class.
 
 Returns:
 - `int` - A value that indicates success, invalid, or failure.
@@ -146,8 +143,6 @@ Returns:
 Enforces rule that classes/files across test suites should be unique for filtering.
 Parameters:
 - `string $name` - name of the test class to be executed.
-- `array $testSuites` - The array of test suites.  Best practice is to use const provided by child class.
-- `string $extension` - A string or an array of supported file extensions.  Best practice is to use const provided by child class.
 
 Returns:
 - `bool` - True if the class or file name exists in multiple test suites.  Otherwise, we return false.
@@ -159,7 +154,6 @@ Returns:
 Run all test files in an individual test suite.
 Parameters:
 - `array $collection` - All classes in a particular test suite.
-- `string $testCommand` - The test command to be executed.
 
 Returns:
 - `int` - A value that indicates success, invalid, or failure.
