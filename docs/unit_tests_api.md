@@ -238,10 +238,10 @@ The primary goal of this class is to be used by a custom command that is used to
  * feature class is created.
  *
  * @param string $testName The name for the test.
- * @param InputInterface $input The Symfony InputInterface object.
+ * @param mixed $feature The --feature flag.
  * @return int A value that indicates success, invalid, or failure.
  */
-public static function makeTest(string $testName, InputInterface $input): int {
+public static function makeTest(string $testName, mixed $suite): int {
     $testSuites = [PHPUnitRunner::FEATURE_PATH, PHPUnitRunner::UNIT_PATH];
     
     if(PHPUnitRunner::testExists($testName, $testSuites, PHPUnitRunner::TEST_FILE_EXTENSION)) {
