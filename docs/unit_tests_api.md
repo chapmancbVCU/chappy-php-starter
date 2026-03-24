@@ -269,6 +269,8 @@ public static function makeTest(string $testName, InputInterface $input): int {
 
 The main workflow is to test if a test case file with the same name exists in one your test suites and to process any flags that direct creation of those files.  With PHPUnit we support `unit` and `feature` tests.
 
+You may want to do some extra steps if you need to support multiple suites such as processing flags.  A complete example using the `VitestTestBuilder` can be found [here](https://github.com/chapmancbVCU/chappy-php-framework/blob/main/src/Console/Helpers/Testing/VitestTestBuilder.php).
+
 <br>
 
 ### B. Test Runner <a id="test-runner"></a>
