@@ -130,8 +130,6 @@ Returns:
 Determine if test file exists in any of the available test suites.
 Parameters:
 - `string $name` - The name of the test we want to confirm if it exists.
-- `array $testSuites` - The array of test suites.  Best practice is to use const provided by child class.
-- `string|array $extensions` - A string or an array of supported file extensions.  Best practice is to use const provided by child class.
 
 Returns:
 - `bool` - True if test does exist.  Otherwise, we return false.
