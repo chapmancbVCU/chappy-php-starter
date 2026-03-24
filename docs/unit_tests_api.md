@@ -38,7 +38,17 @@ The TestRunner class contains functions available for you to use in your own chi
 **Constructor**
 
 Parameter:
+- `InputInterface $input` - The Symfony InputInterface object.
 - `OutputInterface $output` - This enables logging of test output to console.
+
+<br>
+
+**allTests**
+
+Performs all available tests.
+
+Returns:
+- `int` - A value that indicates success, invalid, or failure.
 
 <br>
 
@@ -50,19 +60,6 @@ Parameter:
 
 Returns:
 - `bool` - True if all test suites are empty.  Otherwise, we return false.
-
-<br>
-
-**allTests**
-
-Performs all available tests.
-Parameters:
-- `array $testSuites` - An array of test suite paths.
-- `string|array $extensions` - A string or an array of supported file extensions.  Best practice is to use const provided by child class.
-- `string $testCommand` - The command for running the tests.
-
-Returns:
-- `int` - A value that indicates success, invalid, or failure.
 
 <br>
 
@@ -92,7 +89,7 @@ Returns:
 Runs the unit test for your testing suite.
 Parameter:
 - `string $test` - The test to be performed.
-- `string $testCommand` - The test command to be executed.
+
 <br>
 
 **selectByTestName**
@@ -362,15 +359,12 @@ final class ExampleRunner extends TestRunner {
 **construct**
 
 Parameters:
-- `InputInterface $input` - Symfony InputInterface object. Needed to support option flags
+- `InputInterface $input` - Symfony InputInterface object
 - `OutputInterface $output` - The Symfony OutputInterface object.
 
 <br>
 
 **parseOptions**
-
-Parameters:
-- `InputInterface $input` - Instance of InputInterface from command.
 
 Returns:
 - `string` - A string containing the arguments to be provided to your testing framework.
