@@ -3,6 +3,8 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [ask()](#ask)
+    * A. [Setup](ask-setup)
+    * B. [Validation](#validation)
 
 <br>
 
@@ -30,3 +32,22 @@ Throws:
 - `FrameworkException` An an exception is thrown for the following two cases:
     - Both `$secret = true` and `$anticipate = true`
     - `$suggestions` is empty and `$anticipate = true`.
+
+<br>
+
+### A. Setup <a id="ask-setup"></a>
+To use the `ask` function you need to perform the following steps:
+1. Create a message.
+2. Create an instance of the `FrameworkQuestion` class.
+3. Call the `ask` function and track the response.
+
+Example:
+```php
+$message = "Enter a response";
+$question = new FrameworkQuestion($input, $output);
+$response = $question->ask($message);
+```
+
+<br>
+
+### B. Validation <a id="validation"></a>
