@@ -51,6 +51,17 @@ $response = $question->ask($message);
 <br>
 
 ### B. Validation <a id="validation"></a>
-The `FrameworkQuestion` class uses the `HasValidator` trait to support validation of input.  Simply chain validator functions to the `$question` object to perform validation.
+The `FrameworkQuestion` class uses the `HasValidator` trait to support validation of input.  Simply chain validator functions to the `$question` object to perform validation.  The `Console` class has wrapper functions for these validators.  Links for those resources can be found at the end of this section.
+
+**Using Validators**
+Simply chain the validators as shown below:
+
+```php
+$question->required->between(10,50)->ask();
+```
+
+If input fails validation then a message is displayed.  You will not be prompted to fix the issue after each attempt until all validation is successful.
 
 Additional resources can be found here:
+1. [hasValidators Trait](has_validators)
+2. [Console Class](console_class)
