@@ -13,6 +13,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 2. [Access Control Levels (ACLs)](access_control_levels)
 3. [Administration](administration)
 4. [Console](console)
+    * A [FrameworkQuestion](framework_question)
 5. [Controllers](controllers)
 6. [Database Migrations and Operations](database_operations)
     * A. [Database Queries](database_queries)
