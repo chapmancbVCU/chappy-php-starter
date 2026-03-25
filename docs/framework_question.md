@@ -64,7 +64,7 @@ Simply chain the validators as shown below:
 $question->required->between(10,50)->ask();
 ```
 
-If input fails validation then a message is displayed.  You will not be prompted to fix the issue after each attempt until all validation is successful.
+If input fails validation then a message is displayed.  You will be prompted to fix the issue after each attempt until all validation is successful.
 
 Additional resources can be found here:
 1. [hasValidators Trait](has_validators)
