@@ -51,3 +51,6 @@ $response = $question->ask($message);
 <br>
 
 ### B. Validation <a id="validation"></a>
+The `FrameworkQuestion` class uses the `HasValidator` trait to support validation of input.  Simply chain validator functions to the `$question` object to perform validation.
+
+Additional resources can be found here:
