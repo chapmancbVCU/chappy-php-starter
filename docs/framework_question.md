@@ -5,6 +5,7 @@
 2. [ask()](#ask)
     * A. [Setup](ask-setup)
     * B. [Validation](#validation)
+    * C. [Modes](#modes)
 
 <br>
 
@@ -53,7 +54,10 @@ $response = $question->ask($message);
 ### B. Validation <a id="validation"></a>
 The `FrameworkQuestion` class uses the `HasValidator` trait to support validation of input.  Simply chain validator functions to the `$question` object to perform validation.  The `Console` class has wrapper functions for these validators.  Links for those resources can be found at the end of this section.
 
+<br>
+
 **Using Validators**
+
 Simply chain the validators as shown below:
 
 ```php
@@ -65,3 +69,22 @@ If input fails validation then a message is displayed.  You will not be prompted
 Additional resources can be found here:
 1. [hasValidators Trait](has_validators)
 2. [Console Class](console_class)
+
+<br>
+
+### C. Modes <a id="modes"></a>
+`FrameworkQuestion` supports 3 special modes that the user can set with chainable functions:
+1. Secret
+2. Timeout
+3. Trimmable
+
+<br>
+
+**Secret**
+
+Use this mode when you need to ask the user to enter sensitive information such as a password.
+
+Example:
+```php
+$response = $question->secret()->ask($message);
+```
