@@ -120,6 +120,7 @@ $response = $question->timeout(30)->ask($message);
 <br>
 
 **Disable Trimmable**
+
 The term "trimmable" in Symfony console specifically refers to a feature within the Question helper that controls whether the user's input should have leading/trailing whitespace removed (trimmed) before being processed.
 
 Disable trimmable with the `disableTrimmable()` chainable function.
