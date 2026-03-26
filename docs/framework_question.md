@@ -6,6 +6,7 @@
     * A. [Setup](ask-setup)
     * B. [Validation](#validation)
     * C. [Modes](#modes)
+3. [choice()](#choice)
 
 <br>
 
@@ -125,4 +126,22 @@ Disable trimmable with the `disableTrimmable()` chainable function.
 Example:
 ```php
 $response = $question->disableTrimmable()->ask($message);
+```
+
+<br>
+
+## 2. `choice()` <a id="choice"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This function asks the user a question that requires to choose among a set of specified options.
+
+Parameters:
+- `$message` - The question to ask.
+- `array $choices` - An array of choices.
+- `string|bool|int|float|null $default` - The default value if the user does not provide an answer.
+
+Example:
+```php
+$message = "Choose one of the following:";
+$question = new FrameworkQuestion($input, $output);
+$choices = ['Option A', 'Option B', 'Option C'];
+$response = $question->choice($message, $choices, $choices[0]);
 ```
