@@ -75,8 +75,9 @@ Additional resources can be found here:
 ### C. Modes <a id="modes"></a>
 `FrameworkQuestion` supports 3 special modes that the user can set with chainable functions:
 1. Secret
-2. Timeout
-3. Trimmable
+2. Anticipate
+3. Timeout
+4. Trimmable
 
 <br>
 
@@ -87,4 +88,16 @@ Use this mode when you need to ask the user to enter sensitive information such 
 Example:
 ```php
 $response = $question->secret()->ask($message);
+```
+
+<br>
+
+**Anticipate**
+
+Anticipate supports the ability to show suggestions for responses based on how the user types.  Use the `anticipate()` chainable function with an array of suggestions for the `ask` function's `$suggestion` parameter to take advantage of this feature.
+
+Example:
+```php
+$suggestions = ['Option A', 'Suggestion B'];
+$response = $question->anticipate()->ask($message, $suggestions);
 ```
