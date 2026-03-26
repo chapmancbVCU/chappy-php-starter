@@ -3,6 +3,8 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [argOptionValidate()](#arg_option_validate)
+3. [prompt()](#prompt)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -80,3 +82,83 @@ The above example is from the `make:controller` command.  The `Controller` class
 
 Since we overrode the default validators we supplied all validators in the `$attributes` array.
 
+## 3. prompt() <a id="prompt"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+A direct wrapper function for the `FrameworkQuestion::ask()` function.
+
+By default, the following validators are used:
+- `required()`
+- `noSpecialChars()`
+- `alpha()`
+- `notReservedKeyword()`
+
+Parameters:
+- `string $message` - The message to present to the user.
+- `InputInterface $input` - The Symfony InputInterface object.
+- `OutputInterface $output` - The Symfony OutputInterface object.
+- `array $attributes` - An array of additional validators.
+- `array $suggestions` - An array of suggestions for when `$anticipate` is set to `true`.  An exception is thrown if this array is empty and `$anticipate = true`.
+- `string|bool|int|float|null $default` - The default value if the user does not provide an answer.
+- `bool $defaultNone`  - When set to true user will have to specify all validators and attributes.
+
+Returns:
+- `mixed` - The user response.
+
+Example:
+```php
+$attributes = [
+    'required',
+    'noSpecialChars',
+    'alpha',
+    'notReservedKeyword',
+    'max:50', 
+    'fieldName:controller-name'
+];
+$response = self::prompt(self::PROMPT_MESSAGE, $input, $output, $attributes, [], null, true);
+```
+
+This function supports all validators supported by the `HasValidators` trait.  You can also modify the available modes supported by the `FrameworkQuestion` class.
+
+<br>
+
+**Secret**
+
+Use this mode when you need to ask the user to enter sensitive information such as a password.
+
+Example:
+```php
+$response = self::prompt(self::PROMPT_MESSAGE, $input, $output, ['secret']);
+```
+
+<br>
+
+**Anticipate**
+
+Anticipate supports the ability to show suggestions for responses based on how the user types.
+
+Example:
+```php
+$suggestions = ['Option A', 'Suggestion B'];
+$response = self::prompt(self::PROMPT_MESSAGE, $input, $output, ['anticipate'], $suggestions);
+```
+
+<br>
+
+**Timeout**
+
+If you need to establish a timeout period for a prompt use the `timeout` function.
+
+Example:
+```php
+$response = self::prompt(self::PROMPT_MESSAGE, $input, $output, ['timeout:30']); 
+```
+
+<br>
+
+**Disable Trimmable**
+
+The term “trimmable” in Symfony console specifically refers to a feature within the Question helper that controls whether the user’s input should have leading/trailing whitespace removed (trimmed) before being processed.
+
+Example:
+```php
+$response = self::prompt(self::PROMPT_MESSAGE, $input, $output, ['disableTrimmable']); 
+```
