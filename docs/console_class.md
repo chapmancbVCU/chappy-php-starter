@@ -5,6 +5,8 @@
 2. [argOptionValidate()](#arg_option_validate)
 3. [prompt()](#prompt)
 4. [choice()](#choice)
+5. [confirm()](#confirm)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -165,7 +167,7 @@ $response = self::prompt(self::PROMPT_MESSAGE, $input, $output, ['disableTrimmab
 
 <br>
 
-## 4. Choice <a id="choice"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. choice() <a id="choice"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This function asks the user a question that requires to choose among a set of specified options.
 
 Parameters:
@@ -183,4 +185,26 @@ Example:
 $message = "Which log do you want to delete (default: App)?";
 $options = ['App', 'CLI', 'PHPUnit', 'All'];
 return self::choice($message, $options, $input, $output, $options[0]);
+```
+
+<br>
+
+## 5. confirm() <a id="confirm"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This function is used if you want to confirm that the user should proceed with a certain action.
+
+Parameters:
+- `string $message` - The message to present to the user.
+- `string $message` - The question to ask.  It is advised to phrase it such that the user knows to answer y or n.
+- `string|bool|int|float|null $default` - The default value if the user does not provide an answer.
+
+Returns:
+- `mixed` - The user answer.
+
+Example:
+```php
+$message = "Do you want to create a menu specific to this layout? (y/n)";
+if(self::confirm($message, $input, $output)) {
+    self::makeMenu($layoutName);
+    return $layoutName;
+}
 ```
