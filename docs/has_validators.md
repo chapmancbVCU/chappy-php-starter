@@ -3,6 +3,7 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [Instance Variables](#instance-variables)
+3. [Support Functions](#support-functions)
 
 <br>
 
@@ -68,3 +69,61 @@ protected array $reservedKeywords = [
 
 A list of currently used validator callback functions.
 
+<br>
+
+## 3. Support Functions <a id="support-functions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
+**public function addErrorMessage($string $message): void**
+
+Adds a new error message to the $errors array.
+
+Parameter:
+- `string $message` -  The error message to be added to the $errors array.
+
+<br>
+
+**public function displayErrorMessages(): void**
+
+Displays a list of all error messages.
+
+<br>
+
+**public function fieldName(string|array $fieldName): static**
+
+Sets name of field to be validated.
+
+Parameter:
+- `string|array $fieldName` - The name of the field to be validated.
+
+<br>
+
+**public function setValidator(callable $validator): static**
+
+Adds validator to array of validators to be used.
+
+Parameter:
+- `callable $validator` - The anonymous function for a validator.
+
+<br>
+
+**protected static function tokens(string $data): array**
+
+Split on commas (tolerate spaces), normalize to lowercase, drop empties.  Useful for cases where you have a comma separated string.
+
+Parameter:
+- `string $data` - Comma separated strings of values to be converted into an array.
+
+Returns:
+- `array` - An array containing values originally found in comma separated string.
+
+<br>
+
+**protected function validate(mixed $response): bool**
+
+Calls validator callbacks.  This function also ensures validators don't bleed into next question if instance is reused.
+
+Parameter:
+- `mixed $response` - The user answer.
+
+Returns:
+- `bool` - True if validation passed.  Otherwise, we return false.
