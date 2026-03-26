@@ -101,3 +101,12 @@ Example:
 $suggestions = ['Option A', 'Suggestion B'];
 $response = $question->anticipate()->ask($message, $suggestions);
 ```
+
+**Timeout**
+
+If you need to establish a timeout period for a prompt use the `timeout(int $timeout)` chainable function.
+
+Example:
+```php
+$response = $question->timeout(30)->ask($message);
+```
