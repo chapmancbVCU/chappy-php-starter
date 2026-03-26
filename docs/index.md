@@ -15,7 +15,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 4. [Console](console)
     * A. [FrameworkQuestion](framework_question)
     * B. [Console Class](console_class)
-    * C. [HasValidators Trait](jas_validators)
+    * C. [HasValidators Trait](has_validators)
 5. [Controllers](controllers)
 6. [Database Migrations and Operations](database_operations)
     * A. [Database Queries](database_queries)
