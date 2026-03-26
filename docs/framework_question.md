@@ -77,7 +77,9 @@ Additional resources can be found here:
 1. Secret
 2. Anticipate
 3. Timeout
-4. Trimmable
+4. Disable Trimmable
+
+Once input is entered secret, anticipate, and trimmable modes are toggled off.
 
 <br>
 
@@ -102,6 +104,8 @@ $suggestions = ['Option A', 'Suggestion B'];
 $response = $question->anticipate()->ask($message, $suggestions);
 ```
 
+<br>
+
 **Timeout**
 
 If you need to establish a timeout period for a prompt use the `timeout(int $timeout)` chainable function.
@@ -109,4 +113,16 @@ If you need to establish a timeout period for a prompt use the `timeout(int $tim
 Example:
 ```php
 $response = $question->timeout(30)->ask($message);
+```
+
+<br>
+
+**Disable Trimmable**
+The term "trimmable" in Symfony console specifically refers to a feature within the Question helper that controls whether the user's input should have leading/trailing whitespace removed (trimmed) before being processed.
+
+Disable trimmable with the `disableTrimmable()` chainable function.
+
+Example:
+```php
+$response = $question->disableTrimmable()->ask($message);
 ```
