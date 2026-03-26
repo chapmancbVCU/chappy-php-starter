@@ -4,7 +4,7 @@
 1. [Overview](#overview)
 2. [argOptionValidate()](#arg_option_validate)
 3. [prompt()](#prompt)
-
+4. [choice()](#choice)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -161,4 +161,26 @@ The term “trimmable” in Symfony console specifically refers to a feature wit
 Example:
 ```php
 $response = self::prompt(self::PROMPT_MESSAGE, $input, $output, ['disableTrimmable']); 
+```
+
+<br>
+
+## 4. Choice <a id="choice"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This function asks the user a question that requires to choose among a set of specified options.
+
+Parameters:
+- `string $message` The message to present to the user.
+- `array $choices` An array of choices.
+- `InputInterface $input` The Symfony InputInterface object.
+- `OutputInterface $output` The Symfony OutputInterface object.
+- `string|boolean|integer|float|null|null $default` The default value if the user does not provide an answer.
+
+Returns:
+- `mixed` - The user answer.
+
+Example:
+```php
+$message = "Which log do you want to delete (default: App)?";
+$options = ['App', 'CLI', 'PHPUnit', 'All'];
+return self::choice($message, $options, $input, $output, $options[0]);
 ```
