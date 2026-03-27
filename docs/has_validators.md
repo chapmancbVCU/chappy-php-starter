@@ -6,8 +6,8 @@
 3. [Support Functions](#support-functions)
 4. [Validator Callbacks](#validator-callbacks)
     * A. [alpha()](#alpha)
-    * B. [alphaNumeric](#alphaNumeric)
-
+    * B. [alphaNumeric()](#alphaNumeric)
+    * C. [between()](#between)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -145,3 +145,17 @@ Enforce rule where input must be alphanumeric characters.
 
 <br>
 
+### C. between(array $range) <a id="between"></a>
+Ensures input is between within a certain range in length.
+
+Parameter:
+- `array $range` - 2 element array where position 0 is min and position 1 is max.
+
+Usage:
+```php
+// FrameworkQuestion
+$question->between(5, 10)->ask();
+
+// Array parameter
+['between:5, 10']
+```
