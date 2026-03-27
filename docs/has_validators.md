@@ -4,7 +4,8 @@
 1. [Overview](#overview)
 2. [Instance Variables](#instance-variables)
 3. [Support Functions](#support-functions)
-
+4. [Validator Callbacks](#validator-callbacks)
+    * A. [alpha()](#alpha)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -88,7 +89,7 @@ Displays a list of all error messages.
 
 <br>
 
-**public function fieldName(string|array $fieldName): static**
+**public function fieldName(string\|array $fieldName): static**
 
 Sets name of field to be validated.
 
@@ -127,3 +128,14 @@ Parameter:
 
 Returns:
 - `bool` - True if validation passed.  Otherwise, we return false.
+
+<br>
+
+## 4. Validator Callbacks <a id="validator-callbacks"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
+### A. alpha() <a id="alphpa"></a>
+
+Enforce rule where input must contain only alphabetic characters.
+
+<br>
+
