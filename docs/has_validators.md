@@ -8,6 +8,7 @@
     * A. [alpha()](#alpha)
     * B. [alphaNumeric()](#alphaNumeric)
     * C. [between()](#between)
+    * D. [classExists()](#class-exists)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -159,3 +160,13 @@ $question->between(5, 10)->ask();
 // Array parameter
 ['between:5, 10']
 ```
+
+<br>
+
+### C. classExists(array $namespace) <a id="between"></a>
+Checks if class exists within the specified namespace.
+
+Parameter:
+- `array $namespace` - An array containing one element with string for the namespace.
+
+Usage:
