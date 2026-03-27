@@ -155,10 +155,10 @@ Parameter:
 Usage:
 ```php
 // FrameworkQuestion
-$question->between(5, 10)->ask();
+$question->between([5, 10])->ask($message);
 
 // Array parameter
-['between:5, 10']
+['between:5:10']
 ```
 
 <br>
@@ -167,6 +167,14 @@ $question->between(5, 10)->ask();
 Checks if class exists within the specified namespace.
 
 Parameter:
-- `array $namespace` - An array containing one element with string for the namespace.
+- `string|array $namespace` - A string or an array containing one element with string for the namespace.
 
 Usage:
+```php
+// FrameworkQuestion
+$question->classExists(self::SEEDER_NAMESPACE)->ask($message);
+
+// Array parameter
+$attributes = ['classExists:'.self::SEEDER_NAMESPACE];
+```
+
