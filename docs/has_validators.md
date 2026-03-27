@@ -6,6 +6,8 @@
 3. [Support Functions](#support-functions)
 4. [Validator Callbacks](#validator-callbacks)
     * A. [alpha()](#alpha)
+    * B. [alphaNumeric](#alphaNumeric)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -134,8 +136,12 @@ Returns:
 ## 4. Validator Callbacks <a id="validator-callbacks"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
 ### A. alpha() <a id="alphpa"></a>
-
 Enforce rule where input must contain only alphabetic characters.
+
+<br>
+
+### B. alphaNumeric() <a id="alphaNumeric"></a>
+Enforce rule where input must be alphanumeric characters.
 
 <br>
 
