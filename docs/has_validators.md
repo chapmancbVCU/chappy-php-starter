@@ -17,6 +17,7 @@
     * J. [integer()](#integer)
     * L. [list()](#list)
     * M. [lower()](#lower)
+    * N. [match()](#match)
 
 <br>
 
@@ -197,6 +198,9 @@ Ensures response is in colon notation format.
 ### F. different() <a id="different"></a>
 Enforce rule where response and $match parameter needs to be different.
 
+Parameter:
+- `mixed` - The value we want to compare.
+
 Usage:
 ```php
 // FrameworkQuestion
@@ -272,3 +276,24 @@ Notifications::argOptionValidate(
 ### M. lower() <a id="lower"></a>
 Enforces rule when input must contain at least one lower case character.
 
+<br>
+
+### N. match() <a id="match"></a>
+Enforce rule where response and $match parameter needs to match.
+
+Parameter:
+- `mixed` - The value we want to compare.
+
+Usage:
+```php
+// FrameworkQuestion
+$question = new FrameworkQuestion($input, $output);
+$message = "Enter a value:";
+$response1 = $question->ask($message);
+
+$message = "Confirm value entered";
+$response2 = $question->match($response1)->ask($message);
+
+// Array parameter
+$response3 = Controller::prompt($message, $input, $output, ["match:$response1"]);
+```
