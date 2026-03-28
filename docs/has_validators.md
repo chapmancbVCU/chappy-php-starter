@@ -18,7 +18,10 @@
     * L. [list()](#list)
     * M. [lower()](#lower)
     * N. [match()](#match)
-
+    * O. [max()](#max)
+    * P. [min()](#min)
+    * Q. [negative()](#negative)
+    * R. [number()](#number)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -300,7 +303,7 @@ $response3 = Controller::prompt($message, $input, $output, ["match:$response1"])
 
 <br>
 
-### O. max(int\|array $maxRule)
+### O. max(int\|array $maxRule) <a id="max"></a>
 Ensures input meets requirements for maximum allowable length.
 
 Parameter:
@@ -317,7 +320,7 @@ $response1 = $question->max(50)->ask($message);
 
 <br>
 
-### P. min(int\|array $maxRule)
+### P. min(int\|array $maxRule) <a id="min"></a>
 Ensures input meets requirements for minimum allowable length.
 
 Parameter:
@@ -331,3 +334,13 @@ $response1 = $question->min(5)->ask($message);
 // Array parameter
 ['min:5']
 ```
+
+<br>
+
+### Q. negative() <a id="negative"></a>
+Enforces rule when input must be a negative number.
+
+<br>
+
+### R. number() <a id="number"></a>
+Enforces rule when input must contain at least one numeric character.
