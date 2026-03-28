@@ -247,12 +247,24 @@ Usage:
 // FrameworkQuestion
 $question = new FrameworkQuestion($input, $output);
 $message = "Enter comma separated list of channels.";
-$response = $question->list(['Core\\Lib\\Notifications\\Notification', 'channelValues', 'all'])->ask($message);
+$response = $question->list([
+    'Core\\Lib\\Notifications\\Notification', 'channelValues', 'all'
+])->ask($message);
 
 // Array parameter
 $message = "Enter comma separated list of channels.";
-$attributes = ['list:Core\\Lib\\Notifications\\Notification:channelValues:all'];
-Notifications::argOptionValidate($channels, $message, $input, $output, $attributes, true);
+$attributes = [
+    'required', 
+    'notReservedKeyword', 
+    'list:Core\\Lib\\Notifications\\Notification:channelValues:all'
+];
+Notifications::argOptionValidate(
+    $channels, 
+    $message, 
+    $input, 
+    $output, 
+    $attributes, true
+);
 ```
 
 <br>
