@@ -21,9 +21,10 @@
     * O. [max()](#max)
     * P. [min()](#min)
     * Q. [negative()](#negative)
-    * R. [number()](#number)
-    * S. [noSpecialChars()](#noSpecialChars)
-    * T. [notReservedKeyword()](#notReservedKeyword)
+    * R. [noSpecialChars()](#noSpecialChars)
+    * S. [notReservedKeyword()](#notReservedKeyword)
+    * T. [number()](#number)
+    * U. [numeric](#numeric)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -344,15 +345,20 @@ Enforces rule when input must be a negative number.
 
 <br>
 
-### R. number() <a id="number"></a>
-Enforces rule when input must contain at least one numeric character.
-
-<br>
-
-### S. noSpecialChars() <a id="noSpecialChars"></a>
+### R. noSpecialChars() <a id="noSpecialChars"></a>
 Enforces rule when input must contain no special characters.
 
 <br>
 
-### T. notReservedKeyword() <a id="notReservedKeyword"></a>
+### S. notReservedKeyword() <a id="notReservedKeyword"></a>
 Enforce rule when reserved keywords should be avoided.
+
+<br>
+
+### T. number() <a id="number"></a>
+Enforces rule when input must contain at least one numeric character.
+
+<br>
+
+### U. numeric() <a id="numeric"></a>
+Enforce rule where input must contain only numeric characters.
