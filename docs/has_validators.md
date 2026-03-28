@@ -25,6 +25,13 @@
     * S. [notReservedKeyword()](#notReservedKeyword)
     * T. [number()](#number)
     * U. [numeric](#numeric)
+    * V. [required()](#required)
+    * W. [positive()](#positive)
+    * X. [queue()](#queue)
+    * Y. [special()](#special)
+    * Z. [testFilterNotation()](testFilterNotation)
+    * A1. [upper()](#upper)
+    * B1. [url()](#url)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -362,3 +369,38 @@ Enforces rule when input must contain at least one numeric character.
 
 ### U. numeric() <a id="numeric"></a>
 Enforce rule where input must contain only numeric characters.
+
+<br>
+
+### V. required() <a id="required"></a>
+Ensures required input is entered.
+
+<br>
+
+### W. positive() <a id="positive"></a>
+Enforces rule when input must a positive number.
+
+<br>
+
+### X. queue() <a id="queue"></a>
+Validates if queue exists in database or redis.
+
+<br>
+
+### Y. special() <a id="special"></a>
+Enforces rule when input must contain at least one special character.
+
+<br>
+
+### Z. testFilterNotation() <a id="testFilterNotation"></a>
+Ensures response is in colon notation format.
+
+<br>
+
+### A1. upper() <a id="upper"></a>
+Enforces rule when input must contain at least one lower case character.
+
+<br>
+
+### B1. url() <a id="url"></a>
+Enforce rule where input must be a valid URL.
