@@ -9,6 +9,7 @@
     * B. [alphaNumeric()](#alphaNumeric)
     * C. [between()](#between)
     * D. [classExists()](#class-exists)
+    * E. [colonNotation()](#colonNotation)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -163,7 +164,7 @@ $question->between([5, 10])->ask($message);
 
 <br>
 
-### C. classExists(array $namespace) <a id="between"></a>
+### D. classExists(array $namespace) <a id="class-exists"></a>
 Checks if class exists within the specified namespace.
 
 Parameter:
@@ -177,4 +178,11 @@ $question->classExists(self::SEEDER_NAMESPACE)->ask($message);
 // Array parameter
 $attributes = ['classExists:'.self::SEEDER_NAMESPACE];
 ```
+
+<br>
+
+### E. colonNotation() <a id="colonNotation"></a>
+Ensures response is in colon notation format.
+
+<br>
 
