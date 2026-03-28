@@ -11,6 +11,7 @@
     * D. [classExists()](#class-exists)
     * E. [colonNotation()](#colonNotation)
     * F. [different()](#different)
+    * G. [dotNotation()](#dotNotation)
 
 <br>
 
@@ -205,3 +206,7 @@ $response2 = $question->different($response1)->ask($message);
 $response3 = Controller::prompt($message, $input, $output, ["different:$response1"]);
 ```
 
+<br>
+
+### G. dotNotation() <a id="dotNotation"></a>
+Ensures response is in dot notation format.
