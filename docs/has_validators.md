@@ -13,7 +13,8 @@
     * F. [different()](#different)
     * G. [dotNotation()](#dotNotation)
     * H. [email()](#email)
-
+    * I. [ip()](#ip)
+    * J. [integer()](#integer)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -216,3 +217,14 @@ Ensures response is in dot notation format.
 
 ### H. email() <a id="email"></a>
 Ensures input is a valid E-mail address.
+
+<br>
+
+### I. ip() <a id="ip"></a>
+Enforce rule where input must be a valid IP address.
+
+<br>
+
+### J. integer() <a id="integer"></a>
+Enforce rule where input must be an integer.
+
