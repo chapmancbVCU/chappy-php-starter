@@ -15,6 +15,7 @@
     * H. [email()](#email)
     * I. [ip()](#ip)
     * J. [integer()](#integer)
+    * L. [list()](#list)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -228,3 +229,26 @@ Enforce rule where input must be a valid IP address.
 ### J. integer() <a id="integer"></a>
 Enforce rule where input must be an integer.
 
+<br>
+
+### L. list() <a id="list"></a>
+Ensure user inputs valid comma separated list of values.  The user must provide the following in the $attributes parameter:
+1) Class containing full namespaced path
+2) Name of function that returns an array of strings or a comma separated array of strings.
+3) A string value in this array as an alias (optional)
+
+Parameter:
+- `array $attributes` - A : separate list in the following format: NamespaceToClass\\Class:Method:Alias.
+
+Usage:
+```php
+// FrameworkQuestion
+$question = new FrameworkQuestion($input, $output);
+$message = "Enter comma separated list of channels.";
+$response = $question->list(['Core\\Lib\\Notifications\\Notification', 'channelValues', 'all'])->ask($message);
+
+// Array parameter
+$message = "Enter comma separated list of channels.";
+$attributes = ['list:Core\\Lib\\Notifications\\Notification:channelValues:all'];
+Notifications::argOptionValidate($channels, $message, $input, $output, $attributes, true);
+```
