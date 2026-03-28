@@ -195,7 +195,7 @@ Ensures response is in colon notation format.
 
 <br>
 
-### F. different() <a id="different"></a>
+### F. different(mixed $data) <a id="different"></a>
 Enforce rule where response and $match parameter needs to be different.
 
 Parameter:
@@ -237,7 +237,7 @@ Enforce rule where input must be an integer.
 
 <br>
 
-### L. list() <a id="list"></a>
+### L. list(array $attributes) <a id="list"></a>
 Ensure user inputs valid comma separated list of values.  The user must provide the following in the $attributes parameter:
 1) Class containing full namespaced path
 2) Name of function that returns an array of strings or a comma separated array of strings.
@@ -278,7 +278,7 @@ Enforces rule when input must contain at least one lower case character.
 
 <br>
 
-### N. match() <a id="match"></a>
+### N. match(mixed $match) <a id="match"></a>
 Enforce rule where response and $match parameter needs to match.
 
 Parameter:
