@@ -10,6 +10,8 @@
     * C. [between()](#between)
     * D. [classExists()](#class-exists)
     * E. [colonNotation()](#colonNotation)
+    * F. [different()](#different)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -185,4 +187,21 @@ $attributes = ['classExists:'.self::SEEDER_NAMESPACE];
 Ensures response is in colon notation format.
 
 <br>
+
+### F. different() <a id="different"></a>
+Enforce rule where response and $match parameter needs to be different.
+
+Usage:
+```php
+// FrameworkQuestion
+$question = new FrameworkQuestion($input, $output);
+$message = "Enter a value:";
+$response1 = $question->ask($message);
+
+$message = "Enter a different value";
+$response2 = $question->different($response1)->ask($message);
+
+// Array parameter
+$response3 = Controller::prompt($message, $input, $output, ["different:$response1"]);
+```
 
