@@ -297,3 +297,37 @@ $response2 = $question->match($response1)->ask($message);
 // Array parameter
 $response3 = Controller::prompt($message, $input, $output, ["match:$response1"]);
 ```
+
+<br>
+
+### O. max(int\|array $maxRule)
+Ensures input meets requirements for maximum allowable length.
+
+Parameter:
+- `int|array $maxRule` - The maximum allowed size for input.
+
+Usage:
+```php
+// FrameworkQuestion
+$response1 = $question->max(50)->ask($message);
+
+// Array parameter
+['max:50']
+```
+
+<br>
+
+### P. min(int\|array $maxRule)
+Ensures input meets requirements for minimum allowable length.
+
+Parameter:
+- `int|array $minRule` - The minimum allowed size for input.
+
+Usage:
+```php
+// FrameworkQuestion
+$response1 = $question->min(5)->ask($message);
+
+// Array parameter
+['min:5']
+```
