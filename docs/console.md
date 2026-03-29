@@ -446,4 +446,6 @@ The following text colors are supported (`const`):
 15. `Tools::TEXT_LIGHT_BLUE`
 16. `Tools::TEXT_LIGHT_MAGENTA`
 
-A `ConsoleException` is thrown if you use a value for text color in place of background color and vice versa.  If a value provided for `$background` and `$text` does not match any of the supported colors this exception is also thrown.
+**Failure Modes**
+
+Relevant output will be provided if incorrect levels or colors for background and text are provided.
