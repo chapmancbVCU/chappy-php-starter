@@ -15,6 +15,7 @@
     * H. [email()](#email)
     * I. [ip()](#ip)
     * J. [integer()](#integer)
+    * K. [isPortUsed](#isPortUsed)
     * L. [list()](#list)
     * M. [lower()](#lower)
     * N. [match()](#match)
@@ -247,6 +248,23 @@ Enforce rule where input must be a valid IP address.
 
 ### J. integer() <a id="integer"></a>
 Enforce rule where input must be an integer.
+
+<br>
+
+### K. isPortUsed(array $attributes) <a id="ip"></a>
+Checks if a port on a particular host is in use.  Assists in verifying if a port is available for a serve command.  If the port is already in use an error message is presented to the user.
+
+Parameter:
+- `array $attributes` - An array that assumes index 0 is the host and index 1 is timeout variable which is set to 3 if not provided.
+
+Usage:
+```php
+// FrameworkQuestion
+$question->isPortUsed([$host, $timeout])->ask($message);
+
+// Array parameter
+["isPortUsed:$host:$timeout"]
+```
 
 <br>
 
