@@ -19,7 +19,8 @@
     * A. [border()](#border)
     * B. [createDirWithPrompt()](#dir-with-prompt)
     * C. [isFailure()](#is-failure)
-    * d. [isProduction()](#is-production)
+    * D. [isProduction()](#is-production)
+    * E. [pathExists()](#path-exists)
     * E. [writeFile()](#write-file)
 7. [ConsoleLogger::log()](#log)
 <br>
