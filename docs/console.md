@@ -15,13 +15,13 @@
     * I. [Vitest](#vitest)
 4. [Building Your Own Command](#build-command)
 5. [Command Helpers](#command-helpers)
-6. [Tools](#tools)
-    * A. [border Function](#border)
-    * B. [createDirWithPrompt](#dir-with-prompt)
-    * C. [dotNotificationVerify](#dot-notification-Verify)
-    * D. [info Function](#info)
-    * E. [writeFile Function](#write-file)
-
+6. [Tools](#tools-class)
+    * A. [border()](#border)
+    * B. [createDirWithPrompt()](#dir-with-prompt)
+    * C. [isFailure()](#is-failure)
+    * d. [isProduction()](#is-production)
+    * E. [writeFile()](#write-file)
+7. [ConsoleLogger::log()](#log)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -266,7 +266,7 @@ When adding function we usually create those that are static.  We rarely need to
 
 <br>
 
-## 6. Tools <a id="tools"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Tools <a id="tools-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Tools is a command helper class that contains functions that are commonly used with other commands.  To use the tools class simply used the following use statement:
 
 ```php
@@ -274,12 +274,12 @@ use Console\Helpers\Tools;
 ```
 <br>
 
-### A. border Function <a id="border">
+### A. border() <a id="border">
 The border prints a dashed line.
 
 <br>
 
-### B. createDirWithPrompt <a id="dir-with-prompt">
+### B. createDirWithPrompt() <a id="dir-with-prompt">
 Creates a directory.  It checks if it already exists.  If not, user is asked to confirm the want to create a new directory.
 
 **Parameters**
@@ -303,34 +303,70 @@ In the above example we use the result of this function's call to test if there 
 
 <br>
 
-### C. dotNotificationVerify <a id="dot-notification-Verify">
-Checks if input is in dot notation.  If in dot notation the string is placed in an array where the first index is the directory name.  The second element is the file name.  The structure is shown below:
+### C. isFailure() <a id="is-failure">
+Checks if parameter provided is equal to Command::FAILURE.
 
-```PHP
-["directory_name","file_name"]
-```
-
-If not in the `<directory_name>.<file_name>` an error message is displayed an a Command::FAILURE integer value is returned.
-
-**Parameters**
-- `string $inputName` - The name in `<directory_name>.<file_name>` format.
+**Parameter**
+- `mixed $param` - The value to be tested.
 
 **Returns**
-- `array` - An array containing the contents of the $inputName variable.
-- `int` - If $inputName is not in correct format then Command::FAILURE is returned.
-
-**Example** 
-```php
-$viewArray = Tools::dotNotationVerify('view-name', $input);
-if($viewArray == Command::FAILURE) return Command::FAILURE;
-```
-
-In the above example we use the result of the dotNotification Verify function call to test if there are any failures.  In this case we return Command::FAILURE.
+- `bool` - True if value is equal to Command::FAILURE.  Otherwise, we return false.
 
 <br>
 
-### D. info Function <a id="info">
-The info function is used to present to the user logging information.  The following is an example of how to call this function:
+### D. isFailure() <a id="is-production">
+Checks if application is in production mode.
+
+**Returns**
+- `bool` - True if in production, otherwise we return false.
+
+<br>
+
+### D. pathExists() <a id="path-exists">
+Tests if a path exits and creates it if necessary.
+
+**Parameters**
+- `string $path` - The path to check if it exists.
+- `int $permissions` - The permissions for the directory.
+- `bool $recursive` - Optional.  Specifies if the recursive mode is set.
+     
+<br>
+
+### F. writeFile() <a id="write-file">
+The writeFile function is what we used when we need to dump contents of a command to a file.  We use this for commands such as making controllers, models, and migrations.  
+
+Here is an example call to this function for generating a new menu_acl json file.
+
+```php
+public static function makeMenuAcl(InputInterface $input): int {
+    $menuName = $input->getArgument('acl-name');
+    return Tools::writeFile(
+        ROOT.DS.'app'.DS.strtolower($menuName)."_menu_acl.json",
+        self::menuAcl($menuName),
+        "Menu file"
+    );
+}
+```
+
+Since we need to name this file we grab the argument provided when running the command in the console.  The writeFile function contains the following arguments:
+1. $path - Where the file will be written
+2. $content - The contents of the file to be created
+3. $name The name of the file, class, or other relevant information.
+
+Use `DS` instead of `/` or `\` for cross-platform compatibility.
+
+We return an integer to indicate success, invalid, or failure.
+
+The path will usually contain the name variable, in this case, the name of the menu.  We always use the DIRECTORY_SEPARATOR (DS) constant instead of forward or backward slashes to ensure compatibility across different operating systems.
+
+The `self::menuAcl($menuName)` calls a function that generates the content.  We prefer to use a separate function for the content to make the code clean and more maintainable.  
+
+The third argument is used to populate the message that gets printed out to the terminal.  In the case the messages will be `Menu file successfully created` when file write is successful and `Menu file already exists` if the file already exists.
+
+<br>
+
+## 7. ConsoleLoggerLogger::log <a id="log"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The `ConsoleLogger::log()` function is used to present to the user logging information.  The following is an example of how to call this function:
 
 ```php
 ConsoleLogger::log("My message", Logger::INFO, Tools::BG_RED, Tools::TEXT_WHITE);
@@ -410,36 +446,3 @@ The following text colors are supported (`const`):
 16. `Tools::TEXT_LIGHT_MAGENTA`
 
 A `ConsoleException` is thrown if you use a value for text color in place of background color and vice versa.  If a value provided for `$background` and `$text` does not match any of the supported colors this exception is also thrown.
-
-<br>
-
-### E. writeFile Function <a id="write-file">
-The writeFile function is what we used when we need to dump contents of a command to a file.  We use this for commands such as making controllers, models, and migrations.  
-
-Here is an example call to this function for generating a new menu_acl json file.
-
-```php
-public static function makeMenuAcl(InputInterface $input): int {
-    $menuName = $input->getArgument('acl-name');
-    return Tools::writeFile(
-        ROOT.DS.'app'.DS.strtolower($menuName)."_menu_acl.json",
-        self::menuAcl($menuName),
-        "Menu file"
-    );
-}
-```
-
-Since we need to name this file we grab the argument provided when running the command in the console.  The writeFile function contains the following arguments:
-1. $path - Where the file will be written
-2. $content - The contents of the file to be created
-3. $name The name of the file, class, or other relevant information.
-
-Use `DS` instead of `/` or `\` for cross-platform compatibility.
-
-We return an integer to indicate success, invalid, or failure.
-
-The path will usually contain the name variable, in this case, the name of the menu.  We always use the DIRECTORY_SEPARATOR (DS) constant instead of forward or backward slashes to ensure compatibility across different operating systems.
-
-The `self::menuAcl($menuName)` calls a function that generates the content.  We prefer to use a separate function for the content to make the code clean and more maintainable.  
-
-The third argument is used to populate the message that gets printed out to the terminal.  In the case the messages will be `Menu file successfully created` when file write is successful and `Menu file already exists` if the file already exists.
