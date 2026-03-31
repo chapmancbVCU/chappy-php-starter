@@ -23,6 +23,10 @@
     * E. [pathExists()](#path-exists)
     * E. [writeFile()](#write-file)
 7. [ConsoleLogger::log()](#log)
+8. [ConsoleIO Trait](#console-io-trait)
+    * A. [getArgument()](#get-argument)
+    * B. [getOption()](#get-option)
+    * C. [hasOption()](#has-option)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -449,3 +453,39 @@ The following text colors are supported (`const`):
 **Failure Modes**
 
 Relevant output will be provided if incorrect levels or colors for background and text are provided.
+
+<br>
+
+## 8. ConsoleIO Trait <a id="console-io-trait"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The ConsoleIO Trait contains 3 wrapper functions that is used by the `CommandConsole` class.
+
+### A. getArgument() <a id="get-argument"></a>
+Wrapper for InputInterface::getArgument function.
+
+Parameter:
+- `mixed $argument` - The argument.
+
+Returns:
+- `mixed`- The value for the argument.
+
+<br>
+
+### B. getOption() <a id="get-option"></a>
+Wrapper for InputInterface::getOption function.
+
+Parameter:
+- `mixed $option` - The option.
+
+Returns:
+- `mixed`- The value for the option.
+
+<br>
+
+### C. hasOption() <a id="has-option"></a>
+Wrapper for InputInterface::hasOption function.
+
+Parameter:
+- `string $name` - The name for the option.
+
+Returns:
+- `bool` - True if it exists, otherwise false.
