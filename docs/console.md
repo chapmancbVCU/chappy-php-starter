@@ -50,6 +50,13 @@ If there is a command you would like for us to support you can submit an issue [
 
 <br>
 
+**ConsoleCommand class**
+The parent `CommandConsole` class has two instance variables for `InputInterface` and `OutputInterface` called `$input` and `$output`.  Both can be accessed with the `$this` keyword.
+
+When using the `FrameworkQuestion` wrappers within the `Console` class you can use the `$this->question()` function to populate the expected `InputInterface` and `OutputInterface` parameters for the `QuestionHelper::ask` function.
+
+<br>
+
 ## 2. When to Use the Console <a id="when-to-use"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The console is ideal for:
 - Generating boilerplate (models, controllers, views, etc.)
