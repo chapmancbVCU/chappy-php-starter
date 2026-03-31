@@ -52,8 +52,7 @@ By default, the following validators are used:
 Parameters:
 - `string $field` - The reference to the value to be validated.
 - `string $message` - The message to present to the user.
-- `InputInterface $input` - The Symfony InputInterface object.
-- `OutputInterface $output` - The Symfony OutputInterface object.
+- `FrameworkQuestion $question` - Instance of FrameworkQuestion class.
 - `array $attributes` - An array of additional validators.
 - `bool $defaultNone` -  When set to true user will have to specify all validators.
 
@@ -95,8 +94,7 @@ By default, the following validators are used:
 
 Parameters:
 - `string $message` - The message to present to the user.
-- `InputInterface $input` - The Symfony InputInterface object.
-- `OutputInterface $output` - The Symfony OutputInterface object.
+- `FrameworkQuestion $question` - Instance of FrameworkQuestion class.
 - `array $attributes` - An array of additional validators.
 - `array $suggestions` - An array of suggestions for when `$anticipate` is set to `true`.  An exception is thrown if this array is empty and `$anticipate = true`.
 - `string|bool|int|float|null $default` - The default value if the user does not provide an answer.
@@ -115,7 +113,7 @@ $attributes = [
     'max:50', 
     'fieldName:controller-name'
 ];
-$response = self::prompt(self::PROMPT_MESSAGE, $input, $output, $attributes, [], null, true);
+$response = self::prompt(self::PROMPT_MESSAGE, $this->question(), $attributes, [], null, true);
 ```
 
 This function supports all validators supported by the `HasValidators` trait.  You can also modify the available modes supported by the `FrameworkQuestion` class.
@@ -128,7 +126,7 @@ Use this mode when you need to ask the user to enter sensitive information such 
 
 Example:
 ```php
-$response = self::prompt(self::PROMPT_MESSAGE, $input, $output, ['secret']);
+$response = self::prompt(self::PROMPT_MESSAGE, $this->question(), ['secret']);
 ```
 
 <br>
@@ -140,7 +138,7 @@ Anticipate supports the ability to show suggestions for responses based on how t
 Example:
 ```php
 $suggestions = ['Option A', 'Suggestion B'];
-$response = self::prompt(self::PROMPT_MESSAGE, $input, $output, ['anticipate'], $suggestions);
+$response = self::prompt(self::PROMPT_MESSAGE, $this->question(), ['anticipate'], $suggestions);
 ```
 
 <br>
@@ -151,7 +149,7 @@ If you need to establish a timeout period for a prompt use the `timeout` functio
 
 Example:
 ```php
-$response = self::prompt(self::PROMPT_MESSAGE, $input, $output, ['timeout:30']); 
+$response = self::prompt(self::PROMPT_MESSAGE, $this->question(), ['timeout:30']); 
 ```
 
 <br>
@@ -162,7 +160,7 @@ The term “trimmable” in Symfony console specifically refers to a feature wit
 
 Example:
 ```php
-$response = self::prompt(self::PROMPT_MESSAGE, $input, $output, ['disableTrimmable']); 
+$response = self::prompt(self::PROMPT_MESSAGE, $this->question(), ['disableTrimmable']); 
 ```
 
 <br>
@@ -173,8 +171,7 @@ This function asks the user a question that requires to choose among a set of sp
 Parameters:
 - `string $message` The message to present to the user.
 - `array $choices` An array of choices.
-- `InputInterface $input` The Symfony InputInterface object.
-- `OutputInterface $output` The Symfony OutputInterface object.
+- `FrameworkQuestion $question` - Instance of FrameworkQuestion class.
 - `string|boolean|integer|float|null|null $default` The default value if the user does not provide an answer.
 
 Returns:
@@ -184,7 +181,7 @@ Example:
 ```php
 $message = "Which log do you want to delete (default: App)?";
 $options = ['App', 'CLI', 'PHPUnit', 'All'];
-return self::choice($message, $options, $input, $output, $options[0]);
+return self::choice($message, $options, $this->question(), $options[0]);
 ```
 
 <br>
@@ -194,7 +191,7 @@ This function is used if you want to confirm that the user should proceed with a
 
 Parameters:
 - `string $message` - The message to present to the user.
-- `string $message` - The question to ask.  It is advised to phrase it such that the user knows to answer y or n.
+- `FrameworkQuestion $question` - Instance of FrameworkQuestion class.
 - `string|bool|int|float|null $default` - The default value if the user does not provide an answer.
 
 Returns:
@@ -203,7 +200,7 @@ Returns:
 Example:
 ```php
 $message = "Do you want to create a menu specific to this layout? (y/n)";
-if(self::confirm($message, $input, $output)) {
+if(self::confirm($message, $this->question())) {
     self::makeMenu($layoutName);
     return $layoutName;
 }
