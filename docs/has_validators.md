@@ -218,7 +218,7 @@ Parameter:
 Usage:
 ```php
 // FrameworkQuestion
-$question = new FrameworkQuestion($input, $output);
+$question = new FrameworkQuestion($this->input, $this->output);
 $message = "Enter a value:";
 $response1 = $question->ask($message);
 
@@ -226,7 +226,7 @@ $message = "Enter a different value";
 $response2 = $question->different($response1)->ask($message);
 
 // Array parameter
-$response3 = Controller::prompt($message, $input, $output, ["different:$response1"]);
+$response3 = Controller::prompt($message, $this->question(), ["different:$response1"]);
 ```
 
 <br>
@@ -296,8 +296,7 @@ $attributes = [
 Notifications::argOptionValidate(
     $channels, 
     $message, 
-    $input, 
-    $output, 
+    $this->question()
     $attributes, true
 );
 ```
@@ -318,7 +317,7 @@ Parameter:
 Usage:
 ```php
 // FrameworkQuestion
-$question = new FrameworkQuestion($input, $output);
+$question = new FrameworkQuestion($this->input, $this->output);
 $message = "Enter a value:";
 $response1 = $question->ask($message);
 
@@ -326,7 +325,7 @@ $message = "Confirm value entered";
 $response2 = $question->match($response1)->ask($message);
 
 // Array parameter
-$response3 = Controller::prompt($message, $input, $output, ["match:$response1"]);
+$response3 = Controller::prompt($message, $this->question(), ["match:$response1"]);
 ```
 
 <br>
