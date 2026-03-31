@@ -237,6 +237,8 @@ class FooCommand extends ConsoleCommand {
 
 Everything you need to build your own command is included in this file.  All relevant imports are listed at the top.  Each command you create contains two functions.  The configure function is where everything gets setup and the execute function performs actions associated with the command.
 
+The parent `CommandConsole` class has two instance variables for `InputInterface` and `OutputInterface` called `$input` and `$output`.  Both can be accessed with the `$this` keyword.
+
 <br>
 
 ## 5. Command Helpers <a id="command-helpers"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
