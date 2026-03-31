@@ -205,16 +205,14 @@ The output of this command will be a file called `FooCommand.php` and will be lo
 ```php
 namespace App\Lib\Console\Commands;
  
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
+use Console\ConsoleCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Undocumented class
  */
-class FooCommand extends Command {
+class FooCommand extends ConsoleCommand {
     /**
      * Configures the command.
      *
@@ -222,17 +220,15 @@ class FooCommand extends Command {
      */
     protected function configure(): void
     {
-        //
+        $this->setName('my-command');
     }
 
     /**
      * Executes the command
      *
-     * @param InputInterface $input The input.
-     * @param OutputInterface $output The output.
      * @return int A value that indicates success, invalid, or failure.
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function handle(): int
     {
         //
     }
