@@ -667,7 +667,8 @@ The `DB` class in Chappy.php is a singleton-based database utility that wraps PD
 DB::getInstance(): DB
 ```
 
-Returns a singleton instance of the DB class. Used to initiate or access the shared database connection.
+Returns:
+- `DB` - A singleton instance of the DB class. Used to initiate or access the shared database connection.
 
 <br>
 
@@ -683,7 +684,8 @@ $db = DB::getInstance();
 getPDO(): PDO
 ```
 
-Returns the raw PDO instance. Useful for advanced operations or custom queries not handled by the built-in query method.
+Returns:
+- `PDO` -  the raw PDO instance. Useful for advanced operations or custom queries not handled by the built-in query method.
 
 <br>
 
@@ -695,7 +697,7 @@ Here we chain the getPDO function to getInstance.  Then we chain the getAttribut
 
 <br>
 
-### C. `query($sql, $params = [], $class = false)` <a id="query-method"></a>
+### C. `query()` <a id="query-method"></a>
 Prepares, binds, and executes a SQL query.
 
 Parameters:
@@ -703,12 +705,19 @@ Parameters:
 - `$params` - Array of bound values
 - `$class` - Optional class name to map results
 
-Returns: `DB` instance with result data loaded
+Returns: 
+- `DB` - Instance with result data loaded
 
 <br>
 
-### D. `groupByColumn($column)` <a id="groupby-column"></a>
+### D. `groupByColumn()` <a id="groupby-column"></a>
 Formats a column name for use in a `GROUP BY` clause. On MySQL or MariaDB, wraps the column in `ANY_VALUE()` to prevent `ONLY_FULL_GROUP_BY` errors.
+
+Parameter:
+- `string $column` - Name of the column to format.
+
+Returns:
+- `string|null` - The property formatted column inf DB driver is properly set or detected.  Otherwise, we return null.
 
 Example:
 ```php
@@ -718,8 +727,22 @@ $col = DB::groupByColumn('users.name');
 <br>
 
 ### E. `results()` and `first()` <a id="results-first"></a>
-- `results()` — Returns all rows from the last query
-- `first()` — Returns only the first row of the last query
+**`results()`**
+Returns all rows from the last query
+
+Returns:
+- `array` - An array of objects that contain results of a database query.
+
+<br>
+
+**`findFirst()`**
+Returns only the first row of the last query
+
+Parameters:
+- `string $table` - The name or the table we want to perform our query against.
+- `array $params` - An associative array that contains key value pair  parameters for our query such as conditions, bind, limit, offset,  join, order, and sort.  The default value is an empty array.
+- `bool|string` - $class A default value of false, it contains the name of the class we will build based on the name of a model.
+- `array|object|bool` - An associative array of results returned from an SQL  query.
 
 <br>
 
