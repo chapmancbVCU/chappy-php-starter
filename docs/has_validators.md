@@ -101,7 +101,7 @@ A list of currently used validator callback functions.
 
 ## 3. Support Functions <a id="support-functions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
-**public function addErrorMessage($string $message): void**
+**`public function addErrorMessage()`**
 
 Adds a new error message to the $errors array.
 
@@ -110,13 +110,13 @@ Parameter:
 
 <br>
 
-**public function displayErrorMessages(): void**
+**`public function displayErrorMessages()`**
 
 Displays a list of all error messages.
 
 <br>
 
-**public function fieldName(string\|array $fieldName): static**
+**`public function fieldName()`**
 
 Sets name of field to be validated.
 
@@ -125,7 +125,7 @@ Parameter:
 
 <br>
 
-**public function setValidator(callable $validator): static**
+**`public function setValidator()`**
 
 Adds validator to array of validators to be used.
 
@@ -134,7 +134,7 @@ Parameter:
 
 <br>
 
-**protected static function tokens(string $data): array**
+**`protected static function tokens()`**
 
 Split on commas (tolerate spaces), normalize to lowercase, drop empties.  Useful for cases where you have a comma separated string.
 
@@ -146,7 +146,7 @@ Returns:
 
 <br>
 
-**protected function validate(mixed $response): bool**
+**`protected function validate()`**
 
 Calls validator callbacks.  This function also ensures validators don't bleed into next question if instance is reused.
 
