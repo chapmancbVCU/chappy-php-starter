@@ -42,19 +42,19 @@ This trait is used by the `Console` and `FrameworkQuestion` class to validate in
 
 ## 2. Instance Variables <a id="instance-variables"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
-**protected array $errors**
+**`protected array $errors`**
 
 Contains a list of error messages.
 
 <br>
 
-**protected string $fieldName**
+**`protected string $fieldName`**
 
 The name of the argument or option that is currently validated.  Use this if you have multiple inputs for your command.
 
 <br>
 
-**protected array $reservedKeywords**
+**`protected array $reservedKeywords`**
 
 Supports ability to avoid input that may conflict with a reserved keyword.
 
@@ -93,7 +93,7 @@ protected array $reservedKeywords = [
 
 <br>
 
-**protected array $validators**
+**`protected array $validators`**
 
 A list of currently used validator callback functions.
 
