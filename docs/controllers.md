@@ -83,7 +83,7 @@ Key Concepts:
 <br>
 
 ## 4. Crud Operations <a id="crud-operations"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. Create - addAction <a id="create"></a>
+### A. Create - `addAction()` <a id="create"></a>
 ```php
 public function addAction(): void {
     $contact = new Contacts();
@@ -118,7 +118,7 @@ $this->view->render('model_name/view_name');
 
 <br>
 
-### B. Read - indexAction and detailsAction <a id="read"></a>
+### B. Read - `indexAction()` and `detailsAction()` <a id="read"></a>
 This controller has a couple of ways to perform the Read operation from the CRUD paradigm. We perform reads in the indexAction and detailsAction. Let's go over the detailsAction function first.
 
 ```php
@@ -153,7 +153,7 @@ Nothing too complicated here but line 2 is noteworthy. Notice the second paramet
 
 <br>
 
-### C. Update - editAction <a id="update"></a>
+### C. Update - `editAction()` <a id="update"></a>
 Update operations is similar to the Create operation. There are some noteworthy differences to discuss so we have the code for the ContactsController's editAction shown below.
 
 ```php
@@ -182,7 +182,7 @@ The first step is to get the contact record and make sure it's associated with t
 
 <br>
 
-### D. Delete - deleteAction <a id="delete"></a>
+### D. Delete - `deleteAction()` <a id="delete"></a>
 The Delete operation is also very simple. In the example below you will find the findByIdAndUserId function again along with the setup of the confirmation Session Message.  More about Session Messages can be found [here](session_and_flash_messages).
 
 ```php
