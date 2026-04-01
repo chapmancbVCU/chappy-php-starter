@@ -9,7 +9,7 @@
     * A. [Instantiating Factories](#instantiating-factories)
     * B. [create()](#create)
     * C. [States](#states)
-    * D. [afterCreating](#after-creating)
+    * D. [afterCreating()](#after-creating)
     * E. [Sequencing](#sequencing)
     * F. [Function Chaining](#function-chaining)
     * g. [Attributes](#attributes)
@@ -189,7 +189,7 @@ The `factory()` function is used to get an instance of a factory class for elega
 
 <br>
 
-### B. create() <a id="create"></a>
+### B. `create()` <a id="create"></a>
 Use the `create()` function to insert a new record into the database.
 
 **Parameter**
@@ -259,7 +259,7 @@ public function withImages(int $count = 2): static {
 
 <br>
 
-### D. afterCreating <a id="after-creating"></a>
+### D. `afterCreating()` <a id="after-creating"></a>
 Use the `afterCreating` feature to perform actions after a record is created with a factory.  Implement the `configure()` function in the parent `Factory` class with any additional task.
 
 ```php
