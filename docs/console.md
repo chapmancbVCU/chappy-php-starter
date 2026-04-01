@@ -332,7 +332,7 @@ Checks if application is in production mode.
 
 <br>
 
-### D. `pathExists()` <a id="path-exists">
+### E. `pathExists()` <a id="path-exists">
 Tests if a path exits and creates it if necessary.
 
 **Parameters**
