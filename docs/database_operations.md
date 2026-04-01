@@ -93,6 +93,8 @@ Finally, you can run the migrate command shown below:
 
 ```php console migrate```
 
+<br>
+
 **Common Commands**
 ```php
 # Run all pending migrations
@@ -190,6 +192,8 @@ class MDT20260211231125CreateFooTable extends Migration {
 }
 ```
 
+<br>
+
 **Common Field Methods**
 - `$table->id()` — Creates an `id` column (auto-increment primary key)
 - `$table->string('name', 255)` — Varchar column
@@ -232,7 +236,7 @@ public function up(): void {
 }
 ```
 
-🔄 Adding the `--update` flag generates a migration file for updating your table.
+Adding the `--update` flag generates a migration file for updating your table.
 
 <br>
 
@@ -249,7 +253,7 @@ public function up(): void {
 }
 ```
 
-🔄 Adding the `--rename=foo` flag generates a migration file for renaming the table to `foo`.
+Adding the `--rename=foo` flag generates a migration file for renaming the table to `foo`.
 
 <br>
 
@@ -278,6 +282,8 @@ All renaming functions accepts two arguments:
 - `$from` - The column's original name
 - `$to` - The column's new name
 
+<br>
+
 **Renaming indexes**
 
 To rename a column that is indexed use the `renameIndex` function:
@@ -290,6 +296,8 @@ public function up(): void {
 }
 ```
 
+<br>
+
 **Renaming Primary Keys**
 
 To rename a table's primary key use the `renamePrimaryKey` function:
@@ -301,6 +309,8 @@ public function up(): void {
 }
 ```
 
+<br>
+
 **Rename Unique Constrained Columns**
 
 To rename a column with a unique constraint use the `renameUnique` function:
@@ -311,6 +321,8 @@ public function up(): void {
     });
 }
 ```
+
+<br>
 
 **Rename Foreign Keys**
 
@@ -338,6 +350,8 @@ $table->dropColumns(['foo', 'bar']);
 
 This function checks if column is an index or primary key.  If these conditions are detected a warning is printed to the console and that field is skipped.
 
+<br>
+
 **Dropping Primary Keys**
 
 To drop a primary key use the `dropPrimaryKey` function.
@@ -353,6 +367,8 @@ public function up(): void {
 This function accepts two arguments:
 - `$column` - The name of the column to be dropped.
 - `$preserveColumn` - A boolean flag that defaults to true.  Set to true if you want to keep the column and drop only the foreign key constraint.  The default value is true.
+
+<br>
 
 **Dropping Indexes**
 
@@ -370,6 +386,8 @@ This function accepts two arguments:
 - `$column` - The name of the column to be dropped.
 - `$preserveColumn` - A boolean flag that defaults to true.  Set to true if you want to keep the column and drop only the primary key constraint.  The default value is true.
 
+<br>
+
 **Dropping Unique Constrained Columns**
 
 To drop a column with the unique constraint use the `dropUnique` function.
@@ -385,6 +403,8 @@ public function up(): void {
 This function accepts two arguments:
 - `$column` - The name of the column to be dropped.
 - `$preserveColumn` - A boolean flag that defaults to true.  Set to true if you want to keep the column and drop only the unique index constraint.  The default value is true.
+
+<br>
 
 **Dropping Foreign Keys**
 
@@ -422,6 +442,8 @@ This function accepts one argument:
 ### H. Migrations With Raw SQL Queries <a id="sql"></a>
 You are able to perform raw SQL queries within a migration.  You can create or update a table and then use SQL queries to add values.  This is useful if your database table already has data.
 
+<br>
+
 **Example:**
 ```php
 public function up(): void {
@@ -441,6 +463,8 @@ Generates a new migration class.
 php console make:migration foo
 ```
 
+<br>
+
 **Rename Example**
 
 Generates a migration class for renaming a table.
@@ -448,6 +472,8 @@ Generates a migration class for renaming a table.
 php console make:migration foo --rename=bar
 ```
 `foo` is the original and `bar` will be its new name.
+
+<br>
 
 **Update Example**
 
@@ -460,6 +486,8 @@ php console make:migration foo--update
 
 #### 2. `migrate`
 Performs all pending migrations.
+
+<br>
 
 **Seed Example**
 
@@ -487,6 +515,8 @@ Drops all tables.
 #### 4. `migrate:fresh`
 Drops all tables and performs migration.
 
+<br>
+
 **Seed Example**
 
 Use the `--seed` flag to seed your database after migrations have completed.
@@ -500,12 +530,16 @@ php console migrate:fresh --seed
 #### 5. `migrate:refresh`
 Drops all tables one at a time and performs migration.  
 
+<br>
+
 **Seed Example**
 
 Use the `--seed` flag to seed your database after migrations have completed.
 ```sh
 php console migrate:refresh --seed
 ```
+
+<br>
 
 **Step Example**
 
@@ -523,11 +557,15 @@ Performs a roll back of the last batch of migrations.
 php console rollback
 ```
 
+<br>
+
 **Batch Example**
 ```sh
 php console migrate:rollback --batch=2
 ```
 Roll back migrations for batch number 2
+
+<br>
 
 **Step Example**
 ```sh
@@ -589,8 +627,8 @@ Chappy.php’s migration system includes a flexible schema builder via the Bluep
 <br>
 
 ### C. Notes on Compatibility <a id="compatibility"></a>
-- 🐬 MySQL: All features are supported, including foreign keys and `ENUM`.
-- 🐘 SQLite: Lacks native support for `ENUM`, foreign keys (unless enabled), and strict `UNSIGNED` types. Your migration code gracefully degrades in these cases.
+- MySQL: All features are supported, including foreign keys and `ENUM`.
+- SQLite: Lacks native support for `ENUM`, foreign keys (unless enabled), and strict `UNSIGNED` types. Your migration code gracefully degrades in these cases.
 
 <br>
 
@@ -613,23 +651,25 @@ Schema::create('products', function(Blueprint $table) {
 <br>
 
 ## 5. Tips and Common Pitfalls <a id="tips"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-✅ Use `nullable()->default()` to safely add optional fields.
-⚠️ **Foreign keys and ENUM** types are only supported in MySQL.
-🐘 **SQLite** ignores unsupported column modifiers silently.
-🧪 Always verify your migrations using a database viewer like phpMyAdmin or SQLiteBrowser.
-📄 Log messages in the CLI will show `SUCCESS: Adding Column..`. or `SUCCESS: Creating Table....`
+- Use `nullable()->default()` to safely add optional fields.
+- **Foreign keys and ENUM** types are only supported in MySQL.
+- **SQLite** ignores unsupported column modifiers silently.
+- Always verify your migrations using a database viewer like phpMyAdmin or SQLiteBrowser.
+- Log messages in the CLI will show `SUCCESS: Adding Column..`. or `SUCCESS: Creating Table....`
 
 <br>
 
 ## 6. DB Class Reference <a id="db-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">Table of Contents</span>
 The `DB` class in Chappy.php is a singleton-based database utility that wraps PDO functionality and adds query building, logging, and utility helpers.
 
-### A. 🔁 `getInstance()` <a id="get-instance"></a>
+### A. `getInstance()` <a id="get-instance"></a>
 ```php
 DB::getInstance(): DB
 ```
 
 Returns a singleton instance of the DB class. Used to initiate or access the shared database connection.
+
+<br>
 
 **Example:**
 ```php
@@ -638,12 +678,14 @@ $db = DB::getInstance();
 
 <br>
 
-### B. 🔗 `getPDO()` <a id="get-pdo"></a>
+### B. `getPDO()` <a id="get-pdo"></a>
 ```php
 getPDO(): PDO
 ```
 
 Returns the raw PDO instance. Useful for advanced operations or custom queries not handled by the built-in query method.
+
+<br>
 
 **Example**
 ```php
@@ -653,7 +695,7 @@ Here we chain the getPDO function to getInstance.  Then we chain the getAttribut
 
 <br>
 
-### C. 🧱 `query($sql, $params = [], $class = false)` <a id="query-method"></a>
+### C. `query($sql, $params = [], $class = false)` <a id="query-method"></a>
 Prepares, binds, and executes a SQL query.
 
 Parameters:
@@ -665,7 +707,7 @@ Returns: `DB` instance with result data loaded
 
 <br>
 
-### D. 🔄 `groupByColumn($column)` <a id="groupby-column"></a>
+### D. `groupByColumn($column)` <a id="groupby-column"></a>
 Formats a column name for use in a `GROUP BY` clause. On MySQL or MariaDB, wraps the column in `ANY_VALUE()` to prevent `ONLY_FULL_GROUP_BY` errors.
 
 Example:
@@ -675,24 +717,24 @@ $col = DB::groupByColumn('users.name');
 
 <br>
 
-### E. 📋 `results()` and `first()` <a id="results-first"></a>
+### E. `results()` and `first()` <a id="results-first"></a>
 - `results()` — Returns all rows from the last query
 - `first()` — Returns only the first row of the last query
 
 <br>
 
-### F. 🔢 `count()` and `lastID()` <a id="count-lastid"></a>
+### F. `count()` and `lastID()` <a id="count-lastid"></a>
 - `count()` — Number of rows affected or returned by the last query
 - `lastID()` — Returns the ID from the last INSERT operation
 
 <br>
 
-### G. 🔍 `find()`, `findFirst()`, and `findTotal()` <a id="find-methods"></a>
+### G. `find()`, `findFirst()`, and `findTotal()` <a id="find-methods"></a>
 - `find()` — Runs a flexible SELECT query
 - `findFirst()` — Same as `find()`, but returns only the first result
 - `findTotal()` — Returns a count for the specified table and conditions
 
 <br>
 
-### H. 🧪 `valueExistsInColumn()` <a id="value-exists"></a>
+### H. `valueExistsInColumn()` <a id="value-exists"></a>
 Checks if a value exists inside a JSON or string column. Compatible with both MySQL (uses `JSON_CONTAINS`) and SQLite (uses `LIKE`).
