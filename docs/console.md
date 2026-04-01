@@ -284,12 +284,12 @@ use Console\Helpers\Tools;
 ```
 <br>
 
-### A. border() <a id="border">
+### A. `border()` <a id="border">
 The border prints a dashed line.
 
 <br>
 
-### B. createDirWithPrompt() <a id="dir-with-prompt">
+### B. `createDirWithPrompt()` <a id="dir-with-prompt">
 Creates a directory.  It checks if it already exists.  If not, user is asked to confirm the want to create a new directory.
 
 **Parameters**
@@ -313,7 +313,7 @@ In the above example we use the result of this function's call to test if there 
 
 <br>
 
-### C. isFailure() <a id="is-failure">
+### C. `isFailure()` <a id="is-failure">
 Checks if parameter provided is equal to Command::FAILURE.
 
 **Parameter**
@@ -324,7 +324,7 @@ Checks if parameter provided is equal to Command::FAILURE.
 
 <br>
 
-### D. isFailure() <a id="is-production">
+### D. `isFailure()` <a id="is-production">
 Checks if application is in production mode.
 
 **Returns**
@@ -332,7 +332,7 @@ Checks if application is in production mode.
 
 <br>
 
-### D. pathExists() <a id="path-exists">
+### D. `pathExists()` <a id="path-exists">
 Tests if a path exits and creates it if necessary.
 
 **Parameters**
@@ -342,7 +342,7 @@ Tests if a path exits and creates it if necessary.
      
 <br>
 
-### F. writeFile() <a id="write-file">
+### F. `writeFile()` <a id="write-file">
 The writeFile function is what we used when we need to dump contents of a command to a file.  We use this for commands such as making controllers, models, and migrations.  
 
 Here is an example call to this function for generating a new menu_acl json file.
@@ -375,7 +375,7 @@ The third argument is used to populate the message that gets printed out to the 
 
 <br>
 
-## 7. ConsoleLoggerLogger::log <a id="log"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. `ConsoleLoggerLogger::log` <a id="log"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `ConsoleLogger::log()` function is used to present to the user logging information.  The following is an example of how to call this function:
 
 ```php
@@ -464,7 +464,7 @@ Relevant output will be provided if incorrect levels or colors for background an
 ## 8. ConsoleIO Trait <a id="console-io-trait"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The ConsoleIO Trait contains 3 wrapper functions that is used by the `CommandConsole` class.
 
-### A. getArgument() <a id="get-argument"></a>
+### A. `getArgument()` <a id="get-argument"></a>
 Wrapper for InputInterface::getArgument function.
 
 Parameter:
@@ -475,7 +475,7 @@ Returns:
 
 <br>
 
-### B. getOption() <a id="get-option"></a>
+### B. `getOption()` <a id="get-option"></a>
 Wrapper for InputInterface::getOption function.
 
 Parameter:
@@ -486,7 +486,7 @@ Returns:
 
 <br>
 
-### C. hasOption() <a id="has-option"></a>
+### C. `hasOption()` <a id="has-option"></a>
 Wrapper for InputInterface::hasOption function.
 
 Parameter:
