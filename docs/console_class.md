@@ -40,7 +40,7 @@ The `getInstance` function and constructor accepts an optional `$fieldName` para
 
 <br>
 
-## 2. argOptionValidate() <a id="arg_option_validate"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. `argOptionValidate()` <a id="arg_option_validate"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Primary validator wrapper for processing `InputInterface` arguments and options.  If validation fails then `prompt` is called internally to receive followup input.  
 
 By default, the following validators are used:
@@ -83,7 +83,7 @@ The above example is from the `make:controller` command.  The `Controller` class
 
 Since we overrode the default validators we supplied all validators in the `$attributes` array.
 
-## 3. prompt() <a id="prompt"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. `prompt()` <a id="prompt"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 A direct wrapper function for the `FrameworkQuestion::ask()` function.
 
 By default, the following validators are used:
@@ -165,7 +165,7 @@ $response = self::prompt(self::PROMPT_MESSAGE, $this->question(), ['disableTrimm
 
 <br>
 
-## 4. choice() <a id="choice"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `choice()` <a id="choice"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This function asks the user a question that requires to choose among a set of specified options.
 
 Parameters:
@@ -186,7 +186,7 @@ return self::choice($message, $options, $this->question(), $options[0]);
 
 <br>
 
-## 5. confirm() <a id="confirm"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. `confirm()` <a id="confirm"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This function is used if you want to confirm that the user should proceed with a certain action.
 
 Parameters:
