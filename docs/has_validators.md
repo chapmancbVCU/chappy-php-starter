@@ -160,17 +160,17 @@ Returns:
 
 ## 4. Validator Callbacks <a id="validator-callbacks"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
-### A. alpha() <a id="alphpa"></a>
+### A. `alpha()` <a id="alphpa"></a>
 Enforce rule where input must contain only alphabetic characters.
 
 <br>
 
-### B. alphaNumeric() <a id="alphaNumeric"></a>
+### B. `alphaNumeric()` <a id="alphaNumeric"></a>
 Enforce rule where input must be alphanumeric characters.
 
 <br>
 
-### C. between(array $range) <a id="between"></a>
+### C. `between()` <a id="between"></a>
 Ensures input is between within a certain range in length.
 
 Parameter:
@@ -187,7 +187,7 @@ $question->between([5, 10])->ask($message);
 
 <br>
 
-### D. classExists(array $namespace) <a id="class-exists"></a>
+### D. `classExists()` <a id="class-exists"></a>
 Checks if class exists within the specified namespace.
 
 Parameter:
@@ -204,12 +204,12 @@ $attributes = ['classExists:'.self::SEEDER_NAMESPACE];
 
 <br>
 
-### E. colonNotation() <a id="colonNotation"></a>
+### E. `colonNotation()` <a id="colonNotation"></a>
 Ensures response is in colon notation format.
 
 <br>
 
-### F. different(mixed $data) <a id="different"></a>
+### F. `different()` <a id="different"></a>
 Enforce rule where response and $match parameter needs to be different.
 
 Parameter:
@@ -231,27 +231,27 @@ $response3 = Controller::prompt($message, $this->question(), ["different:$respon
 
 <br>
 
-### G. dotNotation() <a id="dotNotation"></a>
+### G. `dotNotation()` <a id="dotNotation"></a>
 Ensures response is in dot notation format.
 
 <br>
 
-### H. email() <a id="email"></a>
+### H. `email()` <a id="email"></a>
 Ensures input is a valid E-mail address.
 
 <br>
 
-### I. ip() <a id="ip"></a>
+### I. `ip()` <a id="ip"></a>
 Enforce rule where input must be a valid IP address.
 
 <br>
 
-### J. integer() <a id="integer"></a>
+### J. `integer()` <a id="integer"></a>
 Enforce rule where input must be an integer.
 
 <br>
 
-### K. isPortUsed(array $attributes) <a id="ip"></a>
+### K. `isPortUsed()` <a id="ip"></a>
 Checks if a port on a particular host is in use.  Assists in verifying if a port is available for a serve command.  If the port is already in use an error message is presented to the user.
 
 Parameter:
@@ -268,7 +268,7 @@ $question->isPortUsed([$host, $timeout])->ask($message);
 
 <br>
 
-### L. list(array $attributes) <a id="list"></a>
+### L. `list()` <a id="list"></a>
 Ensure user inputs valid comma separated list of values.  The user must provide the following in the $attributes parameter:
 1) Class containing full namespaced path
 2) Name of function that returns an array of strings or a comma separated array of strings.
@@ -303,12 +303,12 @@ Notifications::argOptionValidate(
 
 <br>
 
-### M. lower() <a id="lower"></a>
+### M. `lower()` <a id="lower"></a>
 Enforces rule when input must contain at least one lower case character.
 
 <br>
 
-### N. match(mixed $match) <a id="match"></a>
+### N. `match()` <a id="match"></a>
 Enforce rule where response and $match parameter needs to match.
 
 Parameter:
@@ -330,7 +330,7 @@ $response3 = Controller::prompt($message, $this->question(), ["match:$response1"
 
 <br>
 
-### O. max(int\|array $maxRule) <a id="max"></a>
+### O. `max()` <a id="max"></a>
 Ensures input meets requirements for maximum allowable length.
 
 Parameter:
@@ -347,7 +347,7 @@ $response1 = $question->max(50)->ask($message);
 
 <br>
 
-### P. min(int\|array $maxRule) <a id="min"></a>
+### P. `min()` <a id="min"></a>
 Ensures input meets requirements for minimum allowable length.
 
 Parameter:
@@ -364,60 +364,60 @@ $response1 = $question->min(5)->ask($message);
 
 <br>
 
-### Q. negative() <a id="negative"></a>
+### Q. `negative()` <a id="negative"></a>
 Enforces rule when input must be a negative number.
 
 <br>
 
-### R. noSpecialChars() <a id="noSpecialChars"></a>
+### R. `noSpecialChars()` <a id="noSpecialChars"></a>
 Enforces rule when input must contain no special characters.
 
 <br>
 
-### S. notReservedKeyword() <a id="notReservedKeyword"></a>
+### S. `notReservedKeyword()` <a id="notReservedKeyword"></a>
 Enforce rule when reserved keywords should be avoided.
 
 <br>
 
-### T. number() <a id="number"></a>
+### T. `number()` <a id="number"></a>
 Enforces rule when input must contain at least one numeric character.
 
 <br>
 
-### U. numeric() <a id="numeric"></a>
+### U. `numeric()` <a id="numeric"></a>
 Enforce rule where input must contain only numeric characters.
 
 <br>
 
-### V. required() <a id="required"></a>
+### V. `required()` <a id="required"></a>
 Ensures required input is entered.
 
 <br>
 
-### W. positive() <a id="positive"></a>
+### W. `positive()` <a id="positive"></a>
 Enforces rule when input must a positive number.
 
 <br>
 
-### X. queue() <a id="queue"></a>
+### X. `queue()` <a id="queue"></a>
 Validates if queue exists in database or redis.
 
 <br>
 
-### Y. special() <a id="special"></a>
+### Y. `special()` <a id="special"></a>
 Enforces rule when input must contain at least one special character.
 
 <br>
 
-### Z. testFilterNotation() <a id="testFilterNotation"></a>
+### Z. `testFilterNotation()` <a id="testFilterNotation"></a>
 Ensures response is in colon notation format.
 
 <br>
 
-### A1. upper() <a id="upper"></a>
+### A1. `upper()` <a id="upper"></a>
 Enforces rule when input must contain at least one lower case character.
 
 <br>
 
-### B1. url() <a id="url"></a>
+### B1. `url()` <a id="url"></a>
 Enforce rule where input must be a valid URL.
