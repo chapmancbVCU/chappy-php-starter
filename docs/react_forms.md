@@ -104,7 +104,7 @@ Prop names for each component is described for the corresponding sections below.
 
 ## 3. Buttons <a id="buttons"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
-**`Button()`**
+**`Button = ({})`**
 
 Returns Button component with text set.  Supports ability to have functions for event handlers
 
@@ -122,7 +122,7 @@ Example:
 
 <br>
 
-**`ButtonBlock()`**
+**`ButtonBlock = ({})`**
 
 Supports ability to create a styled button and styled surrounding div block.  Supports ability to have functions for event handlers.
 
@@ -142,7 +142,7 @@ Example:
 
 <br>
 
-**`SubmitBlock()`**
+**`SubmitBlock = ({})`**
 
 Generates a div containing an input of type submit.
 
@@ -162,7 +162,7 @@ Example:
 
 <br>
 
-**`SubmitTag()`**
+**`SubmitTag = ({})`**
 
 Create a input element of type submit.
 
@@ -184,7 +184,7 @@ Example:
 
 ## 4. Elements <a id="elements"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
-**`CheckBoxLeftLabel()`**
+**`CheckBoxLeftLabel = ({})`**
 
 Generates a div containing an input of type checkbox with the label to the left.
 
@@ -210,7 +210,7 @@ Example:
 
 <br>
 
-**`CheckBoxLeftRight()`**
+**`CheckBoxLeftRight = ({})`**
 
 Generates a div containing an input of type checkbox with the label to the right.
 
@@ -236,7 +236,7 @@ Example:
 
 <br>
 
-**`CSRFInput()`**
+**`CSRFInput = ({})`**
 
 Generates hidden component for csrf token.
 
@@ -250,7 +250,7 @@ Example:
 
 <br>
 
-**`CSRFToken()`**
+**`CSRFToken = ({})`**
 
 Returns CSRF token that is used when a form is submitted.
 
@@ -292,7 +292,7 @@ Example:
 
 <br>
 
-**`Hidden()`**
+**`Hidden = ({})`**
 
 Generates a hidden input element.
 
@@ -310,7 +310,7 @@ Example:
 
 <br>
 
-**`Input()`**
+**`Input = ({})`**
 
 Assists in the development of forms input blocks in forms.  It accepts parameters for setting attribute tags in the form section.  Not to be used for inputs of type "Submit"  For submit inputs use the submitBlock or submitTag functions.
 
@@ -337,7 +337,7 @@ Example:
 
 <br>
 
-**`Output()`**
+**`Output = ({})`**
 
 Generates an HTML output element.
 
@@ -355,7 +355,7 @@ Example:
 
 <br>
 
-**`Radio()`**
+**`Radio = ({})`**
 
 Creates an input element of type radio with an accompanying label element.  Compatible with radio button groups.
 
@@ -390,7 +390,7 @@ Example:
 
 <br>
 
-**`RichText()`**
+**`RichText = ({})`**
 
 Rich text editor field (TinyMCE) that posts HTML via a hidden input.
 
@@ -420,7 +420,7 @@ Example:
 
 <br>
 
-**`Select()`**
+**`Select = ({})`**
 
 Renders a select element with a list of options.
 
@@ -450,7 +450,7 @@ Example:
 
 <br>
 
-**`Tel()`**
+**`Tel = ({})`**
 
 Renders an HTML div element that surrounds an input of type tel.
 
@@ -475,7 +475,7 @@ Example:
 
 <br>
 
-**`TextArea()`**
+**`TextArea = ({})`**
 
 Assists in the development of textarea in forms.  It accepts parameters for setting  attribute tags in the form section.
 
