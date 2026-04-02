@@ -188,6 +188,8 @@ class NewUser extends Notification {
 }
 ```
 
+<br>
+
 **Fallbacks**
 - `toArray()` defaults to `toDatabase()`.
 - If a `to{Channel}` method is missing, that channel will receive `['message' => null]` plus any extra payload.
@@ -350,7 +352,7 @@ The `Core\Models\Notifications` model represents rows in the `notifications` tab
 
 <br>
 
-#### Common Queries. Fields <a id="common-queries"></a>
+#### Common Queries <a id="common-queries"></a>
 **Get a user’s notifications**
 ```php
 use Core\Models\Notifications;
@@ -366,6 +368,8 @@ $rows = Notifications::find([
 ]);
 ```
 
+<br>
+
 **Only unread**
 ```php
 $unread = Notifications::find([
@@ -375,6 +379,8 @@ $unread = Notifications::find([
 ]);
 ```
 
+<br>
+
 **Count unread**
 ```php
 $unreadCount = Notifications::count([
@@ -382,6 +388,8 @@ $unreadCount = Notifications::count([
     'bind'       => [Users::class, $user->id],
 ]);
 ```
+
+<br>
 
 **Marking as Read**
 
@@ -398,9 +406,11 @@ if ($note) {
 $ok = Notifications::markAsReadById($id); // true if updated, false otherwise
 ```
 
+<br>
+
 **Pruning Old Notifications**
-Use this to reclaim space and keep the table fast.
-Basic prune (all rows older than N days):
+
+Use this to reclaim space and keep the table fast.  Basic prune (all rows older than N days):
 ```php
 // Delete notifications older than 90 days (read or unread)
 $deleted = Notifications::notificationsToPrune(90);
@@ -417,7 +427,10 @@ Constraints: `$days` must be ≥ 1 (throws `InvalidArgumentException` otherwise)
 
 Indexing tip: Add indexes on `created_at` and `(notifiable_type, notifiable_id)` for best performance. If you plan to prune by “read only”, consider `(read_at, created_at)`.
 
+<br>
+
 **Working with the data JSON**
+
 The `data` column stores whatever your `Notification::toDatabase()` returned. Typical shape:
 ```php
 [
@@ -437,7 +450,10 @@ if ($note) {
 }
 ```
 
+<br>
+
 **Quick Recipes**
+
 Show last 10 unread messages for a user:
 ```php
 $rows = Notifications::find([
