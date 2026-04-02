@@ -14,7 +14,7 @@ The Helper class contains globally accessible utility functions to support user 
 
 <br>
 
-## 2. `buildMenuListItems(array $menu, string $dropdownClass = "")` <a id="menu-list"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. `buildMenuListItems()` <a id="menu-list"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Dynamically builds a Bootstrap-friendly navigation menu based on an associative array. Dropdowns, active states, and logout buttons are supported.
 
 Parameters:
@@ -36,7 +36,7 @@ Note: Automatically treats `/`, `/home/index`, and app root as equivalent to `/h
 
 <br>
 
-## 4. `getObjectProperties(object $object)` <a id="obj-properties"></a><<span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `getObjectProperties()` <a id="obj-properties"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Returns a list of accessible (non-static) properties and their values from the given object.
 
 Parameters:
