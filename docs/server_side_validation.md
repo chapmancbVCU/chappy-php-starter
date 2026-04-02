@@ -60,6 +60,7 @@ The result of submitting a form without entering required input is shown below. 
 
 ## 3. Validation Rules <a id="validation-rules"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 **Validator Method**
+
 Each model defines its own validator() method:
 
 ```php
@@ -77,6 +78,7 @@ php console make:model ${Modelname}
 <br>
 
 **Individual Rule Example**
+
 Let's use the MaxValidator for the First Name field in the Contacts model as an example:
 
 ```php
@@ -94,6 +96,7 @@ Parameters:
 <br>
 
 **Looping Through Fields**
+
 You can also group several fields together and iterate through them with a foreach loop:
 
 ```php
@@ -120,6 +123,7 @@ This method requires a second associative array that contains the instance varia
 <br>
 
 **Include Soft-Deleted Records**
+
 Some validators like `UniqueValidator` accept an optional `includeDeleted` flag:
 ```php
 $this->runValidation(new UniqueValidator($this, [
