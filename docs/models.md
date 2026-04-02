@@ -8,16 +8,16 @@
     * C. [Usage in Assign Method](#usage)
     * D. [Best Practice](#best-practice)
 3. [Description of Functions](#descriptions)
-    * A. [addErrorMessage](#add-error-messaage)
-    * B. [afterDelete](#after-delete)
-    * C. [afterSave](#after-save)
-    * D. [beforeDelete](#before-delete)
-    * E. [beforeSave](#before-save)
-    * F. [count](#count)
-    * G. [onConstruct](#on-construct)
-    * H. [runValidation](#run-validation)
-    * I. [validationPassed](#validation-passed)
-    * J. [validator](#validator)
+    * A. [addErrorMessage()](#add-error-messaage)
+    * B. [afterDelete()](#after-delete)
+    * C. [afterSave()](#after-save)
+    * D. [beforeDelete()](#before-delete)
+    * E. [beforeSave()](#before-save)
+    * F. [count()](#count)
+    * G. [onConstruct()](#on-construct)
+    * H. [runValidation()](#run-validation)
+    * I. [validationPassed()](#validation-passed)
+    * J. [validator()](#validator)
 
 <br>
 
@@ -95,7 +95,7 @@ You can also optionally define a **whitelist** to explicitly allow only specific
 
 <br>
 
-### A. 🔒 Blacklist <a id="blacklist">
+### A. Blacklist <a id="blacklist">
 Use a blacklist when you want to block sensitive fields from being set by user input (e.g., `id`, `role`, `csrf_token`).
 
 ```php
@@ -112,7 +112,7 @@ The framework will automatically ignore any fields listed in the blacklist when 
 
 <br>
 
-### B. ✅ Whitelist <a id="whitelist">
+### B. Whitelist <a id="whitelist">
 Alternatively, you can use a whitelist to only allow safe fields:
 
 ```php
@@ -127,7 +127,7 @@ This approach is often safer, as it prevents new/accidental fields from being as
 
 <br>
 
-### C. 🔁 Usage in Assign Method <a id="usage">
+### C. Usage in Assign Method <a id="usage">
 The assign method accepts the request data and a list of keys to skip or include depending on how your model is configured:
 
 ```php
@@ -138,16 +138,17 @@ You can toggle the behavior by passing the third parameter using the `WHITELIST`
 
 <br>
 
-### D. ✅ Best Practice <a id="best-practice">
+### D. Best Practice <a id="best-practice">
 Use whitelisting wherever possible, especially when working with user-submitted data from forms. It minimizes the chance of assigning unintended fields and improves overall security.
 
 <br>
 
 ## 3. Description of Functions <a id="descriptions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The following are descriptions for functions not directly related to database operations.  Database related functions can be found [here](database_queries#models)
+
 <br>
 
-### A. addErrorMessage <a id="add-error-message">
+### A. `addErrorMessage()` <a id="add-error-message">
 Generates error messages that occur during form validation.  You can also set this message whenever certain events occur.  An example is as follows:
 
 ```php
@@ -157,38 +158,45 @@ $loginModel->addErrorMessage('username', 'There is an error with your username o
 Here we set an error message associated with a username when there is a failed login attempt.  This function accepts 2 parameters:
 1. $field - The form field associated with failed form validation.
 2. $message - A message that describes to the user the cause for failed form validation.
+
 <br>
 
-### B. afterDelete <a id="after-delete">
+### B. `afterDelete()` <a id="after-delete">
 Implement procedures in your model class to perform tasks after deleting a record.
+
 <br>
 
-### C. afterSave <a id="after-save">
+### C. `afterSave()` <a id="after-save">
 Implement procedures in your model class to perform tasks after saving a record.
+
 <br>
 
-### D. beforeDelete <a id="before-delete">
+### D. `beforeDelete()` <a id="before-delete">
 Implement procedures in your model class to perform tasks before deleting a record.
+
 <br>
 
-### E. beforeSave <a id="before-save">
+### E. `beforeSave()` <a id="before-save">
 Implement procedures in your model class to perform tasks before saving a record.
+
 <br>
 
-### F. count <a id="count">
+### F. `count()` <a id="count">
 Retrieves the number of rows affected or returned by the last query.  This is a wrapper function for `DB:count()`.
 
 <br>
 
-### G. onConstruct <a id="on-construct">
+### G. `onConstruct()` <a id="on-construct">
 Runs when the object is constructed.  Place statements here that you want every time a particular model in instantiated.  A frequent use case is to set the value for the current logged in user to a variable.
+
 <br>
 
-### H. runValidation <a id="run-validation">
+### H. `runValidation()` <a id="run-validation">
 Runs a validator object and sets validates boolean and adds error message if validator fails.  Refer to the [Server Side Validation page](server_side_validation) for more details.
+
 <br>
 
-### I. validationPassed <a id="validation-passed">
+### I. `validationPassed()` <a id="validation-passed">
 Use this function to check if form validation is successful.  An example is shown below:
 
 ```php
@@ -201,7 +209,8 @@ if($newUser->validationPassed()) {
 ```
 
 When we create a new user we want to check if form validation has passed before we begin to upload their profile picture to the server.  
+
 <br>
 
-### J. validator <a id="validator">
+### J. `validator()` <a id="validator">
 Use this function to perform form validation.  More about server side validation can be found [here](server_side_validation).
