@@ -38,7 +38,7 @@ This makes your code cleaner, easier to maintain, and extensible — similar to 
 
 <br>
 
-## 3. 📂 File Locations <a id="file-locations"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. File Locations <a id="file-locations"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
 | Type      | Core Location            | App (Userland) Location           |
 | --------- | ------------------------ | --------------------------------- |
@@ -49,7 +49,7 @@ This makes your code cleaner, easier to maintain, and extensible — similar to 
 
 <br>
 
-## 4. ⚙ Bootstrapping <a id="bootstrapping"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Bootstrapping <a id="bootstrapping"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Events and listeners are booted automatically via `EventManager::boot()` in `bootstrap.php`.
 
 Config file: `config/providers.php`
@@ -66,7 +66,7 @@ Add your app’s event provider here to register custom events/listeners.
 
 <br>
 
-## 5. 🚀 Creating Events & Listeners <a id="creating"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Creating Events & Listeners <a id="creating"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 1️⃣ Make a new Event
 ```bash
 php console make:event UserPromoted
@@ -161,7 +161,7 @@ class EventServiceProvider extends ServiceProvider
 
 <br>
 
-🔄 Dispatching Events
+Dispatching Events
 
 You can dispatch an event anywhere after boot:
 ```php
@@ -179,7 +179,7 @@ This will automatically call `handle()` on every listener registered for `UserPr
 
 <br>
 
-## 6. 🧪 Example — Replacing Direct Service Calls <a id="example"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Example — Replacing Direct Service Calls <a id="example"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Instead of:
 ```php
 NotificationService::sendUserRegistrationNotification($user);
@@ -196,7 +196,7 @@ Your `SendRegistrationEmail` listener will handle sending notifications and welc
 
 <br>
 
-## 7. 🔧 Writing Core vs Userland Events <a id="types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Writing Core vs Userland Events <a id="types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - Core events/listeners live in src/core/Lib/Events and src/core/Lib/Listeners.
 - Userland events/listeners live in app/Events and app/Listeners.
 
@@ -211,7 +211,7 @@ Built End Listeners:
 
 <br>
 
-## 8. 🛠 Advanced <a id="advanced"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Advanced <a id="advanced"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Multiple Listeners
 You can register multiple listeners for the same event in `$listen`:
 ```php
@@ -236,7 +236,7 @@ public function handle(UserRegistered $event): void
 
 <br>
 
-## 9. 📦 Queued Event Listeners <a id="queued-events"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Queued Event Listeners <a id="queued-events"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Queued event listeners allow you to defer the execution of an event listener until it is processed by a queue worker, rather than executing it immediately when the event is fired.
 This is ideal for time-consuming tasks such as sending emails, processing images, or performing external API calls, which should not delay the user’s request.
 
@@ -485,7 +485,7 @@ You can run multiple workers, or run them in the background using a process mana
 
 <br>
 
-## 10. 📌 Summary <a id="summary"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. Summary <a id="summary"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - Define your events in app/Events.
 - Create listeners in app/Listeners.
 - Register them in an EventServiceProvider.
