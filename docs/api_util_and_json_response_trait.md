@@ -45,9 +45,13 @@ These utilities are intended for **same-origin** API calls (your Chappy.php app 
 #### 1. `apiGet(path, opts)`
 Runs a **GET** request.
 
+<br>
+
 **Typical Use Cases**
 - Fetching lists, detail views, search results
 - Requests that should not include a body
+
+<br>
 
 **Example**
 ```js
@@ -61,9 +65,13 @@ const weather = await apiGet('/api/weather', {
 #### 2. `apiPost(path, body, opts)`
 Runs a **POST** request and sends `body` (JSON by default).
 
+<br>
+
 **Typical Use Cases**
 - Creating records
 - Submitting forms
+
+<br>
 
 **Example**
 ```js
@@ -77,6 +85,8 @@ await apiPost('/api/favorites', { placeId: 123 }, {
 #### 3. `apiPut(path, body, opts)`
 Runs a **PUT** request and sends `body` (JSON by default).
 
+<br>
+
 **Typical Use Cases**
 - Full record updates (replace semantics)
 
@@ -85,8 +95,12 @@ Runs a **PUT** request and sends `body` (JSON by default).
 #### 4. `apiPatch(path, body, opts)`
 Runs a **Patch** request and sends `body` (JSON by default).
 
+<br>
+
 **Typical Use Cases**
 - Partial updates (change one field like `is_home`, notes, etc.)
+
+<br>
 
 **Example**
 ```js
@@ -101,14 +115,20 @@ const json = await apiPatch(`/favorites/patch/${favorite.id}`, payload);
 #### 5. `apiDelete(path, body, opts)`
 Runs a **DELETE** request.
 
+<br>
+
 **Important behavior**
 - Some APIs accept a body on DELETE, some don't.
 - This helper **only includes a body if you pass one**.
+
+<br>
 
 **Example (no body)**
 ```js
 await apiDelete(`/api/favorites/${id}`);
 ```
+
+<br>
 
 **Example (body allowed by server)**
 ```js
@@ -126,6 +146,8 @@ Key/value pair appended to the URL as a query string.
 - Supports strings, numbers, booleans
 - Arrays are allowed in the type definition, but note: `URLSearchParams(query)` does not automatically expand arrays the way some libs do. If you pass arrays, they’ll typically stringify (implementation-dependent). If you need repeated keys (e.g. `?id=1&id=2`), consider pre-building the query string or enhancing this helper
 
+<br>
+
 **Example**
 ```js
 apiGet('/api/search', { query: { q: 'cloud', page: 2 } });
@@ -138,6 +160,8 @@ Common usage:
 - CSRF token headers
 - Custom authentication headers (if applicable)
 - Content negotiation
+
+<br>
 
 **Example**
 ```js
@@ -167,6 +191,8 @@ It checks common API error shapes in order:
 4. Fallback: `err.message`
 5. Final fallback: `"Something went wrong with your request."`
 
+<br>
+
 **Example**
 ```js
 try {
@@ -184,6 +210,8 @@ Note: `apiRequest` throws an `Error` annotated with `.status` and `.data`, and d
 `apiRequest(method, path, opts)`
 
 This is the implementation that all helpers call.
+
+<br>
 
 **What it does**
 1. **Builds the URL**
@@ -240,6 +268,8 @@ A hook that runs an async function and manages state:
 { data, loading, error }
 ```
 
+<br>
+
 **Why this exists**
 React effects often need to:
 - Fetch data when inputs change
@@ -248,6 +278,8 @@ React effects often need to:
 - Cancel stale requests if the user changes inputs quickly or navigates away
 
 `useAsync` provides a consistent pattern for that.
+
+<br>
 
 **How it works**
 1. Initializes state
@@ -268,6 +300,8 @@ React effects often need to:
 5. Ignores abort errors
     - If the error is an `"AbortError"`, it is intentionally not stored in state.
 
+<br>
+
 **Example: using with your API helpers**
 ```js
 const { data, loading, error } = useAsync(
@@ -279,6 +313,8 @@ if (loading) return <Spinner />;
 if (error) return <Alert>{apiError(error)}</Alert>;
 return <Forecast data={data} />;
 ```
+
+<br>
 
 **Dependency note**
 - useAsync disables the exhaustive-deps lint rule and uses `deps` directly. That means:
@@ -312,10 +348,14 @@ This keeps your UI logic clean and keeps request behavior consistent across the 
 
 It centralizes the “API plumbing” so your API actions can stay focused on business logic.
 
+<br>
+
 **Namespace**
 ```js
 namespace Core\Lib\Http;
 ```
+
+<br>
 
 **Dependencies**
 - `Core\FormHelper` – CSRF + sanitization helpers
@@ -359,13 +399,19 @@ public function apiCsrfCheck(): bool
 
 Checks whether the incoming request includes a valid CSRF token.
 
+<br>
+
 **How it works**
 - Reads `csrf_token` from the JSON payload using `$this->get('csrf_token')`
 - Validates the token via `FormHelper::checkToken(...)`
 
+<br>
+
 **Return value**
 - `true` if token is valid
 - `false` if invalid or missing
+
+<br>
 
 **Typical usage**
 Call this at the top of any action that **mutates server state**:
@@ -382,7 +428,8 @@ Reads JSON from the request body (`php://input`), decodes it, and returns saniti
 
 This is similar in spirit to a classic `Input::get()` pattern, but specifically for JSON API requests.
 
-**Behavior**
+#### Behavior
+
 **When** `$input` **is** `null`
 
 Returns **all** JSON fields as an array after sanitization.
@@ -392,6 +439,8 @@ Returns **all** JSON fields as an array after sanitization.
 ```php
 $data = $this->get(); // entire decoded & sanitized JSON payload
 ```
+
+<br>
 
 **When** `$input` **is provided**
 
@@ -406,6 +455,8 @@ $ids = $this->get('ids'); // returns sanitized array
 ```
 
 If the field does not exist, it returns an empty string `''`.
+
+<br>
 
 **Notes and expectations**
 - This method assumes the request body is JSON.
@@ -428,10 +479,14 @@ Sends a standardized error response payload:
 }
 ```
 
+<br>
+
 **Parameters**
 - `$message` – high-level error message for the client
 - `$status` – HTTP status code (default 400)
 - `$errors` – optional structured validation errors (default `[]`)
+
+<br>
 
 **Example**
 ```php
@@ -449,6 +504,8 @@ public function jsonResponse(mixed $data, int $status = 200, array $extraHeaders
 
 Sends a JSON response with headers and status code.
 
+<br>
+
 **Default headers**
 - `Access-Control-Allow-Origin: *`
 - `Content-Type: application/json; charset=UTF-8`
@@ -456,9 +513,13 @@ Sends a JSON response with headers and status code.
 
 You can merge additional headers via $extraHeaders.
 
+<br>
+
 **Environment-based formatting**
 - In non-production environments (`APP_ENV !== production`), JSON is pretty-printed.
 - In production, responses are compact.
+
+<br>
 
 **Safe JSON encoding**
 This method uses `JSON_THROW_ON_ERROR` and catches `Throwable` so encoding failures return:
@@ -467,6 +528,8 @@ This method uses `JSON_THROW_ON_ERROR` and catches `Throwable` so encoding failu
     ```json
     { "success": false, "message": "JSON encoding error" }
     ```
+
+<br>
 
 **Example**
 ```php
@@ -491,6 +554,8 @@ It returns:
 - `Access-Control-Allow-Headers: Content-Type, X-Requested-With, X-CSRF-Token`
 - HTTP status `204 No Content`
 - then exits
+
+<br>
 
 **When to use**
 If your client sends requests that trigger preflight (common with:
@@ -518,6 +583,8 @@ Parameter:
 ### H. Recommended Response Shapes <a id="response-shapes"></a>
 To align cleanly with your React utilities (where `apiRequest()` treats `success: false` as an error), use these conventions:
 
+<br>
+
 **Success**
 ```php
 $this->jsonResponse([
@@ -527,10 +594,14 @@ $this->jsonResponse([
 ]);
 ```
 
+<br>
+
 **Validation failure**
 ```php
 $this->jsonError('Validation failed.', 422, $validatorErrors);
 ```
+
+<br>
 
 **Auth/CSRF failure**
 ```php
