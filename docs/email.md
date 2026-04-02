@@ -30,6 +30,8 @@
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The Chappy.php E-mail system is a modular, extensible implementation built on Symfony Mailer. It allows developers to send fully styled, template-driven emails with optional layouts and attachments. Emails are logged for auditing, and inline CSS rendering is supported via CssToInlineStyles.
 
+<br>
+
 ## 2. Key Components <a id="key-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
 ### A. MailerService <a id="mailer-service"></a>
@@ -197,7 +199,7 @@ This sends a templated welcome email using the default layout and style.
 ## 3. Using `sendTemplate()` in Chappy.php <a id="send-template"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `MailerService::sendTemplate()` method allows you to send HTML (and optionally plain-text) emails using reusable templates, layouts, and CSS stylesheets. This method is powerful and flexible, supporting both embedded and path-based file attachments.
 
-🧠 Basic Usage
+Basic Usage
 ```php
 $mail = new MailerService();
 $user = Users::findById(1);
@@ -429,13 +431,13 @@ $user = Users::findById(1);
 WelcomeMailer::sendTo($user); // Sends with attachments and full customization
 ```
 
-✅ When Should You Override `sendTo()`?
+When Should You Override `sendTo()`?
 You should override sendTo() when:
 - You want to embed logic unique to that mailer (e.g. attachments, path overrides)
 - You need to inject data not handled by the getData() method
 - You want to isolate one-off logic from your controller or service layer
 
-📌 Reminder: `buildAndSend()` Signature
+Reminder: `buildAndSend()` Signature
 ```php
 protected function buildAndSend(
     ?string $layout = null,
@@ -447,14 +449,15 @@ protected function buildAndSend(
 ): bool
 ```
 
-🧼 Best Practice
+Best Practice
 If your attachments or logic are conditional, wrap them cleanly in the overridden `sendTo()` to keep your mailer class readable.
+
 <br>
 
 ## 5. Attachment Management <a id="attachment-management"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The admin dashboard allows administrators to upload, preview, update, and delete email attachments. These attachments can later be used with the framework's `MailerService::sendTemplate()` functionality. This section documents the related views and controller actions.
 
-### A. 📄 Attachments Listing <a id="attachments-listing"></a>
+### A. Attachments Listing <a id="attachments-listing"></a>
 **View:** `admindashboard.attachments`
 
 This page displays a table of all uploaded attachments, including:
@@ -467,7 +470,7 @@ Add New Attachment: A button is available to navigate to the upload form:`/admin
 
 <br>
 
-### B. 📋 Add or Edit Attachment <a id="add-or-edit"></a>
+### B. Add or Edit Attachment <a id="add-or-edit"></a>
 **View:** `admindashboard.attachments_form`
 This form supports both creating and updating attachments:
 - Description (WYSIWYG via TinyMCE)
@@ -477,7 +480,7 @@ This form supports both creating and updating attachments:
 
 <br>
 
-### C. 📁 Attachment Details <a id="attachment-details"></a>
+### C. Attachment Details <a id="attachment-details"></a>
 **View:** `admindashboard.attachment_details`
 
 This view shows metadata and a preview link:
@@ -489,7 +492,7 @@ This view shows metadata and a preview link:
 
 <br>
 
-### D. 🧪 Usage with MailerService <a id="usage-with-mailerservice"></a>
+### D. Usage with MailerService <a id="usage-with-mailerservice"></a>
 Once uploaded, attachments can be used in `MailerService::sendTemplate()`:
 ```php
 $mailer->sendTemplate(
@@ -511,7 +514,7 @@ $mailer->sendTemplate(
 
 <br>
 
-### E. ✅ Additional Notes <a id="additional-notes"></a>
+### E. Additional Notes <a id="additional-notes"></a>
 - Uploaded files are stored and accessible only within admin.
 - Attachments are associated with users via the `user_id` column.
 - File metadata such as MIME type and size are captured and stored during upload.
