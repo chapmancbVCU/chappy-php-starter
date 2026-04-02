@@ -470,6 +470,8 @@ If your attachments or logic are conditional, wrap them cleanly in the overridde
 ## 5. Attachment Management <a id="attachment-management"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The admin dashboard allows administrators to upload, preview, update, and delete email attachments. These attachments can later be used with the framework's `MailerService::sendTemplate()` functionality. This section documents the related views and controller actions.
 
+<br>
+
 ### A. Attachments Listing <a id="attachments-listing"></a>
 **View:** `admindashboard.attachments`
 
