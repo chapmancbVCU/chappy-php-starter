@@ -52,6 +52,8 @@ export default function Index({ user }) {
 ## 3. View Commands <a id="view-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 We support several commands for managing views and layouts with React.
 
+<br>
+
 **Layouts**
 
 The default layout supports React integration.  To create a layout run:
@@ -59,12 +61,16 @@ The default layout supports React integration.  To create a layout run:
 php console make:layout <layout_name>
 ```
 
+<br>
+
 **Views**
 
 Generate a React view under `resources/js/pages/<area>/<view_name>.jsx`:
 ```sh
 php console react:page <area>.<view_name>
 ```
+
+<br>
 
 **Generating Built-in Views**
 
