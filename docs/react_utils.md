@@ -31,7 +31,7 @@ New hooks are created at `resources\js\hooks\`.  All hooks start with use but yo
 
 <br>
 
-## 2. asset <a id="asset"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. `asset()` <a id="asset"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Used to retrieve assets from the project or S3 bucket.  Unless the `local` parameter is set to `true` it will use S3 bucket specified in `.env` file.
 
 Parameters:
@@ -57,7 +57,7 @@ Uses `S3_BUCKET` as host.  By default this variable is set to `APP_DOMAIN`.
 
 <br>
 
-## 3. documentTitle <a id="document-title"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. `documentTitle()` <a id="document-title"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Sets the document title for current page.
 
 Setup:
@@ -80,7 +80,7 @@ function Edit({user, errors, profileImages}) {
 
 <br>
 
-## 4. route <a id="route"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `route()` <a id="route"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Redirects a user to a view using dot notation.
 
 Parameters:
