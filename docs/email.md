@@ -80,11 +80,14 @@ class WelcomeMailer extends AbstractMailer {
 }
 ```
 
+<br>
+
 **Built In Mailers**
 - AccountDeactivatedMailer - Notifies user when account is deactivated.  More info in UserService section.
 - PasswordResetMailer - Notifies user when password needs to be reset
 - UpdatePasswordMailer - Notifies user when password is updated
 - WelcomeMailer - Sent when user creates an account
+ <br>
 
 **Example Usage**
 ```php
@@ -114,6 +117,8 @@ You can find the new template at `resources/views/emails/`
 <p>Thank you for signing up.</p>
 ```
 
+<br>
+
 **Making a layout**
 ```sh
 php console make:email:layout
@@ -130,12 +135,16 @@ php console make:email:layout
 
 You can find the layout at `resources/views/emails/layouts/`
 
+<br>
+
 **Adding Styles**
 ```sh
 php console make:styles
 ```
 
 Your styles can be found at `resources/css/`
+
+<br>
 
 **Optional** 
 .txt files with the same name as the template can be used for plain text versions.
