@@ -21,7 +21,7 @@ Use queues to defer time-consuming work like emails, notifications, and data pro
 
 <br>
 
-## 2. 🚀 Features <a id="features"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Features <a id="features"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
 - Queueable jobs with delay and retry support
 - Database or Redis drivers
@@ -32,7 +32,7 @@ Use queues to defer time-consuming work like emails, notifications, and data pro
 
 <br>
 
-## 3. ✅ Real-World Example: Queued Welcome Email <a id="example"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Real-World Example: Queued Welcome Email <a id="example"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 You can enqueue a job inside a service layer like this:
 ```php
 use App\Jobs\SendWelcomeEmail;
@@ -75,7 +75,7 @@ public function registerAction(): void {
 
 <br>
 
-## 4. 🛠 Creating a Job Class <a id="job-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Creating a Job Class <a id="job-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generate a job using:
 ```bash
 php console make:job SendWelcomeEmail
@@ -125,7 +125,7 @@ class SendWelcomeEmail implements QueueableJobInterface {
 
 <br>
 
-## 5. ⚙️ Configuration <a id="configuration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Configuration <a id="configuration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Edit your queue configuration in the `.env` file:
 ```rust
 QUEUE_DRIVER='database'     # or 'redis'
@@ -136,7 +136,7 @@ REDIS_PORT='6379'
 
 <br>
 
-## 6. 🧃 Starting the Worker <a id="worker"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Starting the Worker <a id="worker"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Start a worker process to handle jobs:
 ```bash
 php console queue:worker
@@ -157,7 +157,7 @@ php console queue:worker --queue=default --max=50
 
 <br>
 
-## 7. 🧩 Job Lifecycle <a id="lifecycle"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Job Lifecycle <a id="lifecycle"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 * A. Job is enqueued using `push()` or `dispatch()`
 * B. Worker pops and reserves the next eligible job
 * C. Calls `handle()` on the job instance
@@ -166,7 +166,7 @@ php console queue:worker --queue=default --max=50
 
 <br>
 
-## 8. 🛑 Failed Jobs <a id="failed-jobs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Failed Jobs <a id="failed-jobs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 If a job fails:
 - It is retried based on `backoff()` and `maxAttempts()`
 - After final failure, it’s marked with `failed_at`
@@ -174,7 +174,7 @@ If a job fails:
 
 <br>
 
-## 9. 📋 Queue Table Migration <a id="migration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Queue Table Migration <a id="migration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 To generate the queue table migration:
 ```bash
 php console queue:migration
@@ -189,7 +189,7 @@ Columns include:
 
 <br>
 
-## 10. ✨ Bonus: Dispatch Helper (Optional) <a id="bonus"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. Bonus: Dispatch Helper (Optional) <a id="bonus"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 While you can use `push()` like this:
 ```php
 $queue->push('emails', $job->toPayload());
