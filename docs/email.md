@@ -311,6 +311,8 @@ $mail->sendTemplate(
 );
 ```
 
+<br>
+
 #### 3. Text Template with Attachments
 Combines `.txt` content fallback and multiple files:
 ```php
