@@ -325,6 +325,8 @@ $mail->sendTemplate(
 );
 ```
 
+<br>
+
 ### C. Overriding Default Paths <a id="overriding-defaults"></a>
 To use custom layout, template, or styles from your own application:
 
