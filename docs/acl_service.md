@@ -12,12 +12,16 @@ The `ACLService` class provides a collection of static methods for managing Acce
 
 This service helps enforce permission rules across the application while maintaining clean separation from controller logic.
 
+<br>
+
 **Setup**
 ```php
 use Core\Services\AclService;
 ```
 
-✅ **Common Use Cases**
+<br>
+
+**Common Use Cases**
 - Assign or remove ACLs from users
 - Determine which ACLs are in use
 - Prevent deletion of ACLs assigned to users
@@ -25,7 +29,7 @@ use Core\Services\AclService;
 
 <br>
 
-## 2. ⚙️ Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `aclsForUser(Users $user): array`
 
 Returns the decoded ACL array for a given user.
@@ -136,7 +140,7 @@ $unused = ACLService::unUsedACLs();
 
 <br>
 
-## 3. 🧠 Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - User ACLs are stored as JSON in the acl column of the users table.
 - The service ensures consistent encoding and decoding of ACL data.
 - Methods like checkACL() and deleteIfAllowed() are designed for use in admin-facing ACL management interfaces.
