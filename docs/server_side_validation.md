@@ -167,6 +167,8 @@ class TestValidator extends CustomValidator {
 - Must return true or false
 - Will be automatically executed by your model’s save() method
 
+<br>
+
 **CustomValidator Base Class Highlights**
 - Ensures `field` and `message` are provided
 - Supports `rule` and `includeDeleted` as optional parameters
@@ -177,6 +179,8 @@ class TestValidator extends CustomValidator {
 
 ## 5. Composite Field Validation <a id="composite-field-validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The Chappy.php framework supports composite validation rules — where more than one field is used to determine uniqueness. This is useful for soft-deleted records or user-specific data.
+
+<br>
 
 **Example:**
 ```php
@@ -193,6 +197,8 @@ public function validator(): void {
     ]));
 }
 ```
+
+<br>
 
 **How it works:**
 - The Unique validator detects when field is an array.
