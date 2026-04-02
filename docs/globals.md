@@ -156,7 +156,7 @@ csrf()
 <br>
 
 ### D. `errorBag()`
-**Description:** Displays a list of form validation errors.
+**Description:** Displays a list of form validation errors.  A wrapper for the `FormHelper::displayErrors()` function.
 ```php
 errorBag($errors);
 ```
