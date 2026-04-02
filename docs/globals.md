@@ -122,7 +122,12 @@ vite('resources/js/app.js');
 These helpers are wrappers around the Core\FormHelper class and are intended to simplify form building and validation handling in your views.
 
 ### A. `button()`
-**Description: Supports ability to create a styled button.**
+**Description:** Supports ability to create a styled button.
+
+<br>
+
+### B. `buttonBlock()`
+**Description:** Supports ability to create a styled button and styled surrounding div block.
  
 <br>
 
