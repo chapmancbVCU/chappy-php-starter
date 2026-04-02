@@ -194,7 +194,7 @@ This sends a templated welcome email using the default layout and style.
 
 <br>
 
-## 3. 📬 Using `sendTemplate()` in Chappy.php <a id="send-template"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Using `sendTemplate()` in Chappy.php <a id="send-template"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `MailerService::sendTemplate()` method allows you to send HTML (and optionally plain-text) emails using reusable templates, layouts, and CSS stylesheets. This method is powerful and flexible, supporting both embedded and path-based file attachments.
 
 🧠 Basic Usage
@@ -314,7 +314,7 @@ $mail->sendTemplate(
 );
 ```
 
-### C. 🗂 Overriding Default Paths <a id="overriding-defaults"></a>
+### C. Overriding Default Paths <a id="overriding-defaults"></a>
 To use custom layout, template, or styles from your own application:
 
 | Parameter       | Default Constant                         | Custom Example                    |
@@ -339,7 +339,9 @@ $mail->sendTemplate(
 );
 ```
 
-🧭 Using Default Application Paths
+<br>
+
+**Using Default Application Paths**
 
 If you want to use your own customized email templates, layouts, and styles located in:
 - `resources/views/emails/layouts/`
@@ -371,7 +373,7 @@ These values are automatically resolved using:
 
 <br>
 
-## 4. sendTo() with Advanced Parameters <a id="send-to"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `sendTo()` with Advanced Parameters <a id="send-to"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 By default, `AbstractMailer::sendTo()` uses the base `send()` method, which calls `buildAndSend()` with default parameters. However, if your custom mailer requires attachments or custom layout/template/style paths, you can override `sendTo()` directly.
 
 🛠 Example: Overriding `sendTo()` to Add Attachments
@@ -419,7 +421,9 @@ class WelcomeMailer extends AbstractMailer
 }
 ```
 
-🔍 Usage in Controller or Console
+<br>
+
+**Usage in Controller or Console**
 ```php
 $user = Users::findById(1);
 WelcomeMailer::sendTo($user); // Sends with attachments and full customization
