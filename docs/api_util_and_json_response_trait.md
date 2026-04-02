@@ -558,6 +558,7 @@ It returns:
 <br>
 
 **When to use**
+
 If your client sends requests that trigger preflight (common with:
 - `Content-Type: application/json`
 - custom headers like `X-CSRF-Token`
