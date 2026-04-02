@@ -121,6 +121,11 @@ vite('resources/js/app.js');
 ## 3. Forms <a id="forms"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 These helpers are wrappers around the Core\FormHelper class and are intended to simplify form building and validation handling in your views.
 
+### A. `button()`
+**Description: Supports ability to create a styled button.**
+ 
+<br>
+
 ### A. `checkboxLabelLeft()`
 **Description:** Generates a checkbox input with the label placed to the left.
 ```php
