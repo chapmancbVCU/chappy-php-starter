@@ -11,25 +11,20 @@ This is the standard structure of a Chappy.php project. It follows a clean and m
 
 ```bash
 .
-├── LICENSE
-├── README.md
 ├── app
-│   ├── Controllers
-│   ├── CustomValidators
-│   ├── Lib
-│   ├── Models
 │   ├── acl.json
 │   ├── admin_menu_acl.json
+│   ├── Controllers
 │   ├── menu_acl.json
+│   ├── Models
 │   └── user_menu.json
+├── cache
+│   └── phpunit
 ├── composer.json
+├── composer_local.txt
 ├── composer.lock
+├── composer_remote.txt
 ├── config
-│   ├── config.php
-│   ├── console.php
-│   ├── database.php
-│   ├── password.php
-│   └── session.php
 ├── console
 ├── database
 │   ├── database.sqlite
@@ -37,18 +32,27 @@ This is the standard structure of a Chappy.php project. It follows a clean and m
 │   └── seeders
 ├── docs
 ├── index.php
+├── jsconfig.json
+├── LICENSE
+├── :memory:
+├── node_modules
 ├── package.json
 ├── package-lock.json
+├── phpunit.xml
 ├── public
-├── resources
+├── README.md
+── resources
 │   ├── css
 │   ├── js
 │   └── views
 ├── server.php
+├── setup.js
 ├── storage
 │   ├── app
 │   └── logs
 ├── tests
+│   ├── Feature
+│   └── Unit
 └── vite.config.js
 ```
 
