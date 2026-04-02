@@ -387,7 +387,7 @@ These values are automatically resolved using:
 ## 4. `sendTo()` with Advanced Parameters <a id="send-to"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 By default, `AbstractMailer::sendTo()` uses the base `send()` method, which calls `buildAndSend()` with default parameters. However, if your custom mailer requires attachments or custom layout/template/style paths, you can override `sendTo()` directly.
 
-🛠 Example: Overriding `sendTo()` to Add Attachments
+Example: Overriding `sendTo()` to Add Attachments
 ```php
 use App\Models\Users;
 use Core\Models\EmailAttachments;
