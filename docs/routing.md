@@ -65,12 +65,14 @@ Chappy.php uses dynamic routing to keep your application lightweight, fast, and 
 <br>
 
 ## 6. Pros and Cons <a id="pros-cons"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Pros
+**Pros**
 - No route files to maintain
 - Easy to follow MVC conventions
 - Clear structure: URL = Controller → Method
 
-Considerations
+<br>
+
+**Considerations**
 - You can’t assign route names or middleware per route (yet)
 - Custom route aliases or regex pattern matching aren't supported out of the box
 - You should avoid duplicate method names across controllers that could cause confusion
