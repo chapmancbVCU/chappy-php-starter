@@ -742,20 +742,76 @@ Parameters:
 - `string $table` - The name or the table we want to perform our query against.
 - `array $params` - An associative array that contains key value pair  parameters for our query such as conditions, bind, limit, offset,  join, order, and sort.  The default value is an empty array.
 - `bool|string` - $class A default value of false, it contains the name of the class we will build based on the name of a model.
+
+Returns:
 - `array|object|bool` - An associative array of results returned from an SQL  query.
 
 <br>
 
 ### F. `count()` and `lastID()` <a id="count-lastid"></a>
-- `count()` — Number of rows affected or returned by the last query
-- `lastID()` — Returns the ID from the last INSERT operation
+**`count()`**
+Number of rows affected or returned by the last query.
+
+Returns:
+- `int`- The number of results found in an SQL query.
+
+<br>
+
+**`lastID()`**
+The primary key ID of the last insert operation.
+
+Returns:
+-`int|string|null` - The primary key ID from the last insert operation.
 
 <br>
 
 ### G. `find()`, `findFirst()`, and `findTotal()` <a id="find-methods"></a>
-- `find()` — Runs a flexible SELECT query
-- `findFirst()` — Same as `find()`, but returns only the first result
-- `findTotal()` — Returns a count for the specified table and conditions
+**`find()`**
+Performs find operation against the database.  The user can use parameters such as conditions, bind, order, limit, and sort.
+
+Parameters:
+- `string $table` - The name or the table we want to perform our query against
+- `array $params` - An associative array that contains key value pair parameters for our query such as conditions, bind, limit, offset, join, order, and sort.  The default value is an empty array.
+- `bool|string $class` - A default value of false, it contains the name of the class we will build based on the name of a model.
+
+Returns:
+- `bool|array` -  An array of object returned from an SQL query.
+
+Example:
+```php
+$contacts = $db->find('users', [
+    'conditions' => ["email = ?"],
+    'bind' => ['chad.chapman@email.com'],
+    'order' => "username",
+    'limit' => 5,
+    'sort' => 'DESC'
+]);
+```
+
+<br>
+
+**`findFirst()`**
+Returns only the first row of the last query.
+
+Parameters:
+- `string $table` - The name or the table we want to perform our query against
+- `array $params` - An associative array that contains key value pair parameters for our query such as conditions, bind, limit, offset, join, order, and sort.  The default value is an empty array.
+- `bool|string $class` - A default value of false, it contains the name of the class we will build based on the name of a model.
+
+Returns:
+- `bool|array` -  An array of object returned from an SQL query.
+
+<br>
+
+**`findTotal()`**
+Returns number of records in a table.
+
+Parameters:
+- `string $table` - The name or the table we want to perform our query against
+- `array $params` - An associative array that contains key value pair parameters for our query such as conditions, bind, limit, offset, join, order, and sort.  The default value is an empty array.
+
+Returns:
+- `int` - The number of records in a table.
 
 <br>
 
