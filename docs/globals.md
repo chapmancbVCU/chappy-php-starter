@@ -131,7 +131,7 @@ These helpers are wrappers around the Core\FormHelper class and are intended to 
  
 <br>
 
-### A. `checkboxLabelLeft()`
+### C. `checkboxLabelLeft()`
 **Description:** Generates a checkbox input with the label placed to the left.
 ```php
 checkboxLabelLeft($label, $name, $value = '', $checked = false, $inputAttrs = [], $divAttrs = [], $errors = []);
@@ -139,7 +139,7 @@ checkboxLabelLeft($label, $name, $value = '', $checked = false, $inputAttrs = []
 
 <br>
 
-### B. `checkboxLabelRight()`
+### D. `checkboxLabelRight()`
 **Description:** Generates a checkbox input with the label placed to the right.
 ```php
 checkboxLabelRight($label, $name, $value = '', $checked = false, $inputAttrs = [], $divAttrs = [], $errors = []);
@@ -147,7 +147,7 @@ checkboxLabelRight($label, $name, $value = '', $checked = false, $inputAttrs = [
 
 <br>
 
-### C. `csrf()`
+### E. `csrf()`
 **Description:** Renders a CSRF hidden input field.
 ```php
 csrf()
@@ -155,7 +155,7 @@ csrf()
 
 <br>
 
-### D. `errorBag()`
+### F. `errorBag()`
 **Description:** Displays a list of form validation errors.  A wrapper for the `FormHelper::displayErrors()` function.
 ```php
 errorBag($errors);
@@ -163,7 +163,7 @@ errorBag($errors);
 
 <br>
 
-### E. `email()`
+### G. `email()`
 **Description:** Renders a labeled input of type `email`.
 ```php
 email($label, $name, $value = '', $inputAttrs = [], $divAttrs = [], $errors = []);
@@ -171,7 +171,7 @@ email($label, $name, $value = '', $inputAttrs = [], $divAttrs = [], $errors = []
 
 <br>
 
-### F. `hidden()`
+### H. `hidden()`
 **Description:** Renders an input of type `hidden`.
 ```php
 hidden($name, $value);
@@ -179,13 +179,13 @@ hidden($name, $value);
 
 <br>
 
-### G. `input()`
+### I. `input()`
 **Description:** Generic input block for types other than submit. Use for `text`, `password`, `number`, etc.
 ```php
 input($type, $label, $name, $value = '', $inputAttrs = [], $divAttrs = [], $errors = []);
 ```
 
-### H. `output()`
+### J. `output()`
 **Description:** Renders an `<output>` HTML element.
 ```php
 output($name, $for);
@@ -193,7 +193,7 @@ output($name, $for);
 
 <br>
 
-### I. `radio()`
+### K. `radio()`
 **Description:** Renders an input of type `radio` with label.
 ```php
 radio($label, $id, $name, $value, $checked = false, $inputAttrs = []);
@@ -201,7 +201,7 @@ radio($label, $id, $name, $value, $checked = false, $inputAttrs = []);
 
 <br>
 
-### J. `select()`
+### L. `select()`
 **Description:** Renders a `<select>` dropdown with options.
 ```php
 select($label, $name, $value, $options, $inputAttrs = [], $divAttrs = [], $errors = []);
@@ -209,7 +209,7 @@ select($label, $name, $value, $options, $inputAttrs = [], $divAttrs = [], $error
 
 <br>
 
-### K. `submitBlock()`
+### M. `submitBlock()`
 **Description:** Renders a submit button inside a surrounding div.
 ```php
 submitBlock($buttonText, $inputAttrs = [], $divAttrs = []);
@@ -217,7 +217,7 @@ submitBlock($buttonText, $inputAttrs = [], $divAttrs = []);
 
 <br>
 
-### L. `submit()`
+### N. `submit()`
 **Description:** Renders a standalone submit button.
 ```php
 submit($buttonText, $inputAttrs = []);
@@ -225,13 +225,13 @@ submit($buttonText, $inputAttrs = []);
 
 <br>
 
-### M. `tel()`
+### O. `tel()`
 **Description:** Renders a labeled input of type `tel` (telephone).
 ```php
 tel($label, $name, $value = '', $inputAttrs = [], $divAttrs = [], $errors = []);
 ```
 
-### N. `textarea()`
+### P. `textarea()`
 **Description:** Renders a `<textarea>` block with label.
 ```php
 textarea($label, $name, $value = '', $inputAttrs = [], $divAttrs = [], $errors = []);
