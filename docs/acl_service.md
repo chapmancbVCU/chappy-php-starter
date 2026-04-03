@@ -185,8 +185,10 @@ ACLService::saveACL($acl, $request);
 <br>
 
 ### K. `usedACLs()`
+Returns array of used ACLs.
 
-Returns all ACL records currently assigned to at least one user.
+Returns:
+- `array $usedACLs` - An array of used ACLs.
 
 ```php
 $used = ACLService::usedACLs();
