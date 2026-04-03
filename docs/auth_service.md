@@ -56,7 +56,7 @@ $user = AuthService::currentUser();
 
 <br>
 
-`hashPassword(string $password): string`
+### C. `hashPassword()`
 Hashes a plain text password using PHP's `password_hash()` with the default algorithm.
 
 Parameter:
