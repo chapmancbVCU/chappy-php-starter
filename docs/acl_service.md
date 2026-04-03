@@ -152,7 +152,7 @@ ACLService::updateUserACLs($user, $existing, $all, $posted);
 
 <br>
 
-### I. `setAclAtRegistration(): string`
+### I. `setAclAtRegistration()`
 
 Returns the default ACL value for a new user:
 - "Admin" if no users exist yet
@@ -167,7 +167,7 @@ ACLService::saveACL($acl, $request);
 
 <br>
 
-### J. `saveACL(ACL $acl, Input $request): bool`
+### J. `saveACL(ACL $acl, Input $request)`
 
 Assigns data to an ACL and saves it, using a blacklist if the ACL already exists.
 ```php
@@ -176,9 +176,17 @@ ACLService::saveACL($acl, $request);
 
 <br>
 
-### K. `usedACLs(): array`
+### K. `usedACLs()`
 
 Returns all ACL records currently assigned to at least one user.
+
+Parameters:
+- `ACL $acl` - The ACL to be Saves
+- `Input $request` - The request.
+
+Returns:
+- `bool` - True if update is successful, otherwise false.
+
 ```php
 $used = ACLService::usedACLs();
 ```
