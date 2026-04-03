@@ -71,9 +71,18 @@ $hash = AuthService::hashPassword($rawPassword);
 
 <br>
 
-`login(Input $request, Login $loginModel, string $username, bool $mailer = false): Login`
-
+### D. `login()`
 Attempts to log a user in. If successful, resets login attempts and creates a session. Otherwise, tracks failed attempts and optionally triggers an email notification.
+
+Parameters:
+- `Input $request` - The request for the login.
+- `Login $loginModel` - The login model.
+- `string $username` - The user to be logged in.
+- `bool $mailer` - Sends account deactivated E-mail when user surpasses max number of login attempts before account is locked.
+
+Returns:
+- `Login` - Model that handles logins.
+
 ```php
 $loginModel = AuthService::login($request, new Login(), 'johndoe', true);
 ```
