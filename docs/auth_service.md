@@ -11,12 +11,16 @@
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `AuthService` class manages all user authentication processes, including login, logout, session handling, password resets, and "remember me" cookie-based login. It integrates directly with your session, cookie, and logging subsystems.
 
+<br>
+
 **Setup**
 ```php
 use Core\Services\AuthService;
 ```
 
-✅ **Common Use Cases**
+<br>
+
+**Common Use Cases**
 - Log users in or out
 - Manage login attempts and account locking
 - Handle "remember me" sessions
@@ -25,7 +29,7 @@ use Core\Services\AuthService;
 
 <br>
 
-## 2. ⚙️ Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `confirm(Input $request): string`
 
 Returns the value of the `confirm` field from the request, typically used for password confirmation.
@@ -126,7 +130,7 @@ $upload = AuthService::profileImageUpload($user);
 
 <br>
 
-## 3. 📦 Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - `Users` – User model used for authentication and lookup.
 - `Login` – Model used to store validation and error states during login.
 - `UserSessions` – Tracks persistent sessions for "remember me" functionality.
@@ -135,7 +139,7 @@ $upload = AuthService::profileImageUpload($user);
 
 <br>
 
-## 4. 🧠 Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - Session and cookie names are retrieved from environment variables via `Env::get(...)`.
 - Login attempt limits and remember-me expiration are also configurable via `.env`:
     - `MAX_LOGIN_ATTEMPTS`
