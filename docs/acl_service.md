@@ -45,9 +45,15 @@ $acls = ACLService::aclsForUser($user);
 ```
 <br>
 
-### B. `aclToArray(mixed $acls): array`
+### B. `aclToArray()`
+Ensures that we are always dealing with an array of ACLs.
 
-Normalizes any input into a stringified array of ACLs.
+Parameter:
+- `mixed $acls` - An array or any type that we want to add to an array.
+
+Returns:
+- `array` - An array of acls.
+
 ```php
 $normalized = ACLService::aclToArray(['Admin', 'Manager']);
 ```
