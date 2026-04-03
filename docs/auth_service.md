@@ -30,10 +30,14 @@ use Core\Services\AuthService;
 <br>
 
 ## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-`confirm(Input $request): string`
-
+### A. `confirm()`
 Returns the value of the `confirm` field from the request, typically used for password confirmation.
 
+Parameter:
+- `Input $request` - The request.
+
+Returns:
+- `string` - The value of the confirm field.
 ```php
 $confirm = AuthService::confirm($request);
 ```
