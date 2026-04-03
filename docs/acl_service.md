@@ -167,7 +167,7 @@ ACLService::saveACL($acl, $request);
 
 <br>
 
-### J. `saveACL(ACL $acl, Input $request)`
+### J. `saveACL()`
 
 Assigns data to an ACL and saves it, using a blacklist if the ACL already exists.
 ```php
