@@ -18,7 +18,7 @@ This service ensures file integrity and security, while integrating with your fr
 use Core\Services\AttachmentService;
 ```
 
-✅ **Common Use Cases**
+**Common Use Cases**
 - Upload and save attachment files
 - Link uploaded files to email records
 - Display previews inline in the browser
@@ -26,7 +26,7 @@ use Core\Services\AttachmentService;
 
 <br>
 
-## 2. ⚙️ Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 ### A. `attachmentUpload()`
 Generates upload object for attachments.
 
@@ -118,8 +118,8 @@ This method should be used in both attachment create and update flows.
 
 <br>
 
-## 3. 📦 Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-📦 Related Components
+## 3. Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
 - `EmailAttachments` – The model representing stored attachment records.
 - `Uploads` – Upload handler responsible for file processing.
 - `Attachments` – Utility class for supporting processing of attachments.
@@ -127,7 +127,7 @@ This method should be used in both attachment create and update flows.
 
 <br>
 
-## 4. 🧠 Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - Uploaded attachments are stored in the path defined by `EmailAttachments::$_uploadPath`.
 - The service assumes the file input name is `attachment_name` and that the file is uploaded via `$_FILES`.
 - The `processAttachment()` method is safe to call for both new and existing records; it checks if uploads are needed.
