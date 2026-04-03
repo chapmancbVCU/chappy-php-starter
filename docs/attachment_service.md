@@ -27,11 +27,16 @@ use Core\Services\AttachmentService;
 <br>
 
 ## 2. ⚙️ Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-`attachmentUpload(EmailAttachments $attachment): ?Uploads`
+### A. `attachmentUpload()`
 
-Generates an upload handler for a new attachment and processes the file upload.
+Generates upload object for attachments.
 
-Returns `null` if the attachment already exists.
+Parameter:
+- `EmailAttachments $attachment` - The attachment to upload.
+
+Returns:
+- Uploads|null The upload object if the attachment is new, otherwise we return null.
+
 ```php
 $upload = AttachmentService::attachmentUpload($attachment);
 ```
