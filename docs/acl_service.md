@@ -136,9 +136,16 @@ Parameters:
 
 <br>
 
-### H. `updateUserACLs(Users $user, array $userAcls, array $acls, ?array $postAcls = null): void`
+### H. `updateUserACLs()`
 
 Central method for updating a user's ACLs. Compares current ACLs with selected ones and saves the result.
+
+Parameters:
+- `Users $user` - The user whose ACLs we want to update.
+- `array $userAcls` - Existing user's ACLs.
+- `array $acls` - All available ACLs.
+- `array|null $postAcls` - ACLs from post that are selected.
+
 ```php
 ACLService::updateUserACLs($user, $existing, $all, $posted);
 ```
