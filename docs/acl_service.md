@@ -197,8 +197,10 @@ $used = ACLService::usedACLs();
 <br>
 
 ### L. `unUsedACLs(): array`
+Returns array of unused ACLs.
 
-Returns all ACL records not assigned to any users.
+Returns:
+- `array $unUsedAcls` - An array of unused ACLs.
 ```php
 $unused = ACLService::unUsedACLs();
 ```
