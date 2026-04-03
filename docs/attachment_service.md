@@ -69,11 +69,17 @@ AttachmentService::deleteAttachment($attachment);
 
 <br>
 
-`name(EmailAttachments $attachment): string`
-
+#### D. `name()`
 Determines the filename to store in the database:
 - For new uploads, uses the sanitized filename from `$_FILES`.
 - For existing records, returns the saved filename.
+
+Parameter:
+- EmailAttachments $attachment The attachment whose name is being set.
+
+Returns:
+- `string` - The attachment's name.
+
 ```php
 $filename = AttachmentService::name($attachment);
 ```
