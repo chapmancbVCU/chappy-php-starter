@@ -157,6 +157,10 @@ ACLService::updateUserACLs($user, $existing, $all, $posted);
 Returns the default ACL value for a new user:
 - "Admin" if no users exist yet
 - "" (blank string) otherwise
+
+Returns:
+- `string` - The value of the ACL we are setting upon registration of a user.
+
 ```php
 ACLService::saveACL($acl, $request);
 ```
