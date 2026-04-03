@@ -43,9 +43,16 @@ $upload = AttachmentService::attachmentUpload($attachment);
 
 <br>
 
-`attachmentUploader(int $id): Users`
+### B. `attachmentUploader()`
 
 Retrieves the user who uploaded a given attachment by their user ID.
+
+Parameter:
+- `int $id` - User id for uploader of attachment.
+
+Returns:
+- `Users` - The user who uploaded the attachment.
+
 ```php
 $user = AttachmentService::attachmentUploader($attachment->user_id);
 ```
