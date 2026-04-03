@@ -170,6 +170,14 @@ ACLService::saveACL($acl, $request);
 ### J. `saveACL()`
 
 Assigns data to an ACL and saves it, using a blacklist if the ACL already exists.
+
+Parameters:
+- `ACL $acl` - The ACL to be Saves
+- `Input $request` - The request.
+
+Returns:
+- `bool` - True if update is successful, otherwise false.
+
 ```php
 ACLService::saveACL($acl, $request);
 ```
@@ -179,13 +187,6 @@ ACLService::saveACL($acl, $request);
 ### K. `usedACLs()`
 
 Returns all ACL records currently assigned to at least one user.
-
-Parameters:
-- `ACL $acl` - The ACL to be Saves
-- `Input $request` - The request.
-
-Returns:
-- `bool` - True if update is successful, otherwise false.
 
 ```php
 $used = ACLService::usedACLs();
