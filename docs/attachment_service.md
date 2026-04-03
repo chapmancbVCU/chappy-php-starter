@@ -69,7 +69,7 @@ AttachmentService::deleteAttachment($attachment);
 
 <br>
 
-#### D. `name()`
+### D. `name()`
 Determines the filename to store in the database:
 - For new uploads, uses the sanitized filename from `$_FILES`.
 - For existing records, returns the saved filename.
@@ -86,9 +86,12 @@ $filename = AttachmentService::name($attachment);
 
 <br>
 
-`previewAttachment(int $id): void`
-
+### E. `previewAttachment()`
 Outputs an attachment file inline in the browser for previewing. Automatically sets proper headers and handles 404 if missing.
+
+Parameter:
+- `int $id` - The id for the attachment's record.
+
 ```php
 AttachmentService::previewAttachment($attachmentId);
 ```
