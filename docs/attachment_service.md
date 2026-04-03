@@ -28,7 +28,6 @@ use Core\Services\AttachmentService;
 
 ## 2. ⚙️ Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 ### A. `attachmentUpload()`
-
 Generates upload object for attachments.
 
 Parameter:
@@ -44,7 +43,6 @@ $upload = AttachmentService::attachmentUpload($attachment);
 <br>
 
 ### B. `attachmentUploader()`
-
 Retrieves the user who uploaded a given attachment by their user ID.
 
 Parameter:
@@ -59,9 +57,12 @@ $user = AttachmentService::attachmentUploader($attachment->user_id);
 
 <br>
 
-`deleteAttachment(EmailAttachments $attachment): void`
-
+### C. `deleteAttachment()`
 Deletes an attachment file from the filesystem and removes the associated database record.
+
+Parameter:
+- EmailAttachments $attachment The attachment we want to delete from the filesystem.
+
 ```php
 AttachmentService::deleteAttachment($attachment);
 ```
