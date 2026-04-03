@@ -122,11 +122,17 @@ ACLService::deleteIfAllowed($aclId);
 
 <br>
 
-### G. `manageAcls(array $acls, Users $user, array $newAcls, array $userAcls): void`
+### G. `manageAcls()`
 
 Adds or removes ACLs from a user based on the differences between the new ACLs and existing ACLs.
 
 Used internally by `updateUserACLs()`.
+
+Parameters:
+- `array $acls` - ACLs stored in acl table.
+- `Users $user` - The user we want to modify. 
+- `array $newAcls` - The new ACLs for the user.
+- `array $userAcls` - The user's existing ACLs.
 
 <br>
 
