@@ -13,10 +13,14 @@ The AttachmentService class provides static methods for managing file attachment
 
 This service ensures file integrity and security, while integrating with your framework's upload and email systems.
 
+<br>
+
 **Setup**
 ```php
 use Core\Services\AttachmentService;
 ```
+
+<br>
 
 **Common Use Cases**
 - Upload and save attachment files
