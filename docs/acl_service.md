@@ -92,11 +92,15 @@ ACLService::removeAcl(3, 'Viewer');
 
 <br>
 
-### E. `checkACL(ACL $acl): void`
+### E. `checkACL(): void`
 
 Redirects with a flash message if:
 - The ACL does not exist, or
 - The ACL is already assigned to users and cannot be modified.
+
+Parameter:
+- ACL $acl The ACL to verify.
+
 ```php
 ACLService::checkACL($acl);
 ```
