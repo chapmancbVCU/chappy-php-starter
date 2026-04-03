@@ -44,7 +44,7 @@ $confirm = AuthService::confirm($request);
 
 <br>
 
-`currentUser(): ?Users`
+### B. `currentUser()`
 Retrieves the currently logged-in user from the session, or loads it from the database if not cached.
 
 Returns:
