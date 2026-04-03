@@ -92,7 +92,7 @@ ACLService::removeAcl(3, 'Viewer');
 
 <br>
 
-### E. `checkACL(): void`
+### E. `checkACL()`
 
 Redirects with a flash message if:
 - The ACL does not exist, or
@@ -107,9 +107,15 @@ ACLService::checkACL($acl);
 
 <br>
 
-### F. `deleteIfAllowed(int $id): bool`
+### F. `deleteIfAllowed()`
 
 Deletes an ACL only if it is not assigned to any users.
+
+Parameter:
+- `int $id` - The id for the ACL.
+
+Returns:
+- `bool` - True if deleted, otherwise false.
 ```php
 ACLService::deleteIfAllowed($aclId);
 ```
