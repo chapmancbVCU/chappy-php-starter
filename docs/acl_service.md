@@ -60,18 +60,32 @@ $normalized = ACLService::aclToArray(['Admin', 'Manager']);
 
 <br>
 
-### C. `addAcl(int $user_id, string $acl): bool`
+### C. `addAcl()`
+Add ACL to user's acl field as an element of an array.
 
-Adds a new ACL string to a user's acl field.
+Parameters:
+- `int $user_id` - The id of the user whose acl field we want to modify.
+- `string $acl` - The name of the new ACL.
+
+Returns:
+- `bool` - True or false depending on success of operation.
+
 ```php
 ACLService::addAcl(3, 'Manager');
 ```
 
 <br>
 
-### D. `removeAcl(int $user_id, string $acl): bool`
+### D. `removeAcl()`
+Removes ACL from user's acl field array.
 
-Removes an ACL string from a user's acl field.
+Parameters:
+- `int $user_id` - The id of the user whose acl field we want to modify.
+- `string $acl` - The name of the ACL to be removed.
+
+Returns:
+- `bool` - True if  user is found, otherwise we  return false.
+
 ```php
 ACLService::removeAcl(3, 'Viewer');
 ```
