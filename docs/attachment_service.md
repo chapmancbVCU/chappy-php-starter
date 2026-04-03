@@ -99,14 +99,18 @@ AttachmentService::previewAttachment($attachmentId);
 
 <br>
 
-`processAttachment(EmailAttachments $attachment, Input $request): void`
-
+### F. `processAttachment()`
 Handles the complete lifecycle of processing an uploaded attachment:
 - Accepts upload
 - Sets name, description, and user ID
 - Saves metadata
 - Moves file to the correct upload path
 - Sets MIME type and final file path
+
+Parameters:
+- `EmailAttachments $attachment` - The attachment to process and upload.
+- `Input $request` - The request for this update or edit.
+
 ```php
 AttachmentService::processAttachment($attachment, $request);
 ```
