@@ -30,15 +30,22 @@ use Core\Services\AclService;
 <br>
 
 ## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-`aclsForUser(Users $user): array`
+### A. `aclsForUser()`
 
-Returns the decoded ACL array for a given user.
+Returns an array containing access control list information.  When the $acl instance variable is empty an empty array is returned.
+
+Parameter:
+- `Users $user` - The user whose ACLs we want to use.
+
+Return:
+- `array` - The array containing access control list information.
+
 ```php
 $acls = ACLService::aclsForUser($user);
 ```
 <br>
 
-`aclToArray(mixed $acls): array`
+### B. `aclToArray(mixed $acls): array`
 
 Normalizes any input into a stringified array of ACLs.
 ```php
@@ -47,7 +54,7 @@ $normalized = ACLService::aclToArray(['Admin', 'Manager']);
 
 <br>
 
-`addAcl(int $user_id, string $acl): bool`
+### C. `addAcl(int $user_id, string $acl): bool`
 
 Adds a new ACL string to a user's acl field.
 ```php
@@ -56,7 +63,7 @@ ACLService::addAcl(3, 'Manager');
 
 <br>
 
-`removeAcl(int $user_id, string $acl): bool`
+### D. `removeAcl(int $user_id, string $acl): bool`
 
 Removes an ACL string from a user's acl field.
 ```php
@@ -65,7 +72,7 @@ ACLService::removeAcl(3, 'Viewer');
 
 <br>
 
-`checkACL(ACL $acl): void`
+### E. `checkACL(ACL $acl): void`
 
 Redirects with a flash message if:
 - The ACL does not exist, or
@@ -76,7 +83,7 @@ ACLService::checkACL($acl);
 
 <br>
 
-`deleteIfAllowed(int $id): bool`
+### F. `deleteIfAllowed(int $id): bool`
 
 Deletes an ACL only if it is not assigned to any users.
 ```php
@@ -85,7 +92,7 @@ ACLService::deleteIfAllowed($aclId);
 
 <br>
 
-`manageAcls(array $acls, Users $user, array $newAcls, array $userAcls): void`
+### G. `manageAcls(array $acls, Users $user, array $newAcls, array $userAcls): void`
 
 Adds or removes ACLs from a user based on the differences between the new ACLs and existing ACLs.
 
@@ -93,7 +100,7 @@ Used internally by `updateUserACLs()`.
 
 <br>
 
-`updateUserACLs(Users $user, array $userAcls, array $acls, ?array $postAcls = null): void`
+### H. `updateUserACLs(Users $user, array $userAcls, array $acls, ?array $postAcls = null): void`
 
 Central method for updating a user's ACLs. Compares current ACLs with selected ones and saves the result.
 ```php
@@ -102,7 +109,7 @@ ACLService::updateUserACLs($user, $existing, $all, $posted);
 
 <br>
 
-`setAclAtRegistration(): string`
+### I. `setAclAtRegistration(): string`
 
 Returns the default ACL value for a new user:
 - "Admin" if no users exist yet
@@ -113,7 +120,7 @@ ACLService::saveACL($acl, $request);
 
 <br>
 
-`saveACL(ACL $acl, Input $request): bool`
+### J. `saveACL(ACL $acl, Input $request): bool`
 
 Assigns data to an ACL and saves it, using a blacklist if the ACL already exists.
 ```php
@@ -122,7 +129,7 @@ ACLService::saveACL($acl, $request);
 
 <br>
 
-`usedACLs(): array`
+### K. `usedACLs(): array`
 
 Returns all ACL records currently assigned to at least one user.
 ```php
@@ -131,7 +138,7 @@ $used = ACLService::usedACLs();
 
 <br>
 
-`unUsedACLs(): array`
+### L. `unUsedACLs(): array`
 
 Returns all ACL records not assigned to any users.
 ```php
