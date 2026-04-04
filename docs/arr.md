@@ -648,10 +648,17 @@ print_r($result);
 ```
 <br>
 
-### C. flattenKeys <a id="flattenkeys"></a>
-`flattenKeys(array $array, string $prefix = ''): array`
-
+### C. `flattenKeys()` <a id="flattenkeys"></a>
 Converts a multi-dimensional array into dot notation keys.
+
+Parameters:
+- array $array The multi-dimensional array.
+- string $prefix The prefix for keys.
+
+Returns:
+- array The array with flattened keys.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'details' => ['age' => 25, 'city' => 'New York']];
 $result = Arr::flattenKeys($array);
