@@ -197,10 +197,19 @@ print_r($shuffled);
 ```
 <br>
 
-### E. chunk <a id="chunk"></a>
-`chunk(array $array, int $size, bool $preserveKeys = false): array`
-
+### E. `chunk()` <a id="chunk"></a>
 Splits an array into chunks of a given size.
+
+Parameters:
+- `array $array` - The array to split.
+- `int $size` - The size of each chunk.
+- `bool $preserveKeys` - Whether to preserve keys.
+
+Returns:
+- `array` - An array of chunked arrays.
+
+Example:
+
 ```php
 $array = [1, 2, 3, 4, 5];
 $chunks = Arr::chunk($array, 2);
