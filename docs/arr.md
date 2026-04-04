@@ -294,10 +294,16 @@ print_r($result);
 ```
 <br>
 
-### J. deepMerge <a id="deepmerge"></a>
-`deepMerge(array ...$arrays): array`
-
+### J. `deepMerge()` <a id="deepmerge"></a>
 Recursively merges two or more arrays.
+
+Parameter:
+- `array ...$arrays` - The arrays to merge.
+
+Returns:
+- `array` - The merged array.
+
+Example:
 ```php
 $array1 = ['name' => 'Alice', 'details' => ['age' => 25]];
 $array2 = ['details' => ['city' => 'New York']];
@@ -307,10 +313,17 @@ print_r($result);
 ```
 <br>
 
-### K. diffAssocRecursive <a id="diffassocrecursive"></a>
-`diffAssocRecursive(array $array1, array $array2): array`
-
+### K. `diffAssocRecursive()` <a id="diffassocrecursive"></a>
 Recursively computes the difference between two arrays with keys.
+
+Parameters:
+- `array $array1` - The first array.
+- `array $array2` - The second array.
+
+Returns:
+- `array` - The difference.
+
+Example:
 ```php
 $array1 = ['a' => 1, 'b' => ['x' => 10, 'y' => 20]];
 $array2 = ['a' => 1, 'b' => ['x' => 10]];
