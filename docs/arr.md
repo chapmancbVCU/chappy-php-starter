@@ -454,10 +454,17 @@ print_r($result);
 ```
 <br>
 
-### F. has <a id="has"></a>
-`has(array $array, string $key): bool`
-
+### F. `has()` <a id="has"></a>
 Checks if an array has a given key using dot notation.
+
+Parameters:
+- `array $array` - The source array.
+- `string $key` - The key using dot notation.
+
+Returns:
+- `bool` - True if the key exists, false otherwise.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'details' => ['age' => 25]];
 $result = Arr::has($array, 'details.age');
