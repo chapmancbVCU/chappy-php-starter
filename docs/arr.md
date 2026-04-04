@@ -804,10 +804,16 @@ print_r($result);
 ```
 <br>
 
-### K. sortByKeys <a id="sortbykeys"></a>
-`sortByKeys(array $array): array`
-
+### K. `sortByKeys()` <a id="sortbykeys"></a>
 Sorts an array by its keys.
+
+Parameter:
+- `array $array` - The array to sort.
+
+Returns:
+- `array` - The sorted array.
+
+Example:
 ```php
 $array = ['b' => 2, 'a' => 1, 'c' => 3];
 $result = Arr::sortByKeys($array);
