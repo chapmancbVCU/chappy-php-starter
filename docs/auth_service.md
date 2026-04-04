@@ -154,9 +154,13 @@ AuthService::logoutUser($user);
 
 <br>
 
-`passwordReset(Input $request, Users $user): void`
-
+### J. `passwordReset()`
 Handles the complete flow of resetting a user’s password, including setting the confirmation field and updating the record.
+
+Parameters:
+- `Input $request` - The request for the password reset action.
+- `Users $user` - The user whose password we will reset.
+
 ```php
 AuthService::passwordReset($request, $user);
 ```
