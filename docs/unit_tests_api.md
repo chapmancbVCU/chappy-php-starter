@@ -154,8 +154,7 @@ Returns:
 
 <br>
 
-**testSuites**
-
+### M. `testSuites()`
 Returns an array of test suites found in the `TEST_SUITES` const.
 
 Returns:
@@ -163,9 +162,9 @@ Returns:
 
 <br>
 
-**testSuiteStatus**
-
+### N. `testSuiteStatus()`
 Determines if execution of a test suite(s) is successful.  The result is determined by testing if the status value is set and  its integer value is equal to Command::SUCCESS.
+
 Parameter:
 - `array<int>` - $suiteStatuses Array of integers that indicates a test is successful. 
 
