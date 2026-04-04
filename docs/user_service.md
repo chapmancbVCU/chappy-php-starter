@@ -31,7 +31,7 @@ use Core\Services\UserService;
 <br>
 
 ## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. `deleteIfAllowed()`
+### A. `deleteIfAllowed()`
 Deletes a user if they are not an admin. Optionally removes their profile images if `$unlink` is `true`.  Appropriate messaging is displayed based on success or failure.
 
 Parameters:
@@ -44,9 +44,15 @@ UserService::deleteIfAllowed(5, true);
 
 <br>
 
-`deleteProfileImage(Input $request): array`
-
+### B. `deleteProfileImage()`
 Deletes a profile image based on an ID passed via request. Returns a JSON-compatible response array.
+
+Parameter:
+- `Input $request` - The request for deleting image.
+
+Returns:
+- `array` - JSON response array.
+
 ```php
 $response = UserService::deleteProfileImage($request);
 ```
