@@ -957,10 +957,18 @@ print_r($result);
 ```
 <br>
 
-### G. pull <a id="pull"></a>
-`pull(array &$array, string $key, mixed $default = null): mixed`
-
+### G. `pull()` <a id="pull"></a>
 Retrieves a value from the array and removes it.
+
+Parameters:
+- `array $array` - The source array (passed by reference).
+- `string $key` - The key using dot notation.
+- `mixed|null $default` - The default value if the key is not found.
+
+Returns:
+- `mixed` - The retrieved value or default.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25];
 $age = Arr::pull($array, 'age');
