@@ -237,10 +237,16 @@ print_r($chunks);
 ```
 <br>
 
-### G. collapse <a id="collapse"></a>
-`collapse(array $array): array`
-
+### G. `collapse()` <a id="collapse"></a>
 Collapses a multi-dimensional array into a single-level array.
+
+Parameter:
+- `array $array` - The multi-dimensional array.
+
+Returns:
+- `array` - The collapsed array.
+
+Example:
 ```php
 $array = [[1, 2], [3, 4], [5]];
 $flattened = Arr::collapse($array);
