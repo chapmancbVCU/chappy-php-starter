@@ -724,10 +724,17 @@ print_r($result);
 ```
 <br>
 
-### G. shuffle <a id="shuffle"></a>
-`shuffle(array $array, ?int $seed = null): array`
-
+### G. `shuffle()` <a id="shuffle"></a>
 Shuffles the array.
+
+Parameters:
+- `array $array` - The source array.
+- `int|null $seed` - Optional seed for deterministic results.
+
+Returns:
+- `array` - The shuffled array.
+
+Example:
 ```php
 $array = [1, 2, 3, 4, 5];
 $result = Arr::shuffle($array);
