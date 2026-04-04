@@ -116,7 +116,7 @@ print_r($filtered); // ['name' => 'John']
 <br>
 
 ## 3. Methods <a id="methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. `add()` <a id="add"></a>
+### A. `add()` <a id="add"></a>
 Adds a value to an array if the key does not exist.
 
 Parameter:
@@ -136,7 +136,7 @@ print_r($array);
 ```
 <br>
 
-#### B. `arrayDivide()` <a id="arraydivide"></a>
+### B. `arrayDivide()` <a id="arraydivide"></a>
 Splits an array into two arrays: one with keys and one with values.
 
 Parameter:
@@ -156,7 +156,7 @@ print_r($values);
 ```
 <br>
 
-#### C. arrayPluckMulti <a id="arraypluckmulti"></a>
+### C. arrayPluckMulti <a id="arraypluckmulti"></a>
 `arrayPluckMulti(array $array, array|string $keys): array`
 
 Plucks nested values from an array.
@@ -171,7 +171,7 @@ print_r($result);
 ```
 <br>
 
-#### D. arrayShuffleAssoc <a id="arrayshuffleassoc"></a>
+### D. arrayShuffleAssoc <a id="arrayshuffleassoc"></a>
 `arrayShuffleAssoc(array $array): array`
 
 Shuffles an associative array while preserving keys.
@@ -183,7 +183,7 @@ print_r($shuffled);
 ```
 <br>
 
-#### E. chunk <a id="chunk"></a>
+### E. chunk <a id="chunk"></a>
 `chunk(array $array, int $size, bool $preserveKeys = false): array`
 
 Splits an array into chunks of a given size.
@@ -195,7 +195,7 @@ print_r($chunks);
 ```
 <br>
 
-#### F. chunkBy <a id="chunkby"></a>
+### F. chunkBy <a id="chunkby"></a>
 `chunkBy(array $array, callable $callback): array`
 
 Chunks an array into groups based on a callback function.
@@ -207,7 +207,7 @@ print_r($chunks);
 ```
 <br>
 
-#### G. collapse <a id="collapse"></a>
+### G. collapse <a id="collapse"></a>
 `collapse(array $array): array`
 
 Collapses a multi-dimensional array into a single-level array.
@@ -219,7 +219,7 @@ print_r($flattened);
 ```
 <br>
 
-#### H. contains <a id="contains"></a>
+### H. contains <a id="contains"></a>
 `contains(array $array, mixed $value, bool $strict = false): bool`
 
 Determines if a given value exists in an array.
@@ -231,7 +231,7 @@ var_dump($result);
 ```
 <br>
 
-#### I. crossJoin <a id="crossjoin"></a>
+### I. crossJoin <a id="crossjoin"></a>
 `crossJoin(array ...$arrays): array`
 
 Computes the Cartesian product of multiple arrays.
@@ -244,7 +244,7 @@ print_r($result);
 ```
 <br>
 
-#### J. deepMerge <a id="deepmerge"></a>
+### J. deepMerge <a id="deepmerge"></a>
 `deepMerge(array ...$arrays): array`
 
 Recursively merges two or more arrays.
@@ -257,7 +257,7 @@ print_r($result);
 ```
 <br>
 
-#### K. diffAssocRecursive <a id="diffassocrecursive"></a>
+### K. diffAssocRecursive <a id="diffassocrecursive"></a>
 `diffAssocRecursive(array $array1, array $array2): array`
 
 Recursively computes the difference between two arrays with keys.
@@ -270,7 +270,7 @@ print_r($result);
 ```
 <br>
 
-#### L. dot <a id="dot"></a>
+### L. dot <a id="dot"></a>
 `dot(array $array, string $prepend = ''): array`
 
 Converts a multi-dimensional array into dot notation keys.
@@ -283,7 +283,7 @@ print_r($result);
 <br>
 
 ## 4. Retrieving Data <a id="retrieving-data"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. except <a id="except"></a>
+### A. except <a id="except"></a>
 `except(array $array, array $keys): array`
 
 Gets all items except the specified keys.
@@ -295,7 +295,7 @@ print_r($result);
 ```
 <br>
 
-#### B. exists <a id="exists"></a>
+### B. exists <a id="exists"></a>
 `exists(array $array, string|int $key): bool`
 
 Checks if a key exists in an array (non-dot notation).
@@ -307,7 +307,7 @@ var_dump($result);
 ```
 <br>
 
-#### C. first <a id="first"></a>
+### C. first <a id="first"></a>
 `first(array $array, ?callable $callback = null, mixed $default = null): mixed`
 
 Gets the first element that passes a given test.
@@ -319,7 +319,7 @@ print_r($result);
 ```
 <br>
 
-#### D. get <a id="get"></a>
+### D. get <a id="get"></a>
 `get(array $array, string $key, mixed $default = null): mixed`
 
 Gets a value from an array using dot notation.
@@ -331,7 +331,7 @@ print_r($result);
 ```
 <br>
 
-#### E. groupBy <a id="groupby"></a>
+### E. groupBy <a id="groupby"></a>
 `groupBy(array $array, string $key): array`
 
 Groups an array by a given key.
@@ -347,7 +347,7 @@ print_r($result);
 ```
 <br>
 
-#### F. has <a id="has"></a>
+### F. has <a id="has"></a>
 `has(array $array, string $key): bool`
 
 Checks if an array has a given key using dot notation.
@@ -359,7 +359,7 @@ var_dump($result);
 ```
 <br>
 
-#### G. hasAllKeys <a id="hasallkeys"></a>
+### G. hasAllKeys <a id="hasallkeys"></a>
 `hasAllKeys(array $array, array $keys): bool`
 
 Checks if all given keys exist in the array.
@@ -371,7 +371,7 @@ var_dump($result);
 ```
 <br>
 
-#### H. hasAnyKey <a id="hasanykey"></a>
+### H. hasAnyKey <a id="hasanykey"></a>
 `hasAnyKey(array $array, array $keys): bool`
 
 Checks if at least one key exists in the array.
@@ -383,7 +383,7 @@ var_dump($result);
 ```
 <br>
 
-#### I. keys <a id="keys"></a>
+### I. keys <a id="keys"></a>
 `keys(array $array): array`
 
 Gets all the keys from an array.
@@ -395,7 +395,7 @@ print_r($result);
 ```
 <br>
 
-#### J. last <a id="last"></a>
+### J. last <a id="last"></a>
 `last(array $array, ?callable $callback = null, mixed $default = null): mixed`
 
 Gets the last element that passes a given test.
@@ -407,7 +407,7 @@ print_r($result);
 ```
 <br>
 
-#### K. only <a id="only"></a>
+### K. only <a id="only"></a>
 `only(array $array, array $keys): array`
 
 Gets only the specified keys from an array.
@@ -419,7 +419,7 @@ print_r($result);
 ```
 <br>
 
-#### L. pluck <a id="pluck"></a>
+### L. pluck <a id="pluck"></a>
 `pluck(array $array, string $value, ?string $key = null): array`
 
 Plucks a single key from an array.
@@ -434,7 +434,7 @@ print_r($result);
 ```
 <br>
 
-#### M. values <a id="values"></a>
+### M. values <a id="values"></a>
 `values(array $array): array`
 
 Gets all values from an array, resetting numeric keys.
@@ -447,7 +447,7 @@ print_r($result);
 <br>
 
 ## 5. Iteration, Sorting, & Transformation <a id="sorting-ordering"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. flatten <a id="flatten"></a>
+### A. flatten <a id="flatten"></a>
 `flatten(array $array, int $depth = INF): array`
 
 Flattens a multi-dimensional array into a single level.
@@ -459,7 +459,7 @@ print_r($result);
 ```
 <br>
 
-#### B. flattenWithDepth <a id="flattenwithdepth"></a>
+### B. flattenWithDepth <a id="flattenwithdepth"></a>
 `flattenWithDepth(array $array, int $depth = INF): array`
 
 Flattens an array up to a specified depth.
@@ -471,7 +471,7 @@ print_r($result);
 ```
 <br>
 
-#### C. flattenKeys <a id="flattenkeys"></a>
+### C. flattenKeys <a id="flattenkeys"></a>
 `flattenKeys(array $array, string $prefix = ''): array`
 
 Converts a multi-dimensional array into dot notation keys.
@@ -483,7 +483,7 @@ print_r($result);
 ```
 <br>
 
-#### D. map <a id="map"></a>
+### D. map <a id="map"></a>
 `map(array $array, callable $callback): array`
 
 Applies a callback to each item in an array.
@@ -495,7 +495,7 @@ print_r($result);
 ```
 <br>
 
-#### E. mapWithKeys <a id="mapwithkeys"></a>
+### E. mapWithKeys <a id="mapwithkeys"></a>
 `mapWithKeys(array $array, callable $callback): array`
 
 Maps an array while preserving keys.
@@ -507,7 +507,7 @@ print_r($result);
 ```
 <br>
 
-#### F. reverse <a id="reverse"></a>
+### F. reverse <a id="reverse"></a>
 `reverse(array $array, bool $preserveKeys = false): array`
 
 Reverses the order of elements in an array.
@@ -519,7 +519,7 @@ print_r($result);
 ```
 <br>
 
-#### G. shuffle <a id="shuffle"></a>
+### G. shuffle <a id="shuffle"></a>
 `shuffle(array $array, ?int $seed = null): array`
 
 Shuffles the array.
@@ -531,7 +531,7 @@ print_r($result);
 ```
 <br>
 
-#### H. sort <a id="sort"></a>
+### H. sort <a id="sort"></a>
 `sort(array $array, ?callable $callback = null): array`
 
 Sorts an array using a callback function.
@@ -543,7 +543,7 @@ print_r($result);
 ```
 <br>
 
-#### I. sortAssoc <a id="sortassoc"></a>
+### I. sortAssoc <a id="sortassoc"></a>
 `sortAssoc(array $array, bool $descending = false): array`
 
 Sorts an associative array by its keys.
@@ -555,7 +555,7 @@ print_r($result);
 ```
 <br>
 
-#### J. sortBy <a id="sortby"></a>
+### J. sortBy <a id="sortby"></a>
 `sortBy(array $array, string $key, bool $descending = false): array`
 
 Sorts an array by a specific key.
@@ -570,7 +570,7 @@ print_r($result);
 ```
 <br>
 
-#### K. sortByKeys <a id="sortbykeys"></a>
+### K. sortByKeys <a id="sortbykeys"></a>
 `sortByKeys(array $array): array`
 
 Sorts an array by its keys.
@@ -582,7 +582,7 @@ print_r($result);
 ```
 <br>
 
-#### L. sortByValues <a id="sortbyvalues"></a>
+### L. sortByValues <a id="sortbyvalues"></a>
 `sortByValues(array $array): array`
 
 Sorts an array by its values.
@@ -595,7 +595,7 @@ print_r($result);
 <br>
 
 ## 6. Manipulation <a id="manipulation"></a>
-#### A. fill <a id="fill"></a>
+### A. fill <a id="fill"></a>
 `fill(int $startIndex, int $count, mixed $value): array`
 
 Fills an array with a specified value.
@@ -606,7 +606,7 @@ print_r($result);
 ```
 <br>
 
-#### B. forget <a id="forget"></a>
+### B. forget <a id="forget"></a>
 `forget(array &$array, string|array $keys): void`
 
 Removes a value from an array using dot notation.
@@ -618,7 +618,7 @@ print_r($array);
 ```
 <br>
 
-#### C. insertBefore <a id="insertbefore"></a>
+### C. insertBefore <a id="insertbefore"></a>
 `insertBefore(array $array, string|int $key, string|int $newKey, mixed $value): array`
 
 Inserts an element before a given key in an array.
@@ -630,7 +630,7 @@ print_r($result);
 ```
 <br>
 
-#### D. insertAfter <a id="insertafter"></a>
+### D. insertAfter <a id="insertafter"></a>
 `insertAfter(array $array, string|int $key, string|int $newKey, mixed $value): array`
 
 Inserts an element after a given key in an array.
@@ -642,7 +642,7 @@ print_r($result);
 ```
 <br>
 
-#### E. merge <a id="merge"></a>
+### E. merge <a id="merge"></a>
 `merge(array ...$arrays): array`
 
 Merges one or more arrays together.
@@ -655,7 +655,7 @@ print_r($result);
 ```
 <br>
 
-#### F. prepend <a id="prepend"></a>
+### F. prepend <a id="prepend"></a>
 `prepend(array $array, mixed $value, string|int|null $key = null): array`
 
 Prepends a value to an array.
@@ -667,7 +667,7 @@ print_r($result);
 ```
 <br>
 
-#### G. pull <a id="pull"></a>
+### G. pull <a id="pull"></a>
 `pull(array &$array, string $key, mixed $default = null): mixed`
 
 Retrieves a value from the array and removes it.
@@ -681,7 +681,7 @@ print_r($array);
 ```
 <br>
 
-#### H. push <a id="push"></a>
+### H. push <a id="push"></a>
 `push(array &$array, mixed ...$values): array`
 
 Pushes one or more values onto the end of an array.
@@ -693,7 +693,7 @@ print_r($array);
 ```
 <br>
 
-#### I. set <a id="set"></a>
+### I. set <a id="set"></a>
 `set(array &$array, string $key, mixed $value): void`
 
 Sets a value within an array using dot notation.
@@ -705,7 +705,7 @@ print_r($array);
 ```
 <br>
 
-#### J. shift <a id="shift"></a>
+### J. shift <a id="shift"></a>
 `shift(array &$array): mixed`
 
 Removes and returns the first element of an array.
@@ -719,7 +719,7 @@ print_r($array);
 ```
 <br>
 
-#### K. swapKeys <a id="swapkeys"></a>
+### K. swapKeys <a id="swapkeys"></a>
 `swapKeys(array $array, string|int $key1, string|int $key2): array`
 
 Swaps two keys in an array.
@@ -731,7 +731,7 @@ print_r($result);
 ```
 <br>
 
-#### L. unsetKeys <a id="unsetkeys"></a>
+### L. unsetKeys <a id="unsetkeys"></a>
 `unsetKeys(array $array, array $keys): array`
 
 Removes multiple keys from an array.
@@ -744,7 +744,7 @@ print_r($result);
 <br>
 
 ## 7. Comparison, Filtering, & Mapping <a id="comparison-filtering-mapping"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. contains <a id="contains"></a>
+### A. contains <a id="contains"></a>
 `contains(array $array, mixed $value, bool $strict = false): bool`
 
 Determines if a given value exists in an array.
@@ -756,7 +756,7 @@ var_dump($result);
 ```
 <br>
 
-#### B. filter <a id="filter"></a>
+### B. filter <a id="filter"></a>
 `filter(array $array, callable $callback): array`
 
 Filters an array using a callback function.
@@ -768,7 +768,7 @@ print_r($result);
 ```
 <br>
 
-#### C. filterByKeys <a id="filterbykeys"></a>
+### C. filterByKeys <a id="filterbykeys"></a>
 `filterByKeys(array $array, array $keys): array`
 
 Filters an array to include only the specified keys.
@@ -780,7 +780,7 @@ print_r($result);
 ```
 <br>
 
-#### D. filterByValue <a id="filterbyvalue"></a>
+### D. filterByValue <a id="filterbyvalue"></a>
 `filterByValue(array $array, callable $callback): array`
 
 Filters an array by its values.
@@ -792,7 +792,7 @@ print_r($result);
 ```
 <br>
 
-#### E. partition <a id="partition"></a>
+### E. partition <a id="partition"></a>
 `partition(array $array, callable $callback): array`
 
 Partitions an array into two groups: one where the callback returns true, the other where it returns false.
@@ -806,7 +806,7 @@ print_r($odd);
 ```
 <br>
 
-#### F. reject <a id="reject"></a>
+### F. reject <a id="reject"></a>
 `reject(array $array, callable $callback): array`
 
 Rejects elements that match a given condition.
@@ -818,7 +818,7 @@ print_r($result);
 ```
 <br>
 
-#### G. unique <a id="unique"></a>
+### G. unique <a id="unique"></a>
 `unique(array $array): array`
 
 Removes duplicate values from an array.
@@ -830,7 +830,7 @@ print_r($result);
 ```
 <br>
 
-#### H. uniqueBy <a id="uniqueby"></a>
+### H. uniqueBy <a id="uniqueby"></a>
 `uniqueBy(array $array, string|callable $key): array`
 
 Removes duplicate items from an array based on a key or callback.
@@ -846,7 +846,7 @@ print_r($result);
 ```
 <br>
 
-#### I. where <a id="where"></a>
+### I. where <a id="where"></a>
 `where(array $array, callable $callback): array`
 
 Filters an array using a callback function.
@@ -859,7 +859,7 @@ print_r($result);
 <br>
 
 ## 8. Chunking & Collapsing <a id="chunking-collapsing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. chunk <a id="chunk"></a>
+### A. chunk <a id="chunk"></a>
 `chunk(array $array, int $size, bool $preserveKeys = false): array`
 
 Splits an array into chunks of a given size.
@@ -871,7 +871,7 @@ print_r($result);
 ```
 <br>
 
-#### B. chunkBy <a id="chunkby"></a>
+### B. chunkBy <a id="chunkby"></a>
 `chunkBy(array $array, callable $callback): array`
 
 Chunks an array into groups based on a callback function.
@@ -883,7 +883,7 @@ print_r($result);
 ```
 <br>
 
-#### C. collapse <a id="collapse"></a>
+### C. collapse <a id="collapse"></a>
 `collapse(array $array): array`
 
 Collapses a multi-dimensional array into a single-level array.
@@ -896,7 +896,7 @@ print_r($result);
 <br>
 
 ## 9. Other Utilities <a id="other-utilities"></a>
-#### A. isArray <a id="isarray"></a>
+### A. isArray <a id="isarray"></a>
 `isArray(mixed $value): bool`
 
 Determines if a given value is an array.
@@ -907,7 +907,7 @@ var_dump($result);
 ```
 <br>
 
-#### B. isAssoc <a id="isassoc"></a>
+### B. isAssoc <a id="isassoc"></a>
 `isAssoc(array $array): bool`
 
 Determines if an array is associative (i.e., contains at least one non-numeric key).
@@ -919,7 +919,7 @@ var_dump($result);
 ```
 <br>
 
-#### C. isEmpty <a id="isempty"></a>
+### C. isEmpty <a id="isempty"></a>
 `isEmpty(?array $array): bool`
 
 Checks if the given array is empty.
@@ -930,7 +930,7 @@ var_dump($result);
 ```
 <br>
 
-#### D. isNotEmpty <a id="isnotempty"></a>
+### D. isNotEmpty <a id="isnotempty"></a>
 `isNotEmpty(?array $array): bool`
 
 Checks if the given array is not empty.
@@ -941,7 +941,7 @@ var_dump($result);
 ```
 <br>
 
-#### E. random <a id="random"></a>
+### E. random <a id="random"></a>
 `random(array $array, ?int $number = null): mixed`
 
 Gets a random value or multiple values from an array.
@@ -953,7 +953,7 @@ print_r($result);
 ```
 <br>
 
-#### F. toJson <a id="tojson"></a>
+### F. toJson <a id="tojson"></a>
 `toJson(array $array, int $options = 0): string`
 
 Converts an array to a JSON string.
@@ -965,7 +965,7 @@ print_r($result);
 ```
 <br>
 
-#### G. toObject <a id="toobject"></a>
+### G. toObject <a id="toobject"></a>
 `toObject(array $array): object`
 
 Converts an array to an object.
@@ -977,7 +977,7 @@ print_r($result->name);
 ```
 <br>
 
-#### H. unwrap <a id="unwrap"></a>
+### H. unwrap <a id="unwrap"></a>
 `unwrap(array $array): mixed`
 
 Unwraps an array if it contains only one item.
@@ -989,7 +989,7 @@ print_r($result);
 ```
 <br>
 
-#### I. walkRecursive <a id="walkrecursive"></a>
+### I. walkRecursive <a id="walkrecursive"></a>
 `walkRecursive(array $array, callable $callback): array`
 
 Recursively applies a callback function to each element in an array.
@@ -1001,7 +1001,7 @@ print_r($result);
 ```
 <br>
 
-#### J. weightedRandom <a id="weightedrandom"></a>
+### J. weightedRandom <a id="weightedrandom"></a>
 `weightedRandom(array $array, array $weights): mixed`
 
 Selects a random element based on weighted probabilities.
@@ -1014,7 +1014,7 @@ print_r($result);
 ```
 <br>
 
-#### K. wrap <a id="wrap"></a>
+### K. wrap <a id="wrap"></a>
 `wrap(mixed $value): array`
 
 Wraps a value in an array.
@@ -1025,7 +1025,7 @@ print_r($result);
 ```
 <br>
 
-#### L. xorDiff <a id="xordiff"></a>
+### L. xorDiff <a id="xordiff"></a>
 `xorDiff(array $array1, array $array2): array`
 
 Computes the exclusive difference between two arrays.
