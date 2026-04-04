@@ -35,7 +35,7 @@ Return:
 ## 3. TestRunner Class <a id="test-runner-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The TestRunner class contains functions available for you to use in your own child classes.
 
-### A. Constructor
+### A. `construct()`
 
 Parameter:
 - `InputInterface $input` - The Symfony InputInterface object.
@@ -335,15 +335,17 @@ final class ExampleRunner extends TestRunner {
 }
 ```
 
-#### Description of constants:
+<br>
+
+**Description of constants:**
 - `public const ALLOWED_OPTIONS = []` - Allowed options you want to support
 - `public const TEST_COMMAND` - The command for the testing framework
 
 <br>
 
-#### Functions
+**Functions**
 
-**construct**
+#### A. `construct()`
 
 Parameters:
 - `InputInterface $input` - Symfony InputInterface object
@@ -351,7 +353,7 @@ Parameters:
 
 <br>
 
-**parseOptions**
+#### B. `parseOptions()`
 
 Returns:
 - `string` - A string containing the arguments to be provided to your testing framework.
