@@ -1055,10 +1055,17 @@ print_r($result);
 ```
 <br>
 
-### L. unsetKeys <a id="unsetkeys"></a>
-`unsetKeys(array $array, array $keys): array`
-
+### L. `unsetKeys()` <a id="unsetkeys"></a>
 Removes multiple keys from an array.
+
+Parameters:
+- `array $array` - The array to modify.
+- `array $keys` - The keys to remove.
+
+Returns:
+- `array` - The array without the specified keys.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25, 'city' => 'New York'];
 $result = Arr::unsetKeys($array, ['age', 'city']);
