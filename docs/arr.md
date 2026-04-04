@@ -372,10 +372,17 @@ print_r($result);
 ```
 <br>
 
-### B. exists <a id="exists"></a>
-`exists(array $array, string|int $key): bool`
-
+### B. `exists()` <a id="exists"></a>
 Checks if a key exists in an array (non-dot notation).
+
+Parameters:
+- `array $array` - The source array.
+- `string|int $key` - The key to check.
+
+Returns:
+- `bool` - True if the key exists, false otherwise.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25];
 $result = Arr::exists($array, 'age');
