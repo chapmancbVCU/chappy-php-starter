@@ -705,10 +705,17 @@ print_r($result);
 ```
 <br>
 
-### F. reverse <a id="reverse"></a>
-`reverse(array $array, bool $preserveKeys = false): array`
-
+### F. `reverse()` <a id="reverse"></a>
 Reverses the order of elements in an array.
+
+Parameters:
+- `array $array` - The array to reverse.
+- `bool $preserveKeys` - Whether to preserve keys in the reversed array.
+
+Returns:
+- `array` - The reversed array.
+
+Example:
 ```php
 $array = [1, 2, 3, 4];
 $result = Arr::reverse($array);
