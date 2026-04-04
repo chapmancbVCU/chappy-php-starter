@@ -136,10 +136,16 @@ print_r($array);
 ```
 <br>
 
-#### B. arrayDivide <a id="arraydivide"></a>
-`arrayDivide(array $array): array`
-
+#### B. `arrayDivide()` <a id="arraydivide"></a>
 Splits an array into two arrays: one with keys and one with values.
+
+Parameter:
+- array $array The array to divide.
+
+Returns:
+- `array` - An array containing two arrays: [keys, values].
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25];
 list($keys, $values) = Arr::arrayDivide($array);
