@@ -105,9 +105,13 @@ AuthService::loginAttempts($user, $loginModel, true);
 
 <br>
 
-`loginUser(Users $loginUser, bool $rememberMe = false): void`
-
+### F. `loginUser()`
 Creates a session for the logged-in user and stores a remember-me token if requested.
+
+Parameters:
+- `Users $loginUser` - The user to be logged in.
+- `bool $rememberMe` - Value obtained from remember me checkbox found in login form.  Default value is false.
+
 ```php
 AuthService::loginUser($user, true);
 ```
