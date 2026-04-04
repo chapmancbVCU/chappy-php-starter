@@ -114,9 +114,13 @@ UserService::sendWhenSetToInactive($user, true);
 
 <br>
 
-`sendWhenSetToResetPW(Users $user, bool $shouldSendEmail = false): void`
-
+### G. `sendWhenSetToResetPW()`
 Sends a password reset email if `$shouldSendEmail` is `true`.
+
+Parameters:
+- `Users $user` - The user we will send E-mail to.
+- `bool $shouldSendEmail` - Sends E-mail when true.
+
 ```php
 UserService::sendWhenSetToResetPW($user, true);
 ```
