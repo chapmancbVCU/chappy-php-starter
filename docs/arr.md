@@ -610,10 +610,17 @@ print_r($result);
 <br>
 
 ## 5. Iteration, Sorting, & Transformation <a id="sorting-ordering"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. flatten <a id="flatten"></a>
-`flatten(array $array, int $depth = INF): array`
-
+### A. `flatten()` <a id="flatten"></a>
 Flattens a multi-dimensional array into a single level.
+
+Parameters:
+- `array $array` - The multi-dimensional array.
+- `int $depth` - The depth limit.
+
+Returns:
+- `array` - The flattened array.
+
+Example:
 ```php
 $array = [[1, 2], [3, [4, 5]]];
 $result = Arr::flatten($array);
