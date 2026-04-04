@@ -860,10 +860,14 @@ print_r($result);
 ```
 <br>
 
-### B. forget <a id="forget"></a>
-`forget(array &$array, string|array $keys): void`
-
+### B. `forget()` <a id="forget"></a>
 Removes a value from an array using dot notation.
+
+Parameters:
+- array $array The source array (passed by reference).
+- string|array $keys The key(s) to remove.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'details' => ['age' => 25]];
 Arr::forget($array, 'details.age');
