@@ -979,10 +979,17 @@ print_r($array);
 ```
 <br>
 
-### H. push <a id="push"></a>
-`push(array &$array, mixed ...$values): array`
-
+### H. `push()` <a id="push"></a>
 Pushes one or more values onto the end of an array.
+
+Parameters:
+- `array $array` - The array to modify.
+- `mixed ...$values` - The values to push.
+
+Returns:
+- `array` - The modified array.
+
+Example:
 ```php
 $array = [1, 2, 3];
 Arr::push($array, 4, 5);
