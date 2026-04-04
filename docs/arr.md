@@ -781,10 +781,18 @@ print_r($result);
 ```
 <br>
 
-### J. sortBy <a id="sortby"></a>
-`sortBy(array $array, string $key, bool $descending = false): array`
-
+### J. `sortBy()` <a id="sortby"></a>
 Sorts an array by a specific key.
+
+Parameters:
+- `array $array` - The array to sort.
+- `string $key` - The key to sort by.
+- `bool $descending` - Whether to sort in descending order.
+
+Returns:
+- `array` - The sorted array.
+
+Example:
 ```php
 $array = [
     ['name' => 'Alice', 'age' => 25],
