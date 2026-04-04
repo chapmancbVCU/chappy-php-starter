@@ -511,10 +511,16 @@ var_dump($result);
 ```
 <br>
 
-### I. keys <a id="keys"></a>
-`keys(array $array): array`
-
+### I. `keys()` <a id="keys"></a>
 Gets all the keys from an array.
+
+Parameter:
+- `array $array` - The array to extract keys from.
+
+Returns:
+- `array` - The array of keys.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25];
 $result = Arr::keys($array);
