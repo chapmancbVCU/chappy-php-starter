@@ -130,9 +130,9 @@ $user = AuthService::loginUserFromCookie();
 
 <br>
 
-`logout(): void`
-
+### H. `logout()`
 Logs out the currently logged-in user by clearing the session and deleting any active cookies.
+
 ```php
 AuthService::logout();
 ```
