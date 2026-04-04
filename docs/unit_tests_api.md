@@ -132,9 +132,9 @@ Returns:
 
 <br>
 
-**testIfSame**
-
+### K. `testIfSame()`
 Enforces rule that classes/files across test suites should be unique for filtering.
+
 Parameters:
 - `string $name` - name of the test class to be executed.
 
@@ -143,9 +143,9 @@ Returns:
 
 <br>
 
-**testSuite**
-
+### L. `testSuite()`
 Run all test files in an individual test suite.
+
 Parameters:
 - `array $collection` - All classes in a particular test suite.
 
