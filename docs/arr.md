@@ -166,6 +166,8 @@ Parameters:
 Returns:
 - `array` - The plucked values.
 
+Example:
+
 ```php
 $array = [
     ['name' => 'Alice', 'details' => ['age' => 25]],
@@ -177,10 +179,16 @@ print_r($result);
 ```
 <br>
 
-### D. arrayShuffleAssoc <a id="arrayshuffleassoc"></a>
-`arrayShuffleAssoc(array $array): array`
-
+### D. `arrayShuffleAssoc()` <a id="arrayshuffleassoc"></a>
 Shuffles an associative array while preserving keys.
+
+Parameter:
+- array $array The array to shuffle.
+
+Returns:
+- array The shuffled array.
+
+Example:
 ```php
 $array = ['a' => 1, 'b' => 2, 'c' => 3];
 $shuffled = Arr::arrayShuffleAssoc($array);
