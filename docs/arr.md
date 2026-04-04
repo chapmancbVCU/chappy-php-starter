@@ -667,10 +667,17 @@ print_r($result);
 ```
 <br>
 
-### D. map <a id="map"></a>
-`map(array $array, callable $callback): array`
-
+### D. `map()` <a id="map"></a>
 Applies a callback to each item in an array.
+
+Parameters:
+- array $array The source array.
+- callable $callback The function to apply.
+
+Returns:
+- array The modified array.
+
+Example:
 ```php
 $array = [1, 2, 3];
 $result = Arr::map($array, fn($value) => $value * 2);
