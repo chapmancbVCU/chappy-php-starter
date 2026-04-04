@@ -492,10 +492,17 @@ var_dump($result);
 ```
 <br>
 
-### H. hasAnyKey <a id="hasanykey"></a>
-`hasAnyKey(array $array, array $keys): bool`
-
+### H. `hasAnyKey()` <a id="hasanykey"></a>
 Checks if at least one key exists in the array.
+
+Parameters:
+- `array $array` - The array to check.
+- `array $keys` - The keys to search for.
+
+Returns:
+- `bool` - True if all keys exist, otherwise false.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25];
 $result = Arr::hasAnyKey($array, ['age', 'gender']);
