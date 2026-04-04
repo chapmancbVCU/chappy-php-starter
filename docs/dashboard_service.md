@@ -45,7 +45,7 @@ DashboardService::checkIfCurrentUser($user, 'admindashboard.users');
 Returns an array of paginated users, excluding the currently logged-in admin. Sorting is done in descending order by `created_at`.
 
 Parameter:
-- Pagination $pagination Instance of Pagination class.
+- `Pagination $pagination` - Instance of Pagination class.
 
 Returns:
 - `array` - An array of paginated users.
@@ -56,9 +56,12 @@ $users = DashboardService::paginateUsers($pagination);
 
 <br>
 
-`totalUserCountExceptCurrent(): int`
-
+### C. `totalUserCountExceptCurrent()`
 Returns the total number of users in the system, excluding the currently logged-in admin. This can be used for admin dashboard statistics or analytics.
+
+Returns:
+- `int` - The number of users except current.
+
 ```php
 $count = DashboardService::totalUserCountExceptCurrent();
 ```
