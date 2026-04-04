@@ -35,7 +35,7 @@ Return:
 ## 3. TestRunner Class <a id="test-runner-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The TestRunner class contains functions available for you to use in your own child classes.
 
-**Constructor**
+### A. Constructor
 
 Parameter:
 - `InputInterface $input` - The Symfony InputInterface object.
@@ -43,8 +43,7 @@ Parameter:
 
 <br>
 
-**allTests**
-
+### B. `allTests()`
 Performs all available tests.
 
 Returns:
@@ -52,9 +51,9 @@ Returns:
 
 <br>
 
-**areAllSuitesEmpty**
-
+### C. `areAllSuitesEmpty()`
 Test to ensure there is not an empty test suite.
+
 Parameter:
 - `array $testSuites` - The collection of all available test suites.  Best practice is to use const provided by child class.
 
@@ -63,8 +62,7 @@ Returns:
 
 <br>
 
-**filter**
-
+### D.`filter()`
 Required by `testByFilter` function.  Returns string for test command that contains arguments for filtering.
 
 Returns:
@@ -72,9 +70,9 @@ Returns:
 
 <br>
 
-**getAllTestsInSuite**
-
+### E. `getAllTestsInSuite()`
 Retrieves all files in test suite so they can be run.
+
 Parameters:
 - `string $path` - Path to test suite.
 - `string $ext` - File extension to specify between php and js related tests.  Best practice is to use const provided by child class.
@@ -84,17 +82,17 @@ Returns:
 
 <br>
 
-**runTest**
-
+### F. `runTest()`
 Runs the unit test for your testing suite.
+
 Parameter:
 - `string $test` - The test to be performed.
 
 <br>
 
-**selectByTestName**
-
+### G. `selectByTestName()`
 Supports ability to run test by class/file name.
+
 Parameters:
 - `string $testArg` - The name of the class/file.
 
