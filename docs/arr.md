@@ -743,10 +743,17 @@ print_r($result);
 ```
 <br>
 
-### H. sort <a id="sort"></a>
-`sort(array $array, ?callable $callback = null): array`
-
+### H. `sort()` <a id="sort"></a>
 Sorts an array using a callback function.
+
+Parameters:
+- `array $array` - The array to sort.
+- `callable|null $callback` - The comparison function.
+
+Returns:
+- `array` - The sorted array.
+
+Example:
 ```php
 $array = [3, 1, 4, 1, 5, 9];
 $result = Arr::sort($array);
