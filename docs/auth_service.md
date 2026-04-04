@@ -89,9 +89,16 @@ $loginModel = AuthService::login($request, new Login(), 'johndoe', true);
 
 <br>
 
-`loginAttempts(Users $user, Login $loginModel, bool $mailer = false): Login`
-
+### E. `loginAttempts()`
 Increments login attempt counter, locks the account if maximum attempts are reached, and optionally sends an account deactivation email.
+
+- `User $user` - The user whose login attempts we are tracking.
+- `Login $loginModel` - The model that will be responsible for displaying messages.
+- `bool $mailer` - Sends account deactivated E-mail when user surpasses max number of login attempts before account is locked.
+
+Returns:
+- `Login $loginModel` - The Login model after login in attempt test and session messages are assigned.
+
 ```php
 AuthService::loginAttempts($user, $loginModel, true);
 ```
