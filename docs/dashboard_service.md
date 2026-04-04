@@ -41,9 +41,15 @@ DashboardService::checkIfCurrentUser($user, 'admindashboard.users');
 
 <br>
 
-`paginateUsers(Pagination $pagination): array`
-
+### B. `paginateUsers()`
 Returns an array of paginated users, excluding the currently logged-in admin. Sorting is done in descending order by `created_at`.
+
+Parameter:
+- Pagination $pagination Instance of Pagination class.
+
+Returns:
+- `array` - An array of paginated users.
+
 ```php
 $users = DashboardService::paginateUsers($pagination);
 ```
