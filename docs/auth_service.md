@@ -118,9 +118,12 @@ AuthService::loginUser($user, true);
 
 <br>
 
-`loginUserFromCookie(): ?Users`
-
+### G. `loginUserFromCookie`
 Attempts to log in a user from a remember me cookie. If valid, creates a session and returns the user.
+
+Returns:
+- `Users` - The user associated with previous session.
+
 ```php
 $user = AuthService::loginUserFromCookie();
 ```
