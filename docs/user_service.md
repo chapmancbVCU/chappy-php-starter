@@ -12,12 +12,16 @@
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `UserService` class provides high-level user management operations such as account deactivation, password updates, profile image handling, and access restrictions. It is designed to support both user self-management and admin-level user administration.
 
+<br>
+
 **Setup**
 ```php
 use Core\Services\UserService;
 ```
 
-✅ **Common Use Cases**
+<br>
+
+**Common Use Cases**
 - Safely delete users (excluding admins)
 - Manage and sort profile images
 - Update and validate user passwords
@@ -26,7 +30,7 @@ use Core\Services\UserService;
 
 <br>
 
-## 2. ⚙️ Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `deleteIfAllowed(int $id, bool $unlink = false): void`
 
 Deletes a user if they are not an admin. Optionally removes their profile images if `$unlink` is `true`.
@@ -108,7 +112,7 @@ $shouldEmail = UserService::toggleResetPassword($user, $request, $previousReset)
 
 <br>
 
-## 3. 📦 Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - `AuthService` – Used to validate current user identity and confirm password fields.
 - `ProfileImages` – Handles image persistence, deletion, and sorting.
 - `Uploads` – File upload handler.
@@ -178,7 +182,7 @@ Just like above we follow a similar two step process.  We toggle the `active` an
 
 <br>
 
-## 4. 🧠 Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - Admin users (`["Admin"]` ACL) are protected from deletion.
 - Upload handling assumes that `$_FILES['profileImage']` is present for Uploads.
 - Email methods like `sendWhenSetToInactive()` and `sendWhenSetToResetPW()` rely on `AccountDeactivatedMailer` and `PasswordResetMailer` respectively.
