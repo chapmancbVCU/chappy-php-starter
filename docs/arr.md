@@ -255,10 +255,18 @@ print_r($flattened);
 ```
 <br>
 
-### H. contains <a id="contains"></a>
-`contains(array $array, mixed $value, bool $strict = false): bool`
-
+### H. `contains()` <a id="contains"></a>
 Determines if a given value exists in an array.
+
+Parameters:
+- `array $array` - The array to search.
+- `mixed $value` - The value to find.
+- `bool $strict` - Whether to perform a strict comparison.
+
+Returns:
+- bool True if the value exists, false otherwise.
+
+Example:
 ```php
 $array = [1, 2, 3, 'a' => 'apple'];
 $result = Arr::contains($array, 'apple');
