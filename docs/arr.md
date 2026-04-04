@@ -918,10 +918,16 @@ print_r($result);
 ```
 <br>
 
-### E. merge <a id="merge"></a>
-`merge(array ...$arrays): array`
-
+### E. `merge()` <a id="merge"></a>
 Merges one or more arrays together.
+
+Parameter:
+- `array ...$arrays` - Arrays to merge.
+
+Returns:
+- `array` - The merged array.
+
+Example:
 ```php
 $array1 = ['name' => 'Alice'];
 $array2 = ['age' => 25];
