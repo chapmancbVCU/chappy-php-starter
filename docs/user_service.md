@@ -59,9 +59,12 @@ $response = UserService::deleteProfileImage($request);
 
 <br>
 
-`ensureAuthenticatedUser(Users $user): void`
-
+### C. `ensureAuthenticatedUser()`
 Ensures that the user being modified matches the currently logged-in user. If not, redirects with an error message.
+
+Parameter:
+- `Users $user` - The user object to test.
+
 ```php
 UserService::ensureAuthenticatedUser($user);
 ```
