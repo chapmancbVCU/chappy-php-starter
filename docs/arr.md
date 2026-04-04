@@ -1133,10 +1133,17 @@ print_r($result);
 ```
 <br>
 
-### D. filterByValue <a id="filterbyvalue"></a>
-`filterByValue(array $array, callable $callback): array`
-
+### D. `filterByValue()` <a id="filterbyvalue"></a>
 Filters an array by its values.
+
+Parameters:
+- `array $array` - The array to filter.
+- `callable $callback` - The function to apply for filtering.
+
+Returns:
+- `array` - The filtered array.
+
+Example:
 ```php
 $array = ['a' => 1, 'b' => 2, 'c' => 3];
 $result = Arr::filterByValue($array, fn($value) => $value > 1);
