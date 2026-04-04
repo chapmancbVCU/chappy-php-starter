@@ -46,8 +46,8 @@
 6. [Manipulation](#manipulation)  
     * A. [fill](#fill)  
     * B. [forget](#forget)  
-    * C. [insertBefore](#insertbefore)  
-    * D. [insertAfter](#insertafter)  
+    * C. [insertAfter](#insertafter)  
+    * D. [insertBefore](#insertbefore)  
     * E. [merge](#merge)  
     * F. [prepend](#prepend)  
     * G. [pull](#pull)  
@@ -865,7 +865,7 @@ Removes a value from an array using dot notation.
 
 Parameters:
 - array $array The source array (passed by reference).
-- string|array $keys The key(s) to remove.
+- string\|array $keys The key(s) to remove.
 
 Example:
 ```php
@@ -876,25 +876,25 @@ print_r($array);
 ```
 <br>
 
-### C. insertBefore <a id="insertbefore"></a>
-`insertBefore(array $array, string|int $key, string|int $newKey, mixed $value): array`
-
-Inserts an element before a given key in an array.
-```php
-$array = ['a' => 1, 'b' => 2];
-$result = Arr::insertBefore($array, 'b', 'x', 99);
-print_r($result);
-// ['a' => 1, 'x' => 99, 'b' => 2]
-```
-<br>
-
-### D. insertAfter <a id="insertafter"></a>
+### C. insertAfter <a id="insertafter"></a>
 `insertAfter(array $array, string|int $key, string|int $newKey, mixed $value): array`
 
 Inserts an element after a given key in an array.
 ```php
 $array = ['a' => 1, 'b' => 2];
 $result = Arr::insertAfter($array, 'a', 'x', 99);
+print_r($result);
+// ['a' => 1, 'x' => 99, 'b' => 2]
+```
+<br>
+
+### D. insertBefore <a id="insertbefore"></a>
+`insertBefore(array $array, string|int $key, string|int $newKey, mixed $value): array`
+
+Inserts an element before a given key in an array.
+```php
+$array = ['a' => 1, 'b' => 2];
+$result = Arr::insertBefore($array, 'b', 'x', 99);
 print_r($result);
 // ['a' => 1, 'x' => 99, 'b' => 2]
 ```
