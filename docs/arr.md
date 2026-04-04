@@ -591,10 +591,16 @@ print_r($result);
 ```
 <br>
 
-### M. values <a id="values"></a>
-`values(array $array): array`
-
+### M. `values()` <a id="values"></a>
 Gets all values from an array, resetting numeric keys.
+
+Parameter:
+- `array $array` - The input array.
+
+Returns:
+- `array` - The array with numeric indexes.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25];
 $result = Arr::values($array);
