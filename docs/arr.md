@@ -549,10 +549,17 @@ print_r($result);
 ```
 <br>
 
-### K. only <a id="only"></a>
-`only(array $array, array $keys): array`
-
+### K. `only()` <a id="only"></a>
 Gets only the specified keys from an array.
+
+Parameters:
+- `array $array` - The source array.
+- `array $keys` - The keys to retrieve.
+
+Returns:
+- `array` - The filtered array.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25, 'city' => 'New York'];
 $result = Arr::only($array, ['name', 'city']);
