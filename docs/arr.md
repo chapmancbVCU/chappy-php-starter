@@ -156,10 +156,16 @@ print_r($values);
 ```
 <br>
 
-### C. arrayPluckMulti <a id="arraypluckmulti"></a>
-`arrayPluckMulti(array $array, array|string $keys): array`
-
+### C. `arrayPluckMulti()` <a id="arraypluckmulti"></a>
 Plucks nested values from an array.
+
+Parameters:
+- `array $array` - The source array.
+- `array|string $keys` - The nested keys to extract.
+
+Returns:
+- `array` - The plucked values.
+
 ```php
 $array = [
     ['name' => 'Alice', 'details' => ['age' => 25]],
