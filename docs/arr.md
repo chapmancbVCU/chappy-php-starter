@@ -998,10 +998,15 @@ print_r($array);
 ```
 <br>
 
-### I. set <a id="set"></a>
-`set(array &$array, string $key, mixed $value): void`
-
+### I. `set()` <a id="set"></a>
 Sets a value within an array using dot notation.
+
+Parameters:
+- `array $array` - The source array (passed by reference).
+- `string $key` - The key using dot notation.
+- `mixed $value` - The value to set.
+
+Example:
 ```php
 $array = ['name' => 'Alice'];
 Arr::set($array, 'details.age', 25);
