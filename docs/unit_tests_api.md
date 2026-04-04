@@ -101,8 +101,7 @@ Returns:
 
 <br>
 
-**singleFileWithinSuite**
-
+## H. `singleFileWithinSuite()`
 Performs testing against a single class within a test suite.
 Parameters:
 - `string $testArg` - The name of the test file without extension.
@@ -114,8 +113,7 @@ Returns:
 
 <br>
 
-**testFileExtensions**
-
+### I. `testFileExtensions()`
 Retrieves an array of values found in the TEST_FILE_EXTENSIONS const.
 
 Returns:
@@ -123,9 +121,9 @@ Returns:
 
 <br>
 
-**testExists**
-
+### J. `testExists()`
 Determine if test file exists in any of the available test suites.
+
 Parameters:
 - `string $name` - The name of the test we want to confirm if it exists.
 
