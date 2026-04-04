@@ -937,10 +937,18 @@ print_r($result);
 ```
 <br>
 
-### F. prepend <a id="prepend"></a>
-`prepend(array $array, mixed $value, string|int|null $key = null): array`
-
+### F. `prepend()` <a id="prepend"></a>
 Prepends a value to an array.
+
+Parameters:
+- `array $array` - The array to modify.
+- `mixed $value` - The value to prepend.
+- `string|int|null $key` - Optional key for the prepended value.
+
+Returns:
+- `array` - The modified array.
+
+Example:
 ```php
 $array = [2, 3, 4];
 $result = Arr::prepend($array, 1);
