@@ -391,10 +391,18 @@ var_dump($result);
 ```
 <br>
 
-### C. first <a id="first"></a>
-`first(array $array, ?callable $callback = null, mixed $default = null): mixed`
-
+### C. `first()` <a id="first"></a>
 Gets the first element that passes a given test.
+
+Parameters:
+- `array $array` - The source array.
+- `callable|null $callback` - The function to determine a match.
+- `mixed|null $default` - The default value if no match is found.
+
+Returns:
+- `mixed` - The first matching value or default.
+
+Example:
 ```php
 $array = [2, 4, 6, 8];
 $result = Arr::first($array, fn($value) => $value > 4);
