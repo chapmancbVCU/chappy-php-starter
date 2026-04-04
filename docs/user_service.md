@@ -31,9 +31,13 @@ use Core\Services\UserService;
 <br>
 
 ## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-`deleteIfAllowed(int $id, bool $unlink = false): void`
+#### A. `deleteIfAllowed()`
+Deletes a user if they are not an admin. Optionally removes their profile images if `$unlink` is `true`.  Appropriate messaging is displayed based on success or failure.
 
-Deletes a user if they are not an admin. Optionally removes their profile images if `$unlink` is `true`.
+Parameters:
+- `int $id` - The id for user we want to delete.
+- `bool $unlink` - Determines if profile images are deleted.
+
 ```php
 UserService::deleteIfAllowed(5, true);
 ```
