@@ -1035,10 +1035,18 @@ print_r($array);
 ```
 <br>
 
-### K. swapKeys <a id="swapkeys"></a>
-`swapKeys(array $array, string|int $key1, string|int $key2): array`
-
+### K. `swapKeys()` <a id="swapkeys"></a>
 Swaps two keys in an array.
+
+Parameters:
+- `array $array` - The array to modify.
+- `string|int $key1` - The first key.
+- `string|int $key2` - The second key.
+
+Returns:
+- `array` - The modified array.
+
+Example:
 ```php
 $array = ['a' => 1, 'b' => 2];
 $result = Arr::swapKeys($array, 'a', 'b');
