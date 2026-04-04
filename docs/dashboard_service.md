@@ -28,9 +28,13 @@ use Core\Services\DashboardService;
 <br>
 
 ## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-`checkIfCurrentUser(Users $user, string $redirect = ''): void`
-
+### A. `checkIfCurrentUser()`
 Prevents the current logged-in user from viewing or editing their own user record via the admin dashboard. If the given user matches the currently logged-in user, a danger flash message is set and a redirect occurs.
+
+Parameters:
+- `Users $user` - The current user.
+- `string $redirect` - The destination for redirect.
+
 ```php
 DashboardService::checkIfCurrentUser($user, 'admindashboard.users');
 ```
