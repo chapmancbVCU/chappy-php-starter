@@ -1015,10 +1015,16 @@ print_r($array);
 ```
 <br>
 
-### J. shift <a id="shift"></a>
-`shift(array &$array): mixed`
-
+### J. `shift()` <a id="shift"></a>
 Removes and returns the first element of an array.
+
+Parameters:
+- `array &$array` - The array to shift from (passed by reference).
+
+Returns:
+- `mixed|null` - The removed element or null if the array is empty.
+
+Example:
 ```php
 $array = [1, 2, 3];
 $first = Arr::shift($array);
