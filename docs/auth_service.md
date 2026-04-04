@@ -139,9 +139,15 @@ AuthService::logout();
 
 <br>
 
-`logoutUser(Users $user): bool`
-
+### I. `logoutUser()`
 Clears the user's session and remember-me cookie. Also removes the corresponding record from the `user_sessions` table.
+
+Parameter:
+- `User $user` - The user to be logged out.
+
+Returns:
+- `bool` - Returns true if operation is successful.
+
 ```php
 AuthService::logoutUser($user);
 ```
