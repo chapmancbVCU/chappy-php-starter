@@ -431,10 +431,17 @@ print_r($result);
 ```
 <br>
 
-### E. groupBy <a id="groupby"></a>
-`groupBy(array $array, string $key): array`
-
+### E. `groupBy()` <a id="groupby"></a>
 Groups an array by a given key.
+
+Parameters:
+- array $array The array to group.
+- string $key The key to group by.
+
+Returns:
+- array The grouped array.
+
+Example:
 ```php
 $array = [
     ['id' => 1, 'category' => 'A'],
