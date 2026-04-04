@@ -686,10 +686,17 @@ print_r($result);
 ```
 <br>
 
-### E. mapWithKeys <a id="mapwithkeys"></a>
-`mapWithKeys(array $array, callable $callback): array`
-
+### E. `mapWithKeys()` <a id="mapwithkeys"></a>
 Maps an array while preserving keys.
+
+Parameters:
+- array $array The source array.
+- callable $callback The function to apply.
+
+Returns:
+- array The modified array with new keys.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25];
 $result = Arr::mapWithKeys($array, fn($value, $key) => [$key => strtoupper($value)]);
