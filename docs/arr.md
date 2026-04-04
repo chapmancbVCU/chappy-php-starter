@@ -629,10 +629,17 @@ print_r($result);
 ```
 <br>
 
-### B. flattenWithDepth <a id="flattenwithdepth"></a>
-`flattenWithDepth(array $array, int $depth = INF): array`
-
+### B. `flattenWithDepth()` <a id="flattenwithdepth"></a>
 Flattens an array up to a specified depth.
+
+Parameters:
+- array $array The multi-dimensional array.
+- int $depth The depth limit (default: infinite).
+
+Returns:
+- array The flattened array.
+
+Example:
 ```php
 $array = [[1, 2], [3, [4, 5]]];
 $result = Arr::flattenWithDepth($array, 1);
