@@ -876,10 +876,19 @@ print_r($array);
 ```
 <br>
 
-### C. insertAfter <a id="insertafter"></a>
-`insertAfter(array $array, string|int $key, string|int $newKey, mixed $value): array`
-
+### C. `insertAfter()` <a id="insertafter"></a>
 Inserts an element after a given key in an array.
+
+Parameters:
+- `array $array` - The original array.
+- `string|int $key` - The key to insert after.
+- `string|int $newKey` - The new key.
+- `mixed $value` - The value to insert.
+
+Returns:
+- `array` - The modified array.
+
+Example:
 ```php
 $array = ['a' => 1, 'b' => 2];
 $result = Arr::insertAfter($array, 'a', 'x', 99);
