@@ -1075,10 +1075,18 @@ print_r($result);
 <br>
 
 ## 7. Comparison, Filtering, & Mapping <a id="comparison-filtering-mapping"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. contains <a id="contains"></a>
-`contains(array $array, mixed $value, bool $strict = false): bool`
-
+### A. `contains()` <a id="contains"></a>
 Determines if a given value exists in an array.
+
+Parameters:
+- `array $array` - The array to search.
+- `mixed $value` - The value to find.
+- `bool $strict` - Whether to perform a strict comparison.
+
+Returns:
+- `bool` - True if the value exists, false otherwise.
+
+Example:
 ```php
 $array = [1, 2, 3, 'a' => 'apple'];
 $result = Arr::contains($array, 'apple');
