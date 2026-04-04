@@ -144,7 +144,7 @@ $shouldEmail = UserService::toggleAccountStatus($user, $request, $previousInacti
 
 <br>
 
-###. I `toggleResetPassword()`
+### I. `toggleResetPassword()`
 Toggles the `reset_password` flag based on request input. Returns `true` if it was just activated.
 
 Parameter:
