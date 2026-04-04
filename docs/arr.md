@@ -1095,10 +1095,17 @@ var_dump($result);
 ```
 <br>
 
-### B. filter <a id="filter"></a>
-`filter(array $array, callable $callback): array`
-
+### B. `filter()` <a id="filter"></a>
 Filters an array using a callback function.
+
+Parameters:
+- `array $array` - The source array.
+- `callable $callback` - The filtering function.
+
+Returns:
+- `array` - The filtered array.
+
+Example:
 ```php
 $array = [1, 2, 3, 4, 5];
 $result = Arr::filter($array, fn($value) => $value > 2);
