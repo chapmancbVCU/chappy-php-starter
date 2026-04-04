@@ -85,9 +85,16 @@ UserService::handleProfileImages($user, $uploads, $sortedJson);
 
 <br>
 
-`updatePassword(Users $user, Input $request): bool`
-
+### E. `updatePassword()`
 Updates the user’s password if the current password is correct and the new password passes validation.
+
+Parameters:
+- `Users $user` - The user whose password we want to update.
+- `Input $request` - The request.
+
+Returns:
+- `bool` - True if password is updated, otherwise false.
+
 ```php
 $success = UserService::updatePassword($user, $request);
 ```
