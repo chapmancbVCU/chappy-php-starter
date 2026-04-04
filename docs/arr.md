@@ -897,10 +897,19 @@ print_r($result);
 ```
 <br>
 
-### D. insertBefore <a id="insertbefore"></a>
-`insertBefore(array $array, string|int $key, string|int $newKey, mixed $value): array`
-
+### D. `insertBefore()` <a id="insertbefore"></a>
 Inserts an element before a given key in an array.
+
+Parameters:
+- `array $array` - The original array.
+- `string|int $key` - The key to insert before.
+- `string|int $newKey` - The new key.
+- `mixed $value` - The value to insert.
+
+Returns:
+- `array` - The modified array.
+
+Example:
 ```php
 $array = ['a' => 1, 'b' => 2];
 $result = Arr::insertBefore($array, 'b', 'x', 99);
