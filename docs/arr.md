@@ -116,10 +116,18 @@ print_r($filtered); // ['name' => 'John']
 <br>
 
 ## 3. Methods <a id="methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. add <a id="add"></a>
-`add(array $array, string|int $key, mixed $value): array`
-
+#### A. `add()` <a id="add"></a>
 Adds a value to an array if the key does not exist.
+
+Parameter:
+- `array $array` - The array to modify.
+- `string|int $key` - The key to check.
+- `mixed $value` - The value to add.
+
+Returns:
+- `array` - The modified array.
+
+Example:
 ```php
 $array = ['name' => 'Alice'];
 $array = Arr::add($array, 'age', 25);
