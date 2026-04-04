@@ -435,11 +435,11 @@ print_r($result);
 Groups an array by a given key.
 
 Parameters:
-- array $array The array to group.
-- string $key The key to group by.
+- `array $array` - The array to group.
+- `string $key` - The key to group by.
 
 Returns:
-- array The grouped array.
+- `array` - The grouped array.
 
 Example:
 ```php
