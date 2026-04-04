@@ -374,146 +374,130 @@ Below is a complete example for PHPUnit.
 
 ```php
 <?php
-declare(strict_types=1);
-namespace Console\Helpers\Testing;
+namespace Console\Commands;
 
-use Console\Helpers\Tools;
-use Core\Lib\Logging\Logger;
-use Core\Lib\Utilities\Arr;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
+use Console\ConsoleCommand;
+use Console\Helpers\Testing\PHPUnitRunner;
+use Console\Helpers\Testing\TestRunner;
+use Core\Lib\Utilities\Str;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 /**
- * Supports PHPUnit testing operations.
+ * Supports ability to run a phpunit test with only the name of the test file is accepted as a required input.
+ * More information can be found <a href="https://chapmancbvcu.github.io/chappy-php-starter/php_unit#running-tests">here</a>.
  */
-final class PHPUnitRunner extends TestRunner {
+class RunTestCommand extends ConsoleCommand
+{
     /**
-     * The array of options allowed as input for the test command.
-     */
-    public const ALLOWED_OPTIONS = [
-        'coverage',
-        'debug',
-        'display-deprecations',
-        'display-errors',
-        'display-incomplete',
-        'display-skipped',
-        'fail-on-incomplete',
-        'fail-on-risky',
-        'random-order',
-        'reverse-order',
-        'stop-on-error',
-        'stop-on-failure',
-        'stop-on-incomplete',
-        'stop-on-risky',
-        'stop-on-skipped',
-        'stop-on-warning',
-        'testdox',
-    ];
-
-    /**
-     * The path for feature tests.
-     */
-    public const FEATURE_PATH = 'tests'.DS.'Feature'.DS;
-
-    /**
-     * The command for PHPUnit.
-     */
-    public const TEST_COMMAND = 'php vendor/bin/phpunit';
-
-    /**
-     * File extension for PHPUnit unit tests.
-     */
-    public const TEST_FILE_EXTENSION = ".php";
-    
-    /**
-     * The path for unit tests.
-     */
-    public const UNIT_PATH = 'tests'.DS.'Unit'.DS;
-
-    /**
-     * Constructor
+     * Configures the command.
      *
-     * @param InputInterface $input The Symfony InputInterface object.
-     * @param OutputInterface $output The Symfony OutputInterface object.
+     * @return void
      */
-    public function __construct(InputInterface $input, OutputInterface $output) {
-        $this->inputOptions = self::parseOptions($input);
-        parent::__construct($output);
+    protected function configure(): void
+    {
+        $this->setName('test')
+            ->setDescription('Performs the phpunit test.')
+            ->setHelp('php console test <test_file_name> without the .php extension.')
+            ->addArgument('testname', InputArgument::OPTIONAL, 'Pass the test file\'s name.')
+
+            // Flags
+            ->addOption('coverage', null, InputOption::VALUE_NONE, 'Display code coverage summary.')
+            ->addOption('debug', null, InputOption::VALUE_NONE, 'Enable debug output.')
+            ->addOption('display-depreciations', null, InputOption::VALUE_NONE, 'Show deprecated method warnings.')
+            ->addOption('display-errors', null, InputOption::VALUE_NONE, 'Show errors (on by default).')
+            ->addOption('display-incomplete', null, InputOption::VALUE_NONE, 'Show incomplete tests in summary .')
+            ->addOption('display-skipped', null, InputOption::VALUE_NONE, 'Show skipped tests in summary.')
+            ->addOption('fail-on-incomplete', null, InputOption::VALUE_NONE, 'Mark incomplete tests as failed.')
+            ->addOption('fail-on-risky', null, InputOption::VALUE_NONE, 'Fail if risky tests are detected.')
+            ->addOption('feature', null, InputOption::VALUE_NONE, 'Run feature tests.')
+            ->addOption('random-order', null, InputOption::VALUE_NONE, 'Perform tests in random order.')
+            ->addOption('reverse-order', null, InputOption::VALUE_NONE, 'Perform tests in reverse order.')
+            ->addOption('stop-on-error', null, InputOption::VALUE_NONE, 'Stop on error.')
+            ->addOption('stop-on-failure', null, InputOption::VALUE_NONE, 'Stop on first failure.')
+            ->addOption('stop-on-incomplete', null, InputOption::VALUE_NONE, 'Stop on incomplete test.')
+            ->addOption('stop-on-risky', null, InputOption::VALUE_NONE, 'Stop on risky test.')
+            ->addOption('stop-on-skipped', null, InputOption::VALUE_NONE, 'Stop on skipped test.')
+            ->addOption('stop-on-warning', null, InputOption::VALUE_NONE, 'Stop on warning.')
+            ->addOption('testdox', null, InputOption::VALUE_NONE, 'Use TestDox output.')
+            ->addOption('unit', null, InputOption::VALUE_NONE, 'Run unit tests.');
     }
-
+ 
     /**
-     * Parses PHPUnit related arguments and ignore Symfony arguments.
+     * Executes the command
      *
-     * @param InputInterface $input Instance of InputInterface from command.
-     * @return string A string containing the arguments to be provided to 
-     * PHPUnit.
+     * @return int A value that indicates success, invalid, or failure.
      */
-    public static function parseOptions(InputInterface $input): string {
-        $args = [];
+    protected function handle(): int
+    {
+        // Get options and arguments
+        $testArg = $this->getArgument('testname');
+        if($testArg && PHPUnitRunner::testIfSame($testArg)) return self::FAILURE;
 
-        foreach(self::ALLOWED_OPTIONS as $allowed) {
-            if($input->hasOption($allowed) && $input->getOption($allowed)) {
-                switch ($allowed) {
-                    case 'coverage':
-                        $args[] = '--coverage-text';
-                        break;
-                    case 'debug':
-                        $args[] = '--debug';
-                        break;
-                    case 'display-deprecations':
-                        $args[] = '--display-deprecations';
-                        break;
-                    case 'display-errors':
-                        $args[] = '--display-errors';
-                        break;
-                    case 'display-incomplete':
-                        $args[] = '--display-incomplete';
-                        break;
-                    case 'display-skipped':
-                        $args[] = '--display-skipped';
-                        break;
-                    case 'fail-on-incomplete':
-                        $args[] = '--fail-on-incomplete';
-                        break;
-                    case 'fail-on-risky':
-                        $args[] = '--fail-on-risky';
-                        break;
-                    case 'random-order':
-                        $args[] = '--random-order';
-                        break;
-                    case 'reverse-order':
-                        $args[] = '--reverse-order';
-                        break;
-                    case 'stop-on-error':
-                        $args[] = '--stop-on-error';
-                        break;
-                    case 'stop-on-failure':
-                        $args[] = '--stop-on-failure';
-                        break;
-                    case 'stop-on-incomplete':
-                        $args[] = '--stop-on-incomplete';
-                        break;
-                    case 'stop-on-risky':
-                        $args[] = '--stop-on-risky';
-                        break;
-                    case 'stop-on-skipped':
-                        $args[] = '--stop-on-skipped';
-                        break;
-                    case 'stop-on-warning':
-                        $args[] = '--stop-on-warning';
-                        break;
-                    case 'testdox':
-                        $args[] = '--testdox';
-                        break;
-                    default;
-                        $args[] = '--' . $allowed;
-                        break;
-                }
+        $unit = $this->getOption('unit');
+        $feature = $this->getOption('feature');
+        
+        $test = new PHPUnitRunner($this->input, $this->output);
+
+        // Run all tests.
+        if(!$feature && !$unit && !$testArg) {
+            return $test->allTests();
+        }
+        
+        // Select test based on file name or function name.
+        if($testArg && !$unit && !$feature) {
+            if(Str::contains($testArg, ':')) {
+               return $test->testByFilter($testArg, $this->question()); 
             }
+            return $test->selectByTestName($testArg);
+        }
+        
+        /* 
+         * Run tests based on --unit and --feature flags and verify successful 
+         * completion.
+         */
+        $runBySuiteStatus = [];
+        if(!$testArg && $unit) {
+            $runBySuiteStatus[] = $test->testSuite(
+                TestRunner::getAllTestsInSuite(PHPUnitRunner::UNIT_PATH, PHPUnitRunner::TEST_FILE_EXTENSION)
+            );
+        }
+        if(!$testArg && $feature) {
+            $runBySuiteStatus[] = $test->testSuite(
+                TestRunner::getAllTestsInSuite(PHPUnitRunner::FEATURE_PATH, PHPUnitRunner::TEST_FILE_EXTENSION)
+            );
+        }
+        if(!$testArg && PHPUnitRunner::testSuiteStatus($runBySuiteStatus)) {
+            console_info("Completed tests by suite(s)");
+            return self::SUCCESS;
         }
 
-        return (Arr::isEmpty($args)) ? '' : ' ' . implode(' ', $args);
+        /* 
+         * Run individual test file based on --unit and --feature flags and 
+         * verify successful completion.
+         */
+        $testNameByFlagStatus = [];
+        if($testArg && $unit) {
+            $testNameByFlagStatus[] = $test->singleFileWithinSuite(
+                $testArg, 
+                PHPUnitRunner::UNIT_PATH, 
+                PHPUnitRunner::TEST_FILE_EXTENSION
+            );
+        }
+        if($testArg && $feature) {
+            $testNameByFlagStatus[] = $test->singleFileWithinSuite(
+                $testArg, 
+                PHPUnitRunner::FEATURE_PATH, 
+                PHPUnitRunner::TEST_FILE_EXTENSION
+            );
+        }
+        if($testArg && PHPUnitRunner::testSuiteStatus($testNameByFlagStatus)) {
+            console_info("Completed tests by name and suite(s)");
+            return self::SUCCESS;
+        }
+
+        console_error("There was an issue running unit tests.  Check your command line input.");
+        return self::FAILURE;
     }
 }
 ```
