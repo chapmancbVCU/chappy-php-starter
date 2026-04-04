@@ -748,7 +748,7 @@ Sorts an array using a callback function.
 
 Parameters:
 - `array $array` - The array to sort.
-- `callable|null $callback` - The comparison function.
+- `callable\|null $callback` - The comparison function.
 
 Returns:
 - `array` - The sorted array.
@@ -762,10 +762,17 @@ print_r($result);
 ```
 <br>
 
-### I. sortAssoc <a id="sortassoc"></a>
-`sortAssoc(array $array, bool $descending = false): array`
-
+### I. `sortAssoc()` <a id="sortassoc"></a>
 Sorts an associative array by its keys.
+
+Parameters:
+- array $array The array to sort.
+- bool $descending Whether to sort in descending order.
+
+Returns:
+- array The sorted array.
+
+Example:
 ```php
 $array = ['b' => 2, 'a' => 1, 'c' => 3];
 $result = Arr::sortAssoc($array);
