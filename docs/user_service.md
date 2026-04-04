@@ -71,9 +71,14 @@ UserService::ensureAuthenticatedUser($user);
 
 <br>
 
-`handleProfileImages(Users $user, ?Uploads $uploads, ?string $sortedImages): void`
-
+### D. `handleProfileImages()`
 Handles profile image uploading and image order sorting.
+
+Parameters:
+- `Users $user` - The user whose profile images we want to manage.
+- `Uploads|null` - $uploads The Uploads object or profile image upload.
+- `string|null` - $sortedImages Order of sorted images.
+
 ```php
 UserService::handleProfileImages($user, $uploads, $sortedJson);
 ```
