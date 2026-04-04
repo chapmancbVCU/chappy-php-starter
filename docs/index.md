@@ -62,7 +62,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
   * A. [Setup With Jekyll](jekyll_setup)
 26. [User Profiles](user_profiles)
 27. [User Registration and Authentication](user_registration_and_authentication)
-28. [Utilities](utilities)
+28. Utilities
     * A. [Arr Class](arr)
     * B. [ArraySet Class](array_set)
     * C. [Config and Env Classes](config_env)
