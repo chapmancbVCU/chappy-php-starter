@@ -822,10 +822,16 @@ print_r($result);
 ```
 <br>
 
-### L. sortByValues <a id="sortbyvalues"></a>
-`sortByValues(array $array): array`
-
+### L. `sortByValues()` <a id="sortbyvalues"></a>
 Sorts an array by its values.
+
+Parameter:
+- `array $array` - The array to sort.
+
+Returns:
+- `array` - The sorted array.
+
+Example:
 ```php
 $array = ['b' => 3, 'a' => 1, 'c' => 2];
 $result = Arr::sortByValues($array);
