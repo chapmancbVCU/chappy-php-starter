@@ -353,10 +353,17 @@ print_r($result);
 <br>
 
 ## 4. Retrieving Data <a id="retrieving-data"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. except <a id="except"></a>
-`except(array $array, array $keys): array`
-
+### A. `except()` <a id="except"></a>
 Gets all items except the specified keys.
+
+Parameters:
+- `array $array` - The source array.
+- `array $keys` - The keys to exclude.
+
+Returns:
+- `array` - The filtered array.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25, 'city' => 'New York'];
 $result = Arr::except($array, ['age']);
