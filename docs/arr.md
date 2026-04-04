@@ -411,10 +411,18 @@ print_r($result);
 ```
 <br>
 
-### D. get <a id="get"></a>
-`get(array $array, string $key, mixed $default = null): mixed`
-
+### D. `get()` <a id="get"></a>
 Gets a value from an array using dot notation.
+
+Parameters:
+- `array $array` - The source array.
+- `string $key` - The key using dot notation.
+- `mixed|null $default` - The default value if the key is not found.
+
+Returns:
+- `mixed` - The value from the array or the default.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'details' => ['age' => 25]];
 $result = Arr::get($array, 'details.age');
