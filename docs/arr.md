@@ -568,10 +568,18 @@ print_r($result);
 ```
 <br>
 
-### L. pluck <a id="pluck"></a>
-`pluck(array $array, string $value, ?string $key = null): array`
-
+### L. `pluck()` <a id="pluck"></a>
 Plucks a single key from an array.
+
+Parameters:
+- `array $array` - The source array.
+- `string $value` - The key to extract values for.
+- `string|null` - $key Optional key to use as array index.
+
+Returns:
+- `array` - The plucked values.
+
+Example:
 ```php
 $array = [
     ['id' => 1, 'name' => 'Alice'],
