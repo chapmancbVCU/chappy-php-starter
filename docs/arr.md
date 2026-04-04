@@ -473,10 +473,17 @@ var_dump($result);
 ```
 <br>
 
-### G. hasAllKeys <a id="hasallkeys"></a>
-`hasAllKeys(array $array, array $keys): bool`
-
+### G. `hasAllKeys()` <a id="hasallkeys"></a>
 Checks if all given keys exist in the array.
+
+Parameters:
+- `array $array` - The array to check.
+- `array $keys` - The keys to search for.
+
+Returns:
+- `bool` - True if all keys exist, otherwise false.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25];
 $result = Arr::hasAllKeys($array, ['name', 'age']);
