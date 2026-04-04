@@ -275,10 +275,16 @@ var_dump($result);
 ```
 <br>
 
-### I. crossJoin <a id="crossjoin"></a>
-`crossJoin(array ...$arrays): array`
-
+### I. `crossJoin()` <a id="crossjoin"></a>
 Computes the Cartesian product of multiple arrays.
+
+Parameter:
+- `array ...$arrays` - The arrays to compute the product for.
+
+Returns:
+- `array` - The Cartesian product.
+
+Example:
 ```php
 $array1 = [1, 2];
 $array2 = ['a', 'b'];
