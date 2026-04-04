@@ -841,10 +841,18 @@ print_r($result);
 <br>
 
 ## 6. Manipulation <a id="manipulation"></a>
-### A. fill <a id="fill"></a>
-`fill(int $startIndex, int $count, mixed $value): array`
-
+### A. `fill()` <a id="fill"></a>
 Fills an array with a specified value.
+
+Parameters:
+- `int $startIndex` -  The first index to use.
+- `int $count` - The number of elements to insert.
+- `mixed $value` - The value to use for filling.
+
+Returns:
+- `array` - The filled array.
+
+Example:
 ```php
 $result = Arr::fill(0, 3, 'a');
 print_r($result);
