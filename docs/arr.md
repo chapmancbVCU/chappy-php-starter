@@ -529,10 +529,18 @@ print_r($result);
 ```
 <br>
 
-### J. last <a id="last"></a>
-`last(array $array, ?callable $callback = null, mixed $default = null): mixed`
-
+### J. `last()` <a id="last"></a>
 Gets the last element that passes a given test.
+
+Parameters:
+- `array $array` - The source array.
+- `callable|null $callback` - The function to determine a match.
+- `mixed|null $default` - The default value if no match is found.
+
+Returns:
+- `mixed` - The last matching value or default.
+
+Example:
 ```php
 $array = [2, 4, 6, 8];
 $result = Arr::last($array, fn($value) => $value < 7);
