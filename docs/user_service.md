@@ -101,9 +101,13 @@ $success = UserService::updatePassword($user, $request);
 
 <br>
 
-`sendWhenSetToInactive(Users $user, bool $shouldSendEmail = false): void`
-
+### F. `sendWhenSetToInactive()`
 Sends an account deactivation email if `$shouldSendEmail` is `true`.
+
+Parameters:
+- Users $user The user we will send E-mail to.
+- bool $shouldSendEmail Sends E-mail when true.
+
 ```php
 UserService::sendWhenSetToInactive($user, true);
 ```
