@@ -167,9 +167,15 @@ AuthService::passwordReset($request, $user);
 
 <br>
 
-`profileImageUpload(Users $user): ?Uploads`
-
+### K. `profileImageUpload()`
 Processes a profile image upload and returns an `Uploads` object. Assumes the input name is `profileImage`.
+
+Parameter:
+- `Users $user` - The user who uploaded a profile image.
+
+Returns:
+- `Uploads|null` - The uploads object if it's created or null.
+
 ```php
 $upload = AuthService::profileImageUpload($user);
 ```
