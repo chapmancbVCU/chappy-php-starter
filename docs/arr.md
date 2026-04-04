@@ -1114,10 +1114,17 @@ print_r($result);
 ```
 <br>
 
-### C. filterByKeys <a id="filterbykeys"></a>
-`filterByKeys(array $array, array $keys): array`
-
+### C. `filterByKeys()` <a id="filterbykeys"></a>
 Filters an array to include only the specified keys.
+
+Parameters:
+- `array $array` - The source array.
+- `array $keys` - The keys to keep.
+
+Returns:
+- `array` - The filtered array.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25, 'city' => 'New York'];
 $result = Arr::filterByKeys($array, ['name', 'city']);
