@@ -333,10 +333,17 @@ print_r($result);
 ```
 <br>
 
-### L. dot <a id="dot"></a>
-`dot(array $array, string $prepend = ''): array`
-
+### L. `dot()` <a id="dot"></a>
 Converts a multi-dimensional array into dot notation keys.
+
+Parameters:
+- `array $array` - The multi-dimensional array.
+- `string $prepend` - The prefix for keys.
+
+Returns:
+- `array` - The array with dot notation keys.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'details' => ['age' => 25, 'city' => 'New York']];
 $result = Arr::dot($array);
