@@ -127,9 +127,17 @@ UserService::sendWhenSetToResetPW($user, true);
 
 <br>
 
-`toggleAccountStatus(Users $user, Input $request, ?int $currentInactive = null): bool`
-
+### H. `toggleAccountStatus()`
 Toggles the `inactive` status based on request input. Returns `true` if the account was just deactivated.
+
+Parameters:
+- `Users $user` - The user whose status we want to set.
+- `Input $request` - The request.
+- `int|null $currentInactive` - Value of $user->inactive before post.
+
+Returns:
+- `bool` - True if we want to send mail and otherwise false.
+
 ```php
 $shouldEmail = UserService::toggleAccountStatus($user, $request, $previousInactive);
 ```
