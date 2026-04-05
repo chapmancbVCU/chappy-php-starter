@@ -1495,10 +1495,16 @@ print_r($result);
 ```
 <br>
 
-### K. wrap <a id="wrap"></a>
-`wrap(mixed $value): array`
-
+### K. `wrap()` <a id="wrap"></a>
 Wraps a value in an array.
+
+Parameters:
+- `mixed $value` - The value to wrap.
+
+Returns:
+- `array` - The wrapped array.
+
+Example:
 ```php
 $result = Arr::wrap('hello');
 print_r($result);
