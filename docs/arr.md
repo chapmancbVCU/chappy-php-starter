@@ -1475,10 +1475,17 @@ print_r($result);
 ```
 <br>
 
-### J. weightedRandom <a id="weightedrandom"></a>
-`weightedRandom(array $array, array $weights): mixed`
-
+### J. `weightedRandom()` <a id="weightedrandom"></a>
 Selects a random element based on weighted probabilities.
+
+Parameters:
+- `array $array` - The array with weights.
+- `array $weights` - The corresponding weights.
+
+Returns:
+- `mixed` - A randomly selected item.
+
+Example:
 ```php
 $items = ['apple', 'banana', 'cherry'];
 $weights = [1, 2, 1];
