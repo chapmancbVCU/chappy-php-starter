@@ -1454,10 +1454,19 @@ print_r($result);
 ```
 <br>
 
-### I. walkRecursive <a id="walkrecursive"></a>
-`walkRecursive(array $array, callable $callback): array`
-
+### I. `walkRecursive()` <a id="walkrecursive"></a>
 Recursively applies a callback function to each element in an array.
+
+Parameters:
+- `array $array` - The array to be processed.
+- `callable $callback` - The callback function to apply.  The callback should accept two parameters: 
+    - mixed $value (the array value)
+    - string|int $key (the array key)
+
+Returns:
+- `array` - The modified array with the callback applied to each value.
+
+Example:
 ```php
 $array = [1, [2, 3], 4];
 $result = Arr::walkRecursive($array, fn($value) => $value * 2);
