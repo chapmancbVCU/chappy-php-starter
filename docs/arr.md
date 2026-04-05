@@ -1512,10 +1512,17 @@ print_r($result);
 ```
 <br>
 
-### L. xorDiff <a id="xordiff"></a>
-`xorDiff(array $array1, array $array2): array`
-
+### L. `xorDiff()` <a id="xordiff"></a>
 Computes the exclusive difference between two arrays.
+
+Parameters:
+- `array $array1` - The first array.
+- `array $array2` - The second array.
+
+Returns:
+- `array` - The values that exist only in one of the arrays.
+
+Example:
 ```php
 $array1 = [1, 2, 3];
 $array2 = [3, 4, 5];
