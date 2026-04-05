@@ -1346,10 +1346,16 @@ var_dump($result);
 ```
 <br>
 
-### C. isEmpty <a id="isempty"></a>
-`isEmpty(?array $array): bool`
-
+### C. `isEmpty()` <a id="isempty"></a>
 Checks if the given array is empty.
+
+Parameter:
+- `array|null $array` - The array to check.
+
+Returns:
+- `bool` - True if empty or null, otherwise false.
+
+Example:
 ```php
 $result = Arr::isEmpty([]);
 var_dump($result);
@@ -1357,10 +1363,16 @@ var_dump($result);
 ```
 <br>
 
-### D. isNotEmpty <a id="isnotempty"></a>
-`isNotEmpty(?array $array): bool`
-
+### D. `isNotEmpty()` <a id="isnotempty"></a>
 Checks if the given array is not empty.
+
+Parameter:
+- `array|null $array` - The array to check.
+
+Returns:
+- `bool` - True if not empty, otherwise false.
+
+Example:
 ```php
 $result = Arr::isNotEmpty([1, 2, 3]);
 var_dump($result);
