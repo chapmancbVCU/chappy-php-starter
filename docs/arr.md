@@ -1233,10 +1233,17 @@ print_r($result);
 ```
 <br>
 
-### I. where <a id="where"></a>
-`where(array $array, callable $callback): array`
-
+### I. `where()` <a id="where"></a>
 Filters an array using a callback function.
+
+Parameters:
+- `array $array` - The source array.
+- `callable $callback` - The function to apply to each element.
+
+Returns:
+- `array` - The filtered array.
+
+Example:
 ```php
 $array = [1, 2, 3, 4, 5];
 $result = Arr::where($array, fn($value) => $value > 2);
