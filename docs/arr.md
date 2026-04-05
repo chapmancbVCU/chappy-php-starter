@@ -1380,10 +1380,17 @@ var_dump($result);
 ```
 <br>
 
-### E. random <a id="random"></a>
-`random(array $array, ?int $number = null): mixed`
-
+### E. `random()` <a id="random"></a>
 Gets a random value or multiple values from an array.
+
+Parameter:
+- `array $array` - The source array.
+- `int|null $number` - Number of elements to retrieve.
+
+Returns:
+- `mixed` - The random value(s).
+
+Example:
 ```php
 $array = [1, 2, 3, 4, 5];
 $result = Arr::random($array);
