@@ -1253,10 +1253,18 @@ print_r($result);
 <br>
 
 ## 8. Chunking & Collapsing <a id="chunking-collapsing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. chunk <a id="chunk"></a>
-`chunk(array $array, int $size, bool $preserveKeys = false): array`
-
+### A. `chunk()` <a id="chunk"></a>
 Splits an array into chunks of a given size.
+
+Parameters:
+- `array $array` - The array to split.
+- `int $size` - The size of each chunk.
+- `bool $preserveKeys` - Whether to preserve keys.
+
+Returns:
+- `array` - An array of chunked arrays.
+
+Example:
 ```php
 $array = [1, 2, 3, 4, 5];
 $result = Arr::chunk($array, 2);
