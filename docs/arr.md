@@ -1295,7 +1295,7 @@ print_r($result);
 ### C. `collapse()` <a id="collapse"></a>
 Collapses a multi-dimensional array into a single-level array.
 
-Parameters:
+Parameter:
 - `array $array` - The multi-dimensional array.
 
 Returns:
@@ -1311,10 +1311,16 @@ print_r($result);
 <br>
 
 ## 9. Other Utilities <a id="other-utilities"></a>
-### A. isArray <a id="isarray"></a>
-`isArray(mixed $value): bool`
-
+### A. `isArray` <a id="isarray"></a>
 Determines if a given value is an array.
+
+Parameter:
+- `mixed $value` - The value to check.
+
+Returns:
+- `bool` - True if the value is an array, false otherwise.
+
+Example:
 ```php
 $result = Arr::isArray([1, 2, 3]);
 var_dump($result);
