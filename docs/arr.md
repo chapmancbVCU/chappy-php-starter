@@ -1311,7 +1311,7 @@ print_r($result);
 <br>
 
 ## 9. Other Utilities <a id="other-utilities"></a>
-### A. `isArray` <a id="isarray"></a>
+### A. `isArray()` <a id="isarray"></a>
 Determines if a given value is an array.
 
 Parameter:
@@ -1328,10 +1328,16 @@ var_dump($result);
 ```
 <br>
 
-### B. isAssoc <a id="isassoc"></a>
-`isAssoc(array $array): bool`
-
+### B. `isAssoc()` <a id="isassoc"></a>
 Determines if an array is associative (i.e., contains at least one non-numeric key).
+
+Parameter:
+- `array $array` - The array to check.
+
+Returns:
+- `bool` - True if associative, false otherwise.
+
+Example:
 ```php
 $array = ['a' => 1, 'b' => 2];
 $result = Arr::isAssoc($array);
