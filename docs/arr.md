@@ -1173,10 +1173,17 @@ print_r($odd);
 ```
 <br>
 
-### F. reject <a id="reject"></a>
-`reject(array $array, callable $callback): array`
-
+### F. `reject()` <a id="reject"></a>
 Rejects elements that match a given condition.
+
+Parameters:
+- `array $array` - The source array.
+- `callable $callback` - The function to determine rejection.
+
+Returns:
+- `array` - The modified array.
+
+Example:
 ```php
 $array = [1, 2, 3, 4, 5];
 $result = Arr::reject($array, fn($value) => $value > 3);
