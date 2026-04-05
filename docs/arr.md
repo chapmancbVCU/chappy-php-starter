@@ -1273,10 +1273,17 @@ print_r($result);
 ```
 <br>
 
-### B. chunkBy <a id="chunkby"></a>
-`chunkBy(array $array, callable $callback): array`
-
+### B. `chunkBy()` <a id="chunkby"></a>
 Chunks an array into groups based on a callback function.
+
+Parameters:
+- `array $array` - The array to chunk.
+- `callable $callback` - The function to determine chunks.
+
+Returns:
+- `array` - The chunked array.
+
+Example:
 ```php
 $array = [1, 2, 2, 3, 3, 3, 4];
 $result = Arr::chunkBy($array, fn($a, $b) => $a === $b);
