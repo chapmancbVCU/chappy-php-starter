@@ -1292,10 +1292,16 @@ print_r($result);
 ```
 <br>
 
-### C. collapse <a id="collapse"></a>
-`collapse(array $array): array`
-
+### C. `collapse()` <a id="collapse"></a>
 Collapses a multi-dimensional array into a single-level array.
+
+Parameters:
+- `array $array` - The multi-dimensional array.
+
+Returns:
+- `array` - The collapsed array.
+
+Example:
 ```php
 $array = [[1, 2], [3, 4], [5]];
 $result = Arr::collapse($array);
