@@ -1399,10 +1399,17 @@ print_r($result);
 ```
 <br>
 
-### F. toJson <a id="tojson"></a>
-`toJson(array $array, int $options = 0): string`
-
+### F. `toJson()` <a id="tojson"></a>
 Converts an array to a JSON string.
+
+Parameters:
+- `array $array` - The array to convert.
+- `int $options` - JSON encoding options.
+
+Returns:
+- `string` - The JSON string.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25];
 $result = Arr::toJson($array);
@@ -1412,8 +1419,6 @@ print_r($result);
 <br>
 
 ### G. toObject <a id="toobject"></a>
-`toObject(array $array): object`
-
 Converts an array to an object.
 ```php
 $array = ['name' => 'Alice', 'age' => 25];
