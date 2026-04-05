@@ -1436,10 +1436,16 @@ print_r($result->name);
 ```
 <br>
 
-### H. unwrap <a id="unwrap"></a>
-`unwrap(array $array): mixed`
-
+### H. `unwrap()` <a id="unwrap"></a>
 Unwraps an array if it contains only one item.
+
+Parameter:
+- `array $array` - The array to unwrap.
+
+Returns:
+- `mixed` - The single value or the original array.
+
+Example:
 ```php
 $array = ['single'];
 $result = Arr::unwrap($array);
