@@ -1152,10 +1152,17 @@ print_r($result);
 ```
 <br>
 
-### E. partition <a id="partition"></a>
-`partition(array $array, callable $callback): array`
-
+### E. `partition()` <a id="partition"></a>
 Partitions an array into two groups: one where the callback returns true, the other where it returns false.
+
+Parameters:
+- `array $array` - The array to partition.
+- `callable $callback` - The callback function.
+
+Returns:
+- `array` - An array with two arrays (true, false).
+
+Example:
 ```php
 $array = [1, 2, 3, 4, 5];
 list($even, $odd) = Arr::partition($array, fn($value) => $value % 2 === 0);
