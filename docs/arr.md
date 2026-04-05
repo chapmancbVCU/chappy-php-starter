@@ -1210,10 +1210,17 @@ print_r($result);
 ```
 <br>
 
-### H. uniqueBy <a id="uniqueby"></a>
-`uniqueBy(array $array, string|callable $key): array`
-
+### H. `uniqueBy()` <a id="uniqueby"></a>
 Removes duplicate items from an array based on a key or callback.
+
+Parameters:
+- `array $array` - The array to filter.
+- `string|callable $key` - The key or function to determine uniqueness.
+
+Returns:
+- `array` - The unique array.
+
+Example:
 ```php
 $array = [
     ['id' => 1, 'name' => 'Alice'],
