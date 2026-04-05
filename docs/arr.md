@@ -1192,10 +1192,16 @@ print_r($result);
 ```
 <br>
 
-### G. unique <a id="unique"></a>
-`unique(array $array): array`
-
+### G. `unique()` <a id="unique"></a>
 Removes duplicate values from an array.
+
+Parameter:
+- `array $array` - The source array.
+
+Returns:
+- `array` - The array without duplicate values.
+
+Example:
 ```php
 $array = [1, 2, 2, 3, 3, 4];
 $result = Arr::unique($array);
