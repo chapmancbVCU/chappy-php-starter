@@ -1418,8 +1418,16 @@ print_r($result);
 ```
 <br>
 
-### G. toObject <a id="toobject"></a>
+### G. `toObject()` <a id="toobject"></a>
 Converts an array to an object.
+
+Parameter:
+- array $array The array to convert.
+
+Returns:
+- object The converted object.
+
+Example:
 ```php
 $array = ['name' => 'Alice', 'age' => 25];
 $result = Arr::toObject($array);
