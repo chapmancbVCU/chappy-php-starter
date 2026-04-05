@@ -1460,8 +1460,8 @@ Recursively applies a callback function to each element in an array.
 Parameters:
 - `array $array` - The array to be processed.
 - `callable $callback` - The callback function to apply.  The callback should accept two parameters: 
-    - mixed $value (the array value)
-    - string|int $key (the array key)
+    - `mixed $value` - The array value
+    - `string\|int $key` - The array key
 
 Returns:
 - `array` - The modified array with the callback applied to each value.
