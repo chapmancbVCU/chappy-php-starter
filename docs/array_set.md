@@ -213,7 +213,7 @@ print_r($arr->all()); // [1, 2, 3]
 ```
 <br>
 
-### B. column <a id="column">
+### B. `column()` <a id="column">
 Extracts values from a specific column in a multi-dimensional array.
 
 Parameter:
