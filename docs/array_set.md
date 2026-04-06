@@ -247,10 +247,16 @@ echo $arr->count()->result();
 ```
 <br>
 
-### D. exists <a id="exists">
-`exists(string $key): self`
-
+### D. `exists()` <a id="exists">
 Checks if a given key exists in the array.
+
+Parameter:
+- `string $key` - The key to check.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'John', 'age' => 30]);
 var_dump($arr->exists('age')->result());
