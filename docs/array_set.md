@@ -264,10 +264,16 @@ var_dump($arr->exists('age')->result());
 ```
 <br>
 
-### E. first <a id="first">
-`first(?callable $callback = null): self`
-
+### E. `first()` <a id="first">
 Retrieves the first element of the array, or the first element that matches a given condition.
+
+Parameter:
+- `callable|null $callback` - A callback function to test elements.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([10, 20, 30, 40]);
 echo $arr->first()->result(); 
