@@ -214,9 +214,15 @@ print_r($arr->all()); // [1, 2, 3]
 <br>
 
 ### B. column <a id="column">
-`column(string|int $columnKey): self`
-
 Extracts values from a specific column in a multi-dimensional array.
+
+Parameter:
+- `string\|int $columnKey` - The column key.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([
     ['id' => 1, 'name' => 'Alice'],
