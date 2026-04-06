@@ -217,7 +217,7 @@ print_r($arr->all()); // [1, 2, 3]
 Extracts values from a specific column in a multi-dimensional array.
 
 Parameter:
-- `string\|int $columnKey` - The column key.
+- `string|int $columnKey` - The column key.
 
 Returns:
 - `self`
@@ -233,10 +233,13 @@ $arr->column('name')->all();
 ```
 <br>
 
-### C. count <a id="count">
-`count(): self`
-
+### C. `count()` <a id="count">
 Returns the number of elements in the array.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4]);
 echo $arr->count()->result(); 
