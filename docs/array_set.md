@@ -171,16 +171,19 @@ $arr->multiSort(SORT_ASC)->all();
 <br>
 
 ## 3. Methods <a id="methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. Constructor <a id="constructor">
-`__construct(array $items = [])`
-
+### A. `construct()` <a id="constructor">
 Initializes an `Arr` instance.
+
+Parameter:
+- `array $items` - The initial array.
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'John', 'age' => 30]);
 ```
 <br>
 
-#### B. make <a id="make">
+### B. make <a id="make">
 `make(mixed $items = [])`
 
 Wraps a value into an array if it's not already an array.
@@ -190,7 +193,7 @@ $arr = Arr::make('Hello')->all(); // Output: ['Hello']
 <br>
 
 ## 4. Retrieving Data <a id="retrieving-data"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. all <a id="all">
+### A. all <a id="all">
 'all(): array'
 
 Returns the array.
@@ -200,7 +203,7 @@ print_r($arr->all()); // [1, 2, 3]
 ```
 <br>
 
-#### B. column <a id="column">
+### B. column <a id="column">
 `column(string|int $columnKey): self`
 
 Extracts values from a specific column in a multi-dimensional array.
@@ -214,7 +217,7 @@ $arr->column('name')->all();
 ```
 <br>
 
-#### C. count <a id="count">
+### C. count <a id="count">
 `count(): self`
 
 Returns the number of elements in the array.
@@ -225,7 +228,7 @@ echo $arr->count()->result();
 ```
 <br>
 
-#### D. exists <a id="exists">
+### D. exists <a id="exists">
 `exists(string $key): self`
 
 Checks if a given key exists in the array.
@@ -236,7 +239,7 @@ var_dump($arr->exists('age')->result());
 ```
 <br>
 
-#### E. first <a id="first">
+### E. first <a id="first">
 `first(?callable $callback = null): self`
 
 Retrieves the first element of the array, or the first element that matches a given condition.
@@ -252,7 +255,7 @@ echo $arr->first(fn($v) => $v > 25)->result();
 ```
 <br>
 
-#### F. firstKey <a id="firstKey">
+### F. firstKey <a id="firstKey">
 `firstKey(): self`
 
 Retrieves the first key of the array.
@@ -263,7 +266,7 @@ echo $arr->firstKey()->result();
 ```
 <br>
 
-#### G. get <a id="get">
+### G. get <a id="get">
 `get(string $key, mixed $default = null)`
 
 Retrieves a value by key, supporting dot notation.
@@ -273,7 +276,7 @@ echo $data->get('user.name'); // John
 ```
 <br>
 
-#### H. has <a id="has">
+### H. has <a id="has">
 `has(string $key)`
 
 Checks if a key exists.
@@ -283,7 +286,7 @@ var_dump($arr->has('name')); // true
 ```
 <br>
 
-#### I. hasAny <a id="has-any">
+### I. hasAny <a id="has-any">
 `hasAny(array|string $keys)`
 
 Checks if at least one key exists.
@@ -293,7 +296,7 @@ var_dump($arr->hasAny(['name', 'email'])); // true
 ```
 <br>
 
-#### J. keys <a id="keys">
+### J. keys <a id="keys">
 `keys()`
 
 Returns the array keys.
@@ -303,7 +306,7 @@ print_r($arr->keys()->all()); // ['a', 'b']
 ```
 <br>
 
-#### K. last <a id="last">
+### K. last <a id="last">
 `last(?callable $callback = null): self`
 
 Retrieves the last element of the array, or the last element that matches a given condition.
@@ -319,7 +322,7 @@ echo $arr->last(fn($v) => $v < 25)->result();
 ```
 <br>
 
-#### L. lastKey <a id="lastKey">
+### L. lastKey <a id="lastKey">
 `lastKey(): self`
 
 Retrieves the last key of the array.
@@ -330,7 +333,7 @@ echo $arr->lastKey()->result();
 ```
 <br>
 
-#### M. result <a id="result">
+### M. result <a id="result">
 `result(): mixed`
 
 Retrieves the last computed result from a function that does not modify the original array.
@@ -342,7 +345,7 @@ print_r($arr->result());
 ```
 <br>
 
-#### N. search <a id="search">
+### N. search <a id="search">
 `search(mixed $value): self`
 
 Searches for a value in the array and returns its key.
@@ -354,7 +357,7 @@ print_r($arr->result());
 ```
 <br>
 
-#### O. shift <a id="shift">
+### O. shift <a id="shift">
 `shift(): self`
 
 Removes and returns the first item from the array.
@@ -368,7 +371,7 @@ print_r($arr->result());
 ```
 <br>
 
-#### P. values <a id="values">
+### P. values <a id="values">
 `values()`
 
 Returns only the array values.
@@ -379,7 +382,7 @@ print_r($arr->values()->all()); // [1, 2]
 <br>
 
 ## 5. Iteration, Sorting, Ordering, & Transformation <a id="sorting-ordering-transformation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. asort <a id="asort">
+### A. asort <a id="asort">
 `asort()`
 
 Sorts while maintaining key association.
@@ -389,7 +392,7 @@ $arr->asort()->all(); // ['a' => 1, 'c' => 2, 'b' => 3]
 ```
 <br>
 
-#### B. arsort <a id="arsort">
+### B. arsort <a id="arsort">
 `arsort()`
 
 Sorts in descending order while maintaining key association.
@@ -399,7 +402,7 @@ $arr->arsort()->all(); // ['b' => 3, 'c' => 2, 'a' => 1]
 ```
 <br>
 
-#### C. flatten <a id="flatten">
+### C. flatten <a id="flatten">
 `flatten(): self`
 
 Flattens a multi-dimensional array into a single-level array.
@@ -410,7 +413,7 @@ $arr->flatten()->all();
 ```
 <br>
 
-#### D. flip <a id="flip">
+### D. flip <a id="flip">
 `flip(): self`
 
 Swaps the keys and values of an array.
@@ -421,7 +424,7 @@ $arr->flip()->all();
 ```
 <br>
 
-#### E. keyBy <a id="key-by">
+### E. keyBy <a id="key-by">
 `keyBy(string $key): self`
 
 Uses a specific field in a multi-dimensional array as the key.
@@ -440,7 +443,7 @@ $arr->keyBy('id')->all();
 ```
 <br>
 
-#### F. krsort <a id="krsort">
+### F. krsort <a id="krsort">
 `krsort(): self`
 
 Sorts an array by keys in descending order.
@@ -451,7 +454,7 @@ $arr->krsort()->all();
 ```
 <br>
 
-#### G. ksort <a id="ksort">
+### G. ksort <a id="ksort">
 `ksort(): self`
 
 Sorts an array by keys in ascending order.
@@ -462,7 +465,7 @@ $arr->ksort()->all();
 ```
 <br>
 
-#### H. sort <a id="sort">
+### H. sort <a id="sort">
 `sort(int $sortFlags = SORT_REGULAR)`
 
 Sorts values in ascending order.
@@ -472,7 +475,7 @@ $arr->sort()->all(); // [1, 3, 5, 8]
 ```
 <br>
 
-#### I. rsort <a id="rsort">
+### I. rsort <a id="rsort">
 `rsort()`
 Sorts in descending order.
 ```php
@@ -481,7 +484,7 @@ $arr->rsort()->all(); // [8, 5, 3, 1]
 ```
 <br>
 
-#### J. usort <a id="usort">
+### J. usort <a id="usort">
 `usort(callable $callback): self`
 
 Sorts the array using a user-defined comparison function.
@@ -493,7 +496,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### K. walk <a id="walk">
+### K. walk <a id="walk">
 `walk(callable $callback): self`
 
 Applies a user function to every item in the array.
@@ -505,7 +508,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### L. walkRecursive <a id="walk-recursive">
+### L. walkRecursive <a id="walk-recursive">
 `walkRecursive(callable $callback): self`
 
 Applies a user function to every item in a multi-dimensional array.
@@ -520,8 +523,8 @@ print_r($arr->all());
 ```
 <br>
 
-## M. Manipulation <a id="manipulation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. add <a id="add">
+## 6. Manipulation <a id="manipulation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+### A. add <a id="add">
 `add(string $key, mixed $value)`
 
 Adds a value if the key does not exist.
@@ -531,7 +534,7 @@ $arr->add('age', 30)->all(); // ['name' => 'John', 'age' => 30]
 ```
 <br>
 
-#### B. clear <a id="clear">
+### B. clear <a id="clear">
 `clear()`
 
 Removes all elements.
@@ -541,7 +544,7 @@ $arr->clear()->all(); // []
 ```
 <br>
 
-#### C. combine <a id="combine">
+### C. combine <a id="combine">
 `combine(array $keys, array $values): self`
 
 Combines two arrays, one as keys and one as values.
@@ -555,7 +558,7 @@ $arr->all();
 ```
 <br>
 
-#### D. crossJoin <a id="crossJoin">
+### D. crossJoin <a id="crossJoin">
 `crossJoin(array ...$arrays): self`
 
 Computes the Cartesian product of multiple arrays.
@@ -571,7 +574,7 @@ $arr->crossJoin(['A', 'B'])->all();
 ```
 <br>
 
-#### E. dot <a id="dot">
+### E. dot <a id="dot">
 `dot(string $prepend = ''): self`
 
 Converts a multi-dimensional array into a dot notation format.
@@ -584,7 +587,7 @@ $arr->dot()->all();
 ```
 <br>
 
-#### F. each <a id="each">
+### F. each <a id="each">
 `each(callable $callback): self`
 
 Applies a callback to each element in the array.
@@ -601,7 +604,7 @@ $arr->each(function ($value, $key) {
 ```
 <br>
 
-#### G. except <a id="except">
+### G. except <a id="except">
 `except(array|string $keys): self`
 
 Removes specific keys from the array.
@@ -612,7 +615,7 @@ $arr->except('age')->all();
 ```
 <br>
 
-#### H. fill <a id="fill">
+### H. fill <a id="fill">
 `fill(int $start, int $count, mixed $value): self`
 
 Fills the array with a specified value starting at a given index and continuing for a specified number of elements.
@@ -625,7 +628,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### I. forget <a id="forget">
+### I. forget <a id="forget">
 `forget(string $key)`
 
 Removes an item by key.
@@ -635,7 +638,7 @@ $arr->forget('name')->all(); // ['age' => 30]
 ```
 <br>
 
-#### J. merge <a id="merge">
+### J. merge <a id="merge">
 `merge(array $array)`
 
 Merges another array.
@@ -645,7 +648,7 @@ $arr->merge(['age' => 30])->all(); // ['name' => 'John', 'age' => 30]
 ```
 <br>
 
-#### K. only <a id="only">
+### K. only <a id="only">
 `only(array|string $keys): self`
 
 Returns a new array containing only the specified keys.
@@ -657,7 +660,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### L. pad <a id="pad">
+### L. pad <a id="pad">
 `pad(int $size, mixed $value): self`
 
 Expands the array to a specified size by padding it with a given value.
@@ -669,7 +672,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### M. pluck <a id="pluck">
+### M. pluck <a id="pluck">
 `pluck(string $key): self`
 
 Extracts values from an array of associative arrays based on a given key.
@@ -684,7 +687,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### N. prepend <a id="prepend">
+### N. prepend <a id="prepend">
 `prepend(mixed $value): self`
 
 Adds a value to the beginning of the array.
@@ -696,7 +699,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### O. pull <a id="pull">
+### O. pull <a id="pull">
 `pull(string $key, mixed $default = null): self`
 
 Retrieves a value from the array and removes it.
@@ -710,7 +713,7 @@ print_r($arr->result());
 ```
 <br>
 
-#### P. push <a id="push">
+### P. push <a id="push">
 `push(mixed ...$values): self`
 
 Adds one or more values to the end of the array.
@@ -722,7 +725,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### Q. reduce <a id="reduce">
+### Q. reduce <a id="reduce">
 `reduce(callable $callback, mixed $initial = null): self`
 
 Reduces the array to a single value using a callback function.
@@ -734,7 +737,7 @@ print_r($arr->result());
 ```
 <br>
 
-#### R. replace <a id="replace">
+### R. replace <a id="replace">
 `replace(array $array): self`
 
 Replaces values in the current array with values from another array.
@@ -746,7 +749,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### S. set <a id="set">
+### S. set <a id="set">
 `set(string $key, mixed $value)`
 
 Sets a value using dot notation.
@@ -756,7 +759,7 @@ $arr->set('user.name', 'John')->all(); // ['user' => ['name' => 'John']]
 ```
 <br>
 
-#### T. shuffle <a id="shuffle">
+### T. shuffle <a id="shuffle">
 `shuffle(): self`
 
 Randomly shuffles the elements in the array.
@@ -770,7 +773,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### U. shuffleAssociative <a id="shuffleAssociative">
+### U. shuffleAssociative <a id="shuffleAssociative">
 `shuffleAssociative(): self`
 
 Shuffles the elements of an associative array while preserving key-value relationships.
@@ -784,7 +787,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### V. slice <a id="slice">
+### V. slice <a id="slice">
 `slice(int $offset, ?int $length = null): self`
 
 Extracts a portion of the array.
@@ -796,7 +799,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### W. splice <a id="splice">
+### W. splice <a id="splice">
 `splice(int $offset, ?int $length = null, array $replacement = []): self`
 
 Removes and replaces a portion of the array.
@@ -808,7 +811,7 @@ print_r($arr->all());
 ```
 <br>
 
-#### X. udiff <a id="udiff">
+### X. udiff <a id="udiff">
 `udiff(array $array, callable $callback): self`
 
 Computes the difference between arrays using a custom comparison function.
@@ -823,7 +826,7 @@ print_r($arr1->all());
 <br>
 
 ## 7. Comparison, Checking, Filtering, & Mapping <a id="comparison-filtering-mapping"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. contains <a id="contains">
+### A. contains <a id="contains">
 `contains(mixed $value, bool $strict = false): self`
 
 Checks if an array contains a specific value.
@@ -834,7 +837,7 @@ var_dump($arr->contains(3)->result());
 ```
 <br>
 
-#### B. diff <a id="diff">
+### B. diff <a id="diff">
 `diff(array $array): self`
 
 Finds the difference between the current array and another array.
@@ -845,7 +848,7 @@ $arr->diff([2, 4])->all();
 ```
 <br>
 
-#### C. filter <a id="filter">
+### C. filter <a id="filter">
 `filter(callable $callback)`
 
 Filters elements based on a condition.
@@ -855,7 +858,7 @@ $arr->filter(fn($n) => $n % 2 === 0)->all(); // [2, 4]
 ```
 <br>
 
-#### D. intersect <a id="intersect">
+### D. intersect <a id="intersect">
 `intersect(array $array): self`
 
 Finds the common values between the current array and another array.
@@ -866,7 +869,7 @@ $arr->intersect([2, 4, 6])->all();
 ```
 <br>
 
-#### E. intersectKeys <a id="intersect-keys">
+### E. intersectKeys <a id="intersect-keys">
 `intersectKeys(array $array): self`
 
 Finds elements whose keys exist in another array.
@@ -877,7 +880,7 @@ $arr->intersectKeys(['age' => '', 'city' => ''])->all();
 ```
 <br>
 
-#### F. isArray <a id="is-array">
+### F. isArray <a id="is-array">
 `isArray(mixed $value): self`
 
 Checks if the given value is an array.
@@ -888,7 +891,7 @@ var_dump($arr->isArray([1, 2, 3])->result());
 ```
 <br>
 
-#### G. isEmpty <a id="is-empty">
+### G. isEmpty <a id="is-empty">
 `isEmpty(): self`
 
 Checks if the array is empty.
@@ -899,7 +902,7 @@ var_dump($arr->isEmpty()->result());
 ```
 <br>
 
-#### H. map <a id="map">
+### H. map <a id="map">
 `map(callable $callback)`
 
 Applies a function to each item.
@@ -909,7 +912,7 @@ $arr->map(fn($n) => $n * 2)->all(); // [2, 4, 6]
 ```
 <br>
 
-#### I. unique <a id="unique">
+### I. unique <a id="unique">
 `unique()`
 
 Removes duplicate values.
@@ -919,7 +922,7 @@ $arr->unique()->all(); // [1, 2, 3]
 ```
 <br>
 
-#### J. where <a id="where">
+### J. where <a id="where">
 `where(callable $callback)`
 
 Filters values where callback returns true.
@@ -930,8 +933,8 @@ $arr->where(fn($item) => $item['age'] >= 25)->all();
 ```
 <br>
 
-## 7. Chunking & Collapsing <a id="chunking-collapsing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. chunk <a id="chunk">
+## 8. Chunking & Collapsing <a id="chunking-collapsing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+### A. chunk <a id="chunk">
 `chunk(int $size): self`
 
 Splits an array into chunks of the specified size.
@@ -942,7 +945,7 @@ $arr->chunk(2)->all();
 ```
 <br>
 
-#### B. collapse <a id="collapse">
+### B. collapse <a id="collapse">
 `collapse(): self`
 
 Flattens a multi-dimensional array into a single-level array.
@@ -953,8 +956,8 @@ $arr->collapse()->all();
 ```
 <br>
 
-## 7. Mapping and Recursive Operations <a id="mapping-recursion"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. mapRecursive <a id="mapRecursive">
+## 9. Mapping and Recursive Operations <a id="mapping-recursion"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+### A. mapRecursive <a id="mapRecursive">
 `mapRecursive(callable $callback): self`
 
 Recursively applies a callback function to each element in the array.
@@ -974,7 +977,7 @@ $arr->mapRecursive(fn($v) => $v * 2)->all();
 ```
 <br>
 
-#### B. mapWithKeys <a id="mapWithKeys">
+### B. mapWithKeys <a id="mapWithKeys">
 `mapWithKeys(callable $callback): self`
 
 Maps an array using a callback that defines both keys and values.
@@ -990,7 +993,7 @@ $arr->mapWithKeys(fn($v, $k) => [$k . '_modified' => $v])->all();
 ```
 <br>
 
-#### C. multiSort <a id="multiSort">
+### C. multiSort <a id="multiSort">
 `multiSort(int $sortFlags = SORT_REGULAR): self`
 
 Sorts multiple arrays or multi-dimensional arrays.
@@ -1010,8 +1013,8 @@ $arr->multiSort(SORT_ASC)->all();
 ```
 <br>
 
-## 8. Other Utilities <a id="other-utilities"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-#### A. implode <a id="implode">
+## 10. Other Utilities <a id="other-utilities"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+### A. implode <a id="implode">
 `implode(string $separator)`
 
 Joins array values into a string.
@@ -1021,7 +1024,7 @@ echo $arr->implode(', '); // "apple, banana, cherry"
 ```
 <br>
 
-#### B. random <a id="random">
+### B. random <a id="random">
 `random(?int $number = null)`
 
 Retrieves a random value or values.
@@ -1031,7 +1034,7 @@ echo $arr->random(); // Random value from the array
 ```
 <br>
 
-#### C. reverse <a id="reverse">
+### C. reverse <a id="reverse">
 `reverse()`
 
 Reverses the order.
@@ -1040,7 +1043,7 @@ $arr = new ArraySet([1, 2, 3]);
 $arr->reverse()->all(); // [3, 2, 1]
 ```
 
-#### D. wrap <a id="wrap">
+### D. wrap <a id="wrap">
 `wrap(mixed $value): self`
 
 Ensures the given value is an array. If it's not, wraps it in an array.
