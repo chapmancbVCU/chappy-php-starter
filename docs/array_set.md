@@ -183,10 +183,17 @@ $arr = new ArraySet(['name' => 'John', 'age' => 30]);
 ```
 <br>
 
-### B. make <a id="make">
-`make(mixed $items = [])`
-
+### B. `make()` <a id="make">
 Wraps a value into an array if it's not already an array.
+
+Parameters:
+- `array $items` - The initial array.
+- `mixed $value` - The value to add.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = Arr::make('Hello')->all(); // Output: ['Hello']
 ```
