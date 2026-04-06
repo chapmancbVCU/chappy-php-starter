@@ -200,10 +200,13 @@ $arr = Arr::make('Hello')->all(); // Output: ['Hello']
 <br>
 
 ## 4. Retrieving Data <a id="retrieving-data"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. all <a id="all">
-'all(): array'
+### A. `all()` <a id="all">
+Get all items in the array.
 
-Returns the array.
+Returns:
+- `array` - The stored array.
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3]);
 print_r($arr->all()); // [1, 2, 3]
