@@ -286,10 +286,13 @@ echo $arr->first(fn($v) => $v > 25)->result();
 ```
 <br>
 
-### F. firstKey <a id="firstKey">
-`firstKey(): self`
-
+### F. `firstKey()` <a id="firstKey">
 Retrieves the first key of the array.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'Alice', 'age' => 30]);
 echo $arr->firstKey()->result();
