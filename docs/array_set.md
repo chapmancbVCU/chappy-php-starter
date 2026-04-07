@@ -333,10 +333,16 @@ var_dump($arr->has('name')); // true
 ```
 <br>
 
-### I. hasAny <a id="has-any">
-`hasAny(array|string $keys)`
-
+### I. `hasAny()` <a id="has-any">
 Checks if at least one key exists.
+
+Parameter:
+- array|string $keys The keys to check.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'John', 'age' => 30]);
 var_dump($arr->hasAny(['name', 'email'])); // true
