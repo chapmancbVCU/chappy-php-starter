@@ -317,10 +317,16 @@ echo $data->get('user.name'); // John
 ```
 <br>
 
-### H. has <a id="has">
-`has(string $key)`
-
+### H. `has()` <a id="has">
 Checks if a key exists.
+
+Parameter:
+- string|int $key The key to check (can be a string or integer).
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'John']);
 var_dump($arr->has('name')); // true
