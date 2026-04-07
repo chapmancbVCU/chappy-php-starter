@@ -350,9 +350,12 @@ var_dump($arr->hasAny(['name', 'email'])); // true
 <br>
 
 ### J. keys <a id="keys">
-`keys()`
-
 Returns the array keys.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['a' => 1, 'b' => 2]);
 print_r($arr->keys()->all()); // ['a', 'b']
