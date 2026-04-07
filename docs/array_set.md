@@ -349,7 +349,7 @@ var_dump($arr->hasAny(['name', 'email'])); // true
 ```
 <br>
 
-### J. keys <a id="keys">
+### J. `keys()` <a id="keys">
 Returns the array keys.
 
 Returns:
@@ -362,10 +362,16 @@ print_r($arr->keys()->all()); // ['a', 'b']
 ```
 <br>
 
-### K. last <a id="last">
-`last(?callable $callback = null): self`
-
+### K. `last()` <a id="last">
 Retrieves the last element of the array, or the last element that matches a given condition.
+
+Parameter:
+- `callable|null $callback` - A callback function to test elements.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([10, 20, 30, 40]);
 echo $arr->last()->result(); 
