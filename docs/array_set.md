@@ -300,10 +300,17 @@ echo $arr->firstKey()->result();
 ```
 <br>
 
-### G. get <a id="get">
-`get(string $key, mixed $default = null)`
-
+### G. `get()` <a id="get">
 Retrieves a value by key, supporting dot notation.
+
+Parameters:
+- `string $key` - The key in dot notation.
+- `mixed $default` - The default value if the key is not found.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $data = new ArraySet(['user' => ['name' => 'John']]);
 echo $data->get('user.name'); // John
