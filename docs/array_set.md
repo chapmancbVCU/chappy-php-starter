@@ -684,10 +684,17 @@ $arr->clear()->all(); // []
 ```
 <br>
 
-### C. combine <a id="combine">
-`combine(array $keys, array $values): self`
-
+### C. `combine()` <a id="combine">
 Combines two arrays, one as keys and one as values.
+
+Parameters:
+- array $keys The keys.
+- array $values The values.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $keys = ['name', 'age', 'city'];
 $values = ['John', 30, 'New York'];
