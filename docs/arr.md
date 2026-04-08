@@ -140,7 +140,7 @@ print_r($array);
 Splits an array into two arrays: one with keys and one with values.
 
 Parameter:
-- array $array The array to divide.
+- `array $array` - The array to divide.
 
 Returns:
 - `array` - An array containing two arrays: [keys, values].
@@ -183,10 +183,10 @@ print_r($result);
 Shuffles an associative array while preserving keys.
 
 Parameter:
-- array $array The array to shuffle.
+- `array $array` - The array to shuffle.
 
 Returns:
-- array The shuffled array.
+- `array` - The shuffled array.
 
 Example:
 ```php
@@ -264,7 +264,7 @@ Parameters:
 - `bool $strict` - Whether to perform a strict comparison.
 
 Returns:
-- bool True if the value exists, false otherwise.
+- `bool` - True if the value exists, false otherwise.
 
 Example:
 ```php
@@ -633,11 +633,11 @@ print_r($result);
 Flattens an array up to a specified depth.
 
 Parameters:
-- array $array The multi-dimensional array.
-- int $depth The depth limit (default: infinite).
+- `array $array` - The multi-dimensional array.
+- `int $depth` - The depth limit (default: infinite).
 
 Returns:
-- array The flattened array.
+- `array` - The flattened array.
 
 Example:
 ```php
@@ -652,11 +652,11 @@ print_r($result);
 Converts a multi-dimensional array into dot notation keys.
 
 Parameters:
-- array $array The multi-dimensional array.
-- string $prefix The prefix for keys.
+- `array $array` - The multi-dimensional array.
+- `string $prefix` - The prefix for keys.
 
 Returns:
-- array The array with flattened keys.
+- `array` - The array with flattened keys.
 
 Example:
 ```php
@@ -671,11 +671,11 @@ print_r($result);
 Applies a callback to each item in an array.
 
 Parameters:
-- array $array The source array.
-- callable $callback The function to apply.
+- `array $array` - The source array.
+- `callable $callback` - The function to apply.
 
 Returns:
-- array The modified array.
+- `array` - The modified array.
 
 Example:
 ```php
@@ -690,11 +690,11 @@ print_r($result);
 Maps an array while preserving keys.
 
 Parameters:
-- array $array The source array.
-- callable $callback The function to apply.
+- `array $array` - The source array.
+- `callable $callback` - The function to apply.
 
 Returns:
-- array The modified array with new keys.
+- `array` - The modified array with new keys.
 
 Example:
 ```php
@@ -766,11 +766,11 @@ print_r($result);
 Sorts an associative array by its keys.
 
 Parameters:
-- array $array The array to sort.
-- bool $descending Whether to sort in descending order.
+- `array $array` - The array to sort.
+- `bool $descending` - Whether to sort in descending order.
 
 Returns:
-- array The sorted array.
+- `array` - The sorted array.
 
 Example:
 ```php
@@ -864,8 +864,8 @@ print_r($result);
 Removes a value from an array using dot notation.
 
 Parameters:
-- array $array The source array (passed by reference).
-- string\|array $keys The key(s) to remove.
+- `array $array` - The source array (passed by reference).
+- `string|array $keys` - The key(s) to remove.
 
 Example:
 ```php
@@ -1422,10 +1422,10 @@ print_r($result);
 Converts an array to an object.
 
 Parameter:
-- array $array The array to convert.
+- `array $array` - The array to convert.
 
 Returns:
-- object The converted object.
+- `object` - The converted object.
 
 Example:
 ```php
@@ -1461,7 +1461,7 @@ Parameters:
 - `array $array` - The array to be processed.
 - `callable $callback` - The callback function to apply.  The callback should accept two parameters: 
     - `mixed $value` - The array value
-    - `string\|int $key` - The array key
+    - `string|int $key` - The array key
 
 Returns:
 - `array` - The modified array with the callback applied to each value.
