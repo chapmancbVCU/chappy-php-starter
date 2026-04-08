@@ -654,10 +654,17 @@ print_r($arr->all());
 <br>
 
 ## 6. Manipulation <a id="manipulation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. add <a id="add">
-`add(string $key, mixed $value)`
-
+### A. `add()` <a id="add">
 Adds a value if the key does not exist.
+
+Parameters:
+- `string $key` - The key to check.
+- `mixed $value` - The value to add.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'John']);
 $arr->add('age', 30)->all(); // ['name' => 'John', 'age' => 30]
