@@ -1373,10 +1373,16 @@ $arr->multiSort(SORT_ASC)->all();
 <br>
 
 ## 10. Other Utilities <a id="other-utilities"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. implode <a id="implode">
-`implode(string $separator)`
-
+### A. `implode()` <a id="implode">
 Joins array values into a string.
+
+Parameter:
+- `string $separator` - The separator string.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['apple', 'banana', 'cherry']);
 echo $arr->implode(', '); // "apple, banana, cherry"
