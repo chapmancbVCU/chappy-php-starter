@@ -1171,7 +1171,7 @@ $arr->intersect([2, 4, 6])->all();
 ```
 <br>
 
-### E. intersectKeys() <a id="intersect-keys">
+### E. `intersectKeys()` <a id="intersect-keys">
 Finds elements whose keys exist in another array.
 
 Parameter:
@@ -1188,10 +1188,16 @@ $arr->intersectKeys(['age' => '', 'city' => ''])->all();
 ```
 <br>
 
-### F. isArray <a id="is-array">
-`isArray(mixed $value): self`
-
+### F. `isArray()` <a id="is-array">
 Checks if the given value is an array.
+
+Parameter:
+- `mixed $value` - The value to check.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet();
 var_dump($arr->isArray([1, 2, 3])->result()); 
