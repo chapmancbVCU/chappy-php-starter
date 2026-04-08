@@ -581,9 +581,15 @@ $arr->rsort()->all(); // [8, 5, 3, 1]
 <br>
 
 ### I. sort <a id="sort">
-`sort(int $sortFlags = SORT_REGULAR)`
-
 Sorts values in ascending order.
+
+Parameter:
+- `int $sortFlags` - Flags for sorting (default: SORT_REGULAR).
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([5, 3, 8, 1]);
 $arr->sort()->all(); // [1, 3, 5, 8]
