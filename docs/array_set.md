@@ -915,10 +915,17 @@ print_r($arr->all());
 ```
 <br>
 
-### O. pull <a id="pull">
-`pull(string $key, mixed $default = null): self`
-
+### O. `pull()` <a id="pull">
 Retrieves a value from the array and removes it.
+
+Parameters:
+- string $key The key to retrieve and remove.
+- mixed $default The default value if the key is not found.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'John', 'age' => 30]);
 $arr->pull('age');
