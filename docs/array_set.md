@@ -552,10 +552,13 @@ $arr->krsort()->all();
 ```
 <br>
 
-### G. ksort <a id="ksort">
-`ksort(): self`
-
+### G. `ksort()` <a id="ksort">
 Sorts an array by keys in ascending order.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['b' => 2, 'a' => 1, 'c' => 3]);
 $arr->ksort()->all();
