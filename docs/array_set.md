@@ -1042,10 +1042,17 @@ print_r($arr->all());
 ```
 <br>
 
-### V. slice <a id="slice">
-`slice(int $offset, ?int $length = null): self`
-
+### V. `slice()` <a id="slice">
 Extracts a portion of the array.
+
+Parameters:
+- int $offset The index to start the slice.
+- int|null $length The number of elements to extract.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4, 5]);
 $arr->slice(1, 3);
