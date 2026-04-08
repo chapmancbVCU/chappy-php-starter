@@ -936,10 +936,16 @@ print_r($arr->result());
 ```
 <br>
 
-### P. push <a id="push">
-`push(mixed ...$values): self`
-
+### P. `push()` <a id="push">
 Adds one or more values to the end of the array.
+
+Parameter:
+- mixed ...$values The values to add.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3]);
 $arr->push(4, 5);
