@@ -1346,10 +1346,16 @@ $arr->mapWithKeys(fn($v, $k) => [$k . '_modified' => $v])->all();
 ```
 <br>
 
-### C. multiSort <a id="multiSort">
-`multiSort(int $sortFlags = SORT_REGULAR): self`
-
+### C. `multiSort()` <a id="multiSort">
 Sorts multiple arrays or multi-dimensional arrays.
+
+Parameter:
+- `int $sortFlags` - The sorting flags.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([
     ['name' => 'Alice', 'age' => 30],
