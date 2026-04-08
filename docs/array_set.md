@@ -991,10 +991,17 @@ print_r($arr->all());
 ```
 <br>
 
-### S. set <a id="set">
-`set(string $key, mixed $value)`
-
+### S. `set()` <a id="set">
 Sets a value using dot notation.
+
+Parameters:
+- `string $key` - The key in dot notation.
+- `mixed $value` -  The value to set.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([]);
 $arr->set('user.name', 'John')->all(); // ['user' => ['name' => 'John']]
