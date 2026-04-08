@@ -823,10 +823,16 @@ $arr->forget('name')->all(); // ['age' => 30]
 ```
 <br>
 
-### J. merge <a id="merge">
-`merge(array $array)`
-
+### J. `merge()` <a id="merge">
 Merges another array.
+
+Parameter:
+- array $array The array to merge with.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'John']);
 $arr->merge(['age' => 30])->all(); // ['name' => 'John', 'age' => 30]
