@@ -1248,7 +1248,7 @@ $arr->unique()->all(); // [1, 2, 3]
 ```
 <br>
 
-### J. where <a id="where">
+### J. `where()` <a id="where">
 Filters values where callback returns true.
 
 Parameter:
@@ -1266,10 +1266,16 @@ $arr->where(fn($item) => $item['age'] >= 25)->all();
 <br>
 
 ## 8. Chunking & Collapsing <a id="chunking-collapsing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. chunk <a id="chunk">
-`chunk(int $size): self`
-
+### A. `chunk()` <a id="chunk">
 Splits an array into chunks of the specified size.
+
+Parameter:
+- $size The size of each chunk.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4, 5, 6]);
 $arr->chunk(2)->all(); 
