@@ -1138,10 +1138,16 @@ $arr->diff([2, 4])->all();
 ```
 <br>
 
-### C. filter <a id="filter">
-`filter(callable $callback)`
-
+### C. `filter()` <a id="filter">
 Filters elements based on a condition.
+
+Parameter:
+- `callable $callback` - The function to apply for filtering.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4]);
 $arr->filter(fn($n) => $n % 2 === 0)->all(); // [2, 4]
