@@ -488,10 +488,13 @@ $arr->arsort()->all(); // ['b' => 3, 'c' => 2, 'a' => 1]
 ```
 <br>
 
-### C. flatten <a id="flatten">
-`flatten(): self`
-
+### C. `flatten()` <a id="flatten">
 Flattens a multi-dimensional array into a single-level array.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([[1, 2], [3, 4], [5]]);
 $arr->flatten()->all();
