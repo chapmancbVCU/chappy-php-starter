@@ -1324,10 +1324,16 @@ $arr->mapRecursive(fn($v) => $v * 2)->all();
 ```
 <br>
 
-### B. mapWithKeys <a id="mapWithKeys">
-`mapWithKeys(callable $callback): self`
-
+### B. `mapWithKeys()` <a id="mapWithKeys">
 Maps an array using a callback that defines both keys and values.
+
+Parameter:
+- `callable $callback` - The function to apply.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'Alice', 'age' => 30]);
 $arr->mapWithKeys(fn($v, $k) => [$k . '_modified' => $v])->all();
