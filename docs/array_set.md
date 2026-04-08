@@ -1205,10 +1205,13 @@ var_dump($arr->isArray([1, 2, 3])->result());
 ```
 <br>
 
-### G. isEmpty <a id="is-empty">
-`isEmpty(): self`
-
+### G. `isEmpty()` <a id="is-empty">
 Checks if the array is empty.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([]);
 var_dump($arr->isEmpty()->result());
