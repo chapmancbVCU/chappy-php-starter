@@ -747,9 +747,15 @@ $arr->dot()->all();
 <br>
 
 ### F. each <a id="each">
-`each(callable $callback): self`
-
 Applies a callback to each element in the array.
+
+Parameter:
+- callable $callback The function to apply.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3]);
 $arr->each(function ($value, $key) {
