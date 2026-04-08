@@ -448,10 +448,13 @@ print_r($arr->result());
 ```
 <br>
 
-### P. values <a id="values">
-`values()`
-
+### P. `values()` <a id="values">
 Returns only the array values.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['a' => 1, 'b' => 2]);
 print_r($arr->values()->all()); // [1, 2]
