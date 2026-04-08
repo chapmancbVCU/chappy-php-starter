@@ -1249,9 +1249,15 @@ $arr->unique()->all(); // [1, 2, 3]
 <br>
 
 ### J. where <a id="where">
-`where(callable $callback)`
-
 Filters values where callback returns true.
+
+Parameter:
+- `callable $callback` - The function to apply.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([['age' => 18], ['age' => 25], ['age' => 30]]);
 $arr->where(fn($item) => $item['age'] >= 25)->all(); 
