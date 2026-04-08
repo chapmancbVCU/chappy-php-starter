@@ -671,10 +671,13 @@ $arr->add('age', 30)->all(); // ['name' => 'John', 'age' => 30]
 ```
 <br>
 
-### B. clear <a id="clear">
-`clear()`
-
+### B. `clear` <a id="clear">
 Removes all elements.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3]);
 $arr->clear()->all(); // []
