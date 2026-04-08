@@ -538,10 +538,13 @@ $arr->keyBy('id')->all();
 ```
 <br>
 
-### F. krsort <a id="krsort">
-`krsort(): self`
-
+### F. `krsort()` <a id="krsort">
 Sorts an array by keys in descending order.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['b' => 2, 'a' => 1, 'c' => 3]);
 $arr->krsort()->all();
