@@ -876,10 +876,16 @@ print_r($arr->all());
 ```
 <br>
 
-### M. pluck <a id="pluck">
-`pluck(string $key): self`
-
+### M. `pluck()` <a id="pluck">
 Extracts values from an array of associative arrays based on a given key.
+
+Parameter:
+- `string $key` - The key to pluck.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([
     ['name' => 'John', 'age' => 30],
