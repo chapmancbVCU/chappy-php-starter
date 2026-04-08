@@ -516,10 +516,13 @@ $arr->flip()->all();
 ```
 <br>
 
-### E. keyBy <a id="key-by">
-`keyBy(string $key): self`
-
+### E. `keyBy()` <a id="key-by">
 Uses a specific field in a multi-dimensional array as the key.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([
     ['id' => 1, 'name' => 'Alice'],
