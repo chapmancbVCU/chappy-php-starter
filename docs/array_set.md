@@ -1103,10 +1103,17 @@ print_r($arr1->all());
 <br>
 
 ## 7. Comparison, Checking, Filtering, & Mapping <a id="comparison-filtering-mapping"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. contains <a id="contains">
-`contains(mixed $value, bool $strict = false): self`
-
+### A. `contains()` <a id="contains">
 Checks if an array contains a specific value.
+
+Parameters:
+- mixed $value The value to search for.
+- bool $strict Whether to perform strict comparison.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4]);
 var_dump($arr->contains(3)->result());
