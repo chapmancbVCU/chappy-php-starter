@@ -807,10 +807,16 @@ print_r($arr->all());
 ```
 <br>
 
-### I. forget <a id="forget">
-`forget(string $key)`
-
+### I. `forget()` <a id="forget">
 Removes an item by key.
+
+Parameter:
+- `string $key` - The key to remove.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'John', 'age' => 30]);
 $arr->forget('name')->all(); // ['age' => 30]
