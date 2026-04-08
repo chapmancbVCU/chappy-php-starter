@@ -1219,10 +1219,16 @@ var_dump($arr->isEmpty()->result());
 ```
 <br>
 
-### H. map <a id="map">
-`map(callable $callback)`
-
+### H. `map()` <a id="map">
 Applies a function to each item.
+
+Parameter:
+- callable $callback The function to apply.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3]);
 $arr->map(fn($n) => $n * 2)->all(); // [2, 4, 6]
