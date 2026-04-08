@@ -1025,10 +1025,13 @@ print_r($arr->all());
 ```
 <br>
 
-### U. shuffleAssociative <a id="shuffleAssociative">
-`shuffleAssociative(): self`
-
+### U. `shuffleAssociative()` <a id="shuffleAssociative">
 Shuffles the elements of an associative array while preserving key-value relationships.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['a' => 1, 'b' => 2, 'c' => 3]);
 $arr->shuffleAssociative();
