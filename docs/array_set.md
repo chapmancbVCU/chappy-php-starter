@@ -596,10 +596,16 @@ $arr->sort()->all(); // [1, 3, 5, 8]
 ```
 <br>
 
-### J. usort <a id="usort">
-`usort(callable $callback): self`
-
+### J. `usort()` <a id="usort">
 Sorts the array using a user-defined comparison function.
+
+Parameter:
+- callable $callback The comparison function.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([3, 1, 4, 2]);
 $arr->usort(fn($a, $b) => $a <=> $b);
