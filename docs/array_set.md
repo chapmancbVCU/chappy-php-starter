@@ -31,8 +31,8 @@
     * E. [keyBy](#key-by)
     * F. [krsort](#krsort)
     * G. [ksort](#ksort)
-    * H. [sort](#sort)
-    * I. [rsort](#rsort)
+    * H. [rsort](#rsort)
+    * I. [sort](#sort)
     * J. [usort](#usort)
     * K. [walk](#walk)
     * L. [walkRecursive](#walk-recursive)
@@ -566,22 +566,24 @@ $arr->ksort()->all();
 ```
 <br>
 
-### H. sort <a id="sort">
+
+
+### H. rsort <a id="rsort">
+`rsort()`
+Sorts in descending order.
+```php
+$arr = new ArraySet([5, 3, 8, 1]);
+$arr->rsort()->all(); // [8, 5, 3, 1]
+```
+<br>
+
+### I. sort <a id="sort">
 `sort(int $sortFlags = SORT_REGULAR)`
 
 Sorts values in ascending order.
 ```php
 $arr = new ArraySet([5, 3, 8, 1]);
 $arr->sort()->all(); // [1, 3, 5, 8]
-```
-<br>
-
-### I. rsort <a id="rsort">
-`rsort()`
-Sorts in descending order.
-```php
-$arr = new ArraySet([5, 3, 8, 1]);
-$arr->rsort()->all(); // [8, 5, 3, 1]
 ```
 <br>
 
