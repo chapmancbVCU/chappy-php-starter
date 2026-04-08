@@ -671,7 +671,7 @@ $arr->add('age', 30)->all(); // ['name' => 'John', 'age' => 30]
 ```
 <br>
 
-### B. `clear` <a id="clear">
+### B. `clear()` <a id="clear">
 Removes all elements.
 
 Returns:
