@@ -1417,10 +1417,16 @@ $arr = new ArraySet([1, 2, 3]);
 $arr->reverse()->all(); // [3, 2, 1]
 ```
 
-### D. wrap <a id="wrap">
-`wrap(mixed $value): self`
-
+### D. `wrap()` <a id="wrap">
 Ensures the given value is an array. If it's not, wraps it in an array.
+
+Parameter:
+- `mixed $value` - The value to wrap.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet();
 $arr->wrap('hello');
