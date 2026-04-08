@@ -462,10 +462,13 @@ print_r($arr->values()->all()); // [1, 2]
 <br>
 
 ## 5. Iteration, Sorting, Ordering, & Transformation <a id="sorting-ordering-transformation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. asort <a id="asort">
-`asort()`
-
+### A. `asort()` <a id="asort">
 Sorts while maintaining key association.
+
+Returns:
+- `self` - The modified ArraySet instance.
+
+Example:
 ```php
 $arr = new ArraySet(['b' => 3, 'a' => 1, 'c' => 2]);
 $arr->asort()->all(); // ['a' => 1, 'c' => 2, 'b' => 3]
