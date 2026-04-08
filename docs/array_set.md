@@ -321,7 +321,7 @@ echo $data->get('user.name'); // John
 Checks if a key exists.
 
 Parameter:
-- string|int $key The key to check (can be a string or integer).
+- `string|int $key` - The key to check (can be a string or integer).
 
 Returns:
 - `self`
@@ -337,7 +337,7 @@ var_dump($arr->has('name')); // true
 Checks if at least one key exists.
 
 Parameter:
-- array|string $keys The keys to check.
+- `array|string $keys` - The keys to check.
 
 Returns:
 - `self`
@@ -417,7 +417,7 @@ print_r($arr->result());
 Searches for a value in the array and returns its key.
 
 Parameter:
-- mixed $value The value to search for.
+- `mixed $value` - The value to search for.
 
 Returns:
 - `self`
@@ -600,7 +600,7 @@ $arr->sort()->all(); // [1, 3, 5, 8]
 Sorts the array using a user-defined comparison function.
 
 Parameter:
-- callable $callback The comparison function.
+- `callable $callback` - The comparison function.
 
 Returns:
 - `self`
@@ -618,7 +618,7 @@ print_r($arr->all());
 Applies a user function to every item in the array.
 
 Parameter:
-- callable $callback The function to apply.
+- `callable $callback` - The function to apply.
 
 Returns:
 - `self`
@@ -636,7 +636,7 @@ print_r($arr->all());
 Applies a user function to every item in a multi-dimensional array.
 
 Parameter:
-- callable $callback The function to apply.
+- `callable $callback` - The function to apply.
 
 Returns:
 - `self`
@@ -750,7 +750,7 @@ $arr->dot()->all();
 Applies a callback to each element in the array.
 
 Parameter:
-- callable $callback The function to apply.
+- `callable $callback` - The function to apply.
 
 Returns:
 - `self`
@@ -827,7 +827,7 @@ $arr->forget('name')->all(); // ['age' => 30]
 Merges another array.
 
 Parameter:
-- array $array The array to merge with.
+- `array $array` - The array to merge with.
 
 Returns:
 - `self`
@@ -861,8 +861,8 @@ print_r($arr->all());
 Expands the array to a specified size by padding it with a given value.
 
 Parameter:
-- int $size The required size of the array.
-- mixed $value The value to pad with.
+- `int $size` - The required size of the array.
+- `mixed $value` - The value to pad with.
 
 Returns:
 - `self`
@@ -901,7 +901,7 @@ print_r($arr->all());
 Adds a value to the beginning of the array.
 
 Parameter:
-- mixed $value The value to prepend.
+- `mixed $value` - The value to prepend.
 
 Returns:
 - `self`
@@ -919,8 +919,8 @@ print_r($arr->all());
 Retrieves a value from the array and removes it.
 
 Parameters:
-- string $key The key to retrieve and remove.
-- mixed $default The default value if the key is not found.
+- `string $key` - The key to retrieve and remove.
+- `mixed $default` - The default value if the key is not found.
 
 Returns:
 - `self`
@@ -940,7 +940,7 @@ print_r($arr->result());
 Adds one or more values to the end of the array.
 
 Parameter:
-- mixed ...$values The values to add.
+- `mixed ...$values` - The values to add.
 
 Returns:
 - `self`
@@ -1065,9 +1065,9 @@ print_r($arr->all());
 Removes and replaces a portion of the array.
 
 Parameters:
-- int $offset The index to start the splice.
-- int|null $length The number of elements to remove.
-- array $replacement The replacement values.
+- `int $offset` - The index to start the splice.
+- `int|null $length` - The number of elements to remove.
+- `array $replacement` - The replacement values.
 
 Returns:
 - `self`
@@ -1085,8 +1085,8 @@ print_r($arr->all());
 Computes the difference between arrays using a custom comparison function.
 
 Parameters:
-- array $array The array to compare.
-- callable $callback The comparison function.
+- `array $array` - The array to compare.
+- `callable $callback` - The comparison function.
 
 Returns:
 - `self`
@@ -1121,7 +1121,7 @@ var_dump($arr->contains(3)->result());
 ```
 <br>
 
-### B. `diff` <a id="diff">
+### B. `diff()` <a id="diff">
 Finds the difference between the current array and another array.
 
 Parameter:
@@ -1223,7 +1223,7 @@ var_dump($arr->isEmpty()->result());
 Applies a function to each item.
 
 Parameter:
-- callable $callback The function to apply.
+- `callable $callback` - The function to apply.
 
 Returns:
 - `self`
@@ -1270,7 +1270,7 @@ $arr->where(fn($item) => $item['age'] >= 25)->all();
 Splits an array into chunks of the specified size.
 
 Parameter:
-- $size The size of each chunk.
+- `int $size` - The size of each chunk.
 
 Returns:
 - `self`
