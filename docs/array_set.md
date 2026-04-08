@@ -502,10 +502,13 @@ $arr->flatten()->all();
 ```
 <br>
 
-### D. flip <a id="flip">
-`flip(): self`
-
+### D. `flip()` <a id="flip">
 Swaps the keys and values of an array.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'Alice', 'age' => 30]);
 $arr->flip()->all();
