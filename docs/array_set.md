@@ -632,10 +632,16 @@ print_r($arr->all());
 ```
 <br>
 
-### L. walkRecursive <a id="walk-recursive">
-`walkRecursive(callable $callback): self`
-
+### L. `walkRecursive()` <a id="walk-recursive">
 Applies a user function to every item in a multi-dimensional array.
+
+Parameter:
+- callable $callback The function to apply.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([
     ['value' => 1],
