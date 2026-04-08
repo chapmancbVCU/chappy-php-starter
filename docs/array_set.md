@@ -727,7 +727,7 @@ $arr->crossJoin(['A', 'B'])->all();
 ```
 <br>
 
-### E. dot <a id="dot">
+### E. `dot()` <a id="dot">
 Converts a multi-dimensional array into a dot notation format.
 
 Parameter:
@@ -746,7 +746,7 @@ $arr->dot()->all();
 ```
 <br>
 
-### F. each <a id="each">
+### F. `each()` <a id="each">
 Applies a callback to each element in the array.
 
 Parameter:
