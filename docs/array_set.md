@@ -1046,8 +1046,8 @@ print_r($arr->all());
 Extracts a portion of the array.
 
 Parameters:
-- int $offset The index to start the slice.
-- int|null $length The number of elements to extract.
+- `int $offset` - The index to start the slice.
+- `int|null $length` - The number of elements to extract.
 
 Returns:
 - `self`
