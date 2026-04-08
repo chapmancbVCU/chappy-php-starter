@@ -384,10 +384,13 @@ echo $arr->last(fn($v) => $v < 25)->result();
 ```
 <br>
 
-### L. lastKey <a id="lastKey">
-`lastKey(): self`
-
+### L. `lastKey()` <a id="lastKey">
 Retrieves the last key of the array.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'Alice', 'age' => 30]);
 echo $arr->lastKey()->result();
