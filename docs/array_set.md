@@ -728,9 +728,15 @@ $arr->crossJoin(['A', 'B'])->all();
 <br>
 
 ### E. dot <a id="dot">
-`dot(string $prepend = ''): self`
-
 Converts a multi-dimensional array into a dot notation format.
+
+Parameter:
+- `string $prepend` - A string to prepend before keys.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([
     'user' => ['name' => 'John', 'age' => 30]
