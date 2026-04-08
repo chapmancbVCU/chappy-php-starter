@@ -1389,10 +1389,16 @@ echo $arr->implode(', '); // "apple, banana, cherry"
 ```
 <br>
 
-### B. random <a id="random">
-`random(?int $number = null)`
-
+### B. `random()` <a id="random">
 Retrieves a random value or values.
+
+Parameter:
+- `int|null $number` - Number of elements to retrieve.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4]);
 echo $arr->random(); // Random value from the array
