@@ -1107,8 +1107,8 @@ print_r($arr1->all());
 Checks if an array contains a specific value.
 
 Parameters:
-- mixed $value The value to search for.
-- bool $strict Whether to perform strict comparison.
+- `mixed $value` - The value to search for.
+- `bool $strict` - Whether to perform strict comparison.
 
 Returns:
 - `self`
@@ -1121,10 +1121,16 @@ var_dump($arr->contains(3)->result());
 ```
 <br>
 
-### B. diff <a id="diff">
-`diff(array $array): self`
-
+### B. `diff` <a id="diff">
 Finds the difference between the current array and another array.
+
+Parameter:
+- `array $array` - The array to compare.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4]);
 $arr->diff([2, 4])->all();
