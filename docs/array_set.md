@@ -897,10 +897,16 @@ print_r($arr->all());
 ```
 <br>
 
-### N. prepend <a id="prepend">
-`prepend(mixed $value): self`
-
+### N. `prepend()` <a id="prepend">
 Adds a value to the beginning of the array.
+
+Parameter:
+- mixed $value The value to prepend.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([2, 3, 4]);
 $arr->prepend(1);
