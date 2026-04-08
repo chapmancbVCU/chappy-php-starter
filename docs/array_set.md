@@ -398,10 +398,13 @@ echo $arr->lastKey()->result();
 ```
 <br>
 
-### M. result <a id="result">
-`result(): mixed`
-
+### M. `result()` <a id="result">
 Retrieves the last computed result from a function that does not modify the original array.
+
+Returns:
+- `mixed`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3]);
 $arr->count();
