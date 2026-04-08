@@ -1405,10 +1405,13 @@ echo $arr->random(); // Random value from the array
 ```
 <br>
 
-### C. reverse <a id="reverse">
-`reverse()`
-
+### C. `reverse()` <a id="reverse">
 Reverses the order.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3]);
 $arr->reverse()->all(); // [3, 2, 1]
