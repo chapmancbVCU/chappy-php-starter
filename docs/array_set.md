@@ -1298,10 +1298,16 @@ $arr->collapse()->all();
 <br>
 
 ## 9. Mapping and Recursive Operations <a id="mapping-recursion"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. mapRecursive <a id="mapRecursive">
-`mapRecursive(callable $callback): self`
-
+### A. `mapRecursive()` <a id="mapRecursive">
 Recursively applies a callback function to each element in the array.
+
+Parameter:
+- `callable $callback` - The function to apply.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([
     [1, 2, 3],
