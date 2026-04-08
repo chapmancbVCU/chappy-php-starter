@@ -475,10 +475,13 @@ $arr->asort()->all(); // ['a' => 1, 'c' => 2, 'b' => 3]
 ```
 <br>
 
-### B. arsort <a id="arsort">
-`arsort()`
-
+### B. `arsort()` <a id="arsort">
 Sorts in descending order while maintaining key association.
+
+Returns:
+- `self` - The modified ArraySet instance.
+
+Example:
 ```php
 $arr = new ArraySet(['b' => 3, 'a' => 1, 'c' => 2]);
 $arr->arsort()->all(); // ['b' => 3, 'c' => 2, 'a' => 1]
