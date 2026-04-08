@@ -857,10 +857,17 @@ print_r($arr->all());
 ```
 <br>
 
-### L. pad <a id="pad">
-`pad(int $size, mixed $value): self`
-
+### L. `pad()` <a id="pad">
 Expands the array to a specified size by padding it with a given value.
+
+Parameter:
+- int $size The required size of the array.
+- mixed $value The value to pad with.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3]);
 $arr->pad(5, 0);
