@@ -786,10 +786,18 @@ $arr->except('age')->all();
 ```
 <br>
 
-### H. fill <a id="fill">
-`fill(int $start, int $count, mixed $value): self`
-
+### H. `fill()` <a id="fill">
 Fills the array with a specified value starting at a given index and continuing for a specified number of elements.
+
+Parameters:
+- `int $start` - Index to start filling.
+- `int $count` - Number of elements to insert.
+- `mixed $value` - The value to insert.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3]);
 $arr->fill(1, 3, "X");
