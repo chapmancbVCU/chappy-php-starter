@@ -769,10 +769,16 @@ $arr->each(function ($value, $key) {
 ```
 <br>
 
-### G. except <a id="except">
-`except(array|string $keys): self`
-
+### G. `except()` <a id="except">
 Removes specific keys from the array.
+
+Parameter:
+- `array|string $keys` - The keys to remove.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'John', 'age' => 30, 'city' => 'New York']);
 $arr->except('age')->all();
