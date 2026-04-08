@@ -1171,10 +1171,16 @@ $arr->intersect([2, 4, 6])->all();
 ```
 <br>
 
-### E. intersectKeys <a id="intersect-keys">
-`intersectKeys(array $array): self`
-
+### E. intersectKeys() <a id="intersect-keys">
 Finds elements whose keys exist in another array.
+
+Parameter:
+- `array $array` - The array to compare.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'Alice', 'age' => 30, 'city' => 'New York']);
 $arr->intersectKeys(['age' => '', 'city' => ''])->all();
