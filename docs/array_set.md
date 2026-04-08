@@ -413,10 +413,16 @@ print_r($arr->result());
 ```
 <br>
 
-### N. search <a id="search">
-`search(mixed $value): self`
-
+### N. `search()` <a id="search">
 Searches for a value in the array and returns its key.
+
+Parameter:
+- mixed $value The value to search for.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['apple' => 'red', 'banana' => 'yellow']);
 $arr->search('yellow');
