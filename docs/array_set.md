@@ -1008,10 +1008,13 @@ $arr->set('user.name', 'John')->all(); // ['user' => ['name' => 'John']]
 ```
 <br>
 
-### T. shuffle <a id="shuffle">
-`shuffle(): self`
-
+### T. `shuffle()` <a id="shuffle">
 Randomly shuffles the elements in the array.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4, 5]);
 $arr->shuffle();
