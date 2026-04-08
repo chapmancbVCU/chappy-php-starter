@@ -688,8 +688,8 @@ $arr->clear()->all(); // []
 Combines two arrays, one as keys and one as values.
 
 Parameters:
-- array $keys The keys.
-- array $values The values.
+- `array $keys` - The keys.
+- `array $values` - The values.
 
 Returns:
 - `self`
@@ -705,10 +705,16 @@ $arr->all();
 ```
 <br>
 
-### D. crossJoin <a id="crossJoin">
-`crossJoin(array ...$arrays): self`
-
+### D. `crossJoin()` <a id="crossJoin">
 Computes the Cartesian product of multiple arrays.
+
+Parameter:
+- `array ...$arrays` - Arrays to join.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2]);
 $arr->crossJoin(['A', 'B'])->all();
