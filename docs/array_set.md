@@ -973,10 +973,16 @@ print_r($arr->result());
 ```
 <br>
 
-### R. replace <a id="replace">
-`replace(array $array): self`
-
+### R. `replace()` <a id="replace">
 Replaces values in the current array with values from another array.
+
+Parameter:
+- array $array The array with replacement values.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'John', 'age' => 30]);
 $arr->replace(['age' => 35, 'city' => 'New York']);
