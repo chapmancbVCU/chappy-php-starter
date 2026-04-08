@@ -431,10 +431,13 @@ print_r($arr->result());
 ```
 <br>
 
-### O. shift <a id="shift">
-`shift(): self`
-
+### O. `shift()` <a id="shift">
 Removes and returns the first item from the array.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4]);
 $arr->shift();
