@@ -954,10 +954,17 @@ print_r($arr->all());
 ```
 <br>
 
-### Q. reduce <a id="reduce">
-`reduce(callable $callback, mixed $initial = null): self`
-
+### Q. `reduce()` <a id="reduce">
 Reduces the array to a single value using a callback function.
+
+Parameter:
+- `callable $callback` - The callback function.
+- `mixed $initial` - The initial value.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4]);
 $arr->reduce(fn($carry, $item) => $carry + $item, 0);
