@@ -1061,10 +1061,18 @@ print_r($arr->all());
 ```
 <br>
 
-### W. splice <a id="splice">
-`splice(int $offset, ?int $length = null, array $replacement = []): self`
-
+### W. `splice()` <a id="splice">
 Removes and replaces a portion of the array.
+
+Parameters:
+- int $offset The index to start the splice.
+- int|null $length The number of elements to remove.
+- array $replacement The replacement values.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4, 5]);
 $arr->splice(2, 2, [6, 7]);
