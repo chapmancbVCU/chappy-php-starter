@@ -1235,10 +1235,13 @@ $arr->map(fn($n) => $n * 2)->all(); // [2, 4, 6]
 ```
 <br>
 
-### I. unique <a id="unique">
-`unique()`
-
+### I. `unique()` <a id="unique">
 Removes duplicate values.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 2, 3, 3]);
 $arr->unique()->all(); // [1, 2, 3]
