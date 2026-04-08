@@ -614,10 +614,16 @@ print_r($arr->all());
 ```
 <br>
 
-### K. walk <a id="walk">
-`walk(callable $callback): self`
-
+### K. `walk()` <a id="walk">
 Applies a user function to every item in the array.
+
+Parameter:
+- callable $callback The function to apply.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3]);
 $arr->walk(fn(&$value) => $value *= 2);
