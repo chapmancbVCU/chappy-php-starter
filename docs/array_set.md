@@ -1154,10 +1154,16 @@ $arr->filter(fn($n) => $n % 2 === 0)->all(); // [2, 4]
 ```
 <br>
 
-### D. intersect <a id="intersect">
-`intersect(array $array): self`
-
+### D. `intersect()` <a id="intersect">
 Finds the common values between the current array and another array.
+
+Parameter:
+- `array $array` - The array to compare.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([1, 2, 3, 4]);
 $arr->intersect([2, 4, 6])->all();
