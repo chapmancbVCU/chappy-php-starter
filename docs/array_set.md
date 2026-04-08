@@ -839,10 +839,16 @@ $arr->merge(['age' => 30])->all(); // ['name' => 'John', 'age' => 30]
 ```
 <br>
 
-### K. only <a id="only">
-`only(array|string $keys): self`
-
+### K. `only()` <a id="only">
 Returns a new array containing only the specified keys.
+
+Parameter:
+- `array|string $keys` - The keys to include.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet(['name' => 'John', 'age' => 30, 'city' => 'New York']);
 $arr->only(['name', 'city']);
