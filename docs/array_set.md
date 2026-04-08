@@ -567,10 +567,13 @@ $arr->ksort()->all();
 <br>
 
 
-
-### H. rsort <a id="rsort">
-`rsort()`
+### H. `rsort()` <a id="rsort">
 Sorts in descending order.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr = new ArraySet([5, 3, 8, 1]);
 $arr->rsort()->all(); // [8, 5, 3, 1]
