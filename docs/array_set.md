@@ -1081,10 +1081,17 @@ print_r($arr->all());
 ```
 <br>
 
-### X. udiff <a id="udiff">
-`udiff(array $array, callable $callback): self`
-
+### X. `udiff()` <a id="udiff">
 Computes the difference between arrays using a custom comparison function.
+
+Parameters:
+- array $array The array to compare.
+- callable $callback The comparison function.
+
+Returns:
+- `self`
+
+Example:
 ```php
 $arr1 = new ArraySet([1, 2, 3, 4, 5]);
 $arr2 = [3, 4];
