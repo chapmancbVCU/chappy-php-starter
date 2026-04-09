@@ -217,6 +217,13 @@ Str::compare('abc', 'xyz'); // negative integer
 ## 11. `contains()` <a id="contains"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Determines if a string contains a given substring.
 
+Parameters:
+- `string $haystack` - The string to search within.
+- `string $needle` - The substring to search for.
+
+Returns:
+- `bool` - True if substring exists, otherwise false.
+
 Example:
 ```php
 Str::contains('hello world', 'world'); // true
