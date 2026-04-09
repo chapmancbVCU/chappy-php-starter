@@ -328,6 +328,12 @@ Str::isAscii('ü'); // false
 ## 18. `isEmpty()` <a id="isempty"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Determines if a string is empty.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `bool` - True if empty string, otherwise false.
+
 Example:
 ```php
 Str::isEmpty(''); // true
