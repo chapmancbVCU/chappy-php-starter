@@ -378,7 +378,7 @@ Parameter:
 - `string $value` - The input string.
 
 Returns:
-- string The string in kebab-case.
+- `string` - The string in kebab-case.
 
 Example:
 ```php
@@ -389,7 +389,14 @@ Str::kebab('Hello World'); // 'hello-world'
 ## 22. `lastPosition()` <a id="lastposition"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Finds the position of the last occurrence of a substring.
 
+Parameters:
+- string $haystack The string to search in.
+- string $needle The substring to search for.
+
+Returns:
+- int|false the position where the needle exists relative to the  beginning of the haystack string (independent of search direction or  offset). Also note that string positions start at 0, and not 1.  Returns FALSE if the needle was not found.
 Example:
+
 ```php
 Str::lastPosition('Hello World', 'o'); // 7
 ```
