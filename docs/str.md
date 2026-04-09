@@ -184,6 +184,13 @@ Str::camel('hello_world'); // 'helloWorld'
 ## 9. `chunk()` <a id="chunk"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Splits a string into chunks.
 
+Parameters:
+- `string $value` - The input string.
+- `int $length` - The chunk length.
+
+Returns:
+- `array` - An array consisting of a string split into chunks.
+
 Example:
 ```php
 Str::chunk('hello', 2); // ['he', 'll', 'o']
