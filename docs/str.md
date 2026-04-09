@@ -468,6 +468,12 @@ Str::limit('Hello World', 5); // 'Hello...'
 ## 27. `lower()` <a id="lower"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts a string to lowercase.
 
+Parameter:
+- `string $value` - The input string.
+
+Return:
+- `string` - The lower case string.
+
 Example:
 ```php
 Str::lower('Hello'); // 'hello'
