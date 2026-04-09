@@ -405,6 +405,12 @@ Str::lastPosition('Hello World', 'o'); // 7
 ## 23. `lcfirst()` <a id="lcfirst"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts the first character of a string to lowercase.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The string with the first character converted to lowercase.
+
 Example:
 ```php
 Str::lcfirst('Hello'); // 'hello'
