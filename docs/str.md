@@ -248,6 +248,13 @@ Str::crc32('hello'); // e.g., 907060870
 ## 13. `endsWith()` <a id="endswith"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Checks if a string ends with a given substring.
 
+Parameters:
+- `string $haystack` - The string to check.
+- `string $needle` - The substring to check for.
+
+Returns:
+- `bool` - True if string ends with given substring, otherwise we return false.
+
 Example:
 ```php
 Str::endsWith('hello world', 'world'); // true
