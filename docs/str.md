@@ -200,6 +200,13 @@ Str::chunk('hello', 2); // ['he', 'll', 'o']
 ## 10. `compare()` <a id="compare"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Compares two strings.
 
+Parameters:
+- `string $string1` - The first string.
+- `string $string2` - The second string.
+
+Returns:
+- `int` - Less 0 if str1 is less than str2; > 0 if str1 is greater than str2, and 0 if they are equal.
+
 Example:
 ```php
 Str::compare('abc', 'abc'); // 0
