@@ -281,6 +281,13 @@ Str::excerpt('This is a long sentence.', 'long', 5); // 'is a long sente'
 ## 15. `finish()` <a id="finish"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Ensures a string ends with a given value.
 
+Parameters:
+- `string $value` - The input string.
+- `string $cap` - The ending string to append if missing.
+
+Returns:
+- `string` - The string with the desired ending.
+
 Example:
 ```php
 Str::finish('hello', '!'); // 'hello!'
