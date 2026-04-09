@@ -72,10 +72,10 @@
 Overview of the Str utility class providing various methods for string manipulation and checks.
 <br>
 
-## 2. after <a id="after"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-`after(string $subject, string $search): string`
-
+## 2. `after()` <a id="after"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Returns the portion of the string after the first occurrence of a given substring.
+
+Example:
 ```php
 Str::after('hello world', 'hello'); // ' world'
 ```
@@ -85,6 +85,8 @@ Str::after('hello world', 'hello'); // ' world'
 `ascii(string $value): string`
 
 Converts a string to its ASCII representation.
+
+Example:
 ```php
 Str::ascii('ü'); // 'u'
 ```
@@ -94,6 +96,8 @@ Str::ascii('ü'); // 'u'
 `base64Encode(string $value): string`
 
 Encodes a string using base64.
+
+Example:
 ```php
 Str::base64Encode('hello'); // 'aGVsbG8='
 ```
@@ -103,6 +107,8 @@ Str::base64Encode('hello'); // 'aGVsbG8='
 `base64Decode(string $value): string`
 
 Decodes a base64 encoded string.
+
+Example:
 ```php
 Str::base64Decode('aGVsbG8='); // 'hello'
 ```
@@ -112,6 +118,8 @@ Str::base64Decode('aGVsbG8='); // 'hello'
 `before(string $subject, string $search): string`
 
 Returns the portion of the string before the first occurrence of a given substring.
+
+Example:
 ```php
 Str::before('hello world', 'world'); // 'hello '
 ```
@@ -121,6 +129,8 @@ Str::before('hello world', 'world'); // 'hello '
 `between(string $value, string $start, string $end): string`
 
 Returns the substring between two substrings.
+
+Example:
 ```php
 Str::between('[a] b [c]', '[', ']'); // 'a'
 ```
@@ -130,6 +140,8 @@ Str::between('[a] b [c]', '[', ']'); // 'a'
 `camel(string $value): string`
 
 Converts a string to camelCase.
+
+Example:
 ```php
 Str::camel('hello_world'); // 'helloWorld'
 ```
@@ -139,6 +151,8 @@ Str::camel('hello_world'); // 'helloWorld'
 `chunk(string $value, int $length = 1): array`
 
 Splits a string into chunks.
+
+Example:
 ```php
 Str::chunk('hello', 2); // ['he', 'll', 'o']
 ```
@@ -148,6 +162,8 @@ Str::chunk('hello', 2); // ['he', 'll', 'o']
 `compare(string $string1, string $string2): int`
 
 Compares two strings.
+
+Example:
 ```php
 Str::compare('abc', 'abc'); // 0
 Str::compare('abc', 'xyz'); // negative integer
@@ -158,6 +174,8 @@ Str::compare('abc', 'xyz'); // negative integer
 `contains(string $haystack, string $needle): bool`
 
 Determines if a string contains a given substring.
+
+Example:
 ```php
 Str::contains('hello world', 'world'); // true
 ```
@@ -167,6 +185,8 @@ Str::contains('hello world', 'world'); // true
 `crc32(string $value): int`
 
 Calculates the CRC32 hash of a string.
+
+Example:
 ```php
 Str::crc32('hello'); // e.g., 907060870
 ```
@@ -176,6 +196,8 @@ Str::crc32('hello'); // e.g., 907060870
 `endsWith(string $haystack, string $needle): bool`
 
 Checks if a string ends with a given substring.
+
+Example:
 ```php
 Str::endsWith('hello world', 'world'); // true
 ```
@@ -185,6 +207,8 @@ Str::endsWith('hello world', 'world'); // true
 `excerpt(string $text, string $phrase, int $radius = 100): string`
 
 Creates an excerpt around a phrase.
+
+Example:
 ```php
 Str::excerpt('This is a long sentence.', 'long', 5); // 'is a long sente'
 ```
@@ -194,6 +218,8 @@ Str::excerpt('This is a long sentence.', 'long', 5); // 'is a long sente'
 `finish(string $value, string $cap): string`
 
 Ensures a string ends with a given value.
+
+Example:
 ```php
 Str::finish('hello', '!'); // 'hello!'
 ```
@@ -203,6 +229,8 @@ Str::finish('hello', '!'); // 'hello!'
 `headline(string $value): string`
 
 Converts a string to headline case.
+
+Example:
 ```php
 Str::headline('hello_world'); // 'Hello World'
 ```
@@ -212,6 +240,8 @@ Str::headline('hello_world'); // 'Hello World'
 `isAscii(string $value): bool`
 
 Checks if the string contains only ASCII characters.
+
+Example:
 ```php
 Str::isAscii('abc'); // true
 Str::isAscii('ü'); // false
@@ -222,6 +252,8 @@ Str::isAscii('ü'); // false
 `isEmpty(string $value): bool`
 
 Determines if a string is empty.
+
+Example:
 ```php
 Str::isEmpty(''); // true
 Str::isEmpty(' '); // true
@@ -232,6 +264,8 @@ Str::isEmpty(' '); // true
 `isJson(string $value): bool`
 
 Checks if a string is valid JSON.
+
+Example:
 ```php
 Str::isJson('{"key":"value"}'); // true
 ```
@@ -241,6 +275,8 @@ Str::isJson('{"key":"value"}'); // true
 `isUuid(string $value): bool`
 
 Determines if the given string is a valid UUID.
+
+Example:
 ```php
 Str::isUuid('550e8400-e29b-41d4-a716-446655440000'); // true
 ```
@@ -250,6 +286,8 @@ Str::isUuid('550e8400-e29b-41d4-a716-446655440000'); // true
 `kebab(string $value): string`  
 
 Converts a string to kebab-case.
+
+Example:
 ```php
 Str::kebab('Hello World'); // 'hello-world'
 ```
@@ -259,6 +297,8 @@ Str::kebab('Hello World'); // 'hello-world'
 `lastPosition(string $haystack, string $needle): int|false`
 
 Finds the position of the last occurrence of a substring.
+
+Example:
 ```php
 Str::lastPosition('Hello World', 'o'); // 7
 ```
@@ -268,6 +308,8 @@ Str::lastPosition('Hello World', 'o'); // 7
 `lcfirst(string $value): string`
 
 Converts the first character of a string to lowercase.
+
+Example:
 ```php
 Str::lcfirst('Hello'); // 'hello'
 ```
@@ -277,6 +319,8 @@ Str::lcfirst('Hello'); // 'hello'
 `length(string $value): int`
 
 Returns the length of a string.
+
+Example:
 ```php
 Str::length('Hello'); // 5
 ```
@@ -286,6 +330,8 @@ Str::length('Hello'); // 5
 `levenshtein(string $string1, string $string2): int`
 
 Calculates the Levenshtein distance between two strings.
+
+Example:
 ```php
 Str::levenshtein('kitten', 'sitting'); // 3
 ```
@@ -295,6 +341,8 @@ Str::levenshtein('kitten', 'sitting'); // 3
 `limit(string $value, int $limit = 100, string $end = '...'): string`
 
 Limits the number of characters in a string.
+
+Example:
 ```php
 Str::limit('Hello World', 5); // 'Hello...'
 ```
@@ -304,6 +352,8 @@ Str::limit('Hello World', 5); // 'Hello...'
 `lower(string $value): string`
 
 Converts a string to lowercase.
+
+Example:
 ```php
 Str::lower('Hello'); // 'hello'
 ```
@@ -313,6 +363,8 @@ Str::lower('Hello'); // 'hello'
 `mask(string $string, string $character = '*', int $start = 0, ?int $length = null): string`
 
 Masks portions of a string with a given character.
+
+Example:
 ```php
 Str::mask('1234567890', '*', 2, 5); // '12*****890'
 ```
@@ -322,6 +374,8 @@ Str::mask('1234567890', '*', 2, 5); // '12*****890'
 `md5(string $value): string`
 
 Generates the MD5 hash of a string.
+
+Example:
 ```php
 Str::md5('hello'); // '5d41402abc4b2a76b9719d911017c592'
 ```
@@ -331,6 +385,8 @@ Str::md5('hello'); // '5d41402abc4b2a76b9719d911017c592'
 `numberFormat(float $number, int $decimals = 0, string $decimalSeparator = '.', string $thousandSeparator = ','): string`
 
 Formats a number with grouped thousands.
+
+Example:
 ```php
 Str::numberFormat(12345.678, 2); // '12,345.68'
 ```
@@ -340,6 +396,8 @@ Str::numberFormat(12345.678, 2); // '12,345.68'
 `padLeft(string $value, int $length, string $pad = ' '): string`
 
 Pads the left side of a string to a specified length with a given character.
+
+Example:
 ```php
 Str::padLeft('hello', 8, '_'); // '___hello'
 ```
@@ -349,6 +407,8 @@ Str::padLeft('hello', 8, '_'); // '___hello'
 `padRight(string $value, int $length, string $pad = ' '): string`
 
 Pads the right side of a string to a specified length with a given character.
+
+Example:
 ```php
 Str::padRight('Hello', 10, '-'); // 'Hello-----'
 ```
@@ -358,6 +418,8 @@ Str::padRight('Hello', 10, '-'); // 'Hello-----'
 `pascal(string $value): string`
 
 Converts a string to PascalCase.
+
+Example:
 ```php
 Str::pascal('hello world'); // 'HelloWorld'
 ```
@@ -367,6 +429,8 @@ Str::pascal('hello world'); // 'HelloWorld'
 `plural(string $word, int $count = 2): string`
 
 Pluralizes a given word based on the count.
+
+Example:
 ```php
 Str::plural('apple', 1); // 'apple'
 Str::plural('apple', 2); // 'apples'
@@ -377,6 +441,8 @@ Str::plural('apple', 2); // 'apples'
 `position(string $haystack, string $needle): int|false`
 
 Finds the position of the first occurrence of a substring.
+
+Example:
 ```php
 Str::position('Hello World', 'World'); // 6
 ```
@@ -386,6 +452,8 @@ Str::position('Hello World', 'World'); // 6
 `random(int $length = 16): string`
 
 Generates a random string of specified length.
+
+Example:
 ```php
 Str::random(8); // e.g., '4f9d2c8a'
 ```
@@ -395,6 +463,8 @@ Str::random(8); // e.g., '4f9d2c8a'
 `repeat(string $value, int $times): string`
 
 Repeats a given string a specified number of times.
+
+Example:
 ```php
 Str::repeat('abc', 3); // 'abcabcabc'
 ```
@@ -404,6 +474,8 @@ Str::repeat('abc', 3); // 'abcabcabc'
 `replace(string|array $search, string|array $replace, string $subject): string`
 
 Replaces all occurrences of the search string(s) with the given replacement(s) in the subject string.
+
+Example:
 ```php
 Str::replace('apple', 'orange', 'apple pie'); 
 // 'orange pie'
@@ -417,6 +489,8 @@ Str::replace(['a', 'e'], ['A', 'E'], 'banana');
 `replaceArray(string $search, array $replace, string $subject): string`
 
 Sequentially replaces placeholders with values from an array.
+
+Example:
 ```php
 Str::replaceArray('?', ['one', 'two'], '? ?'); // 'one two'
 ```
@@ -426,6 +500,8 @@ Str::replaceArray('?', ['one', 'two'], '? ?'); // 'one two'
 `replaceFirst(string $search, string $replace, string $subject): string`
 
 Replaces the first occurrence of a substring.
+
+Example:
 ```php
 Str::replaceFirst('cat', 'dog', 'cat cat'); // 'cat dog'
 ```
@@ -435,6 +511,8 @@ Str::replaceFirst('cat', 'dog', 'cat cat'); // 'cat dog'
 `replaceLast(string $search, string $replace, string $subject): string`
 
 Replaces the last occurrence of a substring.
+
+Example:
 ```php
 Str::replaceLast('apple', 'orange', 'apple pie, apple pie'); // 'apple pie, orange pie'
 ```
@@ -444,6 +522,8 @@ Str::replaceLast('apple', 'orange', 'apple pie, apple pie'); // 'apple pie, oran
 `replaceMultiple(array $replacements, string $subject): string`
 
 Replaces multiple substrings simultaneously.
+
+Example:
 ```php
 Str::replaceMultiple(['cat' => 'dog', 'blue' => 'red'], 'cat and dog'); // 'cat dog'
 ```
@@ -453,6 +533,8 @@ Str::replaceMultiple(['cat' => 'dog', 'blue' => 'red'], 'cat and dog'); // 'cat 
 `reverse(string $value): string`
 
 Reverses the given string.
+
+Example:
 ```php
 Str::reverse('hello'); // 'olleh'
 ```
@@ -462,6 +544,8 @@ Str::reverse('hello'); // 'olleh'
 `sha1(string $value): string`
 
 Returns the SHA1 hash of a string.
+
+Example:
 ```php
 Str::sha1('hello'); // 'f7ff9e8b7bb2e09b70935d20b8a76a62cbd30d2f'
 ```
@@ -471,6 +555,8 @@ Str::sha1('hello'); // 'f7ff9e8b7bb2e09b70935d20b8a76a62cbd30d2f'
 `shuffle(string $value): string`
 
 Randomly shuffles the characters in a string.
+
+Example:
 ```php
 Str::shuffle('hello'); // e.g., 'eholl'
 ```
@@ -480,6 +566,8 @@ Str::shuffle('hello'); // e.g., 'eholl'
 `similarity(string $string1, string $string2): int`
 
 Calculates similarity percentage between two strings.
+
+Example:
 ```php
 Str::similarity('hello', 'hallo'); // e.g., 80
 ```
@@ -489,6 +577,8 @@ Str::similarity('hello', 'hallo'); // e.g., 80
 `snake(string $value, string $delimiter = '_'): string`
 
 Converts a string to snake_case.
+
+Example:
 ```php
 Str::snake('Hello World'); // 'hello_world'
 ```
@@ -498,6 +588,8 @@ Str::snake('Hello World'); // 'hello_world'
 `slug(string $title, string $separator = '-'): string`
 
 Creates a URL-friendly slug from a given string.
+
+Example:
 ```php
 Str::slug('Hello World!'); // 'hello-world'
 ```
@@ -507,6 +599,8 @@ Str::slug('Hello World!'); // 'hello-world'
 `squish(string $value): string`
 
 Removes excessive whitespace from a string.
+
+Example:
 ```php
 Str::squish('  Hello    World  '); // 'Hello World'
 ```
@@ -516,6 +610,8 @@ Str::squish('  Hello    World  '); // 'Hello World'
 `startsWith(string $haystack, string $needle): bool`
 
 Determines if a string starts with a given substring.
+
+Example:
 ```php
 Str::startsWith('Hello World', 'Hello'); // true
 ```
@@ -525,6 +621,8 @@ Str::startsWith('Hello World', 'Hello'); // true
 `stripWhitespace(string $value): string`
 
 Removes all whitespace from a given string.
+
+Example:
 ```php
 Str::stripWhitespace('Hello World'); // 'HelloWorld'
 ```
@@ -534,6 +632,8 @@ Str::stripWhitespace('Hello World'); // 'HelloWorld'
 `studly(string $value): string`
 
 Converts a string to StudlyCase (PascalCase).
+
+Example:
 ```php
 Str::studly('hello_world'); // 'HelloWorld'
 ```
@@ -543,6 +643,8 @@ Str::studly('hello_world'); // 'HelloWorld'
 `substr(string $value, int $start, ?int $length = null): string`
 
 Extracts a substring from a given string.
+
+Example:
 ```php
 Str::substr('Hello World', 0, 5); // 'Hello'
 ```
@@ -552,6 +654,8 @@ Str::substr('Hello World', 0, 5); // 'Hello'
 `substrCount(string $haystack, string $needle): int`
 
 Counts the number of occurrences of a substring within a string.
+
+Example:
 ```php
 Str::substrCount('apple pie apple', 'apple'); // 2
 ```
@@ -561,6 +665,8 @@ Str::substrCount('apple pie apple', 'apple'); // 2
 `swapKeyValue(array $array): string`
 
 Swaps keys with values in an array and returns a formatted string.
+
+Example:
 ```php
 Str::swapKeyValue(['a' => 1, 'b' => 2]); // '1 => a, 2 => b'
 ```
@@ -570,6 +676,8 @@ Str::swapKeyValue(['a' => 1, 'b' => 2]); // '1 => a, 2 => b'
 `title(string $value): string`
 
 Converts a string to title case.
+
+Example:
 ```php
 Str::title('hello world'); // 'Hello World'
 ```
@@ -579,6 +687,8 @@ Str::title('hello world'); // 'Hello World'
 `toArray(string $value): array`
 
 Splits a string into an array of characters.
+
+Example:
 ```php
 Str::toArray('Hello'); // ['H', 'e', 'l', 'l', 'o']
 ```
@@ -588,6 +698,8 @@ Str::toArray('Hello'); // ['H', 'e', 'l', 'l', 'o']
 `ucfirst(string $value): string`
 
 Capitalizes the first character of a string.
+
+Example:
 ```php
 Str::ucfirst('hello'); // 'Hello'
 ```
@@ -596,6 +708,8 @@ Str::ucfirst('hello'); // 'Hello'
 ## 59. ucwords <a id="ucwords"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 `ucwords(string $value): string`
 Capitalizes the first letter of each word in the string, preserving the original casing of other characters.
+
+Example:
 ```php
 Str::ucwords('hello world');         // 'Hello World'
 Str::ucwords('hELLO tHeRE frIEnd');  // 'HELLO THeRE FrIEnd'
@@ -606,6 +720,8 @@ Str::ucwords('hELLO tHeRE frIEnd');  // 'HELLO THeRE FrIEnd'
 `upper(string $value): string`
 
 Converts a string to uppercase.
+
+Example:
 ```php
 Str::upper('hello'); // 'HELLO'
 ```
@@ -615,6 +731,8 @@ Str::upper('hello'); // 'HELLO'
 `uuid(): string`
 
 Generates a UUID (Universally Unique Identifier).
+
+Example:
 ```php
 Str::uuid(); // '550e8400-e29b-41d4-a716-446655440000'
 ```
@@ -624,6 +742,8 @@ Str::uuid(); // '550e8400-e29b-41d4-a716-446655440000'
 `wordCount(string $value): int`
 
 Counts the number of words in a string.
+
+Example:
 ```php
 Str::wordCount('Hello world'); // 2
 ```
@@ -633,6 +753,8 @@ Str::wordCount('Hello world'); // 2
 `words(string $value, int $words = 10, string $end = '...'): string`
 
 Limits a string to a certain number of words.
+
+Example:
 ```php
 Str::words('Hello world of PHP', 2); // 'Hello world...'
 ```
@@ -642,6 +764,8 @@ Str::words('Hello world of PHP', 2); // 'Hello world...'
 `wrap(string $value, string $wrapWith): string`
 
 Wraps a string with a given value.
+
+Example:
 ```php
 Str::wrap('hello', '*'); // '*hello*'
 ```
