@@ -483,6 +483,15 @@ Str::lower('Hello'); // 'hello'
 ## 28. `mask()` <a id="mask"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Masks portions of a string with a given character.
 
+Parameters:
+- `string $string` - The input string.
+- `string $character` - The mask character.
+- `int $start` - The starting position for masking.
+- `int|null $length` - The number of characters to mask.
+
+Returns:
+- `string` - The masked string.
+
 Example:
 ```php
 Str::mask('1234567890', '*', 2, 5); // '12*****890'
