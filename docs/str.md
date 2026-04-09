@@ -516,6 +516,15 @@ Str::md5('hello'); // '5d41402abc4b2a76b9719d911017c592'
 ## 30. `numberFormat()` <a id="numberformat"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Formats a number with grouped thousands.
 
+Parameters:
+- `float $number` - The number to format.
+- `int $decimals` - Number of decimal points.
+- `string $decimalSeparator` - Decimal separator.
+- `string $thousandSeparator`-  Thousand separator.
+
+Returns:
+- `string` - A formatted version of number.
+
 Example:
 ```php
 Str::numberFormat(12345.678, 2); // '12,345.68'
