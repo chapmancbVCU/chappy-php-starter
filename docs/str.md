@@ -583,6 +583,13 @@ Str::pascal('hello world'); // 'HelloWorld'
 ## 34. `plural()` <a id="plural"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Pluralizes a given word based on the count.
 
+Parameters:
+- `string $word` - The word to pluralize.
+- `int $count` - The number to determine singular or plural.
+
+Returns:
+- `string` - The Pluralized string.
+
 Example:
 ```php
 Str::plural('apple', 1); // 'apple'
