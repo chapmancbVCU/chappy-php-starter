@@ -312,6 +312,12 @@ Str::headline('hello_world'); // 'Hello World'
 ## 17. `isAscii()` <a id="isascii"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Checks if the string contains only ASCII characters.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `bool` - True on success or false on failure.
+
 Example:
 ```php
 Str::isAscii('abc'); // true
