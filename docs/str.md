@@ -233,6 +233,12 @@ Str::contains('hello world', 'world'); // true
 ## 12. `crc32()` <a id="crc32"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Calculates the CRC32 hash of a string.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `int Returns` - The crc32 checksum of string as an integer.
+
 Example:
 ```php
 Str::crc32('hello'); // e.g., 907060870
