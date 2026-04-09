@@ -501,6 +501,12 @@ Str::mask('1234567890', '*', 2, 5); // '12*****890'
 ## 29. `md5()` <a id="md5"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates the MD5 hash of a string.
 
+Parameter:
+- `string $value` - The input string.
+
+Return:
+- `string` - The MD5 has of a string.
+
 Example:
 ```php
 Str::md5('hello'); // '5d41402abc4b2a76b9719d911017c592'
