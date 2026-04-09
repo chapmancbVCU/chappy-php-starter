@@ -420,6 +420,12 @@ Str::lcfirst('Hello'); // 'hello'
 ## 24. `length()` <a id="length"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Returns the length of a string.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `int` - The number of characters in string str having character encoding. A multi-byte character is counted as 1.
+
 Example:
 ```php
 Str::length('Hello'); // 5
