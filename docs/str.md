@@ -568,6 +568,12 @@ Str::padRight('Hello', 10, '-'); // 'Hello-----'
 ## 33. `pascal()` <a id="pascal"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts a string to PascalCase.
 
+Parameter:
+- `string $value` - The input string.
+
+Return:
+- `string` - The string in PascalCase.
+
 Example:
 ```php
 Str::pascal('hello world'); // 'HelloWorld'
