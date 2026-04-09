@@ -451,6 +451,14 @@ Str::levenshtein('kitten', 'sitting'); // 3
 ## 26. `limit()` <a id="limit"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Limits the number of characters in a string.
 
+Parameters:
+- `string $value` - The input string.
+- `int $limit` - Maximum number of characters.
+- `string $end` - Ending to append if truncated.
+
+Returns:
+- `string` - A substring of original string with limit set on length.
+
 Example:
 ```php
 Str::limit('Hello World', 5); // 'Hello...'
