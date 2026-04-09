@@ -647,6 +647,14 @@ Str::repeat('abc', 3); // 'abcabcabc'
 ## 38. `replace()` <a id="replace"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Replaces all occurrences of the search string(s) with the given replacement(s) in the subject string.
 
+Parameters:
+- `string|string[]` - $search The value(s) being searched for.
+- `string|string[]` - $replace The replacement value(s).
+- `string $subject` - The string being searched and replaced on.
+
+Returns:
+- `string` - A string with the replaced values.
+
 Example:
 ```php
 Str::replace('apple', 'orange', 'apple pie'); 
