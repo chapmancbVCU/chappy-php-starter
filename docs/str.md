@@ -91,6 +91,12 @@ Str::after('hello world', 'hello'); // ' world'
 ## 3. `ascii()` <a id="ascii"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts a string to its ASCII representation.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The ASCII representation of a string.
+
 Example:
 ```php
 Str::ascii('ü'); // 'u'
