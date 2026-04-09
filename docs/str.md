@@ -121,6 +121,11 @@ Str::base64Encode('hello'); // 'aGVsbG8='
 ## 5. `base64Decode()` <a id="base64decode"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Decodes a base64 encoded string.
 
+Parameter:
+- `string $value` - The base64 encoded string.
+
+Returns:
+- `string` - The decoded string.
 Example:
 ```php
 Str::base64Decode('aGVsbG8='); // 'hello'
