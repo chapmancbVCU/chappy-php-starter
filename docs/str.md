@@ -152,6 +152,14 @@ Str::before('hello world', 'world'); // 'hello '
 ## 7. `between()` <a id="between"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Returns the substring between two substrings.
 
+Parameters:
+- `string $value` - The input string.
+- `string $start` - The starting substring.
+- `string $end` - The ending substring.
+
+Returns:
+- `string` - The substring between two given substrings.
+
 Example:
 ```php
 Str::between('[a] b [c]', '[', ']'); // 'a'
