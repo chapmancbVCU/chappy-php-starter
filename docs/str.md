@@ -534,6 +534,14 @@ Str::numberFormat(12345.678, 2); // '12,345.68'
 ## 31. `padLeft()` <a id="padleft"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Pads the left side of a string to a specified length with a given character.
 
+Parameters:
+- `string $value` - The input string.
+- `int $length` - The desired total length after padding.
+- `string $pad` - The padding character.
+
+Returns:
+- `string` - The string that is padded to the left with a given character.
+
 Example:
 ```php
 Str::padLeft('hello', 8, '_'); // '___hello'
@@ -542,6 +550,14 @@ Str::padLeft('hello', 8, '_'); // '___hello'
 
 ## 32. `padRight()` <a id="padright"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Pads the right side of a string to a specified length with a given character.
+
+Parameters:
+- `string $value` - The input string.
+- `int $length` - The desired total length after padding.
+- `string $pad` - The padding character.
+
+Returns:
+- `string` - The string that is padded to the right with a given character.
 
 Example:
 ```php
