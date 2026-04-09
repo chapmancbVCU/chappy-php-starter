@@ -359,6 +359,11 @@ Str::isJson('{"key":"value"}'); // true
 ## 20. `isUuid()` <a id="isuuid"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Determines if the given string is a valid UUID.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `bool` - True if the string is a valid UUID, false otherwise.
 Example:
 ```php
 Str::isUuid('550e8400-e29b-41d4-a716-446655440000'); // true
