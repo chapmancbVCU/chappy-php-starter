@@ -631,6 +631,13 @@ Str::random(8); // e.g., '4f9d2c8a'
 ## 37. `repeat()` <a id="repeat"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Repeats a given string a specified number of times.
 
+Parameter:
+- `string $value` - The input string.
+- `int $times` - Number of times to repeat.
+
+Returns:
+- `string` - The repeated string.
+
 Example:
 ```php
 Str::repeat('abc', 3); // 'abcabcabc'
