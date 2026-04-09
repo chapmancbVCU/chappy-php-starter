@@ -126,6 +126,7 @@ Parameter:
 
 Returns:
 - `string` - The decoded string.
+
 Example:
 ```php
 Str::base64Decode('aGVsbG8='); // 'hello'
@@ -134,6 +135,13 @@ Str::base64Decode('aGVsbG8='); // 'hello'
 
 ## 6. `before()` <a id="before"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Returns the portion of the string before the first occurrence of a given substring.
+
+Parameter:
+- `string $subject` - The input string.
+- `string $search` - The substring to search for.
+
+Returns:
+- `string` - The portion of a string before the first occurrence of a given value.
 
 Example:
 ```php
