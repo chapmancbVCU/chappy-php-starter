@@ -616,6 +616,12 @@ Str::position('Hello World', 'World'); // 6
 ## 36. `random()` <a id="random"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a random string of specified length.
 
+Parameter:
+- `int $length` - The desired length of the random string.
+
+Returns:
+- `string` - A random string of a specified length.
+
 Example:
 ```php
 Str::random(8); // e.g., '4f9d2c8a'
