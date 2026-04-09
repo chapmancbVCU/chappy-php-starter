@@ -435,6 +435,13 @@ Str::length('Hello'); // 5
 ## 25. `levenshtein()` <a id="levenshtein"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Calculates the Levenshtein distance between two strings.
 
+Parameters:
+- `string $string1` - The first string.
+- `string $string2` - The second string.
+
+Returns:
+- `int` - This function returns the Levenshtein-Distance between the two argument strings or -1, if one of the argument strings is longer than the limit of 255 characters.
+
 Example:
 ```php
 Str::levenshtein('kitten', 'sitting'); // 3
