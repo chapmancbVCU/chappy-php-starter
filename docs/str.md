@@ -169,6 +169,12 @@ Str::between('[a] b [c]', '[', ']'); // 'a'
 ## 8. `camel()` <a id="camel"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts a string to camelCase.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The string in camelCase.
+
 Example:
 ```php
 Str::camel('hello_world'); // 'helloWorld'
