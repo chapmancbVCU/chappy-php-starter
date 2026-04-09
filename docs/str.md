@@ -75,6 +75,13 @@ Overview of the Str utility class providing various methods for string manipulat
 ## 2. `after()` <a id="after"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Returns the portion of the string after the first occurrence of a given substring.
 
+Parameters:
+- `string $subject` - The input string.
+- `string $search` - The substring to search for.
+
+Returns:
+- `string` - Portion of a string after first occurrence of a given value.
+
 Example:
 ```php
 Str::after('hello world', 'hello'); // ' world'
