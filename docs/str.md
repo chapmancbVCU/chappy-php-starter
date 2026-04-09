@@ -364,6 +364,7 @@ Parameter:
 
 Returns:
 - `bool` - True if the string is a valid UUID, false otherwise.
+
 Example:
 ```php
 Str::isUuid('550e8400-e29b-41d4-a716-446655440000'); // true
@@ -372,6 +373,12 @@ Str::isUuid('550e8400-e29b-41d4-a716-446655440000'); // true
 
 ## 21. `kebab()` <a id="kebab"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts a string to kebab-case.
+
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- string The string in kebab-case.
 
 Example:
 ```php
