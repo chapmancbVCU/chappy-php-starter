@@ -106,6 +106,12 @@ Str::ascii('ü'); // 'u'
 ## 4. `base64Encode()` <a id="base64encode"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Encodes a string using base64.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The Base64 encoded string.
+
 Example:
 ```php
 Str::base64Encode('hello'); // 'aGVsbG8='
