@@ -390,11 +390,11 @@ Str::kebab('Hello World'); // 'hello-world'
 Finds the position of the last occurrence of a substring.
 
 Parameters:
-- string $haystack The string to search in.
-- string $needle The substring to search for.
+- `string $haystack` - The string to search in.
+- `string $needle` - The substring to search for.
 
 Returns:
-- int|false the position where the needle exists relative to the  beginning of the haystack string (independent of search direction or  offset). Also note that string positions start at 0, and not 1.  Returns FALSE if the needle was not found.
+- `int|false` - The position where the needle exists relative to the  beginning of the haystack string (independent of search direction or  offset). Also note that string positions start at 0, and not 1.  Returns FALSE if the needle was not found.
 Example:
 
 ```php
