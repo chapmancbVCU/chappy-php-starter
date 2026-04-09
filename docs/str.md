@@ -264,6 +264,14 @@ Str::endsWith('hello world', 'world'); // true
 ## 14. `excerpt()` <a id="excerpt"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Creates an excerpt around a phrase.
 
+Parameters:
+- `string $text` - The input string.
+- `string $phrase` - The phrase to excerpt around.
+- `int $radius` - The number of characters around the phrase.
+
+Returns:
+- `string` - The portion of str specified by the start and length parameters.
+
 Example:
 ```php
 Str::excerpt('This is a long sentence.', 'long', 5); // 'is a long sente'
