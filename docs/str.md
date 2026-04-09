@@ -668,6 +668,14 @@ Str::replace(['a', 'e'], ['A', 'E'], 'banana');
 ## 39. `replaceArray()` <a id="replacearray"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Sequentially replaces placeholders with values from an array.
 
+Parameters:
+- `string $search` - The placeholder string to replace.
+- `array $replace` - Array of replacement values.
+- `string $subject` - The string to perform replacements on.
+
+Returns:
+- `string` - The placeholders replaced with values from an array.
+
 Example:
 ```php
 Str::replaceArray('?', ['one', 'two'], '? ?'); // 'one two'
