@@ -297,6 +297,12 @@ Str::finish('hello', '!'); // 'hello!'
 ## 16. `headline()` <a id="headline"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts a string to headline case.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The string in headline case.
+
 Example:
 ```php
 Str::headline('hello_world'); // 'Hello World'
