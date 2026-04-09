@@ -344,6 +344,12 @@ Str::isEmpty(' '); // true
 ## 19. `isJson()` <a id="isjson"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Checks if a string is valid JSON.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `bool` - True if valid JSON, otherwise false.
+
 Example:
 ```php
 Str::isJson('{"key":"value"}'); // true
