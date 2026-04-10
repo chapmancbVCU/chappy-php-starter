@@ -721,8 +721,8 @@ Str::replaceLast('apple', 'orange', 'apple pie, apple pie');
 Replaces multiple substrings simultaneously.
 
 Parameters:
-- array $replacements Associative array of replacements [search => replace].
-- string $subject The string to perform replacements on.
+- `array $replacements` - Associative array of replacements [search => replace].
+- `string $subject` - The string to perform replacements on.
 
 Returns:
 - `string` - The updated string.
