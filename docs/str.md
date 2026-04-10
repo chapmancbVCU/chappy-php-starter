@@ -829,6 +829,12 @@ Str::slug('Hello World!'); // 'hello-world'
 ## 49. `squish()` <a id="squish"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Removes excessive whitespace from a string.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The modified string.
+
 Example:
 ```php
 Str::squish('  Hello    World  '); // 'Hello World'
