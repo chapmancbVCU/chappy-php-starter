@@ -907,6 +907,13 @@ Str::substr('Hello World', 0, 5); // 'Hello'
 ## 54. `substrCount()` <a id="substrcount"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Counts the number of occurrences of a substring within a string.
 
+Parameters:
+- `string $haystack` - The input string.
+- `string $needle` - The substring to count.
+
+Returns:
+- `int` - The number of occurrences of a substring.
+
 Example:
 ```php
 Str::substrCount('apple pie apple', 'apple'); // 2
