@@ -48,11 +48,16 @@ The table below describes constants supported by the format parameter.
 <br>
 
 ## 3. `timeAgo()` <a id="time-ago"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Accepts UTC time in format Y-m-d H:i:s and returns a string describing how much time has elapsed.  This function accepts 4 parameters:
-1. $time String in format Y-m-d H:i:s using UTC.
-2. $locale Set locale with 'en' as the default value.
-3. $timeZone Override default timezone with 'UTC' as default value.
-4. $short Set to true to show short form time.
+Accepts UTC time in format Y-m-d H:i:s and returns a string describing how much time has elapsed.  
+
+Parameters:
+- `string $time` - String in format Y-m-d H:i:s using UTC.
+- `string $locale` - Set locale with 'en' as the default value.
+- `string $timeZone` - Override default timezone with 'UTC' as default value.
+- `bool $short` - Set to true to show short form time.
+
+Returns:
+- `string` - The time represented using language describing time since last change.
 
 An example function call:
 ```php
