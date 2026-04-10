@@ -30,13 +30,14 @@ use Core\Lib\FileSystem\Uploads;
 ## 2. Uploads Class <a id="uploads"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Description for the Uploads class' functions.
 
+### A. 
 <br>
 
 ## 3. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The upload feature is supported by the Uploads class.  To use the Uploads class you will need to perform the following steps:
 <br>
 
-#### A. Migration File <a id="migration-file">
+### A. Migration File <a id="migration-file">
 We need to create a table in the database to store information about the profile pictures we want to upload.  Run the following command to create a migration.
 ```sh
 php console make:migration profile_images
@@ -65,7 +66,7 @@ php console migrate
 Once the migration has been complete the new table will now be accessible in your database.
 <br>
 
-#### B. Setting up the Model <a id="model-setup">
+### B. Setting up the Model <a id="model-setup">
 First we create a new model file.
 
 ```sh
@@ -327,7 +328,7 @@ Uploads comes built in with two types of validation:
 * Max allowed file size
 <br>
 
-#### A. allowedFileTypes <a id="allowedFileTypes">
+### A. allowedFileTypes <a id="allowedFileTypes">
 Any files that the user uploads is checked gainst the `$allowedFileTypes` array in the model for your upload.  In order for the Uploads class to be able to validate file types you need to create a function in your model as shown below:
 
 ```php
@@ -356,7 +357,7 @@ You should guide the user by including the allowed file type in your upload inpu
 By adding the `accept` element to the function's `$inputAttr` array parameter with the accepted file types as values the user can easily select a file without having to sort through all other files in a given directory.
 <br>
 
-#### B. maxAllowedFileSize <a id="maxAllowedFileSize">
+### B. maxAllowedFileSize <a id="maxAllowedFileSize">
 The second check is for upload file size.  The model uses a variable called `$maxAllowedFileSize` for this purpose.  You will need to add the following function to your model to allow this check to function:
 
 ```php
@@ -373,7 +374,7 @@ public static function getMaxAllowedFileSize() {
 
 <br>
 
-#### C. Missing Required Upload <a id="required">
+### C. Missing Required Upload <a id="required">
 The third type of validation is the enforcement of required file upload.  There is a check for single and multiple file uploads that is placed in your controller's action function right after the `csrf` check. 
 
 Single file upload:
