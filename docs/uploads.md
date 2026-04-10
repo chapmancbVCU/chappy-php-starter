@@ -6,6 +6,7 @@
     * A. [handleUpload()](#handle-upload)
     * B. [generateUploadFilename()](#generate-upload-filename)
     * C. [getFiles()](#get-files)
+    * D. [upload()](#upload-function)
 3. [Setup](#setup)
     * A. [Migration File](#migration-file)
     * B. [Setting up the Model](#model-setup)
@@ -71,6 +72,16 @@ Getter function for the $_files array.
 
 Returns:
 - `array` - The $_files array.
+
+<br>
+
+### D. `upload()` <a id="upload-files">
+Performs file upload.
+
+Parameters:
+- `string $path` - Directory where file will exist when uploaded.
+- `string $uploadName` - The actual name for the file when uploaded.
+- `string $fileName` - The temporary file name.
 
 <br>
 
