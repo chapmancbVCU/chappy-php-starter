@@ -1058,6 +1058,13 @@ Str::words('Hello world of PHP', 2); // 'Hello world...'
 ## 64. `wrap()` <a id="wrap"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Wraps a string with a given value.
 
+Parameter:
+- `string $value` - The input string.
+- `string $wrapWith` - The wrapping string.
+
+Returns:
+- `string` - The string wrapped with a given value.
+
 Example:
 ```php
 Str::wrap('hello', '*'); // '*hello*'
