@@ -67,7 +67,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * B. [ArraySet Class](array_set)
     * C. [Config and Env Classes](config_env)
     * D. [Str Class](str)
-    * E. [Time](time)
+    * E. [DateTime](time)
     * F. [Uploads](uploads)
 29. [Views Introduction](views_intro)
     * A. [api-docs and doctum API Generation](doctum)
