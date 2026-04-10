@@ -1014,6 +1014,8 @@ Str::upper('hello'); // 'HELLO'
 ## 61. `uuid()` <a id="uuid"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a UUID (Universally Unique Identifier).
 
+Returns:
+- `string` - A UUID string.
 Example:
 ```php
 Str::uuid(); // '550e8400-e29b-41d4-a716-446655440000'
