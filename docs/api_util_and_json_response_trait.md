@@ -568,8 +568,6 @@ Inject JSON body by providing payload parameter.  Also performs cleanup to avoid
 Parameter:
 - `mixed $payload` - The JSON payload or null
 
-Returns:
-
 <br>
 
 ### H. Recommended Response Shapes <a id="response-shapes"></a>
