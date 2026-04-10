@@ -97,8 +97,11 @@ Returns:
 <br>
 
 ## 6. `toISO8601()` <a id="to-iso-8601"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Converts time to ISO 8601 format.  This function accepts two parameters:
-1. $time String in format Y-m-d H:i:s using UTC.
-2. $timezone Override default timezone with 'UTC' as default value.
+Converts time to ISO 8601 format.  
 
-Example output: `2025-03-09T15:30:45-05:00`
+Parameters:
+- `string $time` - String in format Y-m-d H:i:s using UTC.
+- `string $timezone` - Override default timezone with 'UTC' as default value.
+
+Returns:
+- `string` - The time in ISO 8610 format.  Example output: `2025-03-09T15:30:45-05:00`
