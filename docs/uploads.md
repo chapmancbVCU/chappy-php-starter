@@ -4,6 +4,7 @@
 1. [Overview](#overview)
 2. [Uploads Class](#uploads)
     * A. [handleUpload()](#handle-upload)
+    * B. [generateUploadFilename()](#generate-upload-filename)
 3. [Setup](#setup)
     * A. [Migration File](#migration-file)
     * B. [Setting up the Model](#model-setup)
@@ -44,6 +45,23 @@ Parameters:
 
 Returns:
 - `Uploads|null` - Returns Uploads instance if valid, otherwise null.
+
+<br>
+
+### B. `generateUploadFilename()` <a id="generate-upload-filename">
+Generates a unique filename for an uploaded file while preserving its extension.
+     
+Uses a cryptographically secure random hash to create a unique base name.
+Falls back to 'bin' if no extension is found in the original filename.
+
+Parameter:
+- `string $originalFilename` - The original filename (used to extract the extension).
+
+Returns:
+- `string` - A unique, safely generated filename with the original extension.
+
+Throws:
+- `\Exception` - If it was not possible to gather sufficient entropy (from random_bytes).
 
 <br>
 
