@@ -782,6 +782,13 @@ Str::shuffle('hello'); // e.g., 'eholl'
 ## 46. `similarity()` <a id="similarity"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Calculates similarity percentage between two strings.
 
+Parameters:
+- `string $string1` - The first string.
+- `string $string2` - The second string.
+
+Returns:
+- `int` - The number of matching chars in both strings.
+
 Example:
 ```php
 Str::similarity('hello', 'hallo'); // e.g., 80
