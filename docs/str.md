@@ -813,6 +813,13 @@ Str::snake('Hello World'); // 'hello_world'
 ## 48. `slug()` <a id="slug"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Creates a URL-friendly slug from a given string.
 
+Parameter:
+- `string $value` - The input string.
+- `string $separator` - The separator used in the slug.
+
+Returns:
+- `string` - The string represented as a URL-friendly slug.
+
 Example:
 ```php
 Str::slug('Hello World!'); // 'hello-world'
