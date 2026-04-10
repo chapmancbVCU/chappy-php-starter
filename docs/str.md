@@ -798,6 +798,12 @@ Str::similarity('hello', 'hallo'); // e.g., 80
 ## 47. `snake()` <a id="snake"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts a string to snake_case.
 
+Parameters:
+- `string $value` - The input string.
+- `string $delimiter` - The delimiter used for snake casing.
+
+Returns:
+- `string` - The string in snake case.
 Example:
 ```php
 Str::snake('Hello World'); // 'hello_world'
