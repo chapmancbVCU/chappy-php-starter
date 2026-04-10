@@ -719,9 +719,17 @@ Str::replaceLast('apple', 'orange', 'apple pie, apple pie'); // 'apple pie, oran
 ## 42. `replaceMultiple()` <a id="replacemultiple"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Replaces multiple substrings simultaneously.
 
+Parameters:
+- array $replacements Associative array of replacements [search => replace].
+- string $subject The string to perform replacements on.
+
+Returns:
+- `string` - The updated string.
+
 Example:
 ```php
-Str::replaceMultiple(['cat' => 'dog', 'blue' => 'red'], 'cat and dog'); // 'cat dog'
+Str::replaceMultiple(['cat' => 'dog', 'blue' => 'red'], 'cat and dog'); 
+// 'cat dog'
 ```
 <br>
 
