@@ -413,13 +413,15 @@ Call this at the top of any action that **mutates server state**:
 <br>
 
 ### C. `get()` <a id="get"></a>
-```php
-public function get(string|null $input = null): array|string
-```
-
 Reads JSON from the request body (`php://input`), decodes it, and returns sanitized data.
 
 This is similar in spirit to a classic `Input::get()` pattern, but specifically for JSON API requests.
+
+Parameter:
+- `string|null $input` - Field name from POST/GET request, or null to get all.
+
+Returns:
+- `array|string` - Sanitized input as array or string.
 
 #### Behavior
 
