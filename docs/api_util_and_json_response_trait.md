@@ -12,9 +12,9 @@
 3. [JsonResponse Trait](#json-response-trait)
     * A. [Using the Trait](#using-the-trait)
     * B. [apiCsrfCheck()](#api-csrf-check)
-    * C. [get($input = null)](#get)
-    * D. [jsonError($message, $status = 400, $errors = [])](#json-error)
-    * E. [jsonResponse($data, $status = 200, $extraHeaders = [])](#json-response)
+    * C. [get()](#get)
+    * D. [jsonError()](#json-error)
+    * E. [jsonResponse()](#json-response)
     * F. [preflight()](#preflight)
     * G. [setRawInputOverride](#raw-input-override)
     * H. [Recommended Response Shapes](#response-shapes)
@@ -393,11 +393,10 @@ class FavoritesController extends Controller {
 <br>
 
 ### B. `apiCsrfCheck()` <a id="api-csrf-check"></a>
-```php
-public function apiCsrfCheck(): bool
-```
-
 Checks whether the incoming request includes a valid CSRF token.
+
+Returns:
+- `bool` - True if token is valid, otherwise we return false.
 
 <br>
 
@@ -407,19 +406,13 @@ Checks whether the incoming request includes a valid CSRF token.
 
 <br>
 
-**Return value**
-- `true` if token is valid
-- `false` if invalid or missing
-
-<br>
-
 **Typical usage**
 Call this at the top of any action that **mutates server state**:
 - POST / PUT / PATCH / DELETE
 
 <br>
 
-### C. `get($input = null)` <a id="get"></a>
+### C. `get()` <a id="get"></a>
 ```php
 public function get(string|null $input = null): array|string
 ```
@@ -464,7 +457,7 @@ If the field does not exist, it returns an empty string `''`.
 
 <br>
 
-### D. `jsonError($message, $status = 400, $errors = [])` <a id="json-error"></a>
+### D. `jsonError()` <a id="json-error"></a>
 ```php
 public function jsonError(string $message, int $status = 400, array $errors = []): void
 ```
@@ -497,7 +490,7 @@ $this->jsonError('Validation failed.', 422, [
 
 <br>
 
-### E. `jsonResponse($data, $status = 200, $extraHeaders = [])` <a id="json-response"></a>
+### E. `jsonResponse()` <a id="json-response"></a>
 ```php
 public function jsonResponse(mixed $data, int $status = 200, array $extraHeaders = []): void
 ```
