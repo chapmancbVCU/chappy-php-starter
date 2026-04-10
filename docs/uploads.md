@@ -3,6 +3,7 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [Uploads Class](#uploads)
+    * A. [handleUpload()](#handle-upload)
 3. [Setup](#setup)
     * A. [Migration File](#migration-file)
     * B. [Setting up the Model](#model-setup)
@@ -30,7 +31,20 @@ use Core\Lib\FileSystem\Uploads;
 ## 2. Uploads Class <a id="uploads"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Description for the Uploads class' functions.
 
-### A. 
+### A. `handleUpload()` <a id="handle-upload">
+Handles file uploads and returns an Uploads instance if valid.
+
+Parameters:
+- `string $name` - The name of the field for upload from form.
+- `string $uploadModel` - The name of the model class responsible for uploads.
+- `string $bucket` - Upload destination.
+- `string $sizeMsg` - Size description for error messages.
+- `Model $model` - The associated with the view you are working with.  May or may not be same as $uploadModel if $uploadModel has index id field associated with another model.
+- `string $mode` - Use Uploads::SINGLE for single file uploads or Uploads::MULTIPLE for multiple file uploads.
+
+Returns:
+- `Uploads|null` - Returns Uploads instance if valid, otherwise null.
+
 <br>
 
 ## 3. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
