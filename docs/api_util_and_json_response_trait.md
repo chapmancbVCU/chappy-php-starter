@@ -422,14 +422,14 @@ Parameter:
 
 Returns:
 - `array|string` - Sanitized input as array or string.
+    - Strings are sanitized and trimmed
+    - Arrays are sanitized recursively using `Arr::map(...)`
 
 #### Behavior
 
 **When** `$input` **is** `null`
 
 Returns **all** JSON fields as an array after sanitization.
-- Strings are sanitized and trimmed
-- Arrays are sanitized recursively using `Arr::map(...)`
 
 ```php
 $data = $this->get(); // entire decoded & sanitized JSON payload
@@ -460,11 +460,12 @@ If the field does not exist, it returns an empty string `''`.
 <br>
 
 ### D. `jsonError()` <a id="json-error"></a>
-```php
-public function jsonError(string $message, int $status = 400, array $errors = []): void
-```
-
 Sends a standardized error response payload:
+
+Parameters:
+- `string $message` - The error message.
+- `int $status` - The status code.
+- `array $errors` - The array of errors.
 
 ```json
 {
@@ -473,13 +474,6 @@ Sends a standardized error response payload:
   "errors": { ... }
 }
 ```
-
-<br>
-
-**Parameters**
-- `$message` – high-level error message for the client
-- `$status` – HTTP status code (default 400)
-- `$errors` – optional structured validation errors (default `[]`)
 
 <br>
 
