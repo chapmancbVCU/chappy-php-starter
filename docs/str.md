@@ -860,6 +860,12 @@ Str::startsWith('Hello World', 'Hello'); // true
 ## 51. `stripWhitespace()` <a id="stripwhitespace"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Removes all whitespace from a given string.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The string with all whitespace removed.
+
 Example:
 ```php
 Str::stripWhitespace('Hello World'); // 'HelloWorld'
