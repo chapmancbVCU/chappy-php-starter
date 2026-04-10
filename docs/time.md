@@ -91,6 +91,9 @@ Output: `7 hours before`
 ## 5. `timeStamps()` <a id="time-stamps"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a timestamp in the Y-m-d H:i:s format set to UTC time.
 
+Returns:
+- `string` - A timestamp in the format Y-m-d H:i:s UTC time.
+
 <br>
 
 ## 6. `toISO8601()` <a id="to-iso-8601"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
