@@ -487,11 +487,12 @@ $this->jsonError('Validation failed.', 422, [
 <br>
 
 ### E. `jsonResponse()` <a id="json-response"></a>
-```php
-public function jsonResponse(mixed $data, int $status = 200, array $extraHeaders = []): void
-```
-
 Sends a JSON response with headers and status code.
+
+Parameters:
+- `mixed $data` - The JSON response.
+- `int $status` - The status code.
+- `array $extraHeaders` - Any extra headers.
 
 <br>
 
