@@ -938,6 +938,12 @@ Str::swapKeyValue(['a' => 1, 'b' => 2]); // '1 => a, 2 => b'
 ## 56. `title()` <a id="title"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts a string to title case.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The string in title case.
+
 Example:
 ```php
 Str::title('hello world'); // 'Hello World'
