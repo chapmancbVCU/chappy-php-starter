@@ -983,6 +983,12 @@ Str::ucfirst('hello'); // 'Hello'
 ## 59. `ucwords()` <a id="ucwords"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Capitalizes the first letter of each word in the string, preserving the original casing of other characters.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The modified string where first letter of each word is capitalized.
+
 Example:
 ```php
 Str::ucwords('hello world');         // 'Hello World'
