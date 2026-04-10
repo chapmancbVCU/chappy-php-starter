@@ -16,11 +16,18 @@ Supports ability to manipulate how time is displayed.  Most functions are wrappe
 <br>
 
 ## 2. `formatTime()` <a id="format-time"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Returns string that describes time.  The results can be set using constants, locale, and timezone.  This function accepts 4 parameters:
-1. $time String in format Y-m-d H:i:s A using UTC.
-2. $format Set format with a default of FORMAT_12_HOUR.
-3. $locale Set locale with 'en' as the default value.
-4. $timeZone Override default timezone with 'UTC' as default value.
+Returns string that describes time.  The results can be set using constants, locale, and timezone.  
+
+Parameters:
+- `string $time` - String in format Y-m-d H:i:s A using UTC.
+- `string $format` - Set format with a default of FORMAT_12_HOUR.
+- `string $locale` - Set locale with 'en' as the default value.
+- `string $timeZone` - Override default timezone with 'UTC' as default value.
+
+Returns:
+- `string` - The formatted time
+
+<br>
 
 The table below describes constants supported by the format parameter.
 
