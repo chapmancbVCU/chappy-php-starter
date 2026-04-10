@@ -702,6 +702,14 @@ Str::replaceFirst('cat', 'dog', 'cat cat'); // 'cat dog'
 ## 41. `replaceLast()` <a id="replacelast"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Replaces the last occurrence of a substring.
 
+Parameters:
+- `string $search` - The substring to find.
+- `string $replace` - The substring to replace with.
+- `string $subject` - The string to perform replacement on.
+
+Returns:
+- `string` - The updated string.
+
 Example:
 ```php
 Str::replaceLast('apple', 'orange', 'apple pie, apple pie'); // 'apple pie, orange pie'
