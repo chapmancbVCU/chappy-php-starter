@@ -1041,6 +1041,14 @@ Str::wordCount('Hello world'); // 2
 ## 63. `words()` <a id="words"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Limits a string to a certain number of words.
 
+Parameters:
+- `string $value` - The input string.
+- `int $words` - Number of words to limit to.
+- `string $end` - Ending to append if truncated.
+
+Returns:
+- `string` - The string with the limited number of words.
+
 Example:
 ```php
 Str::words('Hello world of PHP', 2); // 'Hello world...'
