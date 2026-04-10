@@ -2,17 +2,18 @@
 
 ## Table of contents
 1. [Overview](#overview)
-2. [Setup](#setup)
+2. [Uploads Class](#uploads)
+3. [Setup](#setup)
     * A. [Migration File](#migration-file)
     * B. [Setting up the Model](#model-setup)
-3. [Single File Upload](#single-file)
-4. [Multiple File Upload](#multiple-file)
-5. [Configuring File Types](#file-types)
-6. [Validation](#validation)
+4. [Single File Upload](#single-file)
+5. [Multiple File Upload](#multiple-file)
+6. [Configuring File Types](#file-types)
+7. [Validation](#validation)
     * A. [allowedFileTypes](#allowedFileTypes)
     * B. [maxAllowedFileSize](#maxAllowedFileSize)
     * C. [Missing Required Upload](#required)
-7. [Buckets](#buckets)
+8. [Buckets](#buckets)
 
 <br>
 
@@ -23,9 +24,15 @@ To enable uploads in your Controllers add the following import:
 ```php
 use Core\Lib\FileSystem\Uploads;
 ```
+
 <br>
 
-## 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Uploads Class <a id="uploads"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Description for the Uploads class' functions.
+
+<br>
+
+## 3. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The upload feature is supported by the Uploads class.  To use the Uploads class you will need to perform the following steps:
 <br>
 
@@ -132,7 +139,7 @@ The upload function accepts 3 parameters:
 - string $fileName - The temporary file name.
 <br>
 
-## 3. Single File Upload <a id="single-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Single File Upload <a id="single-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Setting up single file uploads requires the correct configuration of your action inside of the appropriate controller and the associated view file.  Let's look at the editAction function for the ProfileController.
 
 ```php
@@ -198,7 +205,7 @@ When setting up the view we use a call to the inputBlock function.  In the examp
 ```
 <br>
 
-## 4. Multiple File Upload <a id="multiple-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Multiple File Upload <a id="multiple-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 There are two main differences when it comes to setting up uploads with multiple files.  Let's look at the call for the Uploads constructor again.
 
 ```php
@@ -221,7 +228,7 @@ This time the value for the `$mode` parameter is set to `Uploads::MULTIPLE`.  Th
 The profileImage, the name attribute's value, needs brackets so that we know we are using an array of files as the value for the inputBlock function call.  You also need to add 'multiple' => 'multiple' as an element for the $inputAttrs array.  Otherwise, the window that allows users to select a file will only allow you to select one file.
 <br>
 
-## 5. Configuring File Types <a id="file-types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Configuring File Types <a id="file-types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The following is a sample list of file types you can place in the `$allowedFileTypes` array:
 
 ```php
@@ -314,7 +321,7 @@ protected static $allowedFileTypes = [
 
 <br>
 
-## 6. Validation <a id="validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Validation <a id="validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Uploads comes built in with two types of validation:
 * Allowed file types
 * Max allowed file size
@@ -401,7 +408,7 @@ It is also wise to set validation on the front end.  Simply add `'required' => '
 
 <br>
 
-## 7. Buckets <a id="buckets"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Buckets <a id="buckets"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This framework, by default, uses the local host for storing images.  If you are going to deploy this framework to a production environment we recommend using a separate host for file uploads.  The industry convention is to use S3 Buckets through Amazon Web Services (AWS).
 
 The `.env` file has a blank `S3_BUCKET` field ready to for you to use.  Set the hostname for your S3 Bucket to this environmental variable and add it as part of the `$_uploadPath` variable in the model for your file upload. 
