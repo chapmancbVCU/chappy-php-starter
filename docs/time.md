@@ -1,4 +1,4 @@
-<h1 style="font-size: 50px; text-align: center;">Time</h1>
+<h1 style="font-size: 50px; text-align: center;">DateTime</h1>
 
 ## Table of contents
 1. [Overview](#overview)
@@ -12,6 +12,7 @@
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Supports ability to manipulate how time is displayed.  Most functions are wrappers for those found in the Carbon class.
+
 <br>
 
 ## 2. formatTime <a id="format-time"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -37,6 +38,8 @@ The table below describes constants supported by the format parameter.
 | FORMAT_RFC_2822 | 'r' | Sun, 09 Mar 2025 15:30:45 -0500 | For email headers, logs |
 | FORMAT_SQL_DATETIME | 'Y-m-d H:i:s' | 2025-03-09 15:30:45 | For database storage |
 
+<br>
+
 ## 3. timeAgo <a id="time-ago"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Accepts UTC time in format Y-m-d H:i:s and returns a string describing how much time has elapsed.  This function accepts 4 parameters:
 1. $time String in format Y-m-d H:i:s using UTC.
@@ -50,6 +53,7 @@ DateTime::timeAgo($user->updated_at, 'en', 'UTC', true);
 ```
 
 Output: `21m`
+
 <br>
 
 ## 4. timeDifference <a id="time-difference"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -64,10 +68,12 @@ DateTimeHelper::timeDifference('2025-03-09 08:00:00', '2025-03-09 15:30:45');
 ```
 
 Output: `7 hours before`
+
 <br>
 
 ## 5. timeStamps <a id="time-stamps"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a timestamp in the Y-m-d H:i:s format set to UTC time.
+
 <br>
 
 ## 6. toISO8601 <a id="to-iso-8601"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
