@@ -5,6 +5,7 @@
 2. [Uploads Class](#uploads)
     * A. [handleUpload()](#handle-upload)
     * B. [generateUploadFilename()](#generate-upload-filename)
+    * C. [getFiles()](#get-files)
 3. [Setup](#setup)
     * A. [Migration File](#migration-file)
     * B. [Setting up the Model](#model-setup)
@@ -62,6 +63,14 @@ Returns:
 
 Throws:
 - `\Exception` - If it was not possible to gather sufficient entropy (from random_bytes).
+
+<br>
+
+### C. `getFiles()` <a id="get-files">
+Getter function for the $_files array.
+
+Returns:
+- `array` - The $_files array.
 
 <br>
 
