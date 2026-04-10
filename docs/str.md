@@ -890,6 +890,14 @@ Str::studly('hello_world'); // 'HelloWorld'
 ## 53. `substr()` <a id="substr"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Extracts a substring from a given string.
 
+Parameter:
+- `string $value` - The input string.
+- `int $start` - The starting position.
+- `int|null $length` - The number of characters to extract.
+
+Returns:
+- `string` - The portion of str specified by the start and length parameters.
+
 Example:
 ```php
 Str::substr('Hello World', 0, 5); // 'Hello'
