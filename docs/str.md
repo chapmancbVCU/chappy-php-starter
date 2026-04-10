@@ -844,6 +844,13 @@ Str::squish('  Hello    World  '); // 'Hello World'
 ## 50. `startsWith()` <a id="startswith"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Determines if a string starts with a given substring.
 
+Parameters:
+- `string $haystack` - The string to search within.
+- `string $needle` - The substring to check for.
+
+Returns:
+- `bool` - True if string starts with given substring, otherwise false.
+
 Example:
 ```php
 Str::startsWith('Hello World', 'Hello'); // true
