@@ -3,10 +3,11 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [formatTime()](#format-time)
-3. [timeAgo()](#time-ago)
-4. [timeDifference()](#time-difference)
-5. [timeStamps()](#time-stamps)
-6. [toISO8601()](#to-iso-8601)
+3. [nowPlusSeconds](#now-plus-seconds)
+4. [timeAgo()](#time-ago)
+5. [timeDifference()](#time-difference)
+6. [timeStamps()](#time-stamps)
+7. [toISO8601()](#to-iso-8601)
 
 <br>
 
@@ -47,7 +48,18 @@ The table below describes constants supported by the format parameter.
 
 <br>
 
-## 3. `timeAgo()` <a id="time-ago"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. `nowPlusSeconds()` <a id="now-plus-seconds"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Adds second passed as parameter to current time.
+
+Parameter:
+- `int $seconds` - The number of seconds to add.
+
+Returns:
+- `string` - The time plus seconds passed as parameter.
+
+<br>
+
+## 4. `timeAgo()` <a id="time-ago"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Accepts UTC time in format Y-m-d H:i:s and returns a string describing how much time has elapsed.  
 
 Parameters:
@@ -68,7 +80,7 @@ Output: `21m`
 
 <br>
 
-## 4. `timeDifference()` <a id="time-difference"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. `timeDifference()` <a id="time-difference"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Shows the difference between two times.  
 
 Parameters:
@@ -88,7 +100,7 @@ Output: `7 hours before`
 
 <br>
 
-## 5. `timeStamps()` <a id="time-stamps"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. `timeStamps()` <a id="time-stamps"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a timestamp in the Y-m-d H:i:s format set to UTC time.
 
 Returns:
@@ -96,7 +108,7 @@ Returns:
 
 <br>
 
-## 6. `toISO8601()` <a id="to-iso-8601"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. `toISO8601()` <a id="to-iso-8601"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts time to ISO 8601 format.  
 
 Parameters:
