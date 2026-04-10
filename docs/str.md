@@ -685,6 +685,14 @@ Str::replaceArray('?', ['one', 'two'], '? ?'); // 'one two'
 ## 40. `replaceFirst()` <a id="replacefirst"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Replaces the first occurrence of a substring.
 
+Parameters:
+- `string $search` - The substring to find.
+- `string $replace` - The substring to replace with.
+- `string $subject` - The string to perform replacement on.
+
+Returns:
+- `string` - The updated string.
+
 Example:
 ```php
 Str::replaceFirst('cat', 'dog', 'cat cat'); // 'cat dog'
