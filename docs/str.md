@@ -968,6 +968,12 @@ Str::toArray('Hello'); // ['H', 'e', 'l', 'l', 'o']
 ## 58. `ucfirst()` <a id="ucfirst"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Capitalizes the first character of a string.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The string with first character capitalized.
+
 Example:
 ```php
 Str::ucfirst('hello'); // 'Hello'
