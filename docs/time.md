@@ -2,11 +2,11 @@
 
 ## Table of contents
 1. [Overview](#overview)
-2. [formatTime](#format-time)
-3. [timeAgo](#time-ago)
-4. [timeDifference](#time-difference)
-5. [timeStamps](#time-stamps)
-6. [toISO8601](#to-iso-8601)
+2. [formatTime()](#format-time)
+3. [timeAgo()](#time-ago)
+4. [timeDifference()](#time-difference)
+5. [timeStamps()](#time-stamps)
+6. [toISO8601()](#to-iso-8601)
 
 <br>
 
@@ -15,7 +15,7 @@ Supports ability to manipulate how time is displayed.  Most functions are wrappe
 
 <br>
 
-## 2. formatTime <a id="format-time"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. `formatTime()` <a id="format-time"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Returns string that describes time.  The results can be set using constants, locale, and timezone.  This function accepts 4 parameters:
 1. $time String in format Y-m-d H:i:s A using UTC.
 2. $format Set format with a default of FORMAT_12_HOUR.
@@ -40,7 +40,7 @@ The table below describes constants supported by the format parameter.
 
 <br>
 
-## 3. timeAgo <a id="time-ago"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. `timeAgo()` <a id="time-ago"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Accepts UTC time in format Y-m-d H:i:s and returns a string describing how much time has elapsed.  This function accepts 4 parameters:
 1. $time String in format Y-m-d H:i:s using UTC.
 2. $locale Set locale with 'en' as the default value.
@@ -56,7 +56,7 @@ Output: `21m`
 
 <br>
 
-## 4. timeDifference <a id="time-difference"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `timeDifference()` <a id="time-difference"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Shows the difference between two times.  This function accepts three parameters:
 1. $startTime String in format Y-m-d H:i:s using UTC.
 2. $endTime String in format Y-m-d H:i:s using UTC.
@@ -71,12 +71,12 @@ Output: `7 hours before`
 
 <br>
 
-## 5. timeStamps <a id="time-stamps"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. `timeStamps()` <a id="time-stamps"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a timestamp in the Y-m-d H:i:s format set to UTC time.
 
 <br>
 
-## 6. toISO8601 <a id="to-iso-8601"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. `toISO8601()` <a id="to-iso-8601"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts time to ISO 8601 format.  This function accepts two parameters:
 1. $time String in format Y-m-d H:i:s using UTC.
 2. $timezone Override default timezone with 'UTC' as default value.
