@@ -953,6 +953,12 @@ Str::title('hello world'); // 'Hello World'
 ## 57. `toArray()` <a id="toarray"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Splits a string into an array of characters.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `array` - The string as an array of characters.
+
 Example:
 ```php
 Str::toArray('Hello'); // ['H', 'e', 'l', 'l', 'o']
