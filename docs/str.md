@@ -875,6 +875,12 @@ Str::stripWhitespace('Hello World'); // 'HelloWorld'
 ## 52. `studly()` <a id="studly"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts a string to StudlyCase (PascalCase).
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The string in StudlyCase.
+
 Example:
 ```php
 Str::studly('hello_world'); // 'HelloWorld'
