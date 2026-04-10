@@ -566,10 +566,11 @@ $this->preflight();
 Inject JSON body by providing payload parameter.  Also performs cleanup to avoid leaking into other tests.
 
 Parameter:
-- `$payload` - The JSON payload or null
+- `mixed $payload` - The JSON payload or null
+
+Returns:
 
 <br>
-
 
 ### H. Recommended Response Shapes <a id="response-shapes"></a>
 To align cleanly with your React utilities (where `apiRequest()` treats `success: false` as an error), use these conventions:
