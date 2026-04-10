@@ -999,6 +999,12 @@ Str::ucwords('hELLO tHeRE frIEnd');  // 'HELLO THeRE FrIEnd'
 ## 60. `upper()` <a id="upper"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Converts a string to uppercase.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The string in all upper case characters.
+
 Example:
 ```php
 Str::upper('hello'); // 'HELLO'
