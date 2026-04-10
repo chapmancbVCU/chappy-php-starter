@@ -59,7 +59,7 @@ Parameters:
 Returns:
 - `string` - The time represented using language describing time since last change.
 
-An example function call:
+Example:
 ```php
 DateTime::timeAgo($user->updated_at, 'en', 'UTC', true);
 ```
@@ -69,12 +69,17 @@ Output: `21m`
 <br>
 
 ## 4. `timeDifference()` <a id="time-difference"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Shows the difference between two times.  This function accepts three parameters:
-1. $startTime String in format Y-m-d H:i:s using UTC.
-2. $endTime String in format Y-m-d H:i:s using UTC.
-3. $timezone Override default timezone with 'UTC' as default value.
+Shows the difference between two times.  
 
-An example function call:
+Parameters:
+- `string $startTime` - String in format Y-m-d H:i:s using UTC.
+- `string $endTime` - String in format Y-m-d H:i:s using UTC.
+- `string $timezone` - Override default timezone with 'UTC' as default value.
+
+Returns:
+- `string` - Show exact difference between two times.
+
+Example:
 ```php
 DateTimeHelper::timeDifference('2025-03-09 08:00:00', '2025-03-09 15:30:45');
 ```
