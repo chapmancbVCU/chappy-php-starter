@@ -923,6 +923,12 @@ Str::substrCount('apple pie apple', 'apple'); // 2
 ## 55. `swapKeyValue()` <a id="swapkeyvalue"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Swaps keys with values in an array and returns a formatted string.
 
+Parameter:
+- `array $array` - The input array.
+
+Returns:
+- `string` - The swapped keys and values as a string.
+
 Example:
 ```php
 Str::swapKeyValue(['a' => 1, 'b' => 2]); // '1 => a, 2 => b'
