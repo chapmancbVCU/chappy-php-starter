@@ -712,7 +712,8 @@ Returns:
 
 Example:
 ```php
-Str::replaceLast('apple', 'orange', 'apple pie, apple pie'); // 'apple pie, orange pie'
+Str::replaceLast('apple', 'orange', 'apple pie, apple pie'); 
+// 'apple pie, orange pie'
 ```
 <br>
 
@@ -735,6 +736,12 @@ Str::replaceMultiple(['cat' => 'dog', 'blue' => 'red'], 'cat and dog');
 
 ## 43. `reverse()` <a id="reverse"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Reverses the given string.
+
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The reversed string.
 
 Example:
 ```php
