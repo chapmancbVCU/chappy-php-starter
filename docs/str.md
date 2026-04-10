@@ -752,6 +752,12 @@ Str::reverse('hello'); // 'olleh'
 ## 44. `sha1()` <a id="sha1"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Returns the SHA1 hash of a string.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The SHA1 hash of a string.
+
 Example:
 ```php
 Str::sha1('hello'); // 'f7ff9e8b7bb2e09b70935d20b8a76a62cbd30d2f'
