@@ -767,6 +767,12 @@ Str::sha1('hello'); // 'f7ff9e8b7bb2e09b70935d20b8a76a62cbd30d2f'
 ## 45. `shuffle()` <a id="shuffle"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Randomly shuffles the characters in a string.
 
+Parameter:
+- `string $value` - The input string.
+
+Returns:
+- `string` - The shuffled string.
+
 Example:
 ```php
 Str::shuffle('hello'); // e.g., 'eholl'
