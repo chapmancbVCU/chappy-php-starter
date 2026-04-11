@@ -694,6 +694,9 @@ Parameters:
 Returns:
 - `self`
 
+Throws:
+- \InvalidArgumentException Thrown when array of values and keys are not the same length.
+
 Example:
 ```php
 $keys = ['name', 'age', 'city'];
