@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Version 2.1.1 Release Notes!"
+title:  "Version 2.2.0 Release Notes!"
 date:   2026-04-11 12:00:00 -0500
 categories: release
 ---
 ---
 
-🎉 **Version 2.1.1 of the Chappy PHP Framework is here!**
+🎉 **Version 2.2.0 of the Chappy PHP Framework is here!**
 
 This is the most feature-packed release to date, introducing updates for seeders and new factory support..
 
@@ -41,4 +41,4 @@ Everything is documented in the user guide:
 
 ---
 
-Thank you to everyone testing, building, and exploring Chappy v2.1.1!
+Thank you to everyone testing, building, and exploring Chappy v2.2.0!
