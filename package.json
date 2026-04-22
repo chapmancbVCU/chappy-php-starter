@@ -35,7 +35,7 @@
     "@popperjs/core": "^2.11.8",
     "@tinymce/tinymce-react": "^6.3.0",
     "bootstrap": "^5.3.3",
-    "dompurify": "^3.2.6",
+    "dompurify": "^3.4.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.7.1",
     "jquery-ui": "^1.14.1",
