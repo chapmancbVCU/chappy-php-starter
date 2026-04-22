@@ -46,6 +46,7 @@ export default defineConfig(({ command }) => ({
     ],
     optimizeDeps: {
         include: ['@tinymce/tinymce-react', 'tinymce'],
+        include: ['dompurify']
     },
     test: {
         globals: true,
