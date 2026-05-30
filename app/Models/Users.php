@@ -139,10 +139,11 @@ class Users extends Model {
         $this->runValidation($this->required()->fieldName('fname')->max(150)->validate($this->fname));
         $this->runValidation($this->required()->fieldName('lname')->max(150)->validate($this->lname));
         $this->runValidation($this->required()->fieldName('email')->max(150)->email()->validate($this->email));
-        $this->runValidation($this->required()->fieldName('username')->min(6)->max(150)->unique(Users::class)->validate($this->username));
         $this->runValidation($this->required()->fieldName('password')->validate($this->password));
         
+        $this->runValidation($this->required()->fieldName('username')->min(6)->max(150)->validate($this->username));
         if($this->isNew() || $this->changePassword) {
+            $this->runValidation($this->unique(self::class)->fieldName('username')->validate($this->username));
             if($this->isMinLength()) {
                 $this->runValidation($this->min($this->minLength())->fieldName('password')->validate($this->password));
             }
