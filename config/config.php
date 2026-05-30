@@ -22,6 +22,7 @@ use Core\Lib\Utilities\Env;
     'max_login_attempts' => is_numeric(Env::get('MAX_LOGIN_ATTEMPTS') ?? null) ? (int) Env::get('MAX_LOGIN_ATTEMPTS') : 5,
 
     'time_zone' => Env::get('TIME_ZONE') ?? 'UTC',
+    'country_code' => Env::get('COUNTRY_CODE') ?? '1',
     'locale' => Env::get('LOCALE') ?? 'en',
     
     's3_bucket' => Env::get('S3_BUCKET') ?? null,
