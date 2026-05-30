@@ -30,10 +30,11 @@
     * W. [positive()](#positive)
     * X. [queue()](#queue)
     * Y. [special()](#special)
-    * Z. [testFilterNotation()](testFilterNotation)
-    * A1. [unique](unique)
-    * A2. [upper()](#upper)
-    * A3. [url()](#url)
+    * Z. [tel()](#tel)
+    * A1. [testFilterNotation()](testFilterNotation)
+    * A2. [unique](unique)
+    * A3. [upper()](#upper)
+    * A4. [url()](#url)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -410,20 +411,25 @@ Enforces rule when input must contain at least one special character.
 
 <br>
 
-### Z. `testFilterNotation()` <a id="testFilterNotation"></a>
+### Z. `tel()` <a id="tel"></a>
+Ensures phone number is in the correct format.
+
+<br>
+
+### A1. `testFilterNotation()` <a id="testFilterNotation"></a>
 Ensures response is in colon notation format.
 
 <br>
 
-### A1. `unique()` <a id="unique"></a>
+### A2. `unique()` <a id="unique"></a>
 Enforces rule when input must be a unique value.  Checks database and displays message if field with value already exists.
 
 <br>
 
-### A1. `upper()` <a id="upper"></a>
+### A3. `upper()` <a id="upper"></a>
 Enforces rule when input must contain at least one lower case character.
 
 <br>
 
-### B1. `url()` <a id="url"></a>
+### A4. `url()` <a id="url"></a>
 Enforce rule where input must be a valid URL.
