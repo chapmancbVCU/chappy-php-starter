@@ -424,6 +424,18 @@ Ensures response is in colon notation format.
 ### A2. `unique()` <a id="unique"></a>
 Enforces rule when input must be a unique value.  Checks database and displays message if field with value already exists.
 
+Parameters:
+- `string $modelName` - The name of the model we will use for our query.
+- `string $fieldName` - The name of the field to check for uniqueness.
+- `bool $includeDeleted`- Enforce uniqueness among deleted records.
+
+Example:
+```php
+$this->runValidation($this->required()->fieldName('username')->min(6)->max(150)->unique(Users::class, 'username', true)->validate($this->username));
+```
+
+In the example code above we provide the model, the field to be checked for uniqueness, and we provide a `true` value to the `$includeDeleted` field to check for uniqueness.
+
 <br>
 
 ### A3. `upper()` <a id="upper"></a>
