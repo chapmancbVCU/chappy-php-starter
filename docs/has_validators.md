@@ -434,7 +434,7 @@ Example:
 $this->runValidation($this->required()->fieldName('username')->min(6)->max(150)->unique(Users::class, 'username', true)->validate($this->username));
 ```
 
-In the example code above we provide the model, the field to be checked for uniqueness, and we provide a `true` value to the `$includeDeleted` field to check for uniqueness.
+In the example code above we provide the model, the field to be checked for uniqueness, and we provide a `true` value to the `$includeDeleted` field to check for uniqueness among soft deleted records.
 
 <br>
 
