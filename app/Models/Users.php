@@ -2,18 +2,6 @@
 namespace App\Models;
 use Core\Model;
 use Core\Services\AuthService;
-use Core\Validators\{
-    EmailValidator,
-    LowerCharValidator,
-    MaxValidator,
-    MatchesValidator,
-    MinValidator,
-    NumberCharValidator,
-    RequiredValidator,
-    SpecialCharValidator,
-    UniqueValidator,
-    UpperCharValidator
-};
 use Core\Lib\Utilities\Arr;
 use Core\Traits\HasTimestamps;
 use Core\Traits\PasswordPolicy;
@@ -42,7 +30,7 @@ class Users extends Model {
     protected static $_softDelete = true;
     protected static $_table = 'users';
     public $username;
-
+   
     /**
      * Implements beforeSave function described in Model parent class.  
      * Ensures password is not in plain text but a hashed one.  The 
