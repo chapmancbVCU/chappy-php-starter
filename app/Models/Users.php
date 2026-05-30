@@ -30,7 +30,7 @@ class Users extends Model {
     protected static $_softDelete = true;
     protected static $_table = 'users';
     public $username;
-   
+
     /**
      * Implements beforeSave function described in Model parent class.  
      * Ensures password is not in plain text but a hashed one.  The 
