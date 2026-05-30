@@ -148,47 +148,32 @@ class Users extends Model {
      * @return void
      */
     public function validator(): void {
-        // Validate first name
-        $this->runValidation(new RequiredValidator($this, ['field' => 'fname', 'message' => 'First Name is required']));
-        $this->runValidation(new MaxValidator($this, ['field' => 'fname', 'rule' => 150, 'message' => 'First name must be less than 150 characters.']));
-
-        // Validate last name
-        $this->runValidation(new RequiredValidator($this, ['field' => 'lname', 'message' => 'Last Name is required.']));
-        $this->runValidation(new MaxValidator($this, ['field' => 'lname', 'rule' => 150, 'message' => 'Last name must be less than 150 characters.']));
-
-        // Validate E-mail
-        $this->runValidation(new RequiredValidator($this, ['field' => 'email', 'message' => 'Email is required.']));
-        $this->runValidation(new MaxValidator($this, ['field' => 'email', 'rule' => 150, 'message' => 'Email must be less than 150 characters.']));
-        $this->runValidation(new EmailValidator($this, ['field' => 'email', 'message' => 'You must provide a valid email address.']));
-
-        // Validate username
-        $this->runValidation(new MinValidator($this, ['field' => 'username', 'rule' => 6, 'message' => 'Username must be at least 6 characters.']));
-        $this->runValidation(new MaxValidator($this, ['field' => 'username', 'rule' => 150, 'message' => 'Username must be less than 150 characters.']));
-        $this->runValidation(new UniqueValidator($this, ['field' => 'username', 'message' => 'That username already exists.  Please chose a new one.']));
-
-        // Validate password
-        $this->runValidation(new RequiredValidator($this, ['field' => 'password', 'message' => 'Password is required.'])); 
+        $this->runValidation($this->required()->fieldName('fname')->max(150)->validate($this->fname));
+        $this->runValidation($this->required()->fieldName('lname')->max(150)->validate($this->lname));
+        $this->runValidation($this->required()->fieldName('email')->max(150)->email()->validate($this->email));
+        $this->runValidation($this->required()->fieldName('username')->min(6)->max(150)->unique(Users::class, 'username')->validate($this->username));
+        $this->runValidation($this->required()->fieldName('password')->validate($this->password));
         
         if($this->isNew() || $this->changePassword) {
             if($this->isMinLength()) {
-                $this->runValidation(new MinValidator($this, ['field' => 'password', 'rule' => $this->minLength(), 'message' => 'Password must be at least '. $this->minLength().' characters.']));
+                $this->runValidation($this->min($this->minLength())->fieldName('password')->validate($this->password));
             }
             if($this->isMaxLength()) {
-                $this->runValidation(new MaxValidator($this, ['field' => 'password', 'rule' => $this->maxLength(), 'message' => 'Password must be less than ' . $this->maxLength(). ' characters.']));
+                $this->runValidation($this->max($this->maxLength())->fieldName('password')->validate($this->password));
             }
             if($this->lowerChar()) {
-                $this->runValidation(new LowerCharValidator($this, ['field' => 'password', 'message' => 'Must contain at least 1 lower case character.']));
+                $this->runValidation($this->lower()->fieldName('password')->validate($this->password));
             }
             if($this->upperChar()) {
-                $this->runValidation(new UpperCharValidator($this, ['field' => 'password', 'message' => 'Must contain at least 1 upper case character.']));
+                $this->runValidation($this->upper()->fieldName('password')->validate($this->password));
             }
             if($this->numericChar()) {
-                $this->runValidation(new NumberCharValidator($this, ['field' => 'password', 'message' => 'Must contain at least 1 numeric character.']));
+                $this->runValidation($this->number()->fieldName('password')->validate($this->password));
             }
             if($this->specialChar()) {
-                $this->runValidation(new SpecialCharValidator($this, ['field' => 'password', 'message' => 'Must contain at least 1 special character.'])); 
+                $this->runValidation($this->special()->fieldName('password')->validate($this->password));
             }
-            $this->runValidation(new MatchesValidator($this, ['field' => 'password', 'rule' => $this->confirm, 'message' => 'Passwords must match.']));
+            $this->runValidation($this->match($this->password)->fieldName('password')->validate($this->confirm));
         }
     }
 }
