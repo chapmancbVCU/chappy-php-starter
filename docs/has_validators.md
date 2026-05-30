@@ -428,6 +428,7 @@ Parameters:
 - `string $modelName` - The name of the model we will use for our query.
 - `string $fieldName` - The name of the field to check for uniqueness.
 - `bool $includeDeleted`- Enforce uniqueness among deleted records.
+- `array $additionalFieldData` - Use multiple fields when testing for uniqueness.
 
 Example:
 ```php
@@ -435,6 +436,13 @@ $this->runValidation($this->required()->fieldName('username')->min(6)->max(150)-
 ```
 
 In the example code above we provide the model, the field to be checked for uniqueness, and we provide a `true` value to the `$includeDeleted` field to check for uniqueness among soft deleted records.
+
+Example:
+```php
+$this->runValidation($this->required()->fieldName('username')->min(6)->max(150)->unique(Users::class, 'username', false, ['email' => $this->email])->validate($this->username));
+```
+
+In the example above we check multiple fields for determining uniqueness.  Here we test username and address.
 
 <br>
 
