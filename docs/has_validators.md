@@ -1,4 +1,4 @@
-<h1 style="font-size: 50px; text-align: center;">HasValidators Trait</h1>
+<h1 style="font-size: 50px; text-align: center;">Validation</h1>
 
 ## Table of contents
 1. [Overview](#overview)
@@ -31,12 +31,13 @@
     * X. [queue()](#queue)
     * Y. [special()](#special)
     * Z. [testFilterNotation()](testFilterNotation)
-    * A1. [upper()](#upper)
-    * B1. [url()](#url)
+    * A1. [unique](unique)
+    * A2. [upper()](#upper)
+    * A3. [url()](#url)
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This trait is used by the `Console` and `FrameworkQuestion` class to validate input.  You can use the chain the available functions or provide them as string input to the `argOptionValidate` and `prompt` functions of the `Console` class.  Technically, you can chain them to the `choice` and `confirm` functions but it's not advisable.
+Validation for console and forms as supported by the `HasValidation` trait.  You can use the chain the available functions or provide them as string input to the `argOptionValidate` and `prompt` functions of the `Console` class.  Technically, you can chain them to the `choice` and `confirm` functions but it's not advisable.
 
 <br>
 
@@ -411,6 +412,11 @@ Enforces rule when input must contain at least one special character.
 
 ### Z. `testFilterNotation()` <a id="testFilterNotation"></a>
 Ensures response is in colon notation format.
+
+<br>
+
+### A1. `unique()` <a id="unique"></a>
+Enforces rule when input must be a unique value.  Checks database and displays message if field with value already exists.
 
 <br>
 
