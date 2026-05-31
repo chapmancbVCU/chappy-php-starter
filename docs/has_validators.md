@@ -36,6 +36,7 @@
     * A3. [upper()](#upper)
     * A4. [url()](#url)
 5. [Include Deleted](#include_deleted)
+6. [Composite Field Validation](#composite_validation)
 
 <br>
 
@@ -469,8 +470,18 @@ Enforce rule where input must be a valid URL.
 <br>
 
 ## 5. Include Deleted <a id="include_deleted"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This feature is for form validation operations when you want to test against deleted values.
+This feature is for form validation operations when you want to test against deleted values.  To use this feature call the publicly available `includeDeleted()` function.  Parameters are described below.
 
 Parameters:
 - `param bool $includeDeleted` - The includedDeleted flag.  When true the 'includeDeleted' element with a value of true is added to the $queryParams associative array.
 - `array $queryParams` - The parameters for the query that is passed by reference.
+
+<br>
+
+## 6. Composite Field Validation <a id="composite_validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The Chappy.php framework supports composite validation rules — where more than one field is used to determine uniqueness.  Use the publicly available `compositeFieldValidation` function.  Parameters are described below.
+
+Parameters:
+- `array $additionalFieldData` - Additional fields and values to test.  Assumes an associative array is passed.
+- `array $conditions` - The conditions array passed by reference.
+- `array` - $bind The binds array passed by reference.
