@@ -32,7 +32,7 @@
     * Y. [special()](#special)
     * Z. [tel()](#tel)
     * A1. [testFilterNotation()](testFilterNotation)
-    * A2. [unique](unique)
+    * A2. [unique()](#unique)
     * A3. [upper()](#upper)
     * A4. [url()](#url)
 5. [Include Deleted](#include_deleted)
@@ -433,14 +433,25 @@ Parameters:
 
 Example:
 ```php
-$this->runValidation($this->required()->fieldName('username')->min(6)->max(150)->unique(Users::class, true)->validate($this->username));
+$this->runValidation($this->required()
+    ->fieldName('username')
+    ->min(6)->max(150)
+    ->unique(Users::class, true)
+    ->validate($this->username)
+);
 ```
 
 In the example code above we provide the model, the field to be checked for uniqueness, and we provide a `true` value to the `$includeDeleted` field to check for uniqueness among soft deleted records.
 
 Example:
 ```php
-$this->runValidation($this->required()->fieldName('username')->min(6)->max(150)->unique(Users::class, false, ['email' => $this->email])->validate($this->username));
+$this->runValidation($this->required()
+    ->fieldName('username')
+    ->min(6)
+    ->max(150)
+    ->unique(Users::class, false, ['email' => $this->email, 'fname' => $this->fname])
+    ->validate($this->username)
+);
 ```
 
 In the example above we check multiple fields for determining uniqueness.  Here we test username and address.
