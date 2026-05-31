@@ -479,7 +479,7 @@ Parameters:
 <br>
 
 ## 6. Composite Field Validation <a id="composite_validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The Chappy.php framework supports composite validation rules — where more than one field is used to determine uniqueness.  Use the publicly available `compositeFieldValidation` function.  Parameters are described below.
+The Chappy.php framework supports composite validation rules — where more than one field is used to determine uniqueness.  Use the publicly available `compositeFieldValidation` function.  To test against soft deleted items use the `includeDeleted` function.  Parameters are described below.
 
 Parameters:
 - `array $additionalFieldData` - Additional fields and values to test.  Assumes an associative array is passed.
