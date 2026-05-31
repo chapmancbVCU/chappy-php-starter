@@ -35,6 +35,8 @@
     * A2. [unique](unique)
     * A3. [upper()](#upper)
     * A4. [url()](#url)
+5. [Include Deleted](#include_deleted)
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -452,3 +454,12 @@ Enforces rule when input must contain at least one lower case character.
 
 ### A4. `url()` <a id="url"></a>
 Enforce rule where input must be a valid URL.
+
+<br>
+
+## 5. Include Deleted <a id="include_deleted"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This feature is for form validation operations when you want to test against deleted values.
+
+Parameters:
+- `param bool $includeDeleted` - The includedDeleted flag.  When true the 'includeDeleted' element with a value of true is added to the $queryParams associative array.
+- `array $queryParams` - The parameters for the query that is passed by reference.
