@@ -4,7 +4,8 @@
 1. [Overview](#overview)
 2. [Setup](#setup)
 3. [Validation Rules](#validation-rules)
-4. [Why Front-End Validation Matters](#front-end)
+4. [Custom Validators](#custom_validators)
+5. [Why Front-End Validation Matters](#front-end)
 
 <br>
 
@@ -74,8 +75,26 @@ As the parameter, chain your validators to `$this` and make sure the field to be
 
 <br>
 
+## 4. Custom Validators <a id="custom_validators"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Custom validators can be implemented within your model classes.  Use the following boiler plate to build your own validators.
 
-## 4. Why Front-End Validation Matters <a id="front-end"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+```php
+public function myValidator(optionalParams): static {
+    return $this->setValidator(function($response) use(optionalParams): void {
+        if($response == null) return;
+
+        // Validator implementation
+
+        if(condition fails) {
+            $this->addErrorMessage('My error message'); 
+        }
+    });
+}
+```
+
+<br>
+
+## 5. Why Front-End Validation Matters <a id="front-end"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 While server-side validation is essential for application security and enforcing business rules, front-end validation enhances the user experience by providing instant feedback. Common examples include:
 - Realtime password match checks
 - Enforcing required fields before submission
