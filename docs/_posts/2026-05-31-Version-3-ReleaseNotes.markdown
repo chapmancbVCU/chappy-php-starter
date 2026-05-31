@@ -14,6 +14,7 @@ This is the most feature-packed release to date, introducing an upgrade to the f
 
 ## 🚀 New Features and Updates
 
+- Original form validation system replaced with HasValidators trait.
 - Resolved dompurify not found issue when using latest version in starter project
 - Installed version 3.4.1 for dompurify in starter project
 - Resolved duplicate "include" key in optimizeDeps object in `vite.config.js`
