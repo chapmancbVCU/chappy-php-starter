@@ -136,33 +136,38 @@ class Users extends Model {
      * @return void
      */
     public function validator(): void {
-        $this->runValidation($this->required()->fieldName('fname')->max(150)->validate($this->fname));
-        $this->runValidation($this->required()->fieldName('lname')->max(150)->validate($this->lname));
-        $this->runValidation($this->required()->fieldName('email')->max(150)->email()->validate($this->email));
-        $this->runValidation($this->required()->fieldName('password')->validate($this->password));
-        $this->runValidation($this->required()->fieldName('username')->validate($this->username));
+        $this->runValidation($this, 'fname', ['required', 'max:150']);
+        $this->runValidation($this, 'lname', ['required', 'max:150']);
+        $this->runValidation($this, 'email', ['required', 'max:150']);
+        $this->runValidation($this, 'password', ['required']);
+        $this->runValidation($this, 'username', ['required']);
+        // $this->runValidation($this->required()->fieldName('fname')->max(150)->validate($this->fname));
+        // $this->runValidation($this->required()->fieldName('lname')->max(150)->validate($this->lname));
+        // $this->runValidation($this->required()->fieldName('email')->max(150)->email()->validate($this->email));
+        // $this->runValidation($this->required()->fieldName('password')->validate($this->password));
+        //$this->runValidation($this->required()->fieldName('username')->validate($this->username));
         
         if($this->isNew() || $this->changePassword) {
-            $this->runValidation($this->unique(self::class)->fieldName('username')->min(6)->max(150)->validate($this->username));
+            $this->runValidation($this, 'username', ['min:6', 'max:150', 'unique:'.self::class.":true:<email|{$this->email},fname|{$this->fname}>"]);
             if($this->isMinLength()) {
-                $this->runValidation($this->min($this->minLength())->fieldName('password')->validate($this->password));
+                $this->runValidation($this, 'password', ["min:{$this->minLength()}"]);
             }
             if($this->isMaxLength()) {
-                $this->runValidation($this->max($this->maxLength())->fieldName('password')->validate($this->password));
+                $this->runValidation($this, 'password', ["max:{$this->maxLength()}"]);
             }
             if($this->lowerChar()) {
-                $this->runValidation($this->lower()->fieldName('password')->validate($this->password));
+                $this->runValidation($this, 'password', ['lower']);
             }
             if($this->upperChar()) {
-                $this->runValidation($this->upper()->fieldName('password')->validate($this->password));
+                $this->runValidation($this, 'password', ['upper']);
             }
             if($this->numericChar()) {
-                $this->runValidation($this->number()->fieldName('password')->validate($this->password));
+                $this->runValidation($this, 'password', ['number']);
             }
             if($this->specialChar()) {
-                $this->runValidation($this->special()->fieldName('password')->validate($this->password));
+                $this->runValidation($this, 'password', ['special']);
             }
-            $this->runValidation($this->match($this->password)->fieldName('password')->validate($this->confirm));
+            $this->runValidation($this, 'confirm', ["match:{$this->password}"]);
         }
     }
 }
