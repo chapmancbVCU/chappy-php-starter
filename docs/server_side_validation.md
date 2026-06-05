@@ -75,7 +75,7 @@ As the parameter, chain your validators to `$this` and make sure the field to be
 
 Short-form Example:
 ```php
-$this->runValidation($this, 'fname', ['required', 'max:150']);
+$this->runValidation('fname', ['required', 'max:150']);
 ```
 
 Similar to the short-form method of console validation, you provide the validators as an array.  Using this method the `runValidation()` accepts the following parameters.
