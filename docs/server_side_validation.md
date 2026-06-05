@@ -81,8 +81,7 @@ $this->runValidation('fname', ['required', 'max:150']);
 Similar to the short-form method of console validation, you provide the validators as an array.  Using this method the `runValidation()` accepts the following parameters.
 
 Parameters:
-- `bool|object $param` - The results of the validation operation or the instance of the model we will test.
-- `string $fieldName` - The name of the field to be tested for validation
+- `bool|object $param` - The results of the validation operation or the name of the field to be tested.
 - `array $validators` - An array of validators and any attributes that affect validation behavior.
 
 <br>
