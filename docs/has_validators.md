@@ -455,7 +455,7 @@ Short-form Example:
 $this->runValidation($this, 'username', [
     'min:6', 
     'max:150', 
-    'unique:'.self::class.":true:<email|{$this->email},fname|{$this->fname}>"
+    'unique:'.self::class.":true:email|{$this->email},fname|{$this->fname}"
     ]);
 ```
 
