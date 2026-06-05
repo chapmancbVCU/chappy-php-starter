@@ -434,28 +434,30 @@ Parameters:
 
 Example:
 ```php
-$this->runValidation($this->required()
-    ->fieldName('username')
-    ->min(6)->max(150)
-    ->unique(Users::class, true)
-    ->validate($this->username)
-);
+$this->runValidation($this->unique([
+    self::class, true,
+    ])->fieldName('username')->min(6)->max(150)->validate($this->username));
 ```
 
 In the example code above we provide the model, the field to be checked for uniqueness, and we provide a `true` value to the `$includeDeleted` field to check for uniqueness among soft deleted records.
 
 Example:
 ```php
-$this->runValidation($this->required()
-    ->fieldName('username')
-    ->min(6)
-    ->max(150)
-    ->unique(Users::class, false, ['email' => $this->email, 'fname' => $this->fname])
-    ->validate($this->username)
-);
+$this->runValidation($this->unique([
+    self::class, false, ['email' => $this->email, 'fname' => $this->fname]
+    ])->fieldName('username')->min(6)->max(150)->validate($this->username));
 ```
 
 In the example above we check multiple fields for determining uniqueness.  Here we test username and address.
+
+Short-form Example:
+```php
+$this->runValidation($this, 'username', [
+    'min:6', 
+    'max:150', 
+    'unique:'.self::class.":true:<email|{$this->email},fname|{$this->fname}>"
+    ]);
+```
 
 <br>
 
@@ -473,7 +475,7 @@ Enforce rule where input must be a valid URL.
 This feature is for form validation operations when you want to test against deleted values.  To use this feature call the publicly available `includeDeleted()` function.  Parameters are described below.
 
 Parameters:
-- `param bool $includeDeleted` - The includedDeleted flag.  When true the 'includeDeleted' element with a value of true is added to the $queryParams associative array.
+- `param bool|string $includeDeleted` - The includedDeleted flag.  When true the 'includeDeleted' element with a value of true is added to the $queryParams associative array.
 - `array $queryParams` - The parameters for the query that is passed by reference.
 
 <br>
@@ -482,6 +484,6 @@ Parameters:
 The Chappy.php framework supports composite validation rules — where more than one field is used to determine uniqueness.  Use the publicly available `compositeFieldValidation` function.  To test against soft deleted items use the `includeDeleted` function.  Parameters are described below.
 
 Parameters:
-- `array $additionalFieldData` - Additional fields and values to test.  Assumes an associative array is passed.
+- `array|string $additionalFieldData` - Additional fields and values to test.
 - `array $conditions` - The conditions array passed by reference.
 - `array` - $bind The binds array passed by reference.

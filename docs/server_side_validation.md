@@ -73,6 +73,18 @@ $this->runValidation($this->required()->fieldName('fname')->max(150)->validate($
 
 As the parameter, chain your validators to `$this` and make sure the field to be validated is the argument for the final `validate` function call.
 
+Short-form Example:
+```php
+$this->runValidation($this, 'fname', ['required', 'max:150']);
+```
+
+Similar to the short-form method of console validation, you provide the validators as an array.  Using this method the `runValidation()` accepts the following parameters.
+
+Parameters:
+- `bool|object $param` - The results of the validation operation or the instance of the model we will test.
+- `string $fieldName` - The name of the field to be tested for validation
+- `array $validators` - An array of validators and any attributes that affect validation behavior.
+
 <br>
 
 ## 4. Custom Validators <a id="custom_validators"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
