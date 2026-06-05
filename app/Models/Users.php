@@ -148,7 +148,7 @@ class Users extends Model {
         //$this->runValidation($this->required()->fieldName('username')->validate($this->username));
         
         if($this->isNew() || $this->changePassword) {
-            $this->runValidation($this, 'username', ['min:6', 'max:150', 'unique:'.self::class.":true:<email|{$this->email},fname|{$this->fname}>"]);
+            $this->runValidation($this, 'username', ['min:6', 'max:150', 'unique:'.self::class]);
             if($this->isMinLength()) {
                 $this->runValidation($this, 'password', ["min:{$this->minLength()}"]);
             }
