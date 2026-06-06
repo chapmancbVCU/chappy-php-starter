@@ -8,7 +8,7 @@ categories: release
 
 🎉 **Version 2.2.0 of the Chappy PHP Framework is here!**
 
-This is the most feature-packed release to date, introducing updates for seeders and new factory support..
+This is the most feature-packed release to date, introducing framework question wrapper, update to console, and console input validators.
 
 ---
 
