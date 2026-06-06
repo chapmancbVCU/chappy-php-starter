@@ -135,7 +135,7 @@ php console
 
 Each of these commands can accept the following flags:
 - `--host` - Hostname or ipaddress
-- `--port` - Overrides default port
+- `--port` - Overrides default port; When running `serve` with the `--port` flag make sure you update your `.env` file.
 
 <br>
 
