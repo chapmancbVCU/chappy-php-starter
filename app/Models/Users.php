@@ -136,33 +136,33 @@ class Users extends Model {
      * @return void
      */
     public function validator(): void {
-        $this->runValidation('fname', ['required', 'max:150']);
-        $this->runValidation('lname', ['required', 'max:150']);
-        $this->runValidation('email', ['required', 'max:150']);
-        $this->runValidation('password', ['required']);
-        $this->runValidation('username', ['required']);
+        $this->runValidation('fname', 'FirstName', ['required', 'max:150']);
+        $this->runValidation('lname', 'Last Name', ['required', 'max:150']);
+        $this->runValidation('email', 'Email', ['required', 'max:150']);
+        $this->runValidation('password', 'Password', ['required']);
+        $this->runValidation('username', 'Username', ['required']);
         
         if($this->isNew() || $this->changePassword) {
-            $this->runValidation('username', ['min:6', 'max:150', 'unique:'.self::class]);
+            $this->runValidation('username', 'Username', ['min:6', 'max:150', 'unique:'.self::class]);
             if($this->isMinLength()) {
-                $this->runValidation('password', ["min:{$this->minLength()}"]);
+                $this->runValidation('password', 'Password', ["min:{$this->minLength()}"]);
             }
             if($this->isMaxLength()) {
-                $this->runValidation('password', ["max:{$this->maxLength()}"]);
+                $this->runValidation('password', 'Password', ["max:{$this->maxLength()}"]);
             }
             if($this->lowerChar()) {
-                $this->runValidation('password', ['lower']);
+                $this->runValidation('password', 'Password', ['lower']);
             }
             if($this->upperChar()) {
-                $this->runValidation('password', ['upper']);
+                $this->runValidation('password', 'Password', ['upper']);
             }
             if($this->numericChar()) {
-                $this->runValidation('password', ['number']);
+                $this->runValidation('password', 'Password', ['number']);
             }
             if($this->specialChar()) {
-                $this->runValidation('password', ['special']);
+                $this->runValidation('password', 'Password', ['special']);
             }
-            $this->runValidation('confirm', ["match:{$this->password}"]);
+            $this->runValidation('confirm', 'Confirm Password', ["match:{$this->password}"]);
         }
     }
 }
