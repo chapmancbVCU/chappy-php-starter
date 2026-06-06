@@ -75,15 +75,15 @@ As the parameter, chain your validators to `$this` and make sure the field to be
 
 Short-form Example:
 ```php
-$this->runValidation('fname', 'First Name', ['required', 'max:150']);
+$this->runValidation('fname', ['required', 'max:150'], 'FirstName');
 ```
 
 Similar to the short-form method of console validation, you provide the validators as an array.  Using this method the `runValidation()` accepts the following parameters.
 
 Parameters:
 - `bool|object $param` - The results of the validation operation or the name of the field to be tested.
-- `string $fieldName` - The name of the field to be displayed in the error message.
 - `array $validators` - An array of validators and any attributes that affect validation behavior.
+- `string $fieldName` - The name of the field to be displayed in the error message.
 
 <br>
 
