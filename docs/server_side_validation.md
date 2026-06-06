@@ -68,20 +68,21 @@ php console make:model ${Modelname}
 Here is an example from the `Users` model `validator` function for the `fname` field.
 
 ```php
-$this->runValidation($this->required()->fieldName('fname')->max(150)->validate($this->fname));
+$this->runValidation($this->required()->fieldName('First Name')->max(150)->validate($this->fname));
 ```
 
 As the parameter, chain your validators to `$this` and make sure the field to be validated is the argument for the final `validate` function call.
 
 Short-form Example:
 ```php
-$this->runValidation('fname', ['required', 'max:150']);
+$this->runValidation('fname', 'First Name', ['required', 'max:150']);
 ```
 
 Similar to the short-form method of console validation, you provide the validators as an array.  Using this method the `runValidation()` accepts the following parameters.
 
 Parameters:
 - `bool|object $param` - The results of the validation operation or the name of the field to be tested.
+- `string $fieldName` - The name of the field to be displayed in the error message.
 - `array $validators` - An array of validators and any attributes that affect validation behavior.
 
 <br>
