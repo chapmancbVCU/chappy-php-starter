@@ -41,7 +41,7 @@ function Register({ users, errors }) {
 Every form needs a CSRF token to prevent CSRF attacks.  Add the `<Forms.CSRF />` component to the top of your form.
 ```jsx
     <form action="" className="form" method="post" encType="multipart/form-data">
-        <Forms.CSRF />
+        <Forms.CSRFInput />
     </form>
 ```
 
@@ -56,7 +56,7 @@ Example:
 function Register({ users, errors }) {
     return (
         <form action="" className="form" method="post" encType="multipart/form-data">
-            <Forms.CSRF />
+            <Forms.CSRFInput />
             <Forms.DisplayErrors errors={errors}/>
         </form>
     )
@@ -73,7 +73,7 @@ Example:
 function Register({ users, errors }) {
     return (
         <form action="" className="form" method="post" encType="multipart/form-data">
-            <Forms.CSRF />
+            <Forms.CSRFInput />
             <Forms.Input 
                 type="text"
                 label="User name"
@@ -245,7 +245,7 @@ Prop name:
 
 Example:
 ```jsx
-<Forms.CSRF />
+<Forms.CSRFInput />
 ```
 
 <br>
