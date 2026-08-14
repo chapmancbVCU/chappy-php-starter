@@ -71,8 +71,7 @@ if($controllerName) {
     Controller::argOptionValidate(
         $controllerName, 
         Controller::PROMPT_MESSAGE, 
-        $input, 
-        $output, 
+        $this->question()
         $attributes,
         true
     );
