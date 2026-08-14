@@ -24,17 +24,18 @@
     * Q. [negative()](#negative)
     * R. [noSpecialChars()](#noSpecialChars)
     * S. [notReservedKeyword()](#notReservedKeyword)
-    * T. [number()](#number)
-    * U. [numeric](#numeric)
-    * V. [required()](#required)
-    * W. [positive()](#positive)
-    * X. [queue()](#queue)
-    * Y. [special()](#special)
-    * Z. [tel()](#tel)
-    * A1. [testFilterNotation()](testFilterNotation)
-    * A2. [unique()](#unique)
-    * A3. [upper()](#upper)
-    * A4. [url()](#url)
+    * T. [notReservedSQLKeyword()](#notReservedSQLKeyword)
+    * U. [number()](#number)
+    * V. [numeric](#numeric)
+    * W. [required()](#required)
+    * X. [positive()](#positive)
+    * Y. [queue()](#queue)
+    * Z. [special()](#special)
+    * A1. [tel()](#tel)
+    * A2. [testFilterNotation()](testFilterNotation)
+    * A3. [unique()](#unique)
+    * A4. [upper()](#upper)
+    * A5. [url()](#url)
 5. [Include Deleted](#include_deleted)
 6. [Composite Field Validation](#composite_validation)
 
@@ -384,47 +385,52 @@ Enforce rule when reserved keywords should be avoided.
 
 <br>
 
-### T. `number()` <a id="number"></a>
+### T. `notReservedSQLKeyword()` <a id="notReservedSQLKeyword"></a>
+Enforce rule when reserved SQL keywords should be avoided.
+
+<br>
+
+### U. `number()` <a id="number"></a>
 Enforces rule when input must contain at least one numeric character.
 
 <br>
 
-### U. `numeric()` <a id="numeric"></a>
+### v. `numeric()` <a id="numeric"></a>
 Enforce rule where input must contain only numeric characters.
 
 <br>
 
-### V. `required()` <a id="required"></a>
+### w. `required()` <a id="required"></a>
 Ensures required input is entered.
 
 <br>
 
-### W. `positive()` <a id="positive"></a>
+### X. `positive()` <a id="positive"></a>
 Enforces rule when input must a positive number.
 
 <br>
 
-### X. `queue()` <a id="queue"></a>
+### Y. `queue()` <a id="queue"></a>
 Validates if queue exists in database or redis.
 
 <br>
 
-### Y. `special()` <a id="special"></a>
+### Z. `special()` <a id="special"></a>
 Enforces rule when input must contain at least one special character.
 
 <br>
 
-### Z. `tel()` <a id="tel"></a>
+### A1. `tel()` <a id="tel"></a>
 Ensures phone number is in the correct format.
 
 <br>
 
-### A1. `testFilterNotation()` <a id="testFilterNotation"></a>
+### A2. `testFilterNotation()` <a id="testFilterNotation"></a>
 Ensures response is in colon notation format.
 
 <br>
 
-### A2. `unique()` <a id="unique"></a>
+### A3. `unique()` <a id="unique"></a>
 Enforces rule when input must be a unique value.  Checks database and displays message if field with value already exists.
 
 Parameters:
@@ -461,12 +467,12 @@ $this->runValidation($this, 'username', [
 
 <br>
 
-### A3. `upper()` <a id="upper"></a>
+### A4. `upper()` <a id="upper"></a>
 Enforces rule when input must contain at least one lower case character.
 
 <br>
 
-### A4. `url()` <a id="url"></a>
+### A5. `url()` <a id="url"></a>
 Enforce rule where input must be a valid URL.
 
 <br>
