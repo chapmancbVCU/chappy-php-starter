@@ -136,7 +136,7 @@ class Users extends Model {
      * @return void
      */
     public function validator(): void {
-        $this->runValidation('fname', ['required', 'max:150'], 'FirstName');
+        $this->runValidation('fname', ['required', 'max:150'], 'First Name');
         $this->runValidation('lname', ['required', 'max:150'], 'Last Name');
         $this->runValidation('email', ['required', 'max:150'], 'Email');
         $this->runValidation('password', ['required'], 'Password');
