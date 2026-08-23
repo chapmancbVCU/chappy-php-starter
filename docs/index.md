@@ -30,7 +30,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * D. [Server Side Validation](server_side_validation)
 11. [Global Helpers](globals)
 12. [Helper Class](helpers)
-13. [Input Validation](has_validators)
+13. [Input Validation (HasValidators trait)](has_validators)
 14. [JavaScript and Vite](javascript)
 15. [Mailer Service](email)
 16. [Models](models)
