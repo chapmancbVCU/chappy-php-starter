@@ -131,7 +131,7 @@ class Users extends Model {
     }
 
     /**
-     * Performs validation on the user registration form.
+     * Performs validation on use related forms.
      *
      * @return void
      */
