@@ -48,7 +48,7 @@ class Users extends Model {
             $this->reset_password = 0;
         }
         
-        // ✅ Ensure ACL is always stored as `[""]` when empty
+        // Ensure ACL is always stored as `[""]` when empty
         if (Arr::isEmpty(json_decode($this->acl, true))) {
             $this->acl = json_encode([""]);
         }
