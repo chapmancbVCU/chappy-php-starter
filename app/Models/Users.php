@@ -5,18 +5,21 @@ use Core\Services\AuthService;
 use Core\Lib\Utilities\Arr;
 use Core\Traits\HasTimestamps;
 use Core\Traits\PasswordPolicy;
+use Core\Lib\Contracts\Principal as ContractsPrincipal;
+use Core\Traits\IsPrincipal;
 
 /**
  * Extends the Model class.  Supports functions for the Users model.
  */
-class Users extends Model {
+class Users extends Model implements ContractsPrincipal {
     use PasswordPolicy;
     use HasTimestamps;
+    use IsPrincipal;
+
     public $acl;
     public const blackListedFormKeys = ['id','deleted'];
     private $changePassword = false;
     public $confirm;
-    public static $currentLoggedInUser = null;
     public $deleted = 0;                // Set default value for db field.
     public $description;
     public $email;
@@ -129,6 +132,8 @@ class Users extends Model {
     public function setChangePassword(bool $value): void {
         $this->changePassword = $value;
     }
+
+    public function getRememberTokenName(): ?string { return null; }
 
     /**
      * Performs validation on use related forms.
