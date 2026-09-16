@@ -147,8 +147,12 @@ class Users extends Model implements ContractsPrincipal {
         $this->runValidation('password', ['required'], 'Password');
         $this->runValidation('username', ['required'], 'Username');
         
-        if($this->isNew() || $this->changePassword) {
+        if($this->isNew()) {
             $this->runValidation('username', ['min:6', 'max:150', 'unique:'.self::class], 'Username');
+        }
+        
+        if($this->isNew() || $this->changePassword) {
+            
             if($this->isMinLength()) {
                 $this->runValidation('password', ["min:{$this->minLength()}"], 'Password');
             }
