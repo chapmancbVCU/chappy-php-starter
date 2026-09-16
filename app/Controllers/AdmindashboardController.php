@@ -266,7 +266,7 @@ class AdmindashboardController extends Controller {
 
         if($this->request->isPost()) {
             $this->request->csrfCheck();
-            $user->assign($this->request->get(), Users::blackListedFormKeys);
+            $user->reset_password = ($this->request->get('reset_password') == 'on') ? 1 : 0;
             if($user->save()) {
                 redirect('admindashboard.details', [$user->id]);
             }
@@ -291,7 +291,7 @@ class AdmindashboardController extends Controller {
 
         if($this->request->isPost()) {
             $this->request->csrfCheck();
-            $user->assign($this->request->get(), Users::blackListedFormKeys);
+            $user->inactive = ($this->request->get('inactive') == 'on') ? 1 : 0;
             if($user->save()) {
                 redirect('admindashboard.details', [$user->id]);
             }
