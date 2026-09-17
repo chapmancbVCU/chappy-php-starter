@@ -14,6 +14,15 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/vendor/chappy-php/chappy-php-framework/src/scripts/bootstrap.php';
 Application::appStart();
 
+
+
+
+
+
+
+
+
+
 // Start PHP session
 // session_start();
 
