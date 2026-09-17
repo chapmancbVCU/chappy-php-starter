@@ -30,27 +30,7 @@ class AuthController extends Controller {
             $loginModel->validator();
             if($loginModel->validationPassed()){
                 $result = LoginService::attempt($this->request, $loginModel, $_POST['username']);
-
-                switch($result->status) {
-                    case LoginResult::SUCCESS:
-                        redirect(env('DEFAULT_CONTROLLER'));
-                        break;
-                    case LoginResult::NEEDS_RESET:
-                        redirect('auth.resetPassword', [$result->user->id]);
-                        break;
-                    case LoginResult::INACTIVE:
-                        flashMessage(Session::DANGER, 'Account is currently inactive');
-                        redirect('auth.login');
-                        break;
-                    case LoginResult::LOCKED:
-                        flashMessage(Session::DANGER, 'Your account has been locked due to too many failed login attempts.');
-                        redirect('auth.login');
-                        break;
-                    case LoginResult::INVALID:
-                        // Error message already added to $loginModel by the service.
-                        break;
-                }
-
+                self::loginRedirects($result);
             }
         }
 
@@ -65,6 +45,34 @@ class AuthController extends Controller {
         //     'rememberMeChecked' => $loginModel->getRememberMeChecked()
         // ];
         // $this->view->renderJsx('auth.Login');
+    }
+
+    /**
+     * Handles messaging and redirects for loginAction based on status of LoginResult.
+     *
+     * @param LoginResult $result The resulting status of a login attempt.
+     * @return void
+     */
+    private function loginRedirects(LoginResult $result) {
+        switch($result->status) {
+                case LoginResult::SUCCESS:
+                    redirect(env('DEFAULT_CONTROLLER'));
+                    break;
+                case LoginResult::NEEDS_RESET:
+                    redirect('auth.resetPassword', [$result->user->id]);
+                    break;
+                case LoginResult::INACTIVE:
+                    flashMessage(Session::DANGER, 'Account is currently inactive');
+                    redirect('auth.login');
+                    break;
+                case LoginResult::LOCKED:
+                    flashMessage(Session::DANGER, 'Your account has been locked due to too many failed login attempts.');
+                    redirect('auth.login');
+                    break;
+                case LoginResult::INVALID:
+                    // Error message already added to $loginModel by the service.
+                    break;
+            }
     }
 
     /**
