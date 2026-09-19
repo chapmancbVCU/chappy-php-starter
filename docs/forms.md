@@ -141,22 +141,22 @@ This function accepts 2 arguments as described below:
 <br>
 
 ## 10. `inputBlock()` <a id="inputblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-1. A generic input block that supports the following input types:
-2. Color
-3. date
-4. datetime-local
-5. email
-6. file
-7. month
-8. number
-9. password
-10. range
-11. search
-12. tel
-13. text
-14. time
-15. url
-16. week
+A generic input block that supports the following input types:
+1. Color
+2. date
+3. datetime-local
+4. email
+5. file
+6. month
+7. number
+8. password
+9. range
+10. search
+11. tel
+12. text
+13. time
+14. url
+15. week
 
 An example function call is show below in figure 8:
 <div style="text-align: center;">
