@@ -1,7 +1,7 @@
 <?php $this->setSiteTitle("Register Here!"); ?>
 <?php $this->start('head') ?>
 <script src="<?=env('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=config('config.version')?>"></script>
-<script src='<?=env('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
+<script src='<?=env('APP_DOMAIN', '/')?>vendor/chappy-php/chappy-php-framework/src/React/utils/phpTinyMCE.js'></script>
 <?php $this->end() ?>
 
 <?php $this->start('body'); ?>
