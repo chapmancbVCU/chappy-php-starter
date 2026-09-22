@@ -54,7 +54,7 @@ Parameters:
 - `string $message` - The message to present to the user.
 - `FrameworkQuestion $question` - Instance of FrameworkQuestion class.
 - `array $attributes` - An array of additional validators.
-- `bool $defaultNone` -  When set to true user will have to specify all validators.
+- `bool $defaultNone` - When set to true user will have to specify  all validators.  Default value is false.  When false the validators you supply are appended to list of default validators.
 
 Example:
 ```php
@@ -71,8 +71,7 @@ if($controllerName) {
     Controller::argOptionValidate(
         $controllerName, 
         Controller::PROMPT_MESSAGE, 
-        $input, 
-        $output, 
+        $this->question()
         $attributes,
         true
     );
@@ -98,7 +97,7 @@ Parameters:
 - `array $attributes` - An array of additional validators.
 - `array $suggestions` - An array of suggestions for when `$anticipate` is set to `true`.  An exception is thrown if this array is empty and `$anticipate = true`.
 - `string|bool|int|float|null $default` - The default value if the user does not provide an answer.
-- `bool $defaultNone`  - When set to true user will have to specify all validators and attributes.
+- `bool $defaultNone` - When set to true user will have to specify  all validators.  Default value is false.  When false the validators you supply are appended to list of default validators.
 
 Returns:
 - `mixed` - The user response.

@@ -198,4 +198,3 @@ $upload = AuthService::profileImageUpload($user);
     - `REMEMBER_ME_COOKIE_NAME`
     - `REMEMBER_ME_COOKIE_EXPIRY`
 - The `loginUser()` method logs to the app's logging system using `Logger`.
-- The service makes use of a `$currentLoggedInUser` static cache to prevent redundant database queries.

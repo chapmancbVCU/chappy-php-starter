@@ -1,7 +1,7 @@
 <?php $this->setSiteTitle("Register Here!"); ?>
 <?php $this->start('head') ?>
 <script src="<?=env('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=config('config.version')?>"></script>
-<script src='<?=env('APP_DOMAIN', '/')?>resources/js/TinyMCE.js'></script>
+<script src='<?=env('APP_DOMAIN', '/')?>vendor/chappy-php/chappy-php-framework/src/React/utils/phpTinyMCE.js'></script>
 <?php $this->end() ?>
 
 <?php $this->start('body'); ?>
@@ -12,7 +12,7 @@
         <form class="form" action="" method="post" enctype="multipart/form-data">
             <?= csrf() ?>
             <?= errorBag($this->displayErrors) ?>
-            <?= input('text', "User name", 'username', $this->user->username, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
+            <?= text("User name", 'username', $this->user->username, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             
             <!-- Primary profile details -->
             <?= $this->component('edit_profile_details') ?>
@@ -21,8 +21,8 @@
             
             <?= $this->component('password_complexity_requirements', true); ?>
 
-            <?= input('password', "Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
-            <?= input('password', "Confirm Password", 'confirm', $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
+            <?= password("Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
+            <?= confirm("Confirm Password", $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             <?= submitBlock('Register', ['class' => 'btn btn-large btn-primary'], ['class' => 'text-end'])  ?>
         </form>
     </div>
@@ -30,9 +30,7 @@
 
 <!-- Wait until content is loaded before we initialize script -->
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        initializeTinyMCE('description');
-    });
+    initializeTinyMCE('description');
 </script>
 
 <?php $this->end(); ?>

@@ -5,18 +5,21 @@ use Core\Services\AuthService;
 use Core\Lib\Utilities\Arr;
 use Core\Traits\HasTimestamps;
 use Core\Traits\PasswordPolicy;
+use Core\Lib\Contracts\Principal as ContractsPrincipal;
+use Core\Traits\IsPrincipal;
 
 /**
  * Extends the Model class.  Supports functions for the Users model.
  */
-class Users extends Model {
+class Users extends Model implements ContractsPrincipal {
     use PasswordPolicy;
     use HasTimestamps;
+    use IsPrincipal;
+
     public $acl;
     public const blackListedFormKeys = ['id','deleted'];
     private $changePassword = false;
     public $confirm;
-    public static $currentLoggedInUser = null;
     public $deleted = 0;                // Set default value for db field.
     public $description;
     public $email;
@@ -48,7 +51,7 @@ class Users extends Model {
             $this->reset_password = 0;
         }
         
-        // ✅ Ensure ACL is always stored as `[""]` when empty
+        // Ensure ACL is always stored as `[""]` when empty
         if (Arr::isEmpty(json_decode($this->acl, true))) {
             $this->acl = json_encode([""]);
         }
@@ -130,20 +133,26 @@ class Users extends Model {
         $this->changePassword = $value;
     }
 
+    public function getRememberTokenName(): ?string { return null; }
+
     /**
-     * Performs validation on the user registration form.
+     * Performs validation on use related forms.
      *
      * @return void
      */
     public function validator(): void {
-        $this->runValidation('fname', ['required', 'max:150'], 'FirstName');
+        $this->runValidation('fname', ['required', 'max:150'], 'First Name');
         $this->runValidation('lname', ['required', 'max:150'], 'Last Name');
         $this->runValidation('email', ['required', 'max:150'], 'Email');
         $this->runValidation('password', ['required'], 'Password');
         $this->runValidation('username', ['required'], 'Username');
         
-        if($this->isNew() || $this->changePassword) {
+        if($this->isNew()) {
             $this->runValidation('username', ['min:6', 'max:150', 'unique:'.self::class], 'Username');
+        }
+        
+        if($this->isNew() || $this->changePassword) {
+            
             if($this->isMinLength()) {
                 $this->runValidation('password', ["min:{$this->minLength()}"], 'Password');
             }

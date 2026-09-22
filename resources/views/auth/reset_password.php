@@ -8,8 +8,8 @@
         <form class="form" action="" method="post">
             <?= csrf() ?>
             <?= errorBag($this->displayErrors) ?>
-            <?= input('password', "Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
-            <?= input('password', "Confirm Password", 'confirm', $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
+            <?= password("Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
+            <?= confirm("Confirm Password", $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
 
             <?= submit('Set Password',['class'=>'btn btn-primary']) ?>
         </form>

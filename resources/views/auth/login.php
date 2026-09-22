@@ -8,8 +8,8 @@
         <form class="form" action="<?=route('auth.login')?>" method="post">
             <?= csrf() ?>
             <?= errorBag($this->displayErrors) ?>
-            <?= input('text', 'Username', 'username', $this->login->username, ['class' => 'form-control'], ['class' => 'form-group mb-3']); ?>
-            <?= input('password', 'Password', 'password', $this->login->password,['class' => 'form-control'], ['class' => 'form-group mb-3']); ?>
+            <?= text('Username', 'username', $this->login->username, ['class' => 'form-control'], ['class' => 'form-group mb-3']); ?>
+            <?= password('Password', 'password', $this->login->password,['class' => 'form-control'], ['class' => 'form-group mb-3']); ?>
             <?= checkboxLabelLeft('Remember Me', 'remember_me', "on", $this->login->getRememberMeChecked(), [], ['class' => 'form-group mb-3']); ?>
             
             <div class="d-flex justify-content-end">

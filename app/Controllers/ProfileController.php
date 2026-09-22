@@ -48,6 +48,9 @@ class ProfileController extends Controller {
             }
         }
 
+        $users = Users::find();
+        // dump($users);
+        $this->view->users = $users;
         // Toggle comments to use React.js
         $this->view->profileImages = $profileImages;
         $this->view->displayErrors = $user->getErrorMessages();
@@ -73,15 +76,15 @@ class ProfileController extends Controller {
         $profileImages = ProfileImages::findByUserId((int)$user->id);
         
         // Toggle comments to use React.js
-        $this->view->profileImages = $profileImages;
-        $this->view->user = $user;
-        $this->view->render('profile.index');
+        // $this->view->profileImages = $profileImages;
+        // $this->view->user = $user;
+        // $this->view->render('profile.index');
 
-        // $this->view->props = [
-        //     'user' => $user, 
-        //     'profileImage' => $profileImages[0]
-        // ];
-        // $this->view->renderJSX('profile.Index');
+        $this->view->props = [
+            'user' => $user, 
+            'profileImage' => $profileImages[0]
+        ];
+        $this->view->renderJSX('profile.Index');
     }
 
     /**
@@ -116,14 +119,14 @@ class ProfileController extends Controller {
         $user->setChangePassword(false);
 
         // Toggle comments to use React.js
-        $this->view->displayErrors = $user->getErrorMessages();
-        $this->view->user = $user;
-        $this->view->render('profile.update_password');
+        // $this->view->displayErrors = $user->getErrorMessages();
+        // $this->view->user = $user;
+        // $this->view->render('profile.update_password');
 
-        // $props = [
-        //     'user' => $user,
-        //     'errors' => $user->getErrorMessages()
-        // ];
-        // $this->view->renderJsx('profile.UpdatePassword', $props);
+        $props = [
+            'user' => $user,
+            'errors' => $user->getErrorMessages()
+        ];
+        $this->view->renderJsx('profile.UpdatePassword', $props);
     }
 }

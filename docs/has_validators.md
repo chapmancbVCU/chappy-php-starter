@@ -24,17 +24,18 @@
     * Q. [negative()](#negative)
     * R. [noSpecialChars()](#noSpecialChars)
     * S. [notReservedKeyword()](#notReservedKeyword)
-    * T. [number()](#number)
-    * U. [numeric](#numeric)
-    * V. [required()](#required)
-    * W. [positive()](#positive)
-    * X. [queue()](#queue)
-    * Y. [special()](#special)
-    * Z. [tel()](#tel)
-    * A1. [testFilterNotation()](testFilterNotation)
-    * A2. [unique()](#unique)
-    * A3. [upper()](#upper)
-    * A4. [url()](#url)
+    * T. [notReservedSQLKeyword()](#notReservedSQLKeyword)
+    * U. [number()](#number)
+    * V. [numeric](#numeric)
+    * W. [required()](#required)
+    * X. [positive()](#positive)
+    * Y. [queue()](#queue)
+    * Z. [special()](#special)
+    * A1. [tel()](#tel)
+    * A2. [testFilterNotation()](testFilterNotation)
+    * A3. [unique()](#unique)
+    * A4. [upper()](#upper)
+    * A5. [url()](#url)
 5. [Include Deleted](#include_deleted)
 6. [Composite Field Validation](#composite_validation)
 
@@ -97,6 +98,61 @@ protected array $reservedKeywords = [
 ```
 
 <br>
+
+**`protected array $reservedSQLKeywords`**
+
+Supports ability to avoid input that may conflict with a reserved SQL keyword.
+
+The list of reserved keywords is as follows:
+
+```php
+protected array $reservedSQLKeyWords = [
+    'ACCESSIBLE', 'ADD', 'ALL', 'ALTER', 'ANALYZE', 'AND', 'AS', 'ASC',
+    'ASENSITIVE', 'BEFORE', 'BETWEEN', 'BIGINT', 'BINARY', 'BLOB', 'BOTH',
+    'BY', 'CALL', 'CASCADE', 'CASE', 'CHANGE', 'CHAR', 'CHARACTER', 'CHECK',
+    'COLLATE', 'COLUMN', 'CONDITION', 'CONSTRAINT', 'CONTINUE', 'CONVERT',
+    'CREATE', 'CROSS', 'CUBE', 'CUME_DIST', 'CURRENT_DATE', 'CURRENT_TIME',
+    'CURRENT_TIMESTAMP', 'CURRENT_USER', 'CURSOR', 'DATABASE', 'DATABASES',
+    'DAY_HOUR', 'DAY_MICROSECOND', 'DAY_MINUTE', 'DAY_SECOND', 'DEC',
+    'DECIMAL', 'DECLARE', 'DEFAULT', 'DELAYED', 'DELETE', 'DENSE_RANK',
+    'DESC', 'DESCRIBE', 'DETERMINISTIC', 'DISTINCT', 'DISTINCTROW', 'DIV',
+    'DOUBLE', 'DROP', 'DUAL', 'EACH', 'ELSE', 'ELSEIF', 'EMPTY', 'ENCLOSED',
+    'ESCAPED', 'EXCEPT', 'EXISTS', 'EXIT', 'EXPLAIN', 'FALSE', 'FETCH',
+    'FIRST_VALUE', 'FLOAT', 'FLOAT4', 'FLOAT8', 'FOR', 'FORCE', 'FOREIGN',
+    'FROM', 'FULLTEXT', 'FUNCTION', 'GENERATED', 'GET', 'GRANT', 'GROUP',
+    'GROUPING', 'GROUPS', 'HAVING', 'HIGH_PRIORITY', 'HOUR_MICROSECOND',
+    'HOUR_MINUTE', 'HOUR_SECOND', 'IF', 'IGNORE', 'IN', 'INDEX', 'INFILE',
+    'INNER', 'INOUT', 'INSENSITIVE', 'INSERT', 'INT', 'INT1', 'INT2', 'INT3',
+    'INT4', 'INT8', 'INTEGER', 'INTERVAL', 'INTO', 'IO_AFTER_GTIDS',
+    'IO_BEFORE_GTIDS', 'IS', 'ITERATE', 'JOIN', 'JSON_TABLE', 'KEY', 'KEYS',
+    'KILL', 'LAG', 'LAST_VALUE', 'LATERAL', 'LEAD', 'LEADING', 'LEAVE',
+    'LEFT', 'LIKE', 'LIMIT', 'LINEAR', 'LINES', 'LOAD', 'LOCALTIME',
+    'LOCALTIMESTAMP', 'LOCK', 'LONG', 'LONGBLOB', 'LONGTEXT', 'LOOP',
+    'LOW_PRIORITY', 'MANUAL', 'MASTER_BIND', 'MASTER_SSL_VERIFY_SERVER_CERT',
+    'MATCH', 'MAXVALUE', 'MEDIUMBLOB', 'MEDIUMINT', 'MEDIUMTEXT', 'MIDDLEINT',
+    'MINUTE_MICROSECOND', 'MINUTE_SECOND', 'MOD', 'MODIFIES', 'NATURAL',
+    'NOT', 'NO_WRITE_TO_BINLOG', 'NTH_VALUE', 'NTILE', 'NULL', 'NUMERIC',
+    'OF', 'ON', 'OPTIMIZE', 'OPTIMIZER_COSTS', 'OPTION', 'OPTIONALLY', 'OR',
+    'ORDER', 'OUT', 'OUTER', 'OUTFILE', 'OVER', 'PARALLEL', 'PARTITION',
+    'PERCENT_RANK', 'PRECISION', 'PRIMARY', 'PROCEDURE', 'PURGE', 'QUALIFY',
+    'RANGE', 'RANK', 'READ', 'READS', 'READ_WRITE', 'REAL', 'RECURSIVE',
+    'REFERENCES', 'REGEXP', 'RELEASE', 'RENAME', 'REPEAT', 'REPLACE',
+    'REQUIRE', 'RESIGNAL', 'RESTRICT', 'RETURN', 'REVOKE', 'RIGHT', 'RLIKE',
+    'ROW', 'ROWS', 'ROW_NUMBER', 'SCHEMA', 'SCHEMAS', 'SECOND_MICROSECOND',
+    'SELECT', 'SENSITIVE', 'SEPARATOR', 'SET', 'SHOW', 'SIGNAL', 'SMALLINT',
+    'SPATIAL', 'SPECIFIC', 'SQL', 'SQLEXCEPTION', 'SQLSTATE', 'SQLWARNING',
+    'SQL_BIG_RESULT', 'SQL_CALC_FOUND_ROWS', 'SQL_SMALL_RESULT', 'SSL',
+    'STARTING', 'STORED', 'STRAIGHT_JOIN', 'SYSTEM', 'TABLE', 'TABLESAMPLE',
+    'TERMINATED', 'THEN', 'TINYBLOB', 'TINYINT', 'TINYTEXT', 'TO', 'TRAILING',
+    'TRIGGER', 'TRUE', 'UNDO', 'UNION', 'UNIQUE', 'UNLOCK', 'UNSIGNED',
+    'UPDATE', 'USAGE', 'USE', 'USING', 'UTC_DATE', 'UTC_TIME', 'UTC_TIMESTAMP',
+    'VALUES', 'VARBINARY', 'VARCHAR', 'VARCHARACTER', 'VARYING', 'VIRTUAL',
+    'WHEN', 'WHERE', 'WHILE', 'WINDOW', 'WITH', 'WRITE', 'XOR', 'YEAR_MONTH',
+    'ZEROFILL',
+];
+```
+
+<br> 
 
 **`protected array $validators`**
 
@@ -384,47 +440,52 @@ Enforce rule when reserved keywords should be avoided.
 
 <br>
 
-### T. `number()` <a id="number"></a>
+### T. `notReservedSQLKeyword()` <a id="notReservedSQLKeyword"></a>
+Enforce rule when reserved SQL keywords should be avoided.
+
+<br>
+
+### U. `number()` <a id="number"></a>
 Enforces rule when input must contain at least one numeric character.
 
 <br>
 
-### U. `numeric()` <a id="numeric"></a>
+### v. `numeric()` <a id="numeric"></a>
 Enforce rule where input must contain only numeric characters.
 
 <br>
 
-### V. `required()` <a id="required"></a>
+### w. `required()` <a id="required"></a>
 Ensures required input is entered.
 
 <br>
 
-### W. `positive()` <a id="positive"></a>
+### X. `positive()` <a id="positive"></a>
 Enforces rule when input must a positive number.
 
 <br>
 
-### X. `queue()` <a id="queue"></a>
+### Y. `queue()` <a id="queue"></a>
 Validates if queue exists in database or redis.
 
 <br>
 
-### Y. `special()` <a id="special"></a>
+### Z. `special()` <a id="special"></a>
 Enforces rule when input must contain at least one special character.
 
 <br>
 
-### Z. `tel()` <a id="tel"></a>
+### A1. `tel()` <a id="tel"></a>
 Ensures phone number is in the correct format.
 
 <br>
 
-### A1. `testFilterNotation()` <a id="testFilterNotation"></a>
+### A2. `testFilterNotation()` <a id="testFilterNotation"></a>
 Ensures response is in colon notation format.
 
 <br>
 
-### A2. `unique()` <a id="unique"></a>
+### A3. `unique()` <a id="unique"></a>
 Enforces rule when input must be a unique value.  Checks database and displays message if field with value already exists.
 
 Parameters:
@@ -461,12 +522,12 @@ $this->runValidation($this, 'username', [
 
 <br>
 
-### A3. `upper()` <a id="upper"></a>
+### A4. `upper()` <a id="upper"></a>
 Enforces rule when input must contain at least one lower case character.
 
 <br>
 
-### A4. `url()` <a id="url"></a>
+### A5. `url()` <a id="url"></a>
 Enforce rule where input must be a valid URL.
 
 <br>
