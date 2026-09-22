@@ -1,12 +1,8 @@
 <?php $this->setSiteTitle("Edit Details for ".$this->user->username); ?>
 
 <?php $this->start('head') ?>
-<link rel="stylesheet" href="<?=env('APP_DOMAIN', '/')?>resources/css/profileImage.css?v=<?=config('config.version')?>" media="screen" title="no title" charset="utf-8">
-<script src="<?=env('APP_DOMAIN', '/')?>node_modules/jquery/dist/jquery.min.js"></script>
-<script src="<?=env('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=config('config.version')?>"></script>
-<script src='<?=env('APP_DOMAIN', '/')?>vendor/chappy-php/chappy-php-framework/src/React/utils/phpTinyMCE.js'></script>
-<script type="text/javascript" src="<?=env('APP_DOMAIN', '/')?>node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<?=env('APP_DOMAIN', '/')?>node_modules/jquery-ui/ui/widgets/sortable.js"></script>
+<?= profileImageSort() ?>
+<?= loadTinyMCE() ?>
 <?php $this->end() ?>
 
 <?php $this->start('body'); ?>
@@ -35,7 +31,5 @@
 </div>
 
 <!-- Wait until content is loaded before we initialize script -->
-<script>
-    initializeTinyMCE('description');
-</script>
+<?= initTinyMCE('description') ?>
 <?php $this->end(); ?>
