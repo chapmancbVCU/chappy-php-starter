@@ -146,6 +146,11 @@
             "dist": {
                 "type": "path",
                 "url": "../chappy-php-framework",
+<<<<<<< HEAD
+                "reference": "e180daea5683f9c8d81d53a2f7c93e9ea33de7aa"
+=======
+                "reference": "be00d7e84daba09734be4e5606fd97d32cc4e559"
+>>>>>>> d77bca3447d73c570f128ebd12bafb02fc2b2ebf
                 "reference": "a99e1e425cdf49f54350db52bafc48da6b16dab8"
             },
             "require": {
