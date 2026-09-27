@@ -1,7 +1,6 @@
 <?php $this->setSiteTitle("Register Here!"); ?>
 <?php $this->start('head') ?>
-<script src="<?=env('APP_DOMAIN', '/')?>vendor/tinymce/tinymce/tinymce.min.js?v=<?=config('config.version')?>"></script>
-<script src='<?=env('APP_DOMAIN', '/')?>vendor/chappy-php/chappy-php-framework/src/React/utils/phpTinyMCE.js'></script>
+<?= loadTinyMCE() ?>
 <?php $this->end() ?>
 
 <?php $this->start('body'); ?>
@@ -24,6 +23,7 @@
             <?= password("Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             <?= confirm("Confirm Password", $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             <?= submitBlock('Register', ['class' => 'btn btn-large btn-primary'], ['class' => 'text-end'])  ?>
+            <!-- <?= imageBlock('submit', asset('public/logo.png', true), 100, 50, ['class' => 'mt-5 pt-4'], ['class' => 'text-end'])  ?> -->
         </form>
     </div>
 </div>
