@@ -17,7 +17,7 @@
 
   </head>
   <body class="d-flex flex-column min-vh-100">
-    <?php $this->component('main_menu') ?>
+    <?= $this->component('main_menu') ?>
     <div class="container-fluid" style="min-height:calc(100% - 125px);">
       <?= Session::displayMessage() ?>
       <?= $this->content('body'); ?>
