@@ -10,8 +10,7 @@
             <?= errorBag($this->displayErrors) ?>
             <?= text('Username', 'username', $this->login->username, ['class' => 'form-control'], ['class' => 'form-group mb-3']); ?>
             <?= password('Password', 'password', $this->login->password,['class' => 'form-control'], ['class' => 'form-group mb-3']); ?>
-            <?= checkboxLabelLeft('Remember Me', 'remember_me', "on", $this->login->getRememberMeChecked(), [], ['class' => 'form-group mb-3']); ?>
-            
+            <?= RememberMe('Remember Me', $this->login->getRememberMeChecked(), [], ['class' => 'form-group mb-3']); ?>
             <div class="d-flex justify-content-end">
                 <div class="flex-grow-1 text-body">Don't have an account? <a href="<?=route('auth.register')?>">Sign Up</a></div>
                 <?= submit('Login',['class'=>'btn btn-primary']) ?>
