@@ -11,8 +11,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title><?=$this->siteTitle()?></title>
     <link rel="icon" href="<?= env('APP_DOMAIN', '/')?>public/noun-mvc-5340614.png">
-    <?= resources() ?>
     <?= initVite($isDev) ?>
+    <?= resources() ?>
     <?= $this->content('head'); ?>
 
   </head>
