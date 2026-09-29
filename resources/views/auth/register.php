@@ -28,8 +28,6 @@
 </div>
 
 <!-- Wait until content is loaded before we initialize script -->
-<script>
-    initializeTinyMCE('description');
-</script>
+<?= initTinyMCE('description') ?>
 
 <?php $this->end(); ?>
