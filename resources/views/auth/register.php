@@ -23,7 +23,6 @@
             <?= password("Password", 'password', $this->user->password, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             <?= confirm("Confirm Password", $this->user->confirm, ['class' => 'form-control input-sm'], ['class' => 'form-group mb-3']) ?>
             <?= submitBlock('Register', ['class' => 'btn btn-large btn-primary'], ['class' => 'text-end'])  ?>
-            <!-- <?= imageBlock('submit', asset('public/logo.png', true), 100, 50, ['class' => 'mt-5 pt-4'], ['class' => 'text-end'])  ?> -->
         </form>
     </div>
 </div>
