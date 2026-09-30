@@ -45,12 +45,14 @@ Returns:
 <br>
 
 ## 2. `button()` <a id="button"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This function creates a button with no surrounding HTML div element. It supports the ability to set attributes such as classes and event handlers. If you want a div to surround a button along with any other attributes we recommend that you use the buttonBlock function. Note the example function call shown below in Figure 1.
+This function creates a button with no surrounding HTML div element. It supports the ability to set attributes such as classes and event handlers. If you want a div to surround a button along with any other attributes we recommend that you use the buttonBlock function. Note the example function call shown below:
 
-<div style="text-align: center;">
-  <img src="assets/button-function-call.png" alt="Example button function call">
-  <p style="font-style: italic;">Figure 1 - Example button function call</p>
-</div>
+```php
+FormHelper::button(
+  "Click Me!", 
+  ['class' => 'btn btn-large btn-primary', 'onClick' => 'alert(\'Hello World!\')']
+);
+```
 
 Parameters: 
 - `string $buttonText` - The contents of the button's label.
