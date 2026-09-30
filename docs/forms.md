@@ -11,6 +11,8 @@
 8. [checkboxInput()](#checkbox-input)
 9. [checkToken()](#check-token)
 10. [csrfInput()](#csrf-input)
+11. [errorMsg](#error-msg)
+
 
 7. [displayErrors()](#displayerrors)
 8. [emailBlock()](#emailblock)
@@ -207,7 +209,7 @@ Returns:
 <br>
 
 ## 11. `displayErrors()` <a id="displayerrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The purpose of this function is to display errors related to validation. An example can be found in Figure 5.  Many frameworks calls this an error bag.
+The purpose of this function is to display errors related to validation. An example can be found in Figure 1.  Many frameworks calls this an error bag.
 
 <div style="text-align: center;">
   <img src="assets/display-errors.png" alt="Display errors example">
@@ -219,6 +221,18 @@ Parameters:
 
 Returns:
 - `string` - The error bag.
+
+<br>
+
+## 11. `errorMsg()` <a id="error-msg"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Renders an error message for a particular form field.
+
+Parameters:
+- `array $errors` - The error array.
+- `string $name` - Used to search errors array for key/form field.
+
+Returns:
+- `string` - The error message for a particular field.
 
 <br>
 
