@@ -11,12 +11,12 @@
 8. [checkboxInput()](#checkbox-input)
 9. [checkToken()](#check-token)
 10. [csrfInput()](#csrf-input)
-11. [errorMsg()](#error-msg)
-12. [generateToken()](#generate-token)
+11. [displayErrors()](#displayerrors)
+12. [errorMsg()](#error-msg)
+13. [generateToken()](#generate-token)
+14. [hidden()](#hidden)
 
-7. [displayErrors()](#displayerrors)
 8. [emailBlock()](#emailblock)
-9. [hidden()](#hidden)
 10. [inputBlock()](#inputblock)
 11. [output()](#output)
 12. [radioInput()](#radioinput)
@@ -224,7 +224,7 @@ Returns:
 
 <br>
 
-## 11. `errorMsg()` <a id="error-msg"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 12. `errorMsg()` <a id="error-msg"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Renders an error message for a particular form field.
 
 Parameters:
@@ -237,11 +237,25 @@ Returns:
 <br>
 
 
-## 12. `generateToken()` <a id="generate-token"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 13. `generateToken()` <a id="generate-token"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Creates a randomly generated csrf token. 
 
 Returns:
 - string - The randomly generated token.
+
+<br>
+
+## 14. `hidden()` <a id="hidden"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Generates a hidden element. An example function call is shown below in figure 7:
+
+Example:
+```php
+FormHelper::hidden("example_name", "example_value");
+```
+
+This function accepts 2 arguments as described below:
+1. $name sets the value for the name, for, and id attributes.
+2. $value The value for the value attribute.
 
 <br>
 
@@ -263,19 +277,7 @@ The value we want to set. We can use this to set the value of the value attribut
 
 <br>
 
-## 9. `hidden()` <a id="hidden"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Generates a hidden element. An example function call is shown below in figure 7:
 
-<div style="text-align: center;">
-  <img src="assets/hidden.png" alt="Hidden input function call">
-  <p style="font-style: italic;">Figure 7 - Hidden input function call</p>
-</div>
-
-This function accepts 2 arguments as described below:
-1. $name sets the value for the name, for, and id attributes.
-2. $value The value for the value attribute.
-
-<br>
 
 ## 10. `inputBlock()` <a id="inputblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 A generic input block that supports the following input types:
