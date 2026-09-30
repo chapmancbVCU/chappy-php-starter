@@ -206,13 +206,19 @@ Returns:
 
 <br>
 
-## 7. `displayErrors()` <a id="displayerrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The purpose of this function is to display errors related to validation. An example can be found in Figure 5.
+## 11. `displayErrors()` <a id="displayerrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+The purpose of this function is to display errors related to validation. An example can be found in Figure 5.  Many frameworks calls this an error bag.
 
 <div style="text-align: center;">
   <img src="assets/display-errors.png" alt="Display errors example">
-  <p style="font-style: italic;">Figure 5 - Display errors example</p>
+  <p style="font-style: italic;">Figure 1 - Display errors example</p>
 </div>
+
+Parameters:
+- `array|ArraySet $errors` - A list of errors and their description that is generated during server side form validation.
+
+Returns:
+- `string` - The error bag.
 
 <br>
 
