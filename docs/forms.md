@@ -85,39 +85,55 @@ Returns:
 <br>
 
 ## 4. `checkboxBlockLabelLeft()` <a id="checkboxBlockLabelLeft"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Generates a checkbox where the label is on the left side. It generates a div element that surrounds a label and input of type checkbox. This is ideal for situations where labels can be of varying lengths. An example function call is shown below in Figure 3.
+Generates a checkbox where the label is on the left side. It generates a div element that surrounds a label and input of type checkbox. This is ideal for situations where labels can be of varying lengths. An example function call is shown below.
 
-<div style="text-align: center;">
-  <img src="assets/checkbox-left-label-function-call.png" alt="Example checkboxBlockLabelLeft function call">
-  <p style="font-style: italic;">Figure 3 - Example checkboxBlockLabelLeft function call</p>
-</div>
+```php
+FormHelper::checkboxBlockLabelLeft(
+  'Remember Me', 
+  'remember_me', 
+  'on', 
+  $this->login->getRememberMeChecked(), 
+  [], 
+  ['class' => 'form-group'], $this->displayErrors
+);
+```
 
-This function accepts 6 arguments as described below:
-1. $label is used to set the text of the label element.
-2. $name sets the value for the name, for, and id attributes.
-3. $value sets the value for the data received upon form submit. The default value is an empty string.
-4. $checked is used to set a value of checked for a checkbox. This value can be set upon reading information from a database or upon 5. failed form validation.
-5. $inputAttrs is an array and can be found in most function calls. We use this parameter to set values for attributes such as classes for styling, front-side validation, and event handlers. The default value is an empty array.
-6. $divAttrs is an array whose primary purpose is to add classes for styling the div that surrounds the input element. The default value is an empty array.
-7. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `string $value` - The value we want to set.  We can use this to set  the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `bool $checked` - The value for the checked attribute.  If true  this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and the input element of type checkbox.
 
 <br>
 
 ## 5. `checkboxBlockLabelRight()` <a id="checkboxblocklabelright"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Generates a checkbox where the label is on the right side. It generates a div element that surrounds a label and input of type checkbox. An example function call from the login view is shown below in Figure 4.
-<div style="text-align: center;">
-  <img src="assets/checkbox-right-label-function-call.png" alt="Example checkboxBlockLabelRight function call">
-  <p style="font-style: italic;">Figure 4 - Example checkboxBlockLabelRight function call</p>
-</div>
+Generates a checkbox where the label is on the right side. It generates a div element that surrounds a label and input of type checkbox. An example function call from the login view is shown below.
 
-This function accepts 6 arguments as described below:
-1. $label is used to set the text of the label element.
-2. $name sets the value for the name, for, and id attributes.
-3. $value sets the value for the data received upon form submit. The default value is an empty string.
-4. $checked is used to set a value of checked for a checkbox. This value can be set upon reading information from a database or upon 5. failed form validation.
-5. $inputAttrs is an array and can be found in most function calls. We use this parameter to set values for attributes such as classes for styling, front-side validation, and event handlers. The default value is an empty array.
-6. $divAttrs is an array whose primary purpose is to add classes for styling the div that surrounds the input element. The default value is an empty array.
-7. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
+```php
+FormHelper::checkboxBlockLabelRight(
+  'Remember Me', 
+  'remember_me', 
+  'on', 
+  $this->login->getRememberMeChecked(), 
+  [], 
+  ['class' => 'form-group mr-1'], $this->displayErrors
+);
+```
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `string $value` - The value we want to set.  We can use this to set  the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `bool $checked` - The value for the checked attribute.  If true  this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and the input element of type checkbox.
 
 <br>
 
