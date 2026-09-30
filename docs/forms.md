@@ -7,6 +7,7 @@
 3. [buttonBlock()](#buttonblock)
 4. [checkboxBlockLabelLeft()](#checkboxBlockLabelLeft)
 5. [checkboxBlockLabelRight()](#checkboxblocklabelright)
+6. [checkboxGroup()](#checkbox-group)
 6. [csrfInput()](#csrfinput)
 7. [displayErrors()](#displayerrors)
 8. [emailBlock()](#emailblock)
@@ -134,6 +135,35 @@ Parameters:
 
 Returns:
 - `string` - A surrounding div and the input element of type checkbox.
+
+<br>
+
+## 6. `checkboxGroup()` <a id="checkbox-group"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Renders a group of checkboxes sharing one name (submitted as name[]), one wrapping div, and ONE error span. Label-right per box.
+
+Example:
+
+```php
+<?= FormHelper::checkboxGroup(
+  'acls',
+  $this->acls,              // [value => label] map of all ACLs
+  $this->user->getAcls(),   // the set of ACLs this user currently has
+  [],
+  ['class' => 'form-check'],
+  $this->displayErrors
+); ?>
+```
+
+Parameters:
+- `string $name` - Group name WITHOUT '[]' (added internally), e.g. 'acls'.
+- `array $options` - [value => label] map of choices. 
+- `array $selectedValues` - Values that should render checked (the current set).
+- `array $inputAttrs` - Passthrough attrs applied to every box (error-classed once here).
+- `array $divAttrs` - Attrs for the group's wrapping div.
+- `array $errors` - Errors array; one invalid-feedback span for the whole group.
+
+Returns:
+- `string` - The checkbox group.
 
 <br>
 
