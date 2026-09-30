@@ -2,6 +2,7 @@
 
 ## Table of contents
 1. [Overview](#overview)
+2. [appendErrorClass()](#append-error-class)
 2. [button()](#button)
 3. [buttonBlock()](#buttonblock)
 4. [checkboxBlockLabelLeft()](#checkboxBlockLabelLeft)
@@ -26,6 +27,21 @@
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The Rapid Forms feature of this Model View Controller (MVC) Framework allows the user to quickly create and style forms. This guide thoroughly describes the ability to create these HTML form elements along with a description and examples. All form inputs will automatically be sanitized and validation checks will be performed.  If you would like support for additional features please create an issue [here](https://github.com/chapmancbVCU/chappy-php-framework/issues).
 
+
+<br>
+
+## 2. `appendErrorClass()` <a id="append-error-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)
+Adds name of error classes to div associated with a form field.
+
+Parameters:
+- `array $attrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $errors` - The errors array.
+- `string $name` - The name of the field associated with this error.
+- `string $class` - Name of the class used to identify errors for a form field.
+
+Returns:
+- `array` - Div attributes with error classes added.
+
 <br>
 
 ## 2. `button()` <a id="button"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -36,9 +52,12 @@ This function creates a button with no surrounding HTML div element. It supports
   <p style="font-style: italic;">Figure 1 - Example button function call</p>
 </div>
 
-This function accepts 2 arguments as described below:
-1. $buttonText is used to set the text of the button.
-2. $inputAttrs is an array and can be found in most function calls. We use this parameter to set values for attributes such as classes for styling, front-side validation, and event handlers. Make sure when performing an event handler function call that contains strings as arguments to escape any quotes. The default value is an empty array.
+Parameters: 
+- `string $buttonText` - The contents of the button's label.
+- `array $inputAttrs` - This parameter is used to set values for attributes such as classes for styling, front-side validation, and event handlers. Make sure when performing an event handler function call that contains strings as arguments to escape any quotes. The default value is an empty array.
+
+Returns:
+- An HTML button element with its label set and any other optional attributes set.
 
 <br>
 
