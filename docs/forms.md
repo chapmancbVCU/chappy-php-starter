@@ -9,7 +9,9 @@
 6. [checkboxBlockLabelRight()](#checkboxblocklabelright)
 7. [checkboxGroup()](#checkbox-group)
 8. [checkboxInput()](#checkbox-input)
-6. [csrfInput()](#csrfinput)
+9. [csrfToken()](#csrf-token)
+10. [csrfInput()](#csrf-input)
+
 7. [displayErrors()](#displayerrors)
 8. [emailBlock()](#emailblock)
 9. [hidden()](#hidden)
@@ -168,7 +170,7 @@ Returns:
 
 <br>
 
-## 7. `checkboxGroup()` <a id="checkbox-group"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. `checkboxGroup()` <a id="checkbox-group"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Renders a single checkbox input with its label — the bare item only, no wrapping div and no error span (the caller owns the envelope). Label sits to the RIGHT of the box by default; pass `$labelRight = false` to place it on the left.
 
 `$inputAttrs` is expected already error-classed by the caller (mirrors radioInput).
@@ -185,8 +187,22 @@ Returns:
 
 <br>
 
-## 6. `csrfInput()` <a id="csrfinput"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Generates a CRSF token as the value for an input of type hidden. The token is randomly generated and is used to verify if any tampering of any form has been performed. Use this function to assist in preventing CSRF attacks. The CSRF token is unique for every user session and is a sufficiently large string of random values.
+## 9. `csrfToken()` <a id="csrf-token"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Checks if the csrf token exists.  This is used to verify that there has been no tampering of a form's csrf token.
+
+Parameter:
+- `string $token` - token string we will test whether or not it exists.
+
+Returns:
+- `bool` - The result of the AND operation on whether or not a token exists with a session and if the session's token is equal to the value of the $token parameter.
+
+<br>
+
+## 10. `csrfInput()` <a id="csrf-input"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+A hidden input to represent the csrf token in a web form.
+
+Returns: 
+- string The hidden input of type hidden with the generated token set as the value.
 
 <br>
 
