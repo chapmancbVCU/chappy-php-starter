@@ -3,11 +3,12 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [appendErrorClass()](#append-error-class)
-2. [button()](#button)
-3. [buttonBlock()](#buttonblock)
-4. [checkboxBlockLabelLeft()](#checkboxBlockLabelLeft)
-5. [checkboxBlockLabelRight()](#checkboxblocklabelright)
-6. [checkboxGroup()](#checkbox-group)
+3. [button()](#button)
+4. [buttonBlock()](#buttonblock)
+5. [checkboxBlockLabelLeft()](#checkboxBlockLabelLeft)
+6. [checkboxBlockLabelRight()](#checkboxblocklabelright)
+7. [checkboxGroup()](#checkbox-group)
+8. [checkboxInput()](#checkbox-input)
 6. [csrfInput()](#csrfinput)
 7. [displayErrors()](#displayerrors)
 8. [emailBlock()](#emailblock)
@@ -64,7 +65,7 @@ Returns:
 
 <br>
 
-## 3. `buttonBlock()` <a id="buttonblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `buttonBlock()` <a id="buttonblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The buttonBlock function is a wrapper for the button function that adds a div around the button element. An example function call is shown below.
 
 ```php
@@ -85,7 +86,7 @@ Returns:
 
 <br>
 
-## 4. `checkboxBlockLabelLeft()` <a id="checkboxBlockLabelLeft"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. `checkboxBlockLabelLeft()` <a id="checkboxBlockLabelLeft"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a checkbox where the label is on the left side. It generates a div element that surrounds a label and input of type checkbox. This is ideal for situations where labels can be of varying lengths. An example function call is shown below.
 
 ```php
@@ -112,7 +113,7 @@ Returns:
 
 <br>
 
-## 5. `checkboxBlockLabelRight()` <a id="checkboxblocklabelright"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. `checkboxBlockLabelRight()` <a id="checkboxblocklabelright"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a checkbox where the label is on the right side. It generates a div element that surrounds a label and input of type checkbox. An example function call from the login view is shown below.
 
 ```php
@@ -138,7 +139,7 @@ Returns:
 
 <br>
 
-## 6. `checkboxGroup()` <a id="checkbox-group"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. `checkboxGroup()` <a id="checkbox-group"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Renders a group of checkboxes sharing one name (submitted as name[]), one wrapping div, and ONE error span. Label-right per box.
 
 Example:
@@ -164,6 +165,23 @@ Parameters:
 
 Returns:
 - `string` - The checkbox group.
+
+<br>
+
+## 7. `checkboxGroup()` <a id="checkbox-group"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Renders a single checkbox input with its label — the bare item only, no wrapping div and no error span (the caller owns the envelope). Label sits to the RIGHT of the box by default; pass `$labelRight = false` to place it on the left.
+
+`$inputAttrs` is expected already error-classed by the caller (mirrors radioInput).
+
+Parameters:
+- `string $label` - Visible label text.
+- `string $name` - Field name. Keep the '`[]`' suffix for group members (e.g. '`genres[]`') so they submit as an array.
+- `string $value` -  Submitted value; also used to build a unique id.
+- `bool $checked` - Whether this box renders checked.
+- `array $inputAttrs` - Passthrough HTML attributes (already error-classed).
+
+Returns:
+- `bool $labelRight` - Label on the right of the box (default true).
 
 <br>
 
