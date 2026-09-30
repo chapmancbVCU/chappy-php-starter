@@ -9,7 +9,7 @@
 6. [checkboxBlockLabelRight()](#checkboxblocklabelright)
 7. [checkboxGroup()](#checkbox-group)
 8. [checkboxInput()](#checkbox-input)
-9. [csrfToken()](#csrf-token)
+9. [checkToken()](#check-token)
 10. [csrfInput()](#csrf-input)
 
 7. [displayErrors()](#displayerrors)
@@ -187,7 +187,7 @@ Returns:
 
 <br>
 
-## 9. `csrfToken()` <a id="csrf-token"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. `checkToken()` <a id="check-token"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Checks if the csrf token exists.  This is used to verify that there has been no tampering of a form's csrf token.
 
 Parameter:
