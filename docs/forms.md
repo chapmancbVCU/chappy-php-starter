@@ -44,7 +44,7 @@ Returns:
 
 <br>
 
-## 2. `button()` <a id="button"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. `button()` <a id="button"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This function creates a button with no surrounding HTML div element. It supports the ability to set attributes such as classes and event handlers. If you want a div to surround a button along with any other attributes we recommend that you use the buttonBlock function. Note the example function call shown below:
 
 ```php
@@ -64,17 +64,24 @@ Returns:
 <br>
 
 ## 3. `buttonBlock()` <a id="buttonblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The buttonBlock function is a wrapper for the button function that adds a div around the button element. An example function call is shown below in Figure 2.
+The buttonBlock function is a wrapper for the button function that adds a div around the button element. An example function call is shown below.
 
-<div style="text-align: center;">
-  <img src="assets/button-block-function-call.png" alt="Example buttonBlock function call">
-  <p style="font-style: italic;">Figure 2 - Example buttonBlock function call</p>
-</div>
+```php
+FormHelper::buttonBlock(
+  "Click Me!", 
+  ['class' => 'btn btn-large btn-primary', 'onClick' => 'alert(\'Hello World!\')'], 
+  ['class' => 'form-group']
+);
+```
 
-This function accepts 3 arguments as described below:
-1. $buttonText is used to set the text of the button.
-2. $inputAttrs is an array and can be found in most function calls. We use this parameter to set values for attributes such as classes for styling, front-side validation, and event handlers. Make sure when performing an event handler function call that contains strings as arguments to escape any quotes. The default value is an empty array.
-3. $divAttrs is an array whose primary purpose is to add classes for styling the div that surrounds the button element. The default value is an empty array.
+Parameters:
+- `string $buttonText` - The contents of the button's label.
+- `array $inputAttrs` - This parameter is used to set values for attributes such as classes for styling, front-side validation, and event handlers. Make sure when performing an event handler function call that contains strings as arguments to escape any quotes. The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+
+Returns:
+- `string` - An HTML div surrounding a button element with its label set and any other optional attributes set.
+
 <br>
 
 ## 4. `checkboxBlockLabelLeft()` <a id="checkboxBlockLabelLeft"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
