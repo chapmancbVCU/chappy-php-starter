@@ -11,8 +11,8 @@
 8. [checkboxInput()](#checkbox-input)
 9. [checkToken()](#check-token)
 10. [csrfInput()](#csrf-input)
-11. [errorMsg](#error-msg)
-
+11. [errorMsg()](#error-msg)
+12. [generateToken()](#generate-token)
 
 7. [displayErrors()](#displayerrors)
 8. [emailBlock()](#emailblock)
@@ -233,6 +233,15 @@ Parameters:
 
 Returns:
 - `string` - The error message for a particular field.
+
+<br>
+
+
+## 12. `generateToken()` <a id="generate-token"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Creates a randomly generated csrf token. 
+
+Returns:
+- string - The randomly generated token.
 
 <br>
 
