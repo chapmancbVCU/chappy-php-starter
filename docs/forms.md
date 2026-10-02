@@ -15,9 +15,9 @@
 12. [errorMsg()](#error-msg)
 13. [generateToken()](#generate-token)
 14. [hidden()](#hidden)
-
-8. [emailBlock()](#emailblock)
-10. [inputBlock()](#inputblock)
+15. [inputBlock()](#inputblock)
+ * A. [currencyBlock()](#currency-block)
+ * B. [emailBlock()](#emailblock)
 11. [output()](#output)
 12. [radioInput()](#radioinput)
 13. [posted_values()](#posted-values)
@@ -111,7 +111,7 @@ Parameters:
 - `bool $checked` - The value for the checked attribute.  If true  this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
 - `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
 - `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
-
+- `array $errors` - The errors array.  Default value is an empty array.
 Returns:
 - `string` - A surrounding div and the input element of type checkbox.
 
@@ -137,6 +137,7 @@ Parameters:
 - `bool $checked` - The value for the checked attribute.  If true  this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
 - `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
 - `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
 
 Returns:
 - `string` - A surrounding div and the input element of type checkbox.
@@ -259,58 +260,93 @@ This function accepts 2 arguments as described below:
 
 <br>
 
-## 8. `emailBlock()` <a id="emailblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Use this function to create styled E-mail form inputs. An example function call is shown below in Figure 6.
+## 15. `inputBlock()` <a id="inputblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+A generic block for the input element.  Most input types in the forms global library depend on this function.
 
-<div style="text-align: center;">
-  <img src="assets/display-errors.png" alt="E-mail block example function call">
-  <p style="font-style: italic;">Figure 6 - E-mail block example function call</p>
-</div>
+Example:
 
-This function accepts 6 arguments as described below:
-1. $label is used to set the text of the label element.
-2. $name sets the value for the name, for, and id attributes.
-The value we want to set. We can use this to set the value of the value attribute during form validation. Default value is the empty 3. string. It can be set with values during form validation and forms used for editing records.
-4. $inputAttrs The values used to set the class and other attributes of the input string. The default value is an empty array.
-5. $divAttrs The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
-6. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
+```php
+FormHelper::inputBlock(
+  'text', 
+  'Example', 
+  'example_name', 
+  example_value, 
+  ['class' => 'form-control'], 
+  ['class' => 'form-group'], 
+  $this->displayErrors
+);
+```
+
+Parameters:
+- `string` $type - The input type we want to generate.
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `mixed $value` - The value we want to set.  We can use this to set  the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `bool $checked` - The value for the checked attribute.  If true  this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and the input element.
 
 <br>
 
+### A. `currencyBlock()` <a id="currency-block">
+Renders an HTML div element that surrounds an input of type currency.
 
+Example:
 
-## 10. `inputBlock()` <a id="inputblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-A generic input block that supports the following input types:
-1. Color
-2. date
-3. datetime-local
-4. email
-5. file
-6. month
-7. number
-8. password
-9. range
-10. search
-11. tel
-12. text
-13. time
-14. url
-15. week
+```php
+<?= FormHelper::currencyBlock(
+    label: 'Amount',
+    name: "amount",
+    inputAttrs: ['class' => 'form-control input-sm'],
+    divAttrs: ['class' => 'form-group mb-3']
+) ?>
+```
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `string $symbol` - The symbol for the currency.
+- `mixed $value` - The value we want to set.  We can use this to set  the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `bool $checked` - The value for the checked attribute.  If true  this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
 
-An example function call is show below in figure 8:
-<div style="text-align: center;">
-  <img src="assets/input-block.png" alt="Input block function call">
-  <p style="font-style: italic;">Figure 8 - Input block function call</p>
-</div>
+Returns:
+- `string` - A surrounding div and the input element of type text for currency.
 
-This function accepts 7 arguments as described below:
-1. $type The input type we want to generate.
-2. $label is used to set the text of the label element.
-3. $name sets the value for the name, for, and id attributes.
-4. $value The value we want to set. We can use this to set the value of the value attribute during form validation. Default value is the empty string. It can be set with values during form validation and forms used for editing records.
-5. $inputAttrs The values used to set the class and other attributes of the input string. The default value is an empty array.
-6. $divAttrs The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
-7. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
+<br>
+
+### B. `emailBlock()` <a id="emailblock">
+Use this function to create styled E-mail form inputs. 
+
+Example:
+
+```php
+FormHelper::emailBlock(
+  'Email', 
+  'email', 
+  $this->contact->email, 
+  ['class' => 'form-control'], 
+  ['class' => 'form-group col-md-6'], 
+  $this->displayErrors
+);
+```
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `string $value` - The value we want to set.  We can use this to set  the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `bool $checked` - The value for the checked attribute.  If true  this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and the input element of type email.
 
 <br>
 
