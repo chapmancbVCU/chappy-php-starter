@@ -18,6 +18,7 @@
 15. [inputBlock()](#inputblock)
  * A. [currencyBlock()](#currency-block)
  * B. [emailBlock()](#emailblock)
+ * C. [fileBlock](#file-block)
 11. [output()](#output)
 12. [radioInput()](#radioinput)
 13. [posted_values()](#posted-values)
@@ -347,6 +348,33 @@ Parameters:
 
 Returns:
 - `string` - A surrounding div and the input element of type email.
+
+<br>
+
+### C. `fileBlock()` <a id="file-block">
+Renders an HTML div element that surrounds an input of type file.
+
+Multiple File Uploads:
+Use the $multiple flag to enable multiple file uploads.  Name attribute will be formatted correctly and the multiple attribute will be added to the input element.
+
+Example:
+```php
+<?= FormHelper::fileBlock(
+  "Upload Profile Image (Optional)", 
+  'profileImage', 
+  ['class' => 'form-control', 'accept' => 'image/gif image/jpeg image/png'], 
+  ['class' => 'form-group mb-3']) 
+?>
+```
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `bool $multiple` - Flag for turning on or off multiple file uploads.
+
+Returns:
+- `string` - A surrounding div and the input element of type file.
 
 <br>
 
