@@ -20,6 +20,9 @@
  * B. [emailBlock()](#emailblock)
  * C. [fileBlock()](#file-block)
  * D. [image()](#image)
+ * E. [imageBlock()](#image-block)
+ * F. [telBlock()](#tel-block)
+ * G. [textAreaBlock()](#textarea-block)
 11. [output()](#output)
 12. [radioInput()](#radioinput)
 13. [posted_values()](#posted-values)
@@ -27,8 +30,6 @@
 15. [stringifyAttrs()](#stringify-attrs)
 16. [submitBlock()](#submitblock)
 17. [submitTag()](#submittag)
-18. [telBlock()](#telblock)
-19. [textAreaBlock()](#textareablock)
 
 <br>
 
@@ -364,8 +365,8 @@ Example:
   "Upload Profile Image (Optional)", 
   'profileImage', 
   ['class' => 'form-control', 'accept' => 'image/gif image/jpeg image/png'], 
-  ['class' => 'form-group mb-3']) 
-?>
+  ['class' => 'form-group mb-3']
+) ?>
 ```
 Parameters:
 - `string $label` - Sets the label for this input.
@@ -390,7 +391,7 @@ Example:
      100, 
      50, 
      ['class' => 'mt-5 pt-4']
-?>
+) ?>
 ```
 
 Parameters:
@@ -402,6 +403,90 @@ Parameters:
 
 Returns:
 - `string` - An input element of type image.
+
+<br>
+
+### E. `imageBlock()` <a id="image-block">
+Create a input element of type image.
+
+Example:
+```php
+<?= FormHelper::imageBlock(
+     'submit', 
+     asset('public/logo.png', true), 
+     100, 
+     50, 
+     ['class' => 'mt-5 pt-4'],
+     ['class' => 'text-end']
+) ?>
+```
+
+Parameters:
+- `string $id` - The id attribute for the image input.
+- `string $src` - The path to the image file.
+- `int $width` - The width of the image.
+- `int $height` - The hight of the image.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+
+Returns:
+- `string` - An input element of type image.
+
+<br>
+
+### F. `telBlock()` <a id="tel-block"></a>
+Renders an HTML div element that surrounds an input of type tel. The user is able to enter cell, home, and work as phone types. Certain options can be set using the args parameter.
+
+Option parameters that are supported:
+1. a - All default options turned on.
+2. d - All options are off.
+3. e - Default event listener turned on for enforcing phone format requirements.
+4. h - Default placeholder turned on.
+5. p - Default telephone pattern is enforced.
+
+The user may use 'a', or any combination of 'h', 'p', or 'e'. The empty string is not a valid value for args. Leaving out a value for args in the function call will cause all defaults to be turned on. If the d is entered with all other valid options together will cause no options to be set. If bad phone types and args values are entered exceptions displaying relevant information will be thrown.
+
+An example function call where no arguments are set is shown below: 
+```php
+FormHelper::telBlock('cell', 'Cell Phone', 'cell_phone', $this->contact->cell_phone, ['class' => 'form-control'], ['class' => 'form-group col-md-6']);
+```
+
+An example function call where two options are set and other is set with the inputAttrs array is shown below:
+```php
+FormHelper::telBlock('home', 'Home Phone', 'home_phone', $this->contact->home_phone, ['class' => 'form-control', 'placeholder' => 'My placeholder'], ['class' => 'form-group col-md-6'],"pe");
+```
+
+An example function call where 'a' flag is set is shown below:
+```php
+FormHelper::telBlock('work', 'Work Phone', 'work_phone', $this->contact->work_phone, ['class' => 'form-control'], ['class' => 'form-group col-md-6'], "a");
+```
+
+This function accepts 8 arguments as described below:
+1. $phoneTypeThe type of phone that can be used. We currently support "cell", "home", and "work" type phones.
+2. $label  Sets the label for this input.
+3. $name	Sets the value for the name, for, and id attributes for this input.
+4. $valueThe value we want to set. We can use this to set the value of the value attribute during form validation. Default value is the empty string. It can be set with values during form validation and forms used for editing records.
+5. $inputAttrs	The values used to set the class and other attributes of the input string. The default value is an empty array.
+6. $divAttrs	The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
+7. $args	Arguments that influence which options are turned on.
+8. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
+
+<br>
+
+### G. `textAreaBlock()` <a id="textarea-block">
+Assists in the development of textarea in forms. It accepts parameters for setting attribute tags in the form section.  An example function call is shown below in figure 12:
+<div style="text-align: center;">
+  <img src="assets/text-area-block.png" alt="TextArea block function call">
+  <p style="font-style: italic;">Figure 12 - TextArea block function call</p>
+</div>
+
+This function accepts 6 arguments as described below:
+1. $label Sets the label for this input.
+2. $name Sets the value for the name, for, and id attributes for this input.
+3. $value The value we want to set. We can use this to set the value of the value attribute during form validation. Default value is the empty string. It can be set with values during form validation and forms used for editing records.
+4. $inputAttrs	The values used to set the class and other attributes of the input string. The default value is an empty array.
+5. $divAttrs	The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
+6. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
 
 <br>
 
@@ -504,58 +589,3 @@ Generates a div containing an input of type submit.
 ## 17. `submitTag()` <a id="submittag"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Create a input element of type submit.
 
-<br>
-
-## 18. `telBlock()` <a id="telblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Renders an HTML div element that surrounds an input of type tel. The user is able to enter cell, home, and work as phone types. Certain options can be set using the args parameter.
-
-Option parameters that are supported:
-1. a - All default options turned on.
-2. d - All options are off.
-3. e - Default event listener turned on for enforcing phone format requirements.
-4. h - Default placeholder turned on.
-5. p - Default telephone pattern is enforced.
-
-The user may use 'a', or any combination of 'h', 'p', or 'e'. The empty string is not a valid value for args. Leaving out a value for args in the function call will cause all defaults to be turned on. If the d is entered with all other valid options together will cause no options to be set. If bad phone types and args values are entered exceptions displaying relevant information will be thrown.
-
-An example function call where no arguments are set is shown below: 
-```php
-FormHelper::telBlock('cell', 'Cell Phone', 'cell_phone', $this->contact->cell_phone, ['class' => 'form-control'], ['class' => 'form-group col-md-6']);
-```
-
-An example function call where two options are set and other is set with the inputAttrs array is shown below:
-```php
-FormHelper::telBlock('home', 'Home Phone', 'home_phone', $this->contact->home_phone, ['class' => 'form-control', 'placeholder' => 'My placeholder'], ['class' => 'form-group col-md-6'],"pe");
-```
-
-An example function call where 'a' flag is set is shown below:
-```php
-FormHelper::telBlock('work', 'Work Phone', 'work_phone', $this->contact->work_phone, ['class' => 'form-control'], ['class' => 'form-group col-md-6'], "a");
-```
-
-This function accepts 8 arguments as described below:
-1. $phoneTypeThe type of phone that can be used. We currently support "cell", "home", and "work" type phones.
-2. $label  Sets the label for this input.
-3. $name	Sets the value for the name, for, and id attributes for this input.
-4. $valueThe value we want to set. We can use this to set the value of the value attribute during form validation. Default value is the empty string. It can be set with values during form validation and forms used for editing records.
-5. $inputAttrs	The values used to set the class and other attributes of the input string. The default value is an empty array.
-6. $divAttrs	The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
-7. $args	Arguments that influence which options are turned on.
-8. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
-
-<br>
-
-## 19. `textAreaBlock()` <a id="textareablock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Assists in the development of textarea in forms. It accepts parameters for setting attribute tags in the form section.  An example function call is shown below in figure 12:
-<div style="text-align: center;">
-  <img src="assets/text-area-block.png" alt="TextArea block function call">
-  <p style="font-style: italic;">Figure 12 - TextArea block function call</p>
-</div>
-
-This function accepts 6 arguments as described below:
-1. $label Sets the label for this input.
-2. $name Sets the value for the name, for, and id attributes for this input.
-3. $value The value we want to set. We can use this to set the value of the value attribute during form validation. Default value is the empty string. It can be set with values during form validation and forms used for editing records.
-4. $inputAttrs	The values used to set the class and other attributes of the input string. The default value is an empty array.
-5. $divAttrs	The values used to set the class and other attributes of the surrounding div. The default value is an empty array.
-6. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
