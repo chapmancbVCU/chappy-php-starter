@@ -18,7 +18,8 @@
 15. [inputBlock()](#inputblock)
  * A. [currencyBlock()](#currency-block)
  * B. [emailBlock()](#emailblock)
- * C. [fileBlock](#file-block)
+ * C. [fileBlock()](#file-block)
+ * D. [image()](#image)
 11. [output()](#output)
 12. [radioInput()](#radioinput)
 13. [posted_values()](#posted-values)
@@ -375,6 +376,32 @@ Parameters:
 
 Returns:
 - `string` - A surrounding div and the input element of type file.
+
+<br>
+
+### D. `image()` <a id="image">
+Create a input element of type image.
+
+Example:
+```php
+<?= FormHelper::image(
+     'submit', 
+     asset('public/logo.png', true), 
+     100, 
+     50, 
+     ['class' => 'mt-5 pt-4']
+?>
+```
+
+Parameters:
+- `string $id` - The id attribute for the image input.
+- `string $src` - The path to the image file.
+- `int $width` - The width of the image.
+- `int $height` - The hight of the image.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+
+Returns:
+- `string` - An input element of type image.
 
 <br>
 
