@@ -28,9 +28,10 @@
 18. [output()](#output)
 19. [posted_values()](#posted-values)
 20. [Radio Buttons](#radioinput)
-15. [stringifyAttrs()](#stringify-attrs)
-16. [submitBlock()](#submitblock)
-17. [submitTag()](#submittag)
+21. [sanitize()](#sanitize)
+22. [stringifyAttrs()](#stringify-attrs)
+23. [submitBlock()](#submitblock)
+24. [submitTag()](#submittag)
 
 <br>
 
@@ -619,7 +620,18 @@ FormHelper::radioInput('CSS', 'css', 'fav_language', "CSS", $check2, ['class' =>
 
 <br>
 
-## 15. `stringifyAttrs()` <a id="stringify-attrs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 21. `sanitize()` <a id="sanitize"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Sanitizes potentially harmful string of characters.
+
+Parameter:
+- `string|array` $dirty - The potentially dirty string.
+
+Return:
+- `string` - The sanitized version of the dirty string.
+
+<br>
+
+## 22. `stringifyAttrs()` <a id="stringify-attrs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `stringifyAttrs` function is a utility method used internally by other `FormHelper` functions. Its purpose is to convert an associative array of HTML attributes into a properly formatted string that can be directly inserted into an HTML tag. This makes it easier to dynamically construct form fields with customizable attributes such as `class`, `id`, `placeholder`, and event listeners.
 
 While this function is typically used by the framework internally, understanding it can help when extending or customizing form rendering.
@@ -649,11 +661,39 @@ As shown, the function iterates over the array and produces a valid string of HT
 
 <br>
 
-## 16. `submitBlock()` <a id="submitblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 23. `submitBlock()` <a id="submitblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates a div containing an input of type submit.
 
+Example:
+```php
+FormHelper::submitBlock(
+    "Save", 
+    ['class'=>'btn btn-primary'], ['class'=>'text-end']
+);
+```
+Parameters:
+- `string $buttonText` - Sets the value of the text describing the button.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+
+Returns:
+- `string` -  A surrounding div and the input element of type submit.
 <br>
 
-## 17. `submitTag()` <a id="submittag"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 24. `submitTag()` <a id="submittag"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Create a input element of type submit.
 
+Example:
+```php
+FormHelper::submitTag(
+    "Save", 
+    ['class'=>'btn btn-primary']
+);
+```
+
+Parameters:
+- `string $buttonText` - Sets the value of the text describing the button.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+
+Returns:
+- `string` -  A surrounding div and the input element of type submit.
