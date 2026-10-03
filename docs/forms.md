@@ -28,7 +28,6 @@
 18. [output()](#output)
 19. [posted_values()](#posted-values)
 12. [radioInput()](#radioinput)
-14. [selectBlock()](#selectblock)
 15. [stringifyAttrs()](#stringify-attrs)
 16. [submitBlock()](#submitblock)
 17. [submitTag()](#submittag)
@@ -577,24 +576,6 @@ The example code below demonstrates how a radio button groups is used.
 FormHelper::radioInput('HTML', 'html', 'fav_language', "HTML", $check1, ['class' => 'form-group mr-1']); 
 FormHelper::radioInput('CSS', 'css', 'fav_language', "CSS", $check2, ['class' => 'form-group mr-1']);
 ```
-
-<br>
-
-## 14. `selectBlock()` <a id="selectblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Renders a select element with a list of options.  An example function call is shown below in figure 11: 
-<div style="text-align: center;">
-  <img src="assets/select-block.png" alt="Select block function call">
-  <p style="font-style: italic;">Figure 11 - Select block function call</p>
-</div>
-
-This function accepts 7 arguments as described below:
-1. $label Sets the label for this input.
-2. $name Sets the value for the name, for, and id attributes for this input.
-3. $value The value we want to set as selected.
-4. $inputAttrs The values used to set the class and other attributes of the input string.  The default value is an empty array.
-5. $options The list of options we will use to populate the select option dropdown.  The default value is an empty array.
-6. $divAttrs The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
-7. **$errors** – (optional) Array of field-specific error messages. Default is an empty array.
 
 <br>
 
