@@ -438,7 +438,30 @@ Returns:
 ### F. `telBlock()` <a id="tel-block"></a>
 Renders an HTML div element that surrounds an input of type tel. The user is able to enter cell, home, and work as phone types. Certain options can be set using the args parameter.
 
+This function will be deprecated in version 5.0.0 and the global helper will be used instead.
 
+Example:
+
+```php
+<?= FormHelper::telBlock(
+     'Home phone', 
+     'phone', 
+     $this->user->phone, 
+     ['class' => 'form-control input-sm'], 
+     ['class' => 'form-group mb-3']) 
+?>
+```
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `mixed $value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation  and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other  attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- string - The HTML div element surrounding an input of type tel with configuration and values set based on parameters entered during function call.
 
 <br>
 
