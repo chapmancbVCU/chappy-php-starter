@@ -27,7 +27,7 @@
 17. [selectBlock()](#select)
 18. [output()](#output)
 19. [posted_values()](#posted-values)
-12. [radioInput()](#radioinput)
+20. [Radio Buttons](#radioinput)
 15. [stringifyAttrs()](#stringify-attrs)
 16. [submitBlock()](#submitblock)
 17. [submitTag()](#submittag)
@@ -521,6 +521,19 @@ Returns:
 ## 17. `selectBlock()` <a id="select"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 HTML `<select>` elements are supported with the calls to the `FormHelper::selectBlock` function.
 
+Example:
+
+```php
+<?= FormHelper::selectBlock(
+    'Account Status',                 // label
+    'inactive',                       // name — matches the schema column
+    $this->user->inactive,            // current value: 0 or 1
+    [0 => 'Active', 1 => 'Inactive'], // [value => label] map
+    ['class' => 'form-select'],       // inputAttrs
+    ['class' => 'form-group mb-3'],   // divAttrs
+    $this->displayErrors              // errors
+); ?>
+```
 Parameters:
 - `string $label` - Sets the label for this input.
 - `string $name` - Sets the value for the name, for, and id attributes for this input.
@@ -556,20 +569,47 @@ $post = FormHelper::posted_values($_POST);
 
 <br>
 
-## 12. `radioInput()` <a id="radioinput"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Creates an input element of type radio with an accompanying label element. Compatible with radio button groups.  An example function call is shown below in figure 10:
-<div style="text-align: center;">
-  <img src="assets/radio-button.png" alt="Radio button function call">
-  <p style="font-style: italic;">Figure 10 - Radio button function call</p>
-</div>
+## 20. `Radio Buttons` <a id="radioinput"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+We support radio button groups that allow users to populate the input using information from your database.
 
-This function accepts 2 arguments as described below:
-1. $label Sets the label for this input.
-2. $id	The id attribute for the radio input element.
-3. $name	Sets the value for the name, for, and id attributes for this input.
-4. $value The value we want to set. We can use this to set the value of the value attribute during form validation. Default value is the empty string. It can be set with values during form validation and forms used for editing records.
-5. $checked The value for the checked attribute. If true this attribute will be set as checked="checked". The default value is false. It can be set with values during form validation and forms used for editing records.
-6. $inputAttrs	The values used to set the class and other attributes of the input string. The default value is an empty array.
+Example:
+
+```php
+<?= FormHelper::radioGroup(
+    'inactive',                       // name
+    [0 => 'Active', 1 => 'Inactive'], // [value => label] map
+    $this->user->inactive,            // selected value: 0 or 1
+    ['class' => 'form-check-input'],  // inputAttrs (applied to every radio)
+    ['class' => 'form-group mb-3'],   // divAttrs
+    $this->displayErrors              // errors
+); ?>
+```
+
+Parameters:
+- `string $name`-  Sets the value for the name attribute for this input.
+- `array $options`-  The list of options we will use to populate the radio group.
+- `string|int|bool $selectedValue`-  The selected value.
+- `array $inputAttrs`-  The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs`-  The values used to set the class and other  attributes of the surrounding div.  The default value is an empty array.
+- `array $errors`-  The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and option select element.
+
+<br>
+
+**`radioInput()`**
+The `radioGroup()` function calls `radioInput` for each radio button to be generated.
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name attribute for this input.
+- `string $value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  It can be set with values during form validation and forms used for editing records.
+- `bool $checked` - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+
+Returns:
+- `string` - The HTML input element of type radio.
 
 The example code below demonstrates how a radio button groups is used.
 ```php
