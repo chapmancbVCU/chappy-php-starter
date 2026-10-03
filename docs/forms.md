@@ -469,18 +469,21 @@ Returns:
 Assists in the development of textarea in forms. It accepts parameters for setting attribute tags in the form section.  An example function call is shown below:
 
 ```php
-// Add this to the head section
+<!-- Add this to the head section -->
 <?php $this->start('head') ?>
 <?= loadTinyMCE() ?>
 <?php $this->end() ?>
 
-// The function call
+<!-- The function call -->
 <?= FormHelper::textareaBlock("Description", 
     'description', 
     $this->user->description, 
     ['class' => 'form-control input-sm', 'placeholder' => 'Describe yourself here...'], 
     ['class' => 'form-group mb-3']); 
 ?>
+
+<!-- Wait until content is loaded before we initialize script -->
+<?= initTinyMCE('description') ?>
 ```
 </div>
 
