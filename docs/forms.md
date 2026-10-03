@@ -24,9 +24,10 @@
  * F. [telBlock()](#tel-block)
  * G. [textAreaBlock()](#textarea-block)
 16. [dataListBlock()](#datalist-block)
-11. [output()](#output)
+17. [selectBlock()](#select)
+18. [output()](#output)
+19. [posted_values()](#posted-values)
 12. [radioInput()](#radioinput)
-13. [posted_values()](#posted-values)
 14. [selectBlock()](#selectblock)
 15. [stringifyAttrs()](#stringify-attrs)
 16. [submitBlock()](#submitblock)
@@ -518,7 +519,24 @@ Returns:
 
 <br>
 
-## 11. `output()` <a id="output"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 17. `selectBlock()` <a id="select"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+HTML `<select>` elements are supported with the calls to the `FormHelper::selectBlock` function.
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `string $value` - The value we want to set as selected.
+- `array $options` - The list of options we will use to populate the select option dropdown.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and option select element.
+
+<br>
+
+## 18. `output()` <a id="output"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates an HTML output element. The output element is a container that can inject the results of a calculator or the outcome of a user action. An example function call is shown below in figure 9:
 <div style="text-align: center;">
   <img src="assets/output-element.png" alt="Output element function call">
@@ -528,6 +546,15 @@ Generates an HTML output element. The output element is a container that can inj
 This function accepts 2 arguments as described below:
 1. $name Sets the value for the name attributes for this
 2. $for Sets the value for the for attribute.
+
+<br>
+
+## 19. `posted_values()` <a id="posted-values"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Sanitizes values from $_POST input arrays to prevent malicious script injection.
+```php
+$post = FormHelper::posted_values($_POST);
+```
+
 <br>
 
 ## 12. `radioInput()` <a id="radioinput"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -549,14 +576,6 @@ The example code below demonstrates how a radio button groups is used.
 ```php
 FormHelper::radioInput('HTML', 'html', 'fav_language', "HTML", $check1, ['class' => 'form-group mr-1']); 
 FormHelper::radioInput('CSS', 'css', 'fav_language', "CSS", $check2, ['class' => 'form-group mr-1']);
-```
-
-<br>
-
-## 13. `posted_values()` <a id="posted-values"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Sanitizes values from $_POST input arrays to prevent malicious script injection.
-```php
-$post = FormHelper::posted_values($_POST);
 ```
 
 <br>
