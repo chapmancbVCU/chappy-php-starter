@@ -32,6 +32,7 @@ export default defineConfig(({ command }) => ({
         },
     },
     resolve: {
+        dedupe: ['dompurify', 'react', 'react-dom'],
         alias: {
             tinymce: path.resolve(__dirname, 'node_modules/tinymce'),
             '@tinymce/tinymce-react': path.resolve(__dirname, 'node_modules/@tinymce/tinymce-react'),
