@@ -4,7 +4,6 @@ import ErrorBoundary from '@chappy/components/ErrorBoundary';
 import '@css/app.css';
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import '@chappy/utils/bootstrap.js';
 
 // Code-split all pages under ./pages
 const pages = import.meta.glob('./pages/**/*.jsx');
