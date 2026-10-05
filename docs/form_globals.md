@@ -4,7 +4,7 @@
 1. [Overview](#overview)
 2. [button()](#button)
 3. [buttonBlock()](#buttonBlock)
-checkboxLabelLeft
+4. [checkboxLabelLeft()](#checkboxLabelLeft)
 checkboxLabelRight
 checkboxGroup
 csrf
@@ -91,5 +91,33 @@ Parameters:
 
 Returns:
 - `string` - An HTML div surrounding a button element with its label set and any other optional attributes set.
+
+<br>
+
+## 4. `checkboxLabelLeft()` <a id="checkboxLabelLeft"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Generates a checkbox where the label is on the left side. It generates a div element that surrounds a label and input of type checkbox. This is ideal for situations where labels can be of varying lengths. An example function call is shown below.
+
+```php
+checkboxLabelLeft(
+  'Remember Me', 
+  'remember_me', 
+  'on', 
+  $this->login->getRememberMeChecked(), 
+  [], 
+  ['class' => 'form-group'], $this->displayErrors
+);
+```
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `string $value` - The value we want to set.  We can use this to set  the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `bool $checked` - The value for the checked attribute.  If true  this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and the input element of type checkbox.
 
 <br>
