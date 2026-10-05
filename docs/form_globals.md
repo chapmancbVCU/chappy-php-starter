@@ -5,7 +5,7 @@
 2. [button()](#button)
 3. [buttonBlock()](#buttonBlock)
 4. [checkboxLabelLeft()](#checkboxLabelLeft)
-checkboxLabelRight
+5. [checkboxLabelRight()](#checkboxLabelRight)
 checkboxGroup
 csrf
 datalists
@@ -108,6 +108,33 @@ checkboxLabelLeft(
 );
 ```
 
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `string $value` - The value we want to set.  We can use this to set  the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `bool $checked` - The value for the checked attribute.  If true  this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and the input element of type checkbox.
+
+<br>
+
+## 5. `checkboxLabelRight()` <a id="checkboxLabelRight"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Generates a checkbox where the label is on the right side. It generates a div element that surrounds a label and input of type checkbox. An example function call from the login view is shown below.
+
+```php
+checkboxLabelRight(
+  'Remember Me', 
+  'remember_me', 
+  'on', 
+  $this->login->getRememberMeChecked(), 
+  [], 
+  ['class' => 'form-group mr-1'], $this->displayErrors
+);
+```
 Parameters:
 - `string $label` - Sets the label for this input.
 - `string $name` - Sets the value for the name, for, and id attributes for this input.
