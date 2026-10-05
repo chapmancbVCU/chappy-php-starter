@@ -118,6 +118,7 @@ Parameters:
 - `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
 - `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
 - `array $errors` - The errors array.  Default value is an empty array.
+
 Returns:
 - `string` - A surrounding div and the input element of type checkbox.
 
