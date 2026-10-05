@@ -313,9 +313,9 @@ Example:
 Parameters:
 - `string $label` - Sets the label for this input.
 - `string $name` - Sets the value for the name, for, and id attributes for this input.
-- `string $symbol` - The symbol for the currency.
+- `string $intlNumberFormat` - The international number format.
+- `string $currency` - The 3 digit currency name.
 - `mixed $value` - The value we want to set.  We can use this to set  the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation and forms used for editing records.
-- `bool $checked` - The value for the checked attribute.  If true  this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
 - `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
 - `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
 - `array $errors` - The errors array.  Default value is an empty array.
