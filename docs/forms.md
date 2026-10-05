@@ -21,8 +21,9 @@
  * C. [fileBlock()](#file-block)
  * D. [image()](#image)
  * E. [imageBlock()](#image-block)
- * F. [telBlock()](#tel-block)
- * G. [textAreaBlock()](#textarea-block)
+ * F. [number](#number)
+ * G. [telBlock()](#tel-block)
+ * H. [textAreaBlock()](#textarea-block)
 16. [dataListBlock()](#datalist-block)
 17. [selectBlock()](#select)
 18. [output()](#output)
@@ -436,7 +437,11 @@ Returns:
 
 <br>
 
-### F. `telBlock()` <a id="tel-block"></a>
+### F. `number()` <a id="number"></a>
+
+<br>
+
+### G. `telBlock()` <a id="tel-block"></a>
 Renders an HTML div element that surrounds an input of type tel. The user is able to enter cell, home, and work as phone types. Certain options can be set using the args parameter.
 
 This function will be deprecated in version 5.0.0 and the global helper will be used instead.
@@ -466,7 +471,7 @@ Returns:
 
 <br>
 
-### G. `textAreaBlock()` <a id="textarea-block">
+### H. `textAreaBlock()` <a id="textarea-block">
 Assists in the development of textarea in forms. It accepts parameters for setting attribute tags in the form section.  An example function call is shown below:
 
 ```php
