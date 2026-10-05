@@ -216,12 +216,8 @@ Returns:
 <br>
 
 ## 11. `displayErrors()` <a id="displayerrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The purpose of this function is to display errors related to validation. An example can be found in Figure 1.  Many frameworks calls this an error bag.
+The purpose of this function is to display errors related to validation.  Many frameworks calls this an error bag.
 
-<div style="text-align: center;">
-  <img src="assets/display-errors.png" alt="Display errors example">
-  <p style="font-style: italic;">Figure 1 - Display errors example</p>
-</div>
 
 Parameters:
 - `array|ArraySet $errors` - A list of errors and their description that is generated during server side form validation.
@@ -438,6 +434,54 @@ Returns:
 <br>
 
 ### F. `number()` <a id="number"></a>
+Numeric input (integer or decimal) with optional thousands grouping
+and fixed precision.
+
+Config keys (all optional):
+
+| Key | Type(s) | Description |
+|:---:|:-------:|-------------|
+|  `decimals`    | `int`                    | Decimal places. 0 = integer. Default 0. |
+|  `useGrouping` | `bool`                   | Thousands separators on display. Default false. |
+|  `min`         | `int|float|null`         | HTML min. Default null (omitted). |
+|  `max`         | `int|float|null`         | HTML max. Default null (omitted). |
+|  `step`        | `int|float|string|null`  | HTML step. Default derived from decimals. |
+|  `locale`      | `string`                 | Intl locale for formatting. Default 'en-US'. |
+
+Stores normalized (raw number, no separators); displays formatted.
+
+Examples:
+
+```php
+<?= FormHelper::number('Integer', 'int_demo', 42, ['decimals' => 0]); ?>
+
+<?= FormHelper::number('2-decimal, grouped', 'price_demo', 1234.5,
+      ['decimals' => 2, 'useGrouping' => true]); ?>
+
+<?= FormHelper::number('2-decimal, no grouping', 'plain_demo', 1234.5,
+      ['decimals' => 2, 'useGrouping' => false]); ?>
+
+<?= FormHelper::number('3-decimal precision', 'precise_demo', 3.14159,
+      ['decimals' => 3, 'useGrouping' => true]); ?>
+
+<?= FormHelper::number('With min/max', 'bounded_demo', 50,
+      ['decimals' => 0, 'min' => 0, 'max' => 100]); ?>
+
+<?= FormHelper::number('Empty (create mode)', 'empty_demo', '',
+    ['decimals' => 2, 'useGrouping' => true]); ?>
+```
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes  for this input.
+- `mixed $value` - The value we want to set.  We can use this to set  the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation  and forms used for editing records.
+- `array $config` - Array of optional keys.
+- `array $inputAttrs` - The values used to set the class and other  attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other  attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array. 
+
+Returns:
+- `string` - A surrounding div and a formatted number input field.
 
 <br>
 
@@ -491,7 +535,6 @@ Assists in the development of textarea in forms. It accepts parameters for setti
 <!-- Wait until content is loaded before we initialize script -->
 <?= initTinyMCE('description') ?>
 ```
-</div>
 
 Parameters:
 - `string $label`  Sets the label for this input.
