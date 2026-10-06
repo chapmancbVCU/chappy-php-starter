@@ -30,6 +30,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * C. [Input and Request Handling](input_and_request_handling)
     * D. [Server Side Validation](server_side_validation)
 12. [Global Helpers](globals)
+    * A. [forms](form_globals)
 13. [Helper Class](helpers)
 14. [Input Validation (HasValidators trait)](has_validators)
 15. [JavaScript and Vite](javascript)
