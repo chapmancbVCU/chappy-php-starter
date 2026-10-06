@@ -7,7 +7,7 @@
 4. [checkboxLabelLeft()](#checkboxLabelLeft)
 5. [checkboxLabelRight()](#checkboxLabelRight)
 6. [checkboxGroup()](#checkboxGroup)
-csrf
+7. [csrf()](#csrf)
 datalists
     dataListColor
     dataListDate
@@ -176,3 +176,11 @@ Parameters:
 
 Returns:
 - `string` - The checkbox group.
+
+<br>
+
+## 7. `csrf()` <a id="csrf"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Inserts csrf token into form.
+
+Returns: 
+- string The hidden input of type hidden with the generated token set as the value.
