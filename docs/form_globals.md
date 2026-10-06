@@ -9,14 +9,14 @@
 6. [checkboxGroup()](#checkboxGroup)
 7. [csrf()](#csrf)
 8. [datalists](#datalists)
-    dataListColor
-    dataListDate
-    dataListDateTimeLocal
-    dataListInterval
-    dataListMonth
-    dataListText
-    dataListTime
-    dataListWeek
+    * A. [dataListColor()](#dataListColor)
+    * B. [dataListDate()](#dataListDate)
+    * C. [dataListDateTimeLocal()](#dataListDateTimeLocal)
+    * D. [dataListInterval()](#dataListInterval)
+    * E. [dataListMonth()](#dataListMonth)
+    * F. [dataListText()](#dataListText)
+    * G. [dataListTime()](#dataListTime)
+    * H. [dataListWeek()](#dataListWeek)
 errorBag
 hidden
 input
@@ -199,3 +199,186 @@ Parameters common among all of these functions are:
 - `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
 - `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
 - `array $errors` - The errors array.  Default value is an empty array.
+
+<br>
+
+### A. `dataListColor()` <a id="dataListColor">
+Renders an HTML div element that surrounds an input of type color with an accompanying datalist of suggestions.
+
+Signature:
+```php
+function dataListColor(
+    string $label, 
+    string $name, 
+    string $listName,
+    mixed $value = '', 
+    array $options = [],
+    array $inputAttrs = [], 
+    array $divAttrs = [],
+    array $errors=[]
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type color.
+
+<br>
+
+### B. `dataListDate()` <a id="dataListDate">
+Renders an HTML div element that surrounds an input of type date with an accompanying datalist of suggestions.
+
+Signature:
+```php
+function dataListDate(
+    string $label, 
+    string $name, 
+    string $listName,
+    mixed $value = '', 
+    array $options = [],
+    array $inputAttrs = [], 
+    array $divAttrs = [],
+    array $errors=[]
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type date.
+
+<br>
+
+### C. `dataListDateTimeLocal()` <a id="dataListDateTimeLocal">
+Renders an HTML div element that surrounds an input of type datetime-local with an accompanying datalist of suggestions.
+
+Signature:
+```php
+function dataListDateTimeLocal(
+    string $label, 
+    string $name, 
+    string $listName,
+    mixed $value = '', 
+    array $options = [],
+    array $inputAttrs = [], 
+    array $divAttrs = [],
+    array $errors=[]
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type datetime-local.
+
+<br>
+
+### D. `dataListInterval()` <a id="dataListInterval">
+Renders an HTML div element that surrounds an input of type range with an accompanying datalist of suggestions.
+
+Signature:
+```php
+function dataListInterval(
+    string $label, 
+    string $name, 
+    string $listName,
+    int|float $min,
+    int|float $max,
+    mixed $value = '', 
+    array $options = [],
+    array $inputAttrs = [], 
+    array $divAttrs = [],
+    array $errors=[]
+): string
+```
+
+Parameters:
+- `int|float $min` - The minimum value for the interval.
+- `int|float $max` - The maximum value for the interval.
+Returns:
+- `string` - A surrounding div and the input element of type range.
+
+<br>
+
+### E. `dataListMonth()` <a id="dataListMonth">
+Renders an HTML div element that surrounds an input of type month with an accompanying datalist of suggestions.
+
+Signature:
+```php
+function dataListMonth(
+    string $label, 
+    string $name, 
+    string $listName,
+    mixed $value = '', 
+    array $options = [],
+    array $inputAttrs = [], 
+    array $divAttrs = [],
+    array $errors=[]
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type month.
+
+<br>
+
+### F. `dataListText()` <a id="dataListText">
+Renders an HTML div element that surrounds an input of type text with an accompanying datalist of suggestions.
+
+Signature:
+```php
+function dataListText(
+    string $label, 
+    string $name, 
+    string $listName,
+    mixed $value = '', 
+    array $options = [],
+    array $inputAttrs = [], 
+    array $divAttrs = [],
+    array $errors=[]
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type text.
+
+<br>
+
+### G. `dataListTime()` <a id="dataListTime">
+Renders an HTML div element that surrounds an input of type time with an accompanying datalist of suggestions.
+
+Signature:
+```php
+function dataListTime(
+    string $label, 
+    string $name, 
+    string $listName,
+    mixed $value = '', 
+    array $options = [],
+    array $inputAttrs = [], 
+    array $divAttrs = [],
+    array $errors=[]
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type time.
+
+<br>
+
+### H. `dataListWeek()` <a id="dataListWeek">
+Renders an HTML div element that surrounds an input of type week with an accompanying datalist of suggestions.
+
+Signature:
+```php
+function dataListWeek(
+    string $label, 
+    string $name, 
+    string $listName,
+    mixed $value = '', 
+    array $options = [],
+    array $inputAttrs = [], 
+    array $divAttrs = [],
+    array $errors=[]
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type week.
+
+<br>
