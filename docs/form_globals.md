@@ -8,7 +8,7 @@
 5. [checkboxLabelRight()](#checkboxLabelRight)
 6. [checkboxGroup()](#checkboxGroup)
 7. [csrf()](#csrf)
-datalists
+8. [datalists](#datalists)
     dataListColor
     dataListDate
     dataListDateTimeLocal
@@ -184,3 +184,8 @@ Inserts csrf token into form.
 
 Returns: 
 - string The hidden input of type hidden with the generated token set as the value.
+
+<br>
+
+## 8. `datalists()` <a id="datalists"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This section contains a listing of input functions pared with a datalist for suggestions.
