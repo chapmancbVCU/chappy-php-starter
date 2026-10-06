@@ -357,7 +357,8 @@ Returns:
 ### C. `fileBlock()` <a id="file-block">
 Renders an HTML div element that surrounds an input of type file.
 
-Multiple File Uploads:
+**Multiple File Uploads:**
+
 Use the $multiple flag to enable multiple file uploads.  Name attribute will be formatted correctly and the multiple attribute will be added to the input element.
 
 Example:
