@@ -23,10 +23,10 @@
     * A. [color()](#color)
     * B. [confirm()](#confirm)
     * C. [currency()](#currency)
-    dateSelector
-    dateTimeLocal
-    email
-    fileSelector
+    * D. [dateSelector()](#dateSelector)
+    * E. [dateTimeLocal()](#dateTimeLocal)
+    * F. [email()](#email)
+    * G. [fileSelector()](#fileSelector)
     interval
     month
     number
@@ -493,3 +493,100 @@ Parameters:
 
 Returns:
 - `string` - A surrounding div and the input element of type text for currency.
+
+<br>
+
+### D. `dateSelector()` <a id="dateSelector">
+Renders an HTML div element that surrounds an input of type date.
+
+Signature:
+```php
+function dateSelector(
+    string $label,
+    string $name,
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type date.
+
+<br>
+
+### E. `dateTimeLocal()` <a id="dateTimeLocal">
+Renders an HTML div element that surrounds an input of type datetime-Local.
+
+Signature:
+```php
+function dateTimeLocal(
+    string $label,
+    string $name,
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type datetime-local.
+
+<br>
+
+### F. `email()` <a id="email">
+Renders an HTML div element that surrounds an input of type email.
+
+Signature:
+```php
+function email(
+    string $label,
+    string $name,
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type email.
+
+<br>
+
+### F. `fileSelector()` <a id="fileSelector">
+Renders an HTML div element that surrounds an input of type file.
+
+**Multiple File Uploads:**
+
+Use the $multiple flag to enable multiple file uploads.  Name attribute 
+will be formatted correctly and the multiple attribute will be added to 
+the input element.
+
+Example:
+
+```php
+<?= fileSelector(
+     "Upload Profile Image (Optional)", 
+     'profileImage', 
+     ['class' => 'form-control', 'accept' => 'image/gif image/jpeg image/png'], 
+     ['class' => 'form-group mb-3']) 
+?>
+```
+
+Signature:
+```php
+function fileSelector(
+    string $label,
+    string $name,
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type file.
