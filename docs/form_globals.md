@@ -27,9 +27,11 @@
     * E. [dateTimeLocal()](#dateTimeLocal)
     * F. [email()](#email)
     * G. [fileSelector()](#fileSelector)
-    interval
-    month
-    number
+    * H. [imageButton()](#imageButton)
+    * I. [imageBlock()](#imageBlock)
+    * J. [interval()](#interval)
+    * K. [month()](#month)
+    * L. [number()](#number)
     password
     search
     tel
@@ -37,8 +39,6 @@
     timeSelector
     urlInput
     week
-imageButton
-imageBlock
 output
 radio
 radioGroup
@@ -277,8 +277,8 @@ function dataListInterval(
     string $label, 
     string $name, 
     string $listName,
-    int|float $min,
-    int|float $max,
+    int|float $min,     // The minimum value for the interval.
+    int|float $max,     // The maximum value for the interval.
     mixed $value = '', 
     array $options = [],
     array $inputAttrs = [], 
@@ -286,12 +286,6 @@ function dataListInterval(
     array $errors=[]
 ): string
 ```
-
-Parameters:
-- `int|float $min` - The minimum value for the interval.
-- `int|float $max` - The maximum value for the interval.
-Returns:
-- `string` - A surrounding div and the input element of type range.
 
 <br>
 
@@ -556,7 +550,7 @@ Returns:
 
 <br>
 
-### F. `fileSelector()` <a id="fileSelector">
+### G. `fileSelector()` <a id="fileSelector">
 Renders an HTML div element that surrounds an input of type file.
 
 **Multiple File Uploads:**
@@ -576,9 +570,99 @@ Example:
 ?>
 ```
 
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `bool $multiple` - Flag for turning on or off multiple file uploads.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and the input element of type file.
+
+<br>
+
+### H. `imageButton()` <a id="imageButton">
+Create a input element of type image.
+
+Example:
+
+```php
+<?= imageButton(
+     'submit', 
+     asset('public/logo.png', true), 
+     100, 
+     50, 
+     ['class' => 'mt-5 pt-4']
+?>
+```
+
+Parameters:
+- `string $id` - The id attribute for the image input.
+- `string $src` - The path to the image file.
+- `int $width` - The width of the image.
+- `int $height` - The hight of the image.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+
+Returns:
+- `string` - An input element of type image.
+
+<br>
+
+### I. `imageBlock()` <a id="imageBlock">
+Renders an HTML div element that surrounds an input of type image.
+
+Example:
+```php
+<?= image(
+     'submit', 
+     asset('public/logo.png', true), 
+     100, 
+     50, 
+     ['class' => 'mt-5 pt-4'], 
+     ['class' => 'text-end'])
+?>
+```
+
+Parameters:
+- `string $id` - The id attribute for the image input.
+- `string $src` - The path to the image file.
+- `int $width` - The width of the image.
+- `int $height` - The hight of the image.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- ``array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+
+Returns:
+- `string` - An input element of type image.
+
+<br>
+
+### J. `interval()` <a id="interval">
+Renders an HTML div element that surrounds an input of type interval.
+
 Signature:
 ```php
-function fileSelector(
+function interval(
+    string $label,
+    string $name,
+    int|float $min,     // The minimum value for the interval.
+    int|float $max,     // The maximum value for the interval.
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+<br>
+
+### K. `month()` <a id="month">
+Renders an HTML div element that surrounds an input of type month.
+
+Signature:
+```php
+function month(
     string $label,
     string $name,
     mixed $value = '',
@@ -589,4 +673,58 @@ function fileSelector(
 ```
 
 Returns:
-- `string` - A surrounding div and the input element of type file.
+- `string` - A surrounding div and the input element of type month.
+
+<br>
+
+### L. `number()` <a id="number"></a>
+Numeric input (integer or decimal) with optional thousands grouping
+and fixed precision.
+
+Config keys (all optional):
+
+| Key | Type(s) | Description |
+|:---:|:-------:|-------------|
+|  `decimals`    | `int`                    | Decimal places. 0 = integer. Default 0. |
+|  `useGrouping` | `bool`                   | Thousands separators on display. Default false. |
+|  `min`         | `int|float|null`         | HTML min. Default null (omitted). |
+|  `max`         | `int|float|null`         | HTML max. Default null (omitted). |
+|  `step`        | `int|float|string|null`  | HTML step. Default derived from decimals. |
+|  `locale`      | `string`                 | Intl locale for formatting. Default 'en-US'. |
+
+Stores normalized (raw number, no separators); displays formatted.
+
+Examples:
+
+```php
+<?= number('Integer', 'int_demo', 42, ['decimals' => 0]); ?>
+
+<?= number('2-decimal, grouped', 'price_demo', 1234.5,
+      ['decimals' => 2, 'useGrouping' => true]); ?>
+
+<?= number('2-decimal, no grouping', 'plain_demo', 1234.5,
+      ['decimals' => 2, 'useGrouping' => false]); ?>
+
+<?= number('3-decimal precision', 'precise_demo', 3.14159,
+      ['decimals' => 3, 'useGrouping' => true]); ?>
+
+<?= number('With min/max', 'bounded_demo', 50,
+      ['decimals' => 0, 'min' => 0, 'max' => 100]); ?>
+
+<?= number('Empty (create mode)', 'empty_demo', '',
+    ['decimals' => 2, 'useGrouping' => true]); ?>
+```
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes  for this input.
+- `mixed $value` - The value we want to set.  We can use this to set  the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation  and forms used for editing records.
+- `array $config` - Array of optional keys.
+- `array $inputAttrs` - The values used to set the class and other  attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other  attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array. 
+
+Returns:
+- `string` - A surrounding div and a formatted number input field.
+
+<br>
