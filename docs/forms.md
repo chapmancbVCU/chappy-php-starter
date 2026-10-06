@@ -308,6 +308,7 @@ Example:
     divAttrs: ['class' => 'form-group mb-3']
 ) ?>
 ```
+
 Parameters:
 - `string $label` - Sets the label for this input.
 - `string $name` - Sets the value for the name, for, and id attributes for this input.
