@@ -17,8 +17,8 @@
     * F. [dataListText()](#dataListText)
     * G. [dataListTime()](#dataListTime)
     * H. [dataListWeek()](#dataListWeek)
-errorBag
-hidden
+9. [errorBag()](#errorBag)
+10. [hidden()](#hidden)
 input
     color
     confirm
@@ -380,5 +380,30 @@ function dataListWeek(
 
 Returns:
 - `string` - A surrounding div and the input element of type week.
+
+<br>
+
+## 9. `errorBag()` <a id="errorBag"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Returns list of errors.  A wrapper for the `FormHelper::displayErrors()` function.
+
+Parameter:
+- `array|ArraySet $errors` - A list of errors and their description that is generated during server side form validation.
+
+Returns:
+- `string` - A string representation of a div element containing an input of type checkbox.
+
+<br>
+
+## 10. `hidden()` <a id="hidden"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Generates a hidden element. An example function call is shown below in figure 7:
+
+Example:
+```php
+hidden("example_name", "example_value");
+```
+
+This function accepts 2 arguments as described below:
+1. $name sets the value for the name, for, and id attributes.
+2. $value The value for the value attribute.
 
 <br>
