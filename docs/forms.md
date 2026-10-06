@@ -180,7 +180,7 @@ Returns:
 
 <br>
 
-## 8. `checkboxGroup()` <a id="checkbox-group"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. `checkboxInput()` <a id="checkbox-input"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Renders a single checkbox input with its label — the bare item only, no wrapping div and no error span (the caller owns the envelope). Label sits to the RIGHT of the box by default; pass `$labelRight = false` to place it on the left.
 
 `$inputAttrs` is expected already error-classed by the caller (mirrors radioInput).
