@@ -19,10 +19,10 @@
     * H. [dataListWeek()](#dataListWeek)
 9. [errorBag()](#errorBag)
 10. [hidden()](#hidden)
-input
-    color
-    confirm
-    currency
+11. [input()](#input)
+    * A. [color()](#color)
+    * B. [confirm()](#confirm)
+    * C. [currency()](#currency)
     dateSelector
     dateTimeLocal
     email
@@ -188,7 +188,7 @@ Returns:
 <br>
 
 ## 8. `datalists()` <a id="datalists"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This section contains a listing of input functions pared with a datalist for suggestions.
+This section contains a listing of input functions paired with a datalist for suggestions.
 
 Parameters common among all of these functions are:
 - `string $label` - Sets the label for this input.
@@ -407,3 +407,89 @@ This function accepts 2 arguments as described below:
 2. $value The value for the value attribute.
 
 <br>
+
+## 11. `input()` <a id="input"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This section contains a listing of input functions that are wrappers for the HTML input element.
+
+Parameters common among all of these functions are:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `string $listName` - The list name  and id for the datalist element.
+- `mixed $value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `array $options` - A list of suggestions.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+<br>
+
+### A. `color()` <a id="color">
+Renders an HTML div element that surrounds an input of type color.
+
+Signature:
+```php
+function color(
+    string $label,
+    string $name,
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type color.
+
+<br>
+
+### B. `confirm()` <a id="confirm">
+Renders an HTML div element that surrounds an input of type password confirm.  The built-in contract assumes that "confirm" is the name of the field.
+
+Example:
+```php
+<?= confirm(
+     "Confirm Password", 
+     $this->user->confirm, 
+     ['class' => 'form-control input-sm'], 
+     ['class' => 'form-group mb-3']) 
+?>
+```
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `mixed $value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and the input element of type password.
+
+<br>
+
+### C. `currency()` <a id="currency">
+Renders an HTML div element that surrounds an input of type currency.
+
+Example:
+```php
+<?= currency(
+    label: 'Amount',
+    name: "amount",
+    inputAttrs: ['class' => 'form-control input-sm'],
+    divAttrs: ['class' => 'form-group mb-3']
+) ?>
+```
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `string $intlNumberFormat` - The international number format.
+- `string $currency` - The 3 digit currency name.
+- `mixed $value` - The value we want to set.  We can use this to set  the value of the value attribute during form validation.  Default value  is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and the input element of type text for currency.
