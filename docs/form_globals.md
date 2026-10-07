@@ -793,6 +793,17 @@ Returns:
 ### O. `tel()` <a id="tel">
 Renders an HTML div element that surrounds an input of type tel.
 
+Example:
+```php
+tel(
+    'Home phone', 
+    'phone',
+    $this->contact->phone, 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']
+);
+```
+
 Signature:
 ```php
 function search(
