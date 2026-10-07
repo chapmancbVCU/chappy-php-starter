@@ -604,15 +604,13 @@ Returns:
 
 ## 18. `output()` <a id="output"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates an HTML output element. The output element is a container that can inject the results of a calculator or the outcome of a user action. An example function call is shown below in figure 9:
-<div style="text-align: center;">
-  <img src="assets/output-element.png" alt="Output element function call">
-  <p style="font-style: italic;">Figure 9 - Output element function call</p>
-</div>
 
-This function accepts 2 arguments as described below:
-1. $name Sets the value for the name attributes for this
-2. $for Sets the value for the for attribute.
+Parameters:
+- `string` - $name Sets the value for the name attributes for this input.
+- `string` - $for Sets the value for the for attribute.
 
+Returns:
+The HTML output element.
 <br>
 
 ## 19. `posted_values()` <a id="posted-values"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
