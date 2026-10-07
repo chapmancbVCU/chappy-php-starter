@@ -40,9 +40,8 @@
     * R. [urlInput()](#urlInput)
     * S. [week()](#week)
 12. [output()](#output)
-radio
-radioGroup
-rememberMe
+13. [Radio Buttons](#radio)
+14. [rememberMe()](#rememberMe)
 select
 submitBlock
 submit
@@ -889,4 +888,77 @@ Parameters:
 - `string` - $for Sets the value for the for attribute.
 
 Returns:
--`string` - The HTML output element.
+- `string` - The HTML output element.
+
+<br>
+
+## 13. `Radio Buttons` <a id="radio"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+We support radio button groups that allow users to populate the input using information from your database.
+
+Example:
+
+```php
+<?= radioGroup(
+    'inactive',                       // name
+    [0 => 'Active', 1 => 'Inactive'], // [value => label] map
+    $this->user->inactive,            // selected value: 0 or 1
+    ['class' => 'form-check-input'],  // inputAttrs (applied to every radio)
+    ['class' => 'form-group mb-3'],   // divAttrs
+    $this->displayErrors              // errors
+); ?>
+```
+
+Parameters:
+- `string $name`-  Sets the value for the name attribute for this input.
+- `array $options`-  The list of options we will use to populate the radio group.
+- `string|int|bool $selectedValue`-  The selected value.
+- `array $inputAttrs`-  The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs`-  The values used to set the class and other  attributes of the surrounding div.  The default value is an empty array.
+- `array $errors`-  The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and option select element.
+
+<br>
+
+**`radioInput()`**
+The `radioGroup()` function calls `radioInput` for each radio button to be generated.
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name attribute for this input.
+- `string $value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  It can be set with values during form validation and forms used for editing records.
+- `bool $checked` - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+
+Returns:
+- `string` - The HTML input element of type radio.
+
+The example code below demonstrates how a radio button are used.
+```php
+radioInput('HTML', 'html', 'fav_language', "HTML", $check1, ['class' => 'form-group mr-1']); 
+radioInput('CSS', 'css', 'fav_language', "CSS", $check2, ['class' => 'form-group mr-1']);
+```
+
+<br>
+
+## 14. `rememberMe()` <a id="rememberMe"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Generates a div containing an input of type checkbox with the label to 
+the left that is not part of a group.
+
+Example:
+<?= rememberMe(
+     'Remember Me', 
+     $this->login->getRememberMeChecked(), 
+     [], 
+     ['class' => 'form-group mb-3']); 
+?>
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `bool $checked` - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+
+Returns
+- `string` - A surrounding div and the input element of type checkbox.
