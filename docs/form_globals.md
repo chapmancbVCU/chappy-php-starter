@@ -32,13 +32,13 @@
     * J. [interval()](#interval)
     * K. [month()](#month)
     * L. [number()](#number)
-    password
-    search
-    tel
-    text
-    timeSelector
-    urlInput
-    week
+    * M. [password()](#password)
+    * N. [search()](#search)
+    * O. [tel()](#tel)
+    * P. [text()](#text)
+    * Q. [timeSelector()](#timeSelector)
+    * R. [urlInput()](#urlInput)
+    * S. [week()](#week)
 output
 radio
 radioGroup
@@ -726,5 +726,151 @@ Parameters:
 
 Returns:
 - `string` - A surrounding div and a formatted number input field.
+
+<br>
+
+### M. `password()` <a id="password">
+Renders an HTML div element that surrounds an input of type password.
+
+Example:
+```php
+<?= password(
+    'Password', 
+    'password', 
+    $this->login->password,
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']) 
+?>
+```
+
+Parameters:
+- `string $label` - Sets the label for this input.
+- `mixed $value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and the input element of type password.
+
+<br>
+
+### N. `search()` <a id="search">
+Renders an HTML div element that surrounds an input of type search.
+
+Signature:
+```php
+function search(
+    string $label,
+    string $name,
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type search.
+
+<br>
+
+### O. `tel()` <a id="tel">
+Renders an HTML div element that surrounds an input of type tel.
+
+Signature:
+```php
+function search(
+    string $label,
+    string $name,
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type tel.
+
+<br>
+
+### P. `text()` <a id="text">
+Renders an HTML div element that surrounds an input of type text.
+
+Signature:
+```php
+function text(
+    string $label,
+    string $name,
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type text.
+
+<br>
+
+### Q. `timeSelector()` <a id="timeSelector">
+Renders an HTML div element that surrounds an input of type time.
+
+Signature:
+```php
+function timeSelector(
+    string $label,
+    string $name,
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type time.
+
+<br>
+
+### R. `urlInput()` <a id="urlInput">
+Renders an HTML div element that surrounds an input of type url.
+
+Signature:
+```php
+function urlInput(
+    string $label,
+    string $name,
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type url.
+
+<br>
+
+### R. `week()` <a id="week">
+Renders an HTML div element that surrounds an input of type week.
+
+Signature:
+```php
+function week(
+    string $label,
+    string $name,
+    mixed $value = '',
+    array $inputAttrs = [],
+    array $divAttrs = [],
+    array $errors = []
+): string
+```
+
+Returns:
+- `string` - A surrounding div and the input element of type week.
 
 <br>
