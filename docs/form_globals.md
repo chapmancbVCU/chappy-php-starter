@@ -36,15 +36,16 @@
     * N. [search()](#search)
     * O. [tel()](#tel)
     * P. [text()](#text)
-    * Q. [timeSelector()](#timeSelector)
-    * R. [urlInput()](#urlInput)
-    * S. [week()](#week)
+    * Q. [textArea](#textArea)
+    * R. [timeSelector()](#timeSelector)
+    * S. [urlInput()](#urlInput)
+    * T. [week()](#week)
 12. [output()](#output)
 13. [Radio Buttons](#radio)
 14. [rememberMe()](#rememberMe)
-select
-submitBlock
-submit
+15. [select()](#select)
+16. [submitBlock()](#submitBlock)
+15. [submit()](#submit)
 textarea
 <br>
 
@@ -814,7 +815,41 @@ Returns:
 
 <br>
 
-### Q. `timeSelector()` <a id="timeSelector">
+### Q. `textArea()` <a id="textArea">
+Assists in the development of textarea in forms. It accepts parameters for setting attribute tags in the form section.  An example function call is shown below:
+
+```php
+<!-- Add this to the head section -->
+<?php $this->start('head') ?>
+<?= loadTinyMCE() ?>
+<?php $this->end() ?>
+
+<!-- The function call -->
+<?= textArea("Description", 
+    'description', 
+    $this->user->description, 
+    ['class' => 'form-control input-sm', 'placeholder' => 'Describe yourself here...'], 
+    ['class' => 'form-group mb-3']); 
+?>
+
+<!-- Wait until content is loaded before we initialize script -->
+<?= initTinyMCE('description') ?>
+```
+
+Parameters:
+- `string $label`  Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes  for this input.
+- `string|null $value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and the textarea element.
+
+<br>
+
+### R. `timeSelector()` <a id="timeSelector">
 Renders an HTML div element that surrounds an input of type time.
 
 Signature:
@@ -834,7 +869,7 @@ Returns:
 
 <br>
 
-### R. `urlInput()` <a id="urlInput">
+### S. `urlInput()` <a id="urlInput">
 Renders an HTML div element that surrounds an input of type url.
 
 Signature:
@@ -854,7 +889,7 @@ Returns:
 
 <br>
 
-### R. `week()` <a id="week">
+### T. `week()` <a id="week">
 Renders an HTML div element that surrounds an input of type week.
 
 Signature:
@@ -962,3 +997,73 @@ Parameters:
 
 Returns
 - `string` - A surrounding div and the input element of type checkbox.
+
+<br>
+
+## 14. `select()` <a id="select"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+HTML `<select>` elements are supported with the calls to the `FormHelper::selectBlock` function.
+
+Example:
+
+```php
+<?= select(
+    'Account Status',                 // label
+    'inactive',                       // name — matches the schema column
+    $this->user->inactive,            // current value: 0 or 1
+    [0 => 'Active', 1 => 'Inactive'], // [value => label] map
+    ['class' => 'form-select'],       // inputAttrs
+    ['class' => 'form-group mb-3'],   // divAttrs
+    $this->displayErrors              // errors
+); ?>
+```
+Parameters:
+- `string $label` - Sets the label for this input.
+- `string $name` - Sets the value for the name, for, and id attributes for this input.
+- `string $value` - The value we want to set as selected.
+- `array $options` - The list of options we will use to populate the select option dropdown.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `array $errors` - The errors array.  Default value is an empty array.
+
+Returns:
+- `string` - A surrounding div and option select element.
+
+<br>
+
+## 14. `submitBlock()` <a id="submitBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Generates a div containing an input of type submit.
+
+Example:
+```php
+submitBlock(
+    "Save", 
+    ['class'=>'btn btn-primary'], ['class'=>'text-end']
+);
+```
+Parameters:
+- `string $buttonText` - Sets the value of the text describing the button.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `array $divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+
+Returns:
+- `string` -  A surrounding div and the input element of type submit.
+
+<br>
+
+## 15. `submitBlock()` <a id="submitBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Create a input element of type submit.
+
+Example:
+```php
+submitTag(
+    "Save", 
+    ['class'=>'btn btn-primary']
+);
+```
+
+Parameters:
+- `string $buttonText` - Sets the value of the text describing the button.
+- `array $inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+
+Returns:
+- `string` -  A surrounding div and the input element of type submit.
