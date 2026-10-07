@@ -615,7 +615,8 @@ Parameters:
 - `string` - $for Sets the value for the for attribute.
 
 Returns:
--`string` - The HTML output element.
+- `string` - The HTML output element.
+
 <br>
 
 ## 19. `posted_values()` <a id="posted-values"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
