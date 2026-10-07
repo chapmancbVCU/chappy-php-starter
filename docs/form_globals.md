@@ -271,6 +271,21 @@ Returns:
 ### D. `dataListInterval()` <a id="dataListInterval">
 Renders an HTML div element that surrounds an input of type range with an accompanying datalist of suggestions.
 
+Example:
+```php
+<?= interval(
+    'Tip amount:', 
+    'tick', 
+    'tickmarks', 
+    0,
+    45,
+    '', 
+    ['0' => '0%', '10' => 'minimum', '20' => 'standard', '30' => 'generous', '50' => 'very generous'], 
+    [], 
+    ['class' => 'form-group mb-3 d-flex flex-column']) 
+?>
+```
+
 Signature:
 ```php
 function dataListInterval(
@@ -640,6 +655,19 @@ Returns:
 
 ### J. `interval()` <a id="interval">
 Renders an HTML div element that surrounds an input of type interval.
+
+Example:
+```php
+<?= interval(
+    'Tip amount:', 
+    'tick', 
+    0,
+    45,
+    '', 
+    [], 
+    ['class' => 'form-group mb-3 d-flex flex-column']) 
+?>
+```
 
 Signature:
 ```php
