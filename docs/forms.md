@@ -669,7 +669,7 @@ Parameters:
 Returns:
 - `string` - The HTML input element of type radio.
 
-The example code below demonstrates how a radio button groups is used.
+The example code below demonstrates how a radio button are used.
 ```php
 FormHelper::radioInput('HTML', 'html', 'fav_language', "HTML", $check1, ['class' => 'form-group mr-1']); 
 FormHelper::radioInput('CSS', 'css', 'fav_language', "CSS", $check2, ['class' => 'form-group mr-1']);
