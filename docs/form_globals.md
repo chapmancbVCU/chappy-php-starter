@@ -39,7 +39,7 @@
     * Q. [timeSelector()](#timeSelector)
     * R. [urlInput()](#urlInput)
     * S. [week()](#week)
-output
+12. [output()](#output)
 radio
 radioGroup
 rememberMe
@@ -874,3 +874,19 @@ Returns:
 - `string` - A surrounding div and the input element of type week.
 
 <br>
+
+## 12. `output()` <a id="output"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+
+Generates an HTML output element. The output element is a container that can inject the results of a calculator or the outcome of a user action.
+
+Example:
+```php
+output("my_name", "for_value")
+```
+
+Parameters:
+- `string` - $name Sets the value for the name attributes for this input.
+- `string` - $for Sets the value for the for attribute.
+
+Returns:
+-`string` - The HTML output element.
