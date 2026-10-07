@@ -46,7 +46,7 @@
 15. [select()](#select)
 16. [submitBlock()](#submitBlock)
 15. [submit()](#submit)
-textarea
+
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
