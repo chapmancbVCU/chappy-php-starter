@@ -473,6 +473,21 @@ Examples:
 
 <?= FormHelper::number('Empty (create mode)', 'empty_demo', '',
     ['decimals' => 2, 'useGrouping' => true]); ?>
+
+<?= number(
+   'Amount',
+    "amount",
+    '',
+    [
+        'decimals' => 2,        // 0 = integer, N = float precision
+        'useGrouping' => true,  // thousands separators on/off
+        'min' => 0,
+        'max' => 1000000,
+        'step' => 0.01,
+    ],
+   ['class' => 'form-control input-sm'],
+   ['class' => 'form-group mb-3']
+) ?>
 ```
 
 Parameters:
