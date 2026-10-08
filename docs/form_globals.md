@@ -801,6 +801,17 @@ function interval(
 ### K. `month()` <a id="month">
 Renders an HTML div element that surrounds an input of type month.
 
+Example:
+```php
+<?= month(
+    'Select a month:', 
+    'month', 
+    '', 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']
+) ?>
+```
+
 Signature:
 ```php
 function month(
@@ -914,6 +925,17 @@ Returns:
 ### N. `search()` <a id="search">
 Renders an HTML div element that surrounds an input of type search.
 
+Example:
+```php
+<?= search(
+    "Search", 
+    'search', 
+    '', 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']) 
+?>
+```
+
 Signature:
 ```php
 function search(
@@ -1019,6 +1041,17 @@ Returns:
 ### R. `timeSelector()` <a id="timeSelector">
 Renders an HTML div element that surrounds an input of type time.
 
+Example:
+```php
+<?= timeSelector(
+    'Select an time:', 
+    'time', 
+    '', 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']
+) ?>
+```
+
 Signature:
 ```php
 function timeSelector(
@@ -1039,6 +1072,17 @@ Returns:
 ### S. `urlInput()` <a id="urlInput">
 Renders an HTML div element that surrounds an input of type url.
 
+Example:
+```php
+<?= urlInput(
+    "URL", 
+    'url', 
+    '', 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']) 
+?>
+```
+
 Signature:
 ```php
 function urlInput(
@@ -1058,6 +1102,17 @@ Returns:
 
 ### T. `week()` <a id="week">
 Renders an HTML div element that surrounds an input of type week.
+
+Example:
+```php
+<?= week(
+    'Select an week:', 
+    'week', 
+    '', 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']
+) ?>
+```
 
 Signature:
 ```php
@@ -1123,8 +1178,8 @@ Returns:
 
 <br>
 
-**`radioInput()`**
-The `radioGroup()` function calls `radioInput` for each radio button to be generated.
+**`radio()`**
+Creates an input element of type radio with an accompanying label element.
 
 Parameters:
 - `string $label` - Sets the label for this input.
@@ -1138,8 +1193,8 @@ Returns:
 
 The example code below demonstrates how a radio button are used.
 ```php
-radioInput('HTML', 'html', 'fav_language', "HTML", $check1, ['class' => 'form-group mr-1']); 
-radioInput('CSS', 'css', 'fav_language', "CSS", $check2, ['class' => 'form-group mr-1']);
+radio('HTML', 'html', 'fav_language', "HTML", $check1, ['class' => 'form-group mr-1']); 
+radio('CSS', 'css', 'fav_language', "CSS", $check2, ['class' => 'form-group mr-1']);
 ```
 
 <br>
@@ -1183,6 +1238,7 @@ Example:
     $this->displayErrors              // errors
 ); ?>
 ```
+
 Parameters:
 - `string $label` - Sets the label for this input.
 - `string $name` - Sets the value for the name, for, and id attributes for this input.
