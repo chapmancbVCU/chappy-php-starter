@@ -312,7 +312,7 @@ Renders an HTML div element that surrounds an input of type range with an accomp
 
 Example:
 ```php
-<?= interval(
+<?= dataListInterval(
     'Tip amount:', 
     'tick', 
     'tickmarks', 
@@ -619,6 +619,17 @@ Returns:
 ### E. `dateTimeLocal()` <a id="dateTimeLocal">
 Renders an HTML div element that surrounds an input of type datetime-Local.
 
+Example:
+```php
+<?= dateTimeLocal(
+     'Start date:', 
+     'date', 
+     '',
+     ['class' => 'form-control input-sm'], 
+     ['class' => 'form-group mb-3']
+) ?>
+```
+
 Signature:
 ```php
 function dateTimeLocal(
@@ -638,6 +649,17 @@ Returns:
 
 ### F. `email()` <a id="email">
 Renders an HTML div element that surrounds an input of type email.
+
+Example:
+```php
+<?= email(
+    "Email", 
+    'email', 
+    $this->user->email, 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']) 
+?>
+```
 
 Signature:
 ```php
