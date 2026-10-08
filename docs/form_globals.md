@@ -205,6 +205,19 @@ Parameters common among all of these functions are:
 ### A. `dataListColor()` <a id="dataListColor">
 Renders an HTML div element that surrounds an input of type color with an accompanying datalist of suggestions.
 
+Example:
+```php
+<?= dataListColor(
+    'Pick a color:', 
+    'color', 
+    'colors', 
+    '', 
+    ['#800000', '#8B0000', '#A52A2A', '#DC143C'], 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']
+) ?>
+```
+
 Signature:
 ```php
 function dataListColor(
@@ -227,6 +240,19 @@ Returns:
 ### B. `dataListDate()` <a id="dataListDate">
 Renders an HTML div element that surrounds an input of type date with an accompanying datalist of suggestions.
 
+Example:
+```php
+<?= dataListDate(
+    'Start date:', 
+    'date', 
+    'dates', 
+    '', 
+    ['2026-10-07', '2026-10-08', '2026-10-09', '2026-10-10'], 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']
+) ?>
+```
+
 Signature:
 ```php
 function dataListDate(
@@ -248,6 +274,19 @@ Returns:
 
 ### C. `dataListDateTimeLocal()` <a id="dataListDateTimeLocal">
 Renders an HTML div element that surrounds an input of type datetime-local with an accompanying datalist of suggestions.
+
+Example:
+```php
+<?= dataListDateTimeLocal(
+    'Start date:', 
+    'date', 
+    'dates', 
+    '', 
+    ['2026-10-07T14:05', '2026-10-08T06:44', '2026-10-09T20:20', '2026-10-1009:56'], 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']
+) ?>
+```
 
 Signature:
 ```php
@@ -307,6 +346,19 @@ function dataListInterval(
 ### E. `dataListMonth()` <a id="dataListMonth">
 Renders an HTML div element that surrounds an input of type month with an accompanying datalist of suggestions.
 
+Example:
+```php
+<?= dataListMonth(
+    'Select a month:', 
+    'month', 
+    'months', 
+    '', 
+    ['2026-09', '2026-10', '2026-11', '2026-12'], 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']
+) ?>
+```
+
 Signature:
 ```php
 function dataListMonth(
@@ -328,6 +380,19 @@ Returns:
 
 ### F. `dataListText()` <a id="dataListText">
 Renders an HTML div element that surrounds an input of type text with an accompanying datalist of suggestions.
+
+Example:
+```php
+<?= dataListText(
+    'Select an animal:', 
+    'animal', 
+    'animals', 
+    '', 
+    ['Cat', 'Dog', 'Cow', 'Fish'], 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']
+) ?>
+```
 
 Signature:
 ```php
@@ -351,6 +416,19 @@ Returns:
 ### G. `dataListTime()` <a id="dataListTime">
 Renders an HTML div element that surrounds an input of type time with an accompanying datalist of suggestions.
 
+Example:
+```php
+<?= dataListTime(
+    'Select an time:', 
+    'time', 
+    'times', 
+    '', 
+    ['12:00', '13:00', '14:00', '15:00'], 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']
+) ?>
+```
+
 Signature:
 ```php
 function dataListTime(
@@ -372,6 +450,19 @@ Returns:
 
 ### H. `dataListWeek()` <a id="dataListWeek">
 Renders an HTML div element that surrounds an input of type week with an accompanying datalist of suggestions.
+
+Example:
+```php
+<?= dataListWeek(
+    'Select an week:', 
+    'week', 
+    'weeks', 
+    '', 
+    ['min' => '2026-32', 'max' => '2026-36'], 
+    ['class' => 'form-control input-sm'], 
+    ['class' => 'form-group mb-3']
+) ?>
+```
 
 Signature:
 ```php
