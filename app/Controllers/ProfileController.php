@@ -6,7 +6,6 @@ use Core\Models\ProfileImages;
 use Core\Services\AuthService;
 use Core\Services\UserService;
 use Core\Lib\Http\JsonResponse;
-use Core\Models\ACL;
 use Core\Session;
 
 /**
@@ -49,21 +48,18 @@ class ProfileController extends Controller {
             }
         }
 
-        $users = Users::find();
-        // dump($users);
-        $this->view->users = $users;
         // Toggle comments to use React.js
-        // $this->view->profileImages = $profileImages;
-        // $this->view->displayErrors = $user->getErrorMessages();
-        // $this->view->user = $user;
-        // $this->view->render('profile.edit');
+        $this->view->profileImages = $profileImages;
+        $this->view->displayErrors = $user->getErrorMessages();
+        $this->view->user = $user;
+        $this->view->render('profile.edit');
 
-        $props = [
-            'user' => $user,
-            'errors' => $user->getErrorMessages(),
-            'profileImages' => $profileImages,
-        ];
-        $this->view->renderJsx('profile.Edit', $props);
+        // $props = [
+        //     'user' => $user,
+        //     'errors' => $user->getErrorMessages(),
+        //     'profileImages' => $profileImages,
+        // ];
+        // $this->view->renderJsx('profile.Edit', $props);
     }
 
     /**
