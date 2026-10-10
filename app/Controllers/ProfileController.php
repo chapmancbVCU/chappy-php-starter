@@ -6,6 +6,7 @@ use Core\Models\ProfileImages;
 use Core\Services\AuthService;
 use Core\Services\UserService;
 use Core\Lib\Http\JsonResponse;
+use Core\Models\ACL;
 use Core\Session;
 
 /**
