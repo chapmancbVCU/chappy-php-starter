@@ -19,7 +19,7 @@
     * G. [DataListText()](#DataListText)
     * H. [DataListTime()](#DataListTime)
     * I. [DataListWeek()](#DataListWeek)
-. [errorBag()](#errorBag)
+10. [DisplayErrors()](#DisplayErrors)
 . [hidden()](#hidden)
 . [input()](#input)
     * . [color()](#color)
@@ -51,7 +51,7 @@
 
 <br>
 
-## 1 Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
 We spport React tailored form helper similar to the `Core\FormHelper` for generating form elements, setting attrbutes, and presenting server side errors.
 Setup by adding following line to your `.jsx` component:
 ``jsx
@@ -457,10 +457,16 @@ const options = {
 />
 ```
 
+<br>
 
+## 10. DisplayErrors <a id="DisplayErrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+Creates an error bag containing all existing errors.
 
+Parameter:
+- `{object}` - errors Object containing errors.
 
-
+Returns:
+- `{HTMLDivElement}` - The error bag.
 
 
 
