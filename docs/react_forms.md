@@ -20,11 +20,13 @@
     * H. [DataListTime()](#DataListTime)
     * I. [DataListWeek()](#DataListWeek)
 10. [DisplayErrors()](#DisplayErrors)
-. [hidden()](#hidden)
-. [input()](#input)
-    * . [color()](#color)
-    * . [confirm()](#confirm)
-    * . [currency()](#currency)
+11. [FieldErrors()](#FieldErrors)
+12. [Hidden()](#hidden)
+13. [Input Components](#input-components)
+    * A. [Input()](#Input)
+    * B. [Color()](#Color)
+    * C. [Confirm()](#Confirm)
+    * D. [Currency()](#Currency)
     * . [dateSelector()](#dateSelector)
     * . [dateTimeLocal()](#dateTimeLocal)
     * . [email()](#email)
@@ -60,9 +62,10 @@ mport Forms from "@chappy/components/Forms;
 # 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tabl-of-contents)</span>
 To getstarted, import the Forms module, pass in your props, and import the Forms module.
 ```jsx
-mport React from "react";
-mport Forms from "@chappy/components/Forms";
-mport {PasswordComplexityRequirements} from '@chappy/components/PasswordComplexityRequirements';
+import React from "react";
+import Forms from "@chappy/components/Forms";
+import {PasswordComplexityRequirements} from '@chappy/components/PasswordComplexityRequirements';
+
 function Register({ users, errors }) {
    return (
        <form action="" className="form" method="post" encType="multipart/form-data">
@@ -103,13 +106,13 @@ function Register({ users, errors }) {
 Add your elements and buttons by using supplied components.  Elements, buttons, and submit button components are described in the following sections.
 
 Example:
+{% raw %}
 ```jsx
 function Register({ users, errors }) {
     return (
         <form action="" className="form" method="post" encType="multipart/form-data">
             <Forms.CSRFInput />
-            <Forms.Input 
-                type="text"
+            <Forms.Text 
                 label="User name"
                 name="username"
                 value={user.username}
@@ -129,6 +132,7 @@ function Register({ users, errors }) {
     )
 }
 ```
+{% endraw %}
 
 Many components come with common prop names such as label, name, value, inputAttrs, divAttrs, and the optional error prop.  Use error prop if you want validation message displayed below any field.
 
@@ -147,12 +151,14 @@ Prop names:
 - `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.Button 
     label="My Button" 
     inputAttrs={{className: 'btn btn-large btn-primary'}} 
 />
 ```
+{% endraw %}
 
 <br>
 
@@ -166,6 +172,7 @@ Prop names:
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.ButtonBlock 
     label="My Button" 
@@ -173,6 +180,7 @@ Example:
     divAttrs={{className: 'text-end'}}
 />
 ```
+{% endraw %}
 
 <br>
 
@@ -189,6 +197,7 @@ Prop names:
 - `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.CheckBoxLeftLabel
     label="Remember Me"
@@ -198,6 +207,7 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+{% endraw %}
 
 <br>
 
@@ -214,6 +224,7 @@ Prop names:
 - `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.CheckBoxRightLabel
     label="Remember Me"
@@ -223,6 +234,7 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+{% endraw %}
 
 <br>
 
@@ -230,6 +242,7 @@ Example:
 Renders a group of checkboxes sharing one name (submitted as name[]), one wrapping div, and ONE error span. Label-right per box.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.CheckboxGroup 
     name='acls'
@@ -239,8 +252,9 @@ Example:
     divAttrs={{className: 'form-check'}}
 />
 ```
+{% endraw %}
 
-Parameters:
+Prop names:
 - `{string} name` - Group name WITHOUT '[]' (added internally), e.g. 'acls'.
 - `{object} options` - The list of options we will use to populate the radio group.  The default value is an empty object.
 - `{array} selectedValues` - Values that should render checked (the current set).
@@ -256,7 +270,12 @@ Returns:
 ## 7. `CSRFInput = ({})` <a id="CSRFInput"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Generates hidden component for csrf token.
 
-Parameter:
+Example:
+```jsx
+<Forms.CSRFInput />
+```
+
+Prop name:
 - `{string} name` - The name for the csrf token. 
 
 Returns:
@@ -267,7 +286,12 @@ Returns:
 ## 8. `CSRFToken = ({})` <a id="CSRFToken"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Returns CSRF token that is used when a form is submitted.
 
-Parameter:
+Example: 
+```jsx
+Forms.CSRFToken(e)
+```
+
+Prop name:
 - `{Event} e` - The event associated with a form submission.
 
 Returns:
@@ -278,22 +302,22 @@ Returns:
 ## 9. `datalists = ({})` <a id="datalists"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 This section contains a listing of input functions paired with a datalist for suggestions.
 
-Parameters common among all of these functions are:
+Prop names common among all of these functions are:
 - `{string} label` - Sets the label for this input.
 - `{string} name` - Sets the value for the name, for, and id attributes for this input.
 - `{string} listName` - The list name  and id for the datalist element.
 - `{string|number} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
 - `{array} options` - A list of suggestions.
-- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
-- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
-- `{Record<string, string[]>|string[]} [errors=[]]` - The errors array.  Default value is an empty array.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 <br>
 
 ### A. `DataListBlock()` <a id="DataListBlock">
 The parent of all datalist components.  
 
-It accepts an additional parameter:
+It accepts an additional prop:
 - `{string}` - type The input type.
 
 Returns:
@@ -305,6 +329,7 @@ Returns:
 Renders an HTML div element that surrounds an input of type color with an accompanying datalist of suggestions.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.DataListColor
     label="Choose a color"
@@ -316,6 +341,7 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+{% endraw %}
 
 <br>
 
@@ -323,6 +349,7 @@ Example:
 Renders an HTML div element that surrounds an input of type date with an accompanying datalist of suggestions.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.DataListDate
     label="Choose a date"
@@ -334,6 +361,7 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+{% endraw %}
 
 <br>
 
@@ -341,6 +369,7 @@ Example:
 Renders an HTML div element that surrounds an input of type datetime-local with an accompanying datalist of suggestions.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.DataListDateTimeLocal
     label="Start date:"
@@ -352,6 +381,7 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+{% endraw %}
 
 <br>
 
@@ -359,6 +389,7 @@ Example:
 Renders an HTML div element that surrounds an input of type range with an accompanying datalist of suggestions.
 
 Example:
+{% raw %}
 ```jsx
 const options = {
     0: 'Low',
@@ -379,6 +410,7 @@ const options = {
     divAttrs={{className: 'form-group mb-3 d-flex flex-column'}}
 />
 ```
+{% endraw %}
 
 <br>
 
@@ -386,6 +418,7 @@ const options = {
 Renders an HTML div element that surrounds an input of type month with an accompanying datalist of suggestions.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.DataListMonth
     label="Select a month:"
@@ -397,6 +430,7 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+{% endraw %}
 
 <br>
 
@@ -404,6 +438,7 @@ Example:
 Renders an HTML div element that surrounds an input of type text with an accompanying datalist of suggestions.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.DataListText
     label="Select an animal:"
@@ -415,6 +450,7 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+{% endraw %}
 
 <br>
 
@@ -422,6 +458,7 @@ Example:
 Renders an HTML div element that surrounds an input of type time with an accompanying datalist of suggestions.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.DataListTime
     label="Select a time:"
@@ -433,6 +470,7 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
+{% endraw %}
 
 <br>
 
@@ -440,6 +478,7 @@ Example:
 Renders an HTML div element that surrounds an input of type week with an accompanying datalist of suggestions.
 
 Example:
+{% raw %}
 ```jsx
 const options = {
     min: '2026-32',
@@ -456,39 +495,143 @@ const options = {
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
-
+{% endraw %}
 <br>
 
 ## 10. DisplayErrors <a id="DisplayErrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
 Creates an error bag containing all existing errors.
 
-Parameter:
+Prop name:
 - `{object}` - errors Object containing errors.
 
 Returns:
 - `{HTMLDivElement}` - The error bag.
 
+<br>
 
+## 11. FieldErrors <a id="FieldErrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+Renders an error message for a particular form field.
 
+Prop names:
+- `{object} errors` - The error object.
+- `{string} name` - Used to search errors object for key/form field.
 
+Returns:
+- `{HTMLSpanElement}` - The error message for a particular field.
 
+<br>
 
+## 12. Hidden <a id="Nidden"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+Generates a hidden input element.
 
+Example:
+```jsx
+<Forms.Hidden
+    name="hidden_name"
+    value={myValue}
+/>
+```
 
+Prop names:
+- `{string} name` - The value for the name and id attributes.
+- `{string|number}` - value The value for the value attribute.
 
+Returns:
+- `{HTMLInputElement}` The html input element with type hidden
 
+<br>
 
+## 13. Input Components <a id="input-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+This section contains a listing of input functions that are wrappers for the HTML input element.
 
+Prop names common among all of these functions are:
+- `{string} label` - Sets the label for this input.
+- `{string} name` - Sets the value for the name, for, and id attributes for this input.
+- `{string} listName` - The list name  and id for the datalist element.
+- `{string|number} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
+<br>
 
+### A. Input <a id="input">
+The parent of all input components.  
 
+Example:
+{% raw %}
+```jsx
+<Forms.Input 
+    type="text"
+    label="User name"
+    name="username"
+    value={user.username}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+{% endraw %}
 
+It accepts an additional prop:
+- `{string}` - type The input type.
 
+Returns:
+- `{HTMLDivElement}` - A surrounding div and the input element.
 
+<br>
 
+### B. Color <a id="Color">
+Assists in the development of input of type color in forms.  It accepts parameters for setting  attribute tags in the form section.
 
+Example:
+{% raw %}
+```jsx
+<Forms.Color
+    label="Choose a color"
+    name="color"
+    listName="colors"
+    value=""
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+{% endraw %}
 
+<br>
 
+### C. Confirm <a id="Confirm">
+Assists in the development of input of type text in forms.  It accepts parameters for setting attribute tags in the form section.
+
+Example:
+{% raw %}
+```jsx
+<Forms.Confirm 
+    label="Confirm Password"
+    name="confirm"
+    value={user.confirm}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+{% endraw %}
+
+<br>
+
+### D. Currency <a id="Currency">
+Renders an HTML div element that surrounds an input of type text for currency.
+
+Example:
+{% raw %}
+```jsx
+<Forms.Currency
+    label="Amount"
+    name="amount"
+    value=""
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/> 
+```
+{% endraw %}
 
 
 
@@ -531,6 +674,7 @@ Prop names:
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.SubmitBlock 
     label="Submit" 
@@ -538,7 +682,7 @@ Example:
     divAttrs={{className: 'text-end'}}
 />
 ```
-
+{% endraw %}
 <br>
 
 **`SubmitTag = ({})`**
@@ -551,6 +695,7 @@ Prop names:
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.SubmitTag 
     label="Submit" 
@@ -558,45 +703,11 @@ Example:
     divAttrs={{className: 'text-end'}}
 />
 ```
-
+{% endraw %}
 <br>
 
-## 4. Elements <a id="elements"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
 
-
-
-
-**`CSRFInput = ({})`**
-
-Generates hidden component for csrf token.
-
-Prop name:
-- `{string} name` - The name for the csrf token. 
-
-Example:
-```jsx
-<Forms.CSRFInput />
-```
-
-<br>
-
-**`CSRFToken = ({})`**
-
-Returns CSRF token that is used when a form is submitted.
-
-Argument:
-- `{Event} e` - The event associated with a form submission.
-
-Returns:
-- `{string}` - The CSRF token string.
-
-Example: 
-```jsx
-Forms.CSRFToken(e)
-```
-
-<br>
 
 **`Email()`**
 
@@ -611,6 +722,7 @@ Prop names:
 - `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.Email 
     label="Email"
@@ -620,53 +732,7 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
-
-<br>
-
-**`Hidden = ({})`**
-
-Generates a hidden input element.
-
-Prop names:
-- `{string} name` - The value for the name and id attributes.
-- `{string|number}` - value The value for the value attribute.
-
-Example:
-```jsx
-<Forms.Hidden
-    name="hidden_name"
-    value={myValue}
-/>
-```
-
-<br>
-
-**`Input = ({})`**
-
-Assists in the development of forms input blocks in forms.  It accepts parameters for setting attribute tags in the form section.  Not to be used for inputs of type "Submit"  For submit inputs use the submitBlock or submitTag functions.
-
-Prop names:
-- `{'color'|'date'|'date-local'|'email'|'file'|'month'|'number'|'password'|'range'|'search'|'tel'|'text'|'time'|'url'|'week'} [type='text']` - The input type we want to generate.
-- `{string} label` - Sets the label for this input.
-- `{string} name` - Sets the value for the name, for, and id attributes for this input.
-- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
-- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
-- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
-- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
-
-Example:
-```jsx
-<Forms.Input 
-    type="text"
-    label="User name"
-    name="username"
-    value={user.username}
-    inputAttrs={{className: 'form-control input-sm'}}
-    divAttrs={{className: 'form-group mb-3'}}
-/>
-```
-
-<br>
+{% endraw %}
 
 **`Output = ({})`**
 
@@ -700,6 +766,7 @@ Prop names:
 - `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.Radio 
     label="HTML"
@@ -718,7 +785,7 @@ Example:
     inputAttrs={{className: 'form-group me-1'}}
 />
 ```
-
+{% endraw %}
 <br>
 
 **`RichText = ({})`**
@@ -739,6 +806,7 @@ Prop names:
 - `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.RichText
     label="Description"
@@ -748,7 +816,7 @@ Example:
     divAttrs={{ className: 'form-group mb-3' }}
 />
 ```
-
+{% endraw %}
 <br>
 
 **`Select = ({})`**
@@ -767,6 +835,7 @@ Prop names:
 - `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.Select 
     label="Example"
@@ -778,7 +847,7 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
-
+{% endraw %}
 <br>
 
 **`Tel = ({})`**
@@ -794,6 +863,7 @@ Prop names:
 - `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.Tel 
     label="Cell Phone"
@@ -803,7 +873,7 @@ Example:
     divAttrs={{className: 'form-group mb-3'}}
 />
 ```
-
+{% endraw %}
 <br>
 
 **`TextArea = ({})`**
@@ -819,6 +889,7 @@ Prop names:
 - `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
 Example:
+{% raw %}
 ```jsx
 <Forms.TextArea
     label="Description"
@@ -828,3 +899,4 @@ Example:
     divAttrs={{ className: 'form-group mb-3' }}
 />
 ```
+{% endraw %}
