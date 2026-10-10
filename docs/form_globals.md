@@ -1044,7 +1044,7 @@ Renders an HTML div element that surrounds an input of type time.
 Example:
 ```php
 <?= timeSelector(
-    'Select an time:', 
+    'Select a time:', 
     'time', 
     '', 
     ['class' => 'form-control input-sm'], 
