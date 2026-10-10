@@ -4,45 +4,79 @@
 1. [Overview](#overview)
 2. [Setup](#setup)
 3. [Buttons](#buttons)
-4. [Elements](#elements)
+4. [CheckBoxLeftLabel()](#CheckBoxLeftLabel)
+5. [CheckBoxRightLabel()](#CheckBoxRightLabel)
+6. [CheckboxGroup()](#CheckboxGroup)
+7. [CSRFInput()](#CSRFInput)
+8. [CSRFToken()](#CSRFToken)
+9. [datalists](#datalists)
+    * A. [DataListBlock()](#DataListBlock)
+    * B. [DataListColor()](#DataListColor)
+    * C. [DataListDate()](#DataListDate)
+    * D. [DataListDateTimeLocal()](#DataListDateTimeLocal)
+    * E. [DataListInterval()](#DataListInterval)
+    * F. [DataListMonth()](#DataListMonth)
+    * G. [DataListText()](#DataListText)
+    * H. [DataListTime()](#DataListTime)
+    * I. [DataListWeek()](#DataListWeek)
+. [errorBag()](#errorBag)
+. [hidden()](#hidden)
+. [input()](#input)
+    * . [color()](#color)
+    * . [confirm()](#confirm)
+    * . [currency()](#currency)
+    * . [dateSelector()](#dateSelector)
+    * . [dateTimeLocal()](#dateTimeLocal)
+    * . [email()](#email)
+    * . [fileSelector()](#fileSelector)
+    * . [imageButton()](#imageButton)
+    * . [imageBlock()](#imageBlock)
+    * . [interval()](#interval)
+    * . [month()](#month)
+    * . [number()](#number)
+    * . [password()](#password)
+    * . [search()](#search)
+    * . [tel()](#tel)
+    * . [text()](#text)
+    * . [textArea](#textArea)
+    * . [timeSelector()](#timeSelector)
+    * . [urlInput()](#urlInput)
+    * . [week()](#week)
+. [output()](#output)
+. [Radio Buttons](#radio)
+. [rememberMe()](#rememberMe)
+. [select()](#select)
+. [submitBlock()](#submitBlock)
+. [submit()](#submit)
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-We support React tailored form helper similar to the `Core\FormHelper` for generating form elements, setting attributes, and presenting server side errors.
-
+## 1 Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+We spport React tailored form helper similar to the `Core\FormHelper` for generating form elements, setting attrbutes, and presenting server side errors.
 Setup by adding following line to your `.jsx` component:
+``jsx
+mport Forms from "@chappy/components/Forms;
+``<br>
+# 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tabl-of-contents)</span>
+To getstarted, import the Forms module, pass in your props, and import the Forms module.
 ```jsx
-import Forms from "@chappy/components/Forms";
-```
-
-<br>
-
-## 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-To get started, import the Forms module, pass in your props, and import the Forms module.
-
-```jsx
-import React from "react";
-import Forms from "@chappy/components/Forms";
-import {PasswordComplexityRequirements} from '@chappy/components/PasswordComplexityRequirements';
-
+mport React from "react";
+mport Forms from "@chappy/components/Forms";
+mport {PasswordComplexityRequirements} from '@chappy/components/PasswordComplexityRequirements';
 function Register({ users, errors }) {
-    return (
-        <form action="" className="form" method="post" encType="multipart/form-data">
-        </form>
-    )
-}
-```
+   return (
+       <form action="" className="form" method="post" encType="multipart/form-data">
+       </form>
+   )
 
+``
 <br>
-
 **CSRF**
-
 Every form needs a CSRF token to prevent CSRF attacks.  Add the `<Forms.CSRF />` component to the top of your form.
-```jsx
-    <form action="" className="form" method="post" encType="multipart/form-data">
-        <Forms.CSRFInput />
-    </form>
+``jsx
+   <form action="" className="form" method="post" encType="multipart/form-data">
+       <Forms.CSRFInput />
+   </form>
 ```
 
 <br>
@@ -142,6 +176,345 @@ Example:
 
 <br>
 
+## 4. `CheckBoxLeftLabel = ({})` <a id="CheckBoxLeftLabel"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Generates a div containing an input of type checkbox with the label to the left.
+
+Prop names:
+- `{string} label` - Sets the label for this input.
+- `{string} name` - Sets the value for the name, for, and id attributes for this input.
+- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `{bool} checked` - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
+
+Example:
+```jsx
+<Forms.CheckBoxLeftLabel
+    label="Remember Me"
+    name="remember_me"
+    value="on"
+    checked={rememberMeChecked}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+
+<br>
+
+## 5. `CheckBoxRightLabel = ({})` <a id="CheckBoxRightLabel"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Generates a div containing an input of type checkbox with the label to the right.
+
+Prop names:
+- `{string} label` - Sets the label for this input.
+- `{string} name` - Sets the value for the name, for, and id attributes for this input.
+- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `{bool} checked` - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
+
+Example:
+```jsx
+<Forms.CheckBoxRightLabel
+    label="Remember Me"
+    name="remember_me"
+    value="on"
+    checked={rememberMeChecked}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+
+<br>
+
+## 6. `CheckboxGroup = ({})` <a id="CheckboxGroup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Renders a group of checkboxes sharing one name (submitted as name[]), one wrapping div, and ONE error span. Label-right per box.
+
+Example:
+```jsx
+<Forms.CheckboxGroup 
+    name='acls'
+    label='acls
+    options={acls}
+    value={userAcls}
+    divAttrs={{className: 'form-check'}}
+/>
+```
+
+Parameters:
+- `{string} name` - Group name WITHOUT '[]' (added internally), e.g. 'acls'.
+- `{object} options` - The list of options we will use to populate the radio group.  The default value is an empty object.
+- `{array} selectedValues` - Values that should render checked (the current set).
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
+- `{Record<string,string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
+
+Returns:
+- `{HTMLDivElement}` - A surrounding div and the accompanying nested group of checkbox inputs.
+
+<br>
+
+## 7. `CSRFInput = ({})` <a id="CSRFInput"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Generates hidden component for csrf token.
+
+Parameter:
+- `{string} name` - The name for the csrf token. 
+
+Returns:
+- `{HTMLInputElement}` - Input element of type hidden containing csrf token.
+
+<br>
+
+## 8. `CSRFToken = ({})` <a id="CSRFToken"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Returns CSRF token that is used when a form is submitted.
+
+Parameter:
+- `{Event} e` - The event associated with a form submission.
+
+Returns:
+- `{string}` - The CSRF token string.
+
+<br>
+
+## 9. `datalists = ({})` <a id="datalists"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+This section contains a listing of input functions paired with a datalist for suggestions.
+
+Parameters common among all of these functions are:
+- `{string} label` - Sets the label for this input.
+- `{string} name` - Sets the value for the name, for, and id attributes for this input.
+- `{string} listName` - The list name  and id for the datalist element.
+- `{string|number} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
+- `{array} options` - A list of suggestions.
+- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty array.
+- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty array.
+- `{Record<string, string[]>|string[]} [errors=[]]` - The errors array.  Default value is an empty array.
+
+<br>
+
+### A. `DataListBlock()` <a id="DataListBlock">
+The parent of all datalist components.  
+
+It accepts an additional parameter:
+- `{string}` - type The input type.
+
+Returns:
+- `{HTMLDListElement}` - A surrounding div and the input element.
+
+<br>
+
+### B. `DataListColor()` <a id="DataListColor">
+Renders an HTML div element that surrounds an input of type color with an accompanying datalist of suggestions.
+
+Example:
+```jsx
+<Forms.DataListColor
+    label="Choose a color"
+    name="color"
+    listName="colors"
+    value=""
+    options={['#800000', '#8B0000', '#A52A2A', '#DC143C']}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+
+<br>
+
+### C. `DataListDate()` <a id="DataListDate">
+Renders an HTML div element that surrounds an input of type date with an accompanying datalist of suggestions.
+
+Example:
+```jsx
+<Forms.DataListDate
+    label="Choose a date"
+    name="date"
+    listName="dates"
+    value=""
+    options={['2026-10-07', '2026-10-08', '2026-10-09', '2026-10-10']}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+
+<br>
+
+### D. `DataListDateTimeLocal()` <a id="DataListDateTimeLocal">
+Renders an HTML div element that surrounds an input of type datetime-local with an accompanying datalist of suggestions.
+
+Example:
+```jsx
+<Forms.DataListDateTimeLocal
+    label="Start date:"
+    name="date"
+    listName="dates"
+    value=""
+    options={['2026-10-07T14:05', '2026-10-08T06:44', '2026-10-09T20:20', '2026-10-1009:56']}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+
+<br>
+
+### E. `DataListInterval()` <a id="DataListInterval">
+Renders an HTML div element that surrounds an input of type range with an accompanying datalist of suggestions.
+
+Example:
+```jsx
+const options = {
+    0: 'Low',
+    10: 'Fair',
+    20: 'Medium',
+    25: 'Good',
+    45: 'High'
+};
+
+<Forms.DataListInterval
+    label="Tip amount:"
+    name="tick"
+    listName="tickmarks"
+    min={0}
+    max={45}
+    value=""
+    options={options}
+    divAttrs={{className: 'form-group mb-3 d-flex flex-column'}}
+/>
+```
+
+<br>
+
+### F. `DataListMonth()` <a id="DataListMonth">
+Renders an HTML div element that surrounds an input of type month with an accompanying datalist of suggestions.
+
+Example:
+```jsx
+<Forms.DataListMonth
+    label="Select a month:"
+    name="month"
+    listName="months"
+    value=""
+    options={['2026-09', '2026-10', '2026-11', '2026-12']}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+
+<br>
+
+### G. `DataListText()` <a id="DataListText">
+Renders an HTML div element that surrounds an input of type text with an accompanying datalist of suggestions.
+
+Example:
+```jsx
+<Forms.DataListText
+    label="Select an animal:"
+    name="animal"
+    listName="animals"
+    value=""
+    options={['Cat', 'Dog', 'Cow', 'Fish']}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+
+<br>
+
+### H. `DataListTime()` <a id="DataListTime">
+Renders an HTML div element that surrounds an input of type time with an accompanying datalist of suggestions.
+
+Example:
+```jsx
+<Forms.DataListTime
+    label="Select a time:"
+    name="time"
+    listName="times"
+    value=""
+    options={['12:00', '13:00', '14:00', '15:00']}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+
+<br>
+
+### I. `DataListWeek()` <a id="DataListWeek">
+Renders an HTML div element that surrounds an input of type week with an accompanying datalist of suggestions.
+
+Example:
+```jsx
+const options = {
+    min: '2026-32',
+    max: '2026-36'
+};
+
+<Forms.DataListWeek
+    label="Select a week:"
+    name="week"
+    listName="weeks"
+    value=""
+    options={options}
+    inputAttrs={{className: 'form-control input-sm'}}
+    divAttrs={{className: 'form-group mb-3'}}
+/>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
 **`SubmitBlock = ({})`**
 
 Generates a div containing an input of type submit.
@@ -184,57 +557,9 @@ Example:
 
 ## 4. Elements <a id="elements"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
-**`CheckBoxLeftLabel = ({})`**
 
-Generates a div containing an input of type checkbox with the label to the left.
 
-Prop names:
-- `{string} label` - Sets the label for this input.
-- `{string} name` - Sets the value for the name, for, and id attributes for this input.
-- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
-- `{bool} checked` - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
-- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
-- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
-- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
 
-Example:
-```jsx
-<Forms.CheckBoxLeftLabel
-    label="Remember Me"
-    name="remember_me"
-    value="on"
-    checked={rememberMeChecked}
-    divAttrs={{className: 'form-group mb-3'}}
-/>
-```
-
-<br>
-
-**`CheckBoxLeftRight = ({})`**
-
-Generates a div containing an input of type checkbox with the label to the right.
-
-Prop names:
-- `{string} label` - Sets the label for this input.
-- `{string} name` - Sets the value for the name, for, and id attributes for this input.
-- `{string} value` - The value we want to set.  We can use this to set the value of the value attribute during form validation.  Default value is the empty string.  It can be set with values during form validation and forms used for editing records.
-- `{bool} checked` - The value for the checked attribute.  If true this attribute will be set as checked="checked".  The default value is false.  It can be set with values during form validation and forms used for editing records.
-- `{object} inputAttrs` - The values used to set the class and other attributes of the input string.  The default value is an empty object.
-- `{object} divAttrs` - The values used to set the class and other attributes of the surrounding div.  The default value is an empty object.
-- `{Record<string, string[]>|string[]} [errors=[]]` - The errors object.  Default value is an empty object.
-
-Example:
-```jsx
-<Forms.CheckBoxLeftLabel
-    label="Remember Me"
-    name="remember_me"
-    value="on"
-    checked={rememberMeChecked}
-    divAttrs={{className: 'form-group mb-3'}}
-/>
-```
-
-<br>
 
 **`CSRFInput = ({})`**
 
