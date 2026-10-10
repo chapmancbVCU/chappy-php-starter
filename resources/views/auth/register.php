@@ -16,7 +16,7 @@
             <!-- Primary profile details -->
             <?= $this->component('edit_profile_details') ?>
             
-            <?= input('file', "Upload Profile Image (Optional)", 'profileImage', '', ['class' => 'form-control', 'accept' => 'image/png image/jpeg image/png'], ['class' => 'form-group mb-3']) ?>
+            <?= fileSelector("Upload Profile Image (Optional)", 'profileImage', ['class' => 'form-control', 'accept' => 'image/png image/jpeg image/png'], ['class' => 'form-group mb-3']) ?>
             
             <?= $this->component('password_complexity_requirements', true); ?>
 
