@@ -419,7 +419,7 @@ Renders an HTML div element that surrounds an input of type time with an accompa
 Example:
 ```php
 <?= dataListTime(
-    'Select an time:', 
+    'Select a time:', 
     'time', 
     'times', 
     '', 
