@@ -20,7 +20,7 @@
             
             <!-- Manage profile images section -->
             <?= fileSelector("Upload Profile Image (Optional)", 'profileImage', ['class' => 'form-control', 'accept' => 'image/gif image/jpeg image/png'], ['class' => 'form-group mb-3']) ?>
-            <?= $this->component('manage_profile_images') ?>
+            <?= $this->component('manage_profile_images', true) ?>
 
             <div class="col-md-12 text-end">
                 <a href="<?=route('profile')?>" class="btn btn-default">Cancel</a>
