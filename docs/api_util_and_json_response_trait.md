@@ -14,11 +14,12 @@
     * B. [apiCsrfCheck()](#api-csrf-check)
     * C. [get()](#get)
     * D. [jsonError()](#json-error)
-    * E. [jsonResponse()](#json-response)
-    * F. [preflight()](#preflight)
-    * G. [setRawInputOverride](#raw-input-override)
-    * H. [Recommended Response Shapes](#response-shapes)
-    * I. [Practical Example: PATCH Update](#practical-example)
+    * E. [jsonRedirect](#json-redirect)
+    * F. [jsonResponse()](#json-response)
+    * G. [preflight()](#preflight)
+    * H. [setRawInputOverride](#raw-input-override)
+    * I. [Recommended Response Shapes](#response-shapes)
+    * J. [Practical Example: PATCH Update](#practical-example)
 
 <br>
 
@@ -486,7 +487,33 @@ $this->jsonError('Validation failed.', 422, [
 
 <br>
 
-### E. `jsonResponse()` <a id="json-response"></a>
+### E. `jsonRedirect()` <a id="json-redirect"></a>
+Returns json response success = true and sets path for redirect.
+
+Parameter:
+- `string $url` - The url for redirection.
+
+Example within a controller action:
+```php
+public function deleteAction(int $id) {
+    try {
+        if(!$this->apiCsrfCheck()) {
+            return $this->jsonError('Corrupted token');
+        }
+        
+        UserService::deleteIfAllowed($id, false);
+
+        // Respond success and send redirect message.
+        return $this->jsonRedirect('admindashboard.index');
+    } catch (Throwable $e) {
+        return $this->jsonError('Server error: ' .  $e, 500);
+    } 
+}
+```
+
+<br>
+
+### F. `jsonResponse()` <a id="json-response"></a>
 Sends a JSON response with headers and status code.
 
 Parameters:
@@ -531,7 +558,7 @@ $this->jsonResponse([
 
 <br>
 
-### F. `preflight()` <a id="preflight"></a>
+### G. `preflight()` <a id="preflight"></a>
 ```php
 public function preflight(): void
 ```
@@ -562,7 +589,7 @@ $this->preflight();
 
 <br>
 
-### G. `setRawInputOverride()` <a id="raw-input-override"></a>
+### H. `setRawInputOverride()` <a id="raw-input-override"></a>
 Inject JSON body by providing payload parameter.  Also performs cleanup to avoid leaking into other tests.
 
 Parameter:
@@ -570,7 +597,7 @@ Parameter:
 
 <br>
 
-### H. Recommended Response Shapes <a id="response-shapes"></a>
+### I. Recommended Response Shapes <a id="response-shapes"></a>
 To align cleanly with your React utilities (where `apiRequest()` treats `success: false` as an error), use these conventions:
 
 <br>
@@ -600,7 +627,7 @@ $this->jsonError('Invalid CSRF token.', 419);
 
 <br>
 
-### I. Practical Example: PATCH Update <a id="practicale-example"></a>
+### J. Practical Example: PATCH Update <a id="practicale-example"></a>
 ```php
 public function updateAction(): void
 {
