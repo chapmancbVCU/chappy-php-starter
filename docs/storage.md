@@ -25,6 +25,8 @@ title: Session and Local storage
 7. [Testing with Vitest](#testing)
 8. [API Reference](#api-reference)
 
+<br>
+
 <a id="overview"></a>
 ## 1. Overview [Table of Contents](#table-of-contents)
 
@@ -44,12 +46,14 @@ Common uses include:
 - Tracking recently viewed items
 - Keeping a guest's shopping cart before they log in
 
+<br>
+
 <a id="configuration"></a>
 ## 2. Configuration [Table of Contents](#table-of-contents)
 
 By default all keys are prefixed with `chappy:`. You can change this by adding the following to your `.env` file:
 
-```
+```bash
 VITE_STORAGE_PREFIX=my_app
 ```
 
@@ -57,33 +61,39 @@ Setting a unique prefix is recommended when you run more than one Chappy.php pro
 
 **NOTE:** Only variables starting with `VITE_` are exposed to the browser. Never put secrets in a `VITE_` variable. Because Vite reads this value at build time, restart `npm run dev` or rebuild your assets after changing it.
 
+<br>
+
 <a id="storage-utility"></a>
 ## 3. The storage Utility [Table of Contents](#table-of-contents)
+
+<br>
 
 <a id="importing"></a>
 ### A. Importing
 
 The utility exports two stores, `local` and `session`, which share the same methods.
 
-```
+```jsx
 import { local, session } from '@chappy/utils/storage';
 ```
 
 You can also use the default export:
 
-```
+```jsx
 import storage from '@chappy/utils/storage';
 
 storage.local.get('weather.units');
 storage.session.get('catalog.filters');
 ```
 
+<br>
+
 <a id="reading-and-writing"></a>
 ### B. Reading and Writing Values
 
 Use `set()` to save a value and `get()` to read it back.
 
-```
+```jsx
 local.set('weather.units', 'metric');
 
 const units = local.get('weather.units', 'imperial');
@@ -93,7 +103,7 @@ The second argument to `get()` is a fallback that is returned when the key does 
 
 Any JSON-serializable value can be stored:
 
-```
+```jsxc
 session.set('catalog.filters', { genre: 'rpg', platform: 'switch', sort: 'price' });
 
 const filters = session.get('catalog.filters', {});
@@ -101,18 +111,20 @@ const filters = session.get('catalog.filters', {});
 
 `set()` returns `true` when the value was saved and `false` when it could not be saved, such as when the storage quota is full. It never throws, so your component will not crash if a write fails.
 
-```
+```jsx
 if (!local.set('recent.games', ids)) {
     // Value was not saved. Continue without it.
 }
 ```
+
+<br>
 
 <a id="ttl"></a>
 ### C. Expiring Values with TTL
 
 Pass a `ttl` option in seconds to make a value expire. Expired values are treated as missing and `get()` returns the fallback.
 
-```
+```jsx
 // Expires in one week
 local.set('recent.games', ids, { ttl: 60 * 60 * 24 * 7 });
 
@@ -122,29 +134,33 @@ session.set('catalog.filters', filters, { ttl: 900 });
 
 When no `ttl` is provided the value never expires.
 
+<br>
+
 <a id="removing-and-clearing"></a>
 ### D. Removing and Clearing Values
 
 Remove a single key:
 
-```
+```jsx
 local.remove('weather.units');
 ```
 
 List all keys saved by your app:
 
-```
+```jsx
 const keys = local.keys(); // ['weather.units', 'recent.games']
 ```
 
 Remove every key saved by your app:
 
-```
+```jsx
 local.clear();
 session.clear();
 ```
 
 `clear()` only removes keys that use your prefix. Data saved by other apps or libraries on the same origin is left alone.
+
+<br>
 
 <a id="fallback-behavior"></a>
 ### E. Fallback Behavior
@@ -153,18 +169,20 @@ Some browsers block storage, for example in private browsing mode or when the us
 
 You can check which mode a store is using with the `persistent` property:
 
-```
+```jsx
 if (!local.persistent) {
     console.info('Preferences will not be saved after this page reloads.');
 }
 ```
+
+<br>
 
 <a id="react-hooks"></a>
 ## 4. React Hooks [Table of Contents](#table-of-contents)
 
 The hooks are imported from the same module:
 
-```
+```jsx
 import { useLocalStorage, useSessionStorage } from '@chappy/utils/storage';
 ```
 
@@ -174,12 +192,14 @@ Each hook returns an array with three items:
 2. A setter function
 3. A function that removes the key
 
+<br>
+
 <a id="use-local-storage"></a>
 ### A. useLocalStorage
 
 Saves a value in `localStorage`. The value persists after the browser is closed and is shared across all tabs.
 
-```
+```jsx
 function UnitToggle() {
     const [units, setUnits] = useLocalStorage('weather.units', 'imperial');
 
@@ -194,7 +214,7 @@ function UnitToggle() {
 
 The setter also accepts an updater function, just like `useState`:
 
-```
+```jsx
 const [recent, setRecent] = useLocalStorage('recent.games', [], { ttl: 60 * 60 * 24 * 7 });
 
 function addRecent(id) {
@@ -204,12 +224,14 @@ function addRecent(id) {
 
 The third argument is an options object. When `ttl` is set, it applies to every write made through the setter.
 
+<br>
+
 <a id="use-session-storage"></a>
 ### B. useSessionStorage
 
 Saves a value in `sessionStorage`. The value persists through page reloads but only within the current tab. It is removed when the tab is closed.
 
-```
+```jsx
 function ProductDescriptionField() {
     const [draft, setDraft, clearDraft] = useSessionStorage('product.draft', '');
 
@@ -228,16 +250,20 @@ function ProductDescriptionField() {
 }
 ```
 
+<br>
+
 <a id="use-storage"></a>
 ### C. useStorage
 
 `useLocalStorage` and `useSessionStorage` are shortcuts for the more general `useStorage` hook. Use it when the storage type is decided at runtime.
 
-```
+```jsx
 import { useStorage } from '@chappy/utils/storage';
 
 const [value, setValue, remove] = useStorage(rememberMe ? 'local' : 'session', 'login.email', '');
 ```
+
+<br>
 
 <a id="keeping-in-sync"></a>
 ### D. Keeping Components in Sync
@@ -251,9 +277,11 @@ This also works when values are changed with the utility functions directly. For
 
 **TIP:** The initial value is only read on the first render, so it is safe to pass an object or array literal:
 
-```
+```jsx
 const [filters, setFilters] = useSessionStorage('catalog.filters', { genre: 'all', sort: 'name' });
 ```
+
+<br>
 
 <a id="choosing"></a>
 ## 5. Choosing Between Local and Session Storage [Table of Contents](#table-of-contents)
@@ -267,6 +295,8 @@ const [filters, setFilters] = useSessionStorage('catalog.filters', { genre: 'all
 
 As a rule of thumb, use `local` for things the user would expect to be remembered next time they visit, and `session` for things that only matter while they are working in the current tab.
 
+<br>
+
 <a id="security"></a>
 ## 6. Security Considerations [Table of Contents](#table-of-contents)
 
@@ -277,19 +307,21 @@ Data in web storage can be read by any JavaScript running on the page. If your a
 - **Do** treat stored values as untrusted input. A user can edit storage in their browser's developer tools, so validate anything that is sent back to the server.
 - **Do** clear user-specific data when a user logs out, especially on shared computers:
 
-```
+```jsx
 import { local, session } from '@chappy/utils/storage';
 
 local.clear();
 session.clear();
 ```
 
+<br>
+
 <a id="testing"></a>
 ## 7. Testing with Vitest [Table of Contents](#table-of-contents)
 
 The jsdom environment used by Vitest provides both `localStorage` and `sessionStorage`, so no extra setup is required. Clear storage before each test to keep tests independent.
 
-```
+```jsx
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { local } from '@chappy/utils/storage';
 
@@ -321,7 +353,7 @@ describe('storage', () => {
 
 To test hooks, render a component with `@testing-library/react` and wrap updates in `act()`:
 
-```
+```jsx
 import { act, renderHook } from '@testing-library/react';
 import { useLocalStorage } from '@chappy/utils/storage';
 
@@ -337,12 +369,14 @@ it('updates the stored value', () => {
 
 To simulate a change from another tab, dispatch a `StorageEvent`:
 
-```
+```jsx
 act(() => {
     localStorage.setItem('chappy:units', JSON.stringify({ value: 'metric' }));
     window.dispatchEvent(new StorageEvent('storage', { key: 'chappy:units' }));
 });
 ```
+
+<br>
 
 <a id="api-reference"></a>
 ## 8. API Reference [Table of Contents](#table-of-contents)
