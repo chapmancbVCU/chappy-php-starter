@@ -38,8 +38,8 @@ export default defineConfig(({ command }) => ({
             '@tinymce/tinymce-react': path.resolve(__dirname, 'node_modules/@tinymce/tinymce-react'),
             '@': path.resolve(__dirname, 'resources/js'),
             '@chappy': path.resolve(__dirname, 'vendor/chappy-php/chappy-php-framework/src/React'),
-            '@core-css': path.resolve(__dirname, 'vendor/chappy-php/src/chappy-php-framework/css'),
-            '@core-js': path.resolve(__dirname, 'vendor/chappy-php/src/chappy-php-framework/js'),
+            '@core-css': path.resolve(__dirname, 'vendor/chappy-php/chappy-php-frameworksrc/src/css'),
+            '@core-js': path.resolve(__dirname, 'vendor/chappy-php/chappy-php-framework/src/js'),
             '@css': path.resolve(__dirname, 'resources/css'),
         }
     },
