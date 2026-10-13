@@ -5,7 +5,7 @@
 2. [Install System Dependencies](#dependencies)
 3. [Install Nginx](#nginx)
 4. [Install MySQL/MariaDB](#mysql)
-5. [Install PHP 8.4](#php)
+5. [Install PHP](#php)
 6. [Configure Nginx and PHP-FPM](#configure-nginx-php)
 7. [Install phpMyAdmin](#phpMyAdmin)
 8. [Install Composer](#composer)
@@ -17,11 +17,22 @@
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This guide walks through setting up a LEMP stack (Linux, Nginx, MySQL/MariaDB, PHP) on Ubuntu (22.04 LTS), Debian (LMDE), and RHEL (Rocky Linux) for deploying PHP applications, including the Chappy.php framework.
+This guide walks through setting up a LEMP stack (Linux, Nginx, MySQL/MariaDB, PHP) for deploying PHP applications, including the Chappy.php framework.
+
+**Supported operating systems**
+
+| Family | Versions | Package manager |
+|:-------|:---------|:---------------:|
+| Ubuntu | 26.04 LTS, 24.04 LTS | `apt` |
+| Debian | Debian 13 "trixie" / LMDE 7 "Gigi" | `apt` |
+| RHEL | Rocky Linux 10.x, 9.x | `dnf` |
+
+- Commands marked **Ubuntu & Debian** apply to every `apt` system above, and commands marked **Rocky Linux** apply to Rocky 9 and 10 unless noted.
+- Rocky Linux 10 requires an x86-64-v3 CPU (roughly Intel Haswell / AMD Excavator or newer). On a VM, set the CPU type to `host` or another v3-capable model.
 
 **Requirements**
 - Nginx
-- PHP 8.3+
+- PHP 8.3+ with PHP-FPM
 - MySQL or MariaDB
 - Composer
 - Node.js & NPM
@@ -35,15 +46,17 @@ First, update your system and install essential dependencies:
 **Ubuntu & Debian**
 ```sh
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y curl wget git unzip software-properties-common net-tools
+sudo apt install -y curl wget git unzip ca-certificates net-tools
 ```
 
 **Rocky Linux (RHEL-based)**
 ```sh
 sudo dnf install -y epel-release
+sudo dnf config-manager --set-enabled crb      # Some EPEL packages depend on CRB
 sudo dnf update -y
-sudo dnf install -y curl wget git unzip net-tools
+sudo dnf install -y curl wget git unzip net-tools policycoreutils-python-utils
 ```
+`policycoreutils-python-utils` provides `semanage`, which is used for the SELinux steps in Section 10.
 <br>
 
 ## 3. Install Nginx <a id="nginx"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -51,19 +64,31 @@ sudo dnf install -y curl wget git unzip net-tools
 **Ubuntu and Debian**
 ```sh
 sudo apt install -y nginx
-sudo systemctl enable nginx
-sudo systemctl start nginx
+sudo systemctl enable --now nginx
 ```
 
 **Rocky Linux (RHEL-based)**
 ```sh
 sudo dnf install -y nginx
-sudo systemctl enable nginx
-sudo systemctl start nginx
+sudo systemctl enable --now nginx
 ```
 <br>
 
-### B. Verify Nginx is Running
+### B. Open the firewall:
+**Ubuntu and Debian** (only if `ufw` is enabled)
+```sh
+sudo ufw allow "Nginx Full"
+```
+
+**Rocky Linux (RHEL-based)** (`firewalld` is on by default)
+```sh
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --reload
+```
+<br>
+
+### C. Verify Nginx is Running
 To confirm that Nginx is running:
 ```sh
 systemctl status nginx
@@ -76,326 +101,165 @@ http://localhost
 <br>
 
 ## 4. Install MySQL/MariaDB <a id="mysql"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This section will guide you through installing MySQL or MariaDB, configuring it securely, and verifying the installation.
+Install **one** database server, not both. Chappy.php works with either.
 
-### A. Install MySQL or MariaDB
-Depending on your Linux distribution, install either MySQL or MariaDB using the following instructions.
+| OS | MariaDB | MySQL |
+|:---|:-------:|:-----:|
+| Ubuntu 24.04 / 26.04 | ✅ Default repos | ✅ Default repos |
+| Debian 13 / LMDE 7 | ✅ Default repos (**recommended**) | ⚠️ Not in Debian repos. Requires the [MySQL APT repository](https://dev.mysql.com/downloads/repo/apt/) |
+| Rocky Linux 9 / 10 | ✅ Default repos | ✅ Default repos (AppStream) |
 
-**Ubuntu**
+If you don't have a reason to pick MySQL, use **MariaDB**. It's available everywhere in this guide without extra repositories.
 
-To install MySQL:
-```sh
-sudo apt install -y mysql-server
-sudo systemctl enable mysql
-sudo systemctl start mysql
-```
-<br>
-
-**Ubuntu and Debian**
-
-To install MariaDB:
+### A. Install the Database Server
+**MariaDB: Ubuntu & Debian**
 ```sh
 sudo apt install -y mariadb-server
-sudo systemctl enable mariadb
-sudo systemctl start mariadb
-```
-<br>
-
-**Rocky Linux (RHEL-based)**
-
-To install MySQL:
-```sh
-sudo dnf install -y https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm
-sudo dnf install -y mysql-server
-sudo systemctl enable mysqld
-sudo systemctl start mysqld
+sudo systemctl enable --now mariadb
 ```
 
-To install MariaDB:
+**MariaDB: Rocky Linux**
 ```sh
 sudo dnf install -y mariadb-server
-sudo systemctl enable mariadb
-sudo systemctl start mariadb
+sudo systemctl enable --now mariadb
 ```
-<br>
 
-**Verify MySQL/MariaDB Installation**
-
-Run the following command to check the installed version:
+**MySQL: Ubuntu**
 ```sh
-mysql -V
+sudo apt install -y mysql-server
+sudo systemctl enable --now mysql
 ```
-<br>
 
-### B. Secure MySQL/MariaDB Using `mysql_secure_installation`
-Run the mysql_secure_installation script to secure your database by setting a root password and removing default insecure settings.
-
-**Ubuntu/Debian (MySQL 8+)**
+**MySQL: Rocky Linux**
 ```sh
-sudo mysql_secure_installation
+sudo dnf install -y mysql-server
+sudo systemctl enable --now mysqld
 ```
 
-- MySQL 8+ on Ubuntu/Debian defaults to auth_socket authentication, meaning the root user does NOT need a password to log in locally.
-- The root password setup step may be skipped during the process.
-
-<br>
-
-**Rocky Linux (RHEL-based)**
+Verify the installation:
 ```sh
-sudo mysql_secure_installation
+mariadb -V    # MariaDB
+mysql -V      # MySQL
 ```
-
-- MySQL on Rocky Linux requires setting a root password during installation.
-<br>
 <br>
 
-### C. Steps for Running `mysql_secure_installation`
-The script will ask a series of security questions. Here's a breakdown of the common prompts and how to respond:
-#### 1. VALIDATE PASSWORD COMPONENT (Password Policy)
-You will see this message:
-
-```rust
-VALIDATE PASSWORD COMPONENT can be used to test passwords
-and improve security. It checks the strength of password
-and allows the users to set only those passwords which are
-secure enough. Would you like to setup VALIDATE PASSWORD component?
-
-Press y|Y for Yes, any other key for No:
-```
-
-- ✅ MySQL: Type n unless you want strict password rules. Choosing y might cause errors (e.g., ERROR 1819 (HY000)) during tools like phpMyAdmin setup.
-- ✅ MariaDB: This step may not appear. If it does, it’s safe to disable it (n) for local or development use.
-- If you choose y, you must select a password strength level:
-
-```rust
-0 = LOW (minimum 8 characters)
-1 = MEDIUM (includes numbers, mixed case, special characters)
-2 = STRONG (must contain dictionary words + mixed case, numbers, and special characters)
-```
-
-Choose `1` for a good balance.
-
-<br>
-
-#### 2. Set or Change the Root Password
-**Ubuntu/Debian**
-- If auth_socket is enabled, this step will be skipped.
-- If prompted:
-```rust
-Would you like to set up a root password? [Y/n]
-```
-
-**Rocky Linux (RHEL-based)**
-- You must set a root password.
-```rust
-Would you like to set up a root password? [Y/n]
-```
-
-- MySQL (Ubuntu/Debian): Skipped if `auth_socket` is enabled.
-- MySQL (RHEL-based): You must set a password.
-- ✅ MariaDB (All distros): You’ll be asked even if a password is already set. Choose `n` if you already have it protected with a password or socket.
-
-<br>
-
-#### 3. Switch to unix_socket Authentication (MariaDB Only)
+### B. Secure the Installation
+Run the security script for your database:
 ```sh
-Switch to unix_socket authentication [Y/n]
+sudo mariadb-secure-installation     # MariaDB
+sudo mysql_secure_installation       # MySQL
 ```
-- ✅ MariaDB on Debian/Ubuntu: Choose `n` if you want to use password authentication (especially for phpMyAdmin compatibility).
-- Choose `y` only if you're confident with CLI-only login and not using GUI tools like phpMyAdmin.
 
-<br>
+The prompts differ slightly between the two. Answer them as follows:
 
-#### 4. Remove Anonymous Users
-- You’ll see this prompt:
+| Prompt | MariaDB | MySQL (Ubuntu) | MySQL (Rocky) |
+|:-------|:-------:|:--------------:|:-------------:|
+| Enter current password for root | Press **Enter** | — | — |
+| VALIDATE PASSWORD COMPONENT | — | `n` (see note) | `n` (see note) |
+| Switch to unix_socket authentication | `n` (root already uses it) | — | — |
+| Set / change root password | `n` | Skipped (uses `auth_socket`) | **Required**: set one |
+| Remove anonymous users | `Y` | `Y` | `Y` |
+| Disallow root login remotely | `Y` | `Y` | `Y` |
+| Remove test database | `Y` | `Y` | `Y` |
+| Reload privilege tables | `Y` | `Y` | `Y` |
+
+**Notes**
+- **VALIDATE PASSWORD COMPONENT:** Choosing `y` enforces password strength rules and can cause `ERROR 1819 (HY000)` during the phpMyAdmin install. If you do enable it, level `1` (MEDIUM) is a good balance.
+- **Root stays on socket authentication** for MariaDB and for MySQL on Ubuntu. That means `root` logs in with `sudo` and no password, and **cannot** log into phpMyAdmin. This is intentional: you'll create a dedicated application user in the next step and use that for your app and for phpMyAdmin.
+
+When finished you should see a message like:
 ```rust
-Remove anonymous users? (Press y|Y for Yes, any other key for No) :
-```
-- Type `Y` and press **Enter** to improve security.
-
-<br>
-
-#### 5. Disable Remote Root Login
-- You’ll see this prompt:
-```rust
-Disallow root login remotely? (Press y|Y for Yes, any other key for No) :
-```
-- Type `Y` and press **Enter** to prevent unauthorized remote access.
-
-<br>
-
-#### 6. Remove the Test Database
-- You'll see:
-```rust
-Remove test database and access to it? (Press y|Y for Yes, any other key for No) :
-```
-- Type `Y` and press **Enter**.
-
-<br>
-
-#### 7. Reload Privilege Tables
-- Finally, MySQL will ask:
-```rust
-Reload privilege tables now? (Press y|Y for Yes, any other key for No) :
-```
-- Type `Y` and press **Enter** to apply all changes.
-
-<br>
-
-#### 8. Secure Installation Complete
-- You should see a message like:
-```rust
-All done! If you've completed all of the above steps, your MySQL installation should now be secure.
+All done! If you've completed all of the above steps, your installation should now be secure.
 ```
 <br>
 
-### D. **Verify MySQL is Secure**
-After running `mysql_secure_installation`, you can verify your settings by logging in:
+### C. Create the Application Database and User
+Log in as root:
 ```sh
-sudo mysql -u root -p
+sudo mariadb           # MariaDB (all distros)
+sudo mysql             # MySQL on Ubuntu
+mysql -u root -p       # MySQL on Rocky Linux
 ```
-- If prompted, enter the **root password** you set earlier.
 
-<br>
-
-Run this SQL command to authentication settings:
+Create a database and a user for your app (replace the names and password):
 ```sql
-SELECT user, host FROM mysql.user;
-```
-- Ensure that root@localhost exists and that anonymous users were removed.
-
-<br>
-
-### E. **Changing MySQL Authentication (Ubuntu/Debian)**
-The step to set root password is skipped in Ubuntu and Debian.
-```rust
-Skipping password set for root as authentication with auth_socket is used by default.
-If you would like to use password authentication instead, this can be done with the "ALTER_USER" command.
-See https://dev.mysql.com/doc/refman/8.0/en/alter-user.html#alter-user-password-management for more information.
-```
-<br>
-
-### F. **How to Switch MySQL Root to Password Authentication (Ubuntu & Debian)**
-If you want to **use a password for the root user instead of auth_socket**, follow these steps:
-#### 1. Log into MySQL as Root
-Since `auth_socket` is enabled, use **sudo** to access MySQL without a password:
-```sh
-sudo mysql
-```
-<br>
-
-#### 2. Check Current Authentication Method
-Run this SQL command:
-```sql
-SELECT user, host, plugin FROM mysql.user;
-```
-
-You should see `root@localhost` using **auth_socket**, like this:
-```sql
-+------+-----------+-------------+
-| user | host     | plugin      |
-+------+-----------+-------------+
-| root | localhost | auth_socket |
-+------+-----------+-------------+
-```
-<br>
-
-#### 3. Change Root to Use Password Authentication
-To switch from `auth_socket` to `mysql_native_password`, run:
-```sql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your-secure-password';
-FLUSH PRIVILEGES;
-```
-<br>
-
-#### 4. Verify the Change
-Run the authentication check again:
-```sql
-SELECT user, host, plugin FROM mysql.user;
-```
-It should now show `mysql_native_password` instead of `auth_socket`.
-
-<br>
-
-#### 5. Exit and Test
-Exit MySQL:
-```sql
+CREATE DATABASE my_app CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'my_app_user'@'localhost' IDENTIFIED BY 'your-secure-password';
+GRANT ALL PRIVILEGES ON my_app.* TO 'my_app_user'@'localhost';
 EXIT;
 ```
 
-Now try logging in with your new password:
+Test the new login:
 ```sh
-mysql -u root -p
+mysql -u my_app_user -p my_app
+```
+
+These are the values you'll put in `DB_DATABASE`, `DB_USER`, and `DB_PASSWORD` in your `.env` file (Section 10B).
+<br>
+
+### D. Optional: Give Root a Password
+Only do this if you specifically need password login for `root`. The application user above is the recommended approach.
+
+**MariaDB** (keeps socket login **and** adds a password):
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED VIA unix_socket OR mysql_native_password USING PASSWORD('your-secure-password');
+```
+
+**MySQL on Ubuntu:**
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'your-secure-password';
+```
+
+> ⚠️ Older guides use `IDENTIFIED WITH mysql_native_password`. That plugin is disabled by default in MySQL 8.4 and removed in MySQL 9, so use `caching_sha2_password` with MySQL.
+
+Verify:
+```sql
+SELECT user, host, plugin FROM mysql.user;
 ```
 <br>
 
-#### 6. Final Notes
-- For production servers, always use a strong root password and disable remote root login.
-- If you forget your MySQL root password, you’ll need to reset it manually via mysqld_safe mode.
+## 5. Install PHP <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Chappy.php requires PHP 8.3 or newer. On Ubuntu and Debian, the PHP in the default repositories already meets that, so no third-party repository is needed. Rocky Linux uses the Remi repository.
 
-<br>
+| OS | PHP version installed |
+|:---|:---------------------:|
+| Ubuntu 24.04 | 8.3 |
+| Ubuntu 26.04 | 8.5 |
+| Debian 13 / LMDE 7 | 8.4 |
+| Rocky Linux 9 / 10 (Remi) | 8.4 |
 
-## 5. Install PHP 8.4 <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. Ubuntu
+### A. Ubuntu & Debian
 ```sh
-sudo add-apt-repository ppa:ondrej/php -y
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y php8.4 php8.4-cli php8.4-fpm php8.4-mbstring php8.4-xml php8.4-curl php8.4-zip php8.4-mysql php8.4-sqlite3 sqlite3 php8.4-bcmath
+sudo apt install -y php-fpm php-cli php-mbstring php-xml php-curl php-zip php-mysql php-sqlite3 php-bcmath php-intl php-gd sqlite3
 ```
 
-Enable and start PHP-FPM:
-```sh
-sudo systemctl enable php8.4-fpm
-sudo systemctl start php8.4-fpm
-```
-<br>
+These version-independent package names install whatever PHP version your release ships, so the same command works on every Ubuntu and Debian version in this guide.
 
-### B. Debian
-#### 1. Add the SURY repository (trusted PHP repo for Debian)
-```sh
-sudo apt install -y lsb-release apt-transport-https ca-certificates wget gnupg2
-```
+> ⚠️ Don't install the bare `php` package on a LEMP server. It pulls in Apache (`libapache2-mod-php`) by default, which will fight Nginx for port 80. Installing `php-fpm` as shown avoids this.
 
-Then import the GPG key:
+The PHP-FPM service name includes the version. Find yours and make sure it's running:
 ```sh
-wget -qO - https://packages.sury.org/php/apt.gpg | sudo tee /etc/apt/trusted.gpg.d/php.gpg >/dev/null
-```
-
-Now add the repo to your sources list:
-```sh
-echo "deb https://packages.sury.org/php/ bookworm main" | sudo tee /etc/apt/sources.list.d/php.list
+php -v                                   # e.g. PHP 8.4.x → service is php8.4-fpm
+sudo systemctl enable --now php<version>-fpm
 ```
 <br>
 
-#### 2. Update and install PHP 8.4
+### B. Rocky Linux (RHEL-based)
 ```sh
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y php8.4 php8.4-cli php8.4-fpm php8.4-mysql php8.4-curl php8.4-zip php8.4-mbstring php8.4-xml php8.4-bcmath php8.4-soap php8.4-intl php8.4-readline php8.4-sqlite3 sqlite3
-```
-
-Enable and start PHP-FPM:
-```sh
-sudo systemctl enable php8.4-fpm
-sudo systemctl start php8.4-fpm
-```
-<br>
-
-### C. Rocky Linux (RHEL-based)
-```sh
-sudo dnf install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
-sudo dnf module list php                    # Optional: list available versions
+sudo dnf install -y https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %rhel).rpm
+sudo dnf module reset php -y
 sudo dnf module enable php:remi-8.4 -y      # Enable PHP 8.4 from Remi
-sudo dnf install -y php php-cli php-fpm php-mbstring php-xml php-curl php-zip php-mysqlnd php-bcmath php-json php-gd php-opcache php-intl php-pear php-soap
+sudo dnf install -y php-fpm php-cli php-mbstring php-xml php-curl php-zip php-mysqlnd php-pdo php-bcmath php-gd php-opcache php-intl php-soap
+sudo systemctl enable --now php-fpm
 ```
 
-Enable and start PHP-FPM:
-```sh
-sudo systemctl enable php-fpm
-sudo systemctl start php-fpm
-```
+`$(rpm -E %rhel)` expands to `9` or `10`, so the same command works on both Rocky versions.
+
+> On Rocky, PHP-FPM runs as the `apache` user by default, even without Apache installed, and already grants Nginx access to its socket. This guide keeps that default, so the PHP-writable `storage` directory uses the `apache` group (Section 10E).
+
 <br>
 
-### D. Verify installation:
+### C. Verify installation:
 ```sh
 php -v
 ```
@@ -404,17 +268,15 @@ php -v
 ## 6. Configure Nginx and PHP-FPM <a id="configure-nginx-php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
 ### A. Create Temporary Location
-We will temporarily create the location for our app:
+We will temporarily create the location for our app so we can test PHP. It gets replaced by the real project in Section 10:
 ```sh
-cd /var/www
-mkdir my-app
+sudo mkdir -p /var/www/my-app
 ```
 <br>
 
 ### B. Set proper permissions:
 
-**Ubuntu**
-
+**Ubuntu and Debian**
 ```sh
 sudo chown -R your-username:www-data /var/www/my-app
 sudo chmod -R 755 /var/www/my-app
@@ -434,7 +296,7 @@ sudo chmod -R 755 /var/www/my-app
 sudo vi /etc/nginx/sites-available/my-app
 ```
 
-Paste the following content while making sure correct php version is set (replace my-app.local and my_ip_address with information relevant for your case):
+Paste the following content (replace my-app.local and my_ip_address with information relevant for your case):
 ```rust
 server {
     listen 80;
@@ -442,12 +304,14 @@ server {
     root /var/www/my-app;
 
     add_header X-Frame-Options "SAMEORIGIN";
-    add_header X-XSS-Protection "1; mode=block";
     add_header X-Content-Type-Options "nosniff";
 
     index index.html index.htm index.php;
 
     charset utf-8;
+
+    # Must be at least as large as PHP's post_max_size (Section 6E)
+    client_max_body_size 10M;
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
@@ -459,8 +323,9 @@ server {
     error_page 404 /index.php;
 
     location ~ \.php$ {
+        try_files $uri =404;
         include fastcgi_params;
-        fastcgi_pass unix:/var/run/php/php8.4-fpm.sock;
+        fastcgi_pass unix:/run/php/php-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
     }
@@ -470,6 +335,8 @@ server {
     }
 }
 ```
+
+`/run/php/php-fpm.sock` is a version-independent link to the installed PHP-FPM socket, so this file doesn't need editing when PHP is upgraded. If Nginx returns 502 Bad Gateway, see Troubleshooting B.
 
 Enable the new site and disable default on Ubuntu/Debian:
 ```sh
@@ -483,20 +350,22 @@ sudo unlink /etc/nginx/sites-enabled/default
 sudo vi /etc/nginx/conf.d/my-app.conf
 ```
 
-Paste the following content while making sure correct php version is set (replace myapp.local and my_ip_address with information relevant for your case):
+Paste the following content (replace my-app.local and my_ip_address with information relevant for your case):
 ```rust
 server {
     listen 80;
-    server_name myapp.local my_ip_address;
+    server_name my-app.local my_ip_address;
     root /var/www/my-app;
 
     add_header X-Frame-Options "SAMEORIGIN";
-    add_header X-XSS-Protection "1; mode=block";
     add_header X-Content-Type-Options "nosniff";
 
     index index.html index.htm index.php;
 
     charset utf-8;
+
+    # Must be at least as large as PHP's post_max_size (Section 6E)
+    client_max_body_size 10M;
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
@@ -508,6 +377,7 @@ server {
     error_page 404 /index.php;
 
     location ~ \.php$ {
+        try_files $uri =404;
         include fastcgi_params;
         fastcgi_pass unix:/run/php-fpm/www.sock;
         fastcgi_index index.php;
@@ -520,12 +390,15 @@ server {
 }
 ```
 
-Allow Nginx to Write and Connect:
+Allow Nginx/PHP to connect to the database. Because `DB_HOST=127.0.0.1` connects over TCP, SELinux must allow it:
 ```sh
-sudo setsebool -P httpd_unified 1
-sudo setsebool -P httpd_read_user_content 1
+sudo setsebool -P httpd_can_network_connect_db 1
+```
+
+Only if your app makes outbound connections (external APIs, SMTP, etc.):
+```sh
 sudo setsebool -P httpd_can_network_connect 1
-sudo setsebool -P httpd_enable_homedirs 1
+sudo setsebool -P httpd_can_sendmail 1
 ```
 <br>
 
@@ -546,7 +419,7 @@ Open in a browser:
 http://localhost/info.php
 ```
 
-Remove the file after testing:
+Remove the temporary directory after testing (the real project is moved here in Section 10):
 ```sh
 sudo rm -rf /var/www/my-app/
 ```
@@ -555,8 +428,10 @@ sudo rm -rf /var/www/my-app/
 ### E. Configure Upload Size (for Profile Image Support):
 
 **Ubuntu and Debian**
+
+The path includes your PHP version (for example `8.3`, `8.4`, or `8.5`). Check it with `php -v`, then edit:
 ```sh
-sudo vi /etc/php/8.4/fpm/php.ini
+sudo vi /etc/php/<version>/fpm/php.ini
 ```
 
 **Rocky Linux (RHEL-based)**
@@ -571,9 +446,11 @@ Then modify the following settings:
 | `upload_max_filesize` | Max size of a single uploaded file | `5M` (or `10M` if high-res image uploads) |
 | `post_max_size` | Max size of total POST body (form fields + files) | `8M` (or `15M` if `upload_max_filesize` is `10M`) |
 | `max_execution_time` | Max script run time (seconds) | `30` to `60` |
-| `memory_limit` | Max memory a script can use | `128M` (or `256M` for image-heavy apps) | 
+| `memory_limit` | Max memory a script can use | `128M` (or `256M` for image-heavy apps) |
 
-These value should be set depending on what type of files being uploaded.  Files such as videos should be much higher.   `post_max_size` should be greater than `upload_max_filesize`.  Otherwise, you will get a corrupted token error instead.
+These values should be set depending on what type of files are being uploaded. Files such as videos should be much higher. `post_max_size` should be greater than `upload_max_filesize`. Otherwise, you will get a corrupted token error instead.
+
+**Nginx has its own limit.** `client_max_body_size` in your server block (Section 6C) must be at least as large as `post_max_size`, or Nginx will reject the upload with `413 Request Entity Too Large` before PHP ever sees it. Its default is only `1M`.
 
 <br>
 
@@ -581,7 +458,7 @@ Then restart PHP-FPM:
 
 **Ubuntu and Debian**
 ```sh
-sudo systemctl restart php8.4-fpm
+sudo systemctl restart php<version>-fpm
 ```
 
 **Rocky Linux (RHEL-based)**
@@ -596,23 +473,30 @@ phpMyAdmin provides a web interface to manage MySQL or MariaDB databases.
 ### A. Install phpMyAdmin
 **Ubuntu & Debian**
 ```sh
-sudo apt install -y phpmyadmin
+sudo apt install -y --no-install-recommends phpmyadmin
 ```
+
+`--no-install-recommends` stops apt from pulling in Apache alongside phpMyAdmin.
+
 When prompted:
-- Do not select a web server (Nginx is not listed).
+- Do not select a web server (Nginx is not listed). Press **Tab** then **Enter** to continue with nothing selected.
 - Choose Yes to configure dbconfig-common and create the phpMyAdmin database.
 - Set a phpMyAdmin password or leave it blank to auto-generate.
+- If you get `ERROR 1819 (HY000)`, see the Troubleshooting section.
 
 <br>
 
 **Rocky Linux (RHEL-based)**
 ```sh
-sudo dnf install -y phpmyadmin
+sudo dnf install -y phpMyAdmin
+# If the package isn't found:
+sudo dnf --enablerepo=remi install -y phpMyAdmin
 ```
 <br>
 
 ### B. Configure Nginx to Serve phpMyAdmin
 **Ubuntu & Debian**
+
 Symlink phpMyAdmin into your Nginx-accessible root path:
 ```sh
 sudo ln -s /usr/share/phpmyadmin /var/www/phpmyadmin
@@ -620,7 +504,7 @@ sudo ln -s /usr/share/phpmyadmin /var/www/phpmyadmin
 
 Then edit your Nginx config:
 ```sh
-sudo vi /etc/nginx/sites-enabled/my-app
+sudo vi /etc/nginx/sites-available/my-app
 ```
 
 Add the following inside the `server {}` block:
@@ -632,7 +516,7 @@ location /phpmyadmin {
     location ~ ^/phpmyadmin/(.+\.php)$ {
         try_files $uri =404;
         root /var/www;
-        fastcgi_pass unix:/var/run/php/php8.4-fpm.sock;
+        fastcgi_pass unix:/run/php/php-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
@@ -643,12 +527,13 @@ location /phpmyadmin {
     }
 }
 ```
-- **Note:** If you get a 202 Bad Gateway error check the version of PHP in your file.
-If you're using a custom root path like /var/www/my-app, adjust root accordingly.
+- **Note:** If you get a 502 Bad Gateway error, see Troubleshooting B.
+- If you're using a custom root path like /var/www/my-app, adjust root accordingly.
 
 <br>
 
 **Rocky Linux (RHEL-based)**
+
 Symlink phpMyAdmin into your Nginx-accessible root path:
 ```sh
 sudo ln -s /usr/share/phpMyAdmin /var/www/phpmyadmin
@@ -694,17 +579,7 @@ Open your browser and visit:
 http://localhost/phpmyadmin
 ```
 
-Log in using:
-- **Username**: root
-- **Password**: (set during MySQL/MariaDB setup)
-⚠️ If you're using `auth_socket`, see Section 4F to switch to mysql_native_password.
-<br>
-<br>
-
-### D. Setup Your Database
-* In the left panel click on the **New** link.
-* In the main panel under **Create Database** enter the name for your database.  This will be the database you will set to `DB_DATABASE` in your `.env` file.
-* Click create.
+Log in with the **application user** you created in Section 4C (for example `my_app_user`). `root` cannot log in through phpMyAdmin while it uses socket authentication. That's expected.
 
 <br>
 
@@ -720,29 +595,26 @@ sudo mv composer.phar /usr/local/bin/composer
 
 ### B. Verify Installation
 ```sh
-composer -v
+composer -V
 ```
 <br>
 
 ## 9. Install Node.js & NPM <a id="nodejs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Use NodeSource to install the latest stable Node.js version.
+Use NodeSource to install the latest LTS Node.js version.
 ### A. Add Node.js Repository
 **Ubuntu and Debian**
 ```sh
-sudo apt install -y ca-certificates     # On minimal OS installs
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo bash -
 ```
 
 **Rocky Linux (RHEL-based)**
 ```sh
-# ca-certificates on minimal OS installs
-rpm -q ca-certificates || sudo dnf install -y ca-certificates
 curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
 ```
 <br>
 
 ### B. Install Node.js & NPM
-**Ubuntu**
+**Ubuntu and Debian**
 ```sh
 sudo apt install -y nodejs
 ```
@@ -761,8 +633,8 @@ npm -v
 <br>
 
 ## 10. Project Setup <a id="project-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. Navigate to your user's root directory and install dependencies:
-Create your project and replace my-app with the name of your project.  Then move to location described below:
+### A. Navigate to your user's home directory and install dependencies:
+Create your project and replace my-app with the name of your project. Then move to location described below:
 ```sh
 cd ~/
 composer create-project chappy-php/chappy-php my-app
@@ -775,22 +647,19 @@ cd /var/www/my-app
 ### B. Project Configuration
 
 Open your preferred IDE (We use VSCode) and edit the `.env` file:
-- Set `APP_DOMAIN` TO `/`.
+- Set `APP_DOMAIN` to `/`.
 - For **security** purposes ensure `DB_LOG_PARAMS` is set to `none` instead of `full`.
-- Set `LOGGING` environmental variable as appropriate for your use.  In production we recommend `info` to prevent excessive logging.
-- Update the database section:
+- Set `LOGGING` environmental variable as appropriate for your use. In production we recommend `info` to prevent excessive logging.
+- Update the database section with the database and user from Section 4C:
 ```php
-# Set to mysql or mariadb for production
+# Set to mysql or mariadb
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-# Set to your database name for production
-DB_DATABASE=your_db_name
-DB_USER=root
-DB_PASSWORD=your_password
+DB_DATABASE=my_app
+DB_USER=my_app_user
+DB_PASSWORD=your-secure-password
 ```
-
-**Use a user other than `root` on a production environment**
 
 <br>
 
@@ -812,46 +681,28 @@ Now, http://my-app.local will work as expected.
 <br>
 
 ### D. Enable the Site:
-Restart Nginx After Modifying Server Block or /etc/hosts:
+Restart Nginx after modifying the server block or /etc/hosts:
 ```sh
+sudo nginx -t
 sudo systemctl restart nginx
 ```
-
-**See Section D in Troubleshooting if you are having issues with Rocky Linux (RHEL)**
 
 <br>
 
 **Rocky Linux (RHEL-based)**
-#### 1. Fix SELinux Contexts for Nginx
-Allow Nginx to read and serve content from your project directory:
-```sh
-sudo chcon -Rt httpd_sys_content_t /var/www/my-app
-```
-
-Also apply recursively to any .htaccess, uploads, or views:
+#### 1. Fix SELinux Contexts
+Files moved from your home directory keep their old SELinux label, so Nginx and PHP-FPM can't read them. Reset the labels:
 ```sh
 sudo restorecon -Rv /var/www/my-app
 ```
 
-#### 2. Set the Correct SELinux Context for Writable Log Files and to Storage:
-Step 1: Apply the Right Context:
-```sh
-sudo chcon -R -t httpd_sys_rw_content_t /var/www/my-app/storage
-```
-
-Step 2: Make it Persistent (Survives Reboots):
+#### 2. Make Storage Writable
+Mark `storage` as writable by PHP. This is persistent and survives reboots and relabels:
 ```sh
 sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/my-app/storage(/.*)?"
 sudo restorecon -Rv /var/www/my-app/storage
 ```
-📁 If you’re using other writable paths, repeat these steps for those as well.
-
-#### 3. Add Firewalld Rules for Nginx
-```sh
-sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --permanent --add-service=https
-sudo firewall-cmd --reload
-```
+📁 If you're using other writable paths, repeat these steps for those as well.
 
 Now restart Nginx:
 ```sh
@@ -859,23 +710,30 @@ sudo systemctl restart nginx
 ```
 <br>
 
-### F. Final Steps
-Set permissions and ownership for storage directory (This will enable writing to logs and uploads):
-**Ubuntu & Debian**
+### E. Final Steps
+Set permissions and ownership. The `storage` directory must be writable by the PHP-FPM user for logs and uploads.
+
+**Ubuntu & Debian** (PHP-FPM runs as `www-data`)
 ```sh
-sudo chown -R chadchapman:www-data storage/
-sudo chmod -R 775 storage/
+sudo chown -R your-username:www-data /var/www/my-app
 ```
 
-**Rocky Linux (RHEL-based)**
+**Rocky Linux (RHEL-based)** (PHP-FPM runs as `apache`)
 ```sh
-sudo chown -R nginx:nginx storage/
-sudo chmod -R 777 storage/
+sudo chown -R your-username:apache /var/www/my-app
+```
+
+**All distros**
+```sh
+sudo find /var/www/my-app -type d -exec chmod 755 {} \;
+sudo find /var/www/my-app -type f -exec chmod 644 {} \;
+sudo chmod -R 775 /var/www/my-app/storage
 ```
 <br>
 
 Create JavaScript bundle if necessary and run migrations:
 ```sh
+cd /var/www/my-app
 npm run build
 php console migrate
 ```
@@ -887,43 +745,68 @@ http://<your_ip_address>
 <br>
 
 ## 11. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. Common Issues:
-- ERROR 1819 (HY000) during phpMyAdmin installation → Your password does not meet MySQL’s policy. Disable VALIDATE PASSWORD or use a strong password.
-- mysql_secure_installation skips root password setup on Ubuntu/Debian → Run:
+### A. Database Issues
+- **ERROR 1819 (HY000) during phpMyAdmin installation**: Your password does not meet MySQL's VALIDATE PASSWORD policy. Use a stronger password, or remove the component:
+```sql
+UNINSTALL COMPONENT 'file://component_validate_password';
+```
+- **`Access denied for user 'root'@'localhost'` in phpMyAdmin**: Expected when root uses socket authentication. Log in with your application user (Section 4C), or see Section 4D.
+- **`Plugin 'mysql_native_password' is not loaded`**: You're on MySQL 8.4+. Use `caching_sha2_password` instead (Section 4D).
+- **App can't connect to the database on Rocky Linux**: Run `sudo setsebool -P httpd_can_network_connect_db 1` (Section 6C).
+<br>
+
+### B. 502 Bad Gateway
+Nginx can't reach PHP-FPM. Check that PHP-FPM is running and that the socket in your config exists:
+
+**Ubuntu & Debian**
 ```sh
-sudo mysql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your-password';
-FLUSH PRIVILEGES;
+systemctl status php<version>-fpm
+ls -l /run/php/
+```
+If `php-fpm.sock` isn't listed, use the versioned socket shown (for example `php8.4-fpm.sock`) in your `fastcgi_pass` lines.
+
+**Rocky Linux**
+```sh
+systemctl status php-fpm
+ls -l /run/php-fpm/
+```
+
+Then check the Nginx error log:
+```sh
+sudo tail -n 50 /var/log/nginx/error.log
 ```
 <br>
 
-### B. SELinux Permissions for phpMyAdmin (Rocky Linux)
-Since `phpMyAdmin` is installed via `dnf` on Rocky Linux, SELinux might block it from reading `/var/www/phpmyadmin`.
+### C. 413 Request Entity Too Large
+Uploads are larger than Nginx allows. Increase `client_max_body_size` in your server block (Section 6C) and reload Nginx.
+<br>
 
-🔹 Fix:
-If users get 403 Forbidden on phpMyAdmin, they need to run:
+### D. Port 80 Already in Use / Nginx Won't Start
+Apache may have been installed as a dependency (usually by installing the bare `php` package, or phpMyAdmin without `--no-install-recommends`). Remove it:
 ```sh
-sudo chcon -R -t httpd_sys_content_t /usr/share/phpmyadmin
-sudo semanage fcontext -a -t httpd_sys_content_t "/usr/share/phpmyadmin(/.*)?"
-sudo restorecon -Rv /usr/share/phpmyadmin
+sudo apt purge -y apache2 libapache2-mod-php*     # Ubuntu & Debian
+sudo systemctl restart nginx
 ```
 <br>
 
-### C. MySQL 8 Authentication in Rocky Linux
-If `mysql_secure_installation` doesn't ask for a password, users may need to set one manually:
+### E. Finding SELinux Denials (Rocky Linux)
+If you get 403 errors, blank pages, or write failures that permissions don't explain, check for SELinux denials:
 ```sh
-sudo mysql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your-secure-password';
-FLUSH PRIVILEGES;
-EXIT;
+sudo ausearch -m avc -ts recent
 ```
+<br>
+
+### F. Rocky Linux 10 Won't Boot or Install
+Rocky Linux 10 requires an x86-64-v3 CPU. On older hardware, use Rocky Linux 9. On a VM, change the CPU type to `host` (or another v3-capable model).
 <br>
 
 ## 12. References <a id="references"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 A. [How To Install Linux, Nginx, MySQL, PHP (LEMP stack) on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu)
 
-B. [How To Install and Configure Laravel with Nginx on Ubuntu 22.04 (LEMP)](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-laravel-with-nginx-on-ubuntu-22-04)
+B. [How To Install and Configure Laravel with Nginx on Ubuntu (LEMP)](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-laravel-with-nginx-on-ubuntu-22-04)
 
-C. [How to Install PHP 8.3 on Ubuntu 22.04](https://www.atlantic.net/dedicated-server-hosting/how-to-install-php-8-3-on-ubuntu-22-04/)
+C. [How To Install and Secure phpMyAdmin with Nginx on an Ubuntu Server](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-with-nginx-on-an-ubuntu-20-04-server)
 
-D. [How To Install and Secure phpMyAdmin with Nginx on an Ubuntu 20.04 Server](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-with-nginx-on-an-ubuntu-20-04-server)
+D. [Remi's RPM Repository - Configuration Wizard](https://rpms.remirepo.net/wizard/)
+
+E. [Rocky Linux Releases](https://docs.rockylinux.org/releases/)

@@ -5,7 +5,7 @@
 2. [Install System Dependencies](#dependencies)
 3. [Install Apache](#apache)
 4. [Install MySQL/MariaDB](#mysql)
-5. [Install PHP 8.4](#php)
+5. [Install PHP](#php)
 6. [Configure Apache and PHP](#configure-apache-php)
 7. [Install phpMyAdmin](#phpMyAdmin)
 8. [Install Composer](#composer)
@@ -17,10 +17,21 @@
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This guide walks through setting up a LAMP stack (Linux, Apache, MySQL/MariaDB, PHP) on Ubuntu (22.04 LTS), Debian (LMDE), and RHEL (Rocky Linux) for deploying PHP applications, including the Chappy.php framework.
+This guide walks through setting up a LAMP stack (Linux, Apache, MySQL/MariaDB, PHP) for deploying PHP applications, including the Chappy.php framework.
+
+**Supported operating systems**
+
+| Family | Versions | Package manager |
+|:-------|:---------|:---------------:|
+| Ubuntu | 26.04 LTS, 24.04 LTS | `apt` |
+| Debian | Debian 13 "trixie" / LMDE 7 "Gigi" | `apt` |
+| RHEL | Rocky Linux 10.x, 9.x | `dnf` |
+
+- Commands marked **Ubuntu & Debian** apply to every `apt` system above, and commands marked **Rocky Linux** apply to Rocky 9 and 10 unless noted.
+- Rocky Linux 10 requires an x86-64-v3 CPU (roughly Intel Haswell / AMD Excavator or newer). On a VM, set the CPU type to `host` or another v3-capable model.
 
 **Requirements**
-- Apache 2.x
+- Apache 2.4
 - PHP 8.3+
 - MySQL or MariaDB
 - Composer
@@ -34,16 +45,18 @@ First, update your system and install essential dependencies:
 **Ubuntu & Debian**
 ```sh
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y curl wget git unzip software-properties-common net-tools
+sudo apt install -y curl wget git unzip ca-certificates net-tools
 ```
 <br>
 
 **Rocky Linux (RHEL-based)**
 ```sh
 sudo dnf install -y epel-release
+sudo dnf config-manager --set-enabled crb      # Some EPEL packages depend on CRB
 sudo dnf update -y
-sudo dnf install -y curl wget git unzip net-tools
+sudo dnf install -y curl wget git unzip net-tools policycoreutils-python-utils
 ```
+`policycoreutils-python-utils` provides `semanage`, which is used for the SELinux steps in Section 10.
 <br>
 
 ## 3. Install Apache <a id="apache"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -51,315 +64,201 @@ sudo dnf install -y curl wget git unzip net-tools
 **Ubuntu and Debian**
 ```sh
 sudo apt install -y apache2
-sudo systemctl enable apache2
-sudo systemctl start apache2
+sudo systemctl enable --now apache2
 ```
 <br>
 
 **Rocky Linux (RHEL-based)**
 ```sh
 sudo dnf install -y httpd
-sudo systemctl enable httpd
-sudo systemctl start httpd
+sudo systemctl enable --now httpd
 ```
 <br>
 
-### B. Verify Apache is running:
+### B. Open the firewall:
+**Ubuntu and Debian** (only if `ufw` is enabled)
+```sh
+sudo ufw allow "Apache Full"
+```
+
+**Rocky Linux (RHEL-based)** (`firewalld` is on by default)
+```sh
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --reload
+```
+<br>
+
+### C. Verify Apache is running:
 ```sh
 systemctl status apache2   # Ubuntu & Debian
 systemctl status httpd     # Rocky Linux
 ```
 <br>
 
-### C. Apache should now be accessible at:
+### D. Apache should now be accessible at:
 ```rust
 http://localhost
 ```
 <br>
 
 ## 4. Install MySQL/MariaDB <a id="mysql"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This section will guide you through installing MySQL or MariaDB, configuring it securely, and verifying the installation.
+Install **one** database server, not both. Chappy.php works with either.
 
-### A. Install MySQL or MariaDB
-Depending on your Linux distribution, install either MySQL or MariaDB using the following instructions.
+| OS | MariaDB | MySQL |
+|:---|:-------:|:-----:|
+| Ubuntu 24.04 / 26.04 | ✅ Default repos | ✅ Default repos |
+| Debian 13 / LMDE 7 | ✅ Default repos (**recommended**) | ⚠️ Not in Debian repos. Requires the [MySQL APT repository](https://dev.mysql.com/downloads/repo/apt/) |
+| Rocky Linux 9 / 10 | ✅ Default repos | ✅ Default repos (AppStream) |
 
-**Ubuntu & Debian**
+If you don't have a reason to pick MySQL, use **MariaDB**. It's available everywhere in this guide without extra repositories.
 
-To install MySQL:
-```sh
-sudo apt install -y mysql-server
-sudo systemctl enable mysql
-sudo systemctl start mysql
-```
-<br>
-
-To install MariaDB (Recommended for Debian):
+### A. Install the Database Server
+**MariaDB: Ubuntu & Debian**
 ```sh
 sudo apt install -y mariadb-server
-sudo systemctl enable mariadb
-sudo systemctl start mariadb
+sudo systemctl enable --now mariadb
 ```
-<br>
 
-**Rocky Linux (RHEL-based)**
-
-To install MySQL:
-```sh
-sudo dnf install -y https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm
-sudo dnf install -y mysql-server
-sudo systemctl enable mysqld
-sudo systemctl start mysqld
-```
-<br>
-
-To install MariaDB:
+**MariaDB: Rocky Linux**
 ```sh
 sudo dnf install -y mariadb-server
-sudo systemctl enable mariadb
-sudo systemctl start mariadb
+sudo systemctl enable --now mariadb
 ```
-**Verify MySQL/MariaDB Installation**
-Run the following command to check the installed version:
+
+**MySQL: Ubuntu**
 ```sh
-mysql -V
+sudo apt install -y mysql-server
+sudo systemctl enable --now mysql
+```
+
+**MySQL: Rocky Linux**
+```sh
+sudo dnf install -y mysql-server
+sudo systemctl enable --now mysqld
+```
+
+Verify the installation:
+```sh
+mariadb -V    # MariaDB
+mysql -V      # MySQL
 ```
 <br>
 
-### B. Secure MySQL/MariaDB Using `mysql_secure_installation`
-Run the mysql_secure_installation script to secure your database by setting a root password and removing default insecure settings.
-
-**Ubuntu/Debian (MySQL 8+)**
+### B. Secure the Installation
+Run the security script for your database:
 ```sh
-sudo mysql_secure_installation
+sudo mariadb-secure-installation     # MariaDB
+sudo mysql_secure_installation       # MySQL
 ```
 
-- MySQL 8+ on Ubuntu/Debian defaults to auth_socket authentication, meaning the root user does NOT need a password to log in locally.
-- The root password setup step may be skipped during the process.
+The prompts differ slightly between the two. Answer them as follows:
 
-**Rocky Linux (RHEL-based)**
-```sh
-sudo mysql_secure_installation
-```
+| Prompt | MariaDB | MySQL (Ubuntu) | MySQL (Rocky) |
+|:-------|:-------:|:--------------:|:-------------:|
+| Enter current password for root | Press **Enter** | — | — |
+| VALIDATE PASSWORD COMPONENT | — | `n` (see note) | `n` (see note) |
+| Switch to unix_socket authentication | `n` (root already uses it) | — | — |
+| Set / change root password | `n` | Skipped (uses `auth_socket`) | **Required**: set one |
+| Remove anonymous users | `Y` | `Y` | `Y` |
+| Disallow root login remotely | `Y` | `Y` | `Y` |
+| Remove test database | `Y` | `Y` | `Y` |
+| Reload privilege tables | `Y` | `Y` | `Y` |
 
-- MySQL on Rocky Linux requires setting a root password during installation.
-<br>
-<br>
+**Notes**
+- **VALIDATE PASSWORD COMPONENT:** Choosing `y` enforces password strength rules and can cause `ERROR 1819 (HY000)` during the phpMyAdmin install. If you do enable it, level `1` (MEDIUM) is a good balance.
+- **Root stays on socket authentication** for MariaDB and for MySQL on Ubuntu. That means `root` logs in with `sudo` and no password, and **cannot** log into phpMyAdmin. This is intentional: you'll create a dedicated application user in the next step and use that for your app and for phpMyAdmin.
 
-### C. Steps for Running `mysql_secure_installation`
-The script will ask a series of security questions. Here's a breakdown of the common prompts and how to respond:
-#### 1. VALIDATE PASSWORD COMPONENT (Password Policy)
-You will see this message:
-
+When finished you should see a message like:
 ```rust
-VALIDATE PASSWORD COMPONENT can be used to test passwords
-and improve security. It checks the strength of password
-and allows the users to set only those passwords which are
-secure enough. Would you like to setup VALIDATE PASSWORD component?
-
-Press y|Y for Yes, any other key for No:
-```
-
-- ✅ MySQL: Type n unless you want strict password rules. Choosing y might cause errors (e.g., ERROR 1819 (HY000)) during tools like phpMyAdmin setup.
-- ✅ MariaDB: This step may not appear. If it does, it’s safe to disable it (n) for local or development use.
-- If you choose y, you must select a password strength level:
-
-```rust
-0 = LOW (minimum 8 characters)
-1 = MEDIUM (includes numbers, mixed case, special characters)
-2 = STRONG (must contain dictionary words + mixed case, numbers, and special characters)
-```
-
-Choose `1` for a good balance.
-
-#### 2. Set or Change the Root Password
-**Ubuntu/Debian**
-- If auth_socket is enabled, this step will be skipped.
-- If prompted:
-```rust
-Would you like to set up a root password? [Y/n]
-```
-
-**Rocky Linux (RHEL-based)**
-- You must set a root password.
-```rust
-Would you like to set up a root password? [Y/n]
-```
-
-- MySQL (Ubuntu/Debian): Skipped if `auth_socket` is enabled.
-- MySQL (RHEL-based): You must set a password.
-- ✅ MariaDB (All distros): You’ll be asked even if a password is already set. Choose `n` if you already have it protected with a password or socket.
-
-#### 3. Switch to unix_socket Authentication (MariaDB Only)
-```sh
-Switch to unix_socket authentication [Y/n]
-```
-- ✅ MariaDB on Debian/Ubuntu: Choose `n` if you want to use password authentication (especially for phpMyAdmin compatibility).
-- Choose `y` only if you're confident with CLI-only login and not using GUI tools like phpMyAdmin.
-
-#### 4. Remove Anonymous Users
-- You’ll see this prompt:
-```rust
-Remove anonymous users? (Press y|Y for Yes, any other key for No) :
-```
-- Type `Y` and press **Enter** to improve security.
-
-#### 5. Disable Remote Root Login
-- You’ll see this prompt:
-```rust
-Disallow root login remotely? (Press y|Y for Yes, any other key for No) :
-```
-- Type `Y` and press **Enter** to prevent unauthorized remote access.
-
-#### 6. Remove the Test Database
-- You'll see:
-```rust
-Remove test database and access to it? (Press y|Y for Yes, any other key for No) :
-```
-- Type `Y` and press **Enter**.
-
-#### 7. Reload Privilege Tables
-- Finally, MySQL will ask:
-```rust
-Reload privilege tables now? (Press y|Y for Yes, any other key for No) :
-```
-- Type `Y` and press **Enter** to apply all changes.
-
-#### 8. Secure Installation Complete
-- You should see a message like:
-```rust
-All done! If you've completed all of the above steps, your MySQL installation should now be secure.
+All done! If you've completed all of the above steps, your installation should now be secure.
 ```
 <br>
 
-### D. **Verify MySQL is Secure**
-After running `mysql_secure_installation`, you can verify your settings by logging in:
+### C. Create the Application Database and User
+Log in as root:
 ```sh
-sudo mysql -u root -p
+sudo mariadb           # MariaDB (all distros)
+sudo mysql             # MySQL on Ubuntu
+mysql -u root -p       # MySQL on Rocky Linux
 ```
-- If prompted, enter the **root password** you set earlier.
 
-Run this SQL command to authentication settings:
+Create a database and a user for your app (replace the names and password):
 ```sql
-SELECT user, host FROM mysql.user;
-```
-- Ensure that root@localhost exists and that anonymous users were removed.
-
-<br>
-
-### E. **Changing MySQL Authentication (Ubuntu/Debian)**
-The step to set root password is skipped in Ubuntu and Debian.
-```rust
-Skipping password set for root as authentication with auth_socket is used by default.
-If you would like to use password authentication instead, this can be done with the "ALTER_USER" command.
-See https://dev.mysql.com/doc/refman/8.0/en/alter-user.html#alter-user-password-management for more information.
-```
-<br>
-
-### F. **How to Switch MySQL Root to Password Authentication (Ubuntu & Debian)**
-If you want to **use a password for the root user instead of auth_socket**, follow these steps:
-#### 1. Log into MySQL as Root
-Since `auth_socket` is enabled, use **sudo** to access MySQL without a password:
-```sh
-sudo mysql
-```
-
-#### 2. Check Current Authentication Method
-Run this SQL command:
-```sql
-SELECT user, host, plugin FROM mysql.user;
-```
-
-You should see `root@localhost` using **auth_socket**, like this:
-```sql
-+------+-----------+-------------+
-| user | host     | plugin      |
-+------+-----------+-------------+
-| root | localhost | auth_socket |
-+------+-----------+-------------+
-```
-
-#### 3. Change Root to Use Password Authentication
-To switch from `auth_socket` to `mysql_native_password`, run:
-```sql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your-secure-password';
-FLUSH PRIVILEGES;
-```
-
-#### 4. Verify the Change
-Run the authentication check again:
-```sql
-SELECT user, host, plugin FROM mysql.user;
-```
-It should now show `mysql_native_password` instead of `auth_socket`.
-
-#### 5. Exit and Test
-Exit MySQL:
-```sql
+CREATE DATABASE my_app CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'my_app_user'@'localhost' IDENTIFIED BY 'your-secure-password';
+GRANT ALL PRIVILEGES ON my_app.* TO 'my_app_user'@'localhost';
 EXIT;
 ```
 
-Now try logging in with your new password:
+Test the new login:
 ```sh
-mysql -u root -p
+mysql -u my_app_user -p my_app
 ```
 
-#### 6. Final Notes
-- For production servers, always use a strong root password and disable remote root login.
-- If you forget your MySQL root password, you’ll need to reset it manually via mysqld_safe mode.
+These are the values you'll put in `DB_DATABASE`, `DB_USER`, and `DB_PASSWORD` in your `.env` file (Section 10C).
+<br>
+
+### D. Optional: Give Root a Password
+Only do this if you specifically need password login for `root`. The application user above is the recommended approach.
+
+**MariaDB** (keeps socket login **and** adds a password):
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED VIA unix_socket OR mysql_native_password USING PASSWORD('your-secure-password');
+```
+
+**MySQL on Ubuntu:**
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'your-secure-password';
+```
+
+> ⚠️ Older guides use `IDENTIFIED WITH mysql_native_password`. That plugin is disabled by default in MySQL 8.4 and removed in MySQL 9, so use `caching_sha2_password` with MySQL.
+
+Verify:
+```sql
+SELECT user, host, plugin FROM mysql.user;
+```
+<br>
+
+## 5. Install PHP <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Chappy.php requires PHP 8.3 or newer. On Ubuntu and Debian, the PHP in the default repositories already meets that, so no third-party repository is needed. Rocky Linux uses the Remi repository.
+
+| OS | PHP version installed |
+|:---|:---------------------:|
+| Ubuntu 24.04 | 8.3 |
+| Ubuntu 26.04 | 8.5 |
+| Debian 13 / LMDE 7 | 8.4 |
+| Rocky Linux 9 / 10 (Remi) | 8.4 |
+
+### A. Ubuntu & Debian
+```sh
+sudo apt install -y php php-cli php-mbstring php-xml php-curl php-zip php-mysql php-sqlite3 php-bcmath php-intl php-gd libapache2-mod-php sqlite3
+```
+
+These version-independent package names install whatever PHP version your release ships, so the same command works on every Ubuntu and Debian version in this guide.
 
 <br>
 
-## 5. Install PHP 8.4 <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. Ubuntu
+### B. Rocky Linux (RHEL-based)
 ```sh
-sudo add-apt-repository ppa:ondrej/php -y
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y php8.4 php8.4-cli php8.4-mbstring php8.4-xml php8.4-curl php8.4-zip php8.4-mysql libapache2-mod-php8.4 php8.4-sqlite3 sqlite3 php8.4-bcmath
-```
-
-<br>
-
-### B. Debian
-#### 1. Add the SURY repository (trusted PHP repo for Debian)
-```sh
-sudo apt install -y lsb-release apt-transport-https ca-certificates wget gnupg2
-```
-
-Then import the GPG key:
-```sh
-wget -qO - https://packages.sury.org/php/apt.gpg | sudo tee /etc/apt/trusted.gpg.d/php.gpg >/dev/null
-```
-
-Now add the repo to your sources list:
-```sh
-echo "deb https://packages.sury.org/php/ bookworm main" | sudo tee /etc/apt/sources.list.d/php.list
-```
-
-#### 2. Update and install PHP 8.4
-```sh
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y php8.4 php8.4-cli php8.4-mysql php8.4-curl php8.4-zip php8.4-mbstring php8.4-xml php8.4-bcmath php8.4-soap php8.4-intl php8.4-readline php8.4-sqlite3 sqlite3
-```
-
-<br>
-
-### C. Rocky Linux (RHEL-based)
-```sh
-sudo dnf install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
-sudo dnf module list php                    # List available PHP modules
+sudo dnf install -y https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %rhel).rpm
+sudo dnf module reset php -y
 sudo dnf module enable php:remi-8.4 -y      # Enables PHP 8.4 from Remi repo
-sudo dnf install -y php php-cli php-mbstring php-xml php-curl php-zip php-mysqlnd php-bcmath php-json php-gd php-opcache php-intl php-pear php-soap
+sudo dnf install -y php php-cli php-fpm php-mbstring php-xml php-curl php-zip php-mysqlnd php-pdo php-bcmath php-gd php-opcache php-intl php-soap
+sudo systemctl enable --now php-fpm
 ```
+
+`$(rpm -E %rhel)` expands to `9` or `10`, so the same command works on both Rocky versions. On Rocky, Apache runs PHP through **PHP-FPM** rather than `mod_php`, which matters when you change `php.ini` (Section 6).
 
 <br>
 
-### D. Verify installation:
+### C. Verify installation:
 ```sh
 php -v
 ```
 <br>
 
-## 6. Configure Apache and PHP <a id="config-apache-php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Configure Apache and PHP <a id="configure-apache-php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Restart Apache to apply PHP settings:
 ```sh
 sudo systemctl restart apache2   # Ubuntu & Debian
@@ -383,11 +282,13 @@ sudo rm /var/www/html/info.php
 ```
 <br>
 
-Configure upload size For profile image upload support.  Edit the file:
+Configure upload size for profile image upload support. Edit the file:
 
 **Ubuntu & Debian**
+
+The path includes your PHP version (for example `8.3`, `8.4`, or `8.5`). Check it with `php -v`, then edit:
 ```sh
-sudo vi /etc/php/8.4/apache2/php.ini
+sudo vi /etc/php/<version>/apache2/php.ini
 ```
 
 **Rocky Linux (RHEL-based)**
@@ -402,9 +303,15 @@ Then modify the following settings:
 | `upload_max_filesize` | Max size of a single uploaded file | `5M` (or `10M` if high-res image uploads) |
 | `post_max_size` | Max size of total POST body (form fields + files) | `8M` (or `15M` if `upload_max_filesize` is `10M`) |
 | `max_execution_time` | Max script run time (seconds) | `30` to `60` |
-| `memory_limit` | Max memory a script can use | `128M` (or `256M` for image-heavy apps) | 
+| `memory_limit` | Max memory a script can use | `128M` (or `256M` for image-heavy apps) |
 
-These value should be set depending on what type of files being uploaded.  Files such as videos should be much higher.   `post_max_size` should be greater than `upload_max_filesize`.  Otherwise, you will get a corrupted token error instead.
+These values should be set depending on what type of files are being uploaded. Files such as videos should be much higher. `post_max_size` should be greater than `upload_max_filesize`. Otherwise, you will get a corrupted token error instead.
+
+Apply the changes:
+```sh
+sudo systemctl restart apache2                  # Ubuntu & Debian
+sudo systemctl restart php-fpm httpd            # Rocky Linux (PHP-FPM must be restarted too)
+```
 
 <br>
 
@@ -415,47 +322,37 @@ phpMyAdmin provides a web interface to manage MySQL or MariaDB databases.
 ```sh
 sudo apt install -y phpmyadmin
 ```
+
+During installation:
+- Select **apache2** when prompted (press Space to select it, then Enter).
+- Choose **Yes** to configure the database with dbconfig-common.
+- Set a phpMyAdmin password (or leave blank to generate one).
+- If you get `ERROR 1819 (HY000)`, see the Troubleshooting section.
+
+The package enables its own Apache config, so no symlink is needed. Restart Apache:
+```sh
+sudo systemctl restart apache2
+```
 <br>
 
 **Rocky Linux (RHEL-based)**
 ```sh
-sudo dnf install -y phpmyadmin
+sudo dnf install -y phpMyAdmin
+# If the package isn't found:
+sudo dnf --enablerepo=remi install -y phpMyAdmin
+sudo systemctl restart httpd
 ```
 
-During installation (Ubuntu/Debian):
-- Select Apache2 when prompted.
-- Choose Yes to configure dbconfig-common for automatic database setup.
-- Set a phpMyAdmin password (or leave blank to generate one).
-- If you have issues regarding **[ERROR 1819 (HY000) during the phpMyAdmin installation indicates that the password you've set doesn't meet MySQL's current policy requirements.]** refer to solutions in troubleshooting section.
-<br>
+On Rocky, phpMyAdmin is only reachable from the server itself by default. To allow access from another machine, edit `/etc/httpd/conf.d/phpMyAdmin.conf` and add `Require ip your_ip_address` next to `Require local`, then restart `httpd`.
 <br>
 
-### B. Configure Apache for phpMyAdmin
-Enable phpMyAdmin in Apache:
-```sh
-sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
-sudo systemctl restart apache2   # Ubuntu & Debian
-sudo systemctl restart httpd     # Rocky Linux
-```
-<br>
-
-### C. Verify phpMyAdmin Installation
+### B. Verify phpMyAdmin Installation
 Open your browser and visit:
 ```rust
 http://localhost/phpmyadmin
 ```
 
-Log in using:
-- **Username**: root
-- **Password**: (set during MySQL/MariaDB setup)
-⚠️ If you're using `auth_socket`, see Section 4F to switch to mysql_native_password.
-<br>
-<br>
-
-### D. Setup Your Database
-* In the left panel click on the **New** link.
-* In the main panel under **Create Database** enter the name for your database.  This will be the database you will set to `DB_DATABASE` in your `.env` file.
-* Click create.
+Log in with the **application user** you created in Section 4C (for example `my_app_user`). `root` cannot log in through phpMyAdmin while it uses socket authentication. That's expected.
 
 <br>
 
@@ -471,29 +368,26 @@ sudo mv composer.phar /usr/local/bin/composer
 
 ### B. Verify Installation
 ```sh
-composer -v
+composer -V
 ```
 <br>
 
 ## 9. Install Node.js & NPM <a id="nodejs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Use NodeSource to install the latest stable Node.js version.
+Use NodeSource to install the latest LTS Node.js version.
 ### A. Add Node.js Repository
 **Ubuntu and Debian**
 ```sh
-sudo apt install -y ca-certificates     # On minimal OS installs
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo bash -
 ```
 
 **Rocky Linux (RHEL-based)**
 ```sh
-# ca-certificates on minimal OS installs
-rpm -q ca-certificates || sudo dnf install -y ca-certificates
 curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
 ```
 <br>
 
 ### B. Install Node.js & NPM
-**Ubuntu**
+**Ubuntu and Debian**
 ```sh
 sudo apt install -y nodejs
 ```
@@ -512,9 +406,10 @@ npm -v
 <br>
 
 ## 10. Project Setup <a id="project-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. Navigate to your user's root directory, install dependencies, then move to final location:
+### A. Navigate to your user's home directory, install dependencies, then move to final location:
 Create your project and replace my-app with the name of your project.
 ```sh
+cd ~/
 composer create-project chappy-php/chappy-php my-app
 sudo mv my-app /var/www/html
 cd /var/www/html/my-app
@@ -522,38 +417,40 @@ cd /var/www/html/my-app
 <br>
 
 ### B. Set proper permissions:
-**Ubuntu**
+**Ubuntu and Debian**
 ```sh
 sudo chown -R your-username:www-data /var/www/html/my-app
-sudo chmod -R 755 /var/www/html/my-app
 ```
-<br>
 
 **Rocky Linux (RHEL-based)**
 ```sh
 sudo chown -R your-username:apache /var/www/html/my-app
-sudo chmod -R 755 /var/www/html/my-app
 ```
+
+**All distros**
+```sh
+sudo find /var/www/html/my-app -type d -exec chmod 755 {} \;
+sudo find /var/www/html/my-app -type f -exec chmod 644 {} \;
+sudo chmod -R 775 /var/www/html/my-app/storage
+```
+The `storage` directory needs group write access for logs and uploads.
 <br>
 
 ### C. Project Configuration
 Open your preferred IDE (We use VSCode) and edit the `.env` file:
-- Set `APP_DOMAIN` TO `/`.
+- Set `APP_DOMAIN` to `/`.
 - For **security** purposes ensure `DB_LOG_PARAMS` is set to `none` instead of `full`.
-- Set `LOGGING` environmental variable as appropriate for your use.  In production we recommend `info` to prevent excessive logging.
-- Update the database section:
+- Set `LOGGING` environmental variable as appropriate for your use. In production we recommend `info` to prevent excessive logging.
+- Update the database section with the database and user from Section 4C:
 ```php
-# Set to mysql or mariadb for production
+# Set to mysql or mariadb
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-# Set to your database name for production
-DB_DATABASE=your_db_name
-DB_USER=root
-DB_PASSWORD=your_password
+DB_DATABASE=my_app
+DB_USER=my_app_user
+DB_PASSWORD=your-secure-password
 ```
-
-**Use a user other than `root` on a production environment**
 
 <br>
 
@@ -582,20 +479,17 @@ Paste the following content into the file (adjust ServerName to your actual IP o
 </VirtualHost>
 ```
 
-Save and exit (ESC then :wq) then restart apache.
-```sh
-sudo systemctl restart apache2
-```
+Save and exit (ESC then :wq).
 <br>
 
 **Rocky Linux (RHEL-based)**
 
-For `.htaccess` files to work correctly on Rocky Linux, Apache needs `AllowOverride All`.  `Options Indexes FollowSymLinks` helps avoid permission issues if `.htaccess` rewrites fail.
+For `.htaccess` files to work correctly on Rocky Linux, Apache needs `AllowOverride All`. `Options FollowSymLinks` lets rewrite rules work.
 ```sh
 sudo vi /etc/httpd/conf.d/my-app.conf
 ```
 
-Paste the following content into the file (replace myapp.local and my_ip_address with information relevant for your case)):
+Paste the following content into the file (replace my-app.local and your_ip_address with information relevant for your case):
 
 ```rust
 <VirtualHost *:80>
@@ -606,18 +500,15 @@ Paste the following content into the file (replace myapp.local and my_ip_address
     <Directory /var/www/html/my-app>
         AllowOverride All
         Require all granted
-        Options Indexes FollowSymLinks
+        Options FollowSymLinks
     </Directory>
 
-    ErrorLog /var/log/httpd/error.log
-    CustomLog /var/log/httpd/access.log combined
+    ErrorLog /var/log/httpd/my-app-error.log
+    CustomLog /var/log/httpd/my-app-access.log combined
 </VirtualHost>
 ```
 
-Save and exit (ESC then :wq) then restart apache.
-```sh
-sudo systemctl restart httpd
-```
+Save and exit (ESC then :wq).
 <br>
 
 **Update /etc/hosts (For Custom Domain)**
@@ -633,16 +524,6 @@ Example configuration:
 127.0.1.1       ubuntu-vm
 your_ip_addr    my-app.local
 ```
-
-Restart Apache After Changing Virtual Host
-After updating VirtualHost, restart Apache:
-```sh
-sudo systemctl restart apache2   # Ubuntu & Debian
-sudo systemctl restart httpd     # Rocky Linux
-```
-
-Now, http://my-app.local will work as expected.
-
 <br>
 
 ### E. Enable the Site:
@@ -651,75 +532,57 @@ Now, http://my-app.local will work as expected.
 # Enable mod_rewrite first
 sudo a2enmod rewrite
 
+# Disable the default site so it doesn't catch requests by IP
+sudo a2dissite 000-default.conf
+
 # Then enable the VirtualHost
 sudo a2ensite my-app.conf
+sudo apache2ctl configtest
 sudo systemctl restart apache2
 ```
-
-**See Section D in Troubleshooting if you are having issues with Rocky Linux (RHEL)**
-
 <br>
 
 **Rocky Linux (RHEL-based)**
-#### 1. Fix SELinux Contexts for Apache
-Allow Apache to read and serve content from your project directory:
-```sh
-sudo chcon -Rt httpd_sys_content_t /var/www/html/my-app
-```
 
-Also apply recursively to any .htaccess, uploads, or views:
+`mod_rewrite` is already enabled on Rocky Linux (see Troubleshooting D if rewrites aren't working).
+
+#### 1. Fix SELinux Contexts
+Files moved from your home directory keep their old SELinux label, so Apache can't read them. Reset the labels:
 ```sh
 sudo restorecon -Rv /var/www/html/my-app
 ```
 
-#### 2. Allow Apache to Read `.htaccess` Files
-Run this to ensure `.htaccess` is allowed:
-```sh
-sudo setsebool -P httpd_read_user_content 1
-sudo setsebool -P allow_httpd_anon_write 1
-sudo setsebool -P allow_httpd_sys_content 1
-```
-
-If you are using uploads or writing to storage, also run:
-```sh
-sudo setsebool -P httpd_unified 1
-sudo setsebool -P httpd_can_network_connect 1
-```
-
-#### 3. Set the Correct SELinux Context for Writable Log Files and to Storage:
-Step 1: Apply the Right Context:
-```sh
-sudo chcon -R -t httpd_sys_rw_content_t /var/www/html/my-app/storage
-```
-
-Step 2: Make it Persistent (Survives Reboots):
+#### 2. Make Storage Writable
+Mark `storage` as writable by Apache. This is persistent and survives reboots and relabels:
 ```sh
 sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/my-app/storage(/.*)?"
 sudo restorecon -Rv /var/www/html/my-app/storage
 ```
-📁 If you’re using other writable paths, repeat these steps for those as well.
+📁 If you're using other writable paths, repeat these steps for those as well.
 
-#### 4. Add firewalld Configuration for Rocky Linux:
+#### 3. Allow Apache to Connect to the Database
+Because `DB_HOST=127.0.0.1` connects over TCP, SELinux must allow Apache to reach the database port:
 ```sh
-sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --permanent --add-service=https
-sudo firewall-cmd --reload
+sudo setsebool -P httpd_can_network_connect_db 1
 ```
 
-Now restart Apache:
+Only if your app makes outbound connections (external APIs, SMTP, etc.):
 ```sh
+sudo setsebool -P httpd_can_network_connect 1
+sudo setsebool -P httpd_can_sendmail 1
+```
+
+Now check the config and restart Apache:
+```sh
+sudo apachectl configtest
 sudo systemctl restart httpd
 ```
 <br>
 
 ### F. Final Steps
-Set permissions for storage directory (This will enable writing to logs and uploads):
-```sh
-sudo chmod -R 775 storage/
-```
-
 Run migrations:
 ```sh
+cd /var/www/html/my-app
 php console migrate
 ```
 
@@ -730,59 +593,62 @@ http://<your_ip_address>
 <br>
 
 ## 11. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-### A. Common Issues:
-- ERROR 1819 (HY000) during phpMyAdmin installation → Your password does not meet MySQL’s policy. Disable VALIDATE PASSWORD or use a strong password.
-- mysql_secure_installation skips root password setup on Ubuntu/Debian → Run:
-```sh
-sudo mysql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your-password';
-FLUSH PRIVILEGES;
+### A. Database Issues
+- **ERROR 1819 (HY000) during phpMyAdmin installation**: Your password does not meet MySQL's VALIDATE PASSWORD policy. Use a stronger password, or remove the component:
+```sql
+UNINSTALL COMPONENT 'file://component_validate_password';
 ```
+- **`Access denied for user 'root'@'localhost'` in phpMyAdmin**: Expected when root uses socket authentication. Log in with your application user (Section 4C), or see Section 4D.
+- **`Plugin 'mysql_native_password' is not loaded`**: You're on MySQL 8.4+. Use `caching_sha2_password` instead (Section 4D).
+- **App can't connect to the database on Rocky Linux**: Run `sudo setsebool -P httpd_can_network_connect_db 1` (Section 10E).
 <br>
 
-### B. SELinux Permissions for phpMyAdmin (Rocky Linux)
-Since `phpMyAdmin` is installed via `dnf` on Rocky Linux, SELinux might block it from reading `/var/www/html/phpmyadmin`.
-
-🔹 Fix:
-If users get 403 Forbidden on phpMyAdmin, they need to run:
-```sh
-sudo chcon -R -t httpd_sys_content_t /usr/share/phpmyadmin
-sudo semanage fcontext -a -t httpd_sys_content_t "/usr/share/phpmyadmin(/.*)?"
-sudo restorecon -Rv /usr/share/phpmyadmin
-```
+### B. phpMyAdmin 403 Forbidden (Rocky Linux)
+phpMyAdmin on Rocky only allows local access by default. Edit `/etc/httpd/conf.d/phpMyAdmin.conf`, add `Require ip your_ip_address` alongside `Require local`, and restart `httpd`.
 <br>
 
-### C. MySQL 8 Authentication in Rocky Linux
-If `mysql_secure_installation` doesn't ask for a password, users may need to set one manually:
+### C. PHP Settings Not Taking Effect (Rocky Linux)
+Rocky runs PHP through PHP-FPM, so restarting Apache alone doesn't reload `php.ini`:
 ```sh
-sudo mysql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your-secure-password';
-FLUSH PRIVILEGES;
-EXIT;
+sudo systemctl restart php-fpm
 ```
 <br>
 
 ### D. mod_rewrite for Rocky Linux (RHEL)
-Since Rocky Linux doesn’t have `a2enmod`, users must manually ensure `mod_rewrite` is enabled in:
+`mod_rewrite` is loaded by default from `/etc/httpd/conf.modules.d/00-base.conf`. Confirm it's active:
 ```sh
-sudo vi /etc/httpd/conf/httpd.conf
+httpd -M | grep rewrite
 ```
 
-Then uncomment or add this line:
+If nothing is returned, make sure this line exists and isn't commented out in `/etc/httpd/conf.modules.d/00-base.conf`:
 ```sh
 LoadModule rewrite_module modules/mod_rewrite.so
 ```
 
-Restart Apache:
+If the module is loaded but rewrites still fail, check that your VirtualHost has `AllowOverride All`. Then restart Apache:
 ```sh
 sudo systemctl restart httpd
 ```
+<br>
 
+### E. Finding SELinux Denials (Rocky Linux)
+If you get 403 errors or write failures that permissions don't explain, check for SELinux denials:
+```sh
+sudo ausearch -m avc -ts recent
+```
+<br>
+
+### F. Rocky Linux 10 Won't Boot or Install
+Rocky Linux 10 requires an x86-64-v3 CPU. On older hardware, use Rocky Linux 9. On a VM, change the CPU type to `host` (or another v3-capable model).
 <br>
 
 ## 12. References <a id="references"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-A. [How To Install Linux, Apache, MySQL, PHP (LAMP) Stack on Ubuntu - Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu#step-2-installing-mysql)
+A. [How To Install Linux, Apache, MySQL, PHP (LAMP) Stack on Ubuntu - Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu)
 
 B. [How To Install and Secure phpMyAdmin on Ubuntu - Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu)
 
 C. [How to Deploy a Laravel App Using Apache and MySQL](https://adeyomoladev.medium.com/how-to-deploy-a-laravel-app-using-apache-and-mysql-4910a07f9a0c)
+
+D. [Remi's RPM Repository - Configuration Wizard](https://rpms.remirepo.net/wizard/)
+
+E. [Rocky Linux Releases](https://docs.rockylinux.org/releases/)
