@@ -3,23 +3,52 @@
 ## Table of contents
 1. [Overview](#overview)
 2. [Install Homebrew](#homebrew)
-3. [Node.js](nodejs)
+3. [Node.js](#nodejs)
 4. [Development Setup](#dev)
-5. [XAMPP](#xampp)
+5. [Optional: Local MariaDB/MySQL](#database)
+6. [Troubleshooting](#troubleshooting)
 
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-This guide shows you how to setup this framework on MacOS.
+This guide shows you how to set up the Chappy.php framework on macOS for local development using Homebrew and PHP's built-in development server (`php console serve`).
+
+**Supported versions**
+
+| Mac | macOS versions | Support |
+|:----|:---------------|:--------|
+| Apple Silicon (M1 or newer) | macOS 27 Golden Gate, 26 Tahoe, 15 Sequoia | ✅ Fully supported |
+| Intel | macOS 26 Tahoe | ⚠️ Best effort (see note) |
+
+> ⚠️ **Intel Macs:** macOS 26 Tahoe is the last macOS release for Intel, and Homebrew moved Intel Macs to its lowest support tier in September 2026. Homebrew still works on Intel, but some packages may need to compile from source (slow), and Homebrew plans to end Intel support in September 2027. These instructions should work, but Intel is no longer a primary target.
+
+**Requirements**
+- PHP 8.3+
+- Composer
+- Node.js & NPM
+
+<br>
 
 ## 2. Install Homebrew <a id="homebrew"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-* A. If not already installed, setup Homebrew using the command below:
+* A. If not already installed, set up Homebrew using the command below:
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+The installer will also install Apple's Command Line Tools (including Git) if they're missing.
 
 * B. Apple Silicon Extra Steps
-    - Ensure you run the 3 commands required after the setup process is finished to setup your path.
+    - When the installer finishes, it prints a **Next steps** section. Run those commands to add Homebrew to your path. They look like this:
+```sh
+echo >> ~/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+* C. Verify install:
+```sh
+brew --version
+brew doctor
+```
 <br>
 
 ## 3. Node.js <a id="nodejs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
@@ -34,17 +63,19 @@ This allows you to manage multiple Node.js versions.
 * A. Install NVM
 ```sh
 brew install nvm
+mkdir -p ~/.nvm
 ```
 
 * B. Setup NVM
     - Add the following to your ~/.zshrc (or ~/.bashrc if using Bash):
 ```sh
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
+[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 ```
+`$(brew --prefix)` resolves to `/opt/homebrew` on Apple Silicon and `/usr/local` on Intel, so the same lines work on both.
 
-    - Reload shell configuration:
+* Reload shell configuration:
 ```sh
 source ~/.zshrc
 ```
@@ -54,14 +85,14 @@ source ~/.zshrc
 nvm install --lts
 ```
 
-* D. Verify installation
-    - Run
+#### 3: Verify installation
+* Run:
 ```sh
 node -v
 npm -v
 ```
 
-   - Expected output:
+* Expected output:
 ```sh
 vXX.XX.X (Node.js version)
 X.X.X (NPM version)
@@ -71,45 +102,51 @@ X.X.X (NPM version)
 ## 4. Development Setup <a id="dev"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 #### 1: PHP Setup
 * A. Install PHP
-    - Run:
 ```sh
 brew install php
 ```
+This installs Homebrew's current PHP release, which meets the PHP 8.3+ requirement. It includes the SQLite and MySQL drivers, so no extra extensions are needed.
 
 * B. Verify install
-    - Run:
 ```sh
 php -v
 ```
 
-* C: Configure PHP
+* C. Configure PHP
 
-    **Apple Silicon:**
-    ```sh
-    sudo vi /opt/homebrew/etc/php/8.4/php.ini
-    ```
-
-    **Intel:**
-    ```sh
-    /usr/local/etc/php/8.4/php.ini
-    ```
-
-    Then modify the following settings:
-
-    | Setting | What it controls | Safe recommended value |
-    |:-------:|-------------|-------------|
-    | `upload_max_filesize` | Max size of a single uploaded file | `5M` (or `10M` if high-res image uploads) |
-    | `post_max_size` | Max size of total POST body (form fields + files) | `8M` (or `15M` if `upload_max_filesize` is `10M`) |
-    | `max_execution_time` | Max script run time (seconds) | `30` to `60` |
-    | `memory_limit` | Max memory a script can use | `128M` (or `256M` for image-heavy apps) | 
-
-    These value should be set depending on what type of files being uploaded.  Files such as videos should be much higher.   `post_max_size` should be greater than `upload_max_filesize`.  Otherwise, you will get a corrupted token error instead.
-
-* D: Start PHP as a service
-    - Run:
+Find your `php.ini` (the path includes your Homebrew prefix and PHP version):
 ```sh
-brew services start php
+php --ini
 ```
+
+Then open the file listed as **Loaded Configuration File**. It will look like one of these:
+
+**Apple Silicon:**
+```sh
+vi /opt/homebrew/etc/php/<version>/php.ini
+```
+
+**Intel:**
+```sh
+vi /usr/local/etc/php/<version>/php.ini
+```
+
+No `sudo` is needed because Homebrew files are owned by your user.
+
+Then modify the following settings:
+
+| Setting | What it controls | Safe recommended value |
+|:-------:|-------------|-------------|
+| `upload_max_filesize` | Max size of a single uploaded file | `5M` (or `10M` if high-res image uploads) |
+| `post_max_size` | Max size of total POST body (form fields + files) | `8M` (or `15M` if `upload_max_filesize` is `10M`) |
+| `max_execution_time` | Max script run time (seconds) | `30` to `60` |
+| `memory_limit` | Max memory a script can use | `128M` (or `256M` for image-heavy apps) |
+
+These values should be set depending on what type of files are being uploaded. Files such as videos should be much higher. `post_max_size` should be greater than `upload_max_filesize`. Otherwise, you will get a corrupted token error instead.
+
+Changes take effect the next time you start `php console serve`.
+
+> You do **not** need to run `brew services start php`. That starts PHP-FPM for use with a web server, which `php console serve` doesn't use.
 
 #### 2: Setup Composer
 * A. Run:
@@ -117,95 +154,117 @@ brew services start php
 brew install composer
 ```
 
-* B. Verify install.  Run:
+* B. Verify install. Run:
 ```sh
-composer -v
+composer -V
 ```
 
 #### 3: Setup and Run Project
-* A. Run the command (replace my-app with the name of your project):
+* A. Run the commands (replace my-app with the name of your project):
 ```sh
+mkdir -p ~/repos
+cd ~/repos
 composer create-project chappy-php/chappy-php my-app
+cd my-app
+npm install
 ```
 
-* B. Open the project with your preferred IDE.  We use VScode.
-* C. In the terminal run the command:
+* B. Open the project with your preferred IDE. We use VSCode.
+* C. In the terminal, from your project directory, run:
+```sh
+npm run dev
+```
+* D. In a new terminal tab, from your project directory, run:
 ```sh
 php console serve
 ```
-* D. In a new terminal tab run the command:
-```sh
-npm run dev
-```
-* E. Navigate to `localhost:8000` in your preferred web browser.
+* E. Navigate to `http://localhost:8000` in your preferred web browser.
 <br>
 
-## 5. XAMPP <a id="xampp"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Things to consider
-- When using XAMPP you should install XAMPP first before setting up composer.
-- By default, XAMPP stores all web files in `/Applications/XAMPP/htdocs/`.  
-- **We recommend moving `htdocs` outside `/Applications/XAMPP/`** to avoid losing files when upgrading XAMPP.
-- For example, you can move it to `~/Sites/htdocs/` and update Apache’s config.
-- Updates to composer packages may require you to upgrade XAMPP.
-<br>
+## 5. Optional: Local MariaDB/MySQL <a id="database"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Skip this section if you're using SQLite. Use it if you want to develop against MySQL or MariaDB like a production server.
 
-#### 1: Setup
-* A. Open browser and go to https://www.apachefriends.org/ and download **XAMPP for MacOS**.
-* B. Run installer using default options.
-
-#### 2: Setup Composer
-* A. Install **Composer**.
-    - Run:
+#### 1: Install and Start MariaDB
 ```sh
-brew install composer
+brew install mariadb
+brew services start mariadb
 ```
-    - Verify install.  Run:
+`brew services` starts MariaDB now and on every login.
+
+> Prefer MySQL? Use `brew install mysql` and `brew services start mysql` instead. Install one or the other, not both.
+
+#### 2: Create the Application Database and User
+Homebrew's MariaDB lets your macOS user log in as an administrator without a password:
 ```sh
-composer -v
+mariadb
 ```
 
-#### 3: Project Setup
-* A. Navigate to `Applications/XAMPP/htdocs` or your alternate location for `htdocs` using the Terminal.
-* B. Run the command (replace my-app with the name of your project):
-```sh
-composer create-project chappy-php/chappy-php my-app
+Create a database and a user for your app (replace the names and password):
+```sql
+CREATE DATABASE my_app CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'my_app_user'@'localhost' IDENTIFIED BY 'your-secure-password';
+GRANT ALL PRIVILEGES ON my_app.* TO 'my_app_user'@'localhost';
+EXIT;
 ```
 
-* C. Open manager-osx.
-* D. Within the manager-osx start all services.
-* E. Open project in your preferred editor.  We use VSCode.
-* F. Open the .env file.
-* G. Set `APP_DOMAIN` TO `http://localhost/chappy-php/`.  If you renamed your project directory then the second portion of the URL must match.  The URL must have the last forward slash.  Otherwise, the page and routing will not work correctly.
-* H. Update the database section:
+For MySQL, log in with `mysql -u root` instead (Homebrew's MySQL root has no password by default), then run the same SQL.
+
+#### 3: Update the `.env` File
 ```php
-# Set to mysql or mariadb for production
+# Set to mysql or mariadb
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-# Set to your database name for production
-DB_DATABASE=chappy
-DB_USER=root
-DB_PASSWORD=    # Sometimes uses root as password
+DB_DATABASE=my_app
+DB_USER=my_app_user
+DB_PASSWORD=your-secure-password
 ```
 
-* I. Run the command:
+Then run migrations:
 ```sh
-npm run dev
-
+php console migrate
 ```
-* J. Open browser and navigate to `http://localhost/chappy-php/home`.
+
+#### 4: Database GUI (Optional)
+phpMyAdmin requires a web server. For a lighter option, use a desktop client such as [Sequel Ace](https://sequel-ace.com/) (free) or [DBeaver](https://dbeaver.io/) and connect to `127.0.0.1:3306` with your application user.
+
 <br>
 
-#### 4: Ensure XAMPP Starts on Boot
-To ensure XAMPP services start automatically, open Terminal and run:
+## 6. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+### A. `brew: command not found` (Apple Silicon)
+Homebrew's path setup wasn't run. Run the commands from Section 2B, then open a new terminal.
+<br>
+
+### B. Wrong PHP Version
+If `php -v` shows an unexpected version, another PHP (for example from MAMP or an old install) is earlier in your path. Check which one is running:
 ```sh
-sudo launchctl load -w /Library/LaunchDaemons/org.apache.httpd.plist
-sudo launchctl load -w /Library/LaunchDaemons/org.mysql.mysqld.plist
+which php
 ```
+It should be `/opt/homebrew/bin/php` (Apple Silicon) or `/usr/local/bin/php` (Intel).
+<br>
 
-#### 5: Moving XAMPP's Root Directory (htdocs)
-By default, XAMPP's htdocs directory is located inside /Applications/XAMPP/htdocs. However, for easier management and to prevent data loss when updating XAMPP, it's recommended to move it to another location.
+### C. Need a Specific PHP Version
+Homebrew's `php` formula moves to new PHP releases over time. To pin a version (for example 8.4):
+```sh
+brew install php@8.4
+brew unlink php
+brew link --force --overwrite php@8.4
+```
+<br>
 
-Watch this video tutorial to learn how to move the root directory properly:
+### D. Port 8000 Already in Use
+Another process is using the port. Find it with:
+```sh
+lsof -i :8000
+```
+<br>
 
-📺 How to Change XAMPP Root Directory on MacOS [YouTube](https://www.youtube.com/watch?v=cWPSBbwmQFE)
+### E. Moving from XAMPP
+XAMPP is no longer covered by this guide. Its newest release ships PHP 8.2, which is below Chappy.php's PHP 8.3 requirement. To migrate an existing XAMPP project:
+1. Install PHP, Composer, and Node.js using this guide.
+2. Export your database from XAMPP's phpMyAdmin.
+3. Set up MariaDB (Section 5) and import the export:
+```sh
+mariadb my_app < export.sql
+```
+4. Move your project out of `htdocs` (for example to `~/repos/my-app`), set `APP_DOMAIN` to `/`, and run it with `php console serve`.
