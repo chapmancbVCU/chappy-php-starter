@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Local and Session Storage
+title: Session and Local storage
 ---
 
-# Local and Session Storage
+# Session and Local storage
 
 ## Table of contents
 
