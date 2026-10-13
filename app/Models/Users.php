@@ -16,23 +16,23 @@ class Users extends Model implements ContractsPrincipal {
     use HasTimestamps;
     use IsPrincipal;
 
-    public $acl;
+    public string $acl;
     public const blackListedFormKeys = ['id','deleted'];
-    private $changePassword = false;
-    public $confirm;
-    public $deleted = 0;                // Set default value for db field.
-    public $description;
-    public $email;
-    public $fname;
-    public $id;
-    public $inactive = 0;
-    public $lname;
-    public $login_attempts = 0;
-    public $reset_password = 0;
-    public $password;
-    protected static $_softDelete = true;
-    protected static $_table = 'users';
-    public $username;
+    private bool $changePassword = false;
+    public string $confirm;
+    public int $deleted = 0;                // Set default value for db field.
+    public string $description;
+    public string $email;
+    public string $fname;
+    public int $id;
+    public int $inactive = 0;
+    public string $lname;
+    public int $login_attempts = 0;
+    public int $reset_password = 0;
+    public string $password;
+    protected static bool $_softDelete = true;
+    protected static string $_table = 'users';
+    public string $username;
 
     /**
      * Implements beforeSave function described in Model parent class.  
