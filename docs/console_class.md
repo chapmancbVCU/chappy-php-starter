@@ -46,7 +46,6 @@ Primary validator wrapper for processing `InputInterface` arguments and options.
 By default, the following validators are used:
 - `required()`
 - `noSpecialChars()`
-- `alpha()`
 - `notReservedKeyword()`
 
 Parameters:
@@ -88,7 +87,6 @@ A direct wrapper function for the `FrameworkQuestion::ask()` function.
 By default, the following validators are used:
 - `required()`
 - `noSpecialChars()`
-- `alpha()`
 - `notReservedKeyword()`
 
 Parameters:
