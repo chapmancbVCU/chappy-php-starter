@@ -483,7 +483,7 @@ $pagination = Pagination::fromRequest($this->request, 10, $total)
 <br>
 
 ## 5. React Support <a id="react"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-React pages use the same `Pagination` and `SearchFilter` classes. Read the [React](react) and [controllers_and_views](controllers_and_views) page first for details about `renderJsx` and page components.
+React pages use the same `Pagination` and `SearchFilter` classes. Read the [React](react) page first for details about `renderJsx` and page components.
 
 #### A. How It Works <a id="react-how"></a>
 - The first visit renders the page with the first page of records passed in as props, so the list appears without waiting on a request.
