@@ -19,20 +19,20 @@ class Users extends Model implements ContractsPrincipal {
     public string $acl;
     public const blackListedFormKeys = ['id','deleted'];
     private bool $changePassword = false;
-    public string $confirm;
+    public ?string $confirm = null;
     public int $deleted = 0;                // Set default value for db field.
-    public string $description;
-    public string $email;
-    public string $fname;
+    public ?string $description = null;
+    public ?string $email = null;
+    public ?string $fname = null;
     public int $id;
     public int $inactive = 0;
-    public string $lname;
+    public ?string $lname = null;
     public int $login_attempts = 0;
     public int $reset_password = 0;
-    public string $password;
+    public ?string $password = null;
     protected static bool $_softDelete = true;
     protected static string $_table = 'users';
-    public string $username;
+    public ?string $username = null;
 
     /**
      * Implements beforeSave function described in Model parent class.  
