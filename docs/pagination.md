@@ -756,21 +756,56 @@ The two view types receive different data:
 <br>
 
 ## 7. Testing <a id="testing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-**PHP**
+The following examples show how to test paginated lists in your own application.
 
-Unit tests for `Pagination`, the renderers, and `SearchFilter` are located at `tests/Unit/Pagination`. Run them with:
+**Testing a SearchFilter With PHPUnit**
 
-```bash
-vendor/bin/phpunit tests/Unit/Pagination
+A `SearchFilter` can be created directly from an array, so the filter your service builds can be tested without a request or a database. Check that allowed values are applied and that anything else is ignored:
+
+```php
+<?php
+namespace Tests\Unit;
+
+use Core\Lib\Pagination\Pagination;
+use Core\Lib\Pagination\SearchFilter;
+use PHPUnit\Framework\TestCase;
+
+class ContactFilterTest extends TestCase {
+    private function filter(array $input): SearchFilter {
+        return (new SearchFilter($input))
+            ->where('user_id = ?', [1])
+            ->searchable(['fname', 'lname', 'email'])
+            ->sortable(['lname', 'created_at'], 'lname');
+    }
+
+    public function test_search_matches_name_and_email(): void {
+        $params = $this->filter(['q' => 'ann'])->findParams();
+
+        $this->assertStringContainsString('fname LIKE ?', $params['conditions']);
+        $this->assertSame([1, '%ann%', '%ann%', '%ann%'], $params['bind']);
+    }
+
+    public function test_unknown_sort_column_uses_default(): void {
+        $params = $this->filter(['sort' => 'password'])->findParams();
+        $this->assertSame('lname ASC', $params['order']);
+    }
+
+    public function test_page_links_keep_the_search(): void {
+        $filter = $this->filter(['q' => 'ann']);
+        $pagination = (new Pagination(1, 10, 30))->withFilter($filter);
+
+        $this->assertSame('?q=ann&page=2', $pagination->url(2));
+    }
+}
 ```
 
-More information can be found on the [PHPUnit](php_unit) page.
+Run it with the console's test command. More information can be found on the [PHPUnit](php_unit) page.
 
-**React**
+<br>
 
-Component tests are at `resources/js/tests/component/pagination.test.jsx` and the admin dashboard page test is at `resources/js/tests/view/admindashboard.test.jsx`. More information can be found on the [Vitest](vitest) page.
+**Testing a React Page With Vitest**
 
-Page tests that import from `@chappy/utils` load TinyMCE, which calls `window.matchMedia` when it loads. jsdom does not provide this function, so add the following to `setup.js` in the project root:
+Pages that import from `@chappy/utils` load TinyMCE, which calls `window.matchMedia` when it loads. jsdom does not provide this function. If your `setup.js` in the project root does not already define it, add the following:
 
 ```js
 if (!window.matchMedia) {
@@ -787,14 +822,49 @@ if (!window.matchMedia) {
 }
 ```
 
-To test a page without a server, replace `fetch` with a function that returns JSON:
+To test paging without a server, replace `fetch` with a function that returns JSON in the same shape as your controller's response. The example below renders the page with its first page of results, clicks page 2, and checks the new results, the URL, and the header that tells the controller to return JSON:
 
 ```jsx
-vi.stubGlobal('fetch', vi.fn(async (url) => new Response(
-    JSON.stringify({ success: true, users: [], pagination, filter }),
-    { status: 200, headers: { 'Content-Type': 'application/json' } }
-)));
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import Index from '@/pages/contacts/Index';
+
+const pagination = (current) => ({
+    current_page: current, per_page: 10, total: 15, total_pages: 2,
+    from: (current - 1) * 10 + 1, to: Math.min(current * 10, 15),
+    prev_url: current > 1 ? `?page=${current - 1}` : null,
+    next_url: current < 2 ? `?page=${current + 1}` : null,
+    links: [1, 2].map((p) => ({ page: p, url: `?page=${p}`, active: p === current })),
+});
+
+const filter = {
+    term: '', filters: {}, sort: 'lname', dir: 'asc', active: false, query: {},
+    params: { search: 'q', sort: 'sort', dir: 'dir' },
+};
+
+beforeEach(() => window.history.replaceState(null, '', '/contacts'));
+afterEach(() => vi.unstubAllGlobals());
+
+describe('Contacts index', () => {
+    it('loads the next page without reloading', async () => {
+        const fetchMock = vi.fn(async () => new Response(
+            JSON.stringify({ success: true, contacts: [{ id: 11, name: 'Zoe' }], pagination: pagination(2), filter }),
+            { status: 200, headers: { 'Content-Type': 'application/json' } }
+        ));
+        vi.stubGlobal('fetch', fetchMock);
+
+        render(<Index contacts={[{ id: 1, name: 'Ann' }]} pagination={pagination(1)} filter={filter} />);
+        fireEvent.click(screen.getByRole('link', { name: '2' }));
+
+        expect(await screen.findByText('Zoe')).toBeInTheDocument();
+        expect(window.location.search).toBe('?page=2');
+        expect(fetchMock.mock.calls[0][1].headers['X-Requested-With']).toBe('XMLHttpRequest');
+    });
+});
 ```
+
+More information can be found on the [Vitest](vitest) page.
 
 <br>
 
