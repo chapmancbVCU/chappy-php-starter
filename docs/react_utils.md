@@ -4,7 +4,8 @@
 1. [Overview](#overview)
 2. [asset](#asset)
 3. [documentTitle](#document-title)
-4. [route](#route)
+4. [redirect](#redirect)
+5. [route](#route)
 
 <br>
 
@@ -77,6 +78,14 @@ function Edit({user, errors, profileImages}) {
     )
 }
 ```
+
+<br>
+
+## 4. `redirect()` <a id="redirect"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Redirects users to a page when API requests are used.  PHP redirect will not work in these cases.
+
+Parameter:
+- `string path` - The path to be redirected to.
 
 <br>
 
