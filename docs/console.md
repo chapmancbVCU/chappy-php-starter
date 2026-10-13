@@ -78,6 +78,36 @@ php console
 
 ### A. Generators <a id="generators"></a>
 
+**Generate namespace**
+
+| Command | Description | Arguments |
+|:-------:|-------------|-----------|
+| `generate:admin` | Generates admin dashboard controllers and views. | `--react` |
+| `generate:admin:controller` | Generates admin dashboard controller. | `--react` |
+| `generate:admin:view` | Generates admin dashboard views. | `--react` |
+| `generate:auth` | Generates auth controllers and views. | `--react` |
+| `generate:auth:controller` | Generates auth controller. | `--react` |
+| `generate:auth:views` | Generates auth views. | `--react` |
+| `generate:home` | Generates home controllers and views. | `--react` |
+| `generate:home:controller` | Generates home controller. | `--react` |
+| `generate:home:view` | Generates home index view. | `--react` |
+| `generate:profile` | Generates profile controllers and views. | `--react` |
+| `generate:profile:controller` | Generates profile controller. | `--react` |
+| `generate:profile:views` | Generates profile views.| `--react` |
+
+<br>
+
+**Kit namespace**
+
+| Command | Description | Arguments |
+|:-------:|-------------|-----------|
+| `kit:php` | Generates PHP based experience. | |
+| `kit:react` | Generates PHP based experience. | |
+
+<br>
+
+**Make namespace**
+
 | Command | Description | Arguments |
 |:-------:|-------------|-----------|
 | [`make:acl`](layouts#menu-acls) | Generates a new menu_acl json file | |
