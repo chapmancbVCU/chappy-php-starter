@@ -66,7 +66,7 @@ class Users extends Model implements ContractsPrincipal {
      * default value is an empty array.
      * @return array The list of users that is returned from the database.
      */
-    public static function findAllUsersExceptCurrent($current_user_id, $params = []) {
+    public static function findAllUsersExceptCurrent(int $current_user_id, array $params = []) {
         $conditions = [
             'conditions' => 'id != ?',
             'bind' => [(int)$current_user_id]
@@ -106,7 +106,7 @@ class Users extends Model implements ContractsPrincipal {
      * @param string $acl The ACL to check.
      * @return bool True if the user has the ACL, otherwise false.
      */
-    public function hasAcl($acl) {
+    public function hasAcl(string $acl) {
         $userAcls = json_decode($this->acl, true);
     
         if (!is_array($userAcls)) {
