@@ -64,9 +64,9 @@ class Users extends Model implements ContractsPrincipal {
      * @param int $current_user_id The id of the currently logged in user.
      * @param array $params Used to build conditions for database query.  The 
      * default value is an empty array.
-     * @return array The list of users that is returned from the database.
+     * @return array|bool The list of users that is returned from the database.
      */
-    public static function findAllUsersExceptCurrent(int $current_user_id, array $params = []) {
+    public static function findAllUsersExceptCurrent(int $current_user_id, array $params = []): array|bool {
         $conditions = [
             'conditions' => 'id != ?',
             'bind' => [(int)$current_user_id]
@@ -83,7 +83,7 @@ class Users extends Model implements ContractsPrincipal {
      * @return bool|object An object containing information about a user from 
      * the Users table.
      */
-    public static function findByUserName(string $username) {
+    public static function findByUserName(string $username): bool|object {
         return self::findFirst(['conditions'=> "username = ?", 'bind'=>[$username]]);
     }
 
@@ -106,7 +106,7 @@ class Users extends Model implements ContractsPrincipal {
      * @param string $acl The ACL to check.
      * @return bool True if the user has the ACL, otherwise false.
      */
-    public function hasAcl(string $acl) {
+    public function hasAcl(string $acl): bool {
         $userAcls = json_decode($this->acl, true);
     
         if (!is_array($userAcls)) {
@@ -118,10 +118,10 @@ class Users extends Model implements ContractsPrincipal {
     /**
      * Assists in setting value of inactive field based on POST.
      *
-     * @return $inactive The value for inactive based on value received from 
+     * @return bool The value for inactive based on value received from 
      * POST.
      */
-    public function isInactiveChecked() {
+    public function isInactiveChecked(): bool {
         return $this->inactive === 1;
     }
 
@@ -129,10 +129,10 @@ class Users extends Model implements ContractsPrincipal {
      * Assists in setting value of reset_password field based on 
      * POST.
      *
-     * @return $reset_password The value for reset_password based on value 
+     * @return bool The value for reset_password based on value 
      * received from POST.
      */
-    public function isResetPWChecked() {
+    public function isResetPWChecked(): bool {
         return $this->reset_password === 1;
     }
 
