@@ -129,7 +129,7 @@ use Core\Lib\Notifications\Notification;
 /**
  * NewUser notification.
  */
-class NewUser extends Notification {
+class UserRegistered extends Notification {
     protected $user;
 
     /**
