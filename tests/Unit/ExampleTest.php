@@ -3,7 +3,7 @@ namespace Tests\Unit;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Undocumented class
+ * Example
  */
 class ExampleTest extends TestCase {
     public function test_unit_example_1(): void {
