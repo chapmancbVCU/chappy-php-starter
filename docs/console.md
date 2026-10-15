@@ -203,6 +203,7 @@ Each of these commands can accept the following flags:
 |:-------:|-------------|-----------|
 | [`log:clear`](debugging_and_logs#clear-logs) | Deletes existing log file | |
 | `tools:rm-profile-images` | Removes all profile images | |
+| `dev:composer` | Deploys development scripts for switching between local and remote framework repo| |
 
 <br>
 
