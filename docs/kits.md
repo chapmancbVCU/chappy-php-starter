@@ -16,7 +16,7 @@ If neither is used then the framework defaults to built-in controllers, views, a
 
 <br>
 
-## 12. Additional Commands <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#additional-commands)</span>
+## 2. Additional Commands <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#additional-commands)</span>
 Build your experience piece-meal with the commands described in the table below:
 
 | Command | Description | Arguments |
