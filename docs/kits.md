@@ -8,9 +8,8 @@
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Chappy.php supports a pure PHP or React.js or hybrid experience.  Run the following commands to get setup:
-- `kit:php` - Generates views, components, and controllers for a PHP experience
-wing commands to get setup:
-- `kit:react` - Generates views, components, and controllers for a React.js experience
+- `kit:php` - Generates views, components, and controllers for a PHP experience.
+- `kit:react` - Generates views, components, and controllers for a React.js experience.
 
 If neither is used then the framework defaults to built-in controllers, views, and components.
 
