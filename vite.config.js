@@ -48,7 +48,7 @@ export default defineConfig(({ command }) => ({
         FullReload(['resources/view/**/*.php', 'resources/views/**/*.php']),
     ],
     optimizeDeps: {
-        include: ['@tinymce/tinymce-react', 'tinymce', 'dompurify'],
+        include: ['@tinymce/tinymce-react', 'tinymce', 'dompurify', 'jquery', 'jquery-ui-dist/jquery-ui'],
     },
     test: {
         globals: true,
