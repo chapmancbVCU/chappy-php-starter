@@ -46,7 +46,7 @@ function normalize(name) {
 
   if (!loader) {
     console.warn(`[vite] component "${name}" not found; falling back to NotFound`);
-    loader = () => import('./pages/error/NotFound.jsx'); // optional fallback
+    loader = () => import('@chappy/components/NotFound.jsx'); // optional fallback
   }
 
   const Mod = (await loader()).default;
