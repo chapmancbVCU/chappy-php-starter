@@ -216,7 +216,7 @@ public function editAction(): void {
             $user,
         );
 
-        $user->assign($this->request->get(), Users::blackListedFormKeys);
+        $user->assign($this->request->get(), Users::blackList);
         $user->save();
         if($user->validationPassed()){
             if($uploads) {

@@ -183,7 +183,7 @@ public function setResetPasswordAction($id) {
 
     if($this->request->isPost()) {
         $this->request->csrfCheck();
-        $user->assign($this->request->get(), Users::blackListedFormKeys);
+        $user->assign($this->request->get(), Users::blackList);
         $shouldSendEmail = UserService::toggleResetPassword($user, $this->request, $resetPW);
         if($user->save()) {
             UserService::sendWhenSetToResetPW($user, $shouldSendEmail);
@@ -212,7 +212,7 @@ public function setStatusAction($id) {
 
     if($this->request->isPost()) {
         $this->request->csrfCheck();
-        $user->assign($this->request->get(), Users::blackListedFormKeys);
+        $user->assign($this->request->get(), Users::blackList);
         $shouldSendEmail = UserService::toggleAccountStatus($user, $this->request, $inactive);
         if($user->save()) {
             UserService::sendWhenSetToInactive($user, $shouldSendEmail);

@@ -40,7 +40,7 @@ $data = $this->request->get();
 You can directly assign all request inputs to a model instance:
 ```php
 $user = new Users();
-$user->assign($this->request->get(), Users::blackListedFormKeys);
+$user->assign($this->request->get(), Users::blackList);
 ```
 
 The second parameter allows you to skip assigning sensitive fields like passwords, tokens, or role IDs.

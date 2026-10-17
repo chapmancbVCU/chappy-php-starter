@@ -17,7 +17,7 @@ class Users extends Model implements ContractsPrincipal {
     use IsPrincipal;
 
     public string $acl;
-    public const blackListedFormKeys = ['id','deleted'];
+    public const blackList = ['id','deleted'];
     private bool $changePassword = false;
     public ?string $confirm = null;
     public int $deleted = 0;                // Set default value for db field.
