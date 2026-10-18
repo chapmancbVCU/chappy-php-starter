@@ -33,6 +33,7 @@ class Users extends Model implements ContractsPrincipal {
     protected static bool $_softDelete = true;
     protected static string $_table = 'users';
     public ?string $username = null;
+    public const whiteList = ['username', 'email', 'password', 'fname', 'lname', 'description'];
 
     /**
      * Implements beforeSave function described in Model parent class.  
