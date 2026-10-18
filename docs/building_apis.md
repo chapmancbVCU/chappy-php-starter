@@ -142,7 +142,7 @@ class FavoritesController extends Controller {
 <br>
 
 ### A. Create  <a id="create"></a>
-This section we will discuss what is needed to retrieve records from our API and present the data to the user.
+This section we will discuss what is needed to retrieve records from our API and present the data to the user.  We will begin with creating a new favorite.
 
 In our FavoritesController we will create the following function:
 ```php
