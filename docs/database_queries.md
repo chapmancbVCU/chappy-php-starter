@@ -436,7 +436,7 @@ We will go over using the model class for updating the database.  Each function 
 
 ### A. assign  <a id="assign">
 ```php
-$user->assign($_POST, ['csrf_token'], true); // blacklist example
+$user->assign($_POST, ['csrf_token'], Users::BLACKLIST); // blacklist example
 ```
 
 This method allows mass assignment using an array. You can also pass a blacklist or whitelist to control which fields get updated.

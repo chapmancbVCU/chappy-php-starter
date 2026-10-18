@@ -89,7 +89,7 @@ public function addAction(): void {
     $contact = new Contacts();
     if($this->request->isPost()) {
         $this->request->csrfCheck();
-        $contact->assign($this->request->get());
+        $contact->assign($this->request->get(), Contacts::blackList);
         $contact->user_id = AuthService::currentUser()->id;
         if($contact->save()) {
             redirect('contacts');

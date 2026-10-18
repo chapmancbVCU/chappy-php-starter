@@ -65,8 +65,10 @@ php console make:model Favorites
 
 Constants and instance fields are as follows:
 ```php
-// Fields you don't want saved on form submit
-public const blackList = ['deleted', 'id'];
+// Fields that must never be set from submitted form data.
+// user_id and is_home are assigned server-side in the actions below,
+// so we block them from mass assignment along with deleted and id.
+public const blackList = ['deleted', 'id', 'user_id', 'is_home'];
 
 // Set to name of database table.
 protected static $_table = 'favorites';
@@ -151,7 +153,7 @@ public function storeAction() {
         }
 
         $favorite = new Favorites();
-        $favorite->assign($this->get());
+        $favorite->assign($this->get(), Favorites::blackList);
         $favorite->user_id = AuthService::currentUser()->id;
         $favorite->save();
     } catch (Throwable $e){
@@ -162,7 +164,7 @@ public function storeAction() {
 
 This function performs the following tasks:
 - We perform a CSRF check since we will be submitting a form.  
-- Create a new `Favorites` object and use the `get()` from the `JsonResponse()` trait to retrieve data from our front end.  This is similar to using the `$this->request->get` for  PHP views.  
+- Create a new `Favorites` object and use the `get()` from the `JsonResponse()` trait to retrieve data from our front end.  This is similar to using the `$this->request->get` for  PHP views.  We pass `Favorites::blackList` to `assign()` so protected fields such as `user_id` and `is_home` can't be set from the request payload.
 - Set `user_id` to id of current user.
 - Save the record.
 - Catch any exceptions and return jsonError response.

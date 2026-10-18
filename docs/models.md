@@ -136,6 +136,8 @@ public function assign(array $params, array $list = [], string $assignmentFilter
 
 You can toggle the behavior by passing the third parameter using the `WHITELIST` constant if you're using a whitelist.
 
+If you call `assign()` without a list, the model's declared `whiteList` is applied when it exists, otherwise its `blackList`.  An explicit list passed to `assign()` always takes precedence over the declared constants.  Passing the list at the call site is still recommended, since it documents the filtering where the assignment happens.
+
 <br>
 
 ### D. Best Practice <a id="best-practice">
