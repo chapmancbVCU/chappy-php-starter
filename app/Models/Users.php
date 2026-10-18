@@ -1,15 +1,13 @@
 <?php
 namespace App\Models;
 use Core\Model;
-use Core\Services\AuthService;
 use Core\Lib\Utilities\Arr;
 use Core\Lib\Contracts\Principal as ContractsPrincipal;
 use Core\Traits\{
     HasTimestamps,
     IsPrincipal,
     IsUser,
-    PasswordPolicy,
-    UsesACLs
+    PasswordPolicy
 };
 
 /**
@@ -20,14 +18,12 @@ class Users extends Model implements ContractsPrincipal {
     use IsPrincipal;
     use IsUser;
     use PasswordPolicy;
-    use UsesACLs;
         
     public ?string $description = null;
     public ?string $email = null;
     public ?string $fname = null;
     public int $id;
     public ?string $lname = null;
-    public ?string $password = null;
     protected static string $_table = 'users';
     public ?string $username = null;
     public const whiteList = ['username', 'email', 'password', 'fname', 'lname', 'description'];
@@ -41,19 +37,7 @@ class Users extends Model implements ContractsPrincipal {
      */
     public function beforeSave(): void {
         $this->timeStamps();
-        if($this->isNew()) {
-            $this->password = AuthService::hashPassword($this->password);
-        }
-        if($this->changePassword) {
-            $this->password = AuthService::hashPassword($this->password);
-            $this->reset_password = 0;
-        }
-        
-        // Ensure ACL is always stored as `[""]` when empty
-        if (Arr::isEmpty(json_decode($this->acl, true))) {
-            $this->acl = json_encode([""]);
-        }
-        
+        $this->userBeforeSave();
     }
 
     /**
