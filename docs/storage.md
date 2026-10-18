@@ -1,9 +1,4 @@
----
-layout: default
-title: Session and Local storage
----
-
-# Session and Local storage
+<h1 style="font-size: 50px; text-align: center;">Session and Local storage</h1>
 
 ## Table of contents
 
