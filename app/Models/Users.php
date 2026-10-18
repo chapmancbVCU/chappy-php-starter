@@ -3,34 +3,31 @@ namespace App\Models;
 use Core\Model;
 use Core\Services\AuthService;
 use Core\Lib\Utilities\Arr;
-use Core\Traits\HasTimestamps;
-use Core\Traits\PasswordPolicy;
 use Core\Lib\Contracts\Principal as ContractsPrincipal;
-use Core\Traits\IsPrincipal;
+use Core\Traits\{
+    HasTimestamps,
+    IsPrincipal,
+    IsUser,
+    PasswordPolicy,
+    UsesACLs
+};
 
 /**
  * Extends the Model class.  Supports functions for the Users model.
  */
 class Users extends Model implements ContractsPrincipal {
-    use PasswordPolicy;
     use HasTimestamps;
     use IsPrincipal;
-
-    public string $acl;
-    public const blackList = ['id','deleted'];
-    private bool $changePassword = false;
-    public ?string $confirm = null;
-    public int $deleted = 0;                // Set default value for db field.
+    use IsUser;
+    use PasswordPolicy;
+    use UsesACLs;
+        
     public ?string $description = null;
     public ?string $email = null;
     public ?string $fname = null;
     public int $id;
-    public int $inactive = 0;
     public ?string $lname = null;
-    public int $login_attempts = 0;
-    public int $reset_password = 0;
     public ?string $password = null;
-    protected static bool $_softDelete = true;
     protected static string $_table = 'users';
     public ?string $username = null;
     public const whiteList = ['username', 'email', 'password', 'fname', 'lname', 'description'];
@@ -86,65 +83,6 @@ class Users extends Model implements ContractsPrincipal {
      */
     public static function findByUserName(string $username): bool|object {
         return self::findFirst(['conditions'=> "username = ?", 'bind'=>[$username]]);
-    }
-
-    /**
-     * Returns the user's assigned ACLs as an array.
-     *
-     * Decodes the JSON-encoded acl field. Returns an empty array if the field
-     * is null, empty, or not valid JSON — so callers always get an array.
-     *
-     * @return array The user's ACLs, or an empty array if none/invalid.
-     */
-    public function getAcls(): array {
-        $userAcls = json_decode($this->acl, true);
-        return is_array($userAcls) ? $userAcls : [];
-    }
-    
-    /**
-     * Checks if the user has a specific ACL assigned.
-     *
-     * @param string $acl The ACL to check.
-     * @return bool True if the user has the ACL, otherwise false.
-     */
-    public function hasAcl(string $acl): bool {
-        $userAcls = json_decode($this->acl, true);
-    
-        if (!is_array($userAcls)) {
-            return false; // Ensures it always returns a boolean
-        }
-        return in_array($acl, $userAcls, true);
-    }
-
-    /**
-     * Assists in setting value of inactive field based on POST.
-     *
-     * @return bool The value for inactive based on value received from 
-     * POST.
-     */
-    public function isInactiveChecked(): bool {
-        return $this->inactive === 1;
-    }
-
-    /**
-     * Assists in setting value of reset_password field based on 
-     * POST.
-     *
-     * @return bool The value for reset_password based on value 
-     * received from POST.
-     */
-    public function isResetPWChecked(): bool {
-        return $this->reset_password === 1;
-    }
-
-    /**
-     * Setter function for $changePassword.
-     *
-     * @param bool $value The value we will assign to $changePassword.
-     * @return void
-     */
-    public function setChangePassword(bool $value): void {
-        $this->changePassword = $value;
     }
 
     public function getRememberTokenName(): ?string { return null; }
