@@ -88,25 +88,16 @@ class Users extends Model implements ContractsPrincipal {
         }
         
         if($this->isNew() || $this->changePassword) {
-            
-            if($this->isMinLength()) {
-                $this->runValidation('password', ["min:{$this->minLength()}"], 'Password');
-            }
-            if($this->isMaxLength()) {
-                $this->runValidation('password', ["max:{$this->maxLength()}"], 'Password');
-            }
-            if($this->lowerChar()) {
-                $this->runValidation('password', ['lower'], 'Password');
-            }
-            if($this->upperChar()) {
-                $this->runValidation('password', ['upper'], 'Password');
-            }
-            if($this->numericChar()) {
-                $this->runValidation('password', ['number'], 'Password');
-            }
-            if($this->specialChar()) {
-                $this->runValidation('password', ['special'], 'Password');
-            }
+            $validators = [
+                "min:{$this->minLength()}",
+                "max:{$this->maxLength()}",
+                'lower',
+                'upper',
+                'number',
+                'special'
+            ];
+
+            $this->runValidation('password', $validators, 'Password');
             $this->runValidation('confirm', ["match:{$this->password}"], 'Confirm Password');
         }
     }
