@@ -72,7 +72,7 @@ class Users extends Model implements ContractsPrincipal {
     public function getRememberTokenName(): ?string { return null; }
 
     /**
-     * Performs validation on use related forms.
+     * Performs validation on user related forms.
      *
      * @return void
      */
