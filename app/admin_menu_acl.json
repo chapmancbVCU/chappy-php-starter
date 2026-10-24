@@ -3,6 +3,7 @@
     "Admin" : {
         "Admin Dashboard" : "admindashboard/index",
         "Manage ACLS" : "admindashboard/manageACLs",
-        "Attachments" : "admindashboard/attachments"
+        "Attachments" : "admindashboard/attachments",
+        "Queues" : "admindashboard/queue"
     }
 }
