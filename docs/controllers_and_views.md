@@ -8,7 +8,15 @@
 <br>
 
 ## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Just like PHP views, configuring your React.js views occurs within your controllers.  To facilitate this we have a `renderJsx` function and a $this->view->props variable.
+Just like PHP views, configuring your React.js views occurs within your controllers.  To facilitate this we have a `renderJsx` function and a `$this->view->props` variable.
+
+**renderJsx**
+
+Accepts the following parameters:
+- `string $viewComponent` - The name of the component in <dir_name>.<view_name> format.
+- `array $props` - The props to be pass to the component.
+- `bool $frameworkLayoutPath` - When set to true use internal layout.
+- `string $entry` - The entry point for JavaScript.
 
 <br>
 
