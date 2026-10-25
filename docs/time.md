@@ -189,6 +189,53 @@ Parameters:
 Returns:
 - `string` - The formatted time.
 
+Example output is for `2026-01-15 20:30:45.123` UTC displayed in `America/New_York` with the `en` locale.
+
+| Character | Description | Example Output |
+|-------|-------|-------|
+| **Day** | | |
+| `d` | Day of the month, 2 digits with leading zero | `15` (`01` to `31`) |
+| `D` | Short day name, translated by locale | `Thu` |
+| `j` | Day of the month without leading zero | `15` (`1` to `31`) |
+| `l` | Full day name, translated by locale | `Thursday` |
+| `N` | ISO 8601 day of the week, Monday = 1 | `4` (`1` to `7`) |
+| `S` | English ordinal suffix for the day, use with `j` | `th` (`st`, `nd`, `rd`, `th`) |
+| `w` | Day of the week, Sunday = 0 | `4` (`0` to `6`) |
+| `z` | Day of the year, starting from 0 | `14` (`0` to `365`) |
+| **Month** | | |
+| `F` | Full month name, translated by locale | `January` |
+| `M` | Short month name, translated by locale | `Jan` |
+| `m` | Month number with leading zero | `01` (`01` to `12`) |
+| `n` | Month number without leading zero | `1` (`1` to `12`) |
+| `t` | Number of days in the month | `31` (`28` to `31`) |
+| **Year** | | |
+| `L` | Leap year flag | `0` (`1` if leap year) |
+| `Y` | Full year | `2026` |
+| `y` | 2-digit year | `26` |
+| **Time** | | |
+| `a` | Lowercase meridiem, translated by locale | `pm` |
+| `A` | Uppercase meridiem, translated by locale | `PM` |
+| `g` | 12-hour format without leading zero | `3` (`1` to `12`) |
+| `G` | 24-hour format without leading zero | `15` (`0` to `23`) |
+| `h` | 12-hour format with leading zero | `03` (`01` to `12`) |
+| `H` | 24-hour format with leading zero | `15` (`00` to `23`) |
+| `i` | Minutes with leading zero | `30` (`00` to `59`) |
+| `s` | Seconds with leading zero | `45` (`00` to `59`) |
+| `u` | Microseconds | `123000` |
+| `v` | Milliseconds | `123` |
+| **Timezone** | | |
+| `e` | Timezone identifier | `America/New_York` |
+| `T` | Timezone abbreviation | `EST` (`EDT` during daylight saving time) |
+| `P` | UTC offset with colon | `-05:00` |
+| `p` | Same as `P`, but returns `Z` for UTC | `-05:00` (`Z` in UTC) |
+| `O` | UTC offset without colon | `-0500` |
+| **Full Date/Time** | | |
+| `c` | ISO 8601 date | `2026-01-15T15:30:45-05:00` |
+| `r` | RFC 2822 date | `Thu, 15 Jan 2026 15:30:45 -0500` |
+| `U` | Seconds since the Unix epoch (January 1, 1970 UTC) | `1768509045` |
+
+To print one of these characters literally, escape it with a backslash.  For example, `'\T\o\d\a\y \i\s l'` outputs `Today is Thursday`.  In JavaScript strings, double the backslash: `'\\T\\o\\d\\a\\y \\i\\s l'`.
+
 Example:
 ```php
 DateTime::formatTime('2026-01-15 20:30:45', DateTime::FORMAT_HUMAN_READABLE);
