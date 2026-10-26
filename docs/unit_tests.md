@@ -732,7 +732,7 @@ public function test_register_action_creates_user(): void
 <br>
 
 ### B. `post()` with API Example <a id="post-api"></a>
-The example below demonstrates a `PUT` request when building an API:
+The example below demonstrates a `POST` request when building an API:
 ```php
 <?php
 declare(strict_types=1);
