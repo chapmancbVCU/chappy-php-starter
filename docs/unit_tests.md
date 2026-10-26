@@ -358,7 +358,7 @@ class RESTfulDestroyTest extends ApplicationTestCase
         self::ensureSessionStarts();
 
         // 1) Seed user
-        UserFactory::factory(UserFactory::class)->createOne([
+        UserFactory::factory(UserFactory::class)->create([
             'fname' => 'Test',
             'lname' => 'User',
             'email' => 'destroy@example.com',
@@ -510,7 +510,7 @@ class RESTfulShowTest extends ApplicationTestCase {
         self::ensureSessionStarts();
 
         // 1) Seed a user record
-        UserFactory::factory(UserFactory::class)->createOne([
+        UserFactory::factory(UserFactory::class)->create([
             'fname' => 'Test',
             'lname' => 'User',
             'email' => 'test@example.com',
