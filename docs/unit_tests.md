@@ -759,7 +759,7 @@ class RESTfulStoreTest extends ApplicationTestCase {
         self::ensureSessionStarts();
 
         // 1) Seed user
-        UserFactory::factory(UserFactory::class)->createOne([
+        UserFactory::factory(UserFactory::class)->create([
             'fname' => 'Test',
             'lname' => 'User',
             'email' => 'test@example.com',
@@ -829,7 +829,7 @@ This is especially useful for testing resourceful routes like `/users/update/1`,
 public function test_put_updates_user(): void
 {
     // ✅ Seed user
-    UserFactory::factory(UserFactory::class)->createOne([
+    UserFactory::factory(UserFactory::class)->create([
         'fname' => 'Original',
         'lname' => 'User',
         'email' => 'original@example.com',
