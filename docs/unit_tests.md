@@ -607,7 +607,7 @@ class RESTfulPatchTest extends ApplicationTestCase {
         self::ensureSessionStarts();
 
         // 1) Seed user
-        UserFactory::factory(UserFactory::class)->createOne([
+        UserFactory::factory(UserFactory::class)->create([
             'fname' => 'Test',
             'lname' => 'User',
             'email' => 'test@example.com',
