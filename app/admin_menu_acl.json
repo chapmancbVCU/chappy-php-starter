@@ -4,6 +4,7 @@
         "Admin Dashboard" : "admindashboard/index",
         "Manage ACLS" : "admindashboard/manageACLs",
         "Attachments" : "admindashboard/attachments",
-        "Queue Manager" : "admindashboard/queueManager"
+        "Queue Manager" : "admindashboard/queueManager",
+        "Notifications" : "admindashboard/notifications"
     }
 }
