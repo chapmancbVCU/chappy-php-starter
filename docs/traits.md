@@ -17,6 +17,12 @@ This framework currently supports 4 traits intended for developer use:
 <br>
 
 ## 2. HasTimestamps <a id="has-timestamps"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+Supports timestamp related features for your `$created_at` and `$updated_at` database fields.  The `timeStamps` function is used to manage these fields.
+
+
+<br>
+
+## 3. PasswordPolicy <a id="password-policy"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 Contains a collection of functions for enforcing your project's password policy:
 - `isMaxLength` - True if this policy is enabled
 - `isMinLength` - True if this policy is enabled
@@ -26,8 +32,3 @@ Contains a collection of functions for enforcing your project's password policy:
 - `numericChar` - True if this policy is enabled
 - `specialChar` - True if this policy is enabled
 - `upperChar` - True if this policy is enabled
-
-<br>
-
-## 3. PasswordPolicy <a id="password-policy"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Supports timestamp related features for your `$created_at` and `$updated_at` database fields.  The `timeStamps` function is used to manage these fields.
