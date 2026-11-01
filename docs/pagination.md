@@ -109,6 +109,12 @@ Pass the `Pagination` object to the view:
 $this->view->pagination = $pagination;
 ```
 
+At the top of the view add a call to `paginationSummary()`:
+
+```php
+<?= $this->pagination->paginationSummary('describe_data') ?>
+```
+
 Within your view, add the following line where the page links should appear. In this case, it goes right after the closing tag for the table element:
 
 ```php
