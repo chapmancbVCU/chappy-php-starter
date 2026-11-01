@@ -34,6 +34,7 @@
     * F. [PaginationSummary Component](#react-summary)
     * G. [SortableTh Component](#react-sortable)
     * H. [usePaginatedQuery Hook](#react-hook)
+    * I. [Simple PaginationExamples](#simple-examples)
 6. [Supporting PHP and React Views Together](#both)
 7. [Testing](#testing)
 8. [API Reference](#api)
@@ -702,6 +703,90 @@ Returns:
 When the user changes the list quickly, older requests are cancelled so results always match the latest change.
 
 <br>
+
+#### I. Simple Pagination Examples <a id="simple-examples"></a>
+There are two simple versions, depending on whether a page change should reload the page.
+
+PHP side (same for both): no SearchFilter, just Pagination.
+```php
+public function indexAction(): void {
+    $pagination = Pagination::fromRequest($this->request, 10, Contacts::findTotal([
+        'conditions' => 'user_id = ?',
+        'bind'       => [$this->currentUser->id]
+    ]));
+
+    $contacts = Contacts::find($pagination->paginationParams(
+        'user_id = ?',
+        [$this->currentUser->id],
+        'lname, fname'
+    ));
+
+    $props = [
+        'contacts'   => array_map(fn($c) => [
+            'id'    => (int)$c->id,
+            'name'  => $c->displayName(),
+            'email' => $c->email,
+        ], $contacts),
+        'pagination' => $pagination->toArray(),
+    ];
+
+    // Only needed for Option 2
+    if ($this->request->isAjax()) {
+        $this->jsonResponse(['success' => true] + $props, 200, ['Vary' => 'X-Requested-With']);
+        return;
+    }
+
+    $this->view->renderJsx('contacts.Index', $props);
+}
+```
+
+ <br>
+
+**Option 1**: plain links (simplest). Leave out onPageChange, and each page link loads the next page from the server like a PHP view does. No hook and no JSON branch are needed, so you can drop the isAjax() block above.
+```php
+import React from 'react';
+import Pagination, { PaginationSummary } from '@chappy/components/Pagination';
+
+export default function Index({ contacts, pagination }) {
+    return (
+        <>
+            <PaginationSummary pagination={pagination} noun="contacts" />
+            <ul className="list-group mb-3">
+                {contacts.map((c) => (
+                    <li key={c.id} className="list-group-item">{c.name} — {c.email}</li>
+                ))}
+            </ul>
+            <Pagination pagination={pagination} />
+        </>
+    );
+}
+```
+
+<br>
+
+**Option 2**: no page reload. Add the hook and pass goToPage. The hook works without a filter, because it only fetches whatever is in the URL, which here is just page.
+```php
+import React from 'react';
+import usePaginatedQuery from '@chappy/utils/usePaginatedQuery';
+import Pagination, { PaginationSummary } from '@chappy/components/Pagination';
+
+export default function Index({ contacts, pagination }) {
+    const { data, loading, error, goToPage } = usePaginatedQuery({ contacts, pagination });
+
+    return (
+        <>
+            {error && <div className="alert alert-danger">{error}</div>}
+            <PaginationSummary pagination={data.pagination} noun="contacts" />
+            <ul className="list-group mb-3" style={{ opacity: loading ? 0.5 : 1 }}>
+                {data.contacts.map((c) => (
+                    <li key={c.id} className="list-group-item">{c.name} — {c.email}</li>
+                ))}
+            </ul>
+            <Pagination pagination={data.pagination} onPageChange={goToPage} />
+        </>
+    );
+}
+```
 
 ## 6. Supporting PHP and React Views Together <a id="both"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 One controller action can serve a PHP view, a React view, and the JSON for the React view. The service builds the filter and the query for all three.
