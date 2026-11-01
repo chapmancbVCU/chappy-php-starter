@@ -34,7 +34,7 @@
     * F. [PaginationSummary Component](#react-summary)
     * G. [SortableTh Component](#react-sortable)
     * H. [usePaginatedQuery Hook](#react-hook)
-    * I. [Simple PaginationExamples](#simple-examples)
+    * I. [Simple Pagination Examples](#simple-examples)
 6. [Supporting PHP and React Views Together](#both)
 7. [Testing](#testing)
 8. [API Reference](#api)
