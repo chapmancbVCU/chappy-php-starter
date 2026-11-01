@@ -7,18 +7,15 @@ use Core\Traits\{
     HasTimestamps,
     IsPrincipal,
     IsUser,
-    PasswordPolicy
+    PasswordPolicy,
 };
 
 /**
  * Extends the Model class.  Supports functions for the Users model.
  */
 class Users extends Model implements ContractsPrincipal {
-    use HasTimestamps;
-    use IsPrincipal;
-    use IsUser;
-    use PasswordPolicy;
-        
+    use HasTimestamps, IsPrincipal, IsUser, PasswordPolicy;
+    
     /**
      * Columns converted when the model is serialized with toArray() or json_encode().
      * @var array<string, string>
