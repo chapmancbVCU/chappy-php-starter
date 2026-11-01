@@ -147,7 +147,7 @@ php console
 | [`migrate`](database_operations#overview) | Runs a Database Migration | [`--seed`](database_operations#overview), <br>[`--seeder`](database_operations#overview)|
 | [`migrate:drop:all`](database_operations#drop-all) | Drops all database tables | |
 | [`migrate:fresh`](database_operations#migrate-fresh) | Drops all tables and performs migration | [`--seed`](database_operations#migrate-fresh), <br>[`--seeder`](database_operations#migrate-fresh)|
-| [`migrate:restore`](database_operations#overview) | Restores built-in migrations | |
+| [`migrate:restore`](database_operations#overview) | Restores built-in migrations.  Choose any combination of flags to restore just those migration files. | `--acl`, <br>`--email_attachments`, <br>`--migrations`, <br>`--profile_images`, <br>`--user_sessions`, <br>`--users`, <br>`--notification`, <br>`--queue` |
 | [`migrate:refresh`](database_operations#migrate-refresh) | Drops all tables with down function and runs a Database Migration | [`--seed`](database_operations#migrate-refresh), <br>[`--step`](database_operations#migrate-refresh), <br>[`--seeder`](database_operations#migrate-refresh)|
 | [`migrate:rollback`](database_operations#rollback) | Performs rollback operation | [`--step`](database_operations#rollback), <br>[`--batch`](database_operations#rollback) | 
 | [`migrate:status`](database_operations#status) | Reports status of migrations | |
