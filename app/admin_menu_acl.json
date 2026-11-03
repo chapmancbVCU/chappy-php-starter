@@ -1,5 +1,6 @@
 {
     "Home" : "home",
+    "User Guide" : "https://chapmancbvcu.github.io/chappy-php-starter/",
     "Admin" : {
         "Admin Dashboard" : "admindashboard/index",
         "Manage ACLS" : "admindashboard/manageACLs",
