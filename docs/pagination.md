@@ -765,6 +765,7 @@ export default function Index({ contacts, pagination }) {
 <br>
 
 **Option 2**: no page reload. Add the hook and pass goToPage. The hook works without a filter, because it only fetches whatever is in the URL, which here is just page.
+{% raw %}
 ```php
 import React from 'react';
 import usePaginatedQuery from '@chappy/utils/usePaginatedQuery';
@@ -787,6 +788,7 @@ export default function Index({ contacts, pagination }) {
     );
 }
 ```
+{% endraw %}
 
 ## 6. Supporting PHP and React Views Together <a id="both"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 One controller action can serve a PHP view, a React view, and the JSON for the React view. The service builds the filter and the query for all three.
