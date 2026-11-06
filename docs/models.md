@@ -7,6 +7,7 @@
     * B. [Whitelist](#whitelist)
     * C. [Usage in Assign Method](#usage)
     * D. [Best Practice](#best-practice)
+    * E. [Hiding Fields From Output](#hidden-fields)
 3. [Description of Functions](#descriptions)
     * A. [addErrorMessage()](#add-error-messaage)
     * B. [afterDelete()](#after-delete)
@@ -142,6 +143,27 @@ If you call `assign()` without a list, the model's declared `whiteList` is appli
 
 ### D. Best Practice <a id="best-practice">
 Use whitelisting wherever possible, especially when working with user-submitted data from forms. It minimizes the chance of assigning unintended fields and improves overall security.
+
+<br>
+
+### E. Hiding Fields From Output <a id="hidden-fields">
+The blacklist and whitelist above control what may be assigned **into** a model from a request. To control what a model exposes when it is serialized to JSON — `json_encode()`, API responses, and the `data-props` passed to React components — declare a `visible` or `hidden` list. This is the output-side counterpart to the blacklist/whitelist.
+
+Use a `visible` list to expose only specific fields (preferred):
+
+```php
+public const visible = ['id', 'username', 'fname', 'lname'];
+```
+
+Or a `hidden` list to block specific fields:
+
+```php
+public const hidden = ['password', 'reset_password', 'login_attempts'];
+```
+
+With the example above, serializing a user never includes the password hash or other sensitive columns, so they do not leak into the page's HTML or an API response. A `visible` list is safer than a `hidden` list: a column added later is excluded from output by default until you deliberately add it.
+
+A model that declares neither constant serializes all of its public fields, exactly as before, so existing models are unaffected until you opt in.
 
 <br>
 
