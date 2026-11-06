@@ -33,6 +33,7 @@ class Users extends Model implements ContractsPrincipal {
     protected static string $_table = 'users';
     public ?string $username = null;
     public const whiteList = ['username', 'email', 'password', 'fname', 'lname', 'description'];
+    public const hidden = ['password', 'created_at', 'updated_at', 'deleted', 'confirm', 'login_attempts'];
 
     /**
      * Implements beforeSave function described in Model parent class.  
