@@ -1,0 +1,18 @@
+# PHPStan configuration for this application.
+# Run from the project root: composer analyse
+# Personal overrides go in phpstan.neon (git-ignored), which PHPStan uses
+# instead of this file when present.
+
+parameters:
+    level: 5
+
+    paths:
+        - app
+        - database
+
+    # Defines the path constants and global helper functions (env(),
+    # redirect(), ...) that index.php and console provide at runtime.
+    bootstrapFiles:
+        - vendor/chappy-php/chappy-php-framework/src/scripts/analysis_bootstrap.php
+
+    tmpDir: storage/cache/phpstan

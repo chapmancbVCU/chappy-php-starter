@@ -31,7 +31,8 @@
     ],
     "post-create-project-cmd": [
       "@setup"
-    ]
+    ],
+    "analyse": "phpstan analyse --memory-limit=1G"
   },
   "repositories": [
     {
@@ -43,6 +44,7 @@
     }
   ],
   "require-dev": {
-    "psy/psysh": "^0.12.20"
+    "psy/psysh": "^0.12.20",
+    "phpstan/phpstan": "^2.1"
   }
 }
