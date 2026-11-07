@@ -8,7 +8,8 @@
 5. [Profile and Password Forms](#forms)
 6. [Password Rules](#password_rules)
 7. [Optional: Configure the User Model](#configure)
-8. [Checklist](#checklist)
+8. [Optional: Static Analysis](#static_analysis)
+9. [Checklist](#checklist)
 
 <br>
 
@@ -135,7 +136,45 @@ Without this file the framework uses `App\Models\Users`.
 
 <br>
 
-## 8. Checklist <a id="checklist"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Optional: Static Analysis <a id="static_analysis"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+New applications include PHPStan.  To add it to an existing application:
+
+1. Install PHPStan as a development dependency:
+```sh
+composer require --dev phpstan/phpstan
+```
+
+2. Add an `analyse` script to `composer.json`:
+```json
+"scripts": {
+    "analyse": "phpstan analyse --memory-limit=1G"
+}
+```
+
+3. Create `phpstan.neon.dist` in the project root:
+```yaml
+parameters:
+    level: 5
+
+    paths:
+        - app
+        - database
+
+    bootstrapFiles:
+        - vendor/chappy-php/chappy-php-framework/src/scripts/analysis_bootstrap.php
+
+    tmpDir: storage/cache/phpstan
+```
+
+4. Add `/phpstan.neon` to `.gitignore` so personal overrides are not committed.
+
+5. Run `composer analyse`.  If the first run reports many errors, generate a baseline with `composer analyse -- --generate-baseline` and include it in your configuration.
+
+See [Static Analysis (PHPStan)](static_analysis) for details.
+
+<br>
+
+## 9. Checklist <a id="checklist"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 - `App\Models\Users` extends `Core\Models\User`, with duplicated members removed.
 - No remaining references to `Core\Traits\IsUser`.
 - Mailer `sendTo()` overrides take `User`.
@@ -143,3 +182,4 @@ Without this file the framework uses `App\Models\Users`.
 - Custom editable columns added to `profileFields`.
 - `PW_*` and `SET_PW_*` values in `.env` reviewed.
 - Registration, login, logout, a forced password reset, a password change, and a profile edit tested.
+- Optional: `composer analyse` runs cleanly or with a committed baseline.
