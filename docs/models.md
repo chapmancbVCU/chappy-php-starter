@@ -155,7 +155,7 @@ The user model follows this approach.  It defines a whitelist for each kind of f
 $user->assign($this->request->get(), $user::profileFields, $user::WHITELIST);
 ```
 
-Use `$user::` rather than the class name so that a list overridden in your application's user model is respected.  See [The User Model](auth#user_model) for details.
+Use `$user::` rather than the class name so that a list overridden in your application's user model is respected.  See [User Model](user_model#field_lists) for details.
 
 <br>
 

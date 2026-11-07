@@ -41,7 +41,7 @@ class Users extends User {
 
 The `Core\Traits\IsUser` trait has been removed.  Its properties and methods are part of `Core\Models\User`.
 
-If you customized `validator()`, keep your override and call `parent::validator()` to keep the framework's rules.  See [The User Model](auth#user_model) for more on customizing.
+If you customized `validator()`, keep your override and call `parent::validator()` to keep the framework's rules.  See [Customizing the User Model](user_model#customizing).
 
 <br>
 
