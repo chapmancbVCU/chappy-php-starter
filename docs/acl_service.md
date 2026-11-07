@@ -35,7 +35,7 @@ use Core\Services\AclService;
 Returns an array containing access control list information.  When the $acl instance variable is empty an empty array is returned.
 
 Parameter:
-- `Users $user` - The user whose ACLs we want to use.
+- `User $user` - The user whose ACLs we want to use.
 
 Return:
 - `array` - The array containing access control list information.
@@ -130,7 +130,7 @@ Used internally by `updateUserACLs()`.
 
 Parameters:
 - `array $acls` - ACLs stored in acl table.
-- `Users $user` - The user we want to modify. 
+- `User $user` - The user we want to modify. 
 - `array $newAcls` - The new ACLs for the user.
 - `array $userAcls` - The user's existing ACLs.
 
@@ -141,7 +141,7 @@ Parameters:
 Central method for updating a user's ACLs. Compares current ACLs with selected ones and saves the result.
 
 Parameters:
-- `Users $user` - The user whose ACLs we want to update.
+- `User $user` - The user whose ACLs we want to update.
 - `array $userAcls` - Existing user's ACLs.
 - `array $acls` - All available ACLs.
 - `array|null $postAcls` - ACLs from post that are selected.

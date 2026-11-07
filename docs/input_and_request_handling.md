@@ -40,10 +40,10 @@ $data = $this->request->get();
 You can directly assign all request inputs to a model instance:
 ```php
 $user = new Users();
-$user->assign($this->request->get(), Users::blackList);
+$user->assign($this->request->get(), Users::whiteList, Users::WHITELIST);
 ```
 
-The second parameter allows you to skip assigning sensitive fields like passwords, tokens, or role IDs.
+The second parameter lists the fields that may be assigned, so sensitive fields such as ACLs or account flags are never taken from the request.  The third parameter says whether the list is a whitelist or a blacklist.  Whitelists are recommended; see [Mass Assignment](models#best-practice).
 
 <br>
 

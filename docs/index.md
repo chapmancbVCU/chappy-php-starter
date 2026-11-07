@@ -11,6 +11,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * E. [LEMP Stack](lemp)
     * F. [MacOS](macos)
     * G. [Windows](windows)
+    * H. [Upgrading to 4.0](upgrading_to_4)
 2. [Access Control Levels (ACLs)](access_control_levels)
 3. [Administration](administration)
 4. [Authentication](auth)

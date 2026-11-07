@@ -48,7 +48,7 @@ $confirm = AuthService::confirm($request);
 Retrieves the currently logged-in user from the session, or loads it from the database if not cached.
 
 Returns:
-- Users|false|null An object containing information about current logged in user from users table.
+- `User|false|null` An object containing information about current logged in user from users table.
 
 ```php
 $user = AuthService::currentUser();
@@ -72,7 +72,7 @@ $hash = AuthService::hashPassword($rawPassword);
 <br>
 
 ### D. `login()`
-Attempts to log a user in. If successful, resets login attempts and creates a session. Otherwise, tracks failed attempts and optionally triggers an email notification.
+Attempts to log a user in. If successful, resets login attempts and creates a session. Otherwise, tracks failed attempts and optionally triggers an email notification.  If the account is flagged for a password reset, records the pending reset with `beginPasswordReset()` and redirects to the reset page.  New code should use `LoginService::attempt()`, described in [Authentication](auth#logging_in).
 
 Parameters:
 - `Input $request` - The request for the login.
@@ -109,7 +109,7 @@ AuthService::loginAttempts($user, $loginModel, true);
 Creates a session for the logged-in user and stores a remember-me token if requested.
 
 Parameters:
-- `Users $loginUser` - The user to be logged in.
+- `User $loginUser` - The user to be logged in.
 - `bool $rememberMe` - Value obtained from remember me checkbox found in login form.  Default value is false.
 
 ```php
@@ -157,9 +157,11 @@ AuthService::logoutUser($user);
 ### J. `passwordReset()`
 Handles the complete flow of resetting a user’s password, including setting the confirmation field and updating the record.
 
+The reset only proceeds if this session has a pending reset for `$user` (see `pendingPasswordResetUser()` below).  Otherwise it logs a warning and redirects to the login page without saving.  Only the fields in the model's `passwordFields` constant are taken from the request.  After a successful save, the pending reset is cleared and the user is redirected to the login page.
+
 Parameters:
 - `Input $request` - The request for the password reset action.
-- `Users $user` - The user whose password we will reset.
+- `User $user` - The user whose password we will reset.
 
 ```php
 AuthService::passwordReset($request, $user);
@@ -167,11 +169,42 @@ AuthService::passwordReset($request, $user);
 
 <br>
 
-### K. `profileImageUpload()`
+### K. `beginPasswordReset()`
+Records in the session that a user has proven their credentials and must set a new password.  Login calls this when it finds the `reset_password` flag, before redirecting to the reset page.
+
+Parameters:
+- `User $user` - The user who must reset their password.
+
+```php
+AuthService::beginPasswordReset($user);
+```
+
+<br>
+
+### L. `pendingPasswordResetUser()`
+Returns the user whose password may be reset in this session, or `null`.  The id must match the user recorded by `beginPasswordReset()`, and that user must still have the `reset_password` flag set.  Use this in your reset action instead of looking the user up by the id in the URL.
+
+Parameters:
+- `int $id` - The user id from the reset page URL.
+
+Returns:
+- `User|null` - The user, or `null` if this session has no pending reset for that id.
+
+```php
+$user = AuthService::pendingPasswordResetUser((int)$id);
+if(!$user) {
+    redirect('auth.login');
+    return;
+}
+```
+
+<br>
+
+### M. `profileImageUpload()`
 Processes a profile image upload and returns an `Uploads` object. Assumes the input name is `profileImage`.
 
 Parameter:
-- `Users $user` - The user who uploaded a profile image.
+- `User $user` - The user who uploaded a profile image.
 
 Returns:
 - `Uploads|null` - The uploads object if it's created or null.
@@ -183,7 +216,7 @@ $upload = AuthService::profileImageUpload($user);
 <br>
 
 ## 3. Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-- `Users` – User model used for authentication and lookup.
+- `User` – Base user model; your configured user model (`App\Models\Users` by default) extends it.
 - `Login` – Model used to store validation and error states during login.
 - `UserSessions` – Tracks persistent sessions for "remember me" functionality.
 - ``Uploads`` – Used for uploading profile images.

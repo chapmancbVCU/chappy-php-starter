@@ -393,7 +393,7 @@ By default, `AbstractMailer::sendTo()` uses the base `send()` method, which call
 
 Example: Overriding `sendTo()` to Add Attachments
 ```php
-use App\Models\Users;
+use Core\Models\User;
 use Core\Models\EmailAttachments;
 use Core\Lib\Mail\AbstractMailer;
 use Core\Lib\Mail\Attachments;
@@ -415,7 +415,7 @@ class WelcomeMailer extends AbstractMailer
     /**
      * Override the static sendTo method to include custom build options.
      */
-    public static function sendTo(Users $user): bool {
+    public static function sendTo(User $user): bool {
         $mailer = new static($user);
 
         $attachment1 = EmailAttachments::findById(1);
@@ -435,6 +435,8 @@ class WelcomeMailer extends AbstractMailer
     }
 }
 ```
+
+The parameter must be typed `Core\Models\User`, matching `AbstractMailer::sendTo()`.  PHP does not allow an override to narrow a parameter type, so declaring `sendTo(Users $user)` causes a fatal error.  Your `App\Models\Users` objects are still accepted, because `Users` extends `User`.
 
 <br>
 

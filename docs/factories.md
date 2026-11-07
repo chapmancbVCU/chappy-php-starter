@@ -334,7 +334,7 @@ UserFactory::factory()->create(['fname' => 'Jane', 'lname' => 'Doe']);
 <br>
 
 ## 6. UserFactory <a id="user-factory"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-The UserFactory class is built-in to the framework.  It contains everything you need to add a new user record and set states for various values.
+The UserFactory class is built-in to the framework.  It contains everything you need to add a new user record and set states for various values.  It creates instances of your configured user model (`App\Models\Users` by default, or the class set as `user_model` in `config/auth.php`), so it does not set `$modelName` itself.
 
 Supplied state functions:
 - `UserFactory::admin()` - Sets `acl` value to `["Admin"]`

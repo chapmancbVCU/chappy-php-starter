@@ -33,7 +33,7 @@ use Core\Services\DashboardService;
 Prevents the current logged-in user from viewing or editing their own user record via the admin dashboard. If the given user matches the currently logged-in user, a danger flash message is set and a redirect occurs.
 
 Parameters:
-- `Users $user` - The current user.
+- `User $user` - The current user.
 - `string $redirect` - The destination for redirect.
 
 ```php
@@ -113,7 +113,7 @@ $list = DashboardService::userList($this->request);
 Converts a user to an array for the React dashboard. Only the fields the table needs are included, so password hashes and tokens are never sent to the browser. Access levels are returned as a list, and dates include a "time ago" version.
 
 Parameter:
-- `Users $user` - The user.
+- `User $user` - The user.
 
 Returns:
 - `array` - The fields `id`, `username`, `acl`, `inactive`, `created_at`, `updated_at`, `created_ago`, and `updated_ago`.

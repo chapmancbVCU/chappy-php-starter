@@ -9,7 +9,7 @@
     * D. [Best Practice](#best-practice)
     * E. [Hiding Fields From Output](#hidden-fields)
 3. [Description of Functions](#descriptions)
-    * A. [addErrorMessage()](#add-error-messaage)
+    * A. [addErrorMessage()](#add-error-message)
     * B. [afterDelete()](#after-delete)
     * C. [afterSave()](#after-save)
     * D. [beforeDelete()](#before-delete)
@@ -29,7 +29,7 @@ This framework supports models for interacting with a database. Whenever you cre
 php console make:model Foo
 ```
 
-For models responsible for uploads add the `--upload` flag.  More about this feature in the [Uploads](#uploads) section.
+For models responsible for uploads add the `--upload` flag.  More about this feature in the [Uploads](uploads) section.
 
 After you run the command a new model file will be generated under `app/models`. The make:model command will guess what the name of your table is so be sure to double check the $table variable's value is correct. The output file for the command with modifications tailored to the foo table described above is shown below:
 
@@ -106,7 +106,7 @@ public const blackList = ['id', 'deleted', 'csrf_token'];
 Then in your controller:
 
 ```php
-$user->assign($this->request->get(), Users::blackList, Users::BLACKLIST);
+$contact->assign($this->request->get(), Contacts::blackList, Contacts::BLACKLIST);
 ```
 
 The framework will automatically ignore any fields listed in the blacklist when assigning values to the model.
@@ -143,6 +143,19 @@ If you call `assign()` without a list, the model's declared `whiteList` is appli
 
 ### D. Best Practice <a id="best-practice">
 Use whitelisting wherever possible, especially when working with user-submitted data from forms. It minimizes the chance of assigning unintended fields and improves overall security.
+
+A blacklist only blocks the fields you thought of.  Every other public property can be set from the request, including fields added to the model later.  An explicit whitelist per form is safer.
+
+The user model follows this approach.  It defines a whitelist for each kind of form:
+- `whiteList` - Registration.
+- `profileFields` - Profile editing and the admin user edit page.
+- `passwordFields` - Password reset and password change.
+
+```php
+$user->assign($this->request->get(), $user::profileFields, $user::WHITELIST);
+```
+
+Use `$user::` rather than the class name so that a list overridden in your application's user model is respected.  See [The User Model](auth#user_model) for details.
 
 <br>
 

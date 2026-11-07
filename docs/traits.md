@@ -23,12 +23,14 @@ Supports timestamp related features for your `$created_at` and `$updated_at` dat
 <br>
 
 ## 3. PasswordPolicy <a id="password-policy"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Contains a collection of functions for enforcing your project's password policy:
-- `isMaxLength` - True if this policy is enabled
-- `isMinLength` - True if this policy is enabled
-- `lowerChar` - True if this policy is enabled
-- `maxLength` - Maximum allowed length
-- `minLength` - Minimum allowed length
-- `numericChar` - True if this policy is enabled
-- `specialChar` - True if this policy is enabled
-- `upperChar` - True if this policy is enabled
+Contains a collection of functions for enforcing your project's password policy.  The base user model, `Core\Models\User`, uses this trait and applies each enabled rule when a user registers or changes their password.
+- `isMaxLength` - True if the maximum length rule is enabled
+- `isMinLength` - True if the minimum length rule is enabled
+- `lowerChar` - True if a lowercase character is required
+- `maxLength` - Maximum allowed length (`int`)
+- `minLength` - Minimum allowed length (`int`)
+- `numericChar` - True if a number is required
+- `specialChar` - True if a special character is required
+- `upperChar` - True if an uppercase character is required
+
+Values are read from `config/password.php`, which reads the `PW_*` variables in your `.env` file.  Applications without `config/password.php` fall back to reading `.env` directly.  If neither is set, every rule is off and the lengths default to 12 and 25.  See [Password Policy](config_env) for the variables.

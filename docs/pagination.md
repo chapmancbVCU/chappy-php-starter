@@ -539,7 +539,7 @@ public static function userList(object $request, int $perPage = 10): array {
     ];
 }
 
-public static function userToArray(Users $user): array {
+public static function userToArray(User $user): array {
     $acl = json_decode((string)$user->acl, true);
     return [
         'id'          => (int)$user->id,

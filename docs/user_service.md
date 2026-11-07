@@ -63,7 +63,7 @@ $response = UserService::deleteProfileImage($request);
 Ensures that the user being modified matches the currently logged-in user. If not, redirects with an error message.
 
 Parameter:
-- `Users $user` - The user object to test.
+- `User $user` - The user object to test.
 
 ```php
 UserService::ensureAuthenticatedUser($user);
@@ -75,7 +75,7 @@ UserService::ensureAuthenticatedUser($user);
 Handles profile image uploading and image order sorting.
 
 Parameters:
-- `Users $user` - The user whose profile images we want to manage.
+- `User $user` - The user whose profile images we want to manage.
 - `Uploads|null` - $uploads The Uploads object or profile image upload.
 - `string|null` - $sortedImages Order of sorted images.
 
@@ -86,10 +86,10 @@ UserService::handleProfileImages($user, $uploads, $sortedJson);
 <br>
 
 ### E. `updatePassword()`
-Updates the user’s password if the current password is correct and the new password passes validation.
+Updates the user’s password if the current password is correct and the new password passes validation.  If the current password is wrong, it adds an error message to the user and returns `false` without saving.  Only the fields in the model's `passwordFields` constant are taken from the request.
 
 Parameters:
-- `Users $user` - The user whose password we want to update.
+- `User $user` - The user whose password we want to update.
 - `Input $request` - The request.
 
 Returns:
@@ -105,7 +105,7 @@ $success = UserService::updatePassword($user, $request);
 Sends an account deactivation email if `$shouldSendEmail` is `true`.
 
 Parameters:
-- Users $user The user we will send E-mail to.
+- `User $user` The user we will send E-mail to.
 - bool $shouldSendEmail Sends E-mail when true.
 
 ```php
@@ -118,7 +118,7 @@ UserService::sendWhenSetToInactive($user, true);
 Sends a password reset email if `$shouldSendEmail` is `true`.
 
 Parameters:
-- `Users $user` - The user we will send E-mail to.
+- `User $user` - The user we will send E-mail to.
 - `bool $shouldSendEmail` - Sends E-mail when true.
 
 ```php
@@ -131,7 +131,7 @@ UserService::sendWhenSetToResetPW($user, true);
 Toggles the `inactive` status based on request input. Returns `true` if the account was just deactivated.
 
 Parameters:
-- `Users $user` - The user whose status we want to set.
+- `User $user` - The user whose status we want to set.
 - `Input $request` - The request.
 - `int|null $currentInactive` - Value of $user->inactive before post.
 
@@ -148,7 +148,7 @@ $shouldEmail = UserService::toggleAccountStatus($user, $request, $previousInacti
 Toggles the `reset_password` flag based on request input. Returns `true` if it was just activated.
 
 Parameter:
-- `Users $user` - The user whose status we want to set.
+- `User $user` - The user whose status we want to set.
 - `Input $request` - The request.
 - `int|null $currentReset` - Value of $user->reset_password before post.
 
@@ -170,7 +170,7 @@ $shouldEmail = UserService::toggleResetPassword($user, $request, $previousReset)
 
 <br>
 
-## 4. Examples <a id="Examples"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Examples <a id="examples"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 
 ### A. Password Reset
 You can use the `UserService::toggleResetPassword` and `UserService::sendWhenSetToResetPW` to send an E-mail to a user when an administrator sets the `reset_password` field for an account.  An example is shown below:
@@ -183,7 +183,6 @@ public function setResetPasswordAction($id) {
 
     if($this->request->isPost()) {
         $this->request->csrfCheck();
-        $user->assign($this->request->get(), Users::blackList);
         $shouldSendEmail = UserService::toggleResetPassword($user, $this->request, $resetPW);
         if($user->save()) {
             UserService::sendWhenSetToResetPW($user, $shouldSendEmail);
@@ -198,7 +197,7 @@ public function setResetPasswordAction($id) {
 }
 ```
 
-The `toggleResetPassword` function manages the user's `reset_password` field and returns true if a password reset E-mail should be sent.  The `sendWhenSetToResetPW` function creates an event for sending the E-mail only if `$shouldSendEmail` is true.  For example, when the administrator removes the `reset_password` status for a user.
+The `toggleResetPassword` function sets the user's `reset_password` field from the checkbox and returns true if a password reset E-mail should be sent.  The `sendWhenSetToResetPW` function creates an event for sending the E-mail only if `$shouldSendEmail` is true.  For example, when the administrator removes the `reset_password` status for a user.
 
 <br>
 
@@ -212,7 +211,6 @@ public function setStatusAction($id) {
 
     if($this->request->isPost()) {
         $this->request->csrfCheck();
-        $user->assign($this->request->get(), Users::blackList);
         $shouldSendEmail = UserService::toggleAccountStatus($user, $this->request, $inactive);
         if($user->save()) {
             UserService::sendWhenSetToInactive($user, $shouldSendEmail);

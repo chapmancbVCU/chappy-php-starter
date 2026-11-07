@@ -6,7 +6,7 @@
     * A. [handleUpload()](#handle-upload)
     * B. [generateUploadFilename()](#generate-upload-filename)
     * C. [getFiles()](#get-files)
-    * D. [upload()](#upload-function)
+    * D. [upload()](#upload-files)
 3. [Setup](#setup)
     * A. [Migration File](#migration-file)
     * B. [Setting up the Model](#model-setup)
@@ -209,14 +209,14 @@ public function editAction(): void {
 
         // Handle file upload using the static method in Uploads
         $uploads = Uploads::handleUpload(
-            'profileImage'
+            'profileImage',
             ProfileImages::class,
             ROOT . DS,
             "5mb",
             $user,
         );
 
-        $user->assign($this->request->get(), Users::blackList);
+        $user->assign($this->request->get(), $user::profileFields, $user::WHITELIST);
         $user->save();
         if($user->validationPassed()){
             if($uploads) {

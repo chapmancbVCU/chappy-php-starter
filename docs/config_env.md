@@ -123,14 +123,16 @@ SET_PW_MIN_LENGTH=true
 SET_PW_MAX_LENGTH=true
 ```
 
-Defines password complexity requirements.
+Defines password complexity requirements.  These values are read through `config/password.php` and enforced by the base user model whenever a user registers, resets their password, or changes it.
 
 Supports:
-- lowercase
-- uppercase
-- numbers
-- special characters
-- configurable minimum and maximum lengths
+- lowercase (`PW_LOWER_CHAR`)
+- uppercase (`PW_UPPER_CHAR`)
+- numbers (`PW_NUM_CHAR`)
+- special characters (`PW_SPECIAL_CHAR`)
+- configurable minimum and maximum lengths (`PW_MIN_LENGTH`, `PW_MAX_LENGTH`), each switched on by `SET_PW_MIN_LENGTH` and `SET_PW_MAX_LENGTH`
+
+Each flag turns its rule on or off.  Set a flag to `false` to stop enforcing that rule.
 
 These values are also exposed to Vite for frontend validation.
 
