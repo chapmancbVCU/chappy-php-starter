@@ -23,7 +23,6 @@
     }
   },
   "scripts": {
-    "analyse": "phpstan analyse --memory-limit=1G",
     "setup": [
       "@php vendor/chappy-php/chappy-php-framework/src/scripts/setup.php"
     ],
