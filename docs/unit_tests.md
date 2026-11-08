@@ -433,7 +433,7 @@ class RESTfulDestroyTest extends ApplicationTestCase
 
 <br>
 
-## 5. Simulating GET Requests with `get() <a id="get"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Simulating GET Requests with `get()` <a id="get"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
 The `ApplicationTestCase` class provides a Laravel-style `get()` helper that lets you simulate HTTP GET requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
 
 🔧 Syntax

@@ -2,13 +2,77 @@
 layout: null
 permalink: /search.json
 ---
-{%- assign docs = site.pages | where_exp: "p", "p.title" | where_exp: "p", "p.search_exclude != true" -%}
+{%- comment -%}
+  Search index for the user guide.
+
+  Each Markdown page is split at its ## and ### headings so results can link
+  straight to a section (e.g. /arr#add) instead of the top of the page.
+
+  Entry fields:
+    page    - page title (front matter title, else first <h1>, else file name)
+    title   - section heading ("" for the page intro)
+    url     - page URL plus #anchor when the entry is a section
+    content - plain text of the section
+{%- endcomment -%}
+{%- assign docs = site.pages | where_exp: "p", "p.search_exclude != true" -%}
+{%- assign sep = "" -%}
 [
 {%- for p in docs -%}
+  {%- assign ext = p.name | split: "." | last -%}
+  {%- unless ext == "md" or ext == "markdown" -%}{%- continue -%}{%- endunless -%}
+
+  {%- comment -%} Page title {%- endcomment -%}
+  {%- assign page_title = p.title -%}
+  {%- if page_title == nil or page_title == "" -%}
+    {%- if p.content contains "</h1>" -%}
+      {%- assign page_title = p.content | split: "</h1>" | first | split: ">" | last | strip_html | strip -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if page_title == nil or page_title == "" -%}
+    {%- assign page_title = p.name | split: "." | first | replace: "_", " " | capitalize -%}
+  {%- endif -%}
+  {%- assign page_url = p.url | relative_url -%}
+
+  {%- comment -%} Treat ### like ## so method-level headings get their own entries {%- endcomment -%}
+  {%- assign html = p.content | markdownify | replace: "<h3", "<h2" | replace: "</h3>", "</h2>" -%}
+  {%- assign chunks = html | split: "<h2" -%}
+
+  {%- for chunk in chunks -%}
+    {%- if forloop.first -%}
+      {%- assign sec_title = "" -%}
+      {%- assign url = page_url -%}
+      {%- assign body = chunk -%}
+    {%- else -%}
+      {%- assign head = chunk | split: "</h2>" | first -%}
+      {%- assign body = chunk | remove_first: head | remove_first: "</h2>" -%}
+
+      {%- comment -%} Heading text, minus the floating "Table of Contents" back-link {%- endcomment -%}
+      {%- assign sec_title = head | split: "<span" | first | prepend: "<h2" | strip_html | normalize_whitespace -%}
+      {%- assign sec_lower = sec_title | downcase -%}
+      {%- if sec_lower == "table of contents" -%}{%- continue -%}{%- endif -%}
+
+      {%- comment -%} Anchor: explicit <a id="..."> first, else kramdown's auto id {%- endcomment -%}
+      {%- assign anchor = "" -%}
+      {%- if head contains '<a id="' -%}
+        {%- assign anchor = head | split: '<a id="' | last | split: '"' | first -%}
+      {%- elsif head contains 'id="' -%}
+        {%- assign id_parts = head | split: 'id="' -%}
+        {%- assign anchor = id_parts[1] | split: '"' | first -%}
+      {%- endif -%}
+      {%- if anchor == "" -%}
+        {%- assign url = page_url -%}
+      {%- else -%}
+        {%- assign url = page_url | append: "#" | append: anchor -%}
+      {%- endif -%}
+    {%- endif -%}
+  {{ sep }}
   {
-    "title": {{ p.title | jsonify }},
-    "url": {{ p.url | relative_url | jsonify }},
-    "content": {{ p.content | markdownify | strip_html | normalize_whitespace | jsonify }}
-  }{% unless forloop.last %},{% endunless %}
+    "page": {{ page_title | jsonify }},
+    "title": {{ sec_title | jsonify }},
+    "url": {{ url | jsonify }},
+    "content": {{ body | strip_html | normalize_whitespace | jsonify }}
+  }
+    {%- assign sep = "," -%}
+  {%- endfor -%}
 {%- endfor -%}
 ]
