@@ -1,0 +1,31 @@
+<style>
+    .header-search {
+  display: inline-block;
+  margin-left: 20px;
+  vertical-align: middle;
+}
+.header-search input {
+  padding: 4px 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 160px;
+}
+@media screen and (max-width: 600px) {
+  .header-search { display: block; margin: 8px 10px; }
+  .header-search input { width: calc(100% - 20px); }
+}
+</style>
+
+<div class="trigger">
+  {%- for path in page_paths -%}
+    {%- assign my_page = site.pages | where: "path", path | first -%}
+    {%- if my_page.title and my_page.url != "/search/" -%}
+    <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+    {%- endif -%}
+  {%- endfor -%}
+
+  <form class="header-search" action="{{ '/search/' | relative_url }}" method="get" role="search">
+    <input type="search" name="q" placeholder="Search…" aria-label="Search the guide">
+  </form>
+</div>
