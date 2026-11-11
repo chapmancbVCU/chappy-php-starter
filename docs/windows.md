@@ -23,12 +23,12 @@ This guide shows you how to set up the Chappy.php framework on Windows for local
 - Windows 10 reached end of support in October 2025. These steps should still work there, but it is no longer a target.
 
 **Requirements**
-- PHP 8.3+
+- PHP 8.4+
 - Composer
 - Node.js & npm
 - 7-Zip (used by Composer to extract packages)
 
-> **About XAMPP:** XAMPP is no longer covered by this guide. Its newest release ships PHP 8.2, which is below Chappy.php's PHP 8.3 requirement. If you're moving an existing XAMPP project, see Troubleshooting E.
+> **About XAMPP:** XAMPP is no longer covered by this guide. Its newest release ships PHP 8.2, which is below Chappy.php's PHP 8.4 requirement. If you're moving an existing XAMPP project, see Troubleshooting E.
 
 > **PowerShell vs Command Prompt:** Either works. If `npm` commands fail in PowerShell with "running scripts is disabled on this system," see Troubleshooting A.
 
@@ -85,7 +85,7 @@ Open a **new** terminal and run:
 ```sh
 php -v
 ```
-If PHP 8.3 or newer is displayed, it's correctly installed. If `php` isn't recognized, see Troubleshooting B.
+If PHP 8.4 or newer is displayed, it's correctly installed. If `php` isn't recognized, see Troubleshooting B.
 
 <br>
 

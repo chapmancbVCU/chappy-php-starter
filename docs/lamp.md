@@ -27,12 +27,12 @@ This guide walks through setting up a LAMP stack (Linux, Apache, MySQL/MariaDB, 
 | Debian | Debian 13 "trixie" / LMDE 7 "Gigi" | `apt` |
 | RHEL | Rocky Linux 10.x, 9.x | `dnf` |
 
-- Commands marked **Ubuntu & Debian** apply to every `apt` system above, and commands marked **Rocky Linux** apply to Rocky 9 and 10 unless noted.
+- Commands marked **Ubuntu & Debian** apply to every `apt` system above unless noted, and commands marked **Rocky Linux** apply to Rocky 9 and 10 unless noted.
 - Rocky Linux 10 requires an x86-64-v3 CPU (roughly Intel Haswell / AMD Excavator or newer). On a VM, set the CPU type to `host` or another v3-capable model.
 
 **Requirements**
 - Apache 2.4
-- PHP 8.3+
+- PHP 8.4+
 - MySQL or MariaDB
 - Composer
 - Node.js & NPM
@@ -221,21 +221,29 @@ SELECT user, host, plugin FROM mysql.user;
 <br>
 
 ## 5. Install PHP <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
-Chappy.php requires PHP 8.3 or newer. On Ubuntu and Debian, the PHP in the default repositories already meets that, so no third-party repository is needed. Rocky Linux uses the Remi repository.
+Chappy.php requires PHP 8.4 or newer. On Ubuntu 26.04 and Debian 13, the PHP in the default repositories already meets that. Ubuntu 24.04 ships PHP 8.3, so it needs the ondrej/php PPA (step A below). Rocky Linux uses the Remi repository.
 
 | OS | PHP version installed |
 |:---|:---------------------:|
-| Ubuntu 24.04 | 8.3 |
+| Ubuntu 24.04 (ondrej/php PPA) | PPA's current release (8.4+) |
 | Ubuntu 26.04 | 8.5 |
 | Debian 13 / LMDE 7 | 8.4 |
 | Rocky Linux 9 / 10 (Remi) | 8.4 |
 
 ### A. Ubuntu & Debian
+**Ubuntu 24.04 only:** Ubuntu 24.04 ships PHP 8.3, which is below the requirement. Add the [ondrej/php PPA](https://launchpad.net/~ondrej/+archive/ubuntu/php) first so the install command below gets a newer PHP:
+```sh
+sudo apt install -y software-properties-common
+sudo add-apt-repository -y ppa:ondrej/php
+sudo apt update
+```
+
+**All Ubuntu & Debian versions:**
 ```sh
 sudo apt install -y php php-cli php-mbstring php-xml php-curl php-zip php-mysql php-sqlite3 php-bcmath php-intl php-gd libapache2-mod-php sqlite3
 ```
 
-These version-independent package names install whatever PHP version your release ships, so the same command works on every Ubuntu and Debian version in this guide.
+These version-independent package names install the newest PHP available to your system (your release's own version, or the PPA's on Ubuntu 24.04), so the same command works on every Ubuntu and Debian version in this guide.
 
 <br>
 
@@ -286,7 +294,7 @@ Configure upload size for profile image upload support. Edit the file:
 
 **Ubuntu & Debian**
 
-The path includes your PHP version (for example `8.3`, `8.4`, or `8.5`). Check it with `php -v`, then edit:
+The path includes your PHP version (for example `8.4` or `8.5`). Check it with `php -v`, then edit:
 ```sh
 sudo vi /etc/php/<version>/apache2/php.ini
 ```

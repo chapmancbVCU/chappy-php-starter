@@ -23,7 +23,7 @@ This guide shows you how to set up the Chappy.php framework on macOS for local d
 > ⚠️ **Intel Macs:** macOS 26 Tahoe is the last macOS release for Intel, and Homebrew moved Intel Macs to its lowest support tier in September 2026. Homebrew still works on Intel, but some packages may need to compile from source (slow), and Homebrew plans to end Intel support in September 2027. These instructions should work, but Intel is no longer a primary target.
 
 **Requirements**
-- PHP 8.3+
+- PHP 8.4+
 - Composer
 - Node.js & NPM
 
@@ -105,7 +105,7 @@ X.X.X (NPM version)
 ```sh
 brew install php
 ```
-This installs Homebrew's current PHP release, which meets the PHP 8.3+ requirement. It includes the SQLite and MySQL drivers, so no extra extensions are needed.
+This installs Homebrew's current PHP release, which meets the PHP 8.4+ requirement. It includes the SQLite and MySQL drivers, so no extra extensions are needed.
 
 * B. Verify install
 ```sh
@@ -260,7 +260,7 @@ lsof -i :8000
 <br>
 
 ### E. Moving from XAMPP
-XAMPP is no longer covered by this guide. Its newest release ships PHP 8.2, which is below Chappy.php's PHP 8.3 requirement. To migrate an existing XAMPP project:
+XAMPP is no longer covered by this guide. Its newest release ships PHP 8.2, which is below Chappy.php's PHP 8.4 requirement. To migrate an existing XAMPP project:
 1. Install PHP, Composer, and Node.js using this guide.
 2. Export your database from XAMPP's phpMyAdmin.
 3. Set up MariaDB (Section 5) and import the export:
