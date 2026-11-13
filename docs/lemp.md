@@ -648,6 +648,7 @@ cd ~/
 composer create-project chappy-php/chappy-php my-app
 sudo mv my-app/ /var/www/
 cd /var/www/my-app
+npm run build
 ```
 
 <br>
@@ -739,10 +740,9 @@ sudo chmod -R 775 /var/www/my-app/storage
 ```
 <br>
 
-Create JavaScript bundle if necessary and run migrations:
+Run migrations:
 ```sh
-cd /var/www/my-app
-npm run build
+cd /var/www/html/my-app
 php console migrate
 ```
 

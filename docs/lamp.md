@@ -421,6 +421,7 @@ cd ~/
 composer create-project chappy-php/chappy-php my-app
 sudo mv my-app /var/www/html
 cd /var/www/html/my-app
+npm run build
 ```
 <br>
 
