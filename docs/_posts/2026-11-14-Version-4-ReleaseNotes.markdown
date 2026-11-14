@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Version 4.0 Release Notes!"
+title:  "Version 4.0.1 Release Notes!"
 date:   2026-11-14 12:00:00 -0500
 categories: release
 ---
 ---
 
-🎉 **Version 4.0 of the Chappy PHP Framework is here!**
+🎉 **Version 4.0.1 of the Chappy PHP Framework is here!**
 
 ### Added
 - Session Storage and Local Storage API
