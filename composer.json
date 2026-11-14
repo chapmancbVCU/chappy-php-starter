@@ -26,13 +26,13 @@
     "setup": [
       "@php vendor/chappy-php/chappy-php-framework/src/scripts/setup.php"
     ],
+    "analyse": "phpstan analyse --memory-limit=1G",
     "post-install-cmd": [
       "@setup"
     ],
     "post-create-project-cmd": [
       "@setup"
-    ],
-    "analyse": "phpstan analyse --memory-limit=1G"
+    ]
   },
   "repositories": [
     {
