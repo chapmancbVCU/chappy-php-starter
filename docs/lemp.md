@@ -304,7 +304,12 @@ sudo chmod -R 755 /var/www/my-app
 sudo vi /etc/nginx/sites-available/my-app
 ```
 
-Paste the following content (replace my-app.local and my_ip_address with information relevant for your case):
+Find your PHP-FPM socket name first. It includes the PHP version:
+```sh
+ls /run/php/                             # e.g. php8.4-fpm.sock
+```
+
+Paste the following content (replace my-app.local, my_ip_address, and `<version>` with information relevant for your case):
 ```rust
 server {
     listen 80;
@@ -333,7 +338,7 @@ server {
     location ~ \.php$ {
         try_files $uri =404;
         include fastcgi_params;
-        fastcgi_pass unix:/run/php/php-fpm.sock;
+        fastcgi_pass unix:/run/php/php<version>-fpm.sock;   # e.g. php8.4-fpm.sock
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
     }
@@ -344,7 +349,7 @@ server {
 }
 ```
 
-`/run/php/php-fpm.sock` is a version-independent link to the installed PHP-FPM socket, so this file doesn't need editing when PHP is upgraded. If Nginx returns 502 Bad Gateway, see Troubleshooting B.
+On Ubuntu and Debian, each PHP version has its own socket, so the `fastcgi_pass` line must name your version (for example `php8.4-fpm.sock`). Don't rely on the generic `/run/php/php-fpm.sock` link; it isn't always created, for example on Ubuntu 24.04 with the ondrej/php PPA. When you upgrade PHP, update this line (and the phpMyAdmin block in Section 7B) to the new version. Rocky Linux doesn't need this, because its socket is always `/run/php-fpm/www.sock`. If Nginx returns 502 Bad Gateway, see Troubleshooting B.
 
 Enable the new site and disable default on Ubuntu/Debian:
 ```sh
@@ -524,7 +529,7 @@ location /phpmyadmin {
     location ~ ^/phpmyadmin/(.+\.php)$ {
         try_files $uri =404;
         root /var/www;
-        fastcgi_pass unix:/run/php/php-fpm.sock;
+        fastcgi_pass unix:/run/php/php<version>-fpm.sock;   # e.g. php8.4-fpm.sock
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
@@ -771,7 +776,7 @@ Nginx can't reach PHP-FPM. Check that PHP-FPM is running and that the socket in 
 systemctl status php<version>-fpm
 ls -l /run/php/
 ```
-If `php-fpm.sock` isn't listed, use the versioned socket shown (for example `php8.4-fpm.sock`) in your `fastcgi_pass` lines.
+The socket in your `fastcgi_pass` lines must match the versioned socket listed here (for example `php8.4-fpm.sock`). The usual cause on Ubuntu and Debian is a config pointing at `php-fpm.sock`, or at an old version's socket after a PHP upgrade.
 
 **Rocky Linux**
 ```sh
