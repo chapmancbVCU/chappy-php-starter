@@ -3,8 +3,10 @@
     "paths": {
       "@/*": ["./resources/js/*"],
       "@css/*": ["./resources/css/*"],
-      "@chappy/*": ["./vendor/chappy-php/chappy-php-framework/src/React/*"]
-    },
+      "@chappy/*": ["./vendor/chappy-php/chappy-php-framework/src/React/*"],
+      "@core-css/*": ["./vendor/chappy-php/chappy-php-framework/src/css/*"],
+      "@core-js/*": ["./vendor/chappy-php/chappy-php-framework/src/js/*"]
+    }
   },
   "exclude": ["node_modules", "public/build"]
 }
