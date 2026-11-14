@@ -16,7 +16,7 @@ return [
             'host' => Env::get('DB_HOST') ?? '127.0.0.1',
             'port' => Env::get('DB_PORT') ?? '3306',
             'database' => Env::get('DB_DATABASE') ?? 'chappy-php',
-            'username' => Env::get('DB_USERNAME') ?? 'root',
+            'username' => Env::get('DB_USERNAME') ?? Env::get('DB_USER') ?? 'root',
             'password' => Env::get('DB_PASSWORD') ?? '',  // Corrected to use $_ENV
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -29,7 +29,7 @@ return [
             'host' => Env::get('DB_HOST') ?? '127.0.0.1',
             'port' => Env::get('DB_PORT') ?? '3306',
             'database' => Env::get('DB_DATABASE') ?? 'chappy_php_test',
-            'username' => Env::get('DB_USERNAME') ?? 'test_user',
+            'username' => Env::get('DB_USERNAME') ?? Env::get('DB_USER') ?? 'test_user',
             'password' => Env::get('DB_PASSWORD') ?? '',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -42,7 +42,7 @@ return [
             'host' => Env::get('DB_HOST') ?? '127.0.0.1',
             'port' => Env::get('DB_PORT') ?? '3306',
             'database' => Env::get('DB_DATABASE') ?? 'chappy-php',
-            'username' => Env::get('DB_USERNAME') ?? 'root',
+            'username' => Env::get('DB_USERNAME') ?? Env::get('DB_USER') ?? 'root',
             'password' => Env::get('DB_PASSWORD') ?? '',  // Corrected to use $_ENV
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
