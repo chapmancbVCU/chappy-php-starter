@@ -6,7 +6,7 @@ categories: release
 ---
 ---
 
-🎉 **Version 2.0 of the Chappy PHP Framework is here!**
+🎉 **Version 4.0 of the Chappy PHP Framework is here!**
 
 ### Added
 - Session Storage and Local Storage API
@@ -52,4 +52,4 @@ Everything is documented in the user guide:
 
 ---
 
-Thank you to everyone testing, building, and exploring Chappy v3!
+Thank you to everyone testing, building, and exploring Chappy v4!
