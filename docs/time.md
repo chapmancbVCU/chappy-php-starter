@@ -96,7 +96,7 @@ $deadline = DateFactory::now()->addDays(7);
 $created = DateFactory::parse($user->created_at);  // UTC string to TIME_ZONE
 ```
 
-#### A. `now()`
+#### A. <span class="fs-5">`now()`</span>
 Returns the current time.
 
 Parameter:
@@ -105,7 +105,7 @@ Parameter:
 Returns:
 - `CarbonInterface` - The current time.
 
-#### B. `today()`
+#### <span class="fs-5">B. `today()`</span>
 Returns midnight of the current day.
 
 Parameter:
@@ -114,7 +114,7 @@ Parameter:
 Returns:
 - `CarbonInterface` - Midnight of the current day.
 
-#### C. `parse()`
+#### <span class="fs-5">C. `parse()`</span>
 Converts a value into a Carbon instance in the application timezone.  This is the single conversion point used throughout the framework.
 
 Parameters:
@@ -132,7 +132,7 @@ DateFactory::parse(1768509045)->format('Y-m-d H:i:s T');
 
 Output for both: `2026-01-15 15:30:45 EST`
 
-#### D. `use()`
+#### <span class="fs-5">D. `use()`</span>
 Sets the Carbon class used for all new instances.  Call this once during bootstrap.
 
 Parameter:
@@ -149,13 +149,13 @@ DateFactory::use(CarbonImmutable::class);
 
 With immutable dates, methods such as `addDay()` return a new instance instead of changing the original.  This prevents bugs where `$start->addDay()` silently changes `$start`.
 
-#### E. `boot()`
+#### <span class="fs-5">E. `boot()`</span>
 Reads `DATE_CLASS` from your `.env` file and calls `use()` with the matching class.  Accepts `immutable` or `mutable`.
 
-#### F. `getClass()`
+#### <span class="fs-5">F. `getClass()`</span>
 Returns the Carbon class currently in use.
 
-#### G. `timezone()`
+#### <span class="fs-5">G. `timezone()`</span>
 Returns the application timezone from `TIME_ZONE`, or `'UTC'` if it is not set.
 
 <br>

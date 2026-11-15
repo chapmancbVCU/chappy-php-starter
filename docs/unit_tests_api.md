@@ -351,7 +351,7 @@ final class ExampleRunner extends TestRunner {
 
 **Functions**
 
-#### A. `construct()`
+#### <span class="fs-5">A. `construct()`</span>
 
 Parameters:
 - `InputInterface $input` - Symfony InputInterface object
@@ -359,7 +359,7 @@ Parameters:
 
 <br>
 
-#### B. `parseOptions()`
+#### <span class="fs-5">B. `parseOptions()`<span class="fs-5">
 
 Returns:
 - `string` - A string containing the arguments to be provided to your testing framework.
