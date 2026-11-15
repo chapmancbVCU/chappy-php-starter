@@ -33,7 +33,7 @@ plugins:
   - jekyll-feed
 
 # Just the Docs settings
-color_scheme: dark
+color_scheme: light
 search_enabled: true
 search:
   heading_level: 3        # index ## and ### sections so results link to the section
