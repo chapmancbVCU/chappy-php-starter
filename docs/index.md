@@ -21,7 +21,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * H. [Upgrading to 4.0](upgrading_to_4)
 2. [Access Control Levels (ACLs)](access_control_levels)
 3. [Administration](administration)
-4. [Authentication](auth)
+4. [Authentication](auth) <span class="label label-blue">Improved in 4.0</span>
 5. [Console](console) <span class="label label-blue">Improved in 4.0</span>
     * A. [FrameworkQuestion](framework_question)
     * B. [Console Class](console_class)
