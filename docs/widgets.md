@@ -13,6 +13,7 @@ nav_order: 7
 4. [Slots](#slots)
 5. [Best Practices](#best-practices)
 6. [Related Methods](#related-methods)
+7. [Example](#example)
 
 <br>
 
@@ -74,7 +75,7 @@ $this->addWidget('dashboard.cards', 'dashboard.activeSessions', ['sessions' => $
 
 <br>
 
-## 3. 🎨 Rendering Widgets <a id="registering-widgets"></a>
+## 3. 🎨 Rendering Widgets <a id="rendering-widgets"></a>
 **Render all widgets in a slot:**
 
 Place this in your view where you want all registered widgets for a slot to appear:
@@ -120,7 +121,7 @@ Example slots:
 
 <br>
 
-## 7. ✅ Example <a id="related-methods"></a>
+## 7. ✅ Example <a id="example"></a>
 **Controller**
 ```php
 $this->view->addWidget('dashboard.index', 'dashboard.activeSessions', $sessions);

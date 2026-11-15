@@ -63,7 +63,7 @@ nav_order: 1
     * K. [swapKeys](#swapkeys)  
     * L. [unsetKeys](#unsetkeys)  
 7. [Comparison, Filtering, & Mapping](#comparison-filtering-mapping)  
-    * A. [contains](#contains)  
+    * A. [contains](#filtering-contains)  
     * B. [filter](#filter)  
     * C. [filterByKeys](#filterbykeys)  
     * D. [filterByValue](#filterbyvalue)  
@@ -73,9 +73,9 @@ nav_order: 1
     * H. [uniqueBy](#uniqueby)  
     * I. [where](#where)  
 8. [Chunking and Collapsing](#chunking-collapsing)  
-    * A. [chunk](#chunk)  
-    * B. [chunkBy](#chunkby)  
-    * C. [collapse](#collapse)  
+    * A. [chunk](#chunking-chunk)  
+    * B. [chunkBy](#chunking-chunkby)  
+    * C. [collapse](#chunking-collapse)  
 9. [Other Utilities](#other-utilities)  
     * A. [isArray](#isarray)  
     * B. [isAssoc](#isassoc)  
@@ -1081,7 +1081,7 @@ print_r($result);
 <br>
 
 ## 7. Comparison, Filtering, & Mapping <a id="comparison-filtering-mapping"></a>
-### A. `contains()` <a id="contains"></a>
+### A. `contains()` <a id="filtering-contains"></a>
 Determines if a given value exists in an array.
 
 Parameters:
@@ -1259,7 +1259,7 @@ print_r($result);
 <br>
 
 ## 8. Chunking & Collapsing <a id="chunking-collapsing"></a>
-### A. `chunk()` <a id="chunk"></a>
+### A. `chunk()` <a id="chunking-chunk"></a>
 Splits an array into chunks of a given size.
 
 Parameters:
@@ -1279,7 +1279,7 @@ print_r($result);
 ```
 <br>
 
-### B. `chunkBy()` <a id="chunkby"></a>
+### B. `chunkBy()` <a id="chunking-chunkby"></a>
 Chunks an array into groups based on a callback function.
 
 Parameters:
@@ -1298,7 +1298,7 @@ print_r($result);
 ```
 <br>
 
-### C. `collapse()` <a id="collapse"></a>
+### C. `collapse()` <a id="chunking-collapse"></a>
 Collapses a multi-dimensional array into a single-level array.
 
 Parameter:

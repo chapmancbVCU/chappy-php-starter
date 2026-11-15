@@ -74,7 +74,7 @@ flashMessage(Session::SUCCESS, 'User created successfully.');
 <br>
 
 ### H. `info()`
-**Description** Generates output messages for console commands.  A wrapper for the [Session::info() function](console#info).
+**Description** Generates output messages for console commands.  A wrapper for the [Session::info() function](console).
 ```php
 info("My message", Logger::INFO, Tools::BG_GREEN, Tools::TEXT_LIGHT_GREY);
 ```

@@ -26,7 +26,7 @@ Accepts the following parameters:
 
 <br>
 
-## 2. Passing in Props <a id="opassing-in-props"></a>
+## 2. Passing in Props <a id="passing-in-props"></a>
 Below is the PHP version of this process:
 
 ```php

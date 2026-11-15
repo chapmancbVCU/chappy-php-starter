@@ -51,7 +51,7 @@ nav_order: 1
 14. [rememberMe()](#rememberMe)
 15. [select()](#select)
 16. [submitBlock()](#submitBlock)
-15. [submit()](#submit)
+17. [submitTag()](#submitTag)
 
 <br>
 
@@ -208,7 +208,7 @@ Parameters common among all of these functions are:
 
 <br>
 
-### A. `dataListColor()` <a id="dataListColor">
+### A. `dataListColor()` <a id="dataListColor"></a>
 Renders an HTML div element that surrounds an input of type color with an accompanying datalist of suggestions.
 
 Example:
@@ -243,7 +243,7 @@ Returns:
 
 <br>
 
-### B. `dataListDate()` <a id="dataListDate">
+### B. `dataListDate()` <a id="dataListDate"></a>
 Renders an HTML div element that surrounds an input of type date with an accompanying datalist of suggestions.
 
 Example:
@@ -278,7 +278,7 @@ Returns:
 
 <br>
 
-### C. `dataListDateTimeLocal()` <a id="dataListDateTimeLocal">
+### C. `dataListDateTimeLocal()` <a id="dataListDateTimeLocal"></a>
 Renders an HTML div element that surrounds an input of type datetime-local with an accompanying datalist of suggestions.
 
 Example:
@@ -313,7 +313,7 @@ Returns:
 
 <br>
 
-### D. `dataListInterval()` <a id="dataListInterval">
+### D. `dataListInterval()` <a id="dataListInterval"></a>
 Renders an HTML div element that surrounds an input of type range with an accompanying datalist of suggestions.
 
 Example:
@@ -349,7 +349,7 @@ function dataListInterval(
 
 <br>
 
-### E. `dataListMonth()` <a id="dataListMonth">
+### E. `dataListMonth()` <a id="dataListMonth"></a>
 Renders an HTML div element that surrounds an input of type month with an accompanying datalist of suggestions.
 
 Example:
@@ -384,7 +384,7 @@ Returns:
 
 <br>
 
-### F. `dataListText()` <a id="dataListText">
+### F. `dataListText()` <a id="dataListText"></a>
 Renders an HTML div element that surrounds an input of type text with an accompanying datalist of suggestions.
 
 Example:
@@ -419,7 +419,7 @@ Returns:
 
 <br>
 
-### G. `dataListTime()` <a id="dataListTime">
+### G. `dataListTime()` <a id="dataListTime"></a>
 Renders an HTML div element that surrounds an input of type time with an accompanying datalist of suggestions.
 
 Example:
@@ -454,7 +454,7 @@ Returns:
 
 <br>
 
-### H. `dataListWeek()` <a id="dataListWeek">
+### H. `dataListWeek()` <a id="dataListWeek"></a>
 Renders an HTML div element that surrounds an input of type week with an accompanying datalist of suggestions.
 
 Example:
@@ -529,7 +529,7 @@ Parameters common among all of these functions are:
 
 <br>
 
-### A. `color()` <a id="color">
+### A. `color()` <a id="color"></a>
 Renders an HTML div element that surrounds an input of type color.
 
 Signature:
@@ -549,7 +549,7 @@ Returns:
 
 <br>
 
-### B. `confirm()` <a id="confirm">
+### B. `confirm()` <a id="confirm"></a>
 Renders an HTML div element that surrounds an input of type password confirm.  The built-in contract assumes that "confirm" is the name of the field.
 
 Example:
@@ -574,7 +574,7 @@ Returns:
 
 <br>
 
-### C. `currency()` <a id="currency">
+### C. `currency()` <a id="currency"></a>
 Renders an HTML div element that surrounds an input of type currency.
 
 Example:
@@ -602,7 +602,7 @@ Returns:
 
 <br>
 
-### D. `dateSelector()` <a id="dateSelector">
+### D. `dateSelector()` <a id="dateSelector"></a>
 Renders an HTML div element that surrounds an input of type date.
 
 Signature:
@@ -622,7 +622,7 @@ Returns:
 
 <br>
 
-### E. `dateTimeLocal()` <a id="dateTimeLocal">
+### E. `dateTimeLocal()` <a id="dateTimeLocal"></a>
 Renders an HTML div element that surrounds an input of type datetime-Local.
 
 Example:
@@ -653,7 +653,7 @@ Returns:
 
 <br>
 
-### F. `email()` <a id="email">
+### F. `email()` <a id="email"></a>
 Renders an HTML div element that surrounds an input of type email.
 
 Example:
@@ -684,7 +684,7 @@ Returns:
 
 <br>
 
-### G. `fileSelector()` <a id="fileSelector">
+### G. `fileSelector()` <a id="fileSelector"></a>
 Renders an HTML div element that surrounds an input of type file.
 
 **Multiple File Uploads:**
@@ -717,7 +717,7 @@ Returns:
 
 <br>
 
-### H. `imageButton()` <a id="imageButton">
+### H. `imageButton()` <a id="imageButton"></a>
 Create a input element of type image.
 
 Example:
@@ -744,7 +744,7 @@ Returns:
 
 <br>
 
-### I. `imageBlock()` <a id="imageBlock">
+### I. `imageBlock()` <a id="imageBlock"></a>
 Renders an HTML div element that surrounds an input of type image.
 
 Example:
@@ -772,7 +772,7 @@ Returns:
 
 <br>
 
-### J. `interval()` <a id="interval">
+### J. `interval()` <a id="interval"></a>
 Renders an HTML div element that surrounds an input of type interval.
 
 Example:
@@ -804,7 +804,7 @@ function interval(
 
 <br>
 
-### K. `month()` <a id="month">
+### K. `month()` <a id="month"></a>
 Renders an HTML div element that surrounds an input of type month.
 
 Example:
@@ -902,7 +902,7 @@ Returns:
 
 <br>
 
-### M. `password()` <a id="password">
+### M. `password()` <a id="password"></a>
 Renders an HTML div element that surrounds an input of type password.
 
 Example:
@@ -928,7 +928,7 @@ Returns:
 
 <br>
 
-### N. `search()` <a id="search">
+### N. `search()` <a id="search"></a>
 Renders an HTML div element that surrounds an input of type search.
 
 Example:
@@ -959,7 +959,7 @@ Returns:
 
 <br>
 
-### O. `tel()` <a id="tel">
+### O. `tel()` <a id="tel"></a>
 Renders an HTML div element that surrounds an input of type tel.
 
 Example:
@@ -990,7 +990,7 @@ Returns:
 
 <br>
 
-### P. `text()` <a id="text">
+### P. `text()` <a id="text"></a>
 Renders an HTML div element that surrounds an input of type text.
 
 Signature:
@@ -1010,7 +1010,7 @@ Returns:
 
 <br>
 
-### Q. `textArea()` <a id="textArea">
+### Q. `textArea()` <a id="textArea"></a>
 Assists in the development of textarea in forms. It accepts parameters for setting attribute tags in the form section.  An example function call is shown below:
 
 ```php
@@ -1044,7 +1044,7 @@ Returns:
 
 <br>
 
-### R. `timeSelector()` <a id="timeSelector">
+### R. `timeSelector()` <a id="timeSelector"></a>
 Renders an HTML div element that surrounds an input of type time.
 
 Example:
@@ -1075,7 +1075,7 @@ Returns:
 
 <br>
 
-### S. `urlInput()` <a id="urlInput">
+### S. `urlInput()` <a id="urlInput"></a>
 Renders an HTML div element that surrounds an input of type url.
 
 Example:
@@ -1106,7 +1106,7 @@ Returns:
 
 <br>
 
-### T. `week()` <a id="week">
+### T. `week()` <a id="week"></a>
 Renders an HTML div element that surrounds an input of type week.
 
 Example:
@@ -1228,7 +1228,7 @@ Returns
 
 <br>
 
-## 14. `select()` <a id="select"></a>
+## 15. `select()` <a id="select"></a>
 HTML `<select>` elements are supported with the calls to the `FormHelper::selectBlock` function.
 
 Example:
@@ -1259,7 +1259,7 @@ Returns:
 
 <br>
 
-## 14. `submitBlock()` <a id="submitBlock"></a>
+## 16. `submitBlock()` <a id="submitBlock"></a>
 Generates a div containing an input of type submit.
 
 Example:
@@ -1279,7 +1279,7 @@ Returns:
 
 <br>
 
-## 15. `submitBlock()` <a id="submitBlock"></a>
+## 17. `submitTag()` <a id="submitTag"></a>
 Create a input element of type submit.
 
 Example:

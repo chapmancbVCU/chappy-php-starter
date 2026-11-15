@@ -9,7 +9,7 @@ nav_order: 1
 ## Table of contents
 1. [Overview](#overview)
 2. [ask()](#ask)
-    * A. [Setup](ask-setup)
+    * A. [Setup](#ask-setup)
     * B. [Validation](#validation)
     * C. [Modes](#modes)
 3. [choice()](#choice)

@@ -14,7 +14,7 @@ has_children: true
   * B. [Updating an Existing Table](#updating-an-existing-table)  
   * C. [Renaming an Existing Table](#renaming-an-existing-table)
   * D. [Dropping a Table](#dropping-a-table)  
-  * E. [Renaming a Column](#renameing-column)
+  * E. [Renaming a Column](#renaming-column)
   * F. [Dropping Columns](#dropping-columns)
   * G. [After](#after)
   * H. [Migrations With Raw SQL Queries](#sql)
@@ -430,7 +430,7 @@ This function accepts two arguments:
 
 <br>
 
-### G. After <a id="after">
+### G. After <a id="after"></a>
 Add a column after a specific column:
 ```php
 public function up(): void {

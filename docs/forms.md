@@ -301,7 +301,7 @@ Returns:
 
 <br>
 
-### A. `currencyBlock()` <a id="currency-block">
+### A. `currencyBlock()` <a id="currency-block"></a>
 Renders an HTML div element that surrounds an input of type currency.
 
 Example:
@@ -330,7 +330,7 @@ Returns:
 
 <br>
 
-### B. `emailBlock()` <a id="emailblock">
+### B. `emailBlock()` <a id="emailblock"></a>
 Use this function to create styled E-mail form inputs. 
 
 Example:
@@ -360,7 +360,7 @@ Returns:
 
 <br>
 
-### C. `fileBlock()` <a id="file-block">
+### C. `fileBlock()` <a id="file-block"></a>
 Renders an HTML div element that surrounds an input of type file.
 
 **Multiple File Uploads:**
@@ -389,7 +389,7 @@ Returns:
 
 <br>
 
-### D. `image()` <a id="image">
+### D. `image()` <a id="image"></a>
 Create a input element of type image.
 
 Example:
@@ -415,7 +415,7 @@ Returns:
 
 <br>
 
-### E. `imageBlock()` <a id="image-block">
+### E. `imageBlock()` <a id="image-block"></a>
 Create a input element of type image.
 
 Example:
@@ -540,7 +540,7 @@ Returns:
 
 <br>
 
-### H. `textAreaBlock()` <a id="textarea-block">
+### H. `textAreaBlock()` <a id="textarea-block"></a>
 Assists in the development of textarea in forms. It accepts parameters for setting attribute tags in the form section.  An example function call is shown below:
 
 ```php

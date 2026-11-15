@@ -59,7 +59,7 @@ Within the `head` element the first thing after the required meta tags you will 
 
 The `initVite()` and `resources()` functions setup Vite operations and loads the resources needed for a view to correctly render to the browser.
 
-The last function call, `$this->content('head)`  is where additional information for `head` element is injected into your view.  More information about the `content` function can be found in the [View](view) page.
+The last function call, `$this->content('head)`  is where additional information for `head` element is injected into your view.  More information about the `content` function can be found in the [View](views) page.
 
 The `body` element contains a call to the `component` function for rendering menus.  For the admin layout we use the `admin_menu` instead and the framework is smart enough to display this menu for pages that uses the admin layout.
 

@@ -208,7 +208,7 @@ Expected response status 200 but got 404.
 
 <br>
 
-### D. ✅ assertJson()<a id="view-variables"></a>
+### D. ✅ assertJson() <a id="assert-json"></a>
 **Overview**
 The `assertJson()` method allows you to verify that the HTTP response body is valid JSON and contains specific key-value pairs. This is useful when testing API endpoints or any controller that returns JSON responses, such as AJAX routes or RESTful APIs.
 

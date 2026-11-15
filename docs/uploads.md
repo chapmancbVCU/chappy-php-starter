@@ -40,7 +40,7 @@ use Core\Lib\FileSystem\Uploads;
 ## 2. Uploads Class <a id="uploads"></a>
 Description for the Uploads class' functions.
 
-### A. `handleUpload()` <a id="handle-upload">
+### A. `handleUpload()` <a id="handle-upload"></a>
 Handles file uploads and returns an Uploads instance if valid.
 
 Parameters:
@@ -56,7 +56,7 @@ Returns:
 
 <br>
 
-### B. `generateUploadFilename()` <a id="generate-upload-filename">
+### B. `generateUploadFilename()` <a id="generate-upload-filename"></a>
 Generates a unique filename for an uploaded file while preserving its extension.
      
 Uses a cryptographically secure random hash to create a unique base name.
@@ -73,7 +73,7 @@ Throws:
 
 <br>
 
-### C. `getFiles()` <a id="get-files">
+### C. `getFiles()` <a id="get-files"></a>
 Getter function for the $_files array.
 
 Returns:
@@ -81,7 +81,7 @@ Returns:
 
 <br>
 
-### D. `upload()` <a id="upload-files">
+### D. `upload()` <a id="upload-files"></a>
 Performs file upload.
 
 Parameters:
@@ -95,7 +95,7 @@ Parameters:
 The upload feature is supported by the Uploads class.  To use the Uploads class you will need to perform the following steps:
 <br>
 
-### A. Migration File <a id="migration-file">
+### A. Migration File <a id="migration-file"></a>
 We need to create a table in the database to store information about the profile pictures we want to upload.  Run the following command to create a migration.
 ```sh
 php console make:migration profile_images
@@ -124,7 +124,7 @@ php console migrate
 Once the migration has been complete the new table will now be accessible in your database.
 <br>
 
-### B. Setting up the Model <a id="model-setup">
+### B. Setting up the Model <a id="model-setup"></a>
 First we create a new model file.
 
 ```sh
@@ -386,7 +386,7 @@ Uploads comes built in with two types of validation:
 * Max allowed file size
 <br>
 
-### A. allowedFileTypes <a id="allowedFileTypes">
+### A. allowedFileTypes <a id="allowedFileTypes"></a>
 Any files that the user uploads is checked gainst the `$allowedFileTypes` array in the model for your upload.  In order for the Uploads class to be able to validate file types you need to create a function in your model as shown below:
 
 ```php
@@ -415,7 +415,7 @@ You should guide the user by including the allowed file type in your upload inpu
 By adding the `accept` element to the function's `$inputAttr` array parameter with the accepted file types as values the user can easily select a file without having to sort through all other files in a given directory.
 <br>
 
-### B. maxAllowedFileSize <a id="maxAllowedFileSize">
+### B. maxAllowedFileSize <a id="maxAllowedFileSize"></a>
 The second check is for upload file size.  The model uses a variable called `$maxAllowedFileSize` for this purpose.  You will need to add the following function to your model to allow this check to function:
 
 ```php
@@ -432,7 +432,7 @@ public static function getMaxAllowedFileSize() {
 
 <br>
 
-### C. Missing Required Upload <a id="required">
+### C. Missing Required Upload <a id="required"></a>
 The third type of validation is the enforcement of required file upload.  There is a check for single and multiple file uploads that is placed in your controller's action function right after the `csrf` check. 
 
 Single file upload:

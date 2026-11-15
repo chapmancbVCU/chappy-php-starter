@@ -37,7 +37,7 @@ nav_order: 15
     * Y. [queue()](#queue)
     * Z. [special()](#special)
     * A1. [tel()](#tel)
-    * A2. [testFilterNotation()](testFilterNotation)
+    * A2. [testFilterNotation()](#testFilterNotation)
     * A3. [unique()](#unique)
     * A4. [upper()](#upper)
     * A5. [url()](#url)
@@ -226,7 +226,7 @@ Returns:
 
 ## 4. Validator Callbacks <a id="validator-callbacks"></a>
 
-### A. `alpha()` <a id="alphpa"></a>
+### A. `alpha()` <a id="alpha"></a>
 Enforce rule where input must contain only alphabetic characters.
 
 <br>
@@ -317,7 +317,7 @@ Enforce rule where input must be an integer.
 
 <br>
 
-### K. `isPortUsed()` <a id="ip"></a>
+### K. `isPortUsed()` <a id="isPortUsed"></a>
 Checks if a port on a particular host is in use.  Assists in verifying if a port is available for a serve command.  If the port is already in use an error message is presented to the user.
 
 Parameter:

@@ -7,7 +7,7 @@ nav_order: 19
 # Notification
 ## Table of contents
 1. [Overview](#overview)
-2. [Channel Registry](#channel-registry)
+2. [Channel Registry](#channels-registry)
 3. [Channels & Payloads](#channels-and-payloads)
     * A. [Database Channel](#database-channel)
     * B. [Log Channel](#log-channel)

@@ -633,7 +633,7 @@ $this->jsonError('Invalid CSRF token.', 419);
 
 <br>
 
-### J. Practical Example: PATCH Update <a id="practicale-example"></a>
+### J. Practical Example: PATCH Update <a id="practical-example"></a>
 ```php
 public function updateAction(): void
 {

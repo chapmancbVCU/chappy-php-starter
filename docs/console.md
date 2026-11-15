@@ -125,7 +125,7 @@ php console
 | [`make:email`](email#templates-and-layouts) | Generates a file for an E-mail | |
 | [`make:email:layout`](email#templates-and-layouts) | Generates an E-mail template | |
 | [`make:event`](events#creating) | Generates a new Event class | [`--queue`](events#create-queued-event) |
-| [`make:factory`](database_seeders#factory-class) | Creates a new factory class | |
+| [`make:factory`](factories#factory-class) | Creates a new factory class | |
 | [`make:job`](queue#job-class) | Generates a new job class | |
 | [`make:layout`](layouts#build-layout) | Generates a new layout | [`--menu`](layouts#menus), <br>[`--menu-acl`](layouts#menu-acls) |
 | [`make:listener`](events#event-flag) | Generates new listener class | [`--event`](events#event-flag), <br>[`--queue`](events#create-queued-listener) |
@@ -140,7 +140,7 @@ php console
 | [`make:test`](php_unit#creating-tests) | Generates a new test class | [`--feature`](php_unit#creating-tests) |
 | [`make:test:builder`](unit_tests_api#test-builder) | Generates a new test builder class | |
 | [`make:test:runner`](unit_tests_api#test-runner)  | Generates a new test runner class | |
-| [`make:validator`](server_side_validation#custom-validators) | Generates a new custom form validator class | |
+| [`make:validator`](server_side_validation#custom_validators) | Generates a new custom form validator class | |
 | [`make:view`](views#make-views) | Create a new view | |
 | [`make:widget`](widgets#overview) | Creates a new widget| |
 
@@ -321,12 +321,12 @@ use Console\Helpers\Tools;
 ```
 <br>
 
-### A. `border()` <a id="border">
+### A. `border()` <a id="border"></a>
 The border prints a dashed line.
 
 <br>
 
-### B. `createDirWithPrompt()` <a id="dir-with-prompt">
+### B. `createDirWithPrompt()` <a id="dir-with-prompt"></a>
 Creates a directory.  It checks if it already exists.  If not, user is asked to confirm the want to create a new directory.
 
 **Parameters**
@@ -350,7 +350,7 @@ In the above example we use the result of this function's call to test if there 
 
 <br>
 
-### C. `isFailure()` <a id="is-failure">
+### C. `isFailure()` <a id="is-failure"></a>
 Checks if parameter provided is equal to Command::FAILURE.
 
 **Parameter**
@@ -361,7 +361,7 @@ Checks if parameter provided is equal to Command::FAILURE.
 
 <br>
 
-### D. `isFailure()` <a id="is-production">
+### D. `isFailure()` <a id="is-production"></a>
 Checks if application is in production mode.
 
 **Returns**
@@ -369,7 +369,7 @@ Checks if application is in production mode.
 
 <br>
 
-### E. `pathExists()` <a id="path-exists">
+### E. `pathExists()` <a id="path-exists"></a>
 Tests if a path exits and creates it if necessary.
 
 **Parameters**
@@ -379,7 +379,7 @@ Tests if a path exits and creates it if necessary.
      
 <br>
 
-### F. `writeFile()` <a id="write-file">
+### F. `writeFile()` <a id="write-file"></a>
 The writeFile function is what we used when we need to dump contents of a command to a file.  We use this for commands such as making controllers, models, and migrations.  
 
 Here is an example call to this function for generating a new menu_acl json file.

@@ -29,14 +29,14 @@ nav_order: 3
 11. [FieldErrors()](#FieldErrors)
 12. [Hidden()](#hidden)
 13. [Input Components](#input-components)
-    * A. [Input()](#Input)
+    * A. [Input()](#input)
     * B. [Color()](#Color)
     * C. [Confirm()](#Confirm)
     * D. [Currency()](#Currency)
     * E. [DateSelector()](#DateSelector)
     * F. [DateTimeLocal()](#DateTimeLocal)
     * G. [Email()](#Email)
-    * H. [fileSelector()](#fileSelector)
+    * H. [fileSelector()](#FileSelector)
     * I. [Image()](#Image)
     * J. [ImageBlock()](#ImageBlock)
     * K. [Interval()](#Interval)
@@ -45,17 +45,17 @@ nav_order: 3
     * N. [Password()](#Password)
     * O. [Search()](#Search)
     * P. [Tel()](#Tel)
-    * Q. [text()](#text)
-    * R. [textArea](#textArea)
+    * Q. [text()](#Text)
+    * R. [textArea](#TextArea)
     * S. [Time()](#Time)
-    * T. [urlInput()](#urlInput)
-    * U. [week()](#week)
+    * T. [urlInput()](#URLInput)
+    * U. [week()](#Week)
 14. [Output()](#Output)
 15. [Radio Buttons](#radio)
 16. [RememberMe()](#RememberMe)
 17. [RichText()](#RichText)
 18. [Select()](#Select)
-19. [submitBlock()](#submitBlock)
+19. [submitBlock()](#SubmitBlock)
 20. [SubmitTag()](#SubmitTag)
 
 <br>
@@ -321,7 +321,7 @@ Prop names common among all of these functions are:
 
 <br>
 
-### A. `DataListBlock()` <a id="DataListBlock">
+### A. `DataListBlock()` <a id="DataListBlock"></a>
 The parent of all datalist components.  
 
 It accepts an additional prop:
@@ -332,7 +332,7 @@ Returns:
 
 <br>
 
-### B. `DataListColor()` <a id="DataListColor">
+### B. `DataListColor()` <a id="DataListColor"></a>
 Renders an HTML div element that surrounds an input of type color with an accompanying datalist of suggestions.
 
 Example:
@@ -352,7 +352,7 @@ Example:
 
 <br>
 
-### C. `DataListDate()` <a id="DataListDate">
+### C. `DataListDate()` <a id="DataListDate"></a>
 Renders an HTML div element that surrounds an input of type date with an accompanying datalist of suggestions.
 
 Example:
@@ -372,7 +372,7 @@ Example:
 
 <br>
 
-### D. `DataListDateTimeLocal()` <a id="DataListDateTimeLocal">
+### D. `DataListDateTimeLocal()` <a id="DataListDateTimeLocal"></a>
 Renders an HTML div element that surrounds an input of type datetime-local with an accompanying datalist of suggestions.
 
 Example:
@@ -392,7 +392,7 @@ Example:
 
 <br>
 
-### E. `DataListInterval()` <a id="DataListInterval">
+### E. `DataListInterval()` <a id="DataListInterval"></a>
 Renders an HTML div element that surrounds an input of type range with an accompanying datalist of suggestions.
 
 Example:
@@ -421,7 +421,7 @@ const options = {
 
 <br>
 
-### F. `DataListMonth()` <a id="DataListMonth">
+### F. `DataListMonth()` <a id="DataListMonth"></a>
 Renders an HTML div element that surrounds an input of type month with an accompanying datalist of suggestions.
 
 Example:
@@ -441,7 +441,7 @@ Example:
 
 <br>
 
-### G. `DataListText()` <a id="DataListText">
+### G. `DataListText()` <a id="DataListText"></a>
 Renders an HTML div element that surrounds an input of type text with an accompanying datalist of suggestions.
 
 Example:
@@ -461,7 +461,7 @@ Example:
 
 <br>
 
-### H. `DataListTime()` <a id="DataListTime">
+### H. `DataListTime()` <a id="DataListTime"></a>
 Renders an HTML div element that surrounds an input of type time with an accompanying datalist of suggestions.
 
 Example:
@@ -481,7 +481,7 @@ Example:
 
 <br>
 
-### I. `DataListWeek()` <a id="DataListWeek">
+### I. `DataListWeek()` <a id="DataListWeek"></a>
 Renders an HTML div element that surrounds an input of type week with an accompanying datalist of suggestions.
 
 Example:
@@ -528,7 +528,7 @@ Returns:
 
 <br>
 
-## 12. Hidden <a id="Nidden"></a>
+## 12. Hidden <a id="hidden"></a>
 Generates a hidden input element.
 
 Example:
@@ -562,7 +562,7 @@ Prop names common among all of these functions are:
 
 <br>
 
-### A. Input <a id="input">
+### A. Input <a id="input"></a>
 The parent of all input components.  
 
 Example:
@@ -587,7 +587,7 @@ Returns:
 
 <br>
 
-### B. Color <a id="Color">
+### B. Color <a id="Color"></a>
 Assists in the development of input of type color in forms.  It accepts parameters for setting  attribute tags in the form section.
 
 Example:
@@ -606,7 +606,7 @@ Example:
 
 <br>
 
-### C. Confirm <a id="Confirm">
+### C. Confirm <a id="Confirm"></a>
 Assists in the development of input of type text in forms.  It accepts parameters for setting attribute tags in the form section.
 
 Example:
@@ -624,7 +624,7 @@ Example:
 
 <br>
 
-### D. Currency <a id="Currency">
+### D. Currency <a id="Currency"></a>
 Renders an HTML div element that surrounds an input of type text for currency.
 
 Example:
@@ -642,7 +642,7 @@ Example:
 
 <br>
 
-### E. DateSelector <a id="DateSelector">
+### E. DateSelector <a id="DateSelector"></a>
 Renders an HTML div element that surrounds an input of type date.
 
 Example:
@@ -660,7 +660,7 @@ Example:
 
 <br>
 
-### F. DateTimeLocal <a id="DateTimeLocal">
+### F. DateTimeLocal <a id="DateTimeLocal"></a>
 Renders an HTML div element that surrounds an input of type datetime-local.
 
 Example:
@@ -678,7 +678,7 @@ Example:
 
 <br>
 
-### G. Email <a id="Email">
+### G. Email <a id="Email"></a>
 Renders an HTML div element that surrounds an input of type email.
 
 Example:
@@ -696,7 +696,7 @@ Example:
 
 <br>
 
-### H. FileSelector <a id="FileSelector">
+### H. FileSelector <a id="FileSelector"></a>
 Renders an HTML div element that surrounds an input of type file.
 
 Multiple File Uploads:
@@ -728,7 +728,7 @@ Returns:
 
 <br>
 
-### I. Image <a id="Image">
+### I. Image <a id="Image"></a>
 Create a input element of type image.
 
 Example:
@@ -755,7 +755,7 @@ Prop names:
 
 <br>
 
-### J. ImageBlock <a id="Image">
+### J. ImageBlock <a id="ImageBlock"></a>
 Create a input element of type image.
 
 Example:
@@ -784,7 +784,7 @@ Prop names:
 
 <br>
 
-### K. Interval <a id="Interval">
+### K. Interval <a id="Interval"></a>
 Assists in the development of input of type range in forms.  It accepts parameters for setting attribute tags in the form section.
 
 Additional props:
@@ -807,7 +807,7 @@ Example:
 
 <br>
 
-### L. Month <a id="Month">
+### L. Month <a id="Month"></a>
 Assists in the development of input of type month in forms.  It accepts parameters for setting attribute tags in the form section.
 
 Example:
@@ -825,7 +825,7 @@ Example:
 
 <br>
 
-### M. Number <a id="Number">
+### M. Number <a id="Number"></a>
 Numeric input (integer or decimal) with optional thousands grouping
 and fixed precision.
 
@@ -873,7 +873,7 @@ Additional prop:
 
 <br>
 
-### N. Password <a id="Password">
+### N. Password <a id="Password"></a>
 Assists in the development of input of type text in forms.  It accepts parameters for setting  attribute tags in the form section.
 
 Example:
@@ -891,7 +891,7 @@ Example:
 
 <br>
 
-### O. Search <a id="Search">
+### O. Search <a id="Search"></a>
 Assists in the development of input of type search in forms.  It accepts parameters for setting  attribute tags in the form section.
 
 Example:
@@ -909,7 +909,7 @@ Example:
 
 <br>
 
-### P. Tel <a id="Tel">
+### P. Tel <a id="Tel"></a>
 Renders an HTML div element that surrounds an input of type tel.
 
 
@@ -928,7 +928,7 @@ Example:
 
 <br>
 
-### Q. Text <a id="Text">
+### Q. Text <a id="Text"></a>
 Assists in the development of input of type text in forms.  It accepts parameters for setting  attribute tags in the form section.
 
 Example:
@@ -945,7 +945,7 @@ Example:
 
 <br>
 
-### R. TextArea <a id="TextArea">
+### R. TextArea <a id="TextArea"></a>
 Assists in the development of textarea in forms.  It accepts parameters for setting  attribute tags in the form section.
 
 Example:
@@ -963,7 +963,7 @@ Example:
 
 <br>
 
-### S. Time <a id="Time">
+### S. Time <a id="Time"></a>
 Renders an HTML div element that surrounds an input of type time.
 
 Example:
@@ -981,7 +981,7 @@ Example:
 
 <br>
 
-### T. URLInput <a id="URLInput">
+### T. URLInput <a id="URLInput"></a>
 Renders an HTML div element that surrounds an input of type url.
 
 Example:
@@ -999,7 +999,7 @@ Example:
 
 <br>
 
-### U. Week <a id="Week">
+### U. Week <a id="Week"></a>
 Renders an HTML div element that surrounds an input of type week.
 
 Example:
