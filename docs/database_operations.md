@@ -463,7 +463,7 @@ As shown above, create your SQL statement and then chain the `query` function to
 <br>
 
 ### I. Migration CLI Commands <a id="cli"></a>
-#### 1. `make:migration`
+#### <span class="fs-5">1. `make:migration`</span>
 Generates a new migration class.
 ```sh
 php console make:migration foo
@@ -490,7 +490,7 @@ php console make:migration foo--update
 
 <br>
 
-#### 2. `migrate`
+#### <span class="fs-5">2. `migrate`</span>
 Performs all pending migrations.
 
 <br>
@@ -512,13 +512,13 @@ php console migrate:fresh --seed --seeder=MySeederName
 
 <br>
 
-#### 3. `migrate:drop:all`
+#### <span class="fs-5">3. `migrate:drop:all`</span>
 Drops all tables.
 <a id="migrate-fresh"></a>
 
 <br>
 
-#### 4. `migrate:fresh`
+#### <span class="fs-5">4. `migrate:fresh`</span>
 Drops all tables and performs migration.
 
 <br>
@@ -533,7 +533,7 @@ php console migrate:fresh --seed
 
 <br>
 
-#### 5. `migrate:refresh`
+#### <span class="fs-5">5. `migrate:refresh`</span>
 Drops all tables one at a time and performs migration.  
 
 <br>
@@ -557,7 +557,7 @@ Undo last 2 previous migration and then runs migration against all pending migra
 
 <br>
 
-#### 6. `migrate:rollback`
+#### <span class="fs-5">6. `migrate:rollback`</span>
 Performs a roll back of the last batch of migrations.
 ```sh
 php console rollback
@@ -582,7 +582,7 @@ Undo last 2 previous migrations.
 
 <br>
 
-#### 7. `migrate:status`
+#### <span class="fs-5">7. `migrate:status`</span>
 Displays status of ran and pending migrations.
 
 <br>
