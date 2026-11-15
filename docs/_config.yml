@@ -42,6 +42,8 @@ search:
   preview_words_after: 10
   rel_url: true
   button: false
+  # Focus the search input by pressing `ctrl + focus_shortcut_key` (or `cmd + focus_shortcut_key` on macOS)
+  focus_shortcut_key: 'k'
 heading_anchors: true
 back_to_top: true
 back_to_top_text: "Back to top"
