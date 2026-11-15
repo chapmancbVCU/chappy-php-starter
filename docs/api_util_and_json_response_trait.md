@@ -49,7 +49,7 @@ These utilities are intended for **same-origin** API calls (your Chappy.php app 
 <br>
 
 ### A. Request Helpers <a id="request-helpers"></a>
-#### 1. `apiGet(path, opts)`
+#### <span class="fs-5">1. `apiGet(path, opts)`</span>
 Runs a **GET** request.
 
 <br>
@@ -69,7 +69,7 @@ const weather = await apiGet('/api/weather', {
 
 <br>
 
-#### 2. `apiPost(path, body, opts)`
+#### <span class="fs-5">2. `apiPost(path, body, opts)`</span>
 Runs a **POST** request and sends `body` (JSON by default).
 
 <br>
@@ -89,7 +89,7 @@ await apiPost('/api/favorites', { placeId: 123 }, {
 
 <br>
 
-#### 3. `apiPut(path, body, opts)`
+#### <span class="fs-5">3. `apiPut(path, body, opts)`</span>
 Runs a **PUT** request and sends `body` (JSON by default).
 
 <br>
@@ -99,7 +99,7 @@ Runs a **PUT** request and sends `body` (JSON by default).
 
 <br>
 
-#### 4. `apiPatch(path, body, opts)`
+#### <span class="fs-5">4. `apiPatch(path, body, opts)`</span>
 Runs a **Patch** request and sends `body` (JSON by default).
 
 <br>
@@ -119,7 +119,7 @@ const json = await apiPatch(`/favorites/patch/${favorite.id}`, payload);
 
 <br>
 
-#### 5. `apiDelete(path, body, opts)`
+#### <span class="fs-5">5. `apiDelete(path, body, opts)`</span>
 Runs a **DELETE** request.
 
 <br>
