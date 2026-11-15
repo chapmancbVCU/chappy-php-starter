@@ -1,0 +1,5 @@
+/* Inline code in tables: the theme shrinks it to 0.75em of an already-smaller cell font. */
+th code,
+td code {
+  font-size: 1em;
+}
