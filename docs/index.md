@@ -64,7 +64,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * D. [DashboardService](dashboard_service)
     * E. [UserService](user_service)
 23. [Session and Flash Messages](session_and_flash_messages)
-24. [Session and Local Storage](storage)
+24. [Session and Local Storage](storage) <span class="label label-green">New in 4.0</span>
 25. [Static Analysis (PHPStan)](static_analysis) <span class="label label-green">New in 4.0</span>
 26. [Supported Traits](traits)
 27. [Tinker Command](tinker)
