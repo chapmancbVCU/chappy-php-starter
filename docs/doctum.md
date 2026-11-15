@@ -1,11 +1,17 @@
-<h1 style="font-size: 50px; text-align: center;">api-docs and doctum API Generation</h1>
+---
+layout: default
+title: "api-docs and doctum API Generation"
+parent: "Views Introduction"
+nav_order: 1
+---
 
+# api-docs and doctum API Generation
 ## Table of contents
 1. [Overview](#overview)
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 We use doctum to generate documentation based on phpdoc comments for describing classes and functions.  Run the command to view our API documentation:
 
 ```sh

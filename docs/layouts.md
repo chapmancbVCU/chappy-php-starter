@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Layouts</h1>
+---
+layout: default
+title: "Layouts"
+parent: "Views Introduction"
+nav_order: 3
+---
 
+# Layouts
 ## Table of contents
 1. [Overview](#overview)
 2. [Layouts](#layouts)
@@ -10,14 +16,14 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The layouts feature supports the ability to present a consistent user experience across views in the framework.  We natively support Bootstrap 5 for the styling.
 
 Layouts are supported by layout files that are located at `resources/views/layouts`, menus that can be found at `resources/views/components`, and menu_acl json files within the `app` directory.
 
 <br>
 
-## 2. Layouts <a id="layouts"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Layouts <a id="layouts"></a>
 Let's look at the default layout.
 
 ```php
@@ -61,7 +67,7 @@ The next function call displays session or sometimes called flash messages depen
 
 <br>
 
-## 3. Building Your Own Layout <a id="build-layout"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Building Your Own Layout <a id="build-layout"></a>
 User have the ability to create their own layout.  You can either create just a layout.  We will create a layout called Foo.
 
 ```sh
@@ -72,7 +78,7 @@ This tells the framework to create a new layout using the default main_menu  The
 
 <br>
 
-## 4. Setting Layout <a id="setting-layout"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Setting Layout <a id="setting-layout"></a>
 Once you have created your layout you must set it in your action function or the onConstruct function in your controller class.  An example is shown below:
 
 ```php
@@ -85,7 +91,7 @@ The setLayout function accepts the name of your layout as a string argument.  On
 
 <br>
 
-## 5. Menus <a id="menus"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Menus <a id="menus"></a>
 You can create custom menus to be used with your layouts.  There are two ways to accomplish this task.  You can create a menu using the following command:
 
 ```sh
@@ -147,7 +153,7 @@ Notice that the parameter near the top for the `getMenu` function call is set to
 
 <br>
 
-## 6. Menu ACLs <a id="menu-acls"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Menu ACLs <a id="menu-acls"></a>
 The menu_acl json file is tied to the menu file created above.  The menu_acl json file is used to configure the contents of the navigation bar.  With this file you can define links and menus.  Let's take a look at the `admin_menu_acl.json` file.
 
 ```json

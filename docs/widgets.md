@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Widgets</h1>
+---
+layout: default
+title: "Widgets"
+parent: "Views Introduction"
+nav_order: 7
+---
 
+# Widgets
 ## Table of contents
 1. [Overview](#overview)
 2. [Registering Widgets](#registering-widgets)
@@ -10,7 +16,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Widgets allow you to extend core views without modifying the core view files.
 They are small, reusable view blocks (like cards, graphs, or stats) that can be dynamically registered and rendered.
 
@@ -50,7 +56,7 @@ resources/views/widgets/
 
 <br>
 
-## 2. ⚙️ Registering Widgets <a id="registering-widgets"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. ⚙️ Registering Widgets <a id="registering-widgets"></a>
 You can register widgets in your controller or service before rendering the view:
 ```php
 $this->addWidget(
@@ -68,7 +74,7 @@ $this->addWidget('dashboard.cards', 'dashboard.activeSessions', ['sessions' => $
 
 <br>
 
-## 3. 🎨 Rendering Widgets <a id="registering-widgets"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. 🎨 Rendering Widgets <a id="registering-widgets"></a>
 **Render all widgets in a slot:**
 
 Place this in your view where you want all registered widgets for a slot to appear:
@@ -87,7 +93,7 @@ If you want to directly include a specific widget without registering:
 
 <br>
 
-## 4. 📌 Slots <a id="slots"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. 📌 Slots <a id="slots"></a>
 A slot is simply a grouping name that organizes widgets in a particular location.
 Example slots:
 - `dashboard.attachments` – for adding widgets to the admindashboard.attachment_details view
@@ -96,7 +102,7 @@ Example slots:
 - `dashboard.acls` – for widgets in the manage_acls view
 <br>
 
-## 5. 🧠 Best Practices <a id="best-practices"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. 🧠 Best Practices <a id="best-practices"></a>
 ✅ Keep widgets small and focused (e.g., one widget per feature)
 ✅ Group widgets by folder (e.g., `dashboard/`)
 ✅ Pass only the data needed to keep them decoupled
@@ -104,7 +110,7 @@ Example slots:
 
 <br>
 
-## 6. 🔗 Related Methods <a id="related-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. 🔗 Related Methods <a id="related-methods"></a>
 
 | Method                               | Description                    |
 | ------------------------------------ | ------------------------------ |
@@ -114,7 +120,7 @@ Example slots:
 
 <br>
 
-## 7. ✅ Example <a id="related-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. ✅ Example <a id="related-methods"></a>
 **Controller**
 ```php
 $this->view->addWidget('dashboard.index', 'dashboard.activeSessions', $sessions);

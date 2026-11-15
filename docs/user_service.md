@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">UserService</h1>
+---
+layout: default
+title: "UserService"
+parent: "Services"
+nav_order: 5
+---
 
+# UserService
 ## Table of contents
 1. [Overview](#overview)
 2. [Public Methods](#public-methods)
@@ -9,7 +15,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The `UserService` class provides high-level user management operations such as account deactivation, password updates, profile image handling, and access restrictions. It is designed to support both user self-management and admin-level user administration.
 
 <br>
@@ -30,7 +36,7 @@ use Core\Services\UserService;
 
 <br>
 
-## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Public Methods <a id="public-methods"></a>
 ### A. `deleteIfAllowed()`
 Deletes a user if they are not an admin. Optionally removes their profile images if `$unlink` is `true`.  Appropriate messaging is displayed based on success or failure.
 
@@ -161,7 +167,7 @@ $shouldEmail = UserService::toggleResetPassword($user, $request, $previousReset)
 
 <br>
 
-## 3. Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Related Components<a id="related-components"></a>
 - `AuthService` – Used to validate current user identity and confirm password fields.
 - `ProfileImages` – Handles image persistence, deletion, and sorting.
 - `Uploads` – File upload handler.
@@ -170,7 +176,7 @@ $shouldEmail = UserService::toggleResetPassword($user, $request, $previousReset)
 
 <br>
 
-## 4. Examples <a id="examples"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Examples <a id="examples"></a>
 
 ### A. Password Reset
 You can use the `UserService::toggleResetPassword` and `UserService::sendWhenSetToResetPW` to send an E-mail to a user when an administrator sets the `reset_password` field for an account.  An example is shown below:
@@ -229,7 +235,7 @@ Just like above we follow a similar two step process.  We toggle the `active` an
 
 <br>
 
-## 4. Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Notes <a id="notes"></a>
 - Admin users (`["Admin"]` ACL) are protected from deletion.
 - Upload handling assumes that `$_FILES['profileImage']` is present for Uploads.
 - Email methods like `sendWhenSetToInactive()` and `sendWhenSetToResetPW()` rely on `AccountDeactivatedMailer` and `PasswordResetMailer` respectively.

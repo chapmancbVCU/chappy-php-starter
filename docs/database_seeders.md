@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Database Seeders</h1>
+---
+layout: default
+title: "Database Seeders"
+parent: "Database Migrations and Operations"
+nav_order: 3
+---
 
+# Database Seeders
 ## Table of contents
 1. [Overview](#overview)
 2. [Creating a Seeder Class](#seeder-class)
@@ -10,12 +16,12 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This framework supports the ability to seed a database with fake data utilizing a package called FakerPHP.  Consult their documentation [here](https://fakerphp.org/) for more information about what they support.  Using this package, along with the native support for Seeder classes you are able to populate tables in your database with test seeder data.  The list of third-party libraries can be found [here](https://fakerphp.org/third-party/).
 
 <br>
 
-## 2. Creating a Seeder Class <a id="seeder-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Creating a Seeder Class <a id="seeder-class"></a>
 You can easily create a new database seeder by running the make:seeder console command.  This command has the following format:
 
 ```sh
@@ -80,7 +86,7 @@ public function run(): void {
 
 <br>
 
-## 3. Setting up The Seeder Class <a id="seeder-class-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Setting up The Seeder Class <a id="seeder-class-setup"></a>
 We will focus on the following code for a completed run function.
 
 ```php
@@ -101,7 +107,7 @@ ContactsFactory::factory(1)->count(5)->create();
 
 <br>
 
-## 4. Setting Up the DatabaseSeeder Class <a id="database-seeder"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Setting Up the DatabaseSeeder Class <a id="database-seeder"></a>
 Before we can run the database seeder we need to update the DatabaseSeeder class.  It is found in the same directory as the class that we created above.  You will need to perform the imports and add the function calls in the order you want database seeding to occur.  A properly setup example is shown below:
 
 ```php
@@ -129,7 +135,7 @@ Notice that we need to include a use statements for each seeder we want to use. 
 
 <br>
 
-## 5. Running a Database Seeder <a id="running-seeder"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Running a Database Seeder <a id="running-seeder"></a>
 We are finally ready to perform database seeding.  Let's look at the index view of the contacts management system before we start.
 
 <div style="text-align: center;">
@@ -178,7 +184,7 @@ As shown above in Figure 4, we can see that Carmel's information looks like we w
 
 <br>
 
-## 6. Seeder Tips and Best Practices <a id="seeder-tips"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Seeder Tips and Best Practices <a id="seeder-tips"></a>
 - ✅ Use seeders only in development or staging.
 - 🔗 Use foreign key-safe references (`user_id = 1`) that exist.
 - 🧠 Use `Faker::unique()` sparingly to avoid memory overuse.

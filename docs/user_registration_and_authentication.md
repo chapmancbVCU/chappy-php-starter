@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">User Registration and Authentication</h1>
+---
+layout: default
+title: "User Registration and Authentication"
+nav_order: 33
+---
 
+# User Registration and Authentication
 ## Table of contents
 1. [Overview](#overview)
 2. [Registration](#registration)
@@ -7,11 +12,11 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This section provides an overview of the registration and authentication process.
 <br>
 
-## 2. Registration <a id="registration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Registration <a id="registration"></a>
 At the login page the user can access the registration page. A screenshot is shown below in figure 1.
 
 <div style="text-align: center;">
@@ -29,5 +34,5 @@ Field Descriptions:
 7. Password: Make sure they match and fulfill complexity requirements.
 <br>
 
-## 3. Login <a id="login"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Login <a id="login"></a>
 The login page is the standard login setup with a remember me checkbox. Once you login you can access parts of the application that are allowed for your access control level. The number of failed attempts allowed can be set by your administrator. If you are an administrator and you get locked out and there are no other administrators you can set the inactive field to 0 and login_attempts to 0 in the record associated with your user account.

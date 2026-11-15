@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Views</h1>
+---
+layout: default
+title: "Views"
+parent: "Views Introduction"
+nav_order: 6
+---
 
+# Views
 ## Table of contents
 1. [Overview](#overview)
 2. [Getting Data From Controller](#controller)
@@ -8,7 +14,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 View files are responsible for displaying what the user interacts with.  The view files in this framework are plain php files and at this moment does not require a template engine such as Twig or Blade.  A template view file is shown below:
 
 ```php
@@ -33,7 +39,7 @@ This template is separated into 3 sections:
 
 <br>
 
-## 2. Getting Data From Controller <a id="controller"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Getting Data From Controller <a id="controller"></a>
 You can pass values assigned to the View object in the controller to any view.  Let's look at the configure the view section of the ContactsController's indexAction function.
 
 ```php
@@ -53,7 +59,7 @@ Since each view file has access to an instance of the View class all the user ha
 
 <br>
 
-## 3. Creating Views <a id="make-views"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Creating Views <a id="make-views"></a>
 Views can be created by two different methods.  You can right click on the directory under `resources/views/` and create a view this way.  You will be responsible for adding anything needed to setup content between the opening and closing tags for the head and body elements.
 
 You can also create a view by running the `make:view` command.  An example is shown below:
@@ -72,7 +78,7 @@ such that `directory_name` is the location of the view file and `view_name` is t
 
 <br>
 
-## 4. Creating CSS Files <a id="make-css"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Creating CSS Files <a id="make-css"></a>
 Create new CSS files for your views and E-mails using the `make:css` command.
 ```sh
 php console make:css <file_name>

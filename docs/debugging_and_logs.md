@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Debugging and Logs</h1>
+---
+layout: default
+title: "Debugging and Logs"
+nav_order: 9
+---
 
+# Debugging and Logs
 ## Table of contents
 1. [Overview](#overview)
 2. [filp/whoops](#whoops)
@@ -8,7 +13,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This framework provides built-in tools for identifying and resolving issues during development. These include:
 
 - An interactive error display system powered by [filp/whoops](https://github.com/filp/whoops)
@@ -25,12 +30,12 @@ LOGGING="notice"
 When logging is set to `notice` any messages with a lower severity level is not logged.
 <br>
 
-## 2. filp/whoops <a id="whoops"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. filp/whoops <a id="whoops"></a>
 filp/whoops is a pretty page handler for displaying errors within the browser.  This tool is also included with the Laravel framework.  Thus, inclusion of this tool within this frameworks makes the switch relatively easy.
 
 <br>
 
-## 3. Logs <a id="logs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Logs <a id="logs"></a>
 Add content to the log files with the following global functions:
 ```php
 emergency('My message');
@@ -106,7 +111,7 @@ sudo chown ${user}:${user} -R /storage/logs
 
 <br>
 
-## 3. Helper Functions <a id="helpers"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Helper Functions <a id="helpers"></a>
 There are 3 functions in the Global Namespace that are used for debugging.
 
 | Function | Description |

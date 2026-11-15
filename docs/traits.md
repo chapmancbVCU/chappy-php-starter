@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Supported Traits</h1>
+---
+layout: default
+title: "Supported Traits"
+nav_order: 27
+---
 
+# Supported Traits
 ## Table of contents
 1. [Overview](#overview)
 2. [HasTimestamps](#has-timestamps)
@@ -7,7 +12,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This framework currently supports 4 traits intended for developer use:
 - HasTimestamps
 - JsonResponse - More details [here](api_util_and_json_response_trait#json-response-trait).
@@ -16,13 +21,13 @@ This framework currently supports 4 traits intended for developer use:
 
 <br>
 
-## 2. HasTimestamps <a id="has-timestamps"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. HasTimestamps <a id="has-timestamps"></a>
 Supports timestamp related features for your `$created_at` and `$updated_at` database fields.  The `timeStamps` function is used to manage these fields.
 
 
 <br>
 
-## 3. PasswordPolicy <a id="password-policy"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. PasswordPolicy <a id="password-policy"></a>
 Contains a collection of functions for enforcing your project's password policy.  The base user model, `Core\Models\User`, uses this trait and applies each enabled rule when a user registers or changes their password.
 - `isMaxLength` - True if the maximum length rule is enabled
 - `isMinLength` - True if the minimum length rule is enabled

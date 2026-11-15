@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Server Side Validation</h1>
+---
+layout: default
+title: "Server Side Validation"
+parent: "Forms"
+nav_order: 4
+---
 
+# Server Side Validation
 ## Table of contents
 1. [Overview](#overview)
 2. [Setup](#setup)
@@ -9,13 +15,13 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 
 Validators available in the `HasValidators` trait class can be used to validate forms.  They are available through the `Model` class and there is no need to import.
 
 <br>
 
-## 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Setup <a id="setup"></a>
 Use the `validator()` method in your model and call it automatically when save() is invoked.  Let's use the addAction function from an example ContactsController class. As shown below on line 32, we have a displayErrors property for the View class. We generally set this value to a function call called getErrorMessages on the model. In this case, we are using the $contacts model because we want to add a new contact.
 
 <div style="text-align: center;">
@@ -44,7 +50,7 @@ The result of submitting a form without entering required input is shown below. 
 
 <br>
 
-## 3. Validation Rules <a id="validation-rules"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Validation Rules <a id="validation-rules"></a>
 **Validator Method**
 
 Each model defines its own validator() method:
@@ -87,7 +93,7 @@ Parameters:
 
 <br>
 
-## 4. Custom Validators <a id="custom_validators"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Custom Validators <a id="custom_validators"></a>
 Custom validators can be implemented within your model classes.  Use the following boiler plate to build your own validators.
 
 ```php
@@ -106,7 +112,7 @@ public function myValidator(optionalParams): static {
 
 <br>
 
-## 5. Why Front-End Validation Matters <a id="front-end"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Why Front-End Validation Matters <a id="front-end"></a>
 While server-side validation is essential for application security and enforcing business rules, front-end validation enhances the user experience by providing instant feedback. Common examples include:
 - Realtime password match checks
 - Enforcing required fields before submission

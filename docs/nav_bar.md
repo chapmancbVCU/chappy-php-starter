@@ -1,12 +1,18 @@
-<h1 style="font-size: 50px; text-align: center;">Navigation Bar</h1>
+---
+layout: default
+title: "Navigation Bar"
+parent: "Views Introduction"
+nav_order: 4
+---
 
+# Navigation Bar
 ## Table of contents
 1. [Overview](#overview)
 2. [Navigation Bar Layout](#layout)
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The navigation bar is supported by Bootstrap 5 and is responsive based on the size of the viewport.  The configuration of the navigation bar is based on a `menu_acl` json file.  More about creating these files can be found [here](layouts#menu-acls)
 
 Lets look at our most complex example.
@@ -45,7 +51,7 @@ viewDirectoryName/actionName
 This follows the same format for the string parameter inside the render function of your controller's actions.
 <br>
 
-## 2. Navigation Bar Layout <a id="layout"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Navigation Bar Layout <a id="layout"></a>
 The navigation bar is split into sections.  The left most side is the branding.  This is configured by modifying the `MENU_BRAND` variable in your `.env` file.
 
 Next to the branding are the links and menus as described in your `menu_acl` json file.  On the far right is another menu containing your profile image and links to your profile and logout link if your are logged in.  This part of the navigation bar changes to show register and login links if you are not logged in.

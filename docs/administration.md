@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Administration</h1>
+---
+layout: default
+title: "Administration"
+nav_order: 4
+---
 
+# Administration
 ## Table of contents
 1. [Overview](#overview)
 2. [How It Works](#how-it-works)
@@ -14,7 +19,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Administration features can be accessed by any user who belongs to the admin group.  This frame work supports the ability for administrators to perform the following tasks:
 1. Access the administration dashboard
 2. View list of all users
@@ -28,7 +33,7 @@ Administration features can be accessed by any user who belongs to the admin gro
 
 <br>
 
-## 2. How It Works <a id="how-it-works"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. How It Works <a id="how-it-works"></a>
 A user is granted admin access if their ACL includes `"Admin"`. You can manage ACLs for any user through the admin profile edit form.
 
 ```php
@@ -41,7 +46,7 @@ Admin-specific routes are protected by ACL checks defined in `acl.json`. Only us
 
 <br>
 
-## 3. Administration Dashboard <a id="admin-dashboard"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Administration Dashboard <a id="admin-dashboard"></a>
 The administration dashboard is easily accessible by any user in the admin group by clicking on the `Admin` link in the navigation panel.  Once at the Administration Dashboard the user is presented with a list of all users.  An example of the Administration Dashboard view is shown below in figure 1:
 
 <div style="text-align: center;">
@@ -53,7 +58,7 @@ Admins can click buttons to view, edit, reset passwords, or delete accounts.
 
 <br>
 
-## 4. Administration Menu <a id="admin-menu"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Administration Menu <a id="admin-menu"></a>
 The navigation bar includes an Administration Menu for users with the Admin ACL. It provides quick access to:
 - Administration Dashboard
 - ACL Management View 
@@ -67,7 +72,7 @@ An image of the Administration Menu is shown in figure 2.
 
 <br>
 
-## 5. Profile Details <a id="profile-details"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Profile Details <a id="profile-details"></a>
 Clicking the "Details" button brings the admin to a user's profile view. It includes:
 - Login attempt count
 - Password reset flag status
@@ -83,7 +88,7 @@ An example of this view is shown in figure 3.
 
 <br>
 
-## 6. Edit Details <a id="edit-details"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Edit Details <a id="edit-details"></a>
 The edit details view is also similar to the equivalent view for the user profile details view.  The difference is administrators have the ability to manage Access Control Levels (ACLs) for a user.  An example of this view is shown below in figure 4.
 
 <div style="text-align: center;">
@@ -98,24 +103,24 @@ Learn more about ACLs [here](access_control_levels).
 
 <br>
 
-## 7. Reset Password <a id="reset-password"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)
+## 7. Reset Password <a id="reset-password"></a>
 This view has a form with a checkbox that enables administrators to toggle the `reset_password` flag for a particular user.
 
 <br>
 
-## 8. Account Status <a id="account-status"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)
+## 8. Account Status <a id="account-status"></a>
 This view allows administrators to activate or deactivate an account.  Accounts get deactivated after a user exceeds the value set to `MAX_LOGIN_ATTEMPTS` constant which can be set in the `.env` file. 
 
 <br>
 
-## 9. Delete Account <a id="delete-account"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)
+## 9. Delete Account <a id="delete-account"></a>
 Administrators have permission to soft delete user accounts.  Soft deletion:
 - Removes the user from all listings
 - Keeps the record in the database (useful for audit trails or recovery)
 
 <br>
 
-## 10. Manage Access Control Levels (ACLs) <a id="manage-acls"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)
+## 10. Manage Access Control Levels (ACLs) <a id="manage-acls"></a>
 This view provides the ability to manage ACLs that are available to your project.  Administrators can:
 - Add, remove, and edit ACLs not assigned to any users
 

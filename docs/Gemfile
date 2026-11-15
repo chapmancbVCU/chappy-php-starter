@@ -1,13 +1,12 @@
 source "https://rubygems.org"
 
-# Use the GitHub Pages gem, which includes Jekyll
+# GitHub Pages gem (includes Jekyll and jekyll-remote-theme).
+# The Just the Docs theme itself is loaded through remote_theme in _config.yml.
 gem "github-pages", group: :jekyll_plugins
-
-# Minima is included with GitHub Pages, so you don't need to specify a version.
-gem "minima"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-remote-theme"
 end
 
 # Windows and JRuby fixes

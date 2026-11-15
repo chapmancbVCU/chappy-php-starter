@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Access Control Levels (ACLs)</h1>
+---
+layout: default
+title: "Access Control Levels (ACLs)"
+nav_order: 3
+---
 
+# Access Control Levels (ACLs)
 ## Table of contents
 1. [Overview](#overview)
 2. [How ACLs Work](#how-it-works) 
@@ -10,7 +15,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Chappy.php supports **Access Control Levels (ACLs)** to manage which users can access specific controllers and actions. ACLs are part of a secure application architecture, aligning with the **CIA Triad** of information security:
 
 - **Confidentiality** – Only authorized users can access specific data or routes.  
@@ -21,7 +26,7 @@ ACLs in this framework are configured using the `acl.json` file in the `app/` di
 
 <br>
 
-## 2. How ACLs Work <a id="how-it-works"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. How ACLs Work <a id="how-it-works"></a>
 When a user is assigned a session, their default access level is `"Guest"`. If they log in or their role is elevated (e.g., admin), their ACL changes to `"LoggedIn"` or `"Admin"`.
 
 The system resolves access by checking:
@@ -34,7 +39,7 @@ If the access check fails, the user is redirected to a restricted access view.
 
 <br>
 
-## 3. acl.json File <a id="acl-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. acl.json File <a id="acl-file"></a>
 The `acl.json` file maps ACL roles (e.g., Guest, LoggedIn, Admin) to controllers and actions. Example:
 
 ```json
@@ -97,7 +102,7 @@ To allow "LoggedIn" users to change their password, update the ACL:
 
 <br>
 
-## 4. Controllers and Views <a id="controllers-and-views"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Controllers and Views <a id="controllers-and-views"></a>
 After adding the name of the action they wish to create, in this case `changePassword`, the user will need to create the view and add a function to the AuthController called `changePasswordAction`.  An example is shown below:
 
 ```php
@@ -127,7 +132,7 @@ Use the same name for:
 
 <br>
 
-## 5. ✅ Developer Checklist: Adding a New ACL Role <a id="checklist"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. ✅ Developer Checklist: Adding a New ACL Role <a id="checklist"></a>
 1. Add the new role to the acl.json file
 2. Add matching permissions (controllers/actions)
 3. Set the role name in the user table (acl column)
@@ -136,7 +141,7 @@ Use the same name for:
 
 <br>
 
-## 6. 🔗 See Also <a id="see-also"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. 🔗 See Also <a id="see-also"></a>
 - [User Registration and Authentication](user_registration_and_authentication)
 - [Views](views)
 - [Session and Flash Messages](session_and_flash_messages)

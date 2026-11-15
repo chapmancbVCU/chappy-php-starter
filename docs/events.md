@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Events/Listeners</h1>
+---
+layout: default
+title: "Events/Listeners"
+nav_order: 11
+---
 
+# Events/Listeners
 ## Table of contents
 1. [Overview](#overview)
 2. [How It Works](#how-it-works)
@@ -21,7 +26,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The Event/Listener system in Chappy.php allows you to decouple your application logic using the Observer Pattern.
 Instead of calling functions directly, you dispatch events, and listeners handle them automatically.
 
@@ -29,7 +34,7 @@ This makes your code cleaner, easier to maintain, and extensible — similar to 
 
 <br>
 
-## 2.🔹How It Works <a id="how-it-works"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2.🔹How It Works <a id="how-it-works"></a>
 - Events: Simple classes that describe something that happened (e.g., `UserRegistered`, `OrderShipped`).
 - Listeners: Classes that respond to specific events.
 - EventDispatcher: Core service that registers listeners and dispatches events.
@@ -38,7 +43,7 @@ This makes your code cleaner, easier to maintain, and extensible — similar to 
 
 <br>
 
-## 3. File Locations <a id="file-locations"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. File Locations <a id="file-locations"></a>
 
 | Type      | Core Location            | App (Userland) Location           |
 | --------- | ------------------------ | --------------------------------- |
@@ -49,7 +54,7 @@ This makes your code cleaner, easier to maintain, and extensible — similar to 
 
 <br>
 
-## 4. Bootstrapping <a id="bootstrapping"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Bootstrapping <a id="bootstrapping"></a>
 Events and listeners are booted automatically via `EventManager::boot()` in `bootstrap.php`.
 
 Config file: `config/providers.php`
@@ -66,7 +71,7 @@ Add your app’s event provider here to register custom events/listeners.
 
 <br>
 
-## 5. Creating Events & Listeners <a id="creating"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Creating Events & Listeners <a id="creating"></a>
 1️⃣ Make a new Event
 ```bash
 php console make:event UserPromoted
@@ -179,7 +184,7 @@ This will automatically call `handle()` on every listener registered for `UserPr
 
 <br>
 
-## 6. Example — Replacing Direct Service Calls <a id="example"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Example — Replacing Direct Service Calls <a id="example"></a>
 Instead of:
 ```php
 NotificationService::sendUserRegistrationNotification($user);
@@ -196,7 +201,7 @@ Your `SendRegistrationEmail` listener will handle sending notifications and welc
 
 <br>
 
-## 7. Writing Core vs Userland Events <a id="types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Writing Core vs Userland Events <a id="types"></a>
 - Core events/listeners live in src/core/Lib/Events and src/core/Lib/Listeners.
 - Userland events/listeners live in app/Events and app/Listeners.
 
@@ -211,7 +216,7 @@ Built End Listeners:
 
 <br>
 
-## 8. Advanced <a id="advanced"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Advanced <a id="advanced"></a>
 Multiple Listeners
 You can register multiple listeners for the same event in `$listen`:
 ```php
@@ -236,7 +241,7 @@ public function handle(UserRegistered $event): void
 
 <br>
 
-## 9. Queued Event Listeners <a id="queued-events"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Queued Event Listeners <a id="queued-events"></a>
 Queued event listeners allow you to defer the execution of an event listener until it is processed by a queue worker, rather than executing it immediately when the event is fired.
 This is ideal for time-consuming tasks such as sending emails, processing images, or performing external API calls, which should not delay the user’s request.
 
@@ -485,7 +490,7 @@ You can run multiple workers, or run them in the background using a process mana
 
 <br>
 
-## 10. Summary <a id="summary"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. Summary <a id="summary"></a>
 - Define your events in app/Events.
 - Create listeners in app/Listeners.
 - Register them in an EventServiceProvider.

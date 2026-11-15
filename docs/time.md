@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Date and Time</h1>
+---
+layout: default
+title: "Date and Time"
+parent: "Utilities"
+nav_order: 5
+---
 
+# Date and Time
 ## Table of contents
 1. [Overview](#overview)
 2. [Storage and Display Rules](#storage-and-display-rules)
@@ -18,7 +24,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Chappy.php handles dates with two classes in the `Core\Lib\Utilities` namespace.  Both are built on [Carbon](https://carbon.nesbot.com/docs/).
 
 - `DateFactory` creates every date object in the framework.  It applies your application's timezone, locale, and choice of mutable or immutable Carbon in one place.
@@ -28,7 +34,7 @@ Because all dates are created through `DateFactory`, freezing time in a test fre
 
 <br>
 
-## 2. Storage and Display Rules <a id="storage-and-display-rules"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Storage and Display Rules <a id="storage-and-display-rules"></a>
 Dates move through three stages.  Each stage has one format.
 
 | Stage | Format | Example | Produced by |
@@ -56,7 +62,7 @@ $stored = DateFactory::parse('2026-01-15T20:30:45.000000Z')
 
 <br>
 
-## 3. Configuration <a id="configuration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Configuration <a id="configuration"></a>
 Set the following values in your `.env` file:
 
 | Variable | Default | Description |
@@ -79,7 +85,7 @@ VITE_LOCALE=${LOCALE}
 
 <br>
 
-## 4. DateFactory <a id="date-factory"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. DateFactory <a id="date-factory"></a>
 Use `DateFactory` whenever you need a Carbon instance rather than a formatted string.
 
 ```php
@@ -154,7 +160,7 @@ Returns the application timezone from `TIME_ZONE`, or `'UTC'` if it is not set.
 
 <br>
 
-## 5. DateTime Format Constants <a id="format-constants"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. DateTime Format Constants <a id="format-constants"></a>
 The `$format` parameter of the `DateTime` helpers accepts any [PHP date format string](https://www.php.net/manual/en/datetime.format.php) or one of the constants below.  The same constants are available in React through the [JavaScript datetime utilities](react_datetime).
 
 Example output is for `2026-01-15 20:30:45` UTC displayed in `America/New_York`.
@@ -177,7 +183,7 @@ Example output is for `2026-01-15 20:30:45` UTC displayed in `America/New_York`.
 
 <br>
 
-## 6. `formatTime()` <a id="format-time"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. `formatTime()` <a id="format-time"></a>
 Returns a formatted string in the application timezone.
 
 Parameters:
@@ -250,7 +256,7 @@ jeudi 15 janvier 2026
 
 <br>
 
-## 7. `now()` <a id="now"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. `now()` <a id="now"></a>
 Returns the current time as a formatted string.
 
 Parameters:
@@ -275,7 +281,7 @@ Output when it is 20:30:45 UTC:
 
 <br>
 
-## 8. `nowPlusSeconds()` <a id="now-plus-seconds"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. `nowPlusSeconds()` <a id="now-plus-seconds"></a>
 Adds seconds to the current UTC time.  Useful for expiration times stored in the database.
 
 Parameter:
@@ -293,7 +299,7 @@ Output when it is 20:30:45 UTC: `2026-01-15 21:30:45`
 
 <br>
 
-## 9. `timeAgo()` <a id="time-ago"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. `timeAgo()` <a id="time-ago"></a>
 Returns a string describing how much time has passed.
 
 Parameters:
@@ -323,7 +329,7 @@ On a model, `$user->date('updated_at')->diffForHumans()` gives the same result. 
 
 <br>
 
-## 10. `timeDifference()` <a id="time-difference"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. `timeDifference()` <a id="time-difference"></a>
 Describes the difference between two times.
 
 Parameters:
@@ -343,7 +349,7 @@ Output: `7 hours before`
 
 <br>
 
-## 11. `timeStamps()` <a id="time-stamps"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 11. `timeStamps()` <a id="time-stamps"></a>
 Returns the current time in the storage format.  Use this whenever you write a timestamp to the database.
 
 Returns:
@@ -358,7 +364,7 @@ Output when it is 20:30:45 UTC: `2026-01-15 20:30:45`
 
 <br>
 
-## 12. `today()` <a id="today"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 12. `today()` <a id="today"></a>
 Returns midnight of the current day as a formatted string.  The date depends on the timezone: at 23:30 UTC it is already the next day in Tokyo.
 
 Parameters:
@@ -383,7 +389,7 @@ January 15, 2026
 
 <br>
 
-## 13. `toISO8601()` <a id="to-iso-8601"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 13. `toISO8601()` <a id="to-iso-8601"></a>
 Converts a time to ISO 8601 format with an offset.
 
 Parameters:
@@ -408,7 +414,7 @@ Output:
 
 <br>
 
-## 14. Related Pages <a id="related-pages"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 14. Related Pages <a id="related-pages"></a>
 - [Model Date Casting](date_casting) - Read model columns as Carbon instances and control JSON output.
 - [JavaScript Datetime Utilities](react_datetime) - The same helpers and constants for React views.
 - [Time Travel in Tests](time_travel) - Freeze and move time in PHPUnit tests.

@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Linux Standalone PHP</h1>
+---
+layout: default
+title: "Linux Standalone PHP"
+parent: "Getting Started"
+nav_order: 2
+---
 
+# Linux Standalone PHP
 ## Table of contents
 1. [Overview](#overview)
 2. [Install System Dependencies](#dependencies)
@@ -11,7 +17,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This guide walks through setting up the Chappy.php framework for local development without requiring XAMPP, Nginx, or Apache. The framework is served using PHP's built-in development server (`php console serve`).
 
 > ⚠️ PHP's built-in server is for development only. For production, use the LAMP or LEMP guide.
@@ -35,7 +41,7 @@ This guide walks through setting up the Chappy.php framework for local developme
 
 <br>
 
-## 2. Install System Dependencies <a id="dependencies"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Install System Dependencies <a id="dependencies"></a>
 First, update your system and install essential dependencies:
 
 **Ubuntu & Debian**
@@ -53,7 +59,7 @@ sudo dnf install -y curl wget git unzip
 ```
 <br>
 
-## 3. Install PHP <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Install PHP <a id="php"></a>
 Chappy.php requires PHP 8.4 or newer. On Ubuntu 26.04 and Debian 13, the PHP in the default repositories already meets that. Ubuntu 24.04 ships PHP 8.3, so it needs the ondrej/php PPA (step A below). Rocky Linux uses the Remi repository.
 
 | OS | PHP version installed |
@@ -148,7 +154,7 @@ Changes take effect the next time you start `php console serve`.
 
 <br>
 
-## 4. Install Composer <a id="composer"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Install Composer <a id="composer"></a>
 Composer is required to manage PHP dependencies.
 #### 1: Download and Install Composer
 ```sh
@@ -163,7 +169,7 @@ composer -V
 ```
 <br>
 
-## 5. Install Node.js & NPM <a id="nodejs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Install Node.js & NPM <a id="nodejs"></a>
 Use NodeSource to install the latest LTS Node.js version.
 #### 1: Add Node.js Repository
 **Ubuntu & Debian**
@@ -196,7 +202,7 @@ npm -v
 ```
 <br>
 
-## 6. Project Setup <a id="project-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Project Setup <a id="project-setup"></a>
 Navigate to your preferred development directory and create the project:
 #### 1. Create The Project
 Run the following commands (replace my-app with the name of your project):
@@ -230,7 +236,7 @@ Navigate to `http://localhost:8000`
 
 <br>
 
-## 7. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Troubleshooting <a id="troubleshooting"></a>
 ### A. `could not find driver` Error
 The PHP database extension for your connection isn't installed. Install `php-sqlite3` (Ubuntu/Debian) or `php-pdo` (Rocky) for SQLite, or `php-mysql` / `php-mysqlnd` for MySQL/MariaDB, then restart `php console serve`.
 <br>

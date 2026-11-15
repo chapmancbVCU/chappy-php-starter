@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Unit Tests API</h1>
+---
+layout: default
+title: "Unit Tests API"
+parent: "Unit Tests"
+nav_order: 2
+---
 
+# Unit Tests API
 ## Table of contents
 1. [Overview](#overview)
 2. [TestBuilderInterface](#test-builder-interface)
@@ -11,7 +17,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This framework natively supports unit testing with PHPUnit for PHP and Vitest for JavaScript/React.js files.  Chappy.php also exposes its console based API so users can integrate other test suites into their projects.
 
 The API consists of the following:
@@ -20,7 +26,7 @@ The API consists of the following:
 
 <br>
 
-## 2. TestBuilderInterface <a id="test-builder-interface"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. TestBuilderInterface <a id="test-builder-interface"></a>
 TestBuilderInterface contains the `makeTest` function which is required for all test builders to implement.  The signature of this function is described below.
 
 Parameters:
@@ -32,7 +38,7 @@ Return:
 
 <br>
 
-## 3. TestRunner Class <a id="test-runner-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. TestRunner Class <a id="test-runner-class"></a>
 The TestRunner class contains functions available for you to use in your own child classes.
 
 ### A. `construct()`
@@ -173,7 +179,7 @@ Returns:
 
 <br>
 
-## 4. Building A Test Suite <a id="test-suite"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Building A Test Suite <a id="test-suite"></a>
 To add support for another 3rd party framework you will need the following:
 - Test builder class
 - Test runner class
@@ -504,7 +510,7 @@ class RunTestCommand extends ConsoleCommand
 
 <br>
 
-## 5. Running Tests <a id="running-tests"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Running Tests <a id="running-tests"></a>
 
 First, you need to create a new command for running tests as demonstrated below:
 

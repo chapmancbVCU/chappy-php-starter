@@ -1,7 +1,8 @@
 ---
-layout: page
+layout: default
 title: About Chappy.php
 permalink: /about/
+nav_order: 37
 ---
 
 **What is Chappy.php?**

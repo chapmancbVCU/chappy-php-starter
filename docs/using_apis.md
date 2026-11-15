@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Using APIs</h1>
+---
+layout: default
+title: "Using APIs"
+parent: "React.js"
+nav_order: 5
+---
 
+# Using APIs
 ## Table of contents
 1. [Overview](#overview)
 2. [Configuration and Routing](#configuration-and-routing)
@@ -20,7 +26,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 We support RESTful API requests to API providers.  In this guide we will build a tiny API endpoint that does server-side fetch to OpenWeatherMap (OWM) and returns safe JSON to your React app.
 - Client calls: `GET /weather/show?q=Newport News, Virginia&units=imperial`
 - Server fetches from OWM, caches the response (TTL), normalizes errors, and returns JSON.
@@ -33,7 +39,7 @@ Why proxy?
 
 <br>
 
-## 2. Configuration and Routing<a id="configuration-and-routing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Configuration and Routing<a id="configuration-and-routing"></a>
 Add your OWM key to .env (server only):
 ```ini
 OWM_API_KEY=your_openweather_key_here
@@ -50,7 +56,7 @@ This will allow our front-end API calls to be able to access the API Endpoints w
 
 <br>
 
-## 3. Service: OpenWeather client (server-side) <a id="service"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Service: OpenWeather client (server-side) <a id="service"></a>
 Run the command:
 ```sh
 php console make:service WeatherService
@@ -314,7 +320,7 @@ class WeatherService extends Api {
 
 <br>
 
-## 4. Controller: API endpoint <a id="controller"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Controller: API endpoint <a id="controller"></a>
 
 We will need to make a controller that will handle interactions between the front end and back end.
 
@@ -628,7 +634,7 @@ class WeatherController extends Controller {
 
 <br>
 
-## 5. Router & ACL <a id="router"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Router & ACL <a id="router"></a>
 Router
 
 Your router maps /{Controller}/{action}. Two common choices:
@@ -653,7 +659,7 @@ Let Guests read weather; restrict writes if needed.
 
 <br>
 
-## 6. Front End <a id="front-end"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Front End <a id="front-end"></a>
 For the front end we will rely on the framework's `api` utility.  The import statement is as follows:
 ```js
 import { apiGet, useAsync } from '@chappy/utils/api';

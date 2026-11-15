@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Pagination</h1>
+---
+layout: default
+title: "Pagination"
+parent: "Views Introduction"
+nav_order: 5
+---
 
+# Pagination
 ## Table of contents
 1. [Overview](#overview)
 2. [Basic Pagination](#basic-pagination)
@@ -45,7 +51,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Pagination splits long lists of records into pages and renders the links used to move between them. Support is built from three parts that can be used together or on their own:
 
 - **`Pagination`** - Tracks the current page, page size, and total number of records. It calculates the limit and offset for your query, builds page links, and renders the controls.
@@ -62,7 +68,7 @@ An example is shown below in Figure 1.
 </div>
 <br>
 
-## 2. Basic Pagination <a id="basic-pagination"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Basic Pagination <a id="basic-pagination"></a>
 The following are instructions for setting up pagination within your controller. We will use the `indexAction` of the `ContactsController`.
 
 #### A. Import Pagination Class <a id="import-class"></a>
@@ -188,7 +194,7 @@ And the view:
 
 <br>
 
-## 3. Search, Filtering, and Sorting <a id="search-filter"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Search, Filtering, and Sorting <a id="search-filter"></a>
 The `SearchFilter` class reads the search term, filters, and sort order from the request and turns them into the `conditions`, `bind`, and `order` parameters used by `find` and `findTotal`. The same filter is used for both the count and the page query, so the total always matches the results.
 
 The examples in this section come from the admin dashboard's user list.
@@ -368,7 +374,7 @@ Changing the search, a filter, or the sort always returns to page 1.
 
 <br>
 
-## 4. Rendering and Layouts <a id="rendering"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Rendering and Layouts <a id="rendering"></a>
 `render()` uses a renderer to produce the page links. Long lists show a window of pages around the current one, with the first and last pages always shown:
 
 ```
@@ -489,7 +495,7 @@ $pagination = Pagination::fromRequest($this->request, 10, $total)
 
 <br>
 
-## 5. React Support <a id="react"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. React Support <a id="react"></a>
 React pages use the same `Pagination` and `SearchFilter` classes. Read the [React](react) page first for details about `renderJsx` and page components.
 
 #### A. How It Works <a id="react-how"></a>
@@ -790,7 +796,7 @@ export default function Index({ contacts, pagination }) {
 ```
 {% endraw %}
 
-## 6. Supporting PHP and React Views Together <a id="both"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Supporting PHP and React Views Together <a id="both"></a>
 One controller action can serve a PHP view, a React view, and the JSON for the React view. The service builds the filter and the query for all three.
 
 ```php
@@ -848,7 +854,7 @@ The two view types receive different data:
 
 <br>
 
-## 7. Testing <a id="testing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Testing <a id="testing"></a>
 The following examples show how to test paginated lists in your own application.
 
 **Testing a SearchFilter With PHPUnit**
@@ -961,7 +967,7 @@ More information can be found on the [Vitest](vitest) page.
 
 <br>
 
-## 8. API Reference <a id="api"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. API Reference <a id="api"></a>
 #### A. Pagination <a id="api-pagination"></a>
 Namespace: `Core\Lib\Pagination\Pagination`
 
@@ -1058,7 +1064,7 @@ A gap in `links` has `page` and `url` set to `null`.
 
 <br>
 
-## 9. Upgrading From Earlier Versions <a id="upgrading"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Upgrading From Earlier Versions <a id="upgrading"></a>
 Existing code continues to work. The following changes are recommended:
 
 - `Pagination::pagination($page, $totalPages)` is deprecated. Pass the Pagination object to the view and call `$this->pagination->render()` instead. The old function no longer uses a custom `$base_url`. Use `withPath()` instead.

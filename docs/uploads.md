@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Uploads</h1>
+---
+layout: default
+title: "Uploads"
+parent: "Utilities"
+nav_order: 6
+---
 
+# Uploads
 ## Table of contents
 1. [Overview](#overview)
 2. [Uploads Class](#uploads)
@@ -21,7 +27,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This framework supports single and multiple file uploads.  Switching between both modes is relatively easy and is achieved by changing one line of code in your view file and the action function that renders the view.  In this guide we will use the ProfileController and it's associated view located at "resources/views/profile/edit.php" as examples.
 
 To enable uploads in your Controllers add the following import:
@@ -31,7 +37,7 @@ use Core\Lib\FileSystem\Uploads;
 
 <br>
 
-## 2. Uploads Class <a id="uploads"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Uploads Class <a id="uploads"></a>
 Description for the Uploads class' functions.
 
 ### A. `handleUpload()` <a id="handle-upload">
@@ -85,7 +91,7 @@ Parameters:
 
 <br>
 
-## 3. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Setup <a id="setup"></a>
 The upload feature is supported by the Uploads class.  To use the Uploads class you will need to perform the following steps:
 <br>
 
@@ -192,7 +198,7 @@ The upload function accepts 3 parameters:
 - string $fileName - The temporary file name.
 <br>
 
-## 4. Single File Upload <a id="single-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Single File Upload <a id="single-file"></a>
 Setting up single file uploads requires the correct configuration of your action inside of the appropriate controller and the associated view file.  Let's look at the editAction function for the ProfileController.
 
 ```php
@@ -258,7 +264,7 @@ When setting up the view we use a call to the inputBlock function.  In the examp
 ```
 <br>
 
-## 5. Multiple File Upload <a id="multiple-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Multiple File Upload <a id="multiple-file"></a>
 There are two main differences when it comes to setting up uploads with multiple files.  Let's look at the call for the Uploads constructor again.
 
 ```php
@@ -281,7 +287,7 @@ This time the value for the `$mode` parameter is set to `Uploads::MULTIPLE`.  Th
 The profileImage, the name attribute's value, needs brackets so that we know we are using an array of files as the value for the inputBlock function call.  You also need to add 'multiple' => 'multiple' as an element for the $inputAttrs array.  Otherwise, the window that allows users to select a file will only allow you to select one file.
 <br>
 
-## 6. Configuring File Types <a id="file-types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Configuring File Types <a id="file-types"></a>
 The following is a sample list of file types you can place in the `$allowedFileTypes` array:
 
 ```php
@@ -374,7 +380,7 @@ protected static $allowedFileTypes = [
 
 <br>
 
-## 7. Validation <a id="validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Validation <a id="validation"></a>
 Uploads comes built in with two types of validation:
 * Allowed file types
 * Max allowed file size
@@ -461,7 +467,7 @@ It is also wise to set validation on the front end.  Simply add `'required' => '
 
 <br>
 
-## 8. Buckets <a id="buckets"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Buckets <a id="buckets"></a>
 This framework, by default, uses the local host for storing images.  If you are going to deploy this framework to a production environment we recommend using a separate host for file uploads.  The industry convention is to use S3 Buckets through Amazon Web Services (AWS).
 
 The `.env` file has a blank `S3_BUCKET` field ready to for you to use.  Set the hostname for your S3 Bucket to this environmental variable and add it as part of the `$_uploadPath` variable in the model for your file upload. 

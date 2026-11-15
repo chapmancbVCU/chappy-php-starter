@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Helper Class</h1>
+---
+layout: default
+title: "Helper Class"
+nav_order: 14
+---
 
+# Helper Class
 ## Table of contents
 1. [Overview](#overview)
 2. [buildMenuListItems](#menu-list)
@@ -9,12 +14,12 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The Helper class contains globally accessible utility functions to support user interface building, user profile lookups, and object handling. These methods are statically accessible and simplify various common tasks.  This class is part of the `Core` namespace.
 
 <br>
 
-## 2. `buildMenuListItems()` <a id="menu-list"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. `buildMenuListItems()` <a id="menu-list"></a>
 Dynamically builds a Bootstrap-friendly navigation menu based on an associative array. Dropdowns, active states, and logout buttons are supported.
 
 Parameters:
@@ -26,7 +31,7 @@ Returns:
 
 <br>
 
-## 3. `currentPage()` <a id="current-page"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. `currentPage()` <a id="current-page"></a>
 Returns the current URL path based on the request URI, normalized for comparison in menu rendering.
 
 Returns:
@@ -36,7 +41,7 @@ Note: Automatically treats `/`, `/home/index`, and app root as equivalent to `/h
 
 <br>
 
-## 4. `getObjectProperties()` <a id="obj-properties"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `getObjectProperties()` <a id="obj-properties"></a>
 Returns a list of accessible (non-static) properties and their values from the given object.
 
 Parameters:
@@ -51,7 +56,7 @@ $userProps = Helper::getObjectProperties($user);
 
 <br>
 
-## 5. `getProfileImage()` <a id="get-profile-image"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. `getProfileImage()` <a id="get-profile-image"></a>
 Returns the profile image for the currently logged-in user by querying the `ProfileImages` model.
 
 Returns:

@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">LEMP Stack</h1>
+---
+layout: default
+title: "LEMP Stack"
+parent: "Getting Started"
+nav_order: 4
+---
 
+# LEMP Stack
 ## Table of contents
 1. [Overview](#overview)
 2. [Install System Dependencies](#dependencies)
@@ -16,7 +22,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This guide walks through setting up a LEMP stack (Linux, Nginx, MySQL/MariaDB, PHP) for deploying PHP applications, including the Chappy.php framework.
 
 **Supported operating systems**
@@ -40,7 +46,7 @@ This guide walks through setting up a LEMP stack (Linux, Nginx, MySQL/MariaDB, P
 
 <br>
 
-## 2. Install System Dependencies <a id="dependencies"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Install System Dependencies <a id="dependencies"></a>
 First, update your system and install essential dependencies:
 
 **Ubuntu & Debian**
@@ -59,7 +65,7 @@ sudo dnf install -y curl wget git unzip net-tools policycoreutils-python-utils
 `policycoreutils-python-utils` provides `semanage`, which is used for the SELinux steps in Section 10.
 <br>
 
-## 3. Install Nginx <a id="nginx"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Install Nginx <a id="nginx"></a>
 ### A. Install Nginx and enable it to start on boot:
 **Ubuntu and Debian**
 ```sh
@@ -100,7 +106,7 @@ http://localhost
 ```
 <br>
 
-## 4. Install MySQL/MariaDB <a id="mysql"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Install MySQL/MariaDB <a id="mysql"></a>
 Install **one** database server, not both. Chappy.php works with either.
 
 | OS | MariaDB | MySQL |
@@ -218,7 +224,7 @@ SELECT user, host, plugin FROM mysql.user;
 ```
 <br>
 
-## 5. Install PHP <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Install PHP <a id="php"></a>
 Chappy.php requires PHP 8.4 or newer. On Ubuntu 26.04 and Debian 13, the PHP in the default repositories already meets that. Ubuntu 24.04 ships PHP 8.3, so it needs the ondrej/php PPA (step A below). Rocky Linux uses the Remi repository.
 
 | OS | PHP version installed |
@@ -273,7 +279,7 @@ php -v
 ```
 <br>
 
-## 6. Configure Nginx and PHP-FPM <a id="configure-nginx-php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Configure Nginx and PHP-FPM <a id="configure-nginx-php"></a>
 
 ### A. Create Temporary Location
 We will temporarily create the location for our app so we can test PHP. It gets replaced by the real project in Section 10:
@@ -481,7 +487,7 @@ sudo systemctl restart php-fpm
 <br>
 <br>
 
-## 7. Install phpMyAdmin <a id="phpMyAdmin"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Install phpMyAdmin <a id="phpMyAdmin"></a>
 phpMyAdmin provides a web interface to manage MySQL or MariaDB databases.
 ### A. Install phpMyAdmin
 **Ubuntu & Debian**
@@ -596,7 +602,7 @@ Log in with the **application user** you created in Section 4C (for example `my_
 
 <br>
 
-## 8. Install Composer <a id="composer"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Install Composer <a id="composer"></a>
 Composer is required to manage PHP dependencies.
 ### A. Download and Install Composer
 ```sh
@@ -612,7 +618,7 @@ composer -V
 ```
 <br>
 
-## 9. Install Node.js & NPM <a id="nodejs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Install Node.js & NPM <a id="nodejs"></a>
 Use NodeSource to install the latest LTS Node.js version.
 ### A. Add Node.js Repository
 **Ubuntu and Debian**
@@ -645,7 +651,7 @@ npm -v
 ```
 <br>
 
-## 10. Project Setup <a id="project-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. Project Setup <a id="project-setup"></a>
 ### A. Navigate to your user's home directory and install dependencies:
 Create your project and replace my-app with the name of your project. Then move to location described below:
 ```sh
@@ -757,7 +763,7 @@ http://<your_ip_address>
 ```
 <br>
 
-## 11. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 11. Troubleshooting <a id="troubleshooting"></a>
 ### A. Database Issues
 - **ERROR 1819 (HY000) during phpMyAdmin installation**: Your password does not meet MySQL's VALIDATE PASSWORD policy. Use a stronger password, or remove the component:
 ```sql
@@ -813,7 +819,7 @@ sudo ausearch -m avc -ts recent
 Rocky Linux 10 requires an x86-64-v3 CPU. On older hardware, use Rocky Linux 9. On a VM, change the CPU type to `host` (or another v3-capable model).
 <br>
 
-## 12. References <a id="references"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 12. References <a id="references"></a>
 A. [How To Install Linux, Nginx, MySQL, PHP (LEMP stack) on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu)
 
 B. [How To Install and Configure Laravel with Nginx on Ubuntu (LEMP)](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-laravel-with-nginx-on-ubuntu-22-04)

@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">JavaScript and Vite</h1>
+---
+layout: default
+title: "JavaScript and Vite"
+nav_order: 16
+---
 
+# JavaScript and Vite
 ## Table of contents
 1. [Overview](#overview)
 2. [Vite Asset Bundling](#vite-asset-bundling)
@@ -7,7 +12,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This framework includes first-class JavaScript support using [Vite](https://vitejs.dev/), enabling you to write modular, modern JavaScript while enjoying fast development builds and efficient production asset bundling.
 
 The `resources/js` directory includes helpful built-in utilities and serves as your starting point for writing and organizing all JavaScript logic.
@@ -24,7 +29,7 @@ These can be imported directly included via your views by including the followin
 
 <br>
 
-## 2. Vite Asset Bundling <a id="vite-asset-bundling"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Vite Asset Bundling <a id="vite-asset-bundling"></a>
 This framework includes the ability to perform Vite asset bundling.  Run the following command to bundle your assets:
 
 ```sh
@@ -43,7 +48,7 @@ Running above commands in Windows PowerShell can cause an issue.  Make sure to r
 
 <br>
 
-## 3. Included JavaScript Files <a id="javascript"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Included JavaScript Files <a id="javascript"></a>
 This framework comes with two JavaScript files that can be found at `resources\js`:
 - TinyMCE.js - Initializes TinyMCE editor
 - frontEndPasswordMatchValidate.js - Ensures passwords match

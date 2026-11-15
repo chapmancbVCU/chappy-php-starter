@@ -1,12 +1,17 @@
-<h1 style="font-size: 50px; text-align: center;">Directory Structure</h1>
+---
+layout: default
+title: "Directory Structure"
+nav_order: 10
+---
 
+# Directory Structure
 ## Table of contents
 1. [Overview](#overview)
 2. [Directory Descriptions](#descriptions)
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This is the standard structure of a Chappy.php project. It follows a clean and modular layout to support MVC architecture, console commands, configuration, views, and static assets.
 
 ```bash
@@ -58,7 +63,7 @@ This is the standard structure of a Chappy.php project. It follows a clean and m
 
 <br>
 
-## 2. Directory Descriptions <a id="descriptions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Directory Descriptions <a id="descriptions"></a>
 `/app`
 Contains your core application logic:
 - `Controllers/` – Handle HTTP requests and business logic.

@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Session and Local storage</h1>
+---
+layout: default
+title: "Session and Local Storage"
+nav_order: 25
+---
 
+# Session and Local storage
 ## Table of contents
 
 1. [Overview](#overview)

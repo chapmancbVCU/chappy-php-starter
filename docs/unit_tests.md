@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Unit Tests</h1>
+---
+layout: default
+title: "Unit Tests"
+nav_order: 29
+has_children: true
+---
 
+# Unit Tests
 ## Table of contents
 1. [Overview](#overview)
 2. [Simulating Controller Output](#controller)
@@ -23,7 +29,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 
 The Unit Test system in the Chappy PHP framework enables developers to write automated tests for their applications using a clean, expressive API layered on top of PHPUnit and Vitest. It includes a custom ApplicationTestCase base class that simulates HTTP requests (get, post, put, patch, and delete) and provides convenient methods for asserting database state, capturing controller output, and validating view data.
 
@@ -47,7 +53,7 @@ Guides for running PHPUnit and Vitest test from the console can be found in thei
 
 <br>
 
-## 2. Simulating Controller Output <a id="controller"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Simulating Controller Output <a id="controller"></a>
 The Chappy.php framework provides a convenient test helper method named `controllerOutput()` that allows you to simulate controller behavior inside unit or feature tests, similar to how routes behave when accessed via a browser.
 
 This method is available within `ApplicationTestCase` and is ideal for verifying the output of controller actions.
@@ -97,7 +103,7 @@ Since this method operates inside your test environment, ensure the required dat
 
 <br>
 
-## 3. ApplicationTestCase Assertions <a id="test-case-assertions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. ApplicationTestCase Assertions <a id="test-case-assertions"></a>
 This framework's test infrastructure provides convenient assertion helpers to validate the state of the database during tests. These assertions are especially useful in integration and feature tests that interact with the database.
 
 The following support assertions are available in the ApplicationTestCase base class:
@@ -332,7 +338,7 @@ $this->assertViewContains('user', Users::findById(1));
 
 <br>
 
-## 4 Simulating DELETE Requests with `delete() <a id="delete"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4 Simulating DELETE Requests with `delete() <a id="delete"></a>
 The `ApplicationTestCase` class provides a Laravel-style `delete()` helper that lets you simulate HTTP GET requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
 
 **Example destroy action for an API**
@@ -433,7 +439,7 @@ class RESTfulDestroyTest extends ApplicationTestCase
 
 <br>
 
-## 5. Simulating GET Requests with `get()` <a id="get"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Simulating GET Requests with `get()` <a id="get"></a>
 The `ApplicationTestCase` class provides a Laravel-style `get()` helper that lets you simulate HTTP GET requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
 
 🔧 Syntax
@@ -577,7 +583,7 @@ class RESTfulShowTest extends ApplicationTestCase {
 
 <br>
 
-## 6. Simulating PATCH Requests with `patch() <a id="patch"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Simulating PATCH Requests with `patch() <a id="patch"></a>
 The `ApplicationTestCase` class provides a Laravel-style `patch()` helper that lets you simulate HTTP PATCH requests in your feature tests. This function parses a URI string into a controller, action, and optional parameters, then returns a `TestResponse` object for assertion.
 
 **Example PATCH request for an API**
@@ -683,7 +689,7 @@ class RESTfulPatchTest extends ApplicationTestCase {
 
 <br>
 
-## 7. Simulating POST Requests with `post()` <a id="post"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Simulating POST Requests with `post()` <a id="post"></a>
 In your framework's test suite, the `post()` method allows you to simulate POST requests to any controller action as if it were triggered via a browser form submission. This is especially useful for testing routes like `/auth/register` or `/products/create`.
 
 <br>
@@ -819,7 +825,7 @@ class RESTfulStoreTest extends ApplicationTestCase {
 
 <br>
 
-## 8. Simulating PUT Requests with `put()` <a id="put"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Simulating PUT Requests with `put()` <a id="put"></a>
 The `put()` method in `ApplicationTestCase` allows you to simulate HTTP `PUT` requests to test controller actions that update records. It mimics a real browser form submission using the `PUT` method and passes data to the targeted controller action.
 
 This is especially useful for testing resourceful routes like `/users/update/1`, where form data is submitted via `PUT`.
@@ -874,7 +880,7 @@ Use put() in feature tests to:
 
 <br>
 
-## 9. 📂 Mocking File Uploads in Tests <a id="mock-files"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. 📂 Mocking File Uploads in Tests <a id="mock-files"></a>
 When your controller expects file uploads (like $_FILES['profileImage']), you must mock this data in your test to avoid runtime errors.
 
 **Usage in a test**
@@ -887,7 +893,7 @@ This simulates an empty file upload, which is sufficient for passing validation 
 
 <br>
 
-## 10. Additional Functions <a id="additional-functions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. Additional Functions <a id="additional-functions"></a>
 
 **enableJsonTestingMode**
 

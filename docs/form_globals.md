@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Form Globals</h1>
+---
+layout: default
+title: "Form Globals"
+parent: "Global Helpers"
+nav_order: 1
+---
 
+# Form Globals
 ## Table of contents
 1. [Overview](#overview)
 2. [button()](#button)
@@ -49,12 +55,12 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Chappy.php has a rich library of form globals.  Many are wrappers of existing functions in the `FormHelper` class.  17 of them leverage the original `FormHelper::InputBlock` function.  There are also specialized functions for radio buttons, checkboxes, option select, currency, and numbers.
 
 <br>
 
-## 2. `button()` <a id="button"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. `button()` <a id="button"></a>
 This function creates a button with no surrounding HTML div element. It supports the ability to set attributes such as classes and event handlers. If you want a div to surround a button along with any other attributes we recommend that you use the buttonBlock function. Note the example function call shown below:
 
 ```php
@@ -73,7 +79,7 @@ Returns:
 
 <br>
 
-## 3. `buttonBlock()` <a id="buttonBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. `buttonBlock()` <a id="buttonBlock"></a>
 The buttonBlock function is a wrapper for the button function that adds a div around the button element. An example function call is shown below.
 
 ```php
@@ -94,7 +100,7 @@ Returns:
 
 <br>
 
-## 4. `checkboxLabelLeft()` <a id="checkboxLabelLeft"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `checkboxLabelLeft()` <a id="checkboxLabelLeft"></a>
 Generates a checkbox where the label is on the left side. It generates a div element that surrounds a label and input of type checkbox. This is ideal for situations where labels can be of varying lengths. An example function call is shown below.
 
 ```php
@@ -122,7 +128,7 @@ Returns:
 
 <br>
 
-## 5. `checkboxLabelRight()` <a id="checkboxLabelRight"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. `checkboxLabelRight()` <a id="checkboxLabelRight"></a>
 Generates a checkbox where the label is on the right side. It generates a div element that surrounds a label and input of type checkbox. An example function call from the login view is shown below.
 
 ```php
@@ -150,7 +156,7 @@ Returns:
 
 <br>
 
-## 6. `checkboxGroup()` <a id="checkboxGroup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. `checkboxGroup()` <a id="checkboxGroup"></a>
 Renders a group of checkboxes sharing one name (submitted as name[]), one wrapping div, and ONE error span. Label-right per box.
 
 Example:
@@ -179,7 +185,7 @@ Returns:
 
 <br>
 
-## 7. `csrf()` <a id="csrf"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. `csrf()` <a id="csrf"></a>
 Inserts csrf token into form.
 
 Returns: 
@@ -187,7 +193,7 @@ Returns:
 
 <br>
 
-## 8. `datalists()` <a id="datalists"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. `datalists()` <a id="datalists"></a>
 This section contains a listing of input functions paired with a datalist for suggestions.
 
 Parameters common among all of these functions are:
@@ -483,7 +489,7 @@ Returns:
 
 <br>
 
-## 9. `errorBag()` <a id="errorBag"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. `errorBag()` <a id="errorBag"></a>
 Returns list of errors.  A wrapper for the `FormHelper::displayErrors()` function.
 
 Parameter:
@@ -494,7 +500,7 @@ Returns:
 
 <br>
 
-## 10. `hidden()` <a id="hidden"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. `hidden()` <a id="hidden"></a>
 Generates a hidden element. An example function call is shown below in figure 7:
 
 Example:
@@ -508,7 +514,7 @@ This function accepts 2 arguments as described below:
 
 <br>
 
-## 11. `input()` <a id="input"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 11. `input()` <a id="input"></a>
 This section contains a listing of input functions that are wrappers for the HTML input element.
 
 Parameters common among all of these functions are:
@@ -1131,7 +1137,7 @@ Returns:
 
 <br>
 
-## 12. `output()` <a id="output"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 12. `output()` <a id="output"></a>
 
 Generates an HTML output element. The output element is a container that can inject the results of a calculator or the outcome of a user action.
 
@@ -1149,7 +1155,7 @@ Returns:
 
 <br>
 
-## 13. `Radio Buttons` <a id="radio"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 13. `Radio Buttons` <a id="radio"></a>
 We support radio button groups that allow users to populate the input using information from your database.
 
 Example:
@@ -1199,7 +1205,7 @@ radio('CSS', 'css', 'fav_language', "CSS", $check2, ['class' => 'form-group mr-1
 
 <br>
 
-## 14. `rememberMe()` <a id="rememberMe"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 14. `rememberMe()` <a id="rememberMe"></a>
 Generates a div containing an input of type checkbox with the label to 
 the left that is not part of a group.
 
@@ -1222,7 +1228,7 @@ Returns
 
 <br>
 
-## 14. `select()` <a id="select"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 14. `select()` <a id="select"></a>
 HTML `<select>` elements are supported with the calls to the `FormHelper::selectBlock` function.
 
 Example:
@@ -1253,7 +1259,7 @@ Returns:
 
 <br>
 
-## 14. `submitBlock()` <a id="submitBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 14. `submitBlock()` <a id="submitBlock"></a>
 Generates a div containing an input of type submit.
 
 Example:
@@ -1273,7 +1279,7 @@ Returns:
 
 <br>
 
-## 15. `submitBlock()` <a id="submitBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 15. `submitBlock()` <a id="submitBlock"></a>
 Create a input element of type submit.
 
 Example:

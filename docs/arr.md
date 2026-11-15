@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Arr</h1>
+---
+layout: default
+title: "Arr Class"
+parent: "Utilities"
+nav_order: 1
+---
 
+# Arr
 ## Table of Contents
 1. [Overview](#overview)  
 2. [Basic Usage](#usage)  
@@ -86,7 +92,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 A collection of functions for manipulating arrays that are **static and utility-based**.
 
 ```php
@@ -94,7 +100,7 @@ use Core\Lib\Utilities\Arr;
 ```
 <br>
 
-## 2. Basic Usage <a id="usage"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Basic Usage <a id="usage"></a>
 ```php
 $data = ['name' => 'John', 'age' => 30];
 
@@ -115,7 +121,7 @@ print_r($filtered); // ['name' => 'John']
 ```
 <br>
 
-## 3. Methods <a id="methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Methods <a id="methods"></a>
 ### A. `add()` <a id="add"></a>
 Adds a value to an array if the key does not exist.
 
@@ -352,7 +358,7 @@ print_r($result);
 ```
 <br>
 
-## 4. Retrieving Data <a id="retrieving-data"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Retrieving Data <a id="retrieving-data"></a>
 ### A. `except()` <a id="except"></a>
 Gets all items except the specified keys.
 
@@ -609,7 +615,7 @@ print_r($result);
 ```
 <br>
 
-## 5. Iteration, Sorting, & Transformation <a id="sorting-ordering"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Iteration, Sorting, & Transformation <a id="sorting-ordering"></a>
 ### A. `flatten()` <a id="flatten"></a>
 Flattens a multi-dimensional array into a single level.
 
@@ -1074,7 +1080,7 @@ print_r($result);
 ```
 <br>
 
-## 7. Comparison, Filtering, & Mapping <a id="comparison-filtering-mapping"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Comparison, Filtering, & Mapping <a id="comparison-filtering-mapping"></a>
 ### A. `contains()` <a id="contains"></a>
 Determines if a given value exists in an array.
 
@@ -1252,7 +1258,7 @@ print_r($result);
 ```
 <br>
 
-## 8. Chunking & Collapsing <a id="chunking-collapsing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Chunking & Collapsing <a id="chunking-collapsing"></a>
 ### A. `chunk()` <a id="chunk"></a>
 Splits an array into chunks of a given size.
 

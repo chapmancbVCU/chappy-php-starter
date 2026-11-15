@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">JavaScript Datetime Utilities</h1>
+---
+layout: default
+title: "JavaScript Datetime Utilities"
+parent: "React.js"
+nav_order: 7
+---
 
+# JavaScript Datetime Utilities
 ## Table of contents
 1. [Overview](#overview)
 2. [Setup](#setup)
@@ -17,14 +23,14 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The datetime utilities bring the PHP [DateTime](time) helpers to React views.  The same function names, format strings, and `FORMAT_*` constants work on both sides, so a date looks the same whether PHP or React renders it.
 
 The utilities use the browser's built-in `Intl` APIs and have no dependencies.
 
 <br>
 
-## 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Setup <a id="setup"></a>
 Import the `DateTime` namespace, or individual functions, from `@chappy/utils`:
 
 ```jsx
@@ -43,7 +49,7 @@ Without `VITE_TIME_ZONE`, dates display in each visitor's own timezone.
 
 <br>
 
-## 3. Accepted Date Values <a id="accepted-values"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Accepted Date Values <a id="accepted-values"></a>
 Every function that takes a date accepts the formats PHP sends.  Each one is read the same way the PHP side reads it:
 
 | Value | Example | Read As |
@@ -60,7 +66,7 @@ Empty values (`null`, `undefined`, `''`, and `0000-00-00 00:00:00`) are treated 
 
 <br>
 
-## 4. `formatTime()` <a id="format-time"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `formatTime()` <a id="format-time"></a>
 Formats a date for display.  Mirrors `DateTime::formatTime()`.
 
 Parameters:
@@ -89,7 +95,7 @@ All `FORMAT_*` constants from the [Date and Time](time#format-constants) page ar
 
 <br>
 
-## 5. `timeAgo()` <a id="time-ago"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. `timeAgo()` <a id="time-ago"></a>
 Describes how long ago a date was.  Mirrors `DateTime::timeAgo()`.
 
 Parameters:
@@ -117,7 +123,7 @@ Like Carbon, the result truncates instead of rounding (1 hour 59 minutes is `1 h
 
 <br>
 
-## 6. `timeDifference()` <a id="time-difference"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. `timeDifference()` <a id="time-difference"></a>
 Describes the difference between two dates.  Mirrors `DateTime::timeDifference()`.
 
 Parameters:
@@ -134,7 +140,7 @@ DateTime.timeDifference('2025-03-09 08:00:00', '2025-03-09 15:30:45');   // 7 ho
 
 <br>
 
-## 7. `now()` and `today()` <a id="now-and-today"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. `now()` and `today()` <a id="now-and-today"></a>
 Return the current time, or midnight of the current day, as a formatted string.  Mirror `DateTime::now()` and `DateTime::today()`.
 
 Parameters:
@@ -149,7 +155,7 @@ DateTime.today(DateTime.FORMAT_FRIENDLY_DATE);          // January 15, 2026
 
 <br>
 
-## 8. `timeStamps()` and `toISO8601()` <a id="time-stamps-and-iso"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. `timeStamps()` and `toISO8601()` <a id="time-stamps-and-iso"></a>
 `timeStamps()` returns the current time in the database format, in UTC.  Mirrors `DateTime::timeStamps()`.
 
 `toISO8601(value, options)` returns ISO 8601 with the offset of the display timezone.
@@ -161,7 +167,7 @@ DateTime.toISO8601(user.created_at);       // 2026-01-15T15:30:45-05:00
 
 <br>
 
-## 9. `parseDate()` <a id="parse-date"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. `parseDate()` <a id="parse-date"></a>
 Converts a value into a JavaScript `Date` using the rules in [Accepted Date Values](#accepted-values).  Use it instead of `new Date()` whenever a value comes from PHP.
 
 Parameters:
@@ -181,7 +187,7 @@ const isRecent = Date.now() - created.getTime() < 24 * 60 * 60 * 1000;
 
 <br>
 
-## 10. `formatPhp()` <a id="format-php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. `formatPhp()` <a id="format-php"></a>
 Formats a `Date` object using PHP format characters.  `formatTime()` uses it internally; call it directly when you already have a `Date`.
 
 Parameters:
@@ -244,7 +250,7 @@ DateTime.formatPhp(new Date(), '\\T\\o\\d\\a\\y \\i\\s l');   // Today is Thursd
 
 <br>
 
-## 11. Defaults <a id="defaults"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 11. Defaults <a id="defaults"></a>
 The default timezone comes from `VITE_TIME_ZONE`, falling back to the browser's timezone.  The default locale comes from `VITE_LOCALE`, falling back to `'en'`.
 
 `setDateDefaults({ timeZone, locale })` changes the defaults at runtime, for example to show times in the visitor's own timezone.  It throws a `RangeError` for an invalid timezone.  `getDateDefaults()` returns the current values.
@@ -257,7 +263,7 @@ setDateDefaults({ timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone });
 
 <br>
 
-## 12. Example View <a id="example-view"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 12. Example View <a id="example-view"></a>
 Show relative time in the table and the full date on hover:
 
 ```jsx
@@ -285,7 +291,7 @@ $this->view->renderJsx('admindashboard.ManageAcls', [
 
 <br>
 
-## 13. Differences from PHP <a id="differences-from-php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 13. Differences from PHP <a id="differences-from-php"></a>
 English output matches the PHP helpers exactly.  A few differences remain because Carbon and the browser use different translation data:
 
 - **Options objects.** JavaScript functions take an options object, such as `{ timeZone, locale }`, instead of PHP's positional parameters.

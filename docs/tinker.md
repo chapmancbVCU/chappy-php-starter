@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Tinker Command</h1>
+---
+layout: default
+title: "Tinker Command"
+nav_order: 28
+---
 
+# Tinker Command
 ## Table of contents
 1. [Overview](#overview)
 2. [Starting Tinker](#startup)
@@ -7,7 +12,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The `tinker` command gives you an interactive REPL (Read-Eval-Print Loop) for your application.
 It allows you to interact with your models, database, and framework utilities **without running the full application**.
 
@@ -16,7 +21,7 @@ This is extremely useful for debugging, testing, and development.
 <br>
 
 
-## 2. 🚀 Starting Tinker <a id="startup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. 🚀 Starting Tinker <a id="startup"></a>
 In your project root:
 
 ```sh
@@ -32,7 +37,7 @@ Psy Shell v0.12.0 (PHP 8.x — cli) by Justin Hileman
 
 <br>
 
-## 3. 💡 Examples <a id="examples"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. 💡 Examples <a id="examples"></a>
 1️⃣ Access Models
 ```php
 use App\Models\Users;

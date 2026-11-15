@@ -1,17 +1,23 @@
-<h1 style="font-size: 50px; text-align: center;">Global Helpers</h1>
+---
+layout: default
+title: "Global Helpers"
+nav_order: 13
+has_children: true
+---
 
+# Global Helpers
 ## Table of contents
 1. [Overview](#overview)
 2. [Globals](#globals)
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This framework comes with a collection of global helpers to facilitate commonly performed tasks.  Many are wrapper functions for those that are provided by various classes.
 
 <br>
 
-## 2. Globals <a id="globals"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Globals <a id="globals"></a>
 
 ### A. `asset()`
 **Description:** Returns the full public URL for a given asset.

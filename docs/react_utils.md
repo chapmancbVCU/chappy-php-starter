@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">React Utils and Hooks</h1>
+---
+layout: default
+title: "React Utils and Hooks"
+parent: "React.js"
+nav_order: 4
+---
 
+# React Utils and Hooks
 ## Table of contents
 1. [Overview](#overview)
 2. [asset](#asset)
@@ -9,7 +15,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This framework supports the following utilities:
 - api - Perform RESTful API operations.  More details in the api page.
 - asset - Similar to php asset helper.  Used for rendering images from local storage and S3 buckets.
@@ -32,7 +38,7 @@ New hooks are created at `resources\js\hooks\`.  All hooks start with use but yo
 
 <br>
 
-## 2. `asset()` <a id="asset"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. `asset()` <a id="asset"></a>
 Used to retrieve assets from the project or S3 bucket.  Unless the `local` parameter is set to `true` it will use S3 bucket specified in `.env` file.
 
 Parameters:
@@ -58,7 +64,7 @@ Uses `S3_BUCKET` as host.  By default this variable is set to `APP_DOMAIN`.
 
 <br>
 
-## 3. `documentTitle()` <a id="document-title"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. `documentTitle()` <a id="document-title"></a>
 Sets the document title for current page.
 
 Setup:
@@ -81,7 +87,7 @@ function Edit({user, errors, profileImages}) {
 
 <br>
 
-## 4. `redirect()` <a id="redirect"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `redirect()` <a id="redirect"></a>
 Redirects users to a page when API requests are used.  PHP redirect will not work in these cases.
 
 Parameter:
@@ -89,7 +95,7 @@ Parameter:
 
 <br>
 
-## 4. `route()` <a id="route"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `route()` <a id="route"></a>
 Redirects a user to a view using dot notation.
 
 Parameters:

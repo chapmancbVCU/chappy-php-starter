@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Static Analysis (PHPStan)</h1>
+---
+layout: default
+title: "Static Analysis (PHPStan)"
+nav_order: 26
+---
 
+# Static Analysis (PHPStan)
 ## Table of contents
 1. [Overview](#overview)
 2. [Running the Analysis](#running)
@@ -13,7 +18,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Static analysis finds bugs by reading your code instead of running it: calls to methods that do not exist, wrong argument types, missing return values, and code that can never work.  It catches whole classes of mistakes before you write a test or open a browser.
 
 New applications include [PHPStan](https://phpstan.org/) as a development dependency, a configuration file, and a Composer script, so analysis works without any setup.  It checks your application code in `app/` and `database/`.  The framework's code is not analysed as part of your application.
@@ -22,7 +27,7 @@ PHPStan is only needed during development.  It is not installed when you run `co
 
 <br>
 
-## 2. Running the Analysis <a id="running"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Running the Analysis <a id="running"></a>
 Run the analysis from your project root:
 
 ```sh
@@ -49,7 +54,7 @@ vendor/bin/phpstan clear-result-cache
 
 <br>
 
-## 3. Configuration <a id="configuration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Configuration <a id="configuration"></a>
 PHPStan reads `phpstan.neon.dist` from the directory it is run from, which is your project root.  The file included with new applications looks like this:
 
 ```yaml
@@ -79,7 +84,7 @@ See the [PHPStan configuration reference](https://phpstan.org/config-reference) 
 
 <br>
 
-## 4. The Analysis Bootstrap <a id="bootstrap"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. The Analysis Bootstrap <a id="bootstrap"></a>
 At runtime, `index.php` and `console` define the path constants `DS` and `ROOT`, and the framework's bootstrap defines `CHAPPY_ROOT`, `CHAPPY_BASE_PATH`, and the global helper functions such as `env()`, `redirect()`, `flashMessage()`, and `console_info()`.  PHPStan never runs those files, so without help it reports every use of them as undefined.
 
 The framework includes `src/scripts/analysis_bootstrap.php` for this purpose.  It defines the constants and loads the helper functions without starting the application: it does not read `.env` or your configuration, connect to the database, or start a session.  Your configuration loads it through `bootstrapFiles`.
@@ -88,7 +93,7 @@ If you see errors such as `Function env not found` or `Constant ROOT not found`,
 
 <br>
 
-## 5. Personal Overrides <a id="overrides"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Personal Overrides <a id="overrides"></a>
 `phpstan.neon.dist` is committed and shared with everyone working on the project.  For settings only you need, create `phpstan.neon` in the project root.  PHPStan uses `phpstan.neon` instead of `phpstan.neon.dist` when both exist, and `phpstan.neon` is ignored by Git.
 
 Start your override by including the shared file, then change what you need:
@@ -105,7 +110,7 @@ The first line of PHPStan's output shows which file is in use, for example `Note
 
 <br>
 
-## 6. Adopting PHPStan in an Existing Application <a id="baseline"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Adopting PHPStan in an Existing Application <a id="baseline"></a>
 An existing application may report many errors on its first run.  Rather than fixing them all at once, record them in a baseline file.  PHPStan then reports only new errors, so new code is held to the standard while you work through the old ones.
 
 Generate the baseline:
@@ -131,7 +136,7 @@ To add PHPStan to an application created before it was included, see [Upgrading 
 
 <br>
 
-## 7. Using a Different Analyser <a id="other_tools"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Using a Different Analyser <a id="other_tools"></a>
 PHPStan is included by default, but you can use another tool such as Psalm instead.  The analysis bootstrap does not depend on PHPStan, so point your tool at the same file.  For Psalm, use the `autoloader` attribute in `psalm.xml`:
 
 ```xml
@@ -144,7 +149,7 @@ To remove PHPStan, delete `phpstan.neon.dist`, remove `phpstan/phpstan` from `re
 
 <br>
 
-## 8. Known Limitations <a id="limitations"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Known Limitations <a id="limitations"></a>
 **Finder results**  
 Model finders such as `findById()` and `findFirst()` are declared to return `bool|object`.  PHPStan cannot tell that a successful result is an instance of your model, so a mistake on the result is reported as a call on `bool|object` instead of an undefined method:
 
@@ -168,5 +173,5 @@ Templates in `resources/views` are not analysed.  See [Configuration](#configura
 
 <br>
 
-## 9. Framework Development <a id="framework"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Framework Development <a id="framework"></a>
 The framework repository has its own PHPStan configuration for working on the framework itself.  It analyses the framework's `src/` folder with a committed baseline and runs with `composer analyse` from the framework's root.  These files are left out of tagged framework releases, but they are present in `vendor/` when the framework is installed from source (for example, `dev-main`).  Either way, running PHPStan from your application root uses your application's configuration, not the framework's.

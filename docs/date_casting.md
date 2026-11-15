@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Model Date Casting</h1>
+---
+layout: default
+title: "Model Date Casting"
+parent: "Models"
+nav_order: 1
+---
 
+# Model Date Casting
 ## Table of contents
 1. [Overview](#overview)
 2. [Reading Dates with date()](#date)
@@ -12,7 +18,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Every model includes the `HasCasts` trait through the base `Core\Model` class.  It lets you:
 - Read any date column as a Carbon instance in the application timezone.
 - Control how date columns appear in JSON responses and React props.
@@ -21,7 +27,7 @@ Model properties are never changed.  `$user->created_at` always holds the string
 
 <br>
 
-## 2. Reading Dates with `date()` <a id="date"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Reading Dates with `date()` <a id="date"></a>
 Returns an attribute as a Carbon instance in the application timezone.  It works on any attribute that holds a date, whether or not the attribute is declared in `$casts`.
 
 Parameter:
@@ -57,7 +63,7 @@ $notification->date('read_at')?->diffForHumans() ?? 'Unread';
 
 <br>
 
-## 3. Declaring Casts <a id="declaring-casts"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Declaring Casts <a id="declaring-casts"></a>
 Declare a `protected array $casts` property that maps column names to cast types:
 
 ```php
@@ -94,7 +100,7 @@ protected function casts(): array {
 
 <br>
 
-## 4. Cast Types <a id="cast-types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Cast Types <a id="cast-types"></a>
 
 | Cast | Use For | `date()` Returns | JSON Output |
 |-------|-------|-------|-------|
@@ -118,7 +124,7 @@ A `date` cast represents a calendar date with no time or timezone.  The framewor
 
 <br>
 
-## 5. JSON and `toArray()` <a id="json-and-to-array"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. JSON and `toArray()` <a id="json-and-to-array"></a>
 Models implement `JsonSerializable`, so casts apply automatically wherever a model is converted to JSON:
 - `json_encode($model)`
 - `$this->jsonResponse($model)` in API controllers
@@ -148,7 +154,7 @@ Both methods include only public properties, exactly as `json_encode()` did befo
 
 <br>
 
-## 6. Customizing Serialization <a id="customizing-serialization"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Customizing Serialization <a id="customizing-serialization"></a>
 To change the format of every `datetime` cast on a model that has no `:format` suffix, override `serializeDate()`:
 
 ```php
@@ -163,7 +169,7 @@ The default, ISO 8601 in UTC with a `Z` suffix, is read the same way by every br
 
 <br>
 
-## 7. Saving Dates <a id="saving-dates"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Saving Dates <a id="saving-dates"></a>
 Casting only affects reading and serialization.  When you assign a date, assign a UTC string in `Y-m-d H:i:s` format:
 
 ```php
@@ -182,7 +188,7 @@ See [Storage and Display Rules](time#storage-and-display-rules) for the full set
 
 <br>
 
-## 8. Common Mistakes <a id="common-mistakes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Common Mistakes <a id="common-mistakes"></a>
 
 #### Assigning a Carbon instance back to the property
 ```php

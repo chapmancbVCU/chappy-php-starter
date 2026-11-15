@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Console</h1>
+---
+layout: default
+title: "Console"
+nav_order: 6
+has_children: true
+---
 
+# Console
 ## Table of contents
 1. [Overview](#overview)
 2. [When to Use the Console](#when-to-use)
@@ -29,7 +35,7 @@
     * C. [hasOption()](#has-option)
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The Chappy.php framework includes a built-in **command-line interface (CLI)** for managing routine development tasks such as generating files, running tests, seeding the database, and launching local servers.  Check out Symfony's Console component [page](https://symfony.com/doc/current/console.html) for additional documentation.  
 
 You can run a console command following the following syntax:
@@ -57,7 +63,7 @@ When using the `FrameworkQuestion` wrappers within the `Console` class you can u
 
 <br>
 
-## 2. When to Use the Console <a id="when-to-use"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. When to Use the Console <a id="when-to-use"></a>
 The console is ideal for:
 - Generating boilerplate (models, controllers, views, etc.)
 - Running migrations and seeders
@@ -67,7 +73,7 @@ The console is ideal for:
 
 <br>
 
-## 3. Summary of Available Commands <a id="summary-of-available-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Summary of Available Commands <a id="summary-of-available-commands"></a>
 You can list all available commands at any time by running:
 
 ```sh
@@ -231,7 +237,7 @@ Each of these commands can accept the following flags:
 
 <br>
 
-## 4. Building Your Own Command <a id="build-command"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Building Your Own Command <a id="build-command"></a>
 Generating your own command is easy.  We will make a fake command called Foo as an example.  Simply run the following in your terminal under project root:
 
 ```sh
@@ -279,7 +285,7 @@ The parent `CommandConsole` class has two instance variables for `InputInterface
 
 <br>
 
-## 5. Command Helpers <a id="command-helpers"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Command Helpers <a id="command-helpers"></a>
 Since this framework is fully Object-Oriented you can generate helper files to modularize tasks that need to be used across multiple commands.  Helpers can be found at `app\Lib\Console\Helpers`.
 
 You can build your own command helper class by running the `make:command-helper` command.  Let's create a FooHelper class by running the following:
@@ -307,7 +313,7 @@ When adding function we usually create those that are static.  We rarely need to
 
 <br>
 
-## 6. Tools <a id="tools-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Tools <a id="tools-class"></a>
 Tools is a command helper class that contains functions that are commonly used with other commands.  To use the tools class simply used the following use statement:
 
 ```php
@@ -406,7 +412,7 @@ The third argument is used to populate the message that gets printed out to the 
 
 <br>
 
-## 7. `ConsoleLoggerLogger::log` <a id="log"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. `ConsoleLoggerLogger::log` <a id="log"></a>
 The `ConsoleLogger::log()` function is used to present to the user logging information.  The following is an example of how to call this function:
 
 ```php
@@ -492,7 +498,7 @@ Relevant output will be provided if incorrect levels or colors for background an
 
 <br>
 
-## 8. ConsoleIO Trait <a id="console-io-trait"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. ConsoleIO Trait <a id="console-io-trait"></a>
 The ConsoleIO Trait contains 3 wrapper functions that is used by the `CommandConsole` class.
 
 ### A. `getArgument()` <a id="get-argument"></a>

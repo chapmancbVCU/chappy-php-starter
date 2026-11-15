@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Vitest</h1>
+---
+layout: default
+title: "Vitest"
+parent: "Unit Tests"
+nav_order: 4
+---
 
+# Vitest
 ## Table of contents
 1. [Overview](#overview)
 2. [Creating Tests](#creating-tests)
@@ -7,12 +13,12 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This guide provides an overview on how to use the console Command Line Interface (CLI) for running Vitest related unit tests.
 
 <br>
 
-## 2. Creating Tests <a id="creating-tests"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Creating Tests <a id="creating-tests"></a>
 You can create a new test by running the following command:
 
 ```bash
@@ -31,7 +37,7 @@ The following flags for suites are supported:
 
 <br>
 
-## 3. Running Tests <a id="running-tests"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Running Tests <a id="running-tests"></a>
 Run all available tests.
 ```sh
 php console react:test

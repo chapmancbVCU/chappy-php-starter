@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Upgrading to 4.0</h1>
+---
+layout: default
+title: "Upgrading to 4.0"
+parent: "Getting Started"
+nav_order: 7
+---
 
+# Upgrading to 4.0
 ## Table of contents
 1. [Overview](#overview)
 2. [Update Your User Model](#user_model)
@@ -13,14 +19,14 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Version 4.0 moves the definition of a user into the framework.  The columns, validation, and behavior the framework relies on now live in a base class, `Core\Models\User`, and your application's `App\Models\Users` extends it.  Framework code no longer depends on your application's model, so you can rename it or point the framework at a different class.
 
 Most applications need a few small changes, described below.  Code that calls your own model, such as `Users::findById($id)`, keeps working unchanged.
 
 <br>
 
-## 2. Update Your User Model <a id="user_model"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Update Your User Model <a id="user_model"></a>
 Change `App\Models\Users` to extend `Core\Models\User`, and remove everything the base class now provides:
 - The `HasTimestamps`, `IsPrincipal`, `IsUser`, and `PasswordPolicy` traits.
 - The standard columns: `id`, `username`, `email`, `fname`, `lname`, `description`, `password`, `confirm`, `acl`, `inactive`, `reset_password`, `login_attempts`, and `deleted`.
@@ -45,7 +51,7 @@ If you customized `validator()`, keep your override and call `parent::validator(
 
 <br>
 
-## 3. Mailers That Override sendTo() <a id="mailers"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Mailers That Override sendTo() <a id="mailers"></a>
 `AbstractMailer::sendTo()` now takes `Core\Models\User`.  If one of your mailers overrides `sendTo(Users $user)`, PHP stops with a fatal error, because an override may not narrow a parameter type.  Change the parameter type:
 
 ```php
@@ -60,7 +66,7 @@ The same applies to any other framework method you override that took `Users`.  
 
 <br>
 
-## 4. Password Reset Action <a id="reset_action"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Password Reset Action <a id="reset_action"></a>
 If your application has its own `AuthController`, created by a kit or included with an earlier starter, change how `resetPasswordAction()` loads the user.  Replace the lookup by id:
 
 ```php
@@ -86,7 +92,7 @@ The reset page is open to guests, so the id in its URL must not decide whose pas
 
 <br>
 
-## 5. Profile and Password Forms <a id="forms"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Profile and Password Forms <a id="forms"></a>
 Profile editing, the admin user edit page, and the password forms now accept only the fields they need:
 - Profile and admin edit forms use the `profileFields` constant: `fname`, `lname`, `email`, and `description`.
 - Password reset and password change use the `passwordFields` constant: `password`.
@@ -108,7 +114,7 @@ $user->assign($this->request->get(), $user::profileFields, $user::WHITELIST);
 
 <br>
 
-## 6. Password Rules <a id="password_rules"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Password Rules <a id="password_rules"></a>
 The password rules in `config/password.php` and your `.env` file (`PW_LOWER_CHAR`, `PW_MIN_LENGTH`, and so on) are now enforced when users register, reset, or change their password.  Earlier versions did not apply them correctly, so passwords that were accepted before may now be rejected.  Existing passwords are not affected.
 
 Review the `PW_*` and `SET_PW_*` values in your `.env` file before upgrading.  Set a flag to `false` to stop enforcing that rule.  See [Password Policy](config_env).
@@ -117,7 +123,7 @@ Password changes also no longer fail with "This value already exists" for the us
 
 <br>
 
-## 7. Optional: Configure the User Model <a id="configure"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Optional: Configure the User Model <a id="configure"></a>
 To make the setting visible, or to use a class other than `App\Models\Users`, add `config/auth.php`:
 
 ```php
@@ -136,7 +142,7 @@ Without this file the framework uses `App\Models\Users`.
 
 <br>
 
-## 8. Optional: Static Analysis <a id="static_analysis"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Optional: Static Analysis <a id="static_analysis"></a>
 New applications include PHPStan.  To add it to an existing application:
 
 1. Install PHPStan as a development dependency:
@@ -174,7 +180,7 @@ See [Static Analysis (PHPStan)](static_analysis) for details.
 
 <br>
 
-## 9. Checklist <a id="checklist"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Checklist <a id="checklist"></a>
 - `App\Models\Users` extends `Core\Models\User`, with duplicated members removed.
 - No remaining references to `Core\Traits\IsUser`.
 - Mailer `sendTo()` overrides take `User`.

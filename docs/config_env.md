@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Config and Env Classes</h1>
+---
+layout: default
+title: "Config and Env Classes"
+parent: "Utilities"
+nav_order: 3
+---
 
+# Config and Env Classes
 ## Table of contents
 1. [Overview](#overview)
 2. [Environment Configuration](#environment-configuration)
@@ -11,12 +17,12 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 We use two classes called Config and Env to manage configuration files and environmental variables.  These classes are discussed in detail below.
 
 <br>
 
-## 2. Environment Configuration <a id="environment-configuration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Environment Configuration <a id="environment-configuration"></a>
 This file controls application behavior across development, staging, and production environments. Values are loaded at runtime and influence logging, database connections, security policies, queues, mail, and frontend tooling.
 
 <br>
@@ -220,7 +226,7 @@ This ensures React/UI validation matches backend enforcement.
 
 <br>
 
-## 3. Env Utility <a id="env"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Env Utility <a id="env"></a>
 The Env utility helps load and manage environment variables from a `.env` file.
 <br>
 
@@ -284,7 +290,7 @@ If `Env::get('SOME_KEY')` returns `null`, check:
 
 <br>
 
-## 4. Config Utility <a id="config"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Config Utility <a id="config"></a>
 The `Config` utility helps manage configuration files stored in the `config/` directory.
 <br>
 
@@ -357,14 +363,14 @@ echo Config::get('app.debug'); // Outputs: true
 ```
 <br>
 
-## 5. 🚀 Best Practices <a id="best-practices"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. 🚀 Best Practices <a id="best-practices"></a>
 * ✔️ Use `.env` for sensitive credentials (API keys, database passwords).
 * ✔️ Use `Config::get()` instead of hardcoding values.
 * ✔️ Ensure all `config/*.php` files return arrays.
 
 <br>
 
-## 6. 🛠 Debugging <a id="debugging"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. 🛠 Debugging <a id="debugging"></a>
 If `Config::get('app.name')` returns `null`, check:
 * `Config::load(ROOT . '/config');` was called before using `Config::get()`.
 * The file exists in `config/` and returns an array.
@@ -372,7 +378,7 @@ If `Config::get('app.name')` returns `null`, check:
 
 <br>
 
-## 7. 🎯 Conclusion <a id="conclusion"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. 🎯 Conclusion <a id="conclusion"></a>
 * `Env` Utility loads environment variables dynamically.
 * `Config` Utility centralizes configuration management.
 * Use `Env::get()` for `.env` values and `Config::get()` for app settings.

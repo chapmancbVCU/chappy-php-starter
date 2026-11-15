@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">ACLService</h1>
+---
+layout: default
+title: "ACLService"
+parent: "Services"
+nav_order: 1
+---
 
+# ACLService
 ## Table of contents
 1. [Overview](#overview)
 2. [Public Methods](#public-methods)
@@ -7,7 +13,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The `ACLService` class provides a collection of static methods for managing Access Control Lists (ACLs) associated with users. ACLs define role-based permissions and are stored as a JSON-encoded array in each user's `acl` field.
 
 This service helps enforce permission rules across the application while maintaining clean separation from controller logic.
@@ -29,7 +35,7 @@ use Core\Services\AclService;
 
 <br>
 
-## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Public Methods <a id="public-methods"></a>
 ### A. `aclsForUser()`
 
 Returns an array containing access control list information.  When the $acl instance variable is empty an empty array is returned.
@@ -207,7 +213,7 @@ $unused = ACLService::unUsedACLs();
 
 <br>
 
-## 3. Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Notes <a id="notes"></a>
 - User ACLs are stored as JSON in the acl column of the users table.
 - The service ensures consistent encoding and decoding of ACL data.
 - Methods like checkACL() and deleteIfAllowed() are designed for use in admin-facing ACL management interfaces.

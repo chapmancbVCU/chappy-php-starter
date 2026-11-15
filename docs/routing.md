@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Routing</h1>
+---
+layout: default
+title: "Routing"
+nav_order: 22
+---
 
+# Routing
 ## Table of contents
 1. [Overview](#overview)
 2. [How It Works](#how-it-works)
@@ -11,13 +16,13 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Routing System (Dynamic Routing)
 Unlike many modern PHP frameworks that use a route definition file (e.g., routes/web.php), Chappy.php uses dynamic routing. This means routes are automatically resolved based on the URL structure and available controllers/methods—no manual route registration required.
 
 <br>
 
-## 2. How It Works <a id="how-it-works"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. How It Works <a id="how-it-works"></a>
 The Router class parses incoming requests and maps them directly to controller methods using the URL pattern:
 
 ```swift
@@ -41,7 +46,7 @@ HomeController::index()
 
 <br>
 
-## 3. Default Conventions <a id="conventions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Default Conventions <a id="conventions"></a>
 - Controller classes must be located in `app/Controllers/`.
 - Controller names should end with` Controller` (e.g., `UserController`).
 - Method names in controllers map 1:1 with URL segments.
@@ -49,12 +54,12 @@ HomeController::index()
 
 <br>
 
-## 4. Fallbacks <a id="fallbacks"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Fallbacks <a id="fallbacks"></a>
 If a controller does not exist the user is redirected to a view indicating the issue.  When an action does not exist then whoops displays an error indicating the function does not exist in the controller.
 
 <br>
 
-## 5. No Route File? Why? <a id="no-route"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. No Route File? Why? <a id="no-route"></a>
 Chappy.php uses dynamic routing to keep your application lightweight, fast, and convention-driven, eliminating the need to register every route manually.
 
 - This pattern is ideal for:
@@ -64,7 +69,7 @@ Chappy.php uses dynamic routing to keep your application lightweight, fast, and 
 
 <br>
 
-## 6. Pros and Cons <a id="pros-cons"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Pros and Cons <a id="pros-cons"></a>
 **Pros**
 - No route files to maintain
 - Easy to follow MVC conventions
@@ -79,7 +84,7 @@ Chappy.php uses dynamic routing to keep your application lightweight, fast, and 
 
 <br>
 
-## 7. Redirect <a id="redirect"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Redirect <a id="redirect"></a>
 This function comes with a static redirect function that can be called in two different ways.
 - `Router::redirect('admindashboard.details', [$user->id])` - Directly calls static function
 - `redirect('admindashboard.details', [$user->id])` - Shorthand publicly available global function

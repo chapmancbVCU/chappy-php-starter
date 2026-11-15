@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">MacOS</h1>
+---
+layout: default
+title: "MacOS"
+parent: "Getting Started"
+nav_order: 5
+---
 
+# MacOS
 ## Table of contents
 1. [Overview](#overview)
 2. [Install Homebrew](#homebrew)
@@ -10,7 +16,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This guide shows you how to set up the Chappy.php framework on macOS for local development using Homebrew and PHP's built-in development server (`php console serve`).
 
 **Supported versions**
@@ -29,7 +35,7 @@ This guide shows you how to set up the Chappy.php framework on macOS for local d
 
 <br>
 
-## 2. Install Homebrew <a id="homebrew"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Install Homebrew <a id="homebrew"></a>
 * A. If not already installed, set up Homebrew using the command below:
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -51,7 +57,7 @@ brew doctor
 ```
 <br>
 
-## 3. Node.js <a id="nodejs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Node.js <a id="nodejs"></a>
 #### 1: Option 1 - Install via Homebrew (Recommended)
 * A. Run:
 ```sh
@@ -99,7 +105,7 @@ X.X.X (NPM version)
 ```
 <br>
 
-## 4. Development Setup <a id="dev"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Development Setup <a id="dev"></a>
 #### 1: PHP Setup
 * A. Install PHP
 ```sh
@@ -181,7 +187,7 @@ php console serve
 * E. Navigate to `http://localhost:8000` in your preferred web browser.
 <br>
 
-## 5. Optional: Local MariaDB/MySQL <a id="database"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Optional: Local MariaDB/MySQL <a id="database"></a>
 Skip this section if you're using SQLite. Use it if you want to develop against MySQL or MariaDB like a production server.
 
 #### 1: Install and Start MariaDB
@@ -230,7 +236,7 @@ phpMyAdmin requires a web server. For a lighter option, use a desktop client suc
 
 <br>
 
-## 6. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Troubleshooting <a id="troubleshooting"></a>
 ### A. `brew: command not found` (Apple Silicon)
 Homebrew's path setup wasn't run. Run the commands from Section 2B, then open a new terminal.
 <br>

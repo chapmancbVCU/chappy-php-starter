@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Models</h1>
+---
+layout: default
+title: "Models"
+nav_order: 18
+has_children: true
+---
 
+# Models
 ## Table of contents
 1. [Overview](#overview)
 2. [Model File](#model-file)
@@ -22,7 +28,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This framework supports models for interacting with a database. Whenever you create a new table you will need to create a new model. Let's use the table 'foo' that was created under the Database Operations section. To create a new model run the the following command:
 
 ```sh
@@ -85,7 +91,7 @@ class Foo extends Model {
 ```
 <br>
 
-## 2. Model File <a id="model-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Model File <a id="model-file"></a>
 The model class that is generated as a template for creating your models. First thing you need to do is add the fields associated with your database as instance variables. These instance variables need to use the 'public' access identifier. Commonly used functions are automatically generated when you create a new model class. Since all model classes extends the Model class you automatically get access to functions that assist with database operations. Functions you create and those from the Model class are commonly used within action functions within controller classes.
 
 Models also support functions for tasks you want to perform before and after delete and update operations. Finally, the validator function supports server side validation tasks. More information about validation can be found [here](server_side_validation).
@@ -180,7 +186,7 @@ A model that declares neither constant serializes all of its public fields, exac
 
 <br>
 
-## 3. Description of Functions <a id="descriptions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Description of Functions <a id="descriptions"></a>
 The following are descriptions for functions not directly related to database operations.  Database related functions can be found [here](database_queries#models)
 
 <br>

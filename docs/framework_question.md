@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Framework Question</h1>
+---
+layout: default
+title: "Framework Question"
+parent: "Console"
+nav_order: 1
+---
 
+# Framework Question
 ## Table of contents
 1. [Overview](#overview)
 2. [ask()](#ask)
@@ -11,7 +17,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The `FrameworkQuestion` class provides the ability to ask the user questions.  The the functions you will be interacting with the most are as follows:
 
 - `ask` - Asks the user a question that will receive a response
@@ -20,7 +26,7 @@ The `FrameworkQuestion` class provides the ability to ask the user questions.  T
 
 <br>
 
-## 2. `ask()` <a id="ask"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. `ask()` <a id="ask"></a>
 This function asks the user a question.  This function supports secret input and autocomplete.  An exception is thrown when both $secret and $anticipate are true.
 
 Parameters:
@@ -132,7 +138,7 @@ $response = $question->disableTrimmable()->ask($message);
 
 <br>
 
-## 3. `choice()` <a id="choice"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. `choice()` <a id="choice"></a>
 This function asks the user a question that requires to choose among a set of specified options.
 
 Parameters:
@@ -153,7 +159,7 @@ Returns:
 
 <br>
 
-## 4. `confirm()` <a id="confirm"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `confirm()` <a id="confirm"></a>
 This function is used if you want to confirm that the user should proceed with a certain action.
 
 Parameters:

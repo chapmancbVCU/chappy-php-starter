@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Database Queries</h1>
+---
+layout: default
+title: "Database Queries"
+parent: "Database Migrations and Operations"
+nav_order: 1
+---
 
+# Database Queries
 ## Table of contents
 1. [Overview](#overview)
 2. [DB Class](#db)
@@ -28,12 +34,12 @@
 4. [Joins](#joins)
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 There are two ways to perform database queries in this framework.  You can use queries or the functions that comes with your models or base model classes.
 
 <br>
 
-## 2. DB Class <a id="db"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. DB Class <a id="db"></a>
 You can perform a query within this framework by using the `query` function from the `DB` class.  The query function has 3 parameters:
 1. $sql - The database query we will submit to the database.
 2. $params - The values for the query.  They are the fields of the table in our database.  The default value is an empty array.
@@ -429,7 +435,7 @@ Many of these functions have their equivalent wrapper functions that will be des
 
 <br>
 
-## 3. Using Models <a id="models"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Using Models <a id="models"></a>
 We will go over using the model class for updating the database.  Each function will be discussed in the following sections.
 
 <br>
@@ -664,7 +670,7 @@ Queue::updateWhere(
 
 <br>
 
-## 4. Joins <a id="joins"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Joins <a id="joins"></a>
 🔍 Understanding $conditions vs. Raw SQL
 
 This framework allows complex SQL queries to be expressed as a structured $conditions array, which is internally parsed and converted into raw SQL by the DB class. Here's how each part of the $conditions array translates into SQL:

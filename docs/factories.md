@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Factories</h1>
+---
+layout: default
+title: "Factories"
+parent: "Database Migrations and Operations"
+nav_order: 2
+---
 
+# Factories
 ## Table of contents
 1. [Overview](#overview)
 2. [Creating a Factory Class](#factory-class)
@@ -18,7 +24,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 We support the user's ability to utilize factories for seeding data and unit testing purposes.  Chappy.php also comes with two factories (`UserFactory` and `ProfileImageFactory`).
 
 Factories also support the following features:
@@ -32,7 +38,7 @@ Factories also support the following features:
 
 <br>
 
-## 2. Creating a Factory Class <a id="factory-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Creating a Factory Class <a id="factory-class"></a>
 Create a new factory class by running the following command:
 ```bash
 php console make:factory <model-name>
@@ -70,7 +76,7 @@ This file contains the definition that will need to be setup.
 
 <br>
 
-## 3. Setting up The Factory Class <a id="factory-class-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Setting up The Factory Class <a id="factory-class-setup"></a>
 Below is an example using the UserFactory class:
 
 ```php
@@ -109,7 +115,7 @@ You will need to set the `$modelName` variable to the name of the model being us
 
 <br>
 
-## 4. Image Factories <a id="image-factories"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Image Factories <a id="image-factories"></a>
 Creating factories for images and uploading them requires a few extra steps.  You will need to use a third-party library called `Smknstd\FakerPicsumImages`.  Let's go over this example for profile images.
 
 ```php
@@ -169,7 +175,7 @@ Ensure permissions are correct. This is suitable for test environments only.
 
 <br>
 
-## 5. Using Factories <a id="using-factories"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Using Factories <a id="using-factories"></a>
 
 <br>
 
@@ -333,7 +339,7 @@ UserFactory::factory()->create(['fname' => 'Jane', 'lname' => 'Doe']);
 
 <br>
 
-## 6. UserFactory <a id="user-factory"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. UserFactory <a id="user-factory"></a>
 The UserFactory class is built-in to the framework.  It contains everything you need to add a new user record and set states for various values.  It creates instances of your configured user model (`App\Models\Users` by default, or the class set as `user_model` in `config/auth.php`), so it does not set `$modelName` itself.
 
 Supplied state functions:
@@ -346,7 +352,7 @@ Supplied state functions:
 
 <br>
 
-## 7. Complete Example <a id="complete-example"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Complete Example <a id="complete-example"></a>
 Below is a complete example using all features:
 
 ```php

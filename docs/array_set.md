@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">ArraySet Class</h1>
+---
+layout: default
+title: "ArraySet Class"
+parent: "Utilities"
+nav_order: 2
+---
 
+# ArraySet Class
 ## Table of contents
 1. [Overview](#overview)
 2. [Basic Usage](#usage)
@@ -87,7 +93,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 A collection of functions for manipulating arrays that are chainable.
 To use this class make sure it is properly loaded:
 ```php
@@ -95,7 +101,7 @@ use Core\Lib\Utilities\ArraySet;
 ```
 <br>
 
-## 2. Basic Usage <a id="usage"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Basic Usage <a id="usage"></a>
 To use the `ArraySet` class, instantiate it with an array:
 ```php
 $arr = new ArraySet([1, 2, 3, 4]);
@@ -170,7 +176,7 @@ $arr->multiSort(SORT_ASC)->all();
 ```
 <br>
 
-## 3. Methods <a id="methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Methods <a id="methods"></a>
 ### A. `construct()` <a id="constructor">
 Initializes an `Arr` instance.
 
@@ -199,7 +205,7 @@ $arr = Arr::make('Hello')->all(); // Output: ['Hello']
 ```
 <br>
 
-## 4. Retrieving Data <a id="retrieving-data"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Retrieving Data <a id="retrieving-data"></a>
 ### A. `all()` <a id="all">
 Get all items in the array.
 
@@ -461,7 +467,7 @@ print_r($arr->values()->all()); // [1, 2]
 ```
 <br>
 
-## 5. Iteration, Sorting, Ordering, & Transformation <a id="sorting-ordering-transformation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Iteration, Sorting, Ordering, & Transformation <a id="sorting-ordering-transformation"></a>
 ### A. `asort()` <a id="asort">
 Sorts while maintaining key association.
 
@@ -653,7 +659,7 @@ print_r($arr->all());
 ```
 <br>
 
-## 6. Manipulation <a id="manipulation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Manipulation <a id="manipulation"></a>
 ### A. `add()` <a id="add">
 Adds a value if the key does not exist.
 
@@ -1105,7 +1111,7 @@ print_r($arr1->all());
 ```
 <br>
 
-## 7. Comparison, Checking, Filtering, & Mapping <a id="comparison-filtering-mapping"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Comparison, Checking, Filtering, & Mapping <a id="comparison-filtering-mapping"></a>
 ### A. `contains()` <a id="contains">
 Checks if an array contains a specific value.
 
@@ -1268,7 +1274,7 @@ $arr->where(fn($item) => $item['age'] >= 25)->all();
 ```
 <br>
 
-## 8. Chunking & Collapsing <a id="chunking-collapsing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Chunking & Collapsing <a id="chunking-collapsing"></a>
 ### A. `chunk()` <a id="chunk">
 Splits an array into chunks of the specified size.
 
@@ -1300,7 +1306,7 @@ $arr->collapse()->all();
 ```
 <br>
 
-## 9. Mapping and Recursive Operations <a id="mapping-recursion"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Mapping and Recursive Operations <a id="mapping-recursion"></a>
 ### A. `mapRecursive()` <a id="mapRecursive">
 Recursively applies a callback function to each element in the array.
 
@@ -1375,7 +1381,7 @@ $arr->multiSort(SORT_ASC)->all();
 ```
 <br>
 
-## 10. Other Utilities <a id="other-utilities"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. Other Utilities <a id="other-utilities"></a>
 ### A. `implode()` <a id="implode">
 Joins array values into a string.
 

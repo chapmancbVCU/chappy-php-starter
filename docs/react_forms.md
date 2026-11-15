@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">React Forms</h1>
+---
+layout: default
+title: "React Forms"
+parent: "React.js"
+nav_order: 3
+---
 
+# React Forms
 ## Table of contents
 1. [Overview](#overview)
 2. [Setup](#setup)
@@ -54,13 +60,13 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 We spport React tailored form helper similar to the `Core\FormHelper` for generating form elements, setting attrbutes, and presenting server side errors.
 Setup by adding following line to your `.jsx` component:
 ``jsx
 mport Forms from "@chappy/components/Forms;
 ``<br>
-# 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tabl-of-contents)</span>
+# 2. Setup <a id="setup"></a>
 To getstarted, import the Forms module, pass in your props, and import the Forms module.
 ```jsx
 import React from "react";
@@ -141,7 +147,7 @@ Prop names for each component is described for the corresponding sections below.
 
 <br>
 
-## 3. Buttons <a id="buttons"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Buttons <a id="buttons"></a>
 
 **`Button = ({})`**
 
@@ -185,7 +191,7 @@ Example:
 
 <br>
 
-## 4. `CheckBoxLeftLabel = ({})` <a id="CheckBoxLeftLabel"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `CheckBoxLeftLabel = ({})` <a id="CheckBoxLeftLabel"></a>
 Generates a div containing an input of type checkbox with the label to the left.
 
 Prop names:
@@ -212,7 +218,7 @@ Example:
 
 <br>
 
-## 5. `CheckBoxRightLabel = ({})` <a id="CheckBoxRightLabel"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. `CheckBoxRightLabel = ({})` <a id="CheckBoxRightLabel"></a>
 Generates a div containing an input of type checkbox with the label to the right.
 
 Prop names:
@@ -239,7 +245,7 @@ Example:
 
 <br>
 
-## 6. `CheckboxGroup = ({})` <a id="CheckboxGroup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. `CheckboxGroup = ({})` <a id="CheckboxGroup"></a>
 Renders a group of checkboxes sharing one name (submitted as name[]), one wrapping div, and ONE error span. Label-right per box.
 
 Example:
@@ -268,7 +274,7 @@ Returns:
 
 <br>
 
-## 7. `CSRFInput = ({})` <a id="CSRFInput"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. `CSRFInput = ({})` <a id="CSRFInput"></a>
 Generates hidden component for csrf token.
 
 Example:
@@ -284,7 +290,7 @@ Returns:
 
 <br>
 
-## 8. `CSRFToken = ({})` <a id="CSRFToken"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. `CSRFToken = ({})` <a id="CSRFToken"></a>
 Returns CSRF token that is used when a form is submitted.
 
 Example: 
@@ -300,7 +306,7 @@ Returns:
 
 <br>
 
-## 9. `datalists = ({})` <a id="datalists"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. `datalists = ({})` <a id="datalists"></a>
 This section contains a listing of input functions paired with a datalist for suggestions.
 
 Prop names common among all of these functions are:
@@ -499,7 +505,7 @@ const options = {
 {% endraw %}
 <br>
 
-## 10. DisplayErrors <a id="DisplayErrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 10. DisplayErrors <a id="DisplayErrors"></a>
 Creates an error bag containing all existing errors.
 
 Prop name:
@@ -510,7 +516,7 @@ Returns:
 
 <br>
 
-## 11. FieldErrors <a id="FieldErrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 11. FieldErrors <a id="FieldErrors"></a>
 Renders an error message for a particular form field.
 
 Prop names:
@@ -522,7 +528,7 @@ Returns:
 
 <br>
 
-## 12. Hidden <a id="Nidden"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 12. Hidden <a id="Nidden"></a>
 Generates a hidden input element.
 
 Example:
@@ -542,7 +548,7 @@ Returns:
 
 <br>
 
-## 13. Input Components <a id="input-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 13. Input Components <a id="input-components"></a>
 This section contains a listing of input functions that are wrappers for the HTML input element.
 
 Prop names common among all of these functions are:
@@ -1011,7 +1017,7 @@ Example:
 
 <br>
 
-## 14. Output <a id="Output"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 14. Output <a id="Output"></a>
 Generates an HTML output element.
 
 Prop names:
@@ -1028,7 +1034,7 @@ Example:
 
 <br>
 
-## 15. `Radio Buttons` <a id="radio"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 15. `Radio Buttons` <a id="radio"></a>
 We support radio button groups that allow users to populate the input using information from your database.
 
 Example:
@@ -1094,7 +1100,7 @@ Returns:
 
 <br>
 
-## 16. `RememberMe` <a id="RememberMe"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 16. `RememberMe` <a id="RememberMe"></a>
 Renders remember me checkbox.
 
 Prop names:
@@ -1116,7 +1122,7 @@ Example:
 
 <br>
 
-## 17. `RichText` <a id="RichText"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 17. `RichText` <a id="RichText"></a>
 Rich text editor field (TinyMCE) that posts HTML via a hidden input.
 
 Behavior:
@@ -1148,7 +1154,7 @@ Example:
 
 <br>
 
-## 18. `Select` <a id="Select"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 18. `Select` <a id="Select"></a>
 Renders a select element with a list of options.
 
 Example:
@@ -1178,7 +1184,7 @@ Prop names:
 
 <br>
 
-## 19. `SubmitBlock` <a id="SubmitBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 19. `SubmitBlock` <a id="SubmitBlock"></a>
 Generates a div containing an input of type submit.
 
 Prop names:
@@ -1199,7 +1205,7 @@ Example:
 
 <br>
 
-## 20. `SubmitTag` <a id="SubmitTag"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 20. `SubmitTag` <a id="SubmitTag"></a>
 Create a input element of type submit.
 
 Prop names:
