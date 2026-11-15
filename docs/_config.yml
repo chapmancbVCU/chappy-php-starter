@@ -57,7 +57,7 @@ gh_edit_branch: "main"
 gh_edit_source: docs
 gh_edit_view_mode: "tree"
 footer_content: "Chappy.php is open source. Found a problem? Open an issue on GitHub."
-
+favicon_ico: "/assets/images/noun-mvc-5340614.png"
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
