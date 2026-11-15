@@ -11,13 +11,13 @@ It offers clean routing, an intuitive Event/Listener system, built‑in authenti
 Designed for flexibility and clarity, it’s ideal for learning, rapid prototyping, or building full‑scale apps with a structure inspired by proven frameworks.
 
 1. Getting Started
-    * A. [Development Experience (Kits)](kits)
+    * A. [Development Experience (Kits)](kits) <span class="label label-green">New in 4.0</span>
     * B. [API](https://chapmancbvcu.github.io/chappy-php-framework/)
-    * C. [Linux Standalone PHP](linux_php_standalone)
-    * D. [LAMP Stack](lamp)
-    * E. [LEMP Stack](lemp)
-    * F. [MacOS](macos)
-    * G. [Windows](windows)
+    * C. [Linux Standalone PHP](linux_php_standalone) <span class="label label-blue">Improved in 4.0</span>
+    * D. [LAMP Stack](lamp) <span class="label label-blue">Improved in 4.0</span>
+    * E. [LEMP Stack](lemp) <span class="label label-blue">Improved in 4.0</span>
+    * F. [MacOS](macos) <span class="label label-blue">Improved in 4.0</span>
+    * G. [Windows](windows) <span class="label label-blue">Improved in 4.0</span>
     * H. [Upgrading to 4.0](upgrading_to_4)
 2. [Access Control Levels (ACLs)](access_control_levels)
 3. [Administration](administration)
@@ -39,23 +39,23 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * C. [Input and Request Handling](input_and_request_handling)
     * D. [Server Side Validation](server_side_validation)
 12. [Global Helpers](globals)
-    * A. [forms](form_globals)
+    * A. [forms](form_globals) <span class="label label-blue">Improved in 4.0</span>
 13. [Helper Class](helpers)
 14. [Input Validation (HasValidators trait)](has_validators)
 15. [JavaScript and Vite](javascript)
 16. [Mailer Service](email)
 17. [Models](models)
-    * A. [Model Date Casting](date_casting)
+    * A. [Model Date Casting](date_casting) <span class="label label-green">New in 4.0</span>
 18. [Notifications](notifications)
 19. [Queue / Job Dispatcher](queue)
 20. [React.js](react)
     * A. [Controllers and React Views](controllers_and_views)
     * B. [API Utility and JsonResponse Trait](api_util_and_json_response_trait)
-    * B. [React Forms](react_forms)
-    * C. [React Utils and Hooks](react_utils)
+    * B. [React Forms](react_forms) <span class="label label-blue">Improved in 4.0</span>
+    * C. [React Utils and Hooks](react_utils) <span class="label label-blue">Improved in 4.0</span>
     * D. [Using APIs](using_apis)
     * E. [Building APIs](building_apis)
-    * F. [JavaScript Datetime Utilities](react_datetime)
+    * F. [JavaScript Datetime Utilities](react_datetime) <span class="label label-green">New in 4.0</span>
 21. [Routing](routing)
 22. [Services](services)
     * A. [ACLService](acl_service)
@@ -65,7 +65,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * E. [UserService](user_service)
 23. [Session and Flash Messages](session_and_flash_messages)
 24. [Session and Local Storage](storage)
-25. [Static Analysis (PHPStan)](static_analysis)
+25. [Static Analysis (PHPStan)](static_analysis) <span class="label label-green">New in 4.0</span>
 26. [Supported Traits](traits)
 27. [Tinker Command](tinker)
 28. [Unit Tests](unit_tests)
@@ -73,10 +73,10 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * A. [Unit Tests API](unit_tests_api)
     * B. [PHPUnit](php_unit)
     * C. [Vitest](vitest)
-    * D. [Time Travel in Tests](time_travel)
+    * D. [Time Travel in Tests](time_travel) <span class="label label-green">New in 4.0</span>
 29. [User Guide](user_guide)
   * A. [Setup With Jekyll](jekyll_setup)
-30. [User Model](user_model)
+30. [User Model](user_model) <span class="label label-green">New in 4.0</span>z
 31. [User Profiles](user_profiles)
 32. [User Registration and Authentication](user_registration_and_authentication)
 33. Utilities
@@ -84,14 +84,14 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * B. [ArraySet Class](array_set)
     * C. [Config and Env Classes](config_env)
     * D. [Str Class](str)
-    * E. [Date and Time](time)
+    * E. [Date and Time](time) <span class="label label-blue">Improved in 4.0</span>
     * F. [Uploads](uploads)
 34. [Views Introduction](views_intro)
     * A. [api-docs and doctum API Generation](doctum)
     * B. [Components](components)
     * C. [Layouts](layouts)
     * D. [Navigation Bar](nav_bar)
-    * E. [Pagination](pagination)
+    * E. [Pagination](pagination) <span class="label label-green">New in 4.0</span>
     * F. [Views](views)
     * G. [Widgets](widgets)
 
