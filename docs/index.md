@@ -22,7 +22,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 2. [Access Control Levels (ACLs)](access_control_levels)
 3. [Administration](administration)
 4. [Authentication](auth)
-5. [Console](console)
+5. [Console](console) <span class="label label-blue">Improved in 4.0</span>
     * A. [FrameworkQuestion](framework_question)
     * B. [Console Class](console_class)
 6. [Controllers](controllers)
@@ -34,9 +34,9 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 9. [Directory Structure](directory_structure)
 10. [Events/Listeners](events)
 11. Forms
-    * A. [Form Helper Functions](forms)
+    * A. [Form Helper Functions](forms) <span class="label label-blue">Improved in 4.0</span>
     * B. [CSRF Protection](csrf)
-    * C. [Input and Request Handling](input_and_request_handling)
+    * C. [Input and Request Handling](input_and_request_handling) <span class="label label-blue">Improved in 4.0</span>
     * D. [Server Side Validation](server_side_validation)
 12. [Global Helpers](globals)
     * A. [forms](form_globals) <span class="label label-blue">Improved in 4.0</span>
@@ -76,7 +76,7 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
     * D. [Time Travel in Tests](time_travel) <span class="label label-green">New in 4.0</span>
 29. [User Guide](user_guide)
   * A. [Setup With Jekyll](jekyll_setup)
-30. [User Model](user_model) <span class="label label-green">New in 4.0</span>z
+30. [User Model](user_model) <span class="label label-green">New in 4.0</span>
 31. [User Profiles](user_profiles)
 32. [User Registration and Authentication](user_registration_and_authentication)
 33. Utilities
