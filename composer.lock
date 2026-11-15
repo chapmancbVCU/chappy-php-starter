@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "10205fd7727dbc2ff665ee0d4db34529",
+    "content-hash": "dfc93b5798cb03a70073a23270a4cc4d",
     "packages": [
         {
             "name": "brick/math",
@@ -142,17 +142,11 @@
         },
         {
             "name": "chappy-php/chappy-php-framework",
-            "version": "v4.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/chapmancbVCU/chappy-php-framework.git",
-                "reference": "36abe3496bce1c34a78a12354b684a358c9c30fd"
-            },
+            "version": "dev-main",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/chapmancbVCU/chappy-php-framework/zipball/36abe3496bce1c34a78a12354b684a358c9c30fd",
-                "reference": "36abe3496bce1c34a78a12354b684a358c9c30fd",
-                "shasum": ""
+                "type": "path",
+                "url": "../chappy-php-framework",
+                "reference": "76b794eb0a7ccbf3a86eb217264b5bba83a5105c"
             },
             "require": {
                 "composer": "*",
@@ -182,17 +176,27 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Core\\": "src/core/",
                     "Chappy\\": "src/",
+                    "Core\\": "src/core/",
                     "Console\\": "src/console/",
-                    "Console\\Helpers\\": "src/console/helpers/",
-                    "Console\\Commands\\": "src/console/commands/"
+                    "Console\\Commands\\": "src/console/commands/",
+                    "Console\\Helpers\\": "src/console/helpers/"
                 },
                 "classmap": [
                     "src"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "analyse": [
+                    "phpstan analyse --memory-limit=1G"
+                ],
+                "build-docs": [
+                    "/Applications/XAMPP/xamppfiles/bin/php src/api-docs/doctum.phar update src/api-docs/doctum.php -v"
+                ],
+                "post-install-cmd": [
+                    "@php src/scripts/setup.php"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -203,11 +207,10 @@
                 }
             ],
             "description": "A lightweight and extensible PHP MVC framework.",
-            "support": {
-                "issues": "https://github.com/chapmancbVCU/chappy-php-framework/issues",
-                "source": "https://github.com/chapmancbVCU/chappy-php-framework/tree/v4.0.2"
-            },
-            "time": "2026-11-15T03:17:06+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "doctrine/inflector",
@@ -5485,11 +5488,11 @@
     "packages-dev": [
         {
             "name": "phpstan/phpstan",
-            "version": "2.3.5",
+            "version": "2.3.6",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/645a1bd6bead15fc1b8474137467961d0fa30a79",
-                "reference": "645a1bd6bead15fc1b8474137467961d0fa30a79",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/00cedebb76cc82c1592414fa4f616cefdccda16f",
+                "reference": "00cedebb76cc82c1592414fa4f616cefdccda16f",
                 "shasum": ""
             },
             "require": {
@@ -5545,7 +5548,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-03T12:14:22+00:00"
+            "time": "2026-11-15T19:58:26+00:00"
         },
         {
             "name": "psy/psysh",
@@ -5629,7 +5632,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "chappy-php/chappy-php-framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
