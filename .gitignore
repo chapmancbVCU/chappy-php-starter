@@ -39,6 +39,7 @@ public/build
 
 # Dev
 toggle-composer.sh
+toggle-composer.bat
 composer_local.txt
 composer_remote.txt
 
