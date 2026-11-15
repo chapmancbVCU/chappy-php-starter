@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Time Travel in Tests</h1>
+---
+layout: default
+title: "Time Travel in Tests"
+parent: "Unit Tests"
+nav_order: 5
+---
 
+# Time Travel in Tests
 ## Table of contents
 1. [Overview](#overview)
 2. [Setup](#setup)
@@ -14,7 +20,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The `Core\Lib\Testing\InteractsWithTime` trait lets PHPUnit tests freeze the clock or move it to a specific moment.  Use it to test anything that depends on the current time, such as expirations, relative time text, or scheduled jobs.
 
 Every helper on the [Date and Time](time) page gets the current time from `DateFactory`, so time travel affects all of them, along with any code that calls Carbon directly.
@@ -23,7 +29,7 @@ The real clock is restored automatically after each test.
 
 <br>
 
-## 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Setup <a id="setup"></a>
 Add the trait to your test class.  It works in both unit tests and feature tests:
 
 ```php
@@ -41,7 +47,7 @@ You do not need a `tearDown()` method to reset the clock.  The trait restores it
 
 <br>
 
-## 3. `freezeTime()` <a id="freeze-time"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. `freezeTime()` <a id="freeze-time"></a>
 Freezes time at the current moment.  Time stays frozen until `travelBack()` is called or the test ends.
 
 Parameter:
@@ -57,12 +63,12 @@ $frozen = $this->freezeTime();
 
 <br>
 
-## 4. `freezeSecond()` <a id="freeze-second"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `freezeSecond()` <a id="freeze-second"></a>
 Same as `freezeTime()`, but drops microseconds.  Use it when comparing against values from the database, which do not store microseconds.
 
 <br>
 
-## 5. `travelTo()` <a id="travel-to"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. `travelTo()` <a id="travel-to"></a>
 Moves time to a specific moment.
 
 Parameters:
@@ -81,7 +87,7 @@ DateFactory::now()->format('H:i');   // 15:30 with TIME_ZONE=America/New_York
 
 <br>
 
-## 6. `travel()` <a id="travel"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. `travel()` <a id="travel"></a>
 Moves time relative to the current time.  If time is already frozen, it moves from the frozen time.  Use negative values to move backward.
 
 Parameter:
@@ -116,7 +122,7 @@ Months and years never overflow.  January 31 plus one month is February 28 (or 2
 
 <br>
 
-## 7. `travelBack()` <a id="travel-back"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. `travelBack()` <a id="travel-back"></a>
 Restores the real clock before the test ends.
 
 Returns:
@@ -124,7 +130,7 @@ Returns:
 
 <br>
 
-## 8. Running Code at Another Time <a id="callbacks"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Running Code at Another Time <a id="callbacks"></a>
 Pass a callback to `freezeTime()`, `travelTo()`, or any `travel()` unit to change time only while the callback runs.  Afterward, the clock returns to its previous state, even if the callback throws an exception.
 
 If time was already frozen, it returns to the frozen time, not the real clock:
@@ -140,7 +146,7 @@ DateTime::timeStamps();    // 2026-01-15 20:30:45
 
 <br>
 
-## 9. Example <a id="example"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Example <a id="example"></a>
 
 ```php
 namespace Tests\Unit;
@@ -163,7 +169,7 @@ class TimeAgoTest extends TestCase {
 
 <br>
 
-## 10. JavaScript Tests <a id="javascript-tests"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. JavaScript Tests <a id="javascript-tests"></a>
 The [JavaScript datetime utilities](react_datetime) read the current time from `Date`, so Vitest's fake timers freeze them the same way:
 
 ```js

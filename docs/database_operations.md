@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Database Migrations and Operations</h1>
+---
+layout: default
+title: "Database Migrations and Operations"
+nav_order: 8
+has_children: true
+---
 
+# Database Migrations and Operations
 ## Table of contents
 1. [Overview](#overview)
 2. [Migration](#migration)
@@ -8,7 +14,7 @@
   * B. [Updating an Existing Table](#updating-an-existing-table)  
   * C. [Renaming an Existing Table](#renaming-an-existing-table)
   * D. [Dropping a Table](#dropping-a-table)  
-  * E. [Renaming a Column](#renameing-column)
+  * E. [Renaming a Column](#renaming-column)
   * F. [Dropping Columns](#dropping-columns)
   * G. [After](#after)
   * H. [Migrations With Raw SQL Queries](#sql)
@@ -31,7 +37,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Chappy.php supports full migration-based database management using its built-in CLI. This includes:
 - Creating new tables
 - Updating existing tables
@@ -73,7 +79,7 @@ This command accepts the following flags for restoring individual migration file
 
 <br>
 
-## 2. Migration <a id="migration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Migration <a id="migration"></a>
 Performing a database migration is one of the first tasks that is completed when setting up a project.  By default, the `.env` file is configured to use SQLite.  If you want to use a MySQL or MariaDB as your database you will have to update the `.env` file.  An example is shown below:
 
 ```sh
@@ -111,7 +117,7 @@ php console migrate:drop:all
 
 <br>
 
-## 3. Creating and Managing Migrations <a id="creating-and-managing-migrations"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Creating and Managing Migrations <a id="creating-and-managing-migrations"></a>
 
 ### A. Creating a New Table <a id="creating-a-new-table"></a>
 Create a migration by running the make:migration command. An example is shown below for a table called foo:
@@ -424,7 +430,7 @@ This function accepts two arguments:
 
 <br>
 
-### G. After <a id="after">
+### G. After <a id="after"></a>
 Add a column after a specific column:
 ```php
 public function up(): void {
@@ -581,7 +587,7 @@ Displays status of ran and pending migrations.
 
 <br>
 
-## 4. Supported Field Types & Modifiers for Migrations <a id="field-types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Supported Field Types & Modifiers for Migrations <a id="field-types"></a>
 Chappy.php’s migration system includes a flexible schema builder via the Blueprint class. It supports most standard SQL column types, modifiers, and constraints across both MySQL and SQLite databases. The table below outlines supported fields and how to define them.
 
 <br>
@@ -650,7 +656,7 @@ Schema::create('products', function(Blueprint $table) {
 
 <br>
 
-## 5. Tips and Common Pitfalls <a id="tips"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Tips and Common Pitfalls <a id="tips"></a>
 - Use `nullable()->default()` to safely add optional fields.
 - **Foreign keys and ENUM** types are only supported in MySQL.
 - **SQLite** ignores unsupported column modifiers silently.
@@ -659,7 +665,7 @@ Schema::create('products', function(Blueprint $table) {
 
 <br>
 
-## 6. DB Class Reference <a id="db-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">Table of Contents</span>
+## 6. DB Class Reference <a id="db-class"></a>
 The `DB` class in Chappy.php is a singleton-based database utility that wraps PDO functionality and adds query building, logging, and utility helpers.
 
 ### A. `getInstance()` <a id="get-instance"></a>

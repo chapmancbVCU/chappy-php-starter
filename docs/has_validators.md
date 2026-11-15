@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Input Validation</h1>
+---
+layout: default
+title: "Input Validation (HasValidators trait)"
+nav_order: 15
+---
 
+# Input Validation
 ## Table of contents
 1. [Overview](#overview)
 2. [Instance Variables](#instance-variables)
@@ -32,7 +37,7 @@
     * Y. [queue()](#queue)
     * Z. [special()](#special)
     * A1. [tel()](#tel)
-    * A2. [testFilterNotation()](testFilterNotation)
+    * A2. [testFilterNotation()](#testFilterNotation)
     * A3. [unique()](#unique)
     * A4. [upper()](#upper)
     * A5. [url()](#url)
@@ -41,12 +46,12 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Validation for console and forms as supported by the `HasValidation` trait.  You can use the chain the available functions or provide them as string input to the `argOptionValidate` and `prompt` functions of the `Console` class.  Technically, you can chain them to the `choice` and `confirm` functions but it's not advisable.
 
 <br>
 
-## 2. Instance Variables <a id="instance-variables"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Instance Variables <a id="instance-variables"></a>
 
 **`protected array $errors`**
 
@@ -160,7 +165,7 @@ A list of currently used validator callback functions.
 
 <br>
 
-## 3. Support Functions <a id="support-functions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Support Functions <a id="support-functions"></a>
 
 **`public function addErrorMessage()`**
 
@@ -219,9 +224,9 @@ Returns:
 
 <br>
 
-## 4. Validator Callbacks <a id="validator-callbacks"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Validator Callbacks <a id="validator-callbacks"></a>
 
-### A. `alpha()` <a id="alphpa"></a>
+### A. `alpha()` <a id="alpha"></a>
 Enforce rule where input must contain only alphabetic characters.
 
 <br>
@@ -312,7 +317,7 @@ Enforce rule where input must be an integer.
 
 <br>
 
-### K. `isPortUsed()` <a id="ip"></a>
+### K. `isPortUsed()` <a id="isPortUsed"></a>
 Checks if a port on a particular host is in use.  Assists in verifying if a port is available for a serve command.  If the port is already in use an error message is presented to the user.
 
 Parameter:
@@ -532,7 +537,7 @@ Enforce rule where input must be a valid URL.
 
 <br>
 
-## 5. Include Deleted <a id="include_deleted"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Include Deleted <a id="include_deleted"></a>
 This feature is for form validation operations when you want to test against deleted values.  To use this feature call the publicly available `includeDeleted()` function.  Parameters are described below.
 
 Parameters:
@@ -541,7 +546,7 @@ Parameters:
 
 <br>
 
-## 6. Composite Field Validation <a id="composite_validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Composite Field Validation <a id="composite_validation"></a>
 The Chappy.php framework supports composite validation rules — where more than one field is used to determine uniqueness.  Use the publicly available `compositeFieldValidation` function.  To test against soft deleted items use the `includeDeleted` function.  Parameters are described below.
 
 Parameters:

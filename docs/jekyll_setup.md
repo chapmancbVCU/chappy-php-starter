@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">User Guide Setup</h1>
+---
+layout: default
+title: "Setup With Jekyll"
+parent: "User Guide"
+nav_order: 1
+---
 
+# User Guide Setup
 ## Table of contents
 1. [Overview](#overview)
 2. [Install Ruby and Jekyll](#install)
@@ -16,12 +22,12 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This guide explains how to set up **Jekyll** to serve the PHP MVC framework's user guide both **locally** and on **GitHub Pages**, ensuring compatibility with GitHub’s environment.
 <br>
 <br>
 
-## 2. Install Ruby and Jekyll <a id="install"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Install Ruby and Jekyll <a id="install"></a>
 Jekyll requires Ruby. Follow the steps based on your operating system:
 <br>
 
@@ -76,7 +82,7 @@ gem install bundler jekyll
    ```
 <br>
 
-## 3. Docs Directory <a id="docs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Docs Directory <a id="docs"></a>
 Navigate to the `docs/` Directory
 
 Since the user guide is stored in `docs/` at the project root, navigate to that directory:
@@ -85,7 +91,7 @@ cd path/to/your/project/docs
 ```
 <br>
 
-## 4. Create or Update the Gemfile <a id="gem"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Create or Update the Gemfile <a id="gem"></a>
 The `Gemfile` manages Jekyll dependencies. Ensure it contains:
 
 ```ruby
@@ -97,12 +103,11 @@ source "https://rubygems.org"
 gem "github-pages", group: :jekyll_plugins
 ```
 
-#### Minima is included with GitHub Pages, so you don't need to specify a version.
+#### The Just the Docs theme is loaded with jekyll-remote-theme (set in `_config.yml`).
 ```ruby
-gem "minima"
-
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-remote-theme"
 end
 ```
 
@@ -118,7 +123,7 @@ gem "http_parser.rb", "~> 0.6.0", platforms: [:jruby]
 ```
 <br>
 
-## 5. Install Dependencies <a id="install-dependencies"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Install Dependencies <a id="install-dependencies"></a>
 Before installing, remove any old dependencies:
 ```sh
 rm -rf Gemfile.lock
@@ -130,23 +135,22 @@ bundle install
 ```
 <br>
 
-## 6. Configure _config.yml <a id="configure-yaml"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Configure _config.yml <a id="configure-yaml"></a>
 Modify `docs/_config.yml` to ensure the correct setup:
 
 ```yaml
 title: "My PHP MVC Framework Guide"
 description: "User guide for my custom PHP MVC framework."
-theme: minima
+remote_theme: just-the-docs/just-the-docs@v0.12.0
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
 baseurl: "/your-repo-name" # Set to "" if this is a user/org site
 url: "https://yourusername.github.io"
 
 # Ensure Jekyll serves Markdown files
 include:
   - "*.md"
-
-# Set up assets folder
-sass:
-  sass_dir: "assets/css"
 
 # Exclude unnecessary files
 exclude:
@@ -168,7 +172,7 @@ exclude:
   ```
 <br>
 
-## 7. Serve Jekyll Locally <a id="serve-locally"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Serve Jekyll Locally <a id="serve-locally"></a>
 To preview the guide locally from within the docs directory:
 ```sh
 bundle exec jekyll serve --livereload
@@ -183,7 +187,7 @@ Then open:
 - **For user/org sites:** `http://localhost:4000/`
 <br>
 
-## 8. Commit and Push to GitHub <a id="github"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Commit and Push to GitHub <a id="github"></a>
 Once everything looks good, commit and push the changes:
 ```sh
 git add .
@@ -192,7 +196,7 @@ git push origin main
 ```
 <br>
 
-## 9. Enable GitHub Pages <a id="enable-github-pages"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Enable GitHub Pages <a id="enable-github-pages"></a>
 1. Go to your repository on **GitHub**.
 2. Navigate to **Settings > Pages**.
 3. Under **Source**, select:
@@ -210,7 +214,7 @@ Your site will be available at:
 <br>
 <br>
 
-## 10. Verify Deployment <a id="deployment"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. Verify Deployment <a id="deployment"></a>
 After a few minutes, visit:
 - **For project pages:** `https://yourusername.github.io/your-repo-name/`
 - **For user/org pages:** `https://yourusername.github.io/`
@@ -221,7 +225,7 @@ bundle exec github-pages health-check
 ```
 <br>
 
-## 11. (Optional) Custom Domain <a id="custom-domain"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 11. (Optional) Custom Domain <a id="custom-domain"></a>
 
 If using a custom domain:
 
@@ -231,7 +235,7 @@ If using a custom domain:
 <br>
 <br>
 
-## 12. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 12. Troubleshooting <a id="troubleshooting"></a>
 In my particular case I had to export gems using the following commands:
 ```sh
 echo 'export GEM_HOME=$HOME/gems' >> ~/.bashrc

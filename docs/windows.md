@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Windows</h1>
+---
+layout: default
+title: "Windows"
+parent: "Getting Started"
+nav_order: 6
+---
 
+# Windows
 ## Table of contents
 1. [Overview](#overview)
 2. [Install Chocolatey (Recommended)](#chocolatey)
@@ -15,7 +21,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This guide shows you how to set up the Chappy.php framework on Windows for local development using standalone PHP and PHP's built-in development server (`php console serve`).
 
 **Supported versions**
@@ -34,7 +40,7 @@ This guide shows you how to set up the Chappy.php framework on Windows for local
 
 <br>
 
-## 2. Install Chocolatey (Recommended) <a id="chocolatey"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Install Chocolatey (Recommended) <a id="chocolatey"></a>
 Chocolatey is a package manager for Windows. It installs PHP, Composer, Node.js, and 7-Zip with one command each and sets up your PATH for you. Every section below also includes manual install steps if you prefer not to use it.
 
 * A. Open **PowerShell as Administrator** (Start Menu → type "PowerShell" → right-click → **Run as administrator**).
@@ -51,7 +57,7 @@ All `choco install` commands in this guide must be run from an **Administrator**
 
 <br>
 
-## 3. Install PHP <a id="php"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Install PHP <a id="php"></a>
 #### Option A: Install with Chocolatey (Recommended)
 ```powershell
 choco install php -y
@@ -89,7 +95,7 @@ If PHP 8.4 or newer is displayed, it's correctly installed. If `php` isn't recog
 
 <br>
 
-## 4. PHP Configuration <a id="php-configuration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. PHP Configuration <a id="php-configuration"></a>
 Find your PHP configuration file:
 ```sh
 php --ini
@@ -148,7 +154,7 @@ Changes take effect the next time you start `php console serve`.
 
 <br>
 
-## 5. Install Composer <a id="composer"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Install Composer <a id="composer"></a>
 #### Option A: Install with Chocolatey (Recommended)
 ```powershell
 choco install composer -y
@@ -170,7 +176,7 @@ You should see the Composer version output.
 
 <br>
 
-## 6. Install Node.js and npm <a id="nodejs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Install Node.js and npm <a id="nodejs"></a>
 #### Option A: Install with Chocolatey (Recommended)
 ```powershell
 choco install nodejs-lts -y
@@ -190,7 +196,7 @@ These should return the installed versions.
 
 <br>
 
-## 7. Install 7-Zip <a id="7zip"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Install 7-Zip <a id="7zip"></a>
 #### Option A: Install with Chocolatey (Recommended)
 ```powershell
 choco install 7zip -y
@@ -216,7 +222,7 @@ If installed correctly, it will show 7-Zip's version and help menu.
 
 <br>
 
-## 8. Project Setup <a id="project-setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Project Setup <a id="project-setup"></a>
 * A. Open a terminal (it does **not** need to be Administrator) and run the commands below (replace my-app with the name of your project):
 ```sh
 mkdir %USERPROFILE%\repos
@@ -240,7 +246,7 @@ php console serve
 
 <br>
 
-## 9. Optional: Local MariaDB <a id="database"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Optional: Local MariaDB <a id="database"></a>
 Skip this section if you're using SQLite. Use it if you want to develop against MySQL or MariaDB like a production server.
 
 #### 1: Install MariaDB
@@ -284,7 +290,7 @@ php console migrate
 
 <br>
 
-## 10. Image Seeding With Windows <a id="seeding"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. Image Seeding With Windows <a id="seeding"></a>
 
 To use image seeding you will need a CA certificate bundle so PHP can make HTTPS requests.
 
@@ -305,7 +311,7 @@ To use image seeding you will need a CA certificate bundle so PHP can make HTTPS
 
 <br>
 
-## 11. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 11. Troubleshooting <a id="troubleshooting"></a>
 ### A. "running scripts is disabled on this system" (PowerShell)
 PowerShell's default execution policy blocks npm's PowerShell scripts. Either run the command from **Command Prompt** instead, or allow local scripts for your user (one-time):
 ```powershell

@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">User Model</h1>
+---
+layout: default
+title: "User Model"
+nav_order: 31
+---
 
+# User Model
 ## Table of contents
 1. [Overview](#overview)
 2. [Your Application's User Model](#app_model)
@@ -18,7 +23,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 User accounts are represented by `Core\Models\User`, a model provided by the framework.  It defines the columns of the `users` table and everything the framework needs from a user: password hashing, validation, access control levels (ACLs), account status flags, soft deletes, and authentication.
 
 Your application does not use `Core\Models\User` directly.  It has its own user model, `App\Models\Users`, which extends it.  Everything described on this page is available on your model, and anything you add to your model is available wherever the framework works with users.
@@ -27,7 +32,7 @@ Your application does not use `Core\Models\User` directly.  It has its own user 
 
 <br>
 
-## 2. Your Application's User Model <a id="app_model"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Your Application's User Model <a id="app_model"></a>
 New applications include `app/Models/Users.php`:
 
 ```php
@@ -52,7 +57,7 @@ $user = Users::findById($id);
 
 <br>
 
-## 3. Columns <a id="columns"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Columns <a id="columns"></a>
 The `users` table is created by the users migration included with new applications.  Each column is a public property on the model.
 
 | Column | Type | Description |
@@ -75,7 +80,7 @@ The model also has a `confirm` property for the password confirmation field on f
 
 <br>
 
-## 4. Field Lists <a id="field_lists"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Field Lists <a id="field_lists"></a>
 The model defines constants that control which fields can be set from a form and which are shown when a user is serialized.
 
 | Constant | Default | Used for |
@@ -96,7 +101,7 @@ Use `$user::` rather than the class name, so a list you have extended in your ow
 
 <br>
 
-## 5. Saving Users <a id="saving"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Saving Users <a id="saving"></a>
 Before a user is saved, the model:
 - Sets `created_at` and `updated_at`.
 - Hashes the password when the user is new.
@@ -136,7 +141,7 @@ Users are soft deleted.  Calling `delete()` sets `deleted` to `1` instead of rem
 
 <br>
 
-## 6. Validation <a id="validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Validation <a id="validation"></a>
 `validator()` runs automatically when a user is saved.  It checks:
 - `fname`, `lname`, and `email` are present and at most 150 characters.
 - `username` and `password` are present.
@@ -149,7 +154,7 @@ When validation fails, `save()` returns `false` and the messages are available f
 
 <br>
 
-## 7. Finding Users <a id="finding"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Finding Users <a id="finding"></a>
 In addition to the standard finders such as `findById()`, `findFirst()`, `find()`, and `findTotal()`, the user model provides:
 
 **findByUserName()**  
@@ -184,7 +189,7 @@ To get the currently logged in user, use `AuthService::currentUser()` or `Auth::
 
 <br>
 
-## 8. Access Control Levels <a id="acls"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Access Control Levels <a id="acls"></a>
 A user's access control levels are stored in `acl` as a JSON array, for example `["Admin","Editor"]`.  A user with no levels has `[""]`.
 
 **hasAcl()**  
@@ -209,7 +214,7 @@ To grant or remove levels, use `ACLService`.  See [ACL Service](acl_service) and
 
 <br>
 
-## 9. Account Status <a id="account_status"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Account Status <a id="account_status"></a>
 Two flags control what a user can do at login:
 - `inactive` - The account is deactivated.  Login is refused.  Accounts are deactivated automatically after too many failed login attempts.  See [Authentication](auth#logging_in).
 - `reset_password` - The user must set a new password at their next login.  See [Forced Password Resets](auth#logging_in).
@@ -225,7 +230,7 @@ To change these flags from the admin dashboard, use `UserService::toggleAccountS
 
 <br>
 
-## 10. Authentication <a id="authentication"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. Authentication <a id="authentication"></a>
 The user model implements the `Principal` contract, which is what the authentication system works with.  It identifies users by `id` and verifies passwords against `password`:
 
 ```php
@@ -239,7 +244,7 @@ See [Authentication](auth) for logging in, logging out, remember me, and the gua
 
 <br>
 
-## 11. Serialization <a id="serialization"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 11. Serialization <a id="serialization"></a>
 When a user is serialized to JSON, the fields in `hidden` are left out: `password`, `deleted`, `confirm`, and `login_attempts`.  This applies to `json_encode()`, API responses, and the props passed to React pages, so the password hash never reaches the browser.
 
 ```php
@@ -254,7 +259,7 @@ The `hidden` list is a safety net, not a substitute for choosing what a page rec
 
 <br>
 
-## 12. Customizing the User Model <a id="customizing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 12. Customizing the User Model <a id="customizing"></a>
 **Adding Columns**  
 Add a migration for the column, then declare it as a public property.  To let users edit it on their profile, add it to `profileFields`:
 
@@ -304,7 +309,7 @@ public function fullName(): string {
 
 <br>
 
-## 13. Using a Different User Model <a id="different_model"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 13. Using a Different User Model <a id="different_model"></a>
 The framework uses `App\Models\Users` by default.  To use a different class, set `user_model` in `config/auth.php`.  The class must extend `Core\Models\User`.
 
 ```php
@@ -317,7 +322,7 @@ The framework finds the configured class with `Auth::userModel()`, so authentica
 
 <br>
 
-## 14. Related Services <a id="related_services"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 14. Related Services <a id="related_services"></a>
 - [Auth Service](auth_service) - Login, logout, the current user, profile images, and password resets.
 - [User Service](user_service) - Password changes, account status, and the admin dashboard.
 - [ACL Service](acl_service) - Granting and removing access control levels.

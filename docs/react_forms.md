@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">React Forms</h1>
+---
+layout: default
+title: "React Forms"
+parent: "React.js"
+nav_order: 3
+---
 
+# React Forms
 ## Table of contents
 1. [Overview](#overview)
 2. [Setup](#setup)
@@ -23,14 +29,14 @@
 11. [FieldErrors()](#FieldErrors)
 12. [Hidden()](#hidden)
 13. [Input Components](#input-components)
-    * A. [Input()](#Input)
+    * A. [Input()](#input)
     * B. [Color()](#Color)
     * C. [Confirm()](#Confirm)
     * D. [Currency()](#Currency)
     * E. [DateSelector()](#DateSelector)
     * F. [DateTimeLocal()](#DateTimeLocal)
     * G. [Email()](#Email)
-    * H. [fileSelector()](#fileSelector)
+    * H. [fileSelector()](#FileSelector)
     * I. [Image()](#Image)
     * J. [ImageBlock()](#ImageBlock)
     * K. [Interval()](#Interval)
@@ -39,28 +45,28 @@
     * N. [Password()](#Password)
     * O. [Search()](#Search)
     * P. [Tel()](#Tel)
-    * Q. [text()](#text)
-    * R. [textArea](#textArea)
+    * Q. [text()](#Text)
+    * R. [textArea](#TextArea)
     * S. [Time()](#Time)
-    * T. [urlInput()](#urlInput)
-    * U. [week()](#week)
+    * T. [urlInput()](#URLInput)
+    * U. [week()](#Week)
 14. [Output()](#Output)
 15. [Radio Buttons](#radio)
 16. [RememberMe()](#RememberMe)
 17. [RichText()](#RichText)
 18. [Select()](#Select)
-19. [submitBlock()](#submitBlock)
+19. [submitBlock()](#SubmitBlock)
 20. [SubmitTag()](#SubmitTag)
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 We spport React tailored form helper similar to the `Core\FormHelper` for generating form elements, setting attrbutes, and presenting server side errors.
 Setup by adding following line to your `.jsx` component:
 ``jsx
 mport Forms from "@chappy/components/Forms;
 ``<br>
-# 2. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tabl-of-contents)</span>
+# 2. Setup <a id="setup"></a>
 To getstarted, import the Forms module, pass in your props, and import the Forms module.
 ```jsx
 import React from "react";
@@ -141,7 +147,7 @@ Prop names for each component is described for the corresponding sections below.
 
 <br>
 
-## 3. Buttons <a id="buttons"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Buttons <a id="buttons"></a>
 
 **`Button = ({})`**
 
@@ -185,7 +191,7 @@ Example:
 
 <br>
 
-## 4. `CheckBoxLeftLabel = ({})` <a id="CheckBoxLeftLabel"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `CheckBoxLeftLabel = ({})` <a id="CheckBoxLeftLabel"></a>
 Generates a div containing an input of type checkbox with the label to the left.
 
 Prop names:
@@ -212,7 +218,7 @@ Example:
 
 <br>
 
-## 5. `CheckBoxRightLabel = ({})` <a id="CheckBoxRightLabel"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. `CheckBoxRightLabel = ({})` <a id="CheckBoxRightLabel"></a>
 Generates a div containing an input of type checkbox with the label to the right.
 
 Prop names:
@@ -239,7 +245,7 @@ Example:
 
 <br>
 
-## 6. `CheckboxGroup = ({})` <a id="CheckboxGroup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. `CheckboxGroup = ({})` <a id="CheckboxGroup"></a>
 Renders a group of checkboxes sharing one name (submitted as name[]), one wrapping div, and ONE error span. Label-right per box.
 
 Example:
@@ -268,7 +274,7 @@ Returns:
 
 <br>
 
-## 7. `CSRFInput = ({})` <a id="CSRFInput"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. `CSRFInput = ({})` <a id="CSRFInput"></a>
 Generates hidden component for csrf token.
 
 Example:
@@ -284,7 +290,7 @@ Returns:
 
 <br>
 
-## 8. `CSRFToken = ({})` <a id="CSRFToken"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. `CSRFToken = ({})` <a id="CSRFToken"></a>
 Returns CSRF token that is used when a form is submitted.
 
 Example: 
@@ -300,7 +306,7 @@ Returns:
 
 <br>
 
-## 9. `datalists = ({})` <a id="datalists"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. `datalists = ({})` <a id="datalists"></a>
 This section contains a listing of input functions paired with a datalist for suggestions.
 
 Prop names common among all of these functions are:
@@ -315,7 +321,7 @@ Prop names common among all of these functions are:
 
 <br>
 
-### A. `DataListBlock()` <a id="DataListBlock">
+### A. `DataListBlock()` <a id="DataListBlock"></a>
 The parent of all datalist components.  
 
 It accepts an additional prop:
@@ -326,7 +332,7 @@ Returns:
 
 <br>
 
-### B. `DataListColor()` <a id="DataListColor">
+### B. `DataListColor()` <a id="DataListColor"></a>
 Renders an HTML div element that surrounds an input of type color with an accompanying datalist of suggestions.
 
 Example:
@@ -346,7 +352,7 @@ Example:
 
 <br>
 
-### C. `DataListDate()` <a id="DataListDate">
+### C. `DataListDate()` <a id="DataListDate"></a>
 Renders an HTML div element that surrounds an input of type date with an accompanying datalist of suggestions.
 
 Example:
@@ -366,7 +372,7 @@ Example:
 
 <br>
 
-### D. `DataListDateTimeLocal()` <a id="DataListDateTimeLocal">
+### D. `DataListDateTimeLocal()` <a id="DataListDateTimeLocal"></a>
 Renders an HTML div element that surrounds an input of type datetime-local with an accompanying datalist of suggestions.
 
 Example:
@@ -386,7 +392,7 @@ Example:
 
 <br>
 
-### E. `DataListInterval()` <a id="DataListInterval">
+### E. `DataListInterval()` <a id="DataListInterval"></a>
 Renders an HTML div element that surrounds an input of type range with an accompanying datalist of suggestions.
 
 Example:
@@ -415,7 +421,7 @@ const options = {
 
 <br>
 
-### F. `DataListMonth()` <a id="DataListMonth">
+### F. `DataListMonth()` <a id="DataListMonth"></a>
 Renders an HTML div element that surrounds an input of type month with an accompanying datalist of suggestions.
 
 Example:
@@ -435,7 +441,7 @@ Example:
 
 <br>
 
-### G. `DataListText()` <a id="DataListText">
+### G. `DataListText()` <a id="DataListText"></a>
 Renders an HTML div element that surrounds an input of type text with an accompanying datalist of suggestions.
 
 Example:
@@ -455,7 +461,7 @@ Example:
 
 <br>
 
-### H. `DataListTime()` <a id="DataListTime">
+### H. `DataListTime()` <a id="DataListTime"></a>
 Renders an HTML div element that surrounds an input of type time with an accompanying datalist of suggestions.
 
 Example:
@@ -475,7 +481,7 @@ Example:
 
 <br>
 
-### I. `DataListWeek()` <a id="DataListWeek">
+### I. `DataListWeek()` <a id="DataListWeek"></a>
 Renders an HTML div element that surrounds an input of type week with an accompanying datalist of suggestions.
 
 Example:
@@ -499,7 +505,7 @@ const options = {
 {% endraw %}
 <br>
 
-## 10. DisplayErrors <a id="DisplayErrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 10. DisplayErrors <a id="DisplayErrors"></a>
 Creates an error bag containing all existing errors.
 
 Prop name:
@@ -510,7 +516,7 @@ Returns:
 
 <br>
 
-## 11. FieldErrors <a id="FieldErrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 11. FieldErrors <a id="FieldErrors"></a>
 Renders an error message for a particular form field.
 
 Prop names:
@@ -522,7 +528,7 @@ Returns:
 
 <br>
 
-## 12. Hidden <a id="Nidden"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 12. Hidden <a id="hidden"></a>
 Generates a hidden input element.
 
 Example:
@@ -542,7 +548,7 @@ Returns:
 
 <br>
 
-## 13. Input Components <a id="input-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 13. Input Components <a id="input-components"></a>
 This section contains a listing of input functions that are wrappers for the HTML input element.
 
 Prop names common among all of these functions are:
@@ -556,7 +562,7 @@ Prop names common among all of these functions are:
 
 <br>
 
-### A. Input <a id="input">
+### A. Input <a id="input"></a>
 The parent of all input components.  
 
 Example:
@@ -581,7 +587,7 @@ Returns:
 
 <br>
 
-### B. Color <a id="Color">
+### B. Color <a id="Color"></a>
 Assists in the development of input of type color in forms.  It accepts parameters for setting  attribute tags in the form section.
 
 Example:
@@ -600,7 +606,7 @@ Example:
 
 <br>
 
-### C. Confirm <a id="Confirm">
+### C. Confirm <a id="Confirm"></a>
 Assists in the development of input of type text in forms.  It accepts parameters for setting attribute tags in the form section.
 
 Example:
@@ -618,7 +624,7 @@ Example:
 
 <br>
 
-### D. Currency <a id="Currency">
+### D. Currency <a id="Currency"></a>
 Renders an HTML div element that surrounds an input of type text for currency.
 
 Example:
@@ -636,7 +642,7 @@ Example:
 
 <br>
 
-### E. DateSelector <a id="DateSelector">
+### E. DateSelector <a id="DateSelector"></a>
 Renders an HTML div element that surrounds an input of type date.
 
 Example:
@@ -654,7 +660,7 @@ Example:
 
 <br>
 
-### F. DateTimeLocal <a id="DateTimeLocal">
+### F. DateTimeLocal <a id="DateTimeLocal"></a>
 Renders an HTML div element that surrounds an input of type datetime-local.
 
 Example:
@@ -672,7 +678,7 @@ Example:
 
 <br>
 
-### G. Email <a id="Email">
+### G. Email <a id="Email"></a>
 Renders an HTML div element that surrounds an input of type email.
 
 Example:
@@ -690,7 +696,7 @@ Example:
 
 <br>
 
-### H. FileSelector <a id="FileSelector">
+### H. FileSelector <a id="FileSelector"></a>
 Renders an HTML div element that surrounds an input of type file.
 
 Multiple File Uploads:
@@ -722,7 +728,7 @@ Returns:
 
 <br>
 
-### I. Image <a id="Image">
+### I. Image <a id="Image"></a>
 Create a input element of type image.
 
 Example:
@@ -749,7 +755,7 @@ Prop names:
 
 <br>
 
-### J. ImageBlock <a id="Image">
+### J. ImageBlock <a id="ImageBlock"></a>
 Create a input element of type image.
 
 Example:
@@ -778,7 +784,7 @@ Prop names:
 
 <br>
 
-### K. Interval <a id="Interval">
+### K. Interval <a id="Interval"></a>
 Assists in the development of input of type range in forms.  It accepts parameters for setting attribute tags in the form section.
 
 Additional props:
@@ -801,7 +807,7 @@ Example:
 
 <br>
 
-### L. Month <a id="Month">
+### L. Month <a id="Month"></a>
 Assists in the development of input of type month in forms.  It accepts parameters for setting attribute tags in the form section.
 
 Example:
@@ -819,7 +825,7 @@ Example:
 
 <br>
 
-### M. Number <a id="Number">
+### M. Number <a id="Number"></a>
 Numeric input (integer or decimal) with optional thousands grouping
 and fixed precision.
 
@@ -867,7 +873,7 @@ Additional prop:
 
 <br>
 
-### N. Password <a id="Password">
+### N. Password <a id="Password"></a>
 Assists in the development of input of type text in forms.  It accepts parameters for setting  attribute tags in the form section.
 
 Example:
@@ -885,7 +891,7 @@ Example:
 
 <br>
 
-### O. Search <a id="Search">
+### O. Search <a id="Search"></a>
 Assists in the development of input of type search in forms.  It accepts parameters for setting  attribute tags in the form section.
 
 Example:
@@ -903,7 +909,7 @@ Example:
 
 <br>
 
-### P. Tel <a id="Tel">
+### P. Tel <a id="Tel"></a>
 Renders an HTML div element that surrounds an input of type tel.
 
 
@@ -922,7 +928,7 @@ Example:
 
 <br>
 
-### Q. Text <a id="Text">
+### Q. Text <a id="Text"></a>
 Assists in the development of input of type text in forms.  It accepts parameters for setting  attribute tags in the form section.
 
 Example:
@@ -939,7 +945,7 @@ Example:
 
 <br>
 
-### R. TextArea <a id="TextArea">
+### R. TextArea <a id="TextArea"></a>
 Assists in the development of textarea in forms.  It accepts parameters for setting  attribute tags in the form section.
 
 Example:
@@ -957,7 +963,7 @@ Example:
 
 <br>
 
-### S. Time <a id="Time">
+### S. Time <a id="Time"></a>
 Renders an HTML div element that surrounds an input of type time.
 
 Example:
@@ -975,7 +981,7 @@ Example:
 
 <br>
 
-### T. URLInput <a id="URLInput">
+### T. URLInput <a id="URLInput"></a>
 Renders an HTML div element that surrounds an input of type url.
 
 Example:
@@ -993,7 +999,7 @@ Example:
 
 <br>
 
-### U. Week <a id="Week">
+### U. Week <a id="Week"></a>
 Renders an HTML div element that surrounds an input of type week.
 
 Example:
@@ -1011,7 +1017,7 @@ Example:
 
 <br>
 
-## 14. Output <a id="Output"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#tale-of-contents)</span>
+## 14. Output <a id="Output"></a>
 Generates an HTML output element.
 
 Prop names:
@@ -1028,7 +1034,7 @@ Example:
 
 <br>
 
-## 15. `Radio Buttons` <a id="radio"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 15. `Radio Buttons` <a id="radio"></a>
 We support radio button groups that allow users to populate the input using information from your database.
 
 Example:
@@ -1094,7 +1100,7 @@ Returns:
 
 <br>
 
-## 16. `RememberMe` <a id="RememberMe"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 16. `RememberMe` <a id="RememberMe"></a>
 Renders remember me checkbox.
 
 Prop names:
@@ -1116,7 +1122,7 @@ Example:
 
 <br>
 
-## 17. `RichText` <a id="RichText"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 17. `RichText` <a id="RichText"></a>
 Rich text editor field (TinyMCE) that posts HTML via a hidden input.
 
 Behavior:
@@ -1148,7 +1154,7 @@ Example:
 
 <br>
 
-## 18. `Select` <a id="Select"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 18. `Select` <a id="Select"></a>
 Renders a select element with a list of options.
 
 Example:
@@ -1178,7 +1184,7 @@ Prop names:
 
 <br>
 
-## 19. `SubmitBlock` <a id="SubmitBlock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 19. `SubmitBlock` <a id="SubmitBlock"></a>
 Generates a div containing an input of type submit.
 
 Prop names:
@@ -1199,7 +1205,7 @@ Example:
 
 <br>
 
-## 20. `SubmitTag` <a id="SubmitTag"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 20. `SubmitTag` <a id="SubmitTag"></a>
 Create a input element of type submit.
 
 Prop names:

@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Form Helper Functions</h1>
+---
+layout: default
+title: "Form Helper Functions"
+parent: "Forms"
+nav_order: 1
+---
 
+# Form Helper Functions
 ## Table of contents
 1. [Overview](#overview)
 2. [appendErrorClass()](#append-error-class)
@@ -36,13 +42,13 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The Rapid Forms feature of this Model View Controller (MVC) Framework allows the user to quickly create and style forms. This guide thoroughly describes the ability to create these HTML form elements along with a description and examples. All form inputs will automatically be sanitized and validation checks will be performed.  If you would like support for additional features please create an issue [here](https://github.com/chapmancbVCU/chappy-php-framework/issues).
 
 
 <br>
 
-## 2. `appendErrorClass()` <a id="append-error-class"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)
+## 2. `appendErrorClass()` <a id="append-error-class"></a>
 Adds name of error classes to div associated with a form field.
 
 Parameters:
@@ -56,7 +62,7 @@ Returns:
 
 <br>
 
-## 3. `button()` <a id="button"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. `button()` <a id="button"></a>
 This function creates a button with no surrounding HTML div element. It supports the ability to set attributes such as classes and event handlers. If you want a div to surround a button along with any other attributes we recommend that you use the buttonBlock function. Note the example function call shown below:
 
 ```php
@@ -75,7 +81,7 @@ Returns:
 
 <br>
 
-## 4. `buttonBlock()` <a id="buttonblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `buttonBlock()` <a id="buttonblock"></a>
 The buttonBlock function is a wrapper for the button function that adds a div around the button element. An example function call is shown below.
 
 ```php
@@ -96,7 +102,7 @@ Returns:
 
 <br>
 
-## 5. `checkboxBlockLabelLeft()` <a id="checkboxBlockLabelLeft"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. `checkboxBlockLabelLeft()` <a id="checkboxBlockLabelLeft"></a>
 Generates a checkbox where the label is on the left side. It generates a div element that surrounds a label and input of type checkbox. This is ideal for situations where labels can be of varying lengths. An example function call is shown below.
 
 ```php
@@ -124,7 +130,7 @@ Returns:
 
 <br>
 
-## 6. `checkboxBlockLabelRight()` <a id="checkboxblocklabelright"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. `checkboxBlockLabelRight()` <a id="checkboxblocklabelright"></a>
 Generates a checkbox where the label is on the right side. It generates a div element that surrounds a label and input of type checkbox. An example function call from the login view is shown below.
 
 ```php
@@ -151,7 +157,7 @@ Returns:
 
 <br>
 
-## 7. `checkboxGroup()` <a id="checkbox-group"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. `checkboxGroup()` <a id="checkbox-group"></a>
 Renders a group of checkboxes sharing one name (submitted as name[]), one wrapping div, and ONE error span. Label-right per box.
 
 Example:
@@ -180,7 +186,7 @@ Returns:
 
 <br>
 
-## 8. `checkboxInput()` <a id="checkbox-input"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. `checkboxInput()` <a id="checkbox-input"></a>
 Renders a single checkbox input with its label — the bare item only, no wrapping div and no error span (the caller owns the envelope). Label sits to the RIGHT of the box by default; pass `$labelRight = false` to place it on the left.
 
 `$inputAttrs` is expected already error-classed by the caller (mirrors radioInput).
@@ -197,7 +203,7 @@ Returns:
 
 <br>
 
-## 9. `checkToken()` <a id="check-token"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. `checkToken()` <a id="check-token"></a>
 Checks if the csrf token exists.  This is used to verify that there has been no tampering of a form's csrf token.
 
 Parameter:
@@ -208,7 +214,7 @@ Returns:
 
 <br>
 
-## 10. `csrfInput()` <a id="csrf-input"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. `csrfInput()` <a id="csrf-input"></a>
 A hidden input to represent the csrf token in a web form.
 
 Returns: 
@@ -216,7 +222,7 @@ Returns:
 
 <br>
 
-## 11. `displayErrors()` <a id="displayerrors"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 11. `displayErrors()` <a id="displayerrors"></a>
 The purpose of this function is to display errors related to validation.  Many frameworks calls this an error bag.
 
 
@@ -228,7 +234,7 @@ Returns:
 
 <br>
 
-## 12. `errorMsg()` <a id="error-msg"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 12. `errorMsg()` <a id="error-msg"></a>
 Renders an error message for a particular form field.
 
 Parameters:
@@ -241,7 +247,7 @@ Returns:
 <br>
 
 
-## 13. `generateToken()` <a id="generate-token"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 13. `generateToken()` <a id="generate-token"></a>
 Creates a randomly generated csrf token. 
 
 Returns:
@@ -249,7 +255,7 @@ Returns:
 
 <br>
 
-## 14. `hidden()` <a id="hidden"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 14. `hidden()` <a id="hidden"></a>
 Generates a hidden element. An example function call is shown below in figure 7:
 
 Example:
@@ -263,7 +269,7 @@ This function accepts 2 arguments as described below:
 
 <br>
 
-## 15. `inputBlock()` <a id="inputblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 15. `inputBlock()` <a id="inputblock"></a>
 A generic block for the input element.  Most input types in the forms global library depend on this function.
 
 Example:
@@ -295,7 +301,7 @@ Returns:
 
 <br>
 
-### A. `currencyBlock()` <a id="currency-block">
+### A. `currencyBlock()` <a id="currency-block"></a>
 Renders an HTML div element that surrounds an input of type currency.
 
 Example:
@@ -324,7 +330,7 @@ Returns:
 
 <br>
 
-### B. `emailBlock()` <a id="emailblock">
+### B. `emailBlock()` <a id="emailblock"></a>
 Use this function to create styled E-mail form inputs. 
 
 Example:
@@ -354,7 +360,7 @@ Returns:
 
 <br>
 
-### C. `fileBlock()` <a id="file-block">
+### C. `fileBlock()` <a id="file-block"></a>
 Renders an HTML div element that surrounds an input of type file.
 
 **Multiple File Uploads:**
@@ -383,7 +389,7 @@ Returns:
 
 <br>
 
-### D. `image()` <a id="image">
+### D. `image()` <a id="image"></a>
 Create a input element of type image.
 
 Example:
@@ -409,7 +415,7 @@ Returns:
 
 <br>
 
-### E. `imageBlock()` <a id="image-block">
+### E. `imageBlock()` <a id="image-block"></a>
 Create a input element of type image.
 
 Example:
@@ -534,7 +540,7 @@ Returns:
 
 <br>
 
-### H. `textAreaBlock()` <a id="textarea-block">
+### H. `textAreaBlock()` <a id="textarea-block"></a>
 Assists in the development of textarea in forms. It accepts parameters for setting attribute tags in the form section.  An example function call is shown below:
 
 ```php
@@ -568,7 +574,7 @@ Returns:
 
 <br>
 
-## 16. `datalistBlock()` <a id="datalist-block"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 16. `datalistBlock()` <a id="datalist-block"></a>
 Assists in the development of forms input blocks with datalist element in forms.  It accepts parameters for setting attribute tags in the form section.
 
 Parameters:
@@ -587,7 +593,7 @@ Returns:
 
 <br>
 
-## 17. `selectBlock()` <a id="select"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 17. `selectBlock()` <a id="select"></a>
 HTML `<select>` elements are supported with the calls to the `FormHelper::selectBlock` function.
 
 Example:
@@ -617,7 +623,7 @@ Returns:
 
 <br>
 
-## 18. `output()` <a id="output"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 18. `output()` <a id="output"></a>
 Generates an HTML output element. The output element is a container that can inject the results of a calculator or the outcome of a user action. An example function call is shown below in figure 9:
 
 Example:
@@ -634,7 +640,7 @@ Returns:
 
 <br>
 
-## 19. `posted_values()` <a id="posted-values"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 19. `posted_values()` <a id="posted-values"></a>
 Sanitizes values from $_POST input arrays to prevent malicious script injection.
 ```php
 $post = FormHelper::posted_values($_POST);
@@ -642,7 +648,7 @@ $post = FormHelper::posted_values($_POST);
 
 <br>
 
-## 20. `Radio Buttons` <a id="radioinput"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 20. `Radio Buttons` <a id="radioinput"></a>
 We support radio button groups that allow users to populate the input using information from your database.
 
 Example:
@@ -692,7 +698,7 @@ FormHelper::radioInput('CSS', 'css', 'fav_language', "CSS", $check2, ['class' =>
 
 <br>
 
-## 21. `sanitize()` <a id="sanitize"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 21. `sanitize()` <a id="sanitize"></a>
 Sanitizes potentially harmful string of characters.
 
 Parameter:
@@ -703,7 +709,7 @@ Return:
 
 <br>
 
-## 22. `stringifyAttrs()` <a id="stringify-attrs"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 22. `stringifyAttrs()` <a id="stringify-attrs"></a>
 The `stringifyAttrs` function is a utility method used internally by other `FormHelper` functions. Its purpose is to convert an associative array of HTML attributes into a properly formatted string that can be directly inserted into an HTML tag. This makes it easier to dynamically construct form fields with customizable attributes such as `class`, `id`, `placeholder`, and event listeners.
 
 While this function is typically used by the framework internally, understanding it can help when extending or customizing form rendering.
@@ -733,7 +739,7 @@ As shown, the function iterates over the array and produces a valid string of HT
 
 <br>
 
-## 23. `submitBlock()` <a id="submitblock"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 23. `submitBlock()` <a id="submitblock"></a>
 Generates a div containing an input of type submit.
 
 Example:
@@ -752,7 +758,7 @@ Returns:
 - `string` -  A surrounding div and the input element of type submit.
 <br>
 
-## 24. `submitTag()` <a id="submittag"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 24. `submitTag()` <a id="submittag"></a>
 Create a input element of type submit.
 
 Example:

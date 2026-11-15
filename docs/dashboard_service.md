@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">DashboardService</h1>
+---
+layout: default
+title: "DashboardService"
+parent: "Services"
+nav_order: 4
+---
 
+# DashboardService
 ## Table of contents
 1. [Overview](#overview)
 2. [Public Methods](#public-methods)
@@ -8,7 +14,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The `DashboardService` class provides helper functions for administrative dashboard operations, including access restrictions and the searchable, filterable, paginated user list. It ensures that the logged-in admin user cannot edit or view their own profile via the dashboard. It supports both PHP and React versions of the dashboard.
 
 <br>
@@ -28,7 +34,7 @@ use Core\Services\DashboardService;
 
 <br>
 
-## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Public Methods <a id="public-methods"></a>
 ### A. `checkIfCurrentUser()`
 Prevents the current logged-in user from viewing or editing their own user record via the admin dashboard. If the given user matches the currently logged-in user, a danger flash message is set and a redirect occurs.
 
@@ -151,7 +157,7 @@ public const STATUS_OPTIONS = [
 
 <br>
 
-## 3. Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Related Components<a id="related-components"></a>
 - `AuthService::currentUser()` – Used to identify and exclude the current user in queries.
 - `ACL::getOptionsForForm()` – Provides the access levels for the access level filter.
 - `Pagination` and `SearchFilter` – Handle paging, search, filters, and sorting. See the [Pagination](pagination) page.
@@ -159,7 +165,7 @@ public const STATUS_OPTIONS = [
 
 <br>
 
-## 4. Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Notes <a id="notes"></a>
 - All queries exclude the current logged-in user to prevent unintentional self-editing or display within administrative lists.
 - `totalUserCountExceptCurrent()` was replaced by `totalUsers()`, which counts only the users that match the current search and filters.
 - See [Supporting PHP and React Views Together](pagination#both) for a controller that uses this service for both view types.

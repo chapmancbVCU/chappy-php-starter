@@ -1,8 +1,13 @@
-<h1 style="font-size: 50px; text-align: center;">Notification</h1>
+---
+layout: default
+title: "Notifications"
+nav_order: 19
+---
 
+# Notification
 ## Table of contents
 1. [Overview](#overview)
-2. [Channel Registry](#channel-registry)
+2. [Channel Registry](#channels-registry)
 3. [Channels & Payloads](#channels-and-payloads)
     * A. [Database Channel](#database-channel)
     * B. [Log Channel](#log-channel)
@@ -19,12 +24,12 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This guide shows you how to register channels, write notifications, send them from code, and exercise everything from the CLI.  
 
 <br>
 
-## 2. Channels Registry <a id="channels-registry"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Channels Registry <a id="channels-registry"></a>
 Channel registry is run automatically.  Here is an overview of what happens.
 - Use `ChannelRegistry::register('log', LogChannel::class)` to add/override channels.
 - `ChannelRegistry::resolve('log')` returns a channel driver.
@@ -33,7 +38,7 @@ Channel registry is run automatically.  Here is an overview of what happens.
 
 <br>
 
-## 3. Channels & Payloads <a id="channels-and-payloads"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Channels & Payloads <a id="channels-and-payloads"></a>
 We currently support 3 channels for notifications
 - Database
 - E-mail
@@ -117,7 +122,7 @@ If none of `template`, `html`, or `mailer` is present, MailChannel throws:
 
 <br>
 
-## 4. Writing a Notification <a id="writing-a-notification"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Writing a Notification <a id="writing-a-notification"></a>
 `Core\Lib\Notifications\Notification` is the base class. Below is the default template for the `make:notifications` command:
 ```php
 <?php
@@ -196,7 +201,7 @@ class UserRegistered extends Notification {
 
 <br>
 
-## 5. Making a Model Notifiable <a id="making-model-notifiable"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Making a Model Notifiable <a id="making-model-notifiable"></a>
 Use the `Notifiable` trait on your model (e.g., `Users`):
 ```php
 use Core\Lib\Notifications\Notifiable;
@@ -222,7 +227,7 @@ The trait ensures array payloads stay top-level (for Mail/DB) and strings are wr
 
 <br>
 
-## 6. Events and Listeners <a id="events-and-listeners"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Events and Listeners <a id="events-and-listeners"></a>
 You can hook notifications into this framework's events/listener and queue system.  The events/listener example is as follows:
 ```php
 class SendRegistrationEmail {
@@ -262,7 +267,7 @@ This demonstrates two approaches: synchronous mail vs. queued mail. Both use `No
 
 <br>
 
-## 7. CLI Commands <a id="cli-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. CLI Commands <a id="cli-commands"></a>
 #### A. Test a Notification (no side-effects by default)
 ```bash
 php console notifications:test DummyNotification --dry-run
@@ -320,7 +325,7 @@ php console notifications:prune --days=90
 
 <br>
 
-## 8. Testing <a id="testing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Testing <a id="testing"></a>
 - For console tests, use Symfony’s `CommandTester` and ensure:
     - Your command calls `Tools::setOutput($output)` at the start of `execute()`.
     - The notification class exists under `App\Notifications\YourNotification`.
@@ -331,7 +336,7 @@ php console notifications:prune --days=90
 
 <br>
 
-## 9. Notifications Model <a id="model"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Notifications Model <a id="model"></a>
 The `Core\Models\Notifications` model represents rows in the `notifications` table and gives you simple helpers to mark notifications as read and prune old rows. Most apps let the notification system write these rows automatically (via the Database channel). Use this model when you need to build an inbox, mark items read, or clean up.
 
 <br>
@@ -483,7 +488,7 @@ foreach ($rows as $row) {
 
 <br>
 
-## 10. Troubleshooting <a id="troubleshooting"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. Troubleshooting <a id="troubleshooting"></a>
 - “Unsupported notification channel X”:  Make sure `NotificationManager::boot()` ran and your channel is registered in `config('notifications.channels')`.
 - MailChannel errors: Ensure `toMail()` returns one of: `template`, `html` (optionally `text`), or `mailer`. Missing these throws `InvalidPayloadException`.
 - DatabaseChannel errors: Your notifiable must have a public `id`. If you send to a dummy string in “simulate” mode, the helper logs instead of saving.

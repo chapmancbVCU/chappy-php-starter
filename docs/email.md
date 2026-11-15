@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Mailer Service</h1>
+---
+layout: default
+title: "Mailer Service"
+nav_order: 17
+---
 
+# Mailer Service
 ## Table of contents
 1. [Overview](#overview)
 2. [Key Components](#key-components)
@@ -27,12 +32,12 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The Chappy.php E-mail system is a modular, extensible implementation built on Symfony Mailer. It allows developers to send fully styled, template-driven emails with optional layouts and attachments. Emails are logged for auditing, and inline CSS rendering is supported via CssToInlineStyles.
 
 <br>
 
-## 2. Key Components <a id="key-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Key Components <a id="key-components"></a>
 
 ### A. MailerService <a id="mailer-service"></a>
 Central service that composes and sends emails.
@@ -205,7 +210,7 @@ This sends a templated welcome email using the default layout and style.
 
 <br>
 
-## 3. Using `sendTemplate()` in Chappy.php <a id="send-template"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Using `sendTemplate()` in Chappy.php <a id="send-template"></a>
 The `MailerService::sendTemplate()` method allows you to send HTML (and optionally plain-text) emails using reusable templates, layouts, and CSS stylesheets. This method is powerful and flexible, supporting both embedded and path-based file attachments.
 
 Basic Usage
@@ -388,7 +393,7 @@ These values are automatically resolved using:
 
 <br>
 
-## 4. `sendTo()` with Advanced Parameters <a id="send-to"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. `sendTo()` with Advanced Parameters <a id="send-to"></a>
 By default, `AbstractMailer::sendTo()` uses the base `send()` method, which calls `buildAndSend()` with default parameters. However, if your custom mailer requires attachments or custom layout/template/style paths, you can override `sendTo()` directly.
 
 Example: Overriding `sendTo()` to Add Attachments
@@ -469,7 +474,7 @@ If your attachments or logic are conditional, wrap them cleanly in the overridde
 
 <br>
 
-## 5. Attachment Management <a id="attachment-management"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Attachment Management <a id="attachment-management"></a>
 The admin dashboard allows administrators to upload, preview, update, and delete email attachments. These attachments can later be used with the framework's `MailerService::sendTemplate()` functionality. This section documents the related views and controller actions.
 
 <br>
@@ -541,7 +546,7 @@ This section allows administrators to manage reusable file assets securely and e
 
 <br>
 
-## 6. Unit Test Examples <a id="examples"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Unit Test Examples <a id="examples"></a>
 ```php
 <?php
 namespace Tests\Feature;

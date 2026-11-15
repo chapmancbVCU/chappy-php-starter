@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Uploads</h1>
+---
+layout: default
+title: "Uploads"
+parent: "Utilities"
+nav_order: 6
+---
 
+# Uploads
 ## Table of contents
 1. [Overview](#overview)
 2. [Uploads Class](#uploads)
@@ -21,7 +27,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This framework supports single and multiple file uploads.  Switching between both modes is relatively easy and is achieved by changing one line of code in your view file and the action function that renders the view.  In this guide we will use the ProfileController and it's associated view located at "resources/views/profile/edit.php" as examples.
 
 To enable uploads in your Controllers add the following import:
@@ -31,10 +37,10 @@ use Core\Lib\FileSystem\Uploads;
 
 <br>
 
-## 2. Uploads Class <a id="uploads"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Uploads Class <a id="uploads"></a>
 Description for the Uploads class' functions.
 
-### A. `handleUpload()` <a id="handle-upload">
+### A. `handleUpload()` <a id="handle-upload"></a>
 Handles file uploads and returns an Uploads instance if valid.
 
 Parameters:
@@ -50,7 +56,7 @@ Returns:
 
 <br>
 
-### B. `generateUploadFilename()` <a id="generate-upload-filename">
+### B. `generateUploadFilename()` <a id="generate-upload-filename"></a>
 Generates a unique filename for an uploaded file while preserving its extension.
      
 Uses a cryptographically secure random hash to create a unique base name.
@@ -67,7 +73,7 @@ Throws:
 
 <br>
 
-### C. `getFiles()` <a id="get-files">
+### C. `getFiles()` <a id="get-files"></a>
 Getter function for the $_files array.
 
 Returns:
@@ -75,7 +81,7 @@ Returns:
 
 <br>
 
-### D. `upload()` <a id="upload-files">
+### D. `upload()` <a id="upload-files"></a>
 Performs file upload.
 
 Parameters:
@@ -85,11 +91,11 @@ Parameters:
 
 <br>
 
-## 3. Setup <a id="setup"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Setup <a id="setup"></a>
 The upload feature is supported by the Uploads class.  To use the Uploads class you will need to perform the following steps:
 <br>
 
-### A. Migration File <a id="migration-file">
+### A. Migration File <a id="migration-file"></a>
 We need to create a table in the database to store information about the profile pictures we want to upload.  Run the following command to create a migration.
 ```sh
 php console make:migration profile_images
@@ -118,7 +124,7 @@ php console migrate
 Once the migration has been complete the new table will now be accessible in your database.
 <br>
 
-### B. Setting up the Model <a id="model-setup">
+### B. Setting up the Model <a id="model-setup"></a>
 First we create a new model file.
 
 ```sh
@@ -192,7 +198,7 @@ The upload function accepts 3 parameters:
 - string $fileName - The temporary file name.
 <br>
 
-## 4. Single File Upload <a id="single-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Single File Upload <a id="single-file"></a>
 Setting up single file uploads requires the correct configuration of your action inside of the appropriate controller and the associated view file.  Let's look at the editAction function for the ProfileController.
 
 ```php
@@ -258,7 +264,7 @@ When setting up the view we use a call to the inputBlock function.  In the examp
 ```
 <br>
 
-## 5. Multiple File Upload <a id="multiple-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Multiple File Upload <a id="multiple-file"></a>
 There are two main differences when it comes to setting up uploads with multiple files.  Let's look at the call for the Uploads constructor again.
 
 ```php
@@ -281,7 +287,7 @@ This time the value for the `$mode` parameter is set to `Uploads::MULTIPLE`.  Th
 The profileImage, the name attribute's value, needs brackets so that we know we are using an array of files as the value for the inputBlock function call.  You also need to add 'multiple' => 'multiple' as an element for the $inputAttrs array.  Otherwise, the window that allows users to select a file will only allow you to select one file.
 <br>
 
-## 6. Configuring File Types <a id="file-types"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. Configuring File Types <a id="file-types"></a>
 The following is a sample list of file types you can place in the `$allowedFileTypes` array:
 
 ```php
@@ -374,13 +380,13 @@ protected static $allowedFileTypes = [
 
 <br>
 
-## 7. Validation <a id="validation"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Validation <a id="validation"></a>
 Uploads comes built in with two types of validation:
 * Allowed file types
 * Max allowed file size
 <br>
 
-### A. allowedFileTypes <a id="allowedFileTypes">
+### A. allowedFileTypes <a id="allowedFileTypes"></a>
 Any files that the user uploads is checked gainst the `$allowedFileTypes` array in the model for your upload.  In order for the Uploads class to be able to validate file types you need to create a function in your model as shown below:
 
 ```php
@@ -409,7 +415,7 @@ You should guide the user by including the allowed file type in your upload inpu
 By adding the `accept` element to the function's `$inputAttr` array parameter with the accepted file types as values the user can easily select a file without having to sort through all other files in a given directory.
 <br>
 
-### B. maxAllowedFileSize <a id="maxAllowedFileSize">
+### B. maxAllowedFileSize <a id="maxAllowedFileSize"></a>
 The second check is for upload file size.  The model uses a variable called `$maxAllowedFileSize` for this purpose.  You will need to add the following function to your model to allow this check to function:
 
 ```php
@@ -426,7 +432,7 @@ public static function getMaxAllowedFileSize() {
 
 <br>
 
-### C. Missing Required Upload <a id="required">
+### C. Missing Required Upload <a id="required"></a>
 The third type of validation is the enforcement of required file upload.  There is a check for single and multiple file uploads that is placed in your controller's action function right after the `csrf` check. 
 
 Single file upload:
@@ -461,7 +467,7 @@ It is also wise to set validation on the front end.  Simply add `'required' => '
 
 <br>
 
-## 8. Buckets <a id="buckets"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Buckets <a id="buckets"></a>
 This framework, by default, uses the local host for storing images.  If you are going to deploy this framework to a production environment we recommend using a separate host for file uploads.  The industry convention is to use S3 Buckets through Amazon Web Services (AWS).
 
 The `.env` file has a blank `S3_BUCKET` field ready to for you to use.  Set the hostname for your S3 Bucket to this environmental variable and add it as part of the `$_uploadPath` variable in the model for your file upload. 

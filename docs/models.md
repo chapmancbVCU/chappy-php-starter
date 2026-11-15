@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Models</h1>
+---
+layout: default
+title: "Models"
+nav_order: 18
+has_children: true
+---
 
+# Models
 ## Table of contents
 1. [Overview](#overview)
 2. [Model File](#model-file)
@@ -22,7 +28,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This framework supports models for interacting with a database. Whenever you create a new table you will need to create a new model. Let's use the table 'foo' that was created under the Database Operations section. To create a new model run the the following command:
 
 ```sh
@@ -85,7 +91,7 @@ class Foo extends Model {
 ```
 <br>
 
-## 2. Model File <a id="model-file"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Model File <a id="model-file"></a>
 The model class that is generated as a template for creating your models. First thing you need to do is add the fields associated with your database as instance variables. These instance variables need to use the 'public' access identifier. Commonly used functions are automatically generated when you create a new model class. Since all model classes extends the Model class you automatically get access to functions that assist with database operations. Functions you create and those from the Model class are commonly used within action functions within controller classes.
 
 Models also support functions for tasks you want to perform before and after delete and update operations. Finally, the validator function supports server side validation tasks. More information about validation can be found [here](server_side_validation).
@@ -96,7 +102,7 @@ You can also optionally define a **whitelist** to explicitly allow only specific
 
 <br>
 
-### A. Blacklist <a id="blacklist">
+### A. Blacklist <a id="blacklist"></a>
 Use a blacklist when you want to block sensitive fields from being set by user input (e.g., `id`, `role`, `csrf_token`).
 
 ```php
@@ -113,7 +119,7 @@ The framework will automatically ignore any fields listed in the blacklist when 
 
 <br>
 
-### B. Whitelist <a id="whitelist">
+### B. Whitelist <a id="whitelist"></a>
 Alternatively, you can use a whitelist to only allow safe fields:
 
 ```php
@@ -128,7 +134,7 @@ This approach is often safer, as it prevents new/accidental fields from being as
 
 <br>
 
-### C. Usage in Assign Method <a id="usage">
+### C. Usage in Assign Method <a id="usage"></a>
 The assign method accepts the request data and a list of keys to skip or include depending on how your model is configured:
 
 ```php
@@ -141,7 +147,7 @@ If you call `assign()` without a list, the model's declared `whiteList` is appli
 
 <br>
 
-### D. Best Practice <a id="best-practice">
+### D. Best Practice <a id="best-practice"></a>
 Use whitelisting wherever possible, especially when working with user-submitted data from forms. It minimizes the chance of assigning unintended fields and improves overall security.
 
 A blacklist only blocks the fields you thought of.  Every other public property can be set from the request, including fields added to the model later.  An explicit whitelist per form is safer.
@@ -159,7 +165,7 @@ Use `$user::` rather than the class name so that a list overridden in your appli
 
 <br>
 
-### E. Hiding Fields From Output <a id="hidden-fields">
+### E. Hiding Fields From Output <a id="hidden-fields"></a>
 The blacklist and whitelist above control what may be assigned **into** a model from a request. To control what a model exposes when it is serialized to JSON — `json_encode()`, API responses, and the `data-props` passed to React components — declare a `visible` or `hidden` list. This is the output-side counterpart to the blacklist/whitelist.
 
 Use a `visible` list to expose only specific fields (preferred):
@@ -180,12 +186,12 @@ A model that declares neither constant serializes all of its public fields, exac
 
 <br>
 
-## 3. Description of Functions <a id="descriptions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Description of Functions <a id="descriptions"></a>
 The following are descriptions for functions not directly related to database operations.  Database related functions can be found [here](database_queries#models)
 
 <br>
 
-### A. `addErrorMessage()` <a id="add-error-message">
+### A. `addErrorMessage()` <a id="add-error-message"></a>
 Generates error messages that occur during form validation.  You can also set this message whenever certain events occur.  An example is as follows:
 
 ```php
@@ -198,42 +204,42 @@ Here we set an error message associated with a username when there is a failed l
 
 <br>
 
-### B. `afterDelete()` <a id="after-delete">
+### B. `afterDelete()` <a id="after-delete"></a>
 Implement procedures in your model class to perform tasks after deleting a record.
 
 <br>
 
-### C. `afterSave()` <a id="after-save">
+### C. `afterSave()` <a id="after-save"></a>
 Implement procedures in your model class to perform tasks after saving a record.
 
 <br>
 
-### D. `beforeDelete()` <a id="before-delete">
+### D. `beforeDelete()` <a id="before-delete"></a>
 Implement procedures in your model class to perform tasks before deleting a record.
 
 <br>
 
-### E. `beforeSave()` <a id="before-save">
+### E. `beforeSave()` <a id="before-save"></a>
 Implement procedures in your model class to perform tasks before saving a record.
 
 <br>
 
-### F. `count()` <a id="count">
+### F. `count()` <a id="count"></a>
 Retrieves the number of rows affected or returned by the last query.  This is a wrapper function for `DB:count()`.
 
 <br>
 
-### G. `onConstruct()` <a id="on-construct">
+### G. `onConstruct()` <a id="on-construct"></a>
 Runs when the object is constructed.  Place statements here that you want every time a particular model in instantiated.  A frequent use case is to set the value for the current logged in user to a variable.
 
 <br>
 
-### H. `runValidation()` <a id="run-validation">
+### H. `runValidation()` <a id="run-validation"></a>
 Runs a validator object and sets validates boolean and adds error message if validator fails.  Refer to the [Server Side Validation page](server_side_validation) for more details.
 
 <br>
 
-### I. `validationPassed()` <a id="validation-passed">
+### I. `validationPassed()` <a id="validation-passed"></a>
 Use this function to check if form validation is successful.  An example is shown below:
 
 ```php
@@ -249,5 +255,5 @@ When we create a new user we want to check if form validation has passed before 
 
 <br>
 
-### J. `validator()` <a id="validator">
+### J. `validator()` <a id="validator"></a>
 Use this function to perform form validation.  More about server side validation can be found [here](server_side_validation).

@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">API Utility and JsonResponse Trait</h1>
+---
+layout: default
+title: "API Utility and JsonResponse Trait"
+parent: "React.js"
+nav_order: 2
+---
 
+# API Utility and JsonResponse Trait
 ## Table of contents
 1. [Overview](#overview)
 2. [api.js](#api-js)
@@ -23,7 +29,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This guide provides a detailed overview for the everything needed to user APIs with this framework.
 
 The two main components:
@@ -32,7 +38,7 @@ The two main components:
 
 <br>
 
-## 2. api.js <a id="api-js"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. api.js <a id="api-js"></a>
 This file contains all of the API utilities needed to perform operations with JavaScript.  This file provides two things:
 
 1. **A small HTTP client** built on `fetch()` (`apiRequest`) with convenience wrappers (`apiGet`, `apiPost`, etc.).
@@ -340,7 +346,7 @@ This keeps your UI logic clean and keeps request behavior consistent across the 
 
 <br>
 
-## 3. JsonResponse Trait <a id="json-response-trait"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. JsonResponse Trait <a id="json-response-trait"></a>
 `JsonResponse` is a reusable trait for controllers (or other HTTP-facing classes) that need to:
 - Read and sanitize **JSON request bodies**
 - Perform an **API CSRF check**
@@ -627,7 +633,7 @@ $this->jsonError('Invalid CSRF token.', 419);
 
 <br>
 
-### J. Practical Example: PATCH Update <a id="practicale-example"></a>
+### J. Practical Example: PATCH Update <a id="practical-example"></a>
 ```php
 public function updateAction(): void
 {

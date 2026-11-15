@@ -1,11 +1,17 @@
-<h1 style="font-size: 50px; text-align: center;">Services</h1>
+---
+layout: default
+title: "Services"
+nav_order: 23
+has_children: true
+---
 
+# Services
 ## Table of contents
 1. [Overview](#overview)
 2. [User Defined Services](#user-services)
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 In Chappy.php, services are dedicated classes that encapsulate reusable, domain-specific logic to keep controllers and models clean and focused. They follow the Single Responsibility Principle (SRP) and are ideal for handling complex workflows, cross-cutting concerns, or business logic that doesn’t belong in a model or controller.
 🛠 Purpose
 
@@ -39,7 +45,7 @@ You may group services by domain if your application scales (e.g., AuthService, 
 
 <br>
 
-## 2. User Defined Services <a id="user-services"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. User Defined Services <a id="user-services"></a>
 Users have the ability to create their own services.  A complete example using OpenWeatherMap can be found [here](using_apis#service-setup).  You can create your own service with the following command:
 ```sh
 php console make:service ${service_name}

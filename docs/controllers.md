@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Controllers</h1>
+---
+layout: default
+title: "Controllers"
+nav_order: 7
+---
 
+# Controllers
 ## Table of contents
 1. [Overview](#overview)
 2. [Creating a Controller](#creating-a-controller)
@@ -13,14 +18,14 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Controllers in Chappy.php act as the glue between **models** and **views**. They handle incoming requests, process data, and delegate rendering to the view layer.
 
 Every controller method that maps to a route must end in `Action`. For example, `indexAction()` maps to the `/controller/index` route.
 
 <br>
 
-## 2. Creating a Controller <a id="creating-a-controller"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Creating a Controller <a id="creating-a-controller"></a>
 Let's begin by creating a new controller using all available options and arguments:
 
 ```sh
@@ -33,7 +38,7 @@ php console make:controller Foo --layout=admin --resource
 
 <br>
 
-## 3. Controller Structure and Lifecycle <a id="controller-structure"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Controller Structure and Lifecycle <a id="controller-structure"></a>
 Here’s the generated output:
 
 ```php
@@ -82,7 +87,7 @@ Key Concepts:
 
 <br>
 
-## 4. Crud Operations <a id="crud-operations"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Crud Operations <a id="crud-operations"></a>
 ### A. Create - `addAction()` <a id="create"></a>
 ```php
 public function addAction(): void {
@@ -198,7 +203,7 @@ public function deleteAction(int $id): void {
 
 <br>
 
-## 5. Routing & View Rendering <a id="routing-and-views"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Routing & View Rendering <a id="routing-and-views"></a>
 **URL to Method Mapping**
 URL:
 ```php

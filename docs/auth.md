@@ -1,5 +1,10 @@
-<h1 style="font-size: 50px; text-align: center;">Authentication</h1>
+---
+layout: default
+title: "Authentication"
+nav_order: 5
+---
 
+# Authentication
 ## Table of contents
 1. [Overview](#overview)
 2. [Checking the Current User](#current_user)
@@ -14,14 +19,14 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Chappy.php provides a session-based authentication system for logging users in and out, checking who is currently authenticated, and optionally keeping users logged in across browser sessions via a "remember me" token. The system is built around a small set of pieces that work together: a static `Auth` entry point for everyday use, a `SessionGuard` that owns the current authenticated user for a request, a `UserProvider` that retrieves users from storage, and a `Hasher` for password verification. Most applications interact only with the `Auth` entry point and the login flow; the underlying pieces are pluggable for applications with custom authentication needs.
 
 By default, authentication is backed by your application's `App\Models\Users` model and verifies passwords with bcrypt.  The model is configurable; see [The User Model](#user_model). Remember-me tokens are stored as hashes in the `user_sessions` table, keyed per device, so a leaked session table never exposes usable tokens.
 
 <br>
 
-## 2. Checking the Current User <a id="current_user"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Checking the Current User <a id="current_user"></a>
 The `Core\Lib\Auth\Auth` class is the entry point for reading authentication state anywhere in your application. It resolves the current user once per request and caches the result.
 
 ```php
@@ -43,7 +48,7 @@ $id = Auth::id();
 
 <br>
 
-## 3. Logging In <a id="logging_in"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Logging In <a id="logging_in"></a>
 Login is handled by `Core\Services\LoginService::attempt()`, which verifies credentials and applies your account rules (password-reset flag, inactive accounts, failed-attempt lockout) and returns a `LoginResult` describing the outcome. The controller then decides how to respond. This separation keeps the login decision testable and independent of redirects and flash messages.
 
 ```php
@@ -114,7 +119,7 @@ public function resetPasswordAction(int $id): void {
 
 <br>
 
-## 4. Logging Out <a id="logging_out"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Logging Out <a id="logging_out"></a>
 ```php
 use Core\Lib\Auth\Auth;
 
@@ -124,7 +129,7 @@ Logging out clears the session, the cached user, and any persisted remember-me t
 
 <br>
 
-## 5. Remember Me <a id="remember_me"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Remember Me <a id="remember_me"></a>
 When the login form's "remember me" option is selected, a persistent token is issued so the user is automatically logged back in on a future visit after their session has ended.
 
 How it works:
@@ -140,7 +145,7 @@ Relevant environment values:
 
 <br>
 
-## 6. The User Model <a id="user_model"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. The User Model <a id="user_model"></a>
 Authentication works with your application's user model, `App\Models\Users`, which extends the framework's `Core\Models\User`.  The base class supplies the columns, password hashing, validation, ACLs, and account status flags, and implements the `Principal` contract that authentication relies on.
 
 To use a different class, set `user_model` in `config/auth.php`.  Framework code finds the configured class with `Auth::userModel()`.
@@ -149,7 +154,7 @@ See [User Model](user_model) for everything the model provides and how to custom
 
 <br>
 
-## 7. Making a Model Authenticatable <a id="model_auth"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 7. Making a Model Authenticatable <a id="model_auth"></a>
 Your user model is already authenticatable, because `Core\Models\User` implements the `Principal` contract.  This section applies to other models, such as one representing an API client, that need to participate in authentication.
 
 Implement the `Principal` contract on the model.  The `IsPrincipal` trait provides a default implementation that reads values from the model's own properties.
@@ -169,12 +174,12 @@ By default, the trait expects an `id` identifier column and a `password` column.
 
 <br>
 
-## 8. Password Hashing <a id="password_hashing"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 8. Password Hashing <a id="password_hashing"></a>
 Passwords are hashed with bcrypt through the `Hasher` contract (`BcryptHasher` by default). Hashing typically happens automatically in the model's save lifecycle, so application code rarely calls the hasher directly. When verifying credentials, the provider checks the supplied password against the stored hash; existing hashes remain valid, and the system can flag hashes for upgrade when the configured cost changes.
 
 <br>
 
-## 9. Architecture (Advanced) <a id="architecture"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 9. Architecture (Advanced) <a id="architecture"></a>
 Most applications do not need this section. It describes the pieces behind `Auth` for those implementing custom authentication backends.
 
 - `Auth` — a static entry point that lazily constructs and shares a single guard per request, and forwards `check()`, `user()`, and `id()` to it. A guard can be injected via `Auth::setGuard()`, primarily for testing.
@@ -186,7 +191,7 @@ To authenticate against a different backend (for example, an external directory)
 
 <br>
 
-## 10. Environment Configuration <a id="environment_configuration"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 10. Environment Configuration <a id="environment_configuration"></a>
 
 | Command | Description | Arguments |
 |---------|-------------|-----------|

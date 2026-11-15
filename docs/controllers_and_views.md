@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Controllers and React Views</h1>
+---
+layout: default
+title: "Controllers and React Views"
+parent: "React.js"
+nav_order: 1
+---
 
+# Controllers and React Views
 ## Table of contents
 1. [Overview](#overview)
 2. [Passing in Props](#passing-in-props)
@@ -7,7 +13,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Just like PHP views, configuring your React.js views occurs within your controllers.  To facilitate this we have a `renderJsx` function and a `$this->view->props` variable.
 
 **renderJsx**
@@ -20,7 +26,7 @@ Accepts the following parameters:
 
 <br>
 
-## 2. Passing in Props <a id="opassing-in-props"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Passing in Props <a id="passing-in-props"></a>
 Below is the PHP version of this process:
 
 ```php
@@ -57,7 +63,7 @@ export default function Index({ user }) {
 
 <br>
 
-## 3. View Commands <a id="view-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. View Commands <a id="view-commands"></a>
 We support several commands for managing views and layouts with React.
 
 <br>

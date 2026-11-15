@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Unit Test Configuration</h1>
+---
+layout: default
+title: "Unit Test Configuration"
+parent: "Unit Tests"
+nav_order: 1
+---
 
+# Unit Test Configuration
 ## Table of contents
 1. [Overview](#overview)
 2. [SQLite (In-Memory) for Fast Testing](#sqlite)
@@ -7,7 +13,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The Chappy.php framework allows you to run your unit and feature tests against **SQLite (in-memory)** or **MySQL**, depending on your project's requirements.
 
 This gives you flexibility for:
@@ -16,7 +22,7 @@ This gives you flexibility for:
 
 <br>
 
-## 2. SQLite (In-Memory) for Fast Testing <a id="sqlite"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. SQLite (In-Memory) for Fast Testing <a id="sqlite"></a>
 For quick and isolated test runs, SQLite is ideal. It requires **no setup** and runs entirely in memory.
 
 The sqlite file is located at `database\database.sqlite`.
@@ -47,7 +53,7 @@ Benefits
 
 <br>
 
-## 3. MySQL for Real-World Compatibility <a id="mysql"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. MySQL for Real-World Compatibility <a id="mysql"></a>
 
 
 

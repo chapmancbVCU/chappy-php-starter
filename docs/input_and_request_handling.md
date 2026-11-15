@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Input and Request Handling</h1>
+---
+layout: default
+title: "Input and Request Handling"
+parent: "Forms"
+nav_order: 3
+---
 
+# Input and Request Handling
 ## Table of contents
 1. [Overview](#overview)
 2. [Getting Input](#getting-input)
@@ -10,14 +16,14 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The `Input` class is the main interface for retrieving and sanitizing user input in Chappy.php. It abstracts away access to `$_GET`, `$_POST`, and `$_REQUEST`, and ensures all input values are properly sanitized before use.
 
 This class is automatically available in controllers as `$this->request`.
 
 <br>
 
-## 2. Getting Input <a id="getting-input"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Getting Input <a id="getting-input"></a>
 ### A. Get a Single Input Value
 You can assign individual fields from your form to a variable or a field within your model.
 ```php
@@ -47,7 +53,7 @@ The second parameter lists the fields that may be assigned, so sensitive fields 
 
 <br>
 
-## 3. Detecting Request Type <a id="detecting-request-type"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Detecting Request Type <a id="detecting-request-type"></a>
 You can detect which HTTP method was used in the request using these methods:
 ```php
 $this->request->isGet();    // true if GET request
@@ -59,7 +65,7 @@ These checks rely on the REQUEST_METHOD server variable and are helpful when bui
 
 <br>
 
-## 4. CSRF Token Check <a id="csrf-check"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. CSRF Token Check <a id="csrf-check"></a>
 While CSRF tokens are handled by the `FormHelper` class, the `Input` class provides the means to check the validity of your token after form submit inside controller action functions:
 ```php
 $this->request->csrfCheck();
@@ -72,7 +78,7 @@ If the token is invalid or missing, the user is redirected to the restricted tok
 
 <br>
 
-## 5. Full Method Reference <a id="reference"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 5. Full Method Reference <a id="reference"></a>
 
 | Method | Description |
 |:------:|-------------|
@@ -85,7 +91,7 @@ If the token is invalid or missing, the user is redirected to the restricted tok
 
 <br>
 
-## 6. See Also <a id="see-also"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 6. See Also <a id="see-also"></a>
 - [FormHelper Class](forms)
 - [CSRF Protection](csrf)
 - [Controllers](controllers)

@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">Database Queries</h1>
+---
+layout: default
+title: "Database Queries"
+parent: "Database Migrations and Operations"
+nav_order: 1
+---
 
+# Database Queries
 ## Table of contents
 1. [Overview](#overview)
 2. [DB Class](#db)
@@ -28,12 +34,12 @@
 4. [Joins](#joins)
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 There are two ways to perform database queries in this framework.  You can use queries or the functions that comes with your models or base model classes.
 
 <br>
 
-## 2. DB Class <a id="db"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. DB Class <a id="db"></a>
 You can perform a query within this framework by using the `query` function from the `DB` class.  The query function has 3 parameters:
 1. $sql - The database query we will submit to the database.
 2. $params - The values for the query.  They are the fields of the table in our database.  The default value is an empty array.
@@ -82,7 +88,7 @@ You can learn more about SQL through this [link](https://www.theodinproject.com/
 
 <br>
 
-### A. Create <a id="create">
+### A. Create <a id="create"></a>
 The **insert** function performs our create operation on our database.  An example is shown below:
 
 ```php
@@ -105,7 +111,7 @@ This function accepts two arguments:
 
 <br>
 
-### B. Read <a id="read">
+### B. Read <a id="read"></a>
 Users can perform find operations using the DB class with the `find` function using parameters such as conditions, bind, order, limit, and sort.  An example is shown below:
 
 ```php
@@ -137,7 +143,7 @@ This function accepts the following parameters:
 
 <br>
 
-### C. Update <a id="update">
+### C. Update <a id="update"></a>
 You can used the DB class' `update` function to update a record as shown below:
 
 ```php
@@ -159,7 +165,7 @@ This function accepts 3 parameters:
 
 <br>
 
-### D. Delete <a id="delete">
+### D. Delete <a id="delete"></a>
 The delete function performs delete operations.  This is the simples of all our functions to use as shown below:
 
 ```php
@@ -172,7 +178,7 @@ It accepts the following arguments:
 
 <br>
 
-### E. Checking If Value Exists In Column <a id="value-exists">
+### E. Checking If Value Exists In Column <a id="value-exists"></a>
 Sometimes you need to check if a value exists in a column in the form of an element in an array.  The `valueExistsInColumn` makes this possible.  Let's check out the manageACLsAction below where we separate ACLs into used and unused.  
 
 ```php
@@ -199,7 +205,7 @@ Here, we want to create two separate arrays.  One for used ACLs and another for 
 <br>
 
 
-### F. Transaction API  <a id="transaction-api">
+### F. Transaction API  <a id="transaction-api"></a>
 This guide covers the 5 DB methods the queue relies on:
 - `beginTransaction()`
 - `commit()`
@@ -415,7 +421,7 @@ int DB::updateWhere(
 
 <br>
 
-### G. Summary  <a id="db-summary">
+### G. Summary  <a id="db-summary"></a>
 Many of these functions have their equivalent wrapper functions that will be described in the **Using Models** section.  Here are the descriptions for additional functions:
 1. count - Getter function for the private _count variable.
 2. findFirst - Returns the first result performed by an SQL query.
@@ -429,12 +435,12 @@ Many of these functions have their equivalent wrapper functions that will be des
 
 <br>
 
-## 3. Using Models <a id="models"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Using Models <a id="models"></a>
 We will go over using the model class for updating the database.  Each function will be discussed in the following sections.
 
 <br>
 
-### A. assign  <a id="assign">
+### A. assign  <a id="assign"></a>
 ```php
 $user->assign($_POST, ['csrf_token'], Users::BLACKLIST); // blacklist example
 ```
@@ -443,7 +449,7 @@ This method allows mass assignment using an array. You can also pass a blacklist
 
 <br>
 
-### B. delete  <a id="model-delete">
+### B. delete  <a id="model-delete"></a>
 The delete function is the easiest to use.  Simply call this function with your object as shown below:
 
 ```php
@@ -454,7 +460,7 @@ When you implement the **afterDelete** and **beforeDelete** functions in your mo
 
 <br>
 
-### C. find  <a id="find">
+### C. find  <a id="find"></a>
 The **find** function is the most commonly used function.  It is a wrapper function for the **DB** class' **find** function.  Throughout this framework this function is used in several of our model classes to perform various tasks.  It accepts one argument called `$params`.  It is an associative array and contains the parameters for your query.
 
 Within the **Users** model this function is used to find all users except the current logged in user.  It's usage is shown below:
@@ -493,7 +499,7 @@ Besides the conditions we are already familiar with, this one accepts an order p
 
 <br>
 
-### D. findAllByUserId  <a id="find-all-by-user-id">
+### D. findAllByUserId  <a id="find-all-by-user-id"></a>
 Searches a table where **user_id** is an index value.  An example for using this function is as follows:
 
 ```php
@@ -506,7 +512,7 @@ It accepts two arguments:
 
 <br>
 
-### E. findById  <a id="find-by-id">
+### E. findById  <a id="find-by-id"></a>
 Use this function if you want to retrieve a record from a database using a record's id field.  An example is shown below:
 
 ```php
@@ -517,7 +523,7 @@ We cast the value is a type int for safety reasons.
 
 <br>
 
-### F. findByTable  <a id="find-by-table">
+### F. findByTable  <a id="find-by-table"></a>
 ```php
 $items = CartItem::findByTable('cart_items AS items', [...]);
 ```
@@ -533,7 +539,7 @@ $items = Orders::findByTable('orders AS o', [
 
 <br>
 
-### G. findFirst  <a id="find-first">
+### G. findFirst  <a id="find-first"></a>
 This is a wrapper for the **findFirst** function found in the DB class.  It accepts one argument called `$params`.  It is an associative array and contains the parameters for your query.  An example of is usage is shown below:
 
 ```php
@@ -567,7 +573,7 @@ With this function we use `$contact_id` and `$user_id` to set out binding values
 
 <br>
 
-### H. findTotal  <a id="find-total">
+### H. findTotal  <a id="find-total"></a>
 Use this function to find the total number of records based on parameters provided.  Let's look at this example from the the indexAction for the ContactsController.
 
 ```php
@@ -581,7 +587,7 @@ When setting up the Pagination object we use this function to set the value for 
 
 <br>
 
-### I. Lifecycle Hooks  <a id="lifecycle-hooks">
+### I. Lifecycle Hooks  <a id="lifecycle-hooks"></a>
 - onConstruct()
 - beforeSave() / afterSave()
 - beforeDelete() / afterDelete()
@@ -590,7 +596,7 @@ These can be optionally implemented in child models.
 
 <br>
 
-### J. save  <a id="save">
+### J. save  <a id="save"></a>
 This function is most commonly used in the controllers.  It is a function that performs **insert** and **update** operations.  When you implement the **afterSave** and **beforeSave** functions in your model classes any tasks within those functions are performed when using this function.
 
 There are two ways to use this function.  You can call it standalone as follows:
@@ -613,7 +619,7 @@ Finally, this function checks if the record has an ID. If it does, it performs a
 
 <br>
 
-### K. timeStamps  <a id="timestamps">
+### K. timeStamps  <a id="timestamps"></a>
 ```php
 public function beforeSave(): void {
     $this->timeStamps();
@@ -624,7 +630,7 @@ Automatically sets `created_at` and `updated_at`.
 
 <br>
 
-### L. Validation  <a id="validation">
+### L. Validation  <a id="validation"></a>
 ```php
 public function validator(): void {
     $this->runValidation(new UniqueValidator($this, ['field' => 'acl', 'message' => 'That acl already exists.  Please chose a new one.']));
@@ -636,7 +642,7 @@ Validation must be defined in the `validator()` method. `save()` will not procee
 
 <br>
 
-### M. updateWhere <a id="update-where">
+### M. updateWhere <a id="update-where"></a>
 Updates one or more rows in this model's underlying table using this framework's params-style conditions.
      
 This method delegates to the DB::updateWhere() method and allows you to pass both the fields to update and a parameterized WHERE clause (using `conditions` and `bind` arrays just like find/findFirst).
@@ -648,7 +654,7 @@ Queue::updateWhere(
     ['conditions' => 'id = ?', 'bind' => [$jobId]]
 );
 ```
-### N. Model Summary  <a id="model-summary">
+### N. Model Summary  <a id="model-summary"></a>
 
 | Method | Description |
 |:------:|-------------|
@@ -664,7 +670,7 @@ Queue::updateWhere(
 
 <br>
 
-## 4. Joins <a id="joins"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Joins <a id="joins"></a>
 🔍 Understanding $conditions vs. Raw SQL
 
 This framework allows complex SQL queries to be expressed as a structured $conditions array, which is internally parsed and converted into raw SQL by the DB class. Here's how each part of the $conditions array translates into SQL:

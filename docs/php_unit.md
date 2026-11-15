@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">PHPUnit</h1>
+---
+layout: default
+title: "PHPUnit"
+parent: "Unit Tests"
+nav_order: 3
+---
 
+# PHPUnit
 ## Table of contents
 1. [Overview](#overview)
 2. [Creating Tests](#creating-tests)
@@ -8,12 +14,12 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 This guide provides an overview on how to use the console Command Line Interface (CLI) for running PHPUnit related unit tests.
 
 <br>
 
-## 2. Creating Tests <a id="creating-tests"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Creating Tests <a id="creating-tests"></a>
 You can make your own PHPUnit test class by running the following command:
 
 ```sh
@@ -35,7 +41,7 @@ This version of the PHPUnit test class adds support for migrations and database 
 
 <br>
 
-## 3. Running Tests <a id="running-tests"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Running Tests <a id="running-tests"></a>
 Run all available tests.
 ```sh
 php console test
@@ -115,7 +121,7 @@ You can run all test within a specific test file for an individual suite by spec
 
 <br>
 
-## 4. PHPUnit Assertions <a id="phpunit-assertions"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. PHPUnit Assertions <a id="phpunit-assertions"></a>
 PHPUnit provides a rich set of built-in assertions you can use in your tests. These are all supported out of the box in your test classes (like ApplicationTestCase) because they extend PHPUnit\Framework\TestCase.
 
 Here’s a categorized list of commonly used PHPUnit assertions (as of PHPUnit 11.x):

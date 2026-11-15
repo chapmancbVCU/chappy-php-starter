@@ -1,12 +1,18 @@
-<h1 style="font-size: 50px; text-align: center;">Development Experience (Kits)</h1>
+---
+layout: default
+title: "Development Experience (Kits)"
+parent: "Getting Started"
+nav_order: 1
+---
 
+# Development Experience (Kits)
 ## Table of contents
 1. [Overview](#overview)
 2. [Additional Commands](#additional-commands)
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 Chappy.php supports a pure PHP or React.js or hybrid experience.  Run the following commands to get setup:
 - `kit:php` - Generates views, components, and controllers for a PHP experience.
 - `kit:react` - Generates views, components, and controllers for a React.js experience.
@@ -15,7 +21,7 @@ If neither is used then the framework defaults to built-in controllers, views, a
 
 <br>
 
-## 2. Additional Commands <a id="additional-commands"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Additional Commands <a id="additional-commands"></a>
 Build your experience piece-meal with the commands described in the table below:
 
 | Command | Description | Arguments |

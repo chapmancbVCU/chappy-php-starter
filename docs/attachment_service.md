@@ -1,5 +1,11 @@
-<h1 style="font-size: 50px; text-align: center;">AttachmentService</h1>
+---
+layout: default
+title: "AttachmentService"
+parent: "Services"
+nav_order: 2
+---
 
+# AttachmentService
 ## Table of contents
 1. [Overview](#overview)
 2. [Public Methods](#public-methods)
@@ -8,7 +14,7 @@
 
 <br>
 
-## 1. Overview <a id="overview"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 1. Overview <a id="overview"></a>
 The AttachmentService class provides static methods for managing file attachments uploaded through the admin interface. It handles uploading, previewing, deleting, and metadata processing for email-related attachments.
 
 This service ensures file integrity and security, while integrating with your framework's upload and email systems.
@@ -30,7 +36,7 @@ use Core\Services\AttachmentService;
 
 <br>
 
-## 2. Public Methods <a id="public-methods"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 2. Public Methods <a id="public-methods"></a>
 ### A. `attachmentUpload()`
 Generates upload object for attachments.
 
@@ -122,7 +128,7 @@ This method should be used in both attachment create and update flows.
 
 <br>
 
-## 3. Related Components<a id="related-components"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 3. Related Components<a id="related-components"></a>
 
 - `EmailAttachments` – The model representing stored attachment records.
 - `Uploads` – Upload handler responsible for file processing.
@@ -131,7 +137,7 @@ This method should be used in both attachment create and update flows.
 
 <br>
 
-## 4. Notes <a id="notes"></a><span style="float: right; font-size: 14px; padding-top: 15px;">[Table of Contents](#table-of-contents)</span>
+## 4. Notes <a id="notes"></a>
 - Uploaded attachments are stored in the path defined by `EmailAttachments::$_uploadPath`.
 - The service assumes the file input name is `attachment_name` and that the file is uploaded via `$_FILES`.
 - The `processAttachment()` method is safe to call for both new and existing records; it checks if uploads are needed.
