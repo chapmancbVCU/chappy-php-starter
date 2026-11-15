@@ -51,7 +51,6 @@ aux_links:
   "API Reference": "https://chapmancbvcu.github.io/chappy-php-framework/"
   "Framework on GitHub": "https://github.com/chapmancbVCU/chappy-php-framework"
   "Starter App on GitHub": "https://github.com/chapmancbVCU/chappy-php-starter"
-  "Just the Docs Theme" : "https://just-the-docs.github.io/just-the-docs/"
 aux_links_new_tab: true
 gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub"
