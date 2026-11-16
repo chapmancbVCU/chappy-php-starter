@@ -102,6 +102,8 @@ Designed for flexibility and clarity, it’s ideal for learning, rapid prototypi
 
 [Complete Weather App using framework](https://github.com/chapmancbVCU/chappy-weather-app)
 
+[Just the Docs Theme](https://just-the-docs.github.io/just-the-docs/)
+
 <h2>Inspiration</h2>
 
 Ruah MVC Framework by Freeskills [playlist](<https://www.youtube.com/playlist?list=PLFPkAJFH7I0keB1qpWk5qVVUYdNLTEUs3>)
