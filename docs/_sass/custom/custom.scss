@@ -4,9 +4,13 @@ td code {
   font-size: 1em;
 }
 
-// Inline code (`like this`) at the same size as the surrounding text:
-// body text, table cells, headings and links.
-// :not(pre) > code leaves fenced code blocks at the theme's default size.
+// All code at the same size as surrounding text.
+// Inline (`like this`):
 :not(pre) > code {
+  font-size: 1em;
+}
+
+// Fenced blocks (```):
+pre code {
   font-size: 1em;
 }
