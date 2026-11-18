@@ -597,7 +597,7 @@ sudo systemctl restart httpd
 ### F. Final Steps
 Run migrations:
 ```sh
-cd /var/www/html/my-app
+cd /var/www/my-app
 php console migrate
 ```
 
