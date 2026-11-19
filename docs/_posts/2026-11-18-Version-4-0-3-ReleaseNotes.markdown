@@ -2,7 +2,7 @@
 layout: post
 title:  "Version 4.0.3 Release Notes!"
 date:   2026-11-18 20:00:00 -0500
-categories: hotfix
+categories: release
 ---
 ---
 
