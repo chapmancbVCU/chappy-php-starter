@@ -1,11 +1,11 @@
 {
     "Home" : "home",
-    "User Guide" : "https://chapmancbvcu.github.io/chappy-php-starter/",
     "Admin" : {
         "Admin Dashboard" : "admindashboard/index",
         "Manage ACLS" : "admindashboard/manageACLs",
         "Attachments" : "admindashboard/attachments",
         "Queue Manager" : "admindashboard/queueManager",
         "Notifications" : "admindashboard/notifications"
-    }
+    },
+    "User Guide" : "https://chapmancbvcu.github.io/chappy-php-starter/"
 }
