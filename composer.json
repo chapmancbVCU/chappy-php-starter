@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=8.4",
-      "chappy-php/chappy-php-framework": "^4.0"
+      "chappy-php/chappy-php-framework": "dev-main"
   },
   "autoload": {
     "psr-4": {
@@ -34,6 +34,15 @@
       "@setup"
     ]
   },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../chappy-php-framework",
+      "options": {
+        "symlink": true
+      }
+    }
+  ],
   "require-dev": {
     "psy/psysh": "^0.12.20",
     "phpstan/phpstan": "^2.1"

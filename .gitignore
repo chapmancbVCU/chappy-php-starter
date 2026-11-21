@@ -36,6 +36,7 @@ docs/Gemfile.lock
 
 # Vite Assets
 public/build
+public/hot
 
 # Dev
 toggle-composer.sh

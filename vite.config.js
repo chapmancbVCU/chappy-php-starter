@@ -1,9 +1,17 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import path from 'path';
 import react from '@vitejs/plugin-react';
 import FullReload from 'vite-plugin-full-reload';
+import chappyHot from './vendor/chappy-php/chappy-php-framework/src/vite/chappyHot.js';
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command, mode }) => {
+    // Public URL of the dev server as the *browser* sees it.
+    // Set VITE_DEV_SERVER in .env when developing in a VM or container.
+    const env = loadEnv(mode, process.cwd(), '');
+    const devUrl = new URL(env.VITE_DEV_SERVER || 'http://localhost:5173');
+    const isLocal = ['localhost', '127.0.0.1'].includes(devUrl.hostname);
+
+    return {
     // Use a base only for *build* so runtime assets resolve correctly
     base: command === 'build' ? '/public/build/' : '',
     publicDir: false,
@@ -18,7 +26,11 @@ export default defineConfig(({ command }) => ({
         },
     },
     server: {
-        origin: 'http://localhost:5173',
+        host: isLocal ? 'localhost' : '0.0.0.0',
+        port: Number(devUrl.port) || 5173,
+        strictPort: true,
+        origin: devUrl.origin,
+        hmr: { host: devUrl.hostname },
         watch: {
             ignored: ['!**/resources/view/**', '!**/resources/views/**'],
         },
@@ -45,6 +57,7 @@ export default defineConfig(({ command }) => ({
     },
     plugins: [
         react(),
+        chappyHot(),
         FullReload(['resources/view/**/*.php', 'resources/views/**/*.php']),
     ],
     optimizeDeps: {
@@ -56,4 +69,5 @@ export default defineConfig(({ command }) => ({
         setupFiles: './setup.js',
         css: true,
     }
-}));
+    };
+});
