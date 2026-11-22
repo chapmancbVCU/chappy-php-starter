@@ -226,6 +226,16 @@ This ensures React/UI validation matches backend enforcement.
 
 <br>
 
+🔥 **Vite Dev Server**
+
+```bash
+VITE_DEV_SERVER='http://localhost:5173'
+```
+
+- **VITE_DEV_SERVER** – URL of the Vite dev server as the browser sees it.  Change it when developing in a VM or container (e.g. `http://my-vm.test:5173`).  While `npm run dev` is running, the actual URL is written to `public/hot` and read by the framework.  See [Vite Setup](react#vite-setup) for details.
+
+<br>
+
 ## 3. Env Utility <a id="env"></a>
 The Env utility helps load and manage environment variables from a `.env` file.
 <br>
