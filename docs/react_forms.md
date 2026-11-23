@@ -61,10 +61,11 @@ nav_order: 3
 <br>
 
 ## 1. Overview <a id="overview"></a>
-We spport React tailored form helper similar to the `Core\FormHelper` for generating form elements, setting attrbutes, and presenting server side errors.
+We support React tailored form helper similar to the `Core\FormHelper` for generating form elements, setting attributes, and presenting server side errors.
 Setup by adding following line to your `.jsx` component:
+
 ``jsx
-mport Forms from "@chappy/components/Forms;
+import Forms from "@chappy/components/Forms;
 ``<br>
 # 2. Setup <a id="setup"></a>
 To getstarted, import the Forms module, pass in your props, and import the Forms module.
