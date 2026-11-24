@@ -707,7 +707,6 @@ Example:
 {% raw %}
 ```jsx
 <Forms.FileSelector 
-    type="file"
     label="Upload Profile Image (Optional)"
     name="profileImage"
     inputAttrs={{className: 'form-control', accept: 'image/gif image/jpeg image/png'}}
